@@ -7,9 +7,10 @@ const I18n = (() => {
       ? '../data/translations.json' : 'data/translations.json';
     const res = await fetch(base);
     _translations = await res.json();
+    // Lang priority: 1) explicit URL path (/fr/, /es/) → 2) user-chosen via switcher (localStorage) → 3) default (English).
+    // No browser-locale auto-detection: English is the global default.
     const saved = localStorage.getItem(CONFIG.STORAGE_KEY + '_lang');
-    const auto = navigator.language?.slice(0, 2);
-    _lang = lang || saved || (CONFIG.SUPPORTED_LANGS.includes(auto) ? auto : CONFIG.DEFAULT_LANG);
+    _lang = lang || saved || CONFIG.DEFAULT_LANG;
     _apply();
   }
 
