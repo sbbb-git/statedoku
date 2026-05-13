@@ -414,13 +414,13 @@ main {
 }
 
 /* ─────────────────── Search Panel ─────────────────── */
+/* Invisible overlay — captures outside clicks to close the panel, but
+   does NOT darken or blur the rest of the page (Metrodoku-style). */
 #sp-overlay {
   display: none;
   position: fixed; inset: 0;
-  background: rgba(15, 33, 71, 0.2);
-  backdrop-filter: blur(3px);
+  background: transparent;
   z-index: 40;
-  animation: fadeIn var(--d-med) var(--ease);
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
