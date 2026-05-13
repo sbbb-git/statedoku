@@ -27,34 +27,33 @@ const Puzzle = (() => {
   // --- Row groups: every triple is disjoint and has been verified to produce
   //     at least one globally-unique puzzle. ---
   const MUTEX_ROW_GROUPS = [
-    // Population brackets (verified)
+    // Population
     ['pop_1m5m', 'pop_5m10m', 'pop_gt10m'],
-    // Timezones (verified)
+    // Timezones
     ['tz_central', 'tz_mountain', 'tz_pacific'],
-    // Subregion combos (cleaned — only valid ones)
-    ['sub_mid_atlantic', 'sub_deep_south', 'sub_pacific'],
-    ['sub_deep_south', 'sub_mountain', 'sub_pacific'],
-    ['sub_plains', 'sub_mountain', 'sub_pacific'],
+    // Subregion combos (only kept subregions)
+    ['sub_mid_atlantic', 'sub_deep_south', 'sub_mountain'],
     ['sub_new_england', 'sub_deep_south', 'sub_mountain'],
+    ['sub_new_england', 'sub_deep_south', 'sub_plains'],
+    ['sub_plains', 'sub_deep_south', 'sub_mountain'],
     // Four Corners cultural cluster
     ['four_corners', 'sub_new_england', 'sub_deep_south'],
-    // Borders (disjoint: no state borders both Canada AND Mexico)
+    // Borders (disjoint)
     ['border_canada', 'border_mexico', 'coast_gulf'],
-    // Letter-initial groups (kept compact)
-    ['starts_a', 'starts_c', 'starts_w'],
+    // Letter-initial groups (compact, valid letters only)
+    ['starts_a', 'starts_m', 'starts_w'],
     ['starts_a', 'starts_w', 'has_new'],
-    ['starts_m', 'starts_a', 'starts_w'],
     ['starts_m', 'starts_w', 'has_new'],
     ['starts_n', 'starts_a', 'starts_w'],
+    ['starts_i', 'starts_m', 'starts_n'],
     // Border + letter combos
     ['border_mexico', 'starts_m', 'starts_w'],
     ['pop_lt1m', 'border_mexico', 'letters_8'],
-    // Coastal combos
+    // Coastal
     ['coast_gulf', 'starts_w', 'has_new'],
-    ['coast_gulf', 'starts_c', 'has_new'],
     ['coast_gulf', 'tz_pacific', 'has_new'],
     ['tz_pacific', 'starts_a', 'has_new'],
-    // Northeast + geographic combos
+    // Northeast geographic
     ['region_northeast', 'coast_gulf', 'tz_mountain'],
     ['region_northeast', 'tz_mountain', 'tz_pacific'],
     ['region_northeast', 'tz_pacific', 'on_mississippi'],
@@ -62,108 +61,74 @@ const Puzzle = (() => {
     // New England combos
     ['sub_new_england', 'coast_gulf', 'tz_mountain'],
     ['sub_new_england', 'tz_mountain', 'tz_pacific'],
-
-    // ──────────── EXPANDED GROUPS (objective only) ────────────
-    // Cultural belt combos
-    ['sun_belt', 'snow_belt', 'pacific_northwest'],
-    ['bible_belt', 'rust_belt', 'pacific_northwest'],
-    ['bible_belt', 'sub_new_england', 'sub_pacific'],
+    // Belt combos
+    ['bible_belt', 'rust_belt', 'sub_new_england'],
     ['corn_belt', 'sub_new_england', 'sub_mountain'],
-    ['black_belt', 'sub_new_england', 'sub_pacific'],
-    // Natural hazard combos
-    ['tornado_alley', 'sub_new_england', 'sub_pacific'],
+    ['sun_belt', 'sub_new_england', 'sub_mountain'],
+    ['cotton_belt', 'sub_new_england', 'sub_mountain'],
+    // Natural hazards
+    ['tornado_alley', 'sub_new_england', 'tz_pacific'],
     ['hurricane_zone', 'sub_new_england', 'sub_mountain'],
     ['earthquake_zone', 'sub_new_england', 'sub_deep_south'],
-    // Food / agriculture combos
-    ['dairy_state', 'sub_deep_south', 'sub_mountain'],
-    ['citrus_state', 'sub_new_england', 'sub_plains'],
-    ['lobster_state', 'sub_deep_south', 'sub_pacific'],
-    ['tobacco_state', 'sub_new_england', 'sub_pacific'],
-    ['cotton_belt', 'sub_new_england', 'sub_pacific'],
-    // Politics
-    ['blue_wall', 'sub_new_england', 'sub_deep_south'],
-    ['swing_state_2024', 'sub_new_england', 'sub_pacific'],
     // Geography
-    ['has_yellowstone', 'sub_new_england', 'sub_deep_south'],
     ['has_volcano', 'sub_new_england', 'sub_deep_south'],
-    ['on_appalachian_trail', 'sub_pacific', 'sub_plains'],
+    ['on_appalachian_trail', 'sub_mountain', 'sub_plains'],
     ['high_elevation', 'sub_new_england', 'sub_deep_south'],
     // History
     ['statehood_pre_1800', 'statehood_1900s', 'sub_plains'],
-    ['underground_railroad', 'sub_deep_south', 'sub_pacific'],
-    // Industry (factual)
-    ['coal_state', 'sub_new_england', 'sub_pacific'],
-    ['nasa_facility', 'sub_new_england', 'sub_plains'],
+    // Name origin (NEW — disjoint by design, 25/6/9 states each)
+    ['name_native_origin', 'name_spanish_origin', 'name_royalty_origin'],
   ];
 
   const ALL_CONSTRAINTS = [
     // Regions
     'region_west', 'region_south', 'region_midwest', 'region_northeast',
-    // Subregions (kept core ones; upland_south + midwest_rust removed)
+    // Subregions
     'sub_new_england', 'sub_mid_atlantic', 'sub_deep_south',
-    'sub_plains', 'sub_mountain', 'sub_pacific',
+    'sub_plains', 'sub_mountain',
     // Population
     'pop_lt1m', 'pop_1m5m', 'pop_5m10m', 'pop_gt10m',
     // Coastline / borders
     'coast_atlantic', 'coast_pacific', 'coast_gulf', 'coast_great_lakes',
     'landlocked', 'border_canada', 'border_mexico',
-    // Politics (recent elections only — older ones too memory-heavy)
+    // Belts (curated)
+    'sun_belt', 'snow_belt', 'corn_belt', 'wheat_belt', 'cotton_belt',
+    'bible_belt', 'rust_belt',
+    // Politics
     'political_red', 'political_blue', 'political_swing',
     'trump_2024', 'biden_2020',
     // Timezones
-    'tz_eastern', 'tz_central', 'tz_mountain', 'tz_pacific',
+    'tz_eastern', 'tz_central', 'tz_mountain', 'tz_pacific', 'multi_timezone',
     // History (iconic only)
     'original_13', 'confederate',
-    // Geography & landscape
+    'statehood_pre_1800', 'statehood_1900s',
+    // Geography (curated)
     'on_mississippi', 'mt_rockies', 'mt_appalachians',
     'desert_state', 'four_corners', 'great_plains', 'appalachian',
-    // Culture / belts
-    'bible_belt', 'rust_belt', 'route_66',
-    // Cities & size
+    'tornado_alley', 'hurricane_zone', 'earthquake_zone',
+    'has_volcano', 'has_glaciers',
+    'on_appalachian_trail', 'on_continental_divide', 'has_caves',
+    'high_elevation', 'low_elevation', 'route_66',
+    // Cities & geography (factual)
     'has_million_city', 'largest_state', 'smallest_state',
-    // Pro sports (borderline — kept all per user request)
-    'has_nba', 'has_nfl', 'has_mlb', 'has_nhl', 'no_pro_team',
-    // Name properties (cleaned)
+    'capital_named_after_president', 'capital_starts_with_s',
+    'borders_6_plus', 'borders_few',
+    // Pro sports — only NBA and "no major team"
+    'has_nba', 'no_pro_team',
+    // Name origin (NEW category)
+    'name_native_origin', 'name_spanish_origin', 'name_royalty_origin',
+    // Name properties (general)
     'two_word_name', 'ends_in_vowel', 'double_letter',
     'vowel_start', 'consonant_start',
-    'letters_5', 'letters_8',
-    'starts_a', 'starts_c', 'starts_m', 'starts_n', 'starts_w',
     'has_new',
-
-    // ──────────── EXPANDED CONSTRAINTS (objective only) ────────────
-    // Regional belts / zones — all are well-defined geo-cultural concepts
-    'sun_belt', 'snow_belt', 'corn_belt', 'wheat_belt', 'cotton_belt',
-    'black_belt', 'dust_bowl', 'pacific_northwest', 'mason_dixon',
-    // Natural hazards & geographic features (factual)
-    'tornado_alley', 'hurricane_zone', 'earthquake_zone',
-    'has_volcano', 'has_glaciers', 'has_fourteener', 'has_islands',
-    'has_yellowstone', 'on_appalachian_trail', 'on_pacific_crest_trail',
-    'on_continental_divide', 'has_caves', 'high_elevation', 'low_elevation',
-    'multi_timezone',
-    // Agriculture / food — factual top-producer states
-    'dairy_state', 'wine_country', 'apple_state', 'peach_state', 'citrus_state',
-    'cranberry_state', 'maple_syrup_state', 'lobster_state', 'peanut_state',
-    'tobacco_state', 'potato_state', 'cheese_state', 'corn_state',
-    // Pop culture — only factual (legalized casinos)
-    'casino_state',
-    // Sports — factual presence of a team / venue
-    'has_mls', 'has_wnba', 'nascar_speedway',
-    // History — factual
-    'statehood_pre_1800', 'statehood_1900s', 'trail_of_tears',
-    'underground_railroad', 'civil_war_major_battle',
-    // Politics — factual
-    'swing_state_2024', 'blue_wall', 'early_primary',
-    'capital_named_after_president', 'capital_starts_with_s',
-    // Industry — only factual presences (coal production, NASA site)
-    'coal_state', 'nasa_facility',
-    // Travel — only factual (count of national parks)
-    'multiple_natl_parks',
-    // Geographic relationships (factual: count of bordering states)
-    'borders_6_plus', 'borders_few',
-    // Name properties extra (computed, all objective)
     'ends_in_a', 'ends_in_o', 'ends_in_e', 'ends_in_n', 'ends_in_s',
-    'starts_and_ends_vowel', 'contains_letter_k', 'contains_letter_w',
-    'short_name', 'long_name', 'double_s', 'two_word_starts_n',
+    'starts_and_ends_vowel', 'double_s', 'two_word_starts_n',
+    'contains_letter_k', 'contains_letter_w', 'contains_letter_v', 'contains_letter_y',
+    'short_name', 'long_name',
+    // Name length
+    'letters_6', 'letters_7', 'letters_8', 'letters_9',
+    // Starts with letter
+    'starts_a', 'starts_i', 'starts_m', 'starts_n', 'starts_w',
   ];
 
   function matches(state, c) {
@@ -344,6 +309,10 @@ const Puzzle = (() => {
       // Geographic relationships
       case 'borders_6_plus':  return !!state.borders6Plus;
       case 'borders_few':     return !!state.bordersFew;
+      // Name origin (NEW)
+      case 'name_native_origin':  return !!state.nameNative;
+      case 'name_spanish_origin': return !!state.nameSpanish;
+      case 'name_royalty_origin': return !!state.nameRoyalty;
       // Name properties extra (computed)
       case 'ends_in_a':              return state.endsWith === 'A';
       case 'ends_in_o':              return state.endsWith === 'O';
@@ -353,6 +322,8 @@ const Puzzle = (() => {
       case 'starts_and_ends_vowel':  return 'AEIOU'.includes(state.startsWith) && state.endsInVowel;
       case 'contains_letter_k':      return state.names.en.toUpperCase().includes('K');
       case 'contains_letter_w':      return state.names.en.toUpperCase().includes('W');
+      case 'contains_letter_v':      return state.names.en.toUpperCase().includes('V');
+      case 'contains_letter_y':      return state.names.en.toUpperCase().includes('Y');
       case 'short_name':             return state.letterCount <= 5;
       case 'long_name':              return state.letterCount >= 10;
       case 'double_s':               return /SS/i.test(state.names.en);
@@ -392,23 +363,22 @@ const Puzzle = (() => {
   const SCORE2 = new Set([
     // Historical / cultural identity
     'original_13', 'confederate',
+    'statehood_pre_1800', 'statehood_1900s',
     // Geographic features with cultural weight
-    'on_mississippi', 'four_corners',
-    'mt_rockies', 'mt_appalachians',
+    'on_mississippi', 'four_corners', 'mt_rockies', 'mt_appalachians',
     'desert_state', 'route_66',
     // Cultural regions
     'sub_new_england', 'sub_deep_south', 'sub_mid_atlantic', 'sub_mountain',
     'rust_belt', 'bible_belt',
+    // Belts
+    'sun_belt', 'snow_belt', 'corn_belt', 'wheat_belt', 'cotton_belt',
+    // Natural
+    'tornado_alley', 'hurricane_zone', 'has_volcano',
+    'on_appalachian_trail',
     // Misc
     'great_plains', 'appalachian', 'two_word_name',
-    // Expanded culturally weighted (objective only)
-    'sun_belt', 'snow_belt', 'corn_belt', 'wheat_belt', 'cotton_belt',
-    'black_belt', 'dust_bowl', 'pacific_northwest', 'mason_dixon',
-    'tornado_alley', 'hurricane_zone', 'has_volcano', 'has_yellowstone',
-    'on_appalachian_trail', 'wine_country',
-    'trail_of_tears', 'underground_railroad',
-    'civil_war_major_battle', 'statehood_pre_1800', 'statehood_1900s',
-    'casino_state', 'blue_wall',
+    // Name origin (new, culturally rich)
+    'name_native_origin', 'name_spanish_origin', 'name_royalty_origin',
   ]);
   const SCORE1 = new Set([
     'coast_gulf', 'coast_atlantic', 'coast_pacific', 'coast_great_lakes',
@@ -416,18 +386,13 @@ const Puzzle = (() => {
     'political_swing', 'political_red', 'political_blue',
     'trump_2024', 'biden_2020',
     'has_million_city', 'largest_state', 'smallest_state',
-    'has_nba', 'has_nfl', 'has_mlb', 'has_nhl', 'no_pro_team',
-    'has_new', 'has_north', 'has_south',
+    'capital_named_after_president', 'capital_starts_with_s',
+    'has_nba', 'no_pro_team',
+    'has_new',
     'double_letter', 'ends_in_vowel',
-    // Expanded lighter weight (objective only)
-    'earthquake_zone', 'has_glaciers', 'has_fourteener', 'has_islands',
+    'earthquake_zone', 'has_glaciers',
     'high_elevation', 'low_elevation', 'multi_timezone',
-    'dairy_state', 'apple_state', 'peach_state', 'citrus_state',
-    'maple_syrup_state', 'lobster_state', 'peanut_state', 'tobacco_state',
-    'potato_state', 'cheese_state', 'corn_state',
-    'has_mls', 'has_wnba', 'nascar_speedway',
-    'swing_state_2024', 'early_primary',
-    'coal_state', 'nasa_facility', 'multiple_natl_parks',
+    'on_continental_divide', 'has_caves',
     'borders_6_plus', 'borders_few',
   ]);
   // Union for pre-filter (interesting cols appear first in search)
@@ -501,12 +466,13 @@ const Puzzle = (() => {
   // Row constraints that are "boring" (pure letter/count properties).
   // Groups where ALL rows are boring are deprioritised — used only as fallback.
   const BORING_ROW = new Set([
-    'letters_5','letters_8',
+    'letters_6','letters_7','letters_8','letters_9',
     'vowel_start','consonant_start',
-    'starts_a','starts_c','starts_m','starts_n','starts_s','starts_w',
+    'starts_a','starts_i','starts_m','starts_n','starts_w',
     'ends_in_a','ends_in_o','ends_in_e','ends_in_n','ends_in_s',
-    'starts_and_ends_vowel','contains_letter_k','contains_letter_w',
-    'short_name','long_name','double_s','two_word_starts_n',
+    'starts_and_ends_vowel','double_s','two_word_starts_n',
+    'contains_letter_k','contains_letter_w','contains_letter_v','contains_letter_y',
+    'short_name','long_name',
   ]);
 
   function _generateForSeed(baseSeed, states, excludeGroup) {
