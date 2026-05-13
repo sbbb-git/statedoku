@@ -271,8 +271,6 @@ const Puzzle = (() => {
       case 'underground_railroad': return !!state.undergroundRailroad;
       case 'civil_war_major_battle': return !!state.civilWarMajorBattle;
       // Politics new
-      case 'swing_state_2024':            return !!state.swingState2024;
-      case 'blue_wall':                   return !!state.blueWall;
       case 'early_primary':               return !!state.earlyPrimary;
       case 'capital_named_after_president': return !!state.capitalNamedAfterPresident;
       case 'capital_starts_with_s':       return !!state.capitalStartsWithS;
@@ -618,6 +616,21 @@ const Puzzle = (() => {
     _states = await res.json();
     return _states;
   }
+
+  // One-time purge of stale cached puzzles (bump CACHE_GEN to invalidate)
+  const CACHE_GEN = 'gen3';
+  (function _purgeOldPuzzleCaches() {
+    try {
+      if (localStorage.getItem('statedoku_cache_gen') === CACHE_GEN) return;
+      const toDel = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.includes('_puzzle_')) toDel.push(k);
+      }
+      toDel.forEach(k => localStorage.removeItem(k));
+      localStorage.setItem('statedoku_cache_gen', CACHE_GEN);
+    } catch(e) {}
+  })();
 
   async function getPuzzle(dateStr) {
     if (_puzzleCache[dateStr]) return _puzzleCache[dateStr];

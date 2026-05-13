@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="../css/style.css?v=2">
+  <link rel="stylesheet" href="../css/style.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -74,24 +74,34 @@
 <h1 class="sr-only">Statedoku — Le puzzle quotidien des États américains</h1>
 
 <header>
-  <a href="/fr/" class="logo">State<em>doku</em></a>
-  <nav class="nav-actions">
-    <div class="lang-switcher">
+  <a href="/fr/" class="logo" aria-label="Statedoku accueil">State<em>doku</em></a>
+  <div class="score-inline" aria-live="polite">
+    <span class="score-date" id="puzzle-date"></span>
+    <span class="score-sep" aria-hidden="true">·</span>
+    <span id="score-display">0 / 9</span>
+    <span class="score-sep" aria-hidden="true">·</span>
+    <span id="error-display" aria-label="Erreurs restantes"></span>
+  </div>
+  <nav class="nav-actions" aria-label="Actions de jeu">
+    <div class="lang-switcher" role="group" aria-label="Langue">
       <button class="lang-btn" data-lang="en" onclick="location.href='/'">EN</button>
-      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn active" data-lang="fr" aria-current="true">FR</button>
       <button class="lang-btn" data-lang="es" onclick="location.href='/es/'">ES</button>
     </div>
-    <button class="icon-btn" id="btn-howto" title="Comment jouer">?</button>
-    <button class="icon-btn" id="btn-stats" title="Statistiques">📊</button>
-    <button class="icon-btn" id="btn-share" title="Partager">↑</button>
+    <button class="icon-btn" id="btn-undo" title="Annuler" aria-label="Annuler le dernier coup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-howto" title="Comment jouer" aria-label="Comment jouer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-stats" title="Statistiques" aria-label="Statistiques">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-share" title="Partager" aria-label="Partager">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
   </nav>
 </header>
-
-<div class="score-bar">
-  <span class="score-date" id="puzzle-date"></span>
-  <span id="score-display">0 / 9</span>
-  <span id="error-display">○○○</span>
-</div>
 
 <main>
   <div id="loading">Chargement du puzzle…</div>
@@ -210,6 +220,6 @@
 <script src="../js/reminders.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/puzzle.js"></script>
-<script src="../js/game.js?v=2"></script>
+<script src="../js/game.js?v=3"></script>
 </body>
 </html>

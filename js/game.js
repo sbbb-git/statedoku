@@ -132,6 +132,8 @@ const Game = (() => {
 
   function _renderCells() {
     const lang = I18n.getLang();
+    const rowLabels = _puzzle.rows.map(rc => I18n.constraint(rc));
+    const colLabels = _puzzle.cols.map(cc => I18n.constraint(cc));
     for (let r = 0; r < 3; r++) {
       for (let c = 0; c < 3; c++) {
         const cell    = document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
@@ -140,17 +142,27 @@ const Game = (() => {
         const sel     = _selectedCell && _selectedCell.r === r && _selectedCell.c === c;
         cell.className = 'cell' + (sel ? ' selected' : '');
         cell.innerHTML = '';
+        // a11y attributes (idempotent)
+        cell.setAttribute('role', 'button');
+        cell.setAttribute('tabindex', (_solved || _gameOver) ? '-1' : '0');
         if (placed) {
           const state     = _stateMap[placed];
           const isCorrect = _puzzle.solution[r][c] === placed;
           cell.classList.add(isCorrect ? 'correct' : 'wrong');
-          if (isCorrect) cell.classList.add('locked');
+          if (isCorrect) {
+            cell.classList.add('locked');
+            cell.setAttribute('tabindex', '-1');
+            cell.setAttribute('aria-label', `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]}) — locked`);
+          } else {
+            cell.setAttribute('aria-label', `${state.names[lang]} — wrong`);
+          }
           cell.innerHTML = `
             <span class="cell-abbr">${state.id}</span>
             <span class="cell-name">${state.names[lang]}</span>
           `;
         } else {
           cell.classList.add('empty');
+          cell.setAttribute('aria-label', `Empty cell — ${rowLabels[r]} × ${colLabels[c]}. Press Enter to pick a state.`);
         }
       }
     }
@@ -165,6 +177,29 @@ const Game = (() => {
       const cell = e.target.closest('.cell[data-r]');
       if (!cell) return;
       _onCellClick(parseInt(cell.dataset.r), parseInt(cell.dataset.c));
+    });
+    // Keyboard navigation: arrows move focus, Enter/Space opens picker
+    grid.addEventListener('keydown', e => {
+      const cell = e.target.closest('.cell[data-r]');
+      if (!cell) return;
+      const r = parseInt(cell.dataset.r);
+      const c = parseInt(cell.dataset.c);
+      let nr = r, nc = c;
+      switch (e.key) {
+        case 'ArrowUp':    nr = Math.max(0, r - 1); break;
+        case 'ArrowDown':  nr = Math.min(2, r + 1); break;
+        case 'ArrowLeft':  nc = Math.max(0, c - 1); break;
+        case 'ArrowRight': nc = Math.min(2, c + 1); break;
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          _onCellClick(r, c);
+          return;
+        default: return;
+      }
+      e.preventDefault();
+      const next = document.querySelector(`.cell[data-r="${nr}"][data-c="${nc}"]`);
+      if (next) next.focus();
     });
   }
 
@@ -290,26 +325,69 @@ const Game = (() => {
       return;
     }
 
-    // Wrong: show the state briefly with red flash, then remove it
+    // Wrong: show the state briefly with red flash, then remove it.
+    // IMPORTANT: do NOT save the wrong state to progress — only commit the
+    // mistake count + the nulled cell once the flash is done. This prevents
+    // a reload during the 600ms flash from leaking the (wrong) state.
     _errors = Math.min(_errors + 1, MAX_ERRORS);
     _grid[r][c] = stateId;
     _closeSearch();
     _renderCells();
     _updateScore();
+    _announce(I18n.t('wrong_state') || 'Wrong state, try again');
 
     const cell = document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
     if (cell) {
       cell.classList.add('shake');
       setTimeout(() => {
-        // Remove wrong guess so the player can't see-through the puzzle
         _grid[r][c] = null;
         cell.classList.remove('shake');
         _selectedCell = null;
         _renderCells();
-        _saveProgress();
+        _saveProgress(); // only persist after the wrong state is cleared
         if (_errors >= MAX_ERRORS) _triggerGameOver();
       }, 600);
     }
+  }
+
+  // ── Live region announcer (a11y) ─────────────────────────────────────────
+  function _announce(msg) {
+    const el = document.getElementById('a11y-live');
+    if (!el) return;
+    el.textContent = '';
+    setTimeout(() => { el.textContent = msg; }, 50);
+  }
+
+  // ── Undo (one per puzzle) ────────────────────────────────────────────────
+  let _undoUsed = false;
+  function undo() {
+    if (_solved || _gameOver) return;
+    if (_undoUsed) { _toast(I18n.t('undo_used') || 'Undo already used'); return; }
+    // Find last locked correct cell and unlock it (decrement errors not affected).
+    // Strategy: walk from (2,2) → (0,0) and unlock the first correct placement.
+    for (let r = 2; r >= 0; r--) {
+      for (let c = 2; c >= 0; c--) {
+        if (_grid[r][c] && _puzzle.solution[r][c] === _grid[r][c]) {
+          _grid[r][c] = null;
+          _undoUsed = true;
+          _renderCells();
+          _updateScore();
+          _saveProgress();
+          _toast(I18n.t('undo_done') || 'Move undone');
+          return;
+        }
+      }
+    }
+    _toast(I18n.t('undo_nothing') || 'Nothing to undo');
+  }
+
+  function _toast(msg) {
+    const t = document.getElementById('toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(_toast._t);
+    _toast._t = setTimeout(() => t.classList.remove('show'), 1800);
   }
 
   function _triggerGameOver() {
@@ -696,6 +774,24 @@ const Game = (() => {
       _startTime = d.startTime || Date.now();
       _errors    = d.errors    || 0;
       _solveTime = d.solveTime || null;
+
+      // ── Defensive: detect corrupt progress (states visible but game not won/lost)
+      // This can happen after a dev panel "Solve" run, or a stale wrong-flash save.
+      // Any non-locked (i.e. not a correct placement) state in the grid is a leak.
+      if (!_solved && !_gameOver) {
+        let dirty = false;
+        for (let r = 0; r < 3; r++) {
+          for (let c = 0; c < 3; c++) {
+            const s = _grid[r][c];
+            if (s && _puzzle.solution[r][c] !== s) {
+              _grid[r][c] = null;
+              dirty = true;
+            }
+          }
+        }
+        if (dirty) _saveProgress();
+      }
+
       if (_gameOver) setTimeout(() => _showGameOverBanner(), 100);
     } catch(e) { _startTime = Date.now(); }
   }
@@ -752,7 +848,9 @@ const Game = (() => {
     if (!_puzzle) return;
     _grid = _puzzle.solution.map(r => r.slice());
     _solved = true; _gameOver = false; _errors = 0;
-    _saveProgress(); _renderCells(); _updateScore();
+    // NOTE: do NOT call _saveProgress() — dev solves should not pollute the
+    // player's localStorage. On reload, the grid will be blank again.
+    _renderCells(); _updateScore();
     setTimeout(() => _showSolvedBanner(), 100);
   }
   function _devRevealRow(r) {
@@ -767,7 +865,7 @@ const Game = (() => {
     location.reload();
   }
 
-  return { init, share, showStats, showHowToPlay, rerender, _toggleReminder,
+  return { init, share, showStats, showHowToPlay, rerender, undo, _toggleReminder,
            _dev: { getPuzzle:_devGetPuzzle, getGrid:_devGetGrid, solve:_devSolve, revealRow:_devRevealRow, resetCurrent:_devResetCurrent } };
 })();
 
