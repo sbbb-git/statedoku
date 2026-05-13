@@ -146,7 +146,6 @@ const Puzzle = (() => {
       case 'sub_deep_south':   return state.subregion === 'deep_south';
       case 'sub_plains':       return state.subregion === 'plains';
       case 'sub_mountain':     return state.subregion === 'mountain';
-      case 'sub_mountain':    return state.subregion === 'southwest';
       case 'sub_pacific':      return state.subregion === 'pacific';
       // Population
       case 'pop_lt1m':   return state.population === '<1M';
@@ -194,9 +193,6 @@ const Puzzle = (() => {
       case 'smallest_state':     return state.areaRank >= 46;
       // Sports
       case 'has_nba': return !!state.nbaTeam;
-      case 'has_nfl': return !!state.nflTeam;
-      case 'has_mlb': return !!state.mlbTeam;
-      case 'has_nhl': return !!state.nhlTeam;
       case 'no_pro_team': return !state.nbaTeam && !state.nflTeam && !state.mlbTeam && !state.nhlTeam;
       // Name
       case 'two_word_name':  return state.wordCount === 2;
@@ -205,8 +201,6 @@ const Puzzle = (() => {
       case 'vowel_start':    return 'AEIOU'.includes(state.startsWith);
       case 'consonant_start':return !'AEIOU'.includes(state.startsWith);
       case 'has_new':   return state.names.en.includes('New');
-      case 'has_north': return state.names.en.includes('North');
-      case 'has_south': return state.names.en.includes('South');
 
       // ───────── 100 NEW CONSTRAINTS ─────────
       // Regional belts / zones
@@ -215,89 +209,24 @@ const Puzzle = (() => {
       case 'corn_belt':         return !!state.cornBelt;
       case 'wheat_belt':        return !!state.wheatBelt;
       case 'cotton_belt':       return !!state.cottonBelt;
-      case 'black_belt':        return !!state.blackBelt;
-      case 'dust_bowl':         return !!state.dustBowl;
-      case 'pacific_northwest': return !!state.pacificNorthwest;
-      case 'heartland':         return !!state.heartland;
-      case 'mason_dixon':       return !!state.masonDixon;
       // Natural hazards & features
       case 'tornado_alley':         return !!state.tornadoAlley;
       case 'hurricane_zone':        return !!state.hurricaneZone;
       case 'earthquake_zone':       return !!state.earthquakeZone;
       case 'has_volcano':           return !!state.hasVolcano;
       case 'has_glaciers':          return !!state.hasGlaciers;
-      case 'has_fourteener':        return !!state.hasFourteener;
-      case 'has_islands':           return !!state.hasIslands;
-      case 'has_yellowstone':       return !!state.hasYellowstone;
       case 'on_appalachian_trail':  return !!state.appalachianTrail;
-      case 'on_pacific_crest_trail':return !!state.pacificCrestTrail;
       case 'on_continental_divide': return !!state.continentalDivide;
       case 'has_caves':             return !!state.hasCaves;
       case 'high_elevation':        return !!state.highElevation;
       case 'low_elevation':         return !!state.lowElevation;
       case 'multi_timezone':        return !!state.multiTimezone;
-      // Agriculture / food
-      case 'dairy_state':       return !!state.dairyState;
-      case 'wine_country':      return !!state.wineCountry;
-      case 'apple_state':       return !!state.appleState;
-      case 'peach_state':       return !!state.peachState;
-      case 'citrus_state':      return !!state.citrusState;
-      case 'cranberry_state':   return !!state.cranberryState;
-      case 'maple_syrup_state': return !!state.mapleSyrupState;
-      case 'lobster_state':     return !!state.lobsterState;
-      case 'peanut_state':      return !!state.peanutState;
-      case 'tobacco_state':     return !!state.tobaccoState;
-      case 'potato_state':      return !!state.potatoState;
-      case 'bbq_tradition':     return !!state.bbqTradition;
-      case 'craft_beer_hub':    return !!state.craftBeerHub;
-      case 'cheese_state':      return !!state.cheeseState;
-      case 'corn_state':        return !!state.cornState;
-      // Music / pop culture
-      case 'country_music':  return !!state.countryMusic;
-      case 'blues_state':    return !!state.bluesState;
-      case 'jazz_state':     return !!state.jazzState;
-      case 'hollywood_film': return !!state.hollywoodFilm;
-      case 'casino_state':   return !!state.casinoState;
-      // Sports new
-      case 'has_mls':         return !!state.hasMls;
-      case 'has_wnba':        return !!state.hasWnba;
-      case 'ski_state':       return !!state.skiState;
-      case 'nascar_speedway': return !!state.nascarSpeedway;
-      case 'golf_destination':return !!state.golfDestination;
-      // History
+      // History (kept: factual statehood dates only)
       case 'statehood_pre_1800':   return !!state.statehoodPre1800;
       case 'statehood_1900s':      return !!state.statehood1900s;
-      case 'trail_of_tears':       return !!state.trailOfTears;
-      case 'underground_railroad': return !!state.undergroundRailroad;
-      case 'civil_war_major_battle': return !!state.civilWarMajorBattle;
-      // Politics new
-      case 'early_primary':               return !!state.earlyPrimary;
+      // Politics (capital city facts)
       case 'capital_named_after_president': return !!state.capitalNamedAfterPresident;
       case 'capital_starts_with_s':       return !!state.capitalStartsWithS;
-      // Demographics
-      case 'high_hispanic':         return !!state.highHispanic;
-      case 'high_black_pop':        return !!state.highBlackPop;
-      case 'high_asian_pop':        return !!state.highAsianPop;
-      case 'high_native_pop':       return !!state.highNativePop;
-      case 'urban_state':           return !!state.urbanState;
-      case 'rural_state':           return !!state.ruralState;
-      case 'fast_growing':          return !!state.fastGrowing;
-      case 'population_decline':    return !!state.populationDecline;
-      case 'retirement_destination':return !!state.retirementDestination;
-      case 'high_college_pct':      return !!state.highCollegePct;
-      // Economy
-      case 'tech_hub':             return !!state.techHub;
-      case 'auto_industry':        return !!state.autoIndustry;
-      case 'coal_state':           return !!state.coalState;
-      case 'nasa_facility':        return !!state.nasaFacility;
-      case 'military_heavy':       return !!state.militaryHeavy;
-      case 'fossil_fuel_dominant': return !!state.fossilFuelDominant;
-      case 'wind_energy_leader':   return !!state.windEnergyLeader;
-      case 'financial_hub':        return !!state.financialHub;
-      // Travel
-      case 'major_theme_park':    return !!state.majorThemePark;
-      case 'cruise_port':         return !!state.cruisePort;
-      case 'multiple_natl_parks': return !!state.multipleNatlParks;
       // Geographic relationships
       case 'borders_6_plus':  return !!state.borders6Plus;
       case 'borders_few':     return !!state.bordersFew;
