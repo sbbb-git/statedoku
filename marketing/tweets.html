@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Tweet Bank — Statedoku</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,system-ui,sans-serif;background:#FAFAF9;color:#0F2147;padding:24px 16px 80px;line-height:1.55}
+  h1{font-size:1.7rem;font-weight:900;letter-spacing:-0.02em;margin-bottom:6px}
+  .sub{color:#525252;margin-bottom:20px;font-size:.92rem}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;background:#fff;padding:12px;border-radius:12px;border:1px solid #E5E5E5;position:sticky;top:0;z-index:10;backdrop-filter:blur(6px)}
+  input[type="search"]{flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #D4D4D4;border-radius:8px;font:500 14px system-ui;outline:none}
+  input[type="search"]:focus{border-color:#0F2147}
+  .filter-btn{background:#fff;border:1.5px solid #E5E5E5;border-radius:100px;padding:6px 12px;font-size:.78rem;font-weight:700;cursor:pointer;color:#525252;transition:.15s}
+  .filter-btn:hover{border-color:#0F2147}
+  .filter-btn.active{background:#0F2147;color:#fff;border-color:#0F2147}
+  .stats{font-size:.75rem;color:#A3A3A3;margin-left:auto;align-self:center}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;max-width:1400px;margin:0 auto}
+  .card{background:#fff;border:1px solid #E5E5E5;border-radius:12px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:10px;transition:.15s}
+  .card:hover{border-color:#1D9BF0;box-shadow:0 2px 12px rgba(29,155,240,.08)}
+  .card.copied{border-color:#059669;background:#ECFDF5}
+  .card-head{display:flex;align-items:center;gap:8px;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#A3A3A3}
+  .badge{padding:3px 8px;border-radius:100px;font-weight:800;font-size:.6rem;letter-spacing:.06em}
+  .b-daily{background:#DBEAFE;color:#1E40AF}
+  .b-trivia{background:#FEF3C7;color:#92400E}
+  .b-poll{background:#FCE7F3;color:#9F1239}
+  .b-spotlight{background:#D1FAE5;color:#065F46}
+  .b-meta{background:#E5E7EB;color:#374151}
+  .b-streak{background:#FEE2E2;color:#991B1B}
+  .b-fun{background:#FDE68A;color:#78350F}
+  .b-strategy{background:#E0E7FF;color:#3730A3}
+  .nb{margin-left:auto;color:#D4D4D4;font-weight:600}
+  .tweet{font-size:.88rem;line-height:1.55;white-space:pre-wrap;color:#0F2147;flex:1}
+  .chars{font-size:.65rem;color:#A3A3A3;font-variant-numeric:tabular-nums}
+  .chars.warn{color:#F59E0B}
+  .chars.error{color:#DC2626}
+  .actions{display:flex;gap:6px}
+  .btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border-radius:8px;font:800 .75rem system-ui;text-decoration:none;border:none;cursor:pointer;transition:.15s}
+  .btn-copy{background:#0F2147;color:#fff}
+  .btn-copy:hover{background:#1E3A6B}
+  .btn-tweet{background:#1D9BF0;color:#fff}
+  .btn-tweet:hover{background:#1A8CD8}
+  .hint{background:#FEF3C7;border:1px solid #F59E0B;border-radius:10px;padding:10px 14px;margin-bottom:18px;font-size:.85rem;color:#92400E;max-width:1400px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+
+<h1>🐦 100 Tweet Bank — Statedoku</h1>
+<p class="sub">Filter, copy, post. Each card shows char count. Click "Tweet now" to open X with the text pre-filled, or "Copy" to paste into Buffer/Typefully.</p>
+
+<div class="hint">
+💡 <strong>Tip</strong>: Don't tweet 100 in a row. Aim for 1-2/day. Rotate through categories. Reuse with small edits once monthly.
+</div>
+
+<div class="toolbar">
+  <input type="search" id="search" placeholder="Filter by keyword (e.g. 'Florida', 'Wordle', 'Mississippi')…">
+  <button class="filter-btn active" data-cat="all">All</button>
+  <button class="filter-btn" data-cat="daily">Daily</button>
+  <button class="filter-btn" data-cat="trivia">Trivia</button>
+  <button class="filter-btn" data-cat="poll">Polls</button>
+  <button class="filter-btn" data-cat="spotlight">Spotlight</button>
+  <button class="filter-btn" data-cat="meta">Meta</button>
+  <button class="filter-btn" data-cat="streak">Streak</button>
+  <button class="filter-btn" data-cat="fun">Fun</button>
+  <button class="filter-btn" data-cat="strategy">Strategy</button>
+  <span class="stats" id="stats">100 tweets</span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const TWEETS = [
+  // ──────────── DAILY REMINDERS (15) ────────────
+  { cat: 'daily', text: "🇺🇸 Today's Statedoku is live!\n\nThink you can solve the 3×3 grid before 3 mistakes?\n\nstatedoku.com\n\n#Statedoku" },
+  { cat: 'daily', text: "New day, new grid 🗺️\n\nToday's Statedoku just dropped. 3 mistakes allowed.\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "☀️ Good morning state-heads!\n\nToday's puzzle is up. Solve before 3 mistakes ⚠️\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "🟩🟩🟩\n🟩🟩🟩\n🟩🟩🟩\n\nThat's the goal. Today's puzzle is waiting.\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "⏰ Daily Statedoku reminder.\n\nGrab your coffee ☕ and crack today's grid.\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "Today's hardest constraint? Let's see who gets it.\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "Just played today's #Statedoku. Got it in 2 mistakes 😅 Your turn:\n\nstatedoku.com" },
+  { cat: 'daily', text: "🆕 Fresh 3×3 just dropped. The 'name origin' row is wild today.\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "If you're not playing #Statedoku yet, this is your sign 👇\n\nstatedoku.com" },
+  { cat: 'daily', text: "Solved today's Statedoku in 38 seconds. New PB.\n\nWho's beating that? 👀\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "Today's puzzle includes 'Borders Mexico' AND 'Name origin: Spanish'. The intersection is interesting 🌶️\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "Daily #Statedoku — done.\n\n🟩🟩🟩\n🟩🟩🟩\n🟩🟩🟥\n\nThat one row had me sweating. Your turn:\n\nstatedoku.com" },
+  { cat: 'daily', text: "Drop your today's Statedoku result in the replies 👇\n\nMost mistakes wins (or the saddest).\n\nstatedoku.com #Statedoku" },
+  { cat: 'daily', text: "Hot take: today's #Statedoku is harder than yesterday's.\n\nDisagree? Show me your time.\n\nstatedoku.com" },
+  { cat: 'daily', text: "Day 14 streak unlocked 🔥\n\nWhat's yours? Today's puzzle: statedoku.com #Statedoku" },
+
+  // ──────────── TRIVIA / GEO FACTS (15) ────────────
+  { cat: 'trivia', text: "🤔 Only 6 US states have names of Spanish origin:\n\nCalifornia, Colorado, Florida, Montana, Nevada, New Mexico.\n\nThat's a Statedoku constraint.\n\nstatedoku.com #Statedoku" },
+  { cat: 'trivia', text: "9 US states border Canada. Only 4 border Mexico.\n\n37 border neither. Test your borders knowledge:\n\nstatedoku.com #Statedoku" },
+  { cat: 'trivia', text: "🌋 Only 5 US states have an active volcano:\n\nHawaii, Washington, Alaska, Oregon, California.\n\nstatedoku.com #Statedoku" },
+  { cat: 'trivia', text: "The smallest US state by area is Rhode Island.\n\nThe largest is Alaska — 425× bigger.\n\nstatedoku.com #Statedoku" },
+  { cat: 'trivia', text: "Mississippi River touches 10 states. Can you name 7 without Googling?\n\nMN, WI, IA, IL, MO, KY, TN, AR, MS, LA.\n\n#Statedoku" },
+  { cat: 'trivia', text: "Texas is named after a Caddo Native American word meaning 'friends'.\n\nThat's why 25 US states have Native American name origins.\n\nstatedoku.com #Statedoku" },
+  { cat: 'trivia', text: "Did you know? 'Connecticut' has 5 consonants in a row.\n\nGood luck spelling it under pressure 😅\n\n#Statedoku" },
+  { cat: 'trivia', text: "🇺🇸 The 'Original 13' colonies, ranked by admission date:\n\n1. Delaware (1787) 2. Pennsylvania 3. New Jersey 4. Georgia 5-13.\n\nstatedoku.com #Statedoku" },
+  { cat: 'trivia', text: "Tornado Alley = 10 states roughly. TX, OK, KS, NE, SD, ND, IA, MN, MO, AR.\n\nWeather + geography = #Statedoku constraint.\n\nstatedoku.com" },
+  { cat: 'trivia', text: "Only ONE US state name contains the letter Z: Arizona.\n\nOnly ONE contains X: Texas.\n\nMore weird name facts → #Statedoku" },
+  { cat: 'trivia', text: "Fun fact: 4 US states are technically commonwealths, not states.\n\nMA, PA, VA, KY.\n\n(Doesn't really mean anything legally though.) #Statedoku" },
+  { cat: 'trivia', text: "Maine is the only US state with one syllable in its name.\n\nMaine. Done.\n\n#Statedoku" },
+  { cat: 'trivia', text: "9 states were named after British or French royalty:\n\nDE, GA, LA, MD, NY, NC, SC, VA, WV.\n\nLouisiana? King Louis XIV.\n\nstatedoku.com #Statedoku" },
+  { cat: 'trivia', text: "📅 In the 1900s, only 5 US states were admitted:\n\nOklahoma 1907, NM 1912, AZ 1912, Alaska 1959, Hawaii 1959.\n\nThat's a #Statedoku constraint." },
+  { cat: 'trivia', text: "Route 66 originally passed through 8 states:\n\nIL → MO → KS → OK → TX → NM → AZ → CA.\n\nName them all in 30 sec for the win 🏁\n\n#Statedoku" },
+
+  // ──────────── ENGAGEMENT POLLS (15) ────────────
+  { cat: 'poll', text: "Hardest US state to spell on the first try?\n\n— Mississippi\n— Massachusetts\n— Connecticut\n— Pennsylvania\n\nVote 👇 #Statedoku" },
+  { cat: 'poll', text: "Most underrated US state?\n\nDrop your answer below 👇 #Statedoku" },
+  { cat: 'poll', text: "Best state flag?\n\nMy top picks: New Mexico 🌞 and Arizona 🌅\n\nYours? #Statedoku" },
+  { cat: 'poll', text: "If the US adds a 51st state, what should it be?\n\nDrop your pick 👇 #Statedoku" },
+  { cat: 'poll', text: "You can only visit 5 US states for the rest of your life. Which 5?\n\nMine: CA, NY, HI, CO, LA. #Statedoku" },
+  { cat: 'poll', text: "🆚 California or Florida — which represents 'America' more?\n\nReply with your reasoning. #Statedoku" },
+  { cat: 'poll', text: "Best US road trip route?\n\n🅰️ Pacific Coast Highway\n🅱️ Route 66\n🆎 Blue Ridge Parkway\n🆑 Highway 1 Big Sur\n\n#Statedoku" },
+  { cat: 'poll', text: "Pick one state to never visit again. Which?\n\n(yes this is petty, yes I want to hear it) #Statedoku" },
+  { cat: 'poll', text: "Worst state nickname?\n\nMy candidate: 'The Mount Rushmore State' (South Dakota). Like… really?\n\n#Statedoku" },
+  { cat: 'poll', text: "Coolest state capital city to visit?\n\n🅰️ Boston, MA\n🅱️ Honolulu, HI\n🆎 Santa Fe, NM\n🆑 Annapolis, MD\n\n#Statedoku" },
+  { cat: 'poll', text: "Which is more 'Southern' — Texas or Florida?\n\nFight 👇 #Statedoku" },
+  { cat: 'poll', text: "Coastal or landlocked — pick your team.\n\nI'm coastal supremacy 🌊 (24 states have a coast).\n\n#Statedoku" },
+  { cat: 'poll', text: "Best US state for food (not biased)?\n\n— LA cuisine (Louisiana)\n— NY pizza/bagels\n— TX BBQ\n— CA everything\n\n#Statedoku" },
+  { cat: 'poll', text: "If you could only know geography of ONE US region, which?\n\n— Northeast\n— South\n— Midwest\n— West\n\n#Statedoku" },
+  { cat: 'poll', text: "Two-word state names: how many can you list in 30 seconds?\n\n(There are 10. Reply with your count.) #Statedoku" },
+
+  // ──────────── STATE SPOTLIGHTS (15) ────────────
+  { cat: 'spotlight', text: "🌴 California spotlight\n\n• Spanish origin\n• Pacific coast\n• Borders Mexico\n• Pop > 39M (#1)\n• Active volcanoes? Yes\n\nMatches 30+ Statedoku constraints.\n\nstatedoku.com #Statedoku" },
+  { cat: 'spotlight', text: "🦅 Texas spotlight\n\n• Native American name\n• Gulf coast\n• Borders Mexico\n• 5 letters (1 of 3 states!)\n• Tornado Alley + Cotton Belt\n\nstatedoku.com #Statedoku" },
+  { cat: 'spotlight', text: "🗽 New York spotlight\n\n• Named after the Duke of York\n• Atlantic + Great Lakes (only state w/ both Atlantic AND Great Lakes)\n• Original 13\n• Borders Canada\n\nstatedoku.com #Statedoku" },
+  { cat: 'spotlight', text: "🌞 Florida spotlight\n\n• Spanish origin ('flowery')\n• Atlantic + Gulf coast\n• Hurricane zone\n• Confederate state\n• Famously flat (no mountains)\n\nstatedoku.com #Statedoku" },
+  { cat: 'spotlight', text: "🌌 Alaska spotlight\n\n• Aleut origin word\n• Borders Canada\n• 1 letter from 'a-z' — most of any state\n• Largest by area (425× Rhode Island)\n• Multiple time zones\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🌽 Iowa spotlight\n\n• Native American word\n• Corn Belt center\n• On the Mississippi AND Missouri rivers\n• 4 letters (shortest tied)\n• Early primary state\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🌋 Hawaii spotlight\n\n• Non-contiguous\n• Active volcanoes\n• Last state admitted (1959)\n• Only state with 'I' twice\n• Pacific Ocean obviously\n\n#Statedoku" },
+  { cat: 'spotlight', text: "❄️ Vermont spotlight\n\n• French origin ('Vert Mont' = Green Mountain)\n• Pop < 1M\n• Borders Canada\n• Landlocked\n• Maple syrup capital\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🤠 Oklahoma spotlight\n\n• Choctaw origin ('okla humma' = red people)\n• Dust Bowl epicenter\n• Tornado Alley\n• Route 66 passes through\n• Statehood 1907\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🦞 Maine spotlight\n\n• Possibly French origin\n• Atlantic coast\n• Borders Canada\n• Only state with 1 syllable\n• Borders only ONE other state (NH)\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🐊 Louisiana spotlight\n\n• Named after King Louis XIV\n• On the Mississippi delta\n• Gulf coast\n• French heritage\n• 9 letters\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🦬 Wyoming spotlight\n\n• Native American word\n• Smallest population (<600k)\n• Yellowstone NP\n• Rocky Mountains\n• No income tax\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🌵 Arizona spotlight\n\n• Disputed origin (Pima/Spanish/Basque)\n• Four Corners state\n• Borders Mexico\n• Grand Canyon\n• Mountain timezone (doesn't do daylight savings!)\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🍑 Georgia spotlight\n\n• Named after King George II\n• Original 13 colony\n• Confederate\n• Peach state\n• Atlanta = capital + largest city\n\n#Statedoku" },
+  { cat: 'spotlight', text: "🌽 Nebraska spotlight\n\n• Native American 'flat water'\n• Plains state\n• Tornado Alley\n• Only unicameral legislature in US\n• Lincoln = capital (named after Abe)\n\n#Statedoku" },
+
+  // ──────────── META / COMMUNITY (10) ────────────
+  { cat: 'meta', text: "Why I built Statedoku 🧠\n\nI love daily puzzles but most are vocabulary or pure logic.\n\nI wanted something that teaches you something each day — without feeling like school.\n\nUS geography hits that sweet spot.\n\nstatedoku.com #Statedoku" },
+  { cat: 'meta', text: "Fun fact: Statedoku has ~100 different constraints rotating.\n\nEvery grid is mathematically proven to have ONE solution.\n\nNo guessing. No luck. Just deduction.\n\nstatedoku.com #Statedoku" },
+  { cat: 'meta', text: "If you like Wordle, Connections, Strands, Globle, Worldle…\n\nStatedoku is your next ritual. US geography edition.\n\n🇺🇸 statedoku.com\n\n#Statedoku #DailyPuzzle" },
+  { cat: 'meta', text: "Statedoku is and will always be:\n\n✅ Free\n✅ No signup\n✅ No app to install\n✅ Mobile-first\n✅ Multilingual (EN/FR/ES)\n✅ Privacy-first (no tracking of you personally)\n\nstatedoku.com #Statedoku" },
+  { cat: 'meta', text: "I solo-built Statedoku because I was tired of geography quizzes that test memorization instead of thinking.\n\nEvery puzzle is a deduction game with a unique answer.\n\nstatedoku.com #Statedoku #BuildInPublic" },
+  { cat: 'meta', text: "Statedoku update: now translated to French and Spanish.\n\nstatedoku.com/fr/\nstatedoku.com/es/\n\nWho's next? Drop your language vote 👇 #Statedoku" },
+  { cat: 'meta', text: "Indie projects in 2026 should be:\n\n• Free at the core\n• Multilingual\n• Mobile-first\n• Privacy-first\n\nThat's the Statedoku ethos.\n\nstatedoku.com #BuildInPublic #Statedoku" },
+  { cat: 'meta', text: "How Statedoku works under the hood:\n\nThe puzzle is generated client-side using a deterministic seed from today's date.\n\nNo server. No database. Just JS + 100 constraints.\n\nstatedoku.com #Statedoku" },
+  { cat: 'meta', text: "PSA: Statedoku does not collect your personal data.\n\nNo cookies. No analytics tracking you. No accounts. Your stats stay in your browser.\n\nstatedoku.com #Statedoku #PrivacyFirst" },
+  { cat: 'meta', text: "Built Statedoku in [N] weeks using:\n\n• Vanilla JS (no framework)\n• Cloudflare Pages\n• No backend\n• 100 constraints from the public domain\n\nTotal cost: ~$10/year (domain).\n\nstatedoku.com #Statedoku" },
+
+  // ──────────── STREAK / STATS (10) ────────────
+  { cat: 'streak', text: "🔥 30-day Statedoku streak unlocked.\n\nWhat's yours? statedoku.com #Statedoku" },
+  { cat: 'streak', text: "Share your Statedoku streak in the comments 👇\n\nLet's see who's the most consistent geo-head.\n\n#Statedoku" },
+  { cat: 'streak', text: "🟩🟩🟩\n🟩🟩🟩\n🟩🟩🟩\n\nPerfect Statedoku. No mistakes. 47 seconds. Today.\n\nBeat me 👀 statedoku.com #Statedoku" },
+  { cat: 'streak', text: "Best time on today's #Statedoku: 28 seconds.\n\nReply with yours 👇 (screenshots welcome)" },
+  { cat: 'streak', text: "Statedoku stats so far:\n\n• 45 puzzles played\n• 38 solved (84% win rate)\n• 11-day streak\n• Best time: 24 sec\n\nstatedoku.com #Statedoku" },
+  { cat: 'streak', text: "Just lost my Statedoku streak after 22 days. 😭\n\nThat 'Original 13 × Borders Mexico' had me cooked.\n\nRebuilding tomorrow 💪 statedoku.com #Statedoku" },
+  { cat: 'streak', text: "🏆 Statedoku challenge for the week:\n\nSolve 7 days in a row, ZERO mistakes total.\n\nReply 'in' to commit. statedoku.com #Statedoku" },
+  { cat: 'streak', text: "Share your Statedoku grid 👇\n\nGreen = correct, red = mistakes.\n\nLet's see today's pattern 🟩🟥⬜ #Statedoku" },
+  { cat: 'streak', text: "If you've solved 10+ Statedoku in a row, you're officially a state-head 🇺🇸\n\nDrop your streak count below 👇 #Statedoku" },
+  { cat: 'streak', text: "Real-time Statedoku stats:\n\n• Players today: [tbd]\n• Avg solve time: [tbd]\n• Today's hardest cell: [tbd]\n\nFollow for daily stats. #Statedoku\n\n(when we have analytics)" },
+
+  // ──────────── FUN / MEMES (10) ────────────
+  { cat: 'fun', text: "POV: it's 11:58pm and you haven't done today's #Statedoku yet.\n\nstatedoku.com 🏃" },
+  { cat: 'fun', text: "Me at 8am: I won't play #Statedoku before coffee.\n\nMe at 8:03am: ☕📱 (3 mistakes already)\n\nstatedoku.com" },
+  { cat: 'fun', text: "Things that should be illegal:\n\n— Sleep before solving today's #Statedoku\n— Spoiling someone's puzzle\n— Calling Hawaii 'a state but not really'\n\nstatedoku.com" },
+  { cat: 'fun', text: "My toxic trait: I judge people based on how fast they recognize that 'borders Mexico AND landlocked' is impossible.\n\nstatedoku.com #Statedoku" },
+  { cat: 'fun', text: "If you don't know that 'New Mexico borders Mexico', I'm sorry, we can't be friends. 😤\n\n#Statedoku" },
+  { cat: 'fun', text: "Statedoku starter pack:\n\n• Solid grasp of US geography\n• Coffee\n• Vague memory of high school history\n• Mild ego when you nail it\n\nstatedoku.com #Statedoku" },
+  { cat: 'fun', text: "When today's #Statedoku has 'No major pro sports team':\n\nMe: *frantically tries to remember which states have NHL but not NFL but not MLB*\n\nstatedoku.com" },
+  { cat: 'fun', text: "Today's puzzle includes 'Bordered by 6+ other states'.\n\nMe: 🤔📍\n\nstatedoku.com #Statedoku\n\n(The answer is KY, TN, MO, CO, OK, AR, PA, WY, ID for the record.)" },
+  { cat: 'fun', text: "Day 1: solving #Statedoku quickly ✅\nDay 30: arguing with my screen about whether Maryland is Mid-Atlantic or South 🥴\n\nstatedoku.com" },
+  { cat: 'fun', text: "Sources confirm: state-heads can spell 'Massachusetts' faster than they can text 'see you later'.\n\nstatedoku.com #Statedoku" },
+
+  // ──────────── STRATEGY / TIPS (10) ────────────
+  { cat: 'strategy', text: "🧠 Statedoku strategy 101:\n\nStart with the RAREST cell. The intersection with the fewest candidates locks the rest of the grid in.\n\nstatedoku.com #Statedoku" },
+  { cat: 'strategy', text: "Pro tip for #Statedoku:\n\nIf a row says 'Pacific coast' — only 5 states qualify (CA, OR, WA, AK, HI).\n\nMemorize these 'small' rows. They're keys.\n\nstatedoku.com" },
+  { cat: 'strategy', text: "If you're struggling with #Statedoku, focus on what each state CAN'T be.\n\n'Borders Canada' eliminates 41 states immediately. That's massive.\n\nstatedoku.com" },
+  { cat: 'strategy', text: "Hardest constraint to internalize?\n\n'Named after royalty' = 9 states (DE GA LA MD NY NC SC VA WV).\n\nLearn this list. It's worth points. statedoku.com #Statedoku" },
+  { cat: 'strategy', text: "Speed tip for #Statedoku:\n\nUse the 'uniqueness' rule. Each state can only appear ONCE in the grid.\n\nIf a state must go in row 1, it can't be in row 2 or 3.\n\nstatedoku.com" },
+  { cat: 'strategy', text: "Common Statedoku mistake:\n\nForgetting that 'Bible Belt' includes Texas. Or that Florida is in the Sun Belt.\n\nstatedoku.com #Statedoku" },
+  { cat: 'strategy', text: "Mental shortcut: 'Confederate state' = 11 states. All Southern.\n\nAL, AR, FL, GA, LA, MS, NC, SC, TN, TX, VA.\n\nWorth memorizing. #Statedoku" },
+  { cat: 'strategy', text: "If a #Statedoku column says 'has an NBA team', that's ~25 states.\n\nIf it says 'no major pro team', that's ~15 states.\n\nFlip your thinking → easier cell. statedoku.com" },
+  { cat: 'strategy', text: "🎯 Statedoku stat: 'borders Mexico' has only 4 states (CA, AZ, NM, TX).\n\nIf you see this constraint, you can almost guess the cell.\n\nstatedoku.com #Statedoku" },
+  { cat: 'strategy', text: "Final tip: don't speed-tap.\n\nThe state list on Statedoku is smart — typing 3+ letters narrows down fast.\n\nDeliberate placement > rushing. statedoku.com #Statedoku" },
+];
+
+// ── Render ──
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const stats = document.getElementById('stats');
+let activeCat = 'all';
+
+function render() {
+  const q = search.value.trim().toLowerCase();
+  const visible = TWEETS.filter(t => {
+    if (activeCat !== 'all' && t.cat !== activeCat) return false;
+    if (q && !t.text.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  stats.textContent = `${visible.length} of ${TWEETS.length} tweets`;
+  grid.innerHTML = '';
+  visible.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const charCount = t.text.length;
+    const chClass = charCount > 280 ? 'error' : charCount > 240 ? 'warn' : '';
+    card.innerHTML = `
+      <div class="card-head">
+        <span class="badge b-${t.cat}">${t.cat}</span>
+        <span class="chars ${chClass}">${charCount} chars</span>
+        <span class="nb">#${TWEETS.indexOf(t) + 1}</span>
+      </div>
+      <div class="tweet">${escapeHtml(t.text)}</div>
+      <div class="actions">
+        <button class="btn btn-copy" type="button">📋 Copy</button>
+        <a class="btn btn-tweet" target="_blank" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(t.text)}">🐦 Tweet now</a>
+      </div>
+    `;
+    const copyBtn = card.querySelector('.btn-copy');
+    copyBtn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(t.text);
+      card.classList.add('copied');
+      copyBtn.textContent = '✓ Copied';
+      setTimeout(() => { card.classList.remove('copied'); copyBtn.textContent = '📋 Copy'; }, 1500);
+    });
+    grid.appendChild(card);
+  });
+}
+function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+search.addEventListener('input', render);
+document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
+  activeCat = b.dataset.cat;
+  document.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('active', x === b));
+  render();
+}));
+render();
+</script>
+
+</body>
+</html>

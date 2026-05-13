@@ -691,6 +691,10 @@ const DevPanel = (() => {
         <div class="dev-row dev-buttons">
           <button data-act="wipe" class="danger">🗑 Wipe ALL local data</button>
         </div>
+        <div class="dev-row dev-buttons">
+          <button data-act="dashboard">📊 Open admin dashboard</button>
+          <button data-act="tweets">🐦 100 tweets bank</button>
+        </div>
         <div class="dev-info" id="dev-info"></div>
         <div class="dev-section-title">Feature flags</div>
         <label class="dev-flag-row">
@@ -847,6 +851,8 @@ const DevPanel = (() => {
         Admin.logout();
       }
     }
+    if (name === 'dashboard') window.open('/admin/dashboard/', '_blank');
+    if (name === 'tweets') window.open('/marketing/tweets.html', '_blank');
   }
 
   function _initAdsToggle() {

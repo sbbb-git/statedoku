@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Statedoku</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  body { background: var(--bg); }
+  .admin-shell { max-width: 1100px; margin: 32px auto; padding: 0 16px 80px; }
+  .admin-h1 { font-size: 1.8rem; font-weight: 900; letter-spacing: -.02em; margin-bottom: 4px; color: var(--text); }
+  .admin-sub { color: var(--text-2); font-size: .9rem; margin-bottom: 24px; }
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px; box-shadow: var(--shadow-sm); }
+  .stat-label { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 8px; }
+  .stat-value { font-size: 1.9rem; font-weight: 900; color: var(--navy); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .stat-sub { font-size: .8rem; color: var(--text-2); margin-top: 4px; }
+  .panel { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+  .panel h2 { font-size: 1rem; font-weight: 800; margin-bottom: 12px; color: var(--navy); }
+  .link-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--navy); color: #fff; text-decoration: none; padding: 9px 16px; border-radius: 8px; font: 800 .82rem var(--font); transition: .15s; }
+  .link-btn:hover { background: var(--navy-soft); }
+  .link-btn.ext::after { content: "↗"; }
+  .ul-tight { padding-left: 18px; line-height: 1.7; font-size: .9rem; color: var(--text-2); }
+  .ul-tight code { background: var(--surface-2); padding: 2px 6px; border-radius: 4px; font-size: .8rem; }
+  .badge-status { font-size: .65rem; font-weight: 800; padding: 3px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: .06em; }
+  .b-on { background: #D1FAE5; color: #065F46; }
+  .b-off { background: #FEE2E2; color: #991B1B; }
+  .auth-warning { background: #FEF3C7; border: 1px solid #F59E0B; color: #92400E; padding: 16px; border-radius: 12px; text-align: center; }
+</style>
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em></a>
+  <nav class="nav-actions">
+    <button class="icon-btn" onclick="location.href='/'" title="Back to game">←</button>
+  </nav>
+</header>
+
+<div class="admin-shell">
+  <div id="auth-gate" class="auth-warning" style="display:none">
+    🔒 This page requires admin authentication.<br>
+    <br>
+    Go to <a href="/#admin" style="color:var(--navy);font-weight:700">/#admin</a> first.
+  </div>
+
+  <div id="dashboard-content" style="display:none">
+    <h1 class="admin-h1">📊 Admin Dashboard</h1>
+    <p class="admin-sub">Site analytics, personal stats, and quick links. Full real-time data is on Cloudflare's dashboard.</p>
+
+    <!-- Personal stats (the admin's own gameplay) -->
+    <div class="grid-cards" id="personal-stats"></div>
+
+    <!-- Cloudflare Web Analytics CTA -->
+    <div class="panel">
+      <h2>🌍 Visitor analytics (Cloudflare)</h2>
+      <p style="font-size:.88rem;color:var(--text-2);margin-bottom:14px">
+        Real-time visitor stats (countries, browsers, pageviews) are collected by <strong>Cloudflare Web Analytics</strong> (privacy-friendly, no cookies, no IP storage). View them in the Cloudflare dashboard:
+      </p>
+      <a class="link-btn ext" target="_blank" href="https://dash.cloudflare.com/?to=/:account/web-analytics">Open Cloudflare Analytics</a>
+      <p style="font-size:.78rem;color:var(--text-3);margin-top:12px">
+        Status: <span id="cf-status" class="badge-status b-off">Not enabled</span> &nbsp; <small>(enable in CF dashboard → Web Analytics → Add a site)</small>
+      </p>
+    </div>
+
+    <!-- Constraint usage stats from the puzzle generator -->
+    <div class="panel">
+      <h2>🎯 Constraint usage (computed locally)</h2>
+      <p style="font-size:.88rem;color:var(--text-2);margin-bottom:14px">
+        Distribution of constraints across the next 30 days of puzzles.
+      </p>
+      <div id="constraint-usage" style="font-family:ui-monospace,Menlo,monospace;font-size:.78rem;line-height:1.55;color:var(--text-2)">Computing…</div>
+    </div>
+
+    <!-- What's editable -->
+    <div class="panel">
+      <h2>📝 Where to edit content</h2>
+      <ul class="ul-tight">
+        <li><strong>State data</strong> → <code>/data/states.json</code> (50 states × 50 properties)</li>
+        <li><strong>Constraint labels</strong> → <code>/data/translations.json</code> (EN/FR/ES)</li>
+        <li><strong>Daily puzzle algorithm</strong> → <code>/js/puzzle.js</code></li>
+        <li><strong>Site copy</strong> → <code>/index.html</code>, <code>/fr/</code>, <code>/es/</code>, <code>/faq/</code>, <code>/about/</code>, <code>/how-to-play/</code></li>
+        <li><strong>Design / CSS</strong> → <code>/css/style.css</code></li>
+        <li><strong>Logo</strong> → <code>/logo-mark.svg</code> + <code>/favicon.svg</code></li>
+        <li><strong>Global feature flags</strong> → <code>/config.js</code> (ads on/off, admin hash)</li>
+        <li><strong>Admin password</strong> → run <code>node bin/set-admin-password.mjs</code> locally</li>
+        <li><strong>Twitter bot</strong> → <code>/bot/src/worker.js</code> (deploy with wrangler)</li>
+        <li><strong>SEO sitemap</strong> → <code>/sitemap.xml</code></li>
+      </ul>
+      <p style="font-size:.78rem;color:var(--text-3);margin-top:12px">All edits go via git push → auto-deploy to Cloudflare in ~30s.</p>
+    </div>
+
+    <!-- Marketing assets -->
+    <div class="panel">
+      <h2>📣 Marketing assets</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="link-btn" target="_blank" href="/marketing/tweets.html">100 Tweet Bank</a>
+        <a class="link-btn" target="_blank" href="/marketing/follow.html">Follow List</a>
+        <a class="link-btn" target="_blank" href="/logos/">Logo proposals</a>
+        <a class="link-btn" target="_blank" href="/twitter-banner.png">Twitter banner PNG</a>
+        <a class="link-btn" target="_blank" href="/og-image.png">OG image PNG</a>
+        <a class="link-btn ext" target="_blank" href="https://github.com/sachabitoun17-ctrl/statedoku">GitHub repo</a>
+      </div>
+    </div>
+
+    <!-- Sessions / actions -->
+    <div class="panel">
+      <h2>🛠️ Actions</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="link-btn" href="/?dev=1">Open dev panel on game</a>
+        <a class="link-btn ext" target="_blank" href="https://dash.cloudflare.com">Cloudflare dashboard</a>
+        <a class="link-btn ext" target="_blank" href="https://search.google.com/search-console">Google Search Console</a>
+        <a class="link-btn ext" target="_blank" href="https://www.bing.com/webmasters">Bing Webmaster</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--text-3);font-size:.78rem;margin-top:32px">Statedoku admin · v1.0.0</p>
+  </div>
+</div>
+
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+<script>
+// Gate the dashboard behind admin auth
+document.addEventListener('DOMContentLoaded', () => {
+  if (!Admin.isAuthenticated()) {
+    document.getElementById('auth-gate').style.display = 'block';
+    return;
+  }
+  document.getElementById('dashboard-content').style.display = 'block';
+
+  // ── Personal stats card ──
+  const STORAGE = (window.CONFIG && CONFIG.STORAGE_KEY) || 'statedoku_v1';
+  const stats = JSON.parse(localStorage.getItem(STORAGE + '_stats') || '{"played":0,"won":0,"streak":0,"maxStreak":0,"bestTime":null}');
+
+  const fmt = (s) => s ? `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}` : '—';
+  const winRate = stats.played ? Math.round(stats.won/stats.played*100) + '%' : '—';
+
+  const cards = [
+    { label: 'Total played (this device)', value: stats.played, sub: 'On this browser only' },
+    { label: 'Solved', value: stats.won, sub: `${winRate} win rate` },
+    { label: 'Current streak', value: stats.streak, sub: `Max: ${stats.maxStreak}` },
+    { label: 'Best time', value: fmt(stats.bestTime), sub: 'Personal record' },
+  ];
+  const pers = document.getElementById('personal-stats');
+  cards.forEach(c => {
+    pers.insertAdjacentHTML('beforeend',
+      `<div class="stat-card"><div class="stat-label">${c.label}</div><div class="stat-value">${c.value}</div><div class="stat-sub">${c.sub}</div></div>`);
+  });
+
+  // ── Constraint usage (compute next 30 days) ──
+  (async () => {
+    const states = await Puzzle.loadStates();
+    const counts = {};
+    for (let i = 0; i < 30; i++) {
+      const d = new Date(); d.setDate(d.getDate() + i);
+      const p = await Puzzle.getPuzzle(d.toISOString().slice(0,10));
+      if (p) [...p.rows, ...p.cols].forEach(c => counts[c] = (counts[c]||0)+1);
+    }
+    const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]);
+    const el = document.getElementById('constraint-usage');
+    el.innerHTML = sorted.slice(0, 30).map(([c, n]) => `<div>${n.toString().padStart(2)}× &nbsp; ${c}</div>`).join('');
+  })();
+
+  // ── Check if Cloudflare Web Analytics is enabled ──
+  const cfStatus = document.getElementById('cf-status');
+  if (document.querySelector('script[src*="static.cloudflareinsights.com"]')) {
+    cfStatus.textContent = 'Enabled';
+    cfStatus.className = 'badge-status b-on';
+  }
+});
+</script>
+<script src="/js/puzzle.js"></script>
+</body>
+</html>
