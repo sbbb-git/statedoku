@@ -117,21 +117,26 @@ header::after {
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 900;
   letter-spacing: -0.025em;
   color: #fff;
   text-decoration: none;
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; gap: 9px;
+  line-height: 1;
 }
 .logo::before {
-  content: '★';
-  color: var(--gold);
-  font-size: 1.05rem;
-  line-height: 1;
-  margin-top: 2px;
-  text-shadow: 0 0 8px rgba(245,158,11,0.5);
+  content: '';
+  width: 28px; height: 28px;
+  background-image: url('/logo-mark.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+  transition: transform var(--d-fast) var(--ease);
 }
+.logo:hover::before { transform: rotate(-6deg) scale(1.08); }
 .logo em {
   color: var(--red);
   font-style: normal;
@@ -1429,8 +1434,8 @@ footer, main, .score-bar {
     padding-top: 0; padding-bottom: 0;
   }
   header::after { bottom: -2px; height: 2px; }
-  .logo { font-size: 1.2rem; }
-  .logo::before { font-size: 0.95rem; }
+  .logo { font-size: 1.15rem; gap: 7px; }
+  .logo::before { width: 24px; height: 24px; }
   .lang-btn { padding: 4px 7px; font-size: 0.65rem; }
   .icon-btn { width: 32px; height: 32px; }
   .icon-btn svg { width: 16px; height: 16px; }
