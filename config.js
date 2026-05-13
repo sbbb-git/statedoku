@@ -6,7 +6,7 @@ const CONFIG = {
   // Cloudflare Web Analytics token (privacy-friendly, no cookies, no IPs stored)
   // Get it at https://dash.cloudflare.com/?to=/:account/web-analytics
   // Paste the token from data-cf-beacon='{"token":"XXX"}' here, then commit + push.
-  CF_ANALYTICS_TOKEN: 'INSERT_YOUR_CLOUDFLARE_BEACON_TOKEN_HERE',
+  CF_ANALYTICS_TOKEN: '9aaf696fd1464b2191238f4787ceca5c',
 
   // Superadmin: SHA-256 hash of the admin password.
   // ⚠️ Change immediately with: node bin/set-admin-password.mjs
