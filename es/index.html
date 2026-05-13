@@ -74,24 +74,31 @@
 <h1 class="sr-only">Statedoku — Puzzle diario de estados de EE.UU.</h1>
 
 <header>
-  <a href="/es/" class="logo">State<em>doku</em></a>
-  <nav class="nav-actions">
-    <div class="lang-switcher">
+  <a href="/es/" class="logo" aria-label="Statedoku inicio">State<em>doku</em></a>
+  <div class="score-inline" aria-live="polite">
+    <span class="score-date" id="puzzle-date"></span>
+    <span class="score-sep" aria-hidden="true">·</span>
+    <span id="score-display">0 / 9</span>
+    <span class="score-sep" aria-hidden="true">·</span>
+    <span id="error-display" aria-label="Errores restantes"></span>
+  </div>
+  <nav class="nav-actions" aria-label="Acciones de juego">
+    <div class="lang-switcher" role="group" aria-label="Idioma">
       <button class="lang-btn" data-lang="en" onclick="location.href='/'">EN</button>
       <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/'">FR</button>
-      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn active" data-lang="es" aria-current="true">ES</button>
     </div>
-    <button class="icon-btn" id="btn-howto" title="Cómo jugar">?</button>
-    <button class="icon-btn" id="btn-stats" title="Estadísticas">📊</button>
-    <button class="icon-btn" id="btn-share" title="Compartir">↑</button>
+    <button class="icon-btn" id="btn-howto" title="Cómo jugar" aria-label="Cómo jugar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-stats" title="Estadísticas" aria-label="Estadísticas">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-share" title="Compartir" aria-label="Compartir">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
   </nav>
 </header>
-
-<div class="score-bar">
-  <span class="score-date" id="puzzle-date"></span>
-  <span id="score-display">0 / 9</span>
-  <span id="error-display">○○○</span>
-</div>
 
 <main>
   <div id="loading">Cargando puzzle…</div>
@@ -203,6 +210,8 @@
 </div>
 
 <div id="toast" role="status" aria-live="polite"></div>
+<div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
 
 <script src="../config.js"></script>
 <script src="../js/admin.js"></script>
