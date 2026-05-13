@@ -6,7 +6,7 @@ const SITE_URL = 'https://statedoku.com';
 const KV_KEY = 'bot:config';
 
 const DEFAULT_STYLES = [
-  'a punchy reminder that today\'s puzzle is live',
+  "a punchy reminder that today's puzzle is live",
   'a "did you know" geography fact about a US state',
   'an engagement question for state-heads',
   'a single-state spotlight with 3-4 surprising facts',
