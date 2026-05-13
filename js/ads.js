@@ -20,17 +20,25 @@ const Ads = (() => {
     solved:  '0000000003',
   };
 
-  // Ads can be globally disabled via CONFIG.ADS_ENABLED.
-  // Super-admin can override with localStorage 'statedoku_ads_force' = '1'|'0'.
+  const isAdmin = () => typeof Admin !== 'undefined' && Admin.isAuthenticated();
+
+  // Ads gate: CONFIG.ADS_ENABLED is the source of truth for all users.
+  // The 'statedoku_ads_force' override only works for an AUTHENTICATED admin
+  // (the toggle in the dev panel). Regular users get any stale flag cleared.
   function _adsEnabled() {
-    const force = localStorage.getItem('statedoku_ads_force');
-    if (force === '0') return false;
-    if (force === '1') return true;
+    if (isAdmin()) {
+      const force = localStorage.getItem('statedoku_ads_force');
+      if (force === '0') return false;
+      if (force === '1') return true;
+    } else if (localStorage.getItem('statedoku_ads_force')) {
+      // Migration: clear any stale flag a non-admin user might have
+      localStorage.removeItem('statedoku_ads_force');
+    }
     return !!(typeof CONFIG !== 'undefined' && CONFIG.ADS_ENABLED);
   }
 
-  // Admin mode disables ad rendering for testing.
-  const isDev = () => typeof Admin !== 'undefined' && Admin.isAuthenticated();
+  // Admin mode also disables ad rendering for testing puzzle UX.
+  const isDev = () => isAdmin();
 
   function getConsent() { return localStorage.getItem(CONSENT_KEY); }
   function setConsent(v) {
