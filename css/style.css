@@ -849,6 +849,35 @@ footer a {
 }
 footer a:hover { color: var(--red); text-decoration: underline; }
 
+/* ─────────────────── Confetti celebration ─────────────────── */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  animation: confetti-fall ease-out forwards;
+  will-change: transform, opacity;
+}
+@keyframes confetti-fall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--end-x, 0), 100vh) rotate(var(--rot, 360deg));
+    opacity: 0;
+  }
+}
+
 /* ─────────────────── Share sheet ─────────────────── */
 #share-sheet {
   position: fixed; inset: 0;

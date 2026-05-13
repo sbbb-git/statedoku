@@ -347,7 +347,37 @@ const Game = (() => {
   function _showSolvedBanner() {
     const el = document.getElementById('solved-banner');
     if (el) el.style.display = 'flex';
+    _fireConfetti();
     if (typeof Ads !== 'undefined' && Ads.refresh) Ads.refresh();
+  }
+
+  // ── Confetti celebration (lightweight, pure CSS particles) ───────────────
+  function _fireConfetti() {
+    // Respect prefers-reduced-motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const colors = ['#DC2626', '#FFFFFF', '#0F2147', '#F59E0B', '#1E3A8A'];
+    const container = document.createElement('div');
+    container.className = 'confetti-container';
+    document.body.appendChild(container);
+
+    const W = window.innerWidth;
+    for (let i = 0; i < 80; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      const isStar = Math.random() < 0.2;
+      piece.style.left = (Math.random() * W) + 'px';
+      piece.style.background = isStar ? 'transparent' : colors[Math.floor(Math.random() * colors.length)];
+      if (isStar) { piece.textContent = '★'; piece.style.color = '#F59E0B'; }
+      piece.style.width  = isStar ? '14px' : (6 + Math.random() * 6) + 'px';
+      piece.style.height = isStar ? '14px' : (8 + Math.random() * 6) + 'px';
+      piece.style.animationDelay = (Math.random() * 0.4) + 's';
+      piece.style.animationDuration = (2.2 + Math.random() * 1.5) + 's';
+      piece.style.setProperty('--end-x', ((Math.random() - 0.5) * 200) + 'px');
+      piece.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+      container.appendChild(piece);
+    }
+    setTimeout(() => container.remove(), 4500);
   }
 
   // ── Share ─────────────────────────────────────────────────────────────────
