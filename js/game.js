@@ -76,6 +76,11 @@ const Game = (() => {
     document.getElementById('game-wrap').style.display = 'flex';
     _updateDateDisplay();
     _updateScore();
+
+    // Analytics: track puzzle_start (deduped per device per date)
+    if (typeof Analytics !== 'undefined') {
+      Analytics.track('puzzle_start', { puzzle_date: _dateStr });
+    }
   }
 
   function _updateDateDisplay() {
@@ -310,6 +315,9 @@ const Game = (() => {
     _gameOver = true;
     _saveProgress();
     _updateStatsLoss();
+    if (typeof Analytics !== 'undefined') {
+      Analytics.track('puzzle_lost', { puzzle_date: _dateStr, mistakes: MAX_ERRORS });
+    }
     setTimeout(() => _showGameOverBanner(), 350);
   }
 
@@ -341,6 +349,11 @@ const Game = (() => {
     const elapsed = Math.floor((Date.now() - _startTime) / 1000);
     _saveProgress();
     _updateStats(elapsed);
+
+    if (typeof Analytics !== 'undefined') {
+      Analytics.track('puzzle_solve', { puzzle_date: _dateStr, time_seconds: elapsed, mistakes: _errors });
+    }
+
     setTimeout(() => { _showSolvedBanner(); _renderCells(); }, 350);
   }
 
@@ -586,8 +599,48 @@ const Game = (() => {
     } catch(e) { _startTime = Date.now(); }
   }
 
+  // ── Reminder toggle (inside stats modal) ─────────────────────────────────
+  function _refreshReminderUI() {
+    const row = document.getElementById('reminder-row');
+    if (!row || typeof Reminders === 'undefined') return;
+    const enabled = Reminders.isEnabled();
+    const pref = Reminders.getPref();
+    const status = document.getElementById('reminder-status');
+    const btn = document.getElementById('reminder-toggle');
+    const time = document.getElementById('reminder-time');
+    if (enabled && pref) {
+      if (status) status.textContent = (I18n.t('remind_on') || 'On — daily at') + ' ' + pref.time;
+      if (btn) btn.textContent = I18n.t('disable') || 'Disable';
+      if (time) time.value = pref.time;
+    } else {
+      if (status) {
+        const perm = Reminders.permission();
+        if (perm === 'denied')      status.textContent = I18n.t('remind_blocked') || 'Blocked by browser';
+        else if (perm === 'unsupported') status.textContent = I18n.t('remind_unsupported') || 'Not supported here';
+        else                        status.textContent = I18n.t('remind_off') || 'Off';
+      }
+      if (btn) btn.textContent = I18n.t('enable') || 'Enable';
+    }
+  }
+
+  async function _toggleReminder() {
+    if (typeof Reminders === 'undefined') return;
+    const time = document.getElementById('reminder-time')?.value || '09:00';
+    if (Reminders.isEnabled()) {
+      Reminders.disable();
+    } else {
+      const r = await Reminders.enable(time);
+      if (!r.ok && r.reason === 'denied') {
+        alert(I18n.t('remind_help') || 'Browser notifications are blocked. Enable them in your browser settings, then try again.');
+      } else if (!r.ok && r.reason === 'unsupported') {
+        alert('Your browser does not support notifications.');
+      }
+    }
+    _refreshReminderUI();
+  }
+
   // ── Public ────────────────────────────────────────────────────────────────
-  function showStats()     { _renderStats(); document.getElementById('stats-modal').classList.add('open'); }
+  function showStats()     { _renderStats(); document.getElementById('stats-modal').classList.add('open'); _refreshReminderUI(); }
   function showHowToPlay() { document.getElementById('howto-modal').classList.add('open'); }
   function rerender()      { if (_puzzle) { _render(); _updateDateDisplay(); } }
 
@@ -613,7 +666,7 @@ const Game = (() => {
     location.reload();
   }
 
-  return { init, share, showStats, showHowToPlay, rerender,
+  return { init, share, showStats, showHowToPlay, rerender, _toggleReminder,
            _dev: { getPuzzle:_devGetPuzzle, getGrid:_devGetGrid, solve:_devSolve, revealRow:_devRevealRow, resetCurrent:_devResetCurrent } };
 })();
 
@@ -948,4 +1001,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('btn-howto')?.addEventListener('click', () => Game.showHowToPlay());
   document.getElementById('btn-share-banner')?.addEventListener('click', () => Game.share());
   document.getElementById('btn-share-gameover-banner')?.addEventListener('click', () => Game.share());
+  document.getElementById('reminder-toggle')?.addEventListener('click', () => Game._toggleReminder?.());
+  document.getElementById('reminder-time')?.addEventListener('change', () => {
+    if (typeof Reminders !== 'undefined' && Reminders.isEnabled()) {
+      Reminders.enable(document.getElementById('reminder-time').value);
+    }
+  });
 });

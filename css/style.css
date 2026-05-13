@@ -849,6 +849,45 @@ footer a {
 }
 footer a:hover { color: var(--red); text-decoration: underline; }
 
+/* ─────────────────── Daily reminder row (in stats modal) ─────────────────── */
+.reminder-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  margin: 0 14px 14px;
+  background: linear-gradient(135deg, #FEF3C7, #FFF7E0);
+  border: 1px solid var(--gold);
+  border-radius: var(--r-md);
+}
+.reminder-info strong { font-size: 0.85rem; color: var(--navy); display: block; }
+.reminder-info small { font-size: 0.72rem; color: var(--text-2); display: block; margin-top: 2px; }
+.reminder-controls { display: flex; align-items: center; gap: 6px; }
+.reminder-controls input[type="time"] {
+  background: #fff;
+  border: 1px solid var(--border-med);
+  border-radius: var(--r-sm);
+  padding: 6px 8px;
+  font: 600 0.78rem var(--font);
+  color: var(--text);
+}
+.reminder-btn {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 7px 12px;
+  font: 800 0.72rem var(--font);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background var(--d-fast) var(--ease);
+}
+.reminder-btn:hover { background: var(--navy-soft); }
+@media (max-width: 480px) {
+  .reminder-row { flex-direction: column; align-items: stretch; gap: 8px; padding: 12px 14px; }
+  .reminder-controls { justify-content: space-between; }
+}
+
 /* ─────────────────── Confetti celebration ─────────────────── */
 .confetti-container {
   position: fixed;

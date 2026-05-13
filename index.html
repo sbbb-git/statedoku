@@ -238,6 +238,16 @@
         <span class="stat-label" data-i18n="best_time">Best</span>
       </div>
     </div>
+    <div class="reminder-row" id="reminder-row">
+      <div class="reminder-info">
+        <strong>🔔 <span data-i18n="remind_me">Daily reminder</span></strong>
+        <small id="reminder-status" data-i18n="remind_off">Off</small>
+      </div>
+      <div class="reminder-controls">
+        <input type="time" id="reminder-time" value="09:00">
+        <button class="reminder-btn" id="reminder-toggle" data-i18n="enable">Enable</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -266,6 +276,8 @@
 
 <script src="config.js"></script>
 <script src="js/admin.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/reminders.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/puzzle.js"></script>
 <script src="js/game.js"></script>

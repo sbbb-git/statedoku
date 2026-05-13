@@ -52,6 +52,19 @@
     <!-- Personal stats (the admin's own gameplay) -->
     <div class="grid-cards" id="personal-stats"></div>
 
+    <!-- Server-side game stats (D1 via /api/stats) -->
+    <div class="panel" id="server-stats-panel">
+      <h2>📈 Server-side game stats (D1)</h2>
+      <p style="font-size:.88rem;color:var(--text-2);margin-bottom:10px">
+        Aggregate analytics across all players for the last 30 days. Requires <code style="background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:.75rem">STATS_DB</code> binding + <code style="background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:.75rem">STATS_ADMIN_KEY</code> env var on Cloudflare Pages.
+      </p>
+      <div style="display:flex;gap:8px;margin-bottom:14px">
+        <input type="password" id="stats-key" placeholder="STATS_ADMIN_KEY" style="flex:1;padding:9px 12px;border:1.5px solid var(--border-med);border-radius:8px;font:500 .85rem var(--font)">
+        <button id="stats-load" class="link-btn" style="border:none">Load stats</button>
+      </div>
+      <div id="server-stats-out" style="font-family:ui-monospace,Menlo,monospace;font-size:.75rem;line-height:1.55;color:var(--text-2);max-height:400px;overflow:auto;background:var(--surface-2);padding:12px;border-radius:8px;white-space:pre-wrap">Click "Load stats" to fetch.</div>
+    </div>
+
     <!-- Cloudflare Web Analytics CTA -->
     <div class="panel">
       <h2>🌍 Visitor analytics (Cloudflare)</h2>
@@ -165,9 +178,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Check if Cloudflare Web Analytics is enabled ──
   const cfStatus = document.getElementById('cf-status');
-  if (document.querySelector('script[src*="static.cloudflareinsights.com"]')) {
-    cfStatus.textContent = 'Enabled';
-    cfStatus.className = 'badge-status b-on';
+  setTimeout(() => {
+    if (document.querySelector('script[src*="static.cloudflareinsights.com"]')) {
+      cfStatus.textContent = 'Enabled';
+      cfStatus.className = 'badge-status b-on';
+    }
+  }, 1500);
+
+  // ── Server-side stats loader ──
+  const out = document.getElementById('server-stats-out');
+  const loadBtn = document.getElementById('stats-load');
+  const keyInput = document.getElementById('stats-key');
+  // Remember key in localStorage (admin convenience)
+  const SK_KEY = 'statedoku_stats_admin_key';
+  keyInput.value = localStorage.getItem(SK_KEY) || '';
+  loadBtn.addEventListener('click', async () => {
+    const key = keyInput.value.trim();
+    if (!key) { out.textContent = 'Enter STATS_ADMIN_KEY first.'; return; }
+    localStorage.setItem(SK_KEY, key);
+    out.textContent = 'Loading…';
+    try {
+      const r = await fetch(`/api/stats?key=${encodeURIComponent(key)}`);
+      if (!r.ok) { out.textContent = `Error ${r.status}: ${await r.text()}`; return; }
+      const json = await r.json();
+      out.textContent = formatStats(json);
+    } catch (e) {
+      out.textContent = 'Fetch failed: ' + e.message;
+    }
+  });
+
+  function formatStats(s) {
+    let lines = [];
+    lines.push('═══ TOTALS (all time) ═══');
+    (s.totals || []).forEach(t => lines.push(`  ${String(t.n).padStart(6)} × ${t.event_type}`));
+    lines.push('');
+    lines.push(`═══ DAILY (last 30d) — ${s.unique_puzzles_30d} unique puzzle dates ═══`);
+    lines.push('  date         starts  solves  losses  avg-sec');
+    (s.daily || []).forEach(d => {
+      lines.push(`  ${d.puzzle_date}  ${String(d.starts).padStart(6)}  ${String(d.solves).padStart(6)}  ${String(d.losses).padStart(6)}  ${(d.avg_solve_sec ?? '—').toString().padStart(7)}`);
+    });
+    lines.push('');
+    lines.push('═══ TOP COUNTRIES ═══');
+    (s.countries || []).forEach(c => lines.push(`  ${String(c.n).padStart(6)} ${c.country}`));
+    lines.push('');
+    lines.push('═══ LANGUAGES ═══');
+    (s.langs || []).forEach(l => lines.push(`  ${String(l.n).padStart(6)} ${l.lang}`));
+    lines.push('');
+    lines.push('═══ MISTAKES DISTRIBUTION (on solves) ═══');
+    (s.mistakes_dist || []).forEach(m => lines.push(`  ${m.mistakes} mistakes: ${m.n} solves`));
+    return lines.join('\n');
   }
 });
 </script>

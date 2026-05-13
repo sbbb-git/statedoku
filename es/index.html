@@ -177,6 +177,16 @@
       <div class="stat-box"><span class="stat-value" id="stat-streak">0</span><span class="stat-label" data-i18n="streak">Racha</span></div>
       <div class="stat-box"><span class="stat-value" id="stat-best-time">—</span><span class="stat-label" data-i18n="best_time">Mejor</span></div>
     </div>
+    <div class="reminder-row" id="reminder-row">
+      <div class="reminder-info">
+        <strong>🔔 <span data-i18n="remind_me">Recordatorio diario</span></strong>
+        <small id="reminder-status" data-i18n="remind_off">Desactivado</small>
+      </div>
+      <div class="reminder-controls">
+        <input type="time" id="reminder-time" value="09:00">
+        <button class="reminder-btn" id="reminder-toggle" data-i18n="enable">Activar</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -205,6 +215,8 @@
 
 <script src="../config.js"></script>
 <script src="../js/admin.js"></script>
+<script src="../js/analytics.js"></script>
+<script src="../js/reminders.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/puzzle.js"></script>
 <script src="../js/game.js"></script>
