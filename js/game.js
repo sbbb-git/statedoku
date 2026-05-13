@@ -10,6 +10,7 @@ const Game = (() => {
   let _solved     = false;
   let _gameOver   = false;
   let _startTime  = null;
+  let _solveTime  = null;
   let _dateStr    = null;
   let _errors     = 0;
 
@@ -339,6 +340,7 @@ const Game = (() => {
         }
       }
     }
+    _renderInlineShareRow('gameover');
   }
 
   // ── Win ───────────────────────────────────────────────────────────────────
@@ -347,6 +349,7 @@ const Game = (() => {
     if (!ok) return;
     _solved = true;
     const elapsed = Math.floor((Date.now() - _startTime) / 1000);
+    _solveTime = elapsed;
     _saveProgress();
     _updateStats(elapsed);
 
@@ -360,8 +363,105 @@ const Game = (() => {
   function _showSolvedBanner() {
     const el = document.getElementById('solved-banner');
     if (el) el.style.display = 'flex';
+    _renderResultEmojiGrid();
+    _renderResultStats();
+    _renderInlineShareRow('solved');
     _fireConfetti();
     if (typeof Ads !== 'undefined' && Ads.refresh) Ads.refresh();
+  }
+
+  // ── Compact result helpers (mini emoji grid, inline stats, inline share row) ──
+  function _renderResultEmojiGrid() {
+    const host = document.getElementById('result-emoji-solved');
+    if (!host) return;
+    host.innerHTML = '';
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 3; c++) {
+        const span = document.createElement('span');
+        const s = _grid[r][c];
+        span.textContent = (s && _puzzle.solution[r][c] === s) ? '🟩' : (s ? '🟥' : '⬜');
+        host.appendChild(span);
+      }
+    }
+  }
+
+  function _fmtTime(sec) {
+    if (sec == null) return '—';
+    const m = Math.floor(sec / 60), s = sec % 60;
+    return `${m}:${String(s).padStart(2,'0')}`;
+  }
+
+  function _renderResultStats() {
+    const host = document.getElementById('result-stats-solved');
+    if (!host) return;
+    const stats = _getStats();
+    const elapsed = _solveTime != null ? _solveTime : Math.floor((Date.now() - _startTime) / 1000);
+    const lang = I18n.getLang();
+    const L = {
+      en: { time: 'time',  streak: 'streak', err: 'mistakes' },
+      fr: { time: 'temps', streak: 'série',  err: 'erreurs' },
+      es: { time: 'tiempo',streak: 'racha',  err: 'errores' },
+    }[lang] || { time: 'time', streak: 'streak', err: 'mistakes' };
+    host.innerHTML = `
+      <span><b>${_fmtTime(elapsed)}</b>${L.time}</span>
+      <span class="rs-sep"></span>
+      <span><b>${stats.streak || 1}</b>${L.streak}</span>
+      <span class="rs-sep"></span>
+      <span><b>${_errors}/3</b>${L.err}</span>
+    `;
+  }
+
+  // 5 inline share platforms shown directly in the result card
+  const _INLINE_SHARE = [
+    { id: 'whatsapp', color: '#25D366',
+      svg: '<svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1s-.8 1-1 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4M12 21.8c-1.7 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.4 4.4-9.9 9.9-9.9 2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7-.1 5.5-4.5 9.9-10 9.9m8.4-18.3C18.2 1.2 15.2 0 12 0 5.5 0 .2 5.3.2 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7.9 3.7 1.4 5.7 1.4 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.3-6.2-3.5-8.4"/></svg>' },
+    { id: 'twitter', color: '#000000',
+      svg: '<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>' },
+    { id: 'facebook', color: '#1877F2',
+      svg: '<svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.412c0-3.017 1.791-4.683 4.533-4.683 1.313 0 2.686.235 2.686.235v2.965h-1.514c-1.491 0-1.956.93-1.956 1.884v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"/></svg>' },
+    { id: 'copy', color: '#0F2147',
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' },
+    { id: 'more', color: '#F59E0B',
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>' },
+  ];
+
+  function _renderInlineShareRow(which) {
+    const root = document.querySelector(`.share-row[data-banner="${which}"]`);
+    if (!root) return;
+    root.innerHTML = '';
+    _INLINE_SHARE.forEach(p => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sr-btn';
+      b.style.setProperty('--brand', p.color);
+      b.setAttribute('aria-label', p.id);
+      b.dataset.platform = p.id;
+      b.innerHTML = p.svg;
+      b.addEventListener('click', () => _inlineShareClick(p.id));
+      root.appendChild(b);
+    });
+  }
+
+  async function _inlineShareClick(id) {
+    const body = getShareBody();
+    const full = `${body}\n${SITE_URL}`;
+    if (id === 'copy') {
+      try { await navigator.clipboard.writeText(full); _showToast(I18n.t('copied') || 'Copied!'); } catch(e) {}
+      return;
+    }
+    if (id === 'more') {
+      if (navigator.share) {
+        try { await navigator.share({ text: full, url: SITE_URL, title: 'Statedoku' }); } catch(e) {}
+      } else {
+        _openShareSheet();
+      }
+      return;
+    }
+    let url;
+    if (id === 'whatsapp')     url = `https://wa.me/?text=${encodeURIComponent(full)}`;
+    else if (id === 'twitter') url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(body)}&url=${encodeURIComponent(SITE_URL)}`;
+    else if (id === 'facebook')url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SITE_URL)}&quote=${encodeURIComponent(body)}`;
+    if (url) window.open(url, '_blank', 'noopener,noreferrer,width=620,height=560');
   }
 
   // ── Confetti celebration (lightweight, pure CSS particles) ───────────────
@@ -582,7 +682,7 @@ const Game = (() => {
   // ── Persistence ───────────────────────────────────────────────────────────
   function _saveProgress() {
     localStorage.setItem(CONFIG.STORAGE_KEY+'_progress_'+_dateStr,
-      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, startTime:_startTime, errors:_errors }));
+      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, startTime:_startTime, errors:_errors, solveTime:_solveTime }));
   }
 
   function _loadProgress() {
@@ -595,6 +695,7 @@ const Game = (() => {
       _gameOver  = d.gameOver  || false;
       _startTime = d.startTime || Date.now();
       _errors    = d.errors    || 0;
+      _solveTime = d.solveTime || null;
       if (_gameOver) setTimeout(() => _showGameOverBanner(), 100);
     } catch(e) { _startTime = Date.now(); }
   }
