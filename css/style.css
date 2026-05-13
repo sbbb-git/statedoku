@@ -863,7 +863,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
 #dev-panel {
   position: fixed; bottom: 80px; right: 20px; z-index: 299;
   width: 360px; max-width: calc(100vw - 40px);
-  max-height: calc(100vh - 120px);
+  max-height: calc(100dvh - 120px);
   background: var(--navy);
   color: #fff;
   border-radius: var(--r-lg);
@@ -1371,19 +1371,248 @@ footer a:hover { color: var(--red); text-decoration: underline; }
 .consent-accept:hover { background: #FBBF24; transform: translateY(-1px); }
 .consent-accept:active { transform: scale(0.97); }
 
-/* ─────────────────── Responsive ─────────────────── */
-@media (max-width: 380px) {
-  .grid-outer { grid-template-columns: 72px repeat(3, minmax(0, 1fr)); }
-  .col-label, .row-label {
-    font-size: 0.56rem;
-    padding: 6px 4px;
-  }
-  .cell { min-height: 76px; }
-  .cell-abbr { font-size: 0.9rem; }
-  .cell-name { font-size: 0.56rem; }
+/* ═════════════════════════════════════════════════════════════════════════
+   MOBILE-FIRST OPTIMIZATIONS (Metrodoku-style)
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* Disable iOS tap-highlight (we have custom :active states) */
+a, button, .cell, .lang-btn, .icon-btn, .modal-close, .sp-item, .consent-btn {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* eliminates 300ms tap delay + double-tap zoom */
 }
-@media (min-width: 480px) {
+
+/* No accidental text selection inside the game grid */
+.cell, .col-label, .row-label, .grid-corner, .score-bar, header, .err-dot {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Dev FAB respects iPhone home indicator */
+#dev-fab {
+  bottom: max(20px, env(safe-area-inset-bottom));
+}
+@media (max-width: 480px) {
+  #dev-fab { width: 44px; height: 44px; right: 14px; }
+  #dev-panel {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    max-height: calc(100dvh - 100px);
+  }
+}
+
+/* Prevent overscroll bounce on iOS while keeping page scrollable */
+html, body { overscroll-behavior-y: none; }
+
+/* Safe-area insets (notch, home indicator) */
+header {
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+footer, main, .score-bar {
+  padding-left: max(14px, env(safe-area-inset-left));
+  padding-right: max(14px, env(safe-area-inset-right));
+}
+
+/* ───────── ≤ 480 px (phones) — the primary target ───────── */
+@media (max-width: 480px) {
+
+  /* Compact header */
+  header {
+    height: 48px;
+    padding-top: 0; padding-bottom: 0;
+  }
+  header::after { bottom: -2px; height: 2px; }
+  .logo { font-size: 1.2rem; }
+  .logo::before { font-size: 0.95rem; }
+  .lang-btn { padding: 4px 7px; font-size: 0.65rem; }
+  .icon-btn { width: 32px; height: 32px; }
+  .icon-btn svg { width: 16px; height: 16px; }
+  .nav-actions { gap: 4px; }
+  .lang-switcher { padding: 2px; }
+
+  /* Slim score bar — sticky just below header for context-on-scroll */
+  .score-bar {
+    margin: 0; max-width: none;
+    padding: 9px 14px;
+    border-radius: 0;
+    border-left: none; border-right: none;
+    border-bottom: 2px solid var(--navy);
+    position: sticky; top: 48px; z-index: 15;
+    background: var(--surface);
+  }
+  .score-date { font-size: 0.7rem; }
+  #score-display { font-size: 0.9rem; }
+  .err-dot { width: 8px; height: 8px; }
+
+  /* Edge-to-edge main with minimal padding */
+  main {
+    padding: 10px 8px 60px;
+    gap: 12px;
+  }
+  #game-wrap { gap: 12px; }
+
+  /* Grid: edge-to-edge, fluid */
+  .grid-wrapper {
+    border-radius: var(--r-md);
+    border-left: 0; border-right: 0;
+    margin-left: -8px; margin-right: -8px;
+    width: calc(100% + 16px);
+    box-shadow: var(--shadow-sm);
+  }
+  /* Make row labels slimmer to give cells more breathing room */
+  .grid-outer {
+    grid-template-columns: 64px repeat(3, minmax(0, 1fr));
+    grid-template-rows: 46px repeat(3, 1fr);
+  }
+  .col-label, .row-label {
+    padding: 5px 4px;
+    font-size: clamp(0.52rem, 2.6vw, 0.65rem);
+    line-height: 1.18;
+    letter-spacing: 0.03em;
+  }
+  .col-label { min-height: 46px; }
+
+  /* Bigger, square-ish cells */
+  .cell {
+    min-height: clamp(72px, 24vw, 100px);
+    padding: 6px 4px;
+    gap: 2px;
+  }
+  .cell-abbr { font-size: clamp(0.9rem, 4vw, 1.15rem); letter-spacing: 0.03em; }
+  .cell-name {
+    font-size: clamp(0.52rem, 2.4vw, 0.62rem);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+  }
+  .cell.empty::after { font-size: 1.3rem; }
+  .cell.correct::before { top: 3px; right: 4px; font-size: 0.6rem; }
+
+  /* Grid corner: smaller flag */
+  .grid-corner { padding: 4px; }
+  .grid-corner .us-flag { max-width: 50px; max-height: 28px; }
+
+  /* Press-down feedback for cells (replaces tap highlight) */
+  .cell:active:not(.locked):not(.correct) {
+    background: #E8EFFF;
+    transform: scale(0.97);
+    transition: transform 0.08s ease-out, background 0.08s ease-out;
+  }
+
+  /* Bottom-sheet search panel: full width, larger input */
+  #search-panel {
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+    padding: 14px 12px 0;
+    max-width: 100%;
+  }
+  #sp-input {
+    padding: 13px 16px;
+    font-size: 1rem; /* ≥16px prevents iOS zoom on focus */
+  }
+  .sp-tag {
+    font-size: 0.66rem;
+    padding: 4px 9px 4px 7px;
+  }
+  .sp-item { padding: 12px 14px; font-size: 0.92rem; min-height: 48px; }
+  .sp-abbr { font-size: 0.74rem; min-width: 26px; }
+  #sp-dropdown { max-height: 50dvh; }
+
+  /* Banners: slimmer padding, edge-to-edge */
+  #solved-banner, #gameover-banner {
+    padding: 22px 18px;
+    border-radius: var(--r-md);
+    gap: 10px;
+  }
+  .banner-icon { width: 48px; height: 48px; }
+  .banner-icon svg { width: 26px; height: 26px; }
+  #solved-banner h3, #gameover-banner h3 { font-size: 1.25rem; }
+  #solved-banner p, #gameover-banner p { font-size: 0.85rem; }
+  #solved-banner::before, #solved-banner::after { font-size: 0.55rem; }
+
+  .gos-cell { padding: 8px 4px; gap: 2px; }
+  .gos-abbr { font-size: 0.85rem; }
+  .gos-name { font-size: 0.52rem; }
+
+  /* Bigger CTA */
+  .btn-share { padding: 13px 28px; font-size: 0.9rem; }
+
+  /* Modals: full bottom-sheet on phones */
+  .modal-content {
+    max-width: 100%;
+    max-height: 90dvh;
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+  }
+  .modal-header { padding: 14px 16px; }
+  .modal-header h3 { font-size: 0.95rem; }
+  .stats-grid { padding: 14px; gap: 8px; }
+  .stat-box { padding: 12px 4px; }
+  .stat-value { font-size: 1.4rem; }
+  .stat-label { font-size: 0.56rem; }
+  .howto-content { padding: 16px; font-size: 0.85rem; }
+
+  /* Footer hidden — gain space for game */
+  footer {
+    padding: 10px 14px;
+    font-size: 0.65rem;
+  }
+  footer::before { height: 1.5px; }
+
+  /* Toast */
+  #toast {
+    bottom: max(70px, env(safe-area-inset-bottom));
+    padding: 9px 18px;
+    font-size: 0.78rem;
+  }
+}
+
+/* ───────── Very narrow phones (≤ 360 px) — extra slim ───────── */
+@media (max-width: 360px) {
+  .grid-outer {
+    grid-template-columns: 58px repeat(3, minmax(0, 1fr));
+  }
+  .col-label, .row-label {
+    font-size: clamp(0.5rem, 2.4vw, 0.6rem);
+    padding: 4px 3px;
+  }
+  header { padding-left: 12px; padding-right: 12px; }
+  main { padding-left: 6px; padding-right: 6px; }
+  .grid-wrapper { margin-left: -6px; margin-right: -6px; width: calc(100% + 12px); }
+}
+
+/* ───────── Tablet portrait (481–767 px) ───────── */
+@media (min-width: 481px) and (max-width: 767px) {
+  main { padding: 16px 16px 48px; }
+  .cell { min-height: 96px; }
+  .cell-abbr { font-size: 1.05rem; }
+  .cell-name { font-size: 0.64rem; }
+  .grid-outer { grid-template-columns: 84px repeat(3, minmax(0, 1fr)); }
+}
+
+/* ───────── Desktop (≥ 768 px) ───────── */
+@media (min-width: 768px) {
   .cell { min-height: 104px; }
   .cell-abbr { font-size: 1.1rem; }
   .cell-name { font-size: 0.66rem; }
+}
+
+/* ───────── Landscape phones ───────── */
+@media (max-height: 480px) and (orientation: landscape) {
+  main { padding: 8px 12px 32px; }
+  .score-bar { padding: 6px 14px; }
+  .cell { min-height: 60px; }
+  .grid-outer { grid-template-rows: 38px repeat(3, 1fr); }
+  .col-label { min-height: 38px; }
+  footer { display: none; }
+}
+
+/* ───────── PWA / standalone display ───────── */
+@media (display-mode: standalone) {
+  header { padding-top: env(safe-area-inset-top); height: calc(48px + env(safe-area-inset-top)); }
+}
+
+/* ───────── Pointer-fine (mouse): preserve hover; coarse: no hover ───────── */
+@media (hover: none) {
+  .cell:hover:not(.locked) { background: var(--surface); }
+  .cell.empty:hover::after { color: var(--border-med); transform: none; }
+  .sp-item:hover { background: var(--surface); }
 }
