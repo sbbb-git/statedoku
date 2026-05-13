@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+
+  <title>About Statedoku — The Daily US States Puzzle Game</title>
+  <meta name="description" content="The story behind Statedoku: a free daily puzzle that combines Sudoku logic with American geography. Created independently, no signup required, mobile-first.">
+  <meta name="keywords" content="about statedoku, what is statedoku, statedoku creator, daily geography game, US states sudoku">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/about/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="About Statedoku — A Daily Geography Puzzle">
+  <meta property="og:description" content="The story behind the daily US states puzzle that mixes Sudoku and geography.">
+  <meta property="og:url" content="https://statedoku.com/about/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png">
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em></a>
+  <nav class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn" data-lang="es" onclick="location.href='/es/'">ES</button>
+    </div>
+  </nav>
+</header>
+
+<main class="legal-main">
+  <article class="legal-page">
+    <h1>About Statedoku</h1>
+    <p class="legal-meta">The daily US states puzzle, explained</p>
+
+    <h2>What it is</h2>
+    <p><strong>Statedoku</strong> is a free daily puzzle game where you fill a 3×3 grid with US states. Each row and each column has a constraint label (like "borders Mexico" or "named after a king"), and every cell must contain a state that satisfies both. Each state can be used at most once. You have 3 mistakes allowed. Solve the grid before you run out.</p>
+    <p>A new puzzle drops every day at midnight, the same one for everyone in the world. Solve it, share your emoji grid, come back tomorrow.</p>
+
+    <h2>Why we built it</h2>
+    <p>Wordle proved that <strong>simple daily puzzles can be addictive</strong> — you only need a small, smart constraint and a global shared experience. We wanted to apply the same formula to geography: a tiny ritual that teaches you something while you play.</p>
+    <p>Statedoku is the result. It rewards <strong>genuine US geography knowledge</strong> (where states are, what they border, what they're famous for) instead of vocabulary tricks. Anyone with a working memory of American geography can solve most days; the harder days dig into trivia like name etymology, statehood era, or election history.</p>
+
+    <h2>How it's different</h2>
+    <p>There are plenty of daily puzzles out there. Statedoku stands out because:</p>
+    <ul>
+      <li><strong>Combinatorial, not random</strong>. Every grid is mathematically proven to have exactly one solution. No guessing your way through.</li>
+      <li><strong>~100 different constraints</strong> rotate over time — regions, borders, mountains, belts, history, politics, name origin, sports, name patterns — so no two days feel the same.</li>
+      <li><strong>Mobile-first</strong>. Built for thumbs. Tap a cell, type 3+ letters, pick a state. Bottom-sheet input, big tap targets, safe-area aware.</li>
+      <li><strong>Multilingual</strong>. English, French, and Spanish — all constraint labels translated.</li>
+      <li><strong>Privacy-first</strong>. No accounts, no analytics tracking individual users, no server-side database. Your progress lives on your device.</li>
+    </ul>
+
+    <h2>What's under the hood</h2>
+    <p>Statedoku is a static site hosted on <strong>Cloudflare Pages</strong>. The puzzle generator runs entirely in your browser — given today's date, it deterministically produces one and only one grid. That means:</p>
+    <ul>
+      <li>No backend to attack or maintain</li>
+      <li>The site loads in under 100ms globally (Cloudflare CDN)</li>
+      <li>Everyone playing on the same date sees the exact same puzzle</li>
+      <li>You can play offline once the page is loaded (PWA)</li>
+    </ul>
+
+    <h2>Roadmap</h2>
+    <p>What's coming, in rough order:</p>
+    <ul>
+      <li><strong>Archive</strong> — replay any past puzzle</li>
+      <li><strong>Hard mode</strong> — more obscure constraints, fewer hints</li>
+      <li><strong>Daily themes</strong> — Mondays focus on geography, Tuesdays on history, etc.</li>
+      <li><strong>Optional premium</strong> — no ads, archive, themes, for the cost of a coffee</li>
+      <li><strong>More countries</strong> — Eurodoku (EU states), Asiadoku (Asian countries), etc.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>Bug reports, ideas, partnership inquiries: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>.</p>
+
+    <p class="legal-back"><a href="/">→ Play today's puzzle</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a></p>
+</footer>
+
+<script src="/config.js"></script>
+</body>
+</html>
