@@ -66,3 +66,4 @@ python3 -m http.server 8765
 1. Get approved at [adsense.google.com](https://adsense.google.com).
 2. Edit `config.js`: set `ADSENSE_PUBLISHER_ID` to your `ca-pub-...` ID.
 3. Edit `js/ads.js`: replace the 3 placeholder slot IDs with your real ones.
+
