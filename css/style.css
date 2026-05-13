@@ -1287,9 +1287,17 @@ body.ads-active .ad-top    { min-height: 90px;  margin-top: 4px; }
 body.ads-active .ad-bottom { min-height: 250px; margin: 16px auto 0; }
 body.ads-active .ad-solved { min-height: 90px; margin-bottom: 6px; max-width: 100%; }
 
-/* Consent banner also hidden unless ads are active */
-#consent-bar { display: none !important; }
-body.ads-active #consent-bar:not(.hidden) { display: flex !important; }
+/* Consent banner: hidden by default with visibility too (double safety) */
+#consent-bar {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.ads-active #consent-bar {
+  display: flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
 
 .ad-placeholder {
   width: 100%;
