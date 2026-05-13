@@ -124,7 +124,13 @@ const Ads = (() => {
   function refresh() { _mountAllAds(); }
 
   function init() {
-    if (!_adsEnabled() || isDev()) return; // ads off → no consent banner, no slots, nothing
+    // Hard gate: if ads are not enabled OR user is in admin mode, do absolutely nothing.
+    // The CSS hides .ad-container and #consent-bar unless body has .ads-active.
+    if (!_adsEnabled() || isDev()) {
+      document.body.classList.remove('ads-active', 'ads-on');
+      return;
+    }
+    document.body.classList.add('ads-active');
     if (getConsent() === 'accept') {
       document.body.classList.add('ads-on');
       _loadAdSense();
