@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constraints — Statedoku Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+<link rel="stylesheet" href="/css/style.css?v=3">
+<style>
+  body { background: var(--bg); }
+  .c-shell { max-width: 1200px; margin: 0 auto; padding: 24px 18px 80px; }
+  .c-top { display:flex; align-items:center; justify-content:space-between; margin-bottom: 16px; gap: 12px; flex-wrap: wrap; }
+  .c-h1 { font-size: 1.55rem; font-weight: 900; letter-spacing:-.02em; color: var(--navy); }
+  .c-h1 em { color: var(--red); font-style: normal; }
+  .c-sub { font-size: .85rem; color: var(--text-2); }
+  .c-back { background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; font-size: .78rem; font-weight: 700; text-decoration: none; color: var(--text-2); }
+  .c-back:hover { background: var(--surface-3); color: var(--text); }
+
+  .c-summary { display:flex; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .c-stat {
+    flex: 1; min-width: 130px;
+    background: #fff; border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .c-stat-v { font-size: 1.5rem; font-weight: 900; color: var(--navy); letter-spacing: -.02em; }
+  .c-stat-l { font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); }
+
+  .c-toolbar { display:flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .c-search {
+    flex: 1; min-width: 200px;
+    padding: 9px 14px; border-radius: 999px; border: 1px solid var(--border);
+    background: #fff; font-size: .9rem; outline: none;
+  }
+  .c-search:focus { border-color: var(--navy); }
+  .c-filter {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+    background: #fff; font-size: .78rem; cursor: pointer;
+    font-weight: 700; color: var(--text-2);
+  }
+  .c-filter.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .c-filter-count { opacity: 0.7; font-weight: 600; }
+
+  .c-cat {
+    margin-top: 22px;
+  }
+  .c-cat-title {
+    font-size: .68rem; font-weight: 900; text-transform: uppercase; letter-spacing: .14em;
+    color: var(--navy); margin-bottom: 10px;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .c-cat-count { font-size: .65rem; color: var(--text-3); font-weight: 700; letter-spacing: .08em; }
+
+  .c-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 10px;
+  }
+
+  .c-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 14px 12px;
+    display: flex; flex-direction: column;
+    gap: 6px;
+    position: relative;
+    transition: border-color .15s, transform .15s;
+  }
+  .c-card.disabled { opacity: 0.45; background: var(--surface-2); }
+  .c-card.warn { border-color: #FBBF24; background: #FFFBEB; }
+  .c-card-head {
+    display:flex; align-items:flex-start; justify-content: space-between; gap: 8px;
+  }
+  .c-card-title { font-weight: 800; font-size: .95rem; color: var(--text); line-height: 1.25; }
+  .c-card-id { font-family: ui-monospace, Menlo, monospace; font-size: .68rem; color: var(--text-3); margin-top: 2px; }
+  .c-badge {
+    font-size: .65rem; font-weight: 800; padding: 3px 8px; border-radius: 999px;
+    background: var(--surface-2); color: var(--text-2);
+    white-space: nowrap;
+  }
+  .c-badge.b-ok { background: #D1FAE5; color: #065F46; }
+  .c-badge.b-low { background: #FEF3C7; color: #92400E; }
+  .c-badge.b-bad { background: #FEE2E2; color: #991B1B; }
+  .c-states {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;
+  }
+  .c-state {
+    font-size: .65rem; font-weight: 700;
+    background: #F3F4F6; color: var(--text-2);
+    padding: 2px 6px; border-radius: 4px;
+    font-family: ui-monospace, Menlo, monospace;
+  }
+  .c-card-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 6px; gap: 8px;
+  }
+  .c-disable {
+    font-size: .68rem; font-weight: 800;
+    padding: 5px 10px; border-radius: 6px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    color: var(--text-2); cursor: pointer;
+    transition: background .15s;
+  }
+  .c-disable:hover { background: var(--red); color: #fff; border-color: var(--red); }
+  .c-card.disabled .c-disable { background: var(--green); color: #fff; border-color: var(--green); }
+  .c-card.disabled .c-disable::before { content: '✓ Re-enable'; }
+  .c-card:not(.disabled) .c-disable::before { content: '× Disable'; }
+
+  .c-translations { font-size: .72rem; color: var(--text-3); display: flex; gap: 8px; flex-wrap: wrap; }
+  .c-translations span { background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
+
+  .c-locked {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 60px 24px;
+    color: var(--text-2);
+  }
+  .c-locked svg { width: 40px; height: 40px; color: var(--text-3); margin-bottom: 12px; }
+  .c-locked h2 { font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
+  .c-locked p { font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<div class="c-shell" id="c-locked-view">
+  <div class="c-locked">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </svg>
+    <h2>Restricted</h2>
+    <p>Enter the access key to unlock.</p>
+  </div>
+</div>
+
+<div class="c-shell" id="c-admin-view" style="display:none">
+  <div class="c-top">
+    <div>
+      <div class="c-h1">Constraints catalog</div>
+      <div class="c-sub">Review every constraint, see matching states, disable any you don't like.</div>
+    </div>
+    <a class="c-back" href="/admin/">← Back to admin</a>
+  </div>
+
+  <div class="c-summary" id="c-summary"></div>
+
+  <div class="c-toolbar">
+    <input class="c-search" id="c-search" placeholder="Search constraint id, label, or US state code (CA, TX, NY...)">
+    <button class="c-filter" data-filter="all">All</button>
+    <button class="c-filter" data-filter="low">≤5 states <span class="c-filter-count">⚠️</span></button>
+    <button class="c-filter" data-filter="disabled">Disabled</button>
+  </div>
+
+  <div id="c-content"></div>
+</div>
+
+<script src="/config.js?v=3"></script>
+<script src="/js/admin.js?v=3"></script>
+<script src="/js/i18n.js?v=3"></script>
+<script src="/js/puzzle.js?v=3"></script>
+<script>
+(async function() {
+  // ── Auth gate ─────────────────────────────────────────────────────────
+  if (!Admin.isAuthenticated()) {
+    location.hash = 'admin';
+    Admin.init();
+    const poll = setInterval(() => {
+      if (Admin.isAuthenticated()) { clearInterval(poll); render(); }
+    }, 200);
+  } else {
+    render();
+  }
+
+  // ── Categories (groups constraints under human-readable headings) ─────
+  const CATEGORIES = [
+    { id: 'regions',    label: 'Regions',         match: id => id.startsWith('region_') },
+    { id: 'subregions', label: 'Subregions',      match: id => id.startsWith('sub_') },
+    { id: 'population', label: 'Population',      match: id => id.startsWith('pop_') },
+    { id: 'coast',      label: 'Coastlines & borders', match: id => id.startsWith('coast_') || id === 'landlocked' || id.startsWith('border_') || id.startsWith('borders_') },
+    { id: 'belts',      label: 'Belts (cultural / climatic)', match: id => id.endsWith('_belt') || id === 'route_66' },
+    { id: 'politics',   label: 'Politics',        match: id => id.startsWith('political_') || id === 'trump_2024' || id === 'biden_2020' },
+    { id: 'timezones',  label: 'Timezones',       match: id => id.startsWith('tz_') || id === 'multi_timezone' },
+    { id: 'history',    label: 'History',         match: id => id === 'original_13' || id === 'confederate' || id.startsWith('statehood_') },
+    { id: 'geography',  label: 'Geography & nature', match: id => ['on_mississippi','mt_rockies','mt_appalachians','desert_state','four_corners','great_plains','appalachian','tornado_alley','hurricane_zone','earthquake_zone','has_volcano','has_glaciers','on_appalachian_trail','on_continental_divide','has_caves','high_elevation','low_elevation'].includes(id) },
+    { id: 'cities',     label: 'Cities & capitals', match: id => ['has_million_city','largest_state','smallest_state','capital_named_after_president','capital_starts_with_s'].includes(id) },
+    { id: 'sports',     label: 'Sports',          match: id => ['has_nba','no_pro_team'].includes(id) },
+    { id: 'name_origin',label: 'Name origin',     match: id => id.startsWith('name_') },
+    { id: 'name_props', label: 'Name properties', match: id => ['two_word_name','ends_in_vowel','double_letter','vowel_start','consonant_start','has_new','starts_and_ends_vowel','double_s','two_word_starts_n','short_name','long_name'].includes(id) || id.startsWith('ends_in_') || id.startsWith('contains_letter_') },
+    { id: 'letters',    label: 'Letter count',    match: id => id.startsWith('letters_') },
+    { id: 'starts',     label: 'Starts with letter', match: id => id.startsWith('starts_') && !['starts_and_ends_vowel'].includes(id) },
+    { id: 'other',      label: 'Other',           match: id => true }, // catch-all (must be last)
+  ];
+
+  function categorize(id) {
+    for (const c of CATEGORIES) if (c.match(id)) return c;
+    return CATEGORIES[CATEGORIES.length - 1];
+  }
+
+  function badge(n) {
+    if (n <= 4) return { cls: 'b-bad', text: `${n} states` };
+    if (n <= 7) return { cls: 'b-low', text: `${n} states` };
+    return { cls: 'b-ok', text: `${n} states` };
+  }
+
+  let states = [], all = [], disabled = new Set();
+  let filter = 'all', search = '';
+
+  async function render() {
+    document.getElementById('c-locked-view').style.display = 'none';
+    document.getElementById('c-admin-view').style.display = 'block';
+
+    await I18n.init('en');
+    states = await Puzzle.loadStates();
+    all = Puzzle.getAllConstraints();
+    disabled = new Set(Puzzle.getDisabled());
+
+    drawSummary();
+    drawList();
+    wireToolbar();
+  }
+
+  function drawSummary() {
+    const total = all.length;
+    const enabled = total - disabled.size;
+    const lowCount = all.filter(id => Puzzle.countMatching(id, states) <= 5).length;
+    const html = `
+      <div class="c-stat"><div class="c-stat-v">${total}</div><div class="c-stat-l">Total constraints</div></div>
+      <div class="c-stat"><div class="c-stat-v">${enabled}</div><div class="c-stat-l">Enabled</div></div>
+      <div class="c-stat"><div class="c-stat-v" style="color:#92400E">${lowCount}</div><div class="c-stat-l">≤5 states (rare)</div></div>
+      <div class="c-stat"><div class="c-stat-v" style="color:#991B1B">${disabled.size}</div><div class="c-stat-l">Disabled</div></div>
+    `;
+    document.getElementById('c-summary').innerHTML = html;
+  }
+
+  function getLabel(id, lang) {
+    const t = I18n._dict && I18n._dict[lang] && I18n._dict[lang].constraints && I18n._dict[lang].constraints[id];
+    return t || id;
+  }
+
+  function cardHtml(id) {
+    const matching = states.filter(s => Puzzle.matches(s, id));
+    const n = matching.length;
+    const b = badge(n);
+    const isDis = disabled.has(id);
+    const labelEn = I18n.constraint ? I18n.constraint(id) : id;
+    const stateChips = matching.map(s => `<span class="c-state">${s.id}</span>`).join('');
+    return `
+      <div class="c-card ${isDis ? 'disabled' : ''} ${n <= 5 ? 'warn' : ''}" data-id="${id}" data-n="${n}">
+        <div class="c-card-head">
+          <div>
+            <div class="c-card-title">${labelEn}</div>
+            <div class="c-card-id">${id}</div>
+          </div>
+          <span class="c-badge ${b.cls}">${b.text}</span>
+        </div>
+        <div class="c-states">${stateChips || '<span style="color:var(--text-3);font-size:.7rem">— no matching states —</span>'}</div>
+        <div class="c-card-foot">
+          <span class="c-translations"></span>
+          <button class="c-disable" data-id="${id}"></button>
+        </div>
+      </div>
+    `;
+  }
+
+  function drawList() {
+    const ids = all.filter(id => {
+      if (filter === 'low' && Puzzle.countMatching(id, states) > 5) return false;
+      if (filter === 'disabled' && !disabled.has(id)) return false;
+      if (!search) return true;
+      const q = search.toLowerCase();
+      const label = (I18n.constraint(id) || '').toLowerCase();
+      const matchedStates = states.filter(s => Puzzle.matches(s, id)).map(s => s.id);
+      return id.toLowerCase().includes(q) || label.includes(q) || matchedStates.includes(search.toUpperCase());
+    });
+
+    const grouped = {};
+    for (const id of ids) {
+      const cat = categorize(id);
+      (grouped[cat.id] = grouped[cat.id] || { label: cat.label, ids: [] }).ids.push(id);
+    }
+
+    const order = CATEGORIES.map(c => c.id);
+    let html = '';
+    for (const cid of order) {
+      const g = grouped[cid]; if (!g || !g.ids.length) continue;
+      html += `<div class="c-cat">
+        <div class="c-cat-title">${g.label} <span class="c-cat-count">${g.ids.length}</span></div>
+        <div class="c-list">${g.ids.map(cardHtml).join('')}</div>
+      </div>`;
+    }
+    if (!html) html = `<p style="text-align:center;color:var(--text-3);padding:40px">No constraint matches your filter.</p>`;
+    document.getElementById('c-content').innerHTML = html;
+
+    document.querySelectorAll('.c-disable').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        if (disabled.has(id)) disabled.delete(id); else disabled.add(id);
+        Puzzle.setDisabled([...disabled]);
+        drawSummary();
+        drawList();
+      });
+    });
+  }
+
+  function wireToolbar() {
+    document.getElementById('c-search').addEventListener('input', e => {
+      search = e.target.value.trim();
+      drawList();
+    });
+    document.querySelectorAll('.c-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.c-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filter = btn.dataset.filter;
+        drawList();
+      });
+    });
+    document.querySelector('.c-filter[data-filter="all"]').classList.add('active');
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,8 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────
-// Statedoku — Twitter daily bot (Claude-powered)
+// Statedoku — Twitter bot (Claude-powered)
 //
-// Generates a unique tweet every day using Anthropic's Claude API,
-// then posts it to X (Twitter API v2, OAuth 1.0a).
+// Two phases controlled by the PHASE constant below:
+//   - "prelaunch"  → 2 tweets/day, no puzzle CTA yet (hype + fun facts)
+//   - "launch"    → 1 tweet/day promoting the daily puzzle
 //
 // Required secrets (set with `wrangler secret put NAME`):
 //   - TWITTER_API_KEY            (Twitter consumer key)
@@ -14,7 +15,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 const SITE_URL = 'https://statedoku.com';
-const ANTHROPIC_MODEL = 'claude-haiku-4-5';   // small + fast + cheap (~$0.25/M input tokens)
+const ANTHROPIC_MODEL = 'claude-haiku-4-5';   // cheap + fast (~$0.0008 / tweet)
+
+// ⚙️ FLIP THIS WHEN YOU LAUNCH THE PUZZLE
+// "prelaunch" → 2 tweets/day, no statedoku.com link, no #Statedoku hashtag (yet)
+// "launch"    → 1 tweet/day, promoting the daily puzzle with link
+const PHASE = 'prelaunch';
 
 // ───── OAuth 1.0a (Twitter) ──────────────────────────────────────────────
 function percentEncode(str) {
@@ -59,8 +65,46 @@ async function postTweet(text, env) {
   return { ok: response.ok, status: response.status, body };
 }
 
-// ───── Claude API ────────────────────────────────────────────────────────
-const STYLES = [
+// ───── Prompts ───────────────────────────────────────────────────────────
+const PRELAUNCH_PERSONA = `You run the @Statedoku Twitter account.
+
+Statedoku is a NEW daily puzzle game launching soon — it mixes Sudoku grid logic with US geography (players fill a 3×3 grid with US states that satisfy row+column constraints). The game is NOT live yet, so we're building an audience first.
+
+Voice: casual, witty, slightly nerdy. Like a friend who's obsessed with US geography facts and is excited to share them. Curious and playful. NEVER corporate. NEVER use em-dashes or fancy unicode dashes.
+
+Hard rules (every tweet):
+- Under 270 characters total.
+- 1-2 emojis max (no emoji spam, no flag overload).
+- Sound human (use contractions, mix sentence lengths).
+- Do NOT include any link or URL.
+- Do NOT use the hashtag #Statedoku yet (we keep it for launch).
+- Do NOT mention "statedoku.com" or call to play — the game isn't live yet.
+- Do NOT wrap the tweet in quotes.
+- Output ONLY the tweet text, no explanations, no preamble.`;
+
+// Two distinct tweet types, used at different times of the day.
+const PRELAUNCH_MORNING_STYLES = [
+  'a teaser "something\'s coming" post hinting at a new daily geography game, without revealing details',
+  'a relatable observation about how bad most Americans (or non-Americans) are at US geography, ending with a hint that help is coming',
+  'a poll-style question that gets state-heads to reply (e.g. "name a state without using its first letter")',
+  'an "incoming" / "soon" type post building hype, mysterious but fun',
+  'a pop-culture comparison (Wordle, Connections, NYT games) framing why daily games are great, hinting a new one is coming',
+  'a hot take or playful opinion about a US geography topic (best state shape, weirdest border, etc.)',
+  'a "tell me you\'re from [region] without telling me you\'re from [region]" style prompt',
+];
+
+const PRELAUNCH_EVENING_STYLES = [
+  'a surprising fun fact about a single US state (history, geography, name origin, weird law, etc.) — pick a non-obvious one',
+  'a "did you know" about US state borders, shapes, or geography quirks',
+  'a fact about a state capital (origin of the name, oddities, smallest/largest, etc.)',
+  'a fact about state names: native origins, royal references, what they actually mean',
+  'a comparison between two states that share something weird (same shape, share a border, name twins, etc.)',
+  'a fact about US regions, belts (Sun Belt, Rust Belt, Bible Belt, etc.) or unofficial geographic groupings',
+  'a number-based geography fact (e.g. "the smallest state is 245× smaller than the largest", "X states have a Pacific coast", etc.)',
+  'a quirky superlative (the only state that..., the state with the most..., the only one shaped like...)',
+];
+
+const LAUNCH_STYLES = [
   'a punchy daily reminder that today\'s puzzle is live',
   'a "did you know" geography fact about a US state, that ties to the game',
   'an engagement question / poll for state-heads to reply to',
@@ -70,20 +114,33 @@ const STYLES = [
   'a brag-about-streak post inviting others to share their results',
 ];
 
-function _todayDateStr() {
-  return new Date().toISOString().slice(0, 10);
-}
+function _todayDateStr() { return new Date().toISOString().slice(0, 10); }
+function _dayOfYear(d) { return Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 86400000); }
 
-async function generateTweetText(env) {
-  const date = new Date();
-  const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
-  const dateLong = date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+// Pick which prompt to send to Claude based on phase + current UTC hour.
+function buildPrompt() {
+  const now = new Date();
+  const dateLong = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  const doy = _dayOfYear(now);
+  const utcHour = now.getUTCHours();
 
-  // Rotate style by day-of-year so each day feels different and we don't repeat too soon
-  const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-  const style = STYLES[dayOfYear % STYLES.length];
+  if (PHASE === 'prelaunch') {
+    // Mornings (12:00 UTC slot) → hype/teaser. Evenings (18:00 UTC slot) → fun fact.
+    const isMorningSlot = utcHour < 15;
+    const styleList = isMorningSlot ? PRELAUNCH_MORNING_STYLES : PRELAUNCH_EVENING_STYLES;
+    // Rotate independently within each slot so morning and evening don't echo
+    const style = styleList[(doy + (isMorningSlot ? 0 : 3)) % styleList.length];
 
-  const prompt = `You write the daily tweet for @Statedoku — a free daily puzzle game (statedoku.com) that mixes Sudoku grid logic with US geography. Players fill a 3×3 grid with US states matching row + column constraints, like "Pacific coast × Borders Mexico = California". 3 mistakes allowed.
+    return `${PRELAUNCH_PERSONA}
+
+Today is ${dateLong}.
+
+Write ONE tweet for ${isMorningSlot ? 'this morning' : 'this evening'} in this style: ${style}.`;
+  }
+
+  // LAUNCH phase — promotes the live puzzle with link + hashtag
+  const style = LAUNCH_STYLES[doy % LAUNCH_STYLES.length];
+  return `You write the daily tweet for @Statedoku — a free daily puzzle game (${SITE_URL}) that mixes Sudoku grid logic with US geography. Players fill a 3×3 grid with US states matching row + column constraints, like "Pacific coast × Borders Mexico = California". 3 mistakes allowed.
 
 Today is ${dateLong}.
 
@@ -98,7 +155,10 @@ Requirements:
 - Do NOT use em-dashes or fancy unicode dashes.
 - Do NOT wrap in quotes.
 - Output ONLY the tweet, no explanations.`;
+}
 
+async function generateTweetText(env) {
+  const prompt = buildPrompt();
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -128,6 +188,16 @@ Requirements:
 
 // Fallback if Claude API is unavailable
 function fallbackTweet() {
+  if (PHASE === 'prelaunch') {
+    const facts = [
+      'Rhode Island is so small you can drive across it in about 45 minutes 🚗',
+      'Alaska has more coastline than the rest of the US states combined.',
+      'Hawaii is the only state that grows coffee commercially ☕',
+      'Maine is the only US state whose name is just one syllable.',
+      'Wyoming has fewer people than 31 individual US cities.',
+    ];
+    return facts[Math.floor(Math.random() * facts.length)];
+  }
   const date = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   return `🇺🇸 Today's Statedoku is live\n\n${date}\n\nSolve the 3x3 US states grid in 3 mistakes or fewer.\n\n${SITE_URL}\n\n#Statedoku`;
 }
@@ -144,14 +214,16 @@ async function _runOnce(env, { dryRun = false } = {}) {
     source = 'fallback';
   }
 
-  if (dryRun) return { dry_run: true, source, tweet };
+  if (dryRun) return { dry_run: true, phase: PHASE, source, tweet };
 
   const result = await postTweet(tweet, env);
-  return { source, tweet, result };
+  return { phase: PHASE, source, tweet, result };
 }
 
 export default {
-  // Daily cron — 14:00 UTC (set in wrangler.toml)
+  // Cron — schedule set in wrangler.toml.
+  // prelaunch: fires twice a day (morning + evening UTC).
+  // launch:    fires once a day.
   async scheduled(event, env, ctx) {
     try {
       const r = await _runOnce(env);
