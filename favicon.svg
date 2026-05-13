@@ -1,57 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#0F2147"/>
+
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0F2147"/>
-      <stop offset="100%" stop-color="#081530"/>
-    </linearGradient>
-    <linearGradient id="flagBg" x1="0" y1="0" x2="0" y2="1">
+    <clipPath id="fs-clip">
+      <text x="32" y="51" font-family="Helvetica, Arial, sans-serif" font-size="62" font-weight="900" text-anchor="middle">S</text>
+    </clipPath>
+    <linearGradient id="favRed" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#DC2626"/>
       <stop offset="100%" stop-color="#B91C1C"/>
     </linearGradient>
-    <linearGradient id="starGold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FBBF24"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
   </defs>
 
-  <!-- Navy background (high contrast for browser tabs) -->
-  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-
-  <!-- Inner white grid -->
-  <rect x="6" y="6" width="52" height="52" rx="8" fill="#fff"/>
-
-  <!-- Grid lines (thicker for visibility at 16px) -->
-  <g stroke="#0F2147" stroke-width="2.5" stroke-linecap="round" opacity="0.8">
-    <line x1="23.3" y1="9" x2="23.3" y2="55"/>
-    <line x1="40.7" y1="9" x2="40.7" y2="55"/>
-    <line x1="9" y1="23.3" x2="55" y2="23.3"/>
-    <line x1="9" y1="40.7" x2="55" y2="40.7"/>
-  </g>
-
-  <!-- Top-left: bigger US flag for favicon visibility -->
-  <clipPath id="fc">
-    <rect x="7" y="7" width="15" height="15" rx="4"/>
-  </clipPath>
-  <g clip-path="url(#fc)">
-    <rect x="7" y="7" width="15" height="15" fill="url(#flagBg)"/>
-    <g fill="#fff">
-      <rect x="7" y="9.2" width="15" height="1.2"/>
-      <rect x="7" y="11.6" width="15" height="1.2"/>
-      <rect x="7" y="14.0" width="15" height="1.2"/>
-      <rect x="7" y="16.4" width="15" height="1.2"/>
-      <rect x="7" y="18.8" width="15" height="1.2"/>
-      <rect x="7" y="21.2" width="15" height="1.2"/>
+  <g clip-path="url(#fs-clip)">
+    <rect width="64" height="64" fill="url(#favRed)"/>
+    <g fill="#FFFFFF">
+      <rect y="11" width="64" height="6"/>
+      <rect y="23" width="64" height="6"/>
+      <rect y="35" width="64" height="6"/>
+      <rect y="47" width="64" height="6"/>
     </g>
-    <rect x="7" y="7" width="6.5" height="7" fill="#1E3A8A"/>
+    <rect width="28" height="22" fill="#1E3A8A"/>
+    <g fill="#FFFFFF">
+      <circle cx="5" cy="5" r="1.4"/>
+      <circle cx="13" cy="5" r="1.4"/>
+      <circle cx="21" cy="5" r="1.4"/>
+      <circle cx="9" cy="11" r="1.4"/>
+      <circle cx="17" cy="11" r="1.4"/>
+      <circle cx="5" cy="17" r="1.4"/>
+      <circle cx="13" cy="17" r="1.4"/>
+      <circle cx="21" cy="17" r="1.4"/>
+    </g>
   </g>
-
-  <!-- Center: bold gold star with halo -->
-  <circle cx="32" cy="32" r="8" fill="rgba(245,158,11,0.18)"/>
-  <polygon points="32,25 34,30.5 39.9,31.1 35.5,35 36.7,40.7 32,37.7 27.3,40.7 28.5,35 24.1,31.1 30,30.5"
-           fill="url(#starGold)"
-           stroke="#D97706" stroke-width="0.5" stroke-linejoin="round"/>
-
-  <!-- Bottom-right: red marker -->
-  <circle cx="48" cy="48" r="4.5" fill="#FEE2E2"/>
-  <circle cx="48" cy="48" r="3" fill="#DC2626"/>
 </svg>
