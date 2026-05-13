@@ -683,7 +683,7 @@ main {
 }
 .share-row .sr-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .share-row .sr-btn:active { transform: translateY(0); }
-.share-row .sr-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.share-row .sr-btn svg { width: 18px; height: 18px; display: block; }
 #solved-banner h3 { color: var(--green); }
 #gameover-banner h3 { color: var(--red); }
 #solved-banner p, #gameover-banner p {
