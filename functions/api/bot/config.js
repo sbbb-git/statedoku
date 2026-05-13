@@ -19,7 +19,7 @@ Always:
 - Sound human (mix sentence structures, contractions OK)`,
 
   styles: [
-    'a punchy reminder that today\\'s puzzle is live, mention the day of week casually',
+    "a punchy reminder that today's puzzle is live, mention the day of week casually",
     'a "did you know" geography fact about a US state, that ties to a Statedoku constraint',
     'an engagement question or poll for state-heads to reply to',
     'a single-state spotlight with 3-4 surprising facts and a CTA to play',

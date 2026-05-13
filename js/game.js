@@ -358,37 +358,6 @@ const Game = (() => {
     setTimeout(() => { el.textContent = msg; }, 50);
   }
 
-  // ── Undo (one per puzzle) ────────────────────────────────────────────────
-  let _undoUsed = false;
-  function undo() {
-    if (_solved || _gameOver) return;
-    if (_undoUsed) { _toast(I18n.t('undo_used') || 'Undo already used'); return; }
-    // Find last locked correct cell and unlock it (decrement errors not affected).
-    // Strategy: walk from (2,2) → (0,0) and unlock the first correct placement.
-    for (let r = 2; r >= 0; r--) {
-      for (let c = 2; c >= 0; c--) {
-        if (_grid[r][c] && _puzzle.solution[r][c] === _grid[r][c]) {
-          _grid[r][c] = null;
-          _undoUsed = true;
-          _renderCells();
-          _updateScore();
-          _saveProgress();
-          _toast(I18n.t('undo_done') || 'Move undone');
-          return;
-        }
-      }
-    }
-    _toast(I18n.t('undo_nothing') || 'Nothing to undo');
-  }
-
-  function _toast(msg) {
-    const t = document.getElementById('toast');
-    if (!t) return;
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(_toast._t);
-    _toast._t = setTimeout(() => t.classList.remove('show'), 1800);
-  }
 
   function _triggerGameOver() {
     _gameOver = true;
@@ -865,7 +834,7 @@ const Game = (() => {
     location.reload();
   }
 
-  return { init, share, showStats, showHowToPlay, rerender, undo, _toggleReminder,
+  return { init, share, showStats, showHowToPlay, rerender, _toggleReminder,
            _dev: { getPuzzle:_devGetPuzzle, getGrid:_devGetGrid, solve:_devSolve, revealRow:_devRevealRow, resetCurrent:_devResetCurrent } };
 })();
 

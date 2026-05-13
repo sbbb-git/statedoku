@@ -88,9 +88,6 @@
       <button class="lang-btn active" data-lang="fr" aria-current="true">FR</button>
       <button class="lang-btn" data-lang="es" onclick="location.href='/es/'">ES</button>
     </div>
-    <button class="icon-btn" id="btn-undo" title="Annuler" aria-label="Annuler le dernier coup">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>
-    </button>
     <button class="icon-btn" id="btn-howto" title="Comment jouer" aria-label="Comment jouer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
     </button>
@@ -213,6 +210,8 @@
 </div>
 
 <div id="toast" role="status" aria-live="polite"></div>
+<div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
 
 <script src="../config.js"></script>
 <script src="../js/admin.js"></script>
