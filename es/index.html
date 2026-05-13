@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Statedoku — El puzzle diario de estados de EE.UU. | Sudoku con geografía americana</title>
+  <meta name="description" content="Statedoku es un puzzle de geografía diario y gratis. Rellena una cuadrícula 3×3 con estados de EE.UU. que cumplan cada restricción de fila y columna. Nuevo puzzle cada día, sin registro.">
+  <meta name="keywords" content="puzzle diario, sudoku, estados unidos, juego de geografía, juego diario, alternativa wordle, statedoku">
+  <meta name="author" content="Statedoku">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+  <link rel="canonical" href="https://statedoku.com/es/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/">
+  <link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://statedoku.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://statedoku.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Statedoku">
+  <meta property="og:title" content="Statedoku — Puzzle diario de estados de EE.UU.">
+  <meta property="og:description" content="Un puzzle diario tipo Sudoku con la geografía de EE.UU. Resuelve la cuadrícula 3×3 con menos de 3 errores.">
+  <meta property="og:url" content="https://statedoku.com/es/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Statedoku — Puzzle diario de estados de EE.UU.">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Statedoku — Puzzle diario de estados de EE.UU.">
+  <meta name="twitter:description" content="Un puzzle diario tipo Sudoku con la geografía de EE.UU.">
+  <meta name="twitter:image" content="https://statedoku.com/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="mask-icon" href="/favicon.svg" color="#0F2147">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Statedoku">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    "name": "Statedoku",
+    "description": "Puzzle de geografía diario: rellena una cuadrícula 3×3 con estados de EE.UU. que cumplan las restricciones de fila y columna.",
+    "url": "https://statedoku.com/es/",
+    "image": "https://statedoku.com/og-image.png",
+    "genre": ["Puzzle", "Educativo", "Geografía"],
+    "applicationCategory": "Game",
+    "operatingSystem": "Any",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}
+  }
+  </script>
+</head>
+<body>
+
+<h1 class="sr-only">Statedoku — Puzzle diario de estados de EE.UU.</h1>
+
+<header>
+  <a href="/es/" class="logo">State<em>doku</em></a>
+  <nav class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="en" onclick="location.href='/'">EN</button>
+      <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active" data-lang="es">ES</button>
+    </div>
+    <button class="icon-btn" id="btn-howto" title="Cómo jugar">?</button>
+    <button class="icon-btn" id="btn-stats" title="Estadísticas">📊</button>
+    <button class="icon-btn" id="btn-share" title="Compartir">↑</button>
+  </nav>
+</header>
+
+<div class="score-bar">
+  <span class="score-date" id="puzzle-date"></span>
+  <span id="score-display">0 / 9</span>
+  <span id="error-display">○○○</span>
+</div>
+
+<main>
+  <div id="loading">Cargando puzzle…</div>
+
+  <div class="ad-container ad-top" id="ad-top" aria-label="Publicidad"></div>
+
+  <div id="game-wrap">
+    <div class="grid-wrapper">
+      <div class="grid-outer">
+        <div class="grid-corner"></div>
+        <div class="col-label" id="col-label-0"></div>
+        <div class="col-label" id="col-label-1"></div>
+        <div class="col-label" id="col-label-2"></div>
+        <div class="row-label" id="row-label-0"></div>
+        <div class="cell" data-r="0" data-c="0"></div>
+        <div class="cell" data-r="0" data-c="1"></div>
+        <div class="cell" data-r="0" data-c="2"></div>
+        <div class="row-label" id="row-label-1"></div>
+        <div class="cell" data-r="1" data-c="0"></div>
+        <div class="cell" data-r="1" data-c="1"></div>
+        <div class="cell" data-r="1" data-c="2"></div>
+        <div class="row-label" id="row-label-2"></div>
+        <div class="cell" data-r="2" data-c="0"></div>
+        <div class="cell" data-r="2" data-c="1"></div>
+        <div class="cell" data-r="2" data-c="2"></div>
+      </div>
+    </div>
+
+    <div id="solved-banner">
+      <div class="ad-container ad-solved" id="ad-solved" aria-label="Publicidad"></div>
+      <div class="banner-icon banner-icon-success">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 data-i18n="solved">¡Resuelto!</h3>
+      <p data-i18n="solved_msg">¡Completaste el Statedoku de hoy!</p>
+      <button class="btn-share" id="btn-share-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        <span data-i18n="share">Compartir</span>
+      </button>
+    </div>
+
+    <div id="gameover-banner">
+      <div class="banner-icon banner-icon-fail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+      <h3 data-i18n="game_over">Fin del juego</h3>
+      <p data-i18n="game_over_msg">Has agotado tus 3 errores. Solución de hoy:</p>
+      <div id="gameover-solution"></div>
+      <p class="banner-sub" data-i18n="come_back">Vuelve mañana para un nuevo puzzle.</p>
+    </div>
+  </div>
+
+  <div class="ad-container ad-bottom" id="ad-bottom" aria-label="Publicidad"></div>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="?date=archive" style="color:inherit">Archivo</a></p>
+</footer>
+
+<!-- Search panel (bottom sheet) -->
+<div id="search-panel">
+  <div id="sp-tags"></div>
+  <input type="text" id="sp-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Escribe al menos 3 letras…">
+  <ul id="sp-dropdown"></ul>
+</div>
+<div id="sp-overlay"></div>
+
+<!-- Stats Modal -->
+<div class="modal" id="stats-modal" role="dialog" aria-modal="true">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 data-i18n="stats">Estadísticas</h3>
+      <button class="modal-close" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box"><span class="stat-value" id="stat-played">0</span><span class="stat-label" data-i18n="played">Jugados</span></div>
+      <div class="stat-box"><span class="stat-value" id="stat-win-rate">—</span><span class="stat-label" data-i18n="win_rate">Victorias</span></div>
+      <div class="stat-box"><span class="stat-value" id="stat-streak">0</span><span class="stat-label" data-i18n="streak">Racha</span></div>
+      <div class="stat-box"><span class="stat-value" id="stat-best-time">—</span><span class="stat-label" data-i18n="best_time">Mejor</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- How To Play Modal -->
+<div class="modal" id="howto-modal" role="dialog" aria-modal="true">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 data-i18n="how_to_play">Cómo jugar</h3>
+      <button class="modal-close" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="howto-content">
+      <p data-i18n="how_to_play_text"></p>
+      <div class="howto-example">
+        <strong>Ejemplo:</strong> Si la fila dice <em>"Región Oeste"</em> y la columna <em>"Frontera con México"</em>, las respuestas válidas incluyen Arizona, California o Nuevo México.
+      </div>
+      <p style="margin-top:12px">
+        <strong>Verde ✅</strong> = Colocación correcta<br>
+        <strong>Rojo ❌</strong> = Estado incorrecto para esta celda
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="../config.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/puzzle.js"></script>
+<script src="../js/game.js"></script>
+<script src="../js/ads.js"></script>
+</body>
+</html>

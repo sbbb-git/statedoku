@@ -1,0 +1,72 @@
+{
+  "name": "Statedoku — Daily US States Puzzle",
+  "short_name": "Statedoku",
+  "description": "A free daily geography puzzle. Fill a 3×3 grid with US states matching every row and column constraint. Sudoku meets American geography.",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#FAFAF9",
+  "theme_color": "#0F2147",
+  "orientation": "portrait",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["games", "education", "entertainment"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "540x960",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Statedoku puzzle on mobile"
+    },
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Statedoku puzzle on desktop"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today's puzzle",
+      "short_name": "Today",
+      "description": "Jump to today's daily puzzle",
+      "url": "/?utm_source=pwa_shortcut"
+    },
+    {
+      "name": "Stats",
+      "short_name": "Stats",
+      "url": "/?stats=1&utm_source=pwa_shortcut"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

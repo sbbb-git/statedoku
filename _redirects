@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Force HTTPS + www → apex (or apex → www, your choice)
+# https://www.statedoku.com/* https://statedoku.com/:splat 301

@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local dev
+node_modules/
+.env
+.env.local
+
+# Cloudflare Wrangler
+.wrangler/
+.dev.vars
+
+# OS
+Thumbs.db
