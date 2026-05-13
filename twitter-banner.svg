@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F2147"/>
+      <stop offset="100%" stop-color="#061026"/>
+    </linearGradient>
+    <pattern id="stars" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="0.9" fill="rgba(255,255,255,0.07)"/>
+      <circle cx="60" cy="40" r="0.6" fill="rgba(255,255,255,0.05)"/>
+      <circle cx="35" cy="65" r="0.7" fill="rgba(255,255,255,0.06)"/>
+    </pattern>
+    <linearGradient id="redG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#B91C1C"/>
+    </linearGradient>
+    <clipPath id="sclip">
+      <text x="320" y="380" font-family="Helvetica, Arial, sans-serif" font-size="420" font-weight="900" text-anchor="middle">S</text>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="url(#bg)"/>
+  <rect width="1500" height="500" fill="url(#stars)"/>
+
+  <!-- Top tricolor stripe -->
+  <rect x="0" y="0" width="500" height="6" fill="#DC2626"/>
+  <rect x="500" y="0" width="500" height="6" fill="#FFFFFF"/>
+  <rect x="1000" y="0" width="500" height="6" fill="#F59E0B"/>
+
+  <!-- LEFT: Big Flag-S mark (will be partially covered by avatar) -->
+  <g clip-path="url(#sclip)">
+    <rect x="120" y="80" width="400" height="380" fill="url(#redG)"/>
+    <g fill="#FFFFFF">
+      <rect x="120" y="120" width="400" height="32"/>
+      <rect x="120" y="180" width="400" height="32"/>
+      <rect x="120" y="240" width="400" height="32"/>
+      <rect x="120" y="300" width="400" height="32"/>
+      <rect x="120" y="360" width="400" height="32"/>
+    </g>
+    <rect x="120" y="80" width="180" height="135" fill="#1E3A8A"/>
+    <g fill="#FFFFFF">
+      <circle cx="145" cy="105" r="6"/>
+      <circle cx="195" cy="105" r="6"/>
+      <circle cx="245" cy="105" r="6"/>
+      <circle cx="170" cy="140" r="6"/>
+      <circle cx="220" cy="140" r="6"/>
+      <circle cx="270" cy="140" r="6"/>
+      <circle cx="145" cy="175" r="6"/>
+      <circle cx="195" cy="175" r="6"/>
+      <circle cx="245" cy="175" r="6"/>
+    </g>
+  </g>
+
+  <!-- CENTER: Brand wordmark -->
+  <g font-family="Inter, Helvetica, sans-serif">
+    <text x="570" y="225" font-size="120" font-weight="900" letter-spacing="-3" fill="#FFFFFF">State<tspan fill="#DC2626">doku</tspan></text>
+    <rect x="900" y="240" width="120" height="6" fill="#F59E0B"/>
+    <text x="570" y="285" font-size="32" font-weight="600" fill="rgba(255,255,255,0.85)">The Daily US States Puzzle 🇺🇸</text>
+    <text x="570" y="325" font-size="22" font-weight="500" fill="rgba(255,255,255,0.55)">Sudoku × American geography · One free grid every day</text>
+  </g>
+
+  <!-- RIGHT: Mini puzzle preview -->
+  <g transform="translate(1130 130)">
+    <rect width="280" height="240" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <g font-family="Inter, Helvetica, sans-serif">
+      <!-- 3 cells solved -->
+      <rect x="20"  y="20"  width="70" height="60" fill="#ECFDF5" stroke="#059669" stroke-width="2" rx="6"/>
+      <text x="55" y="58" font-size="20" font-weight="800" text-anchor="middle" fill="#059669">CA</text>
+      <rect x="105" y="20"  width="70" height="60" fill="#ECFDF5" stroke="#059669" stroke-width="2" rx="6"/>
+      <text x="140" y="58" font-size="20" font-weight="800" text-anchor="middle" fill="#059669">TX</text>
+      <rect x="190" y="20"  width="70" height="60" fill="#ECFDF5" stroke="#059669" stroke-width="2" rx="6"/>
+      <text x="225" y="58" font-size="20" font-weight="800" text-anchor="middle" fill="#059669">NY</text>
+
+      <rect x="20"  y="90"  width="70" height="60" fill="#FFF" stroke="rgba(255,255,255,0.2)" stroke-width="1" rx="6"/>
+      <text x="55" y="125" font-size="24" font-weight="300" text-anchor="middle" fill="#D4D4D4">★</text>
+      <rect x="105" y="90"  width="70" height="60" fill="#FEF2F2" stroke="#DC2626" stroke-width="2" rx="6"/>
+      <text x="140" y="128" font-size="20" font-weight="800" text-anchor="middle" fill="#DC2626">FL</text>
+      <rect x="190" y="90"  width="70" height="60" fill="#FFF" stroke="rgba(255,255,255,0.2)" stroke-width="1" rx="6"/>
+      <text x="225" y="125" font-size="24" font-weight="300" text-anchor="middle" fill="#D4D4D4">★</text>
+
+      <rect x="20"  y="160" width="70" height="60" fill="#FFF" stroke="rgba(255,255,255,0.2)" stroke-width="1" rx="6"/>
+      <text x="55" y="195" font-size="24" font-weight="300" text-anchor="middle" fill="#D4D4D4">★</text>
+      <rect x="105" y="160" width="70" height="60" fill="#FFF" stroke="rgba(255,255,255,0.2)" stroke-width="1" rx="6"/>
+      <text x="140" y="195" font-size="24" font-weight="300" text-anchor="middle" fill="#D4D4D4">★</text>
+      <rect x="190" y="160" width="70" height="60" fill="#ECFDF5" stroke="#059669" stroke-width="2" rx="6"/>
+      <text x="225" y="198" font-size="20" font-weight="800" text-anchor="middle" fill="#059669">IL</text>
+    </g>
+  </g>
+
+  <!-- Bottom: URL + accent -->
+  <g font-family="Inter, Helvetica, sans-serif">
+    <text x="570" y="445" font-size="22" font-weight="800" letter-spacing="3" fill="#F59E0B">STATEDOKU.COM</text>
+    <text x="570" y="470" font-size="15" font-weight="500" fill="rgba(255,255,255,0.4)">New puzzle every day · Free · No signup · 3 mistakes allowed</text>
+  </g>
+
+  <!-- Bottom tricolor stripe -->
+  <rect x="0" y="494" width="500" height="6" fill="#0F2147"/>
+  <rect x="500" y="494" width="500" height="6" fill="#FFFFFF"/>
+  <rect x="1000" y="494" width="500" height="6" fill="#DC2626"/>
+</svg>
