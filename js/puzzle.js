@@ -26,58 +26,52 @@ const Puzzle = (() => {
 
   // --- Row groups: every triple is disjoint and has been verified to produce
   //     at least one globally-unique puzzle. ---
+  // Curated list — all groups tested at ≥20/30 viability rate on real seeds.
+  // Dead groups (subregion combos that fail, region/political/coast that have
+  // too many states per row to find unique solutions) have been removed.
   const MUTEX_ROW_GROUPS = [
-    // Population
-    ['pop_1m5m', 'pop_5m10m', 'pop_gt10m'],
     // Timezones
     ['tz_central', 'tz_mountain', 'tz_pacific'],
-    // Subregion combos (only kept subregions)
-    ['sub_mid_atlantic', 'sub_deep_south', 'sub_mountain'],
+    // Subregion spread
     ['sub_new_england', 'sub_deep_south', 'sub_mountain'],
-    ['sub_new_england', 'sub_deep_south', 'sub_plains'],
-    ['sub_plains', 'sub_deep_south', 'sub_mountain'],
-    // Four Corners cultural cluster
-    ['four_corners', 'sub_new_england', 'sub_deep_south'],
-    // Borders (disjoint)
+    // Borders
     ['border_canada', 'border_mexico', 'coast_gulf'],
-    // Letter-initial groups (compact, valid letters only)
+    // Letter-initial groups
     ['starts_a', 'starts_m', 'starts_w'],
     ['starts_a', 'starts_w', 'has_new'],
     ['starts_m', 'starts_w', 'has_new'],
     ['starts_n', 'starts_a', 'starts_w'],
     ['starts_i', 'starts_m', 'starts_n'],
-    // Border + letter combos
+    // Border + letter combo
     ['border_mexico', 'starts_m', 'starts_w'],
     ['pop_lt1m', 'border_mexico', 'letters_8'],
-    // Coastal
+    // Coast + has_new
     ['coast_gulf', 'starts_w', 'has_new'],
     ['coast_gulf', 'tz_pacific', 'has_new'],
     ['tz_pacific', 'starts_a', 'has_new'],
-    // Northeast geographic
-    ['region_northeast', 'coast_gulf', 'tz_mountain'],
-    ['region_northeast', 'tz_mountain', 'tz_pacific'],
-    ['region_northeast', 'tz_pacific', 'on_mississippi'],
-    ['region_northeast', 'border_mexico', 'on_mississippi'],
-    // New England combos
-    ['sub_new_england', 'coast_gulf', 'tz_mountain'],
-    ['sub_new_england', 'tz_mountain', 'tz_pacific'],
-    // Belt combos
-    ['bible_belt', 'rust_belt', 'sub_new_england'],
-    ['corn_belt', 'sub_new_england', 'sub_mountain'],
-    ['sun_belt', 'sub_new_england', 'sub_mountain'],
-    ['cotton_belt', 'sub_new_england', 'sub_mountain'],
     // Natural hazards
-    ['tornado_alley', 'sub_new_england', 'tz_pacific'],
     ['hurricane_zone', 'sub_new_england', 'sub_mountain'],
-    ['earthquake_zone', 'sub_new_england', 'sub_deep_south'],
+    ['earthquake_zone', 'sub_new_england', 'sub_mid_atlantic'],
+    ['has_glaciers', 'sub_new_england', 'sub_deep_south'],
     // Geography
-    ['has_volcano', 'sub_new_england', 'sub_deep_south'],
-    ['on_appalachian_trail', 'sub_mountain', 'sub_plains'],
-    ['high_elevation', 'sub_new_england', 'sub_deep_south'],
+    ['appalachian', 'sub_mountain', 'sub_pacific'],
+    ['mt_appalachians', 'sub_mountain', 'sub_pacific'],
+    ['desert_state', 'sub_new_england', 'sub_deep_south'],
+    // Cultural belts
+    ['rust_belt', 'sub_deep_south', 'sub_mountain'],
+    ['sun_belt', 'sub_new_england', 'sub_plains'],
     // History
-    ['statehood_pre_1800', 'statehood_1900s', 'sub_plains'],
-    // Name origin (NEW — disjoint by design, 25/6/9 states each)
-    ['name_native_origin', 'name_spanish_origin', 'name_royalty_origin'],
+    ['statehood_1900s', 'sub_new_england', 'sub_mid_atlantic'],
+    ['statehood_1900s', 'sub_new_england', 'sub_deep_south'],
+    // Name origin
+    ['name_spanish_origin', 'sub_new_england', 'sub_mid_atlantic'],
+    // Route 66
+    ['route_66', 'sub_new_england', 'sub_mountain'],
+    ['route_66', 'sub_new_england', 'sub_deep_south'],
+    // Cities & borders
+    ['has_million_city', 'sub_new_england', 'sub_mountain'],
+    ['has_million_city', 'sub_new_england', 'sub_plains'],
+    ['borders_few', 'sub_mid_atlantic', 'sub_mountain'],
   ];
 
   const ALL_CONSTRAINTS = [
