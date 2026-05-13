@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+
+  <title>Statedoku Archive — Play Past Daily Puzzles</title>
+  <meta name="description" content="Browse and play every past Statedoku puzzle. Each date has its own unique 3×3 US states grid. Tap any day on the calendar to play that puzzle.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://statedoku.com/archive/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Statedoku Archive — Play Past Daily Puzzles">
+  <meta property="og:description" content="Browse and play every past Statedoku puzzle on the calendar.">
+  <meta property="og:url" content="https://statedoku.com/archive/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png">
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em></a>
+  <nav class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/archive/'">FR</button>
+      <button class="lang-btn" data-lang="es" onclick="location.href='/es/archive/'">ES</button>
+    </div>
+  </nav>
+</header>
+
+<main class="archive-main">
+  <article class="archive-page">
+    <h1>Archive</h1>
+    <p class="archive-intro">Tap any past day to play its puzzle. Your progress per date is saved separately.</p>
+
+    <div class="archive-legend">
+      <span><span class="archive-dot archive-dot-solved"></span>Solved</span>
+      <span><span class="archive-dot archive-dot-lost"></span>Game over</span>
+      <span><span class="archive-dot archive-dot-progress"></span>In progress</span>
+      <span><span class="archive-dot archive-dot-empty"></span>Not played</span>
+    </div>
+
+    <nav class="archive-nav">
+      <button id="arc-prev" aria-label="Previous month">◀</button>
+      <h2 id="arc-month-label" aria-live="polite"></h2>
+      <button id="arc-next" aria-label="Next month">▶</button>
+    </nav>
+
+    <div class="archive-calendar" id="arc-calendar"></div>
+
+    <p class="archive-meta" id="arc-stats"></p>
+    <p class="legal-back"><a href="/">→ Back to today's puzzle</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/archive/">Archive</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a></p>
+</footer>
+
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+<script src="/js/archive.js"></script>
+</body>
+</html>
