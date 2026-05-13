@@ -1122,6 +1122,150 @@ footer a:hover { color: var(--red); text-decoration: underline; }
 }
 .dev-cstr-hint strong { color: var(--gold); }
 
+/* Dev panel — feature flag rows */
+.dev-section-title {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font: 700 0.65rem/1 var(--font);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.dev-flag-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+.dev-flag-row > span { flex: 1; }
+.dev-flag-row strong { color: #fff; }
+.dev-flag-row small { color: rgba(255,255,255,0.5); font-size: 0.7rem; }
+.dev-flag-row input[type="checkbox"] {
+  appearance: none;
+  width: 36px; height: 20px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: background var(--d-fast) var(--ease);
+  flex-shrink: 0;
+}
+.dev-flag-row input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 16px; height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform var(--d-fast) var(--ease);
+}
+.dev-flag-row input[type="checkbox"]:checked {
+  background: var(--gold);
+}
+.dev-flag-row input[type="checkbox"]:checked::after {
+  transform: translateX(16px);
+}
+
+/* ─────────────────── Admin password modal ─────────────────── */
+#admin-modal {
+  position: fixed; inset: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.admin-modal-overlay {
+  position: absolute; inset: 0;
+  background: rgba(15,33,71,0.65);
+  backdrop-filter: blur(8px);
+  animation: fadeIn var(--d-med) var(--ease);
+}
+.admin-modal-content {
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 32px 28px 24px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+  text-align: center;
+  border-top: 3px solid var(--gold);
+  animation: fadeUp var(--d-med) var(--ease-out);
+}
+.admin-modal-content.shake { animation: shake 0.4s var(--ease); }
+
+.admin-modal-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.admin-modal-icon svg { width: 28px; height: 28px; }
+
+.admin-modal-content h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+.admin-modal-content > p {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  margin: 6px 0 18px;
+}
+#admin-password {
+  width: 100%;
+  border: 1.5px solid var(--border-med);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  font: 600 1rem var(--font);
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  letter-spacing: 0.1em;
+  text-align: center;
+  transition: border-color var(--d-fast) var(--ease), box-shadow var(--d-fast) var(--ease);
+}
+#admin-password:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 4px rgba(15,33,71,0.08);
+}
+.admin-modal-actions {
+  display: flex; gap: 8px;
+  margin-top: 16px;
+}
+.admin-btn {
+  flex: 1;
+  padding: 11px 16px;
+  border: none;
+  border-radius: var(--r-md);
+  font: 800 0.85rem var(--font);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--d-fast) var(--ease), transform var(--d-fast) var(--ease);
+}
+.admin-btn-secondary {
+  background: var(--surface-2);
+  color: var(--text-2);
+}
+.admin-btn-secondary:hover { background: var(--surface-3); }
+.admin-btn-primary {
+  background: var(--navy);
+  color: #fff;
+}
+.admin-btn-primary:hover { background: var(--navy-soft); }
+.admin-btn-primary:active { transform: scale(0.97); }
+
+.admin-modal-error {
+  margin-top: 12px !important;
+  color: var(--red) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700;
+  min-height: 1em;
+}
+
 /* ─────────────────── Ads ─────────────────── */
 .ad-container {
   width: 100%;

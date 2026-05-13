@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /*?dev=
+Disallow: /bin/
 Disallow: /*?date=archive
+Disallow: /*?dev=
+Disallow: /*?control=
+Disallow: /*?ctrl=
 
 Sitemap: https://statedoku.com/sitemap.xml

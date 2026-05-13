@@ -20,9 +20,17 @@ const Ads = (() => {
     solved:  '0000000003',
   };
 
-  const isDev = () =>
-    new URLSearchParams(location.search).get('dev') === '1' ||
-    localStorage.getItem('statedoku_dev') === '1';
+  // Ads can be globally disabled via CONFIG.ADS_ENABLED.
+  // Super-admin can override with localStorage 'statedoku_ads_force' = '1'|'0'.
+  function _adsEnabled() {
+    const force = localStorage.getItem('statedoku_ads_force');
+    if (force === '0') return false;
+    if (force === '1') return true;
+    return !!(typeof CONFIG !== 'undefined' && CONFIG.ADS_ENABLED);
+  }
+
+  // Admin mode disables ad rendering for testing.
+  const isDev = () => typeof Admin !== 'undefined' && Admin.isAuthenticated();
 
   function getConsent() { return localStorage.getItem(CONSENT_KEY); }
   function setConsent(v) {
@@ -116,6 +124,7 @@ const Ads = (() => {
   function refresh() { _mountAllAds(); }
 
   function init() {
+    if (!_adsEnabled() || isDev()) return; // ads off → no consent banner, no slots, nothing
     if (getConsent() === 'accept') {
       document.body.classList.add('ads-on');
       _loadAdSense();

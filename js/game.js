@@ -499,12 +499,10 @@ const DevPanel = (() => {
   ];
 
   function _enabled() {
-    return new URLSearchParams(location.search).get('dev') === '1'
-        || localStorage.getItem('statedoku_dev') === '1';
+    return typeof Admin !== 'undefined' && Admin.isAuthenticated();
   }
 
   function _enable() {
-    localStorage.setItem('statedoku_dev', '1');
     if (!document.getElementById('dev-fab')) _mount();
   }
 
@@ -551,6 +549,14 @@ const DevPanel = (() => {
           <button data-act="wipe" class="danger">🗑 Wipe ALL local data</button>
         </div>
         <div class="dev-info" id="dev-info"></div>
+        <div class="dev-section-title">Feature flags</div>
+        <label class="dev-flag-row">
+          <span><strong>Ads</strong><br><small>Enable AdSense slots + consent banner for everyone</small></span>
+          <input type="checkbox" id="dev-flag-ads">
+        </label>
+        <div class="dev-row dev-buttons">
+          <button data-act="logout" class="danger">🔒 Lock admin (logout)</button>
+        </div>
       </div>
       <div class="dev-body" id="dev-tab-constraints" style="display:none">
         <div class="dev-cstr-toolbar">
@@ -582,6 +588,7 @@ const DevPanel = (() => {
 
     _refreshInfo();
     _renderConstraints();
+    _initAdsToggle();
   }
 
   function _switchTab(name) {
@@ -685,7 +692,6 @@ const DevPanel = (() => {
     if (name === 'wipe') {
       if (confirm('Wipe all Statedoku localStorage? This clears every cached puzzle, progress and stats.')) {
         Object.keys(localStorage).filter(k => k.startsWith(CONFIG.STORAGE_KEY)).forEach(k => localStorage.removeItem(k));
-        localStorage.setItem('statedoku_dev', '1'); // keep dev mode on
         location.reload();
       }
     }
@@ -693,6 +699,22 @@ const DevPanel = (() => {
       Puzzle.setDisabled([]);
       _renderConstraints(document.getElementById('dev-cstr-search')?.value || '');
     }
+    if (name === 'logout') {
+      if (confirm('Lock the admin panel? You will need the password again to return.')) {
+        Admin.logout();
+      }
+    }
+  }
+
+  function _initAdsToggle() {
+    const cb = document.getElementById('dev-flag-ads');
+    if (!cb) return;
+    const stored = localStorage.getItem('statedoku_ads_force');
+    cb.checked = (stored === '1') || (stored === null && CONFIG.ADS_ENABLED);
+    cb.addEventListener('change', () => {
+      localStorage.setItem('statedoku_ads_force', cb.checked ? '1' : '0');
+      if (confirm('Ads flag changed. Reload to apply?')) location.reload();
+    });
   }
 
   function _shiftDate(days) {
