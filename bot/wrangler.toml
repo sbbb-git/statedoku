@@ -2,14 +2,21 @@ name = "statedoku-twitter-bot"
 main = "src/worker.js"
 compatibility_date = "2024-09-23"
 
-# Cron — daily at 14:00 UTC (= 09:00 EST / 15:00 CET).
+# Cron — daily at 14:00 UTC (= 09:00 EST / 15:00 CET / 16:00 Paris in summer)
 # Adjust if you want a different posting time.
 [triggers]
 crons = ["0 14 * * *"]
 
+# ─────────────────────────────────────────────────────────────────────────
 # Secrets to set (NEVER commit these to git):
+#
 #   wrangler secret put TWITTER_API_KEY
 #   wrangler secret put TWITTER_API_SECRET
 #   wrangler secret put TWITTER_ACCESS_TOKEN
 #   wrangler secret put TWITTER_ACCESS_TOKEN_SECRET
-#   wrangler secret put MANUAL_TRIGGER_KEY     # random string for /?key=… manual posts
+#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put MANUAL_TRIGGER_KEY    # random string for manual testing
+#
+# Get Twitter keys at:    https://developer.twitter.com
+# Get Anthropic key at:   https://console.anthropic.com
+# ─────────────────────────────────────────────────────────────────────────
