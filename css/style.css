@@ -1267,7 +1267,9 @@ footer a:hover { color: var(--red); text-decoration: underline; }
 }
 
 /* ─────────────────── Ads ─────────────────── */
-.ad-container {
+/* Hidden by default. Shown only when body has .ads-active (set by ads.js when ADS_ENABLED=true). */
+.ad-container { display: none; }
+body.ads-active .ad-container {
   width: 100%;
   max-width: 728px;
   margin: 0 auto;
@@ -1275,10 +1277,14 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   border-radius: var(--r-md);
   overflow: hidden;
 }
-.ad-container:empty { display: none; }
-.ad-top    { min-height: 90px;  margin-top: 4px; }
-.ad-bottom { min-height: 250px; margin: 16px auto 0; }
-.ad-solved { min-height: 90px; margin-bottom: 6px; max-width: 100%; }
+body.ads-active .ad-container:empty { display: none; }
+body.ads-active .ad-top    { min-height: 90px;  margin-top: 4px; }
+body.ads-active .ad-bottom { min-height: 250px; margin: 16px auto 0; }
+body.ads-active .ad-solved { min-height: 90px; margin-bottom: 6px; max-width: 100%; }
+
+/* Consent banner also hidden unless ads are active */
+#consent-bar { display: none !important; }
+body.ads-active #consent-bar:not(.hidden) { display: flex !important; }
 
 .ad-placeholder {
   width: 100%;
