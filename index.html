@@ -64,7 +64,7 @@
   <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
 
   <!-- ─── Styles ─── -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
 
   <!-- ─── Structured Data (JSON-LD) ─── -->
   <script type="application/ld+json">
@@ -111,24 +111,34 @@
 <h1 class="sr-only">Statedoku — Daily US States Puzzle Game</h1>
 
 <header>
-  <a href="/" class="logo">State<em>doku</em></a>
-  <nav class="nav-actions">
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="en">EN</button>
+  <a href="/" class="logo" aria-label="Statedoku home">State<em>doku</em></a>
+  <div class="score-inline" aria-live="polite">
+    <span class="score-date" id="puzzle-date"></span>
+    <span class="score-sep" aria-hidden="true">·</span>
+    <span id="score-display">0 / 9</span>
+    <span class="score-sep" aria-hidden="true">·</span>
+    <span id="error-display" aria-label="Mistakes remaining"></span>
+  </div>
+  <nav class="nav-actions" aria-label="Game actions">
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang="en" aria-current="true">EN</button>
       <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/'">FR</button>
       <button class="lang-btn" data-lang="es" onclick="location.href='/es/'">ES</button>
     </div>
-    <button class="icon-btn" id="btn-howto" title="How to play">?</button>
-    <button class="icon-btn" id="btn-stats" title="Stats">📊</button>
-    <button class="icon-btn" id="btn-share" title="Share">↑</button>
+    <button class="icon-btn" id="btn-undo" title="Undo last move" aria-label="Undo last move">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-howto" title="How to play" aria-label="How to play">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-stats" title="Stats" aria-label="Stats">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-share" title="Share" aria-label="Share">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
   </nav>
 </header>
-
-<div class="score-bar">
-  <span class="score-date" id="puzzle-date"></span>
-  <span id="score-display">0 / 9</span>
-  <span id="error-display">○○○</span>
-</div>
 
 <main>
   <div id="loading">Loading puzzle…</div>
@@ -263,6 +273,15 @@
 </div>
 
 <div id="toast" role="status" aria-live="polite"></div>
+<div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+  // Hook up the undo button (defined in game.js as Game.undo)
+  document.addEventListener('DOMContentLoaded', () => {
+    const u = document.getElementById('btn-undo');
+    if (u) u.addEventListener('click', () => { if (window.Game && Game.undo) Game.undo(); });
+  });
+</script>
 
 <script src="config.js"></script>
 <script src="js/admin.js"></script>
@@ -270,6 +289,6 @@
 <script src="js/reminders.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/puzzle.js"></script>
-<script src="js/game.js?v=2"></script>
+<script src="js/game.js?v=3"></script>
 </body>
 </html>
