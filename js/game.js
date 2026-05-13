@@ -947,4 +947,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('btn-stats')?.addEventListener('click', () => Game.showStats());
   document.getElementById('btn-howto')?.addEventListener('click', () => Game.showHowToPlay());
   document.getElementById('btn-share-banner')?.addEventListener('click', () => Game.share());
+  document.getElementById('btn-share-gameover-banner')?.addEventListener('click', () => Game.share());
 });
