@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="../css/style.css?v=4">
+  <link rel="stylesheet" href="../css/style.css?v=5">
 
   <script type="application/ld+json">
   {
@@ -105,6 +105,13 @@
 
 
   <div id="game-wrap">
+    <div id="email-cta" hidden>
+      <span class="ec-icon">📧</span>
+      <span class="ec-text" data-i18n="email_cta">Ne ratez pas le puzzle de demain — recevez-le par mail</span>
+      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">S'inscrire</button>
+      <button class="ec-close" id="ec-dismiss" aria-label="Fermer">✕</button>
+    </div>
+
     <div class="grid-wrapper">
       <div class="grid-outer">
         <div class="grid-corner"></div>
@@ -209,6 +216,32 @@
   </div>
 </div>
 
+<div class="modal" id="email-modal" role="dialog" aria-modal="true">
+  <div class="modal-overlay"></div>
+  <div class="modal-content email-modal-content">
+    <div class="modal-header">
+      <h3 data-i18n="email_modal_title">Puzzle quotidien par mail</h3>
+      <button class="modal-close" aria-label="Fermer">✕</button>
+    </div>
+    <div class="email-body">
+      <p class="email-tagline" data-i18n="email_modal_sub">Un court mail par jour avec le puzzle du jour. Désinscription en 1 clic.</p>
+      <form id="email-form" autocomplete="on">
+        <label class="email-label">
+          <span data-i18n="email_label">Votre email</span>
+          <input type="email" id="email-input" required placeholder="vous@exemple.com" autocomplete="email">
+        </label>
+        <label class="email-label">
+          <span data-i18n="email_time_label">Heure de livraison (votre fuseau)</span>
+          <input type="time" id="email-time" value="09:00" required>
+        </label>
+        <button type="submit" class="email-submit" data-i18n="subscribe">S'inscrire</button>
+        <p class="email-status" id="email-status" hidden></p>
+      </form>
+      <p class="email-gdpr" data-i18n="email_gdpr">On stocke uniquement votre email + heure. Aucun tracking, aucun tiers.</p>
+    </div>
+  </div>
+</div>
+
 <div id="toast" role="status" aria-live="polite"></div>
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
@@ -217,6 +250,7 @@
 <script src="../js/admin.js"></script>
 <script src="../js/analytics.js"></script>
 <script src="../js/reminders.js"></script>
+<script src="../js/email.js?v=1"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/puzzle.js"></script>
 <script src="../js/game.js?v=3"></script>
