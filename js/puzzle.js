@@ -250,7 +250,12 @@ const Puzzle = (() => {
       case 'double_s':               return /SS/i.test(state.names.en);
       case 'two_word_starts_n':      return state.wordCount === 2 && state.startsWith === 'N';
 
-      default: return false;
+      default:
+        // Pending candidates registered globally (constraints-pending.js)
+        if (typeof window !== 'undefined' && window.PENDING_MAP && window.PENDING_MAP[c]) {
+          try { return !!window.PENDING_MAP[c].match(state); } catch { return false; }
+        }
+        return false;
     }
   }
 
@@ -591,8 +596,23 @@ const Puzzle = (() => {
     return `${y}-${m}-${day}`;
   }
 
+  // ── Pending constraints (approved by admin via /admin/constraints/) ────
+  function _getApprovedPending() {
+    try { return new Set(JSON.parse(localStorage.getItem('statedoku_approved_pending') || '[]')); }
+    catch { return new Set(); }
+  }
+
+  function _approvedPendingList() {
+    if (typeof PENDING_CONSTRAINTS === 'undefined') return [];
+    const approved = _getApprovedPending();
+    return PENDING_CONSTRAINTS.filter(c => approved.has(c.id)).map(c => c.id);
+  }
+
   // ── Public API ──────────────────────────────────────────────────────────
-  function getAllConstraints() { return ALL_CONSTRAINTS.slice(); }
+  function getAllConstraints() {
+    // Merge built-in pool with admin-approved pending candidates
+    return [...ALL_CONSTRAINTS, ..._approvedPendingList()];
+  }
   function getAllRowGroups()   { return MUTEX_ROW_GROUPS.map(g => g.slice()); }
   function getDisabled()       { return [..._getDisabled()]; }
   function setDisabled(arr)    {

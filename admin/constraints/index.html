@@ -126,12 +126,22 @@
     color: var(--text-2); cursor: pointer;
     transition: all .15s;
   }
-  .row-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
-  .row.disabled .row-btn {
+  .row[data-pending="0"] .row-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
+  .row.disabled[data-pending="0"] .row-btn {
     background: var(--green); color: #fff; border-color: var(--green);
   }
-  .row.disabled .row-btn::before { content: '✓ Re-enable'; }
-  .row:not(.disabled) .row-btn::before { content: '✕ Disable'; }
+  .row.disabled[data-pending="0"] .row-btn::before { content: '✓ Re-enable'; }
+  .row[data-pending="0"]:not(.disabled) .row-btn::before { content: '✕ Disable'; }
+
+  /* Pending rows */
+  .row.pending {
+    background: #FFFBEB;
+    border-left: 3px solid #F59E0B;
+  }
+  .row.pending:hover { background: #FEF3C7; }
+  .row-actions { display: inline-flex; gap: 6px; }
+  .btn-approve:hover { background: var(--green); color: #fff; border-color: var(--green); }
+  .btn-reject:hover  { background: var(--red);   color: #fff; border-color: var(--red); }
 
   .empty-state {
     text-align: center; padding: 60px 24px; color: var(--text-3);
@@ -173,7 +183,8 @@
 
 <div class="toolbar">
   <input id="search" placeholder="Search by name, id, or state code (CA, TX, NY…)" autocomplete="off">
-  <button class="chip active" data-filter="all">All</button>
+  <button class="chip active" data-filter="all">Active</button>
+  <button class="chip" data-filter="pending">⏳ Pending review</button>
   <button class="chip" data-filter="low">⚠️ ≤5 states</button>
   <button class="chip" data-filter="disabled">Disabled</button>
 </div>
@@ -182,6 +193,7 @@
   <div class="loader">Loading constraints…</div>
 </div>
 
+<script src="/js/constraints-pending.js?v=1"></script>
 <script>
 (async function() {
 
@@ -355,7 +367,12 @@
       case 'contains_letter_y':   return state.names?.en?.toUpperCase().includes('Y');
       case 'short_name':          return state.letterCount <= 6;
       case 'long_name':           return state.letterCount >= 10;
-      default: return false;
+      default:
+        // Pending candidate predicates registered via window.PENDING_MAP
+        if (window.PENDING_MAP && window.PENDING_MAP[c]) {
+          try { return !!window.PENDING_MAP[c].match(state); } catch { return false; }
+        }
+        return false;
     }
   }
 
@@ -387,24 +404,37 @@
   }
 
   // ──────────────────────────────────────────────────────────────────
-  // Disabled set (persisted in localStorage)
+  // Disabled / approved-pending / rejected-pending sets (localStorage)
   // ──────────────────────────────────────────────────────────────────
   const DK = 'statedoku_disabled_constraints';
-  function getDisabled() {
-    try { return new Set(JSON.parse(localStorage.getItem(DK) || '[]')); }
-    catch { return new Set(); }
-  }
-  function setDisabled(set) {
-    localStorage.setItem(DK, JSON.stringify([...set]));
-    // Purge cached puzzles
-    Object.keys(localStorage).filter(k => k.includes('_puzzle_')).forEach(k => localStorage.removeItem(k));
-  }
+  const AK = 'statedoku_approved_pending';
+  const RK = 'statedoku_rejected_pending';
+
+  const getSet = (k) => {
+    try { return new Set(JSON.parse(localStorage.getItem(k) || '[]')); } catch { return new Set(); }
+  };
+  const setSet = (k, set) => {
+    localStorage.setItem(k, JSON.stringify([...set]));
+    Object.keys(localStorage).filter(x => x.includes('_puzzle_')).forEach(x => localStorage.removeItem(x));
+  };
+  const getDisabled = () => getSet(DK);
+  const setDisabled = (s) => setSet(DK, s);
+  const getApproved = () => getSet(AK);
+  const setApproved = (s) => setSet(AK, s);
+  const getRejected = () => getSet(RK);
+  const setRejected = (s) => setSet(RK, s);
 
   // ──────────────────────────────────────────────────────────────────
-  // Compute matching states once
+  // Pending candidates (from constraints-pending.js)
+  // ──────────────────────────────────────────────────────────────────
+  const PENDING = (window.PENDING_CONSTRAINTS || []);
+  const PENDING_IDS = new Set(PENDING.map(c => c.id));
+
+  // ──────────────────────────────────────────────────────────────────
+  // Compute matching states for both active + pending
   // ──────────────────────────────────────────────────────────────────
   const matchMap = {};
-  for (const id of ALL_CONSTRAINTS) {
+  for (const id of [...ALL_CONSTRAINTS, ...PENDING_IDS]) {
     matchMap[id] = states.filter(s => matches(s, id)).map(s => s.id);
   }
 
@@ -417,7 +447,10 @@
   // ──────────────────────────────────────────────────────────────────
   // Render
   // ──────────────────────────────────────────────────────────────────
-  let filter = 'all', search = '', disabled = getDisabled();
+  let filter = 'all', search = '';
+  let disabled = getDisabled();
+  let approved = getApproved();
+  let rejected = getRejected();
 
   function badgeClass(n) {
     if (n <= 4) return 'bad';
@@ -425,85 +458,167 @@
     return '';
   }
 
+  function pendingUndecided() {
+    return PENDING.filter(c => !approved.has(c.id) && !rejected.has(c.id));
+  }
+
   function drawStrip() {
     const total = ALL_CONSTRAINTS.length;
     const enabled = total - disabled.size;
     const low = ALL_CONSTRAINTS.filter(id => matchMap[id].length <= 5).length;
+    const pendCount = pendingUndecided().length;
+    const apprCount = approved.size;
     document.getElementById('strip').innerHTML = `
-      <div><div class="strip-v">${total}</div><div class="strip-l">Total</div></div>
-      <div><div class="strip-v">${enabled}</div><div class="strip-l">Enabled</div></div>
-      <div><div class="strip-v" style="color:#92400E">${low}</div><div class="strip-l">≤5 states</div></div>
-      <div><div class="strip-v" style="color:#991B1B">${disabled.size}</div><div class="strip-l">Disabled</div></div>
+      <div><div class="strip-v">${total + apprCount}</div><div class="strip-l">Active total</div></div>
+      <div><div class="strip-v" style="color:#92400E">${pendCount}</div><div class="strip-l">Pending review</div></div>
+      <div><div class="strip-v" style="color:#065F46">${apprCount}</div><div class="strip-l">Approved</div></div>
+      <div><div class="strip-v" style="color:#991B1B">${disabled.size + rejected.size}</div><div class="strip-l">Disabled / rejected</div></div>
     `;
-    document.getElementById('count-label').textContent = `· ${total} active`;
+    document.getElementById('count-label').textContent = `· ${total} active · ${pendCount} pending`;
   }
 
-  function rowHtml(id) {
-    const sts = matchMap[id];
+  function rowHtml(id, opts = {}) {
+    const sts = matchMap[id] || [];
     const n = sts.length;
-    const isDis = disabled.has(id);
-    const lbl = labelOf(id);
-    const fr  = labelFr(id);
+    const isDis  = disabled.has(id);
+    const isAppr = approved.has(id);
+    const isRej  = rejected.has(id);
+    const isPend = opts.pending === true;
+
+    let lbl, fr;
+    if (isPend || PENDING_IDS.has(id)) {
+      const p = window.PENDING_MAP[id];
+      lbl = p?.en || id;
+      fr  = p?.fr || '';
+    } else {
+      lbl = labelOf(id);
+      fr  = labelFr(id);
+    }
+
     const states_html = sts.length
       ? sts.map(s => `<span>${s}</span>`).join('')
       : `<span>— none —</span>`;
+
+    const classes = [
+      'row',
+      isDis  ? 'disabled' : '',
+      n <= 5 ? 'warn' : '',
+      isPend ? 'pending' : '',
+    ].filter(Boolean).join(' ');
+
+    let actions;
+    if (isPend) {
+      actions = `
+        <button class="row-btn btn-approve" data-action="approve">${isAppr ? '✓ Approved' : '✓ Approve'}</button>
+        <button class="row-btn btn-reject"  data-action="reject">${isRej ? '✗ Rejected' : '✗ Reject'}</button>
+      `;
+    } else {
+      actions = `<button class="row-btn"></button>`;
+    }
+
     return `
-      <div class="row ${isDis ? 'disabled' : ''} ${n <= 5 ? 'warn' : ''}" data-id="${id}">
+      <div class="${classes}" data-id="${id}" data-pending="${isPend ? 1 : 0}">
         <div class="row-main">
           <div class="row-title">${lbl}${fr && fr !== lbl ? ` <span style="color:var(--text-3);font-size:.78rem;font-weight:500">· ${fr}</span>` : ''} <span class="row-id">${id}</span></div>
           <div class="row-states ${n === 0 ? 'empty' : ''}">${states_html}</div>
         </div>
         <span class="row-badge ${badgeClass(n)}">${n} state${n === 1 ? '' : 's'}</span>
-        <button class="row-btn"></button>
+        <span class="row-actions">${actions}</span>
       </div>
     `;
   }
 
-  function applyFilter(ids) {
+  function applyFilter(ids, opts = {}) {
     return ids.filter(id => {
-      if (filter === 'low'      && matchMap[id].length > 5) return false;
-      if (filter === 'disabled' && !disabled.has(id))       return false;
+      const isPend = opts.pending === true;
+      const n = (matchMap[id] || []).length;
+      if (filter === 'low'      && n > 5) return false;
+      if (!isPend && filter === 'disabled' && !disabled.has(id))       return false;
       if (!search) return true;
       const q = search.toLowerCase();
       if (id.toLowerCase().includes(q)) return true;
-      if (labelOf(id).toLowerCase().includes(q)) return true;
-      if (labelFr(id).toLowerCase().includes(q)) return true;
-      if (matchMap[id].includes(search.toUpperCase())) return true;
+      const p = isPend ? window.PENDING_MAP[id] : null;
+      const lbl = p ? p.en : labelOf(id);
+      const lf  = p ? p.fr : labelFr(id);
+      if (lbl.toLowerCase().includes(q)) return true;
+      if (lf && lf.toLowerCase().includes(q)) return true;
+      if ((matchMap[id] || []).includes(search.toUpperCase())) return true;
       return false;
     });
   }
 
   function drawList() {
-    const ids = applyFilter(ALL_CONSTRAINTS);
-    if (!ids.length) {
-      document.getElementById('content').innerHTML = `<div class="empty-state">No constraint matches that filter.</div>`;
-      return;
-    }
-    const grouped = {};
-    for (const id of ids) {
-      const cat = categorize(id);
-      (grouped[cat] = grouped[cat] || []).push(id);
-    }
-    const order = CATEGORIES.map(c => c.label);
     let html = '';
-    for (const cat of order) {
-      const arr = grouped[cat]; if (!arr || !arr.length) continue;
+
+    if (filter === 'pending') {
+      // Show only undecided pending candidates
+      const undecided = pendingUndecided().map(c => c.id);
+      const ids = applyFilter(undecided, { pending: true });
+      if (!ids.length) {
+        document.getElementById('content').innerHTML = `<div class="empty-state">🎉 All ${PENDING.length} pending candidates have been reviewed.</div>`;
+        return;
+      }
       html += `<div class="cat">
-        <div class="cat-head">${cat} <span class="ct">${arr.length}</span></div>
-        ${arr.map(rowHtml).join('')}
+        <div class="cat-head">⏳ Pending review <span class="ct">${ids.length}</span></div>
+        ${ids.map(id => rowHtml(id, { pending: true })).join('')}
       </div>`;
+    } else {
+      // Active constraints view
+      const ids = applyFilter(ALL_CONSTRAINTS);
+      // Append approved pending into the listing too (now part of active pool)
+      const apprList = [...approved].filter(id => PENDING_IDS.has(id));
+      if (!ids.length && !apprList.length) {
+        document.getElementById('content').innerHTML = `<div class="empty-state">No constraint matches that filter.</div>`;
+        return;
+      }
+      const grouped = {};
+      for (const id of ids) {
+        const cat = categorize(id);
+        (grouped[cat] = grouped[cat] || []).push(id);
+      }
+      const order = CATEGORIES.map(c => c.label);
+      for (const cat of order) {
+        const arr = grouped[cat]; if (!arr || !arr.length) continue;
+        html += `<div class="cat">
+          <div class="cat-head">${cat} <span class="ct">${arr.length}</span></div>
+          ${arr.map(id => rowHtml(id)).join('')}
+        </div>`;
+      }
+      if (apprList.length) {
+        html += `<div class="cat">
+          <div class="cat-head">✓ Approved from pending <span class="ct">${apprList.length}</span></div>
+          ${apprList.map(id => rowHtml(id, { pending: true })).join('')}
+        </div>`;
+      }
     }
+
     document.getElementById('content').innerHTML = html;
 
-    document.querySelectorAll('.row-btn').forEach(btn => {
+    // Wire active-row disable toggle
+    document.querySelectorAll('.row[data-pending="0"] .row-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.closest('.row').dataset.id;
         if (disabled.has(id)) disabled.delete(id); else disabled.add(id);
         setDisabled(disabled);
         drawStrip();
-        // Toggle row class without full redraw for snap
-        const r = btn.closest('.row');
-        r.classList.toggle('disabled', disabled.has(id));
+        btn.closest('.row').classList.toggle('disabled', disabled.has(id));
+      });
+    });
+
+    // Wire pending Approve / Reject
+    document.querySelectorAll('.row[data-pending="1"] .row-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.closest('.row').dataset.id;
+        const action = btn.dataset.action;
+        if (action === 'approve') {
+          approved.add(id); rejected.delete(id);
+          setApproved(approved); setRejected(rejected);
+        } else if (action === 'reject') {
+          rejected.add(id); approved.delete(id);
+          setApproved(approved); setRejected(rejected);
+        }
+        drawStrip();
+        drawList();
       });
     });
   }
