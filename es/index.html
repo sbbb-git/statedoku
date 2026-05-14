@@ -249,7 +249,7 @@
     var a = JSON.parse(localStorage.getItem('statedoku_approved_pending') || '[]');
     if (Array.isArray(a) && a.length > 0) {
       var s = document.createElement('script');
-      s.src = '/js/constraints-pending.js?v=8';
+      s.src = '/js/constraints-pending.js?v=9';
       s.async = false;
       document.head.appendChild(s);
     }
