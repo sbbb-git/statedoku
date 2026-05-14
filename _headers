@@ -19,22 +19,22 @@
 # ─────────────────────────────────────────────────────────────
 
 /*.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 /
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 
 /js/*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 /css/*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 /data/*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 /config.js
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 /sw.js
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 /manifest.json
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, no-cache, must-revalidate
 
 # Long cache for static binaries (they rarely change; cache-bust with ?v=N)
 /favicon.svg
