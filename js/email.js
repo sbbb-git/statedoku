@@ -75,7 +75,8 @@ const EmailReminder = (() => {
       setTimeout(() => { _closeModal(); _hideCTA(); }, 1800);
     } catch (err) {
       status.classList.add('err');
-      status.textContent = 'Network error. Try again later.';
+      const msg = (typeof I18n !== 'undefined' && I18n.t) ? I18n.t('email_network_error') : '';
+      status.textContent = (msg && msg !== 'email_network_error') ? msg : 'Network error. Try again later.';
       btn.disabled = false;
     }
   }
