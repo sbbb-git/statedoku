@@ -70,6 +70,16 @@ const Puzzle = (() => {
     ['has_million_city', 'sub_new_england', 'sub_mountain'],
     ['has_million_city', 'sub_new_england', 'sub_plains'],
     ['borders_few', 'sub_mid_atlantic', 'sub_mountain'],
+    // ─── Expanded set (programmatically validated to produce ≥3 unique puzzles each) ───
+    ['sun_belt', 'snow_belt', 'rust_belt'],                               // 15× combos
+    ['pop_lt1m', 'pop_5m10m', 'pop_gt10m'],                               // 8×
+    ['borders_few', 'sub_mountain', 'sub_plains'],                        // 7×
+    ['name_spanish_origin', 'sub_new_england', 'sub_deep_south'],         // 6×
+    ['route_66', 'sub_new_england', 'sub_plains'],                        // 5×
+    ['confederate', 'statehood_1900s', 'sub_mountain'],                   // 4×
+    ['earthquake_zone', 'sub_deep_south', 'sub_mid_atlantic'],            // 4×
+    ['pop_1m5m', 'pop_5m10m', 'pop_gt10m'],                               // 3×
+    ['largest_state', 'sub_new_england', 'sub_mid_atlantic'],             // 3×
   ];
 
   const ALL_CONSTRAINTS = [
@@ -319,11 +329,11 @@ const Puzzle = (() => {
     const usedRowIds = new Set(rowGroup);
 
     // Pre-filter: keep only columns where every row has ≥1 eligible state.
-    // Cap at 22 to bound the C(n,3) search cost while still exploring widely.
+    // Cap at 60 (was 22) to broaden the C(n,3) search and surface more variety.
     const availableCols = colPool.filter(c => {
       if (usedRowIds.has(c)) return false;
       return rowStateSets.every(rs => rs.some(s => matches(s, c)));
-    }).slice(0, 22);
+    }).slice(0, 60);
 
     const found = [];
     for (let i = 0; i < availableCols.length - 2; i++) {
@@ -401,12 +411,19 @@ const Puzzle = (() => {
     const activeCols = _activeConstraints();
     const n = activeGroups.length;
     if (n === 0) return null;
-    const startGi = Math.floor(mulberry32(baseSeed)() * n);
 
+    // Shuffle ALL row groups with a date-seeded RNG so each day picks
+    // a different order (was: fixed-array startGi rotation, which biased
+    // certain groups to first place). This is the single biggest lever
+    // for daily-variety across months.
+    const rngOrder = mulberry32(baseSeed + 31337);
+    const idxs = Array.from({ length: n }, (_, i) => i);
+    const shuffledIdxs = shuffle(idxs, rngOrder);
+
+    // Sort: interesting groups first (≥1 non-boring row), boring last.
     const interestingOrder = [];
     const boringOrder = [];
-    for (let offset = 0; offset < n; offset++) {
-      const gi = (startGi + offset) % n;
+    for (const gi of shuffledIdxs) {
       if (gi === excludeGroup) continue;
       const group = activeGroups[gi];
       const allBoring = group.every(r => BORING_ROW.has(r));
@@ -418,12 +435,21 @@ const Puzzle = (() => {
       const shuffleRng = mulberry32(baseSeed + (gi + 1) * 999983);
       const selectRng  = mulberry32(baseSeed + (gi + 1) * 999983 + 777777);
       const colPool = shuffle(activeCols, shuffleRng);
-      const options = _tryRowGroup(activeGroups[gi], colPool, states, 8);
+      const options = _tryRowGroup(activeGroups[gi], colPool, states, 30);
       if (options.length === 0) continue;
 
-      const maxGroupScore = Math.max(...options.map(_score));
-      const topGroupTier = options.filter(o => _score(o) >= maxGroupScore - 1);
-      const best = topGroupTier[Math.floor(selectRng() * topGroupTier.length)];
+      // Weighted random pick: favor higher-scored puzzles but allow lower ones.
+      // Weight = max(1, score + 5) so even score-0 puzzles get picked sometimes.
+      // This dramatically expands per-row-group variety vs picking only top tier.
+      const weights = options.map(o => Math.max(1, _score(o) + 5));
+      const total = weights.reduce((a, b) => a + b, 0);
+      let pick = selectRng() * total;
+      let idx = 0;
+      for (let i = 0; i < weights.length; i++) {
+        pick -= weights[i];
+        if (pick <= 0) { idx = i; break; }
+      }
+      const best = options[idx];
       return { date: null, ...best, _activeGroupIdx: gi };
     }
     return null;
