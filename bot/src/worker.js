@@ -23,7 +23,8 @@ const ANTHROPIC_MODEL = 'claude-haiku-4-5';   // cheap + fast (~$0.0008 / tweet)
 const PHASE = 'prelaunch';
 
 // Public launch date. Drives the countdown / "imminent" phrasing in prelaunch.
-const LAUNCH_DATE = '2026-05-25';
+const LAUNCH_DATE = '2026-06-01';
+const TEASER_URL = 'https://statedoku.com/launch/';
 
 function _daysUntilLaunch() {
   const now = new Date();
@@ -88,7 +89,8 @@ Hard rules (every tweet):
 - MUST include exactly one US flag emoji 🇺🇸 somewhere in the tweet.
 - 1-2 emojis MAX TOTAL (so 🇺🇸 + at most one other).
 - Sound human (use contractions, mix sentence lengths).
-- Do NOT include any link or URL.
+- For countdown tweets (1-2 days before launch), you MAY include this URL: ${TEASER_URL}
+- For all other prelaunch tweets, do NOT include any link.
 - Do NOT use the hashtag #Statedoku yet (we keep it for launch).
 - Do NOT mention "statedoku.com" or call to play — the game isn't live yet.
 - Do NOT explain what the game is or how it works.

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+
+  <title>Statedoku 🇺🇸 — Launches Monday June 1</title>
+  <meta name="description" content="A new daily US-states puzzle. Sudoku meets American geography. Launches Monday June 1. Sign up to get Day #1 in your inbox.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/launch/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Statedoku 🇺🇸 — Launches Monday June 1">
+  <meta property="og:description" content="A new daily puzzle. Sudoku meets American geography. Sign up to get Day #1 in your inbox.">
+  <meta property="og:url" content="https://statedoku.com/launch/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Statedoku 🇺🇸 — Launches Monday June 1">
+  <meta name="twitter:description" content="A new daily puzzle. Sudoku meets American geography. Sign up to get Day #1 in your inbox.">
+  <meta name="twitter:image" content="https://statedoku.com/og-image.png?v=2">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0F2147; --red: #DC2626; --gold: #F59E0B; --green: #059669;
+      --bg: #FAFAF9; --surface: #fff;
+      --text: #0A0A0A; --text-2: #525252; --text-3: #A3A3A3;
+      --border: #E5E5E5;
+      --font: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    }
+    html, body {
+      height: 100%;
+      font-family: var(--font);
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(15,33,71,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(220,38,38,0.06) 0%, transparent 50%),
+        var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    body {
+      min-height: 100dvh;
+      display: flex; flex-direction: column;
+      padding: 24px 18px;
+      max-width: 540px; margin: 0 auto;
+    }
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 56px;
+    }
+    .logo {
+      font-size: 1.45rem; font-weight: 900; color: var(--navy); letter-spacing: -0.025em;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .logo em { color: var(--red); font-style: normal; }
+    .logo .flag { font-size: 1.1em; }
+    .header a.play-now {
+      font-size: .78rem; font-weight: 700; color: var(--text-2);
+      text-decoration: none; padding: 6px 12px;
+      border: 1px solid var(--border); border-radius: 999px;
+      transition: all .15s;
+    }
+    .header a.play-now:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+    .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: .75rem; font-weight: 700; color: var(--text-2);
+      margin-bottom: 18px; align-self: flex-start;
+    }
+    .badge::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+      box-shadow: 0 0 0 4px rgba(5,150,105,0.15);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(5,150,105,0.15); }
+      50%      { box-shadow: 0 0 0 6px rgba(5,150,105,0.05); }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    h1 .accent { color: var(--red); }
+    h1 .flag { display: inline-block; margin-left: 6px; transform: rotate(-3deg); }
+
+    .lede {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 460px;
+      margin-bottom: 32px;
+    }
+    .lede strong { color: var(--text); font-weight: 700; }
+
+    /* Mini preview */
+    .preview {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 18px rgba(15,33,71,0.05);
+    }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      font-size: 1.6rem;
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .preview-caption {
+      font-size: .72rem; color: var(--text-3); font-weight: 600;
+      text-align: center; font-family: ui-monospace, Menlo, monospace;
+    }
+
+    /* Form */
+    form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 22px 18px;
+      box-shadow: 0 4px 24px rgba(15,33,71,0.06);
+    }
+    form h2 {
+      font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 4px;
+    }
+    form .sub { font-size: .82rem; color: var(--text-2); margin-bottom: 16px; }
+
+    .row {
+      display: flex; gap: 8px;
+    }
+    input[type="email"] {
+      flex: 1;
+      padding: 12px 14px;
+      font-size: .95rem; font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    input[type="email"]:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(15,33,71,0.1);
+    }
+    button[type="submit"] {
+      padding: 12px 22px;
+      background: var(--navy); color: #fff;
+      border: none; border-radius: 10px;
+      font-family: inherit; font-size: .95rem; font-weight: 800;
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+      white-space: nowrap;
+    }
+    button[type="submit"]:hover:not(:disabled) {
+      background: #1E3A6B;
+      transform: translateY(-1px);
+    }
+    button[type="submit"]:disabled { background: var(--text-3); cursor: not-allowed; }
+
+    .status {
+      margin-top: 10px;
+      font-size: .82rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .status.ok  { background: #ECFDF5; color: var(--green); }
+    .status.err { background: #FEF2F2; color: var(--red); }
+    .gdpr { font-size: .68rem; color: var(--text-3); margin-top: 10px; text-align: center; }
+
+    .footer {
+      margin-top: 48px;
+      font-size: .72rem;
+      color: var(--text-3);
+      text-align: center;
+    }
+    .footer a { color: var(--text-2); text-decoration: none; font-weight: 600; }
+    .footer a:hover { color: var(--navy); }
+
+    @media (max-width: 480px) {
+      .row { flex-direction: column; }
+      button[type="submit"] { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/launch/" class="logo">State<em>doku</em> <span class="flag">🇺🇸</span></a>
+  <a href="/" class="play-now">Sneak peek →</a>
+</div>
+
+<main class="main">
+  <span class="badge">Day #1 — <span id="countdown-text">June 1, 2026</span></span>
+
+  <h1>A new daily puzzle for<br>US geography nerds <span class="flag">🇺🇸</span></h1>
+
+  <p class="lede">
+    <strong>Statedoku</strong> mixes Sudoku grid logic with American geography. Fill a 3×3 grid with US states matching each row and column constraint. New puzzle every day. One try, three mistakes.
+  </p>
+
+  <div class="preview" aria-label="Puzzle preview">
+    <div class="preview-grid">
+      <span>🟩</span><span>🟩</span><span>🟩</span>
+      <span>🟩</span><span>🟥</span><span>🟩</span>
+      <span>🟩</span><span>🟩</span><span>🟩</span>
+    </div>
+    <div class="preview-caption">Statedoku 🗺️ 01/06 · 8/9 · 1 mistake</div>
+  </div>
+
+  <form id="form" autocomplete="on">
+    <h2>Get Day #1 in your inbox 📬</h2>
+    <p class="sub">One short email Monday morning. Then daily, around noon NYC. Unsubscribe in one click, anytime.</p>
+    <div class="row">
+      <input type="email" id="email" required placeholder="you@example.com" autocomplete="email">
+      <button type="submit">Sign me up</button>
+    </div>
+    <p class="status" id="status" hidden></p>
+    <p class="gdpr">Just your email. No tracking, no third parties.</p>
+  </form>
+</main>
+
+<div class="footer">
+  Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a>
+</div>
+
+<script>
+(function() {
+  // Countdown helper
+  function updateCountdown() {
+    const launch = new Date('2026-06-01T13:00:00Z'); // 9am ET
+    const now = new Date();
+    const days = Math.ceil((launch - now) / 86400000);
+    const el = document.getElementById('countdown-text');
+    if (!el) return;
+    if (days > 1)      el.textContent = 'in ' + days + ' days · Monday June 1';
+    else if (days === 1) el.textContent = 'tomorrow · Monday June 1';
+    else if (days === 0) el.textContent = 'today · go play now ↗';
+    else                el.textContent = 'live now · go play ↗';
+  }
+  updateCountdown();
+
+  // Compute "noon New York" as UTC hour (handles EDT/EST automatically)
+  function nyNoonAsUTC() {
+    const d = new Date();
+    d.setUTCHours(12, 0, 0, 0);
+    const ny = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }).format(d);
+    return ((12 + (12 - parseInt(ny, 10))) % 24 + 24) % 24;
+  }
+
+  document.getElementById('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const btn = e.target.querySelector('button[type="submit"]');
+    const status = document.getElementById('status');
+    status.hidden = false; status.className = 'status';
+    status.textContent = '…';
+    btn.disabled = true;
+
+    try {
+      const r = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email, hour_utc: nyNoonAsUTC(), lang: 'en' }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || !data.ok) {
+        status.classList.add('err');
+        status.textContent = data.error || 'Subscription failed. Try again?';
+        btn.disabled = false;
+        return;
+      }
+      status.classList.add('ok');
+      status.textContent = "✓ You're in! See you Monday June 1.";
+      e.target.querySelector('input[type=email]').value = '';
+    } catch (err) {
+      status.classList.add('err');
+      status.textContent = 'Network error. Try again later.';
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
