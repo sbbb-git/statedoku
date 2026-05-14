@@ -2245,3 +2245,25 @@ footer, main, .score-bar {
   text-align: center;
   line-height: 1.5;
 }
+
+/* Result card email CTA (post-solve) */
+.result-email-cta {
+  margin-top: 6px;
+  background: transparent;
+  border: none;
+  color: var(--navy);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color var(--d-fast);
+}
+.result-email-cta:hover { color: var(--red); }

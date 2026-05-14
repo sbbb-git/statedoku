@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+
+  <title>Acerca de Statedoku — El puzzle diario de estados de EE.UU.</title>
+  <meta name="description" content="La historia detrás de Statedoku: un puzzle diario gratis que combina la lógica del Sudoku con la geografía estadounidense. Independiente, sin registro, mobile-first.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/es/about/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/about/">
+  <link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/about/">
+  <link rel="alternate" hreflang="es" href="https://statedoku.com/es/about/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=6">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Acerca de Statedoku">
+  <meta property="og:description" content="La historia detrás del puzzle diario de estados de EE.UU. que mezcla Sudoku y geografía.">
+  <meta property="og:url" content="https://statedoku.com/es/about/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png">
+  <meta property="og:locale" content="es_ES">
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/es/" class="logo">State<em>doku</em></a>
+  <nav class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="en" onclick="location.href='/about/'">EN</button>
+      <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/about/'">FR</button>
+      <button class="lang-btn active" data-lang="es">ES</button>
+    </div>
+  </nav>
+</header>
+
+<main class="legal-main">
+  <article class="legal-page">
+    <h1>Acerca de Statedoku</h1>
+    <p class="legal-meta">El puzzle diario de estados de EE.UU., explicado</p>
+
+    <h2>Qué es</h2>
+    <p><strong>Statedoku</strong> es un puzzle diario gratuito en el que rellenas una cuadrícula 3×3 con estados de EE.UU. Cada fila y cada columna tienen una restricción (como "frontera con México" o "nombrado por un rey"), y cada celda debe contener un estado que cumpla ambas. Cada estado solo puede usarse una vez. Tienes 3 errores permitidos. Resuelve antes de agotarlos.</p>
+    <p>Un nuevo puzzle aparece cada día a medianoche, el mismo para todo el mundo. Resuélvelo, comparte tu grid emoji, vuelve mañana.</p>
+
+    <h2>Por qué lo creamos</h2>
+    <p>Wordle demostró que los <strong>puzzles diarios simples pueden ser adictivos</strong> — solo hace falta una restricción pequeña e inteligente y una experiencia global compartida. Quisimos aplicar la misma fórmula a la geografía: un pequeño ritual que te enseña algo mientras juegas.</p>
+    <p>Statedoku premia el <strong>conocimiento real de la geografía estadounidense</strong> (dónde están los estados, qué bordean, por qué son conocidos) en lugar de trucos de vocabulario. Cualquiera con memoria activa de la geografía americana puede resolver la mayoría de los días; los difíciles entran en la etimología, eras de admisión o historia electoral.</p>
+
+    <h2>Qué lo hace diferente</h2>
+    <ul>
+      <li><strong>Combinatorio, no aleatorio</strong>. Cada cuadrícula tiene matemáticamente una sola solución. Sin adivinar.</li>
+      <li><strong>~100 restricciones distintas</strong> rotan — regiones, fronteras, montañas, cinturones, historia, política, origen de nombres, deportes, patrones — nunca dos días iguales.</li>
+      <li><strong>Mobile-first</strong>. Diseñado para pulgares. Toca una celda, escribe 3+ letras, elige. Bottom-sheet, grandes objetivos táctiles, safe-area iPhone.</li>
+      <li><strong>Multilingüe</strong>. Inglés, francés, español — todas las restricciones traducidas.</li>
+      <li><strong>Privacidad primero</strong>. Sin cuentas, sin tracking, sin base de datos en servidor. Tu progreso vive en tu dispositivo.</li>
+    </ul>
+
+    <h2>Bajo el capó</h2>
+    <p>Statedoku es un sitio estático en <strong>Cloudflare Pages</strong>. El generador corre completamente en tu navegador — a partir de la fecha, produce determinísticamente una sola cuadrícula. Esto significa:</p>
+    <ul>
+      <li>Sin backend que atacar o mantener</li>
+      <li>El sitio carga en menos de 100ms en todo el mundo (CDN Cloudflare)</li>
+      <li>Todos los jugadores de la misma fecha ven exactamente el mismo puzzle</li>
+      <li>Puedes jugar offline una vez cargada la página (PWA)</li>
+    </ul>
+
+    <h2>Roadmap</h2>
+    <ul>
+      <li><strong>Archivo</strong> — rejugar cualquier puzzle pasado</li>
+      <li><strong>Modo difícil</strong> — restricciones más oscuras, menos pistas</li>
+      <li><strong>Temas diarios</strong> — lunes geografía, martes historia, etc.</li>
+      <li><strong>Premium opcional</strong> — sin anuncios, archivo, temas, por el precio de un café</li>
+      <li><strong>Más países</strong> — Eurodoku (UE), Asiadoku (Asia), etc.</li>
+    </ul>
+
+    <h2>Contacto</h2>
+    <p>Bugs, ideas, partnerships: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>.</p>
+
+    <p class="legal-back"><a href="/es/">→ Jugar el puzzle de hoy</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/how-to-play/">Cómo jugar</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/es/archive/">Archivo</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a></p>
+</footer>
+
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
