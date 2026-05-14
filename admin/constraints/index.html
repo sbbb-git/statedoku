@@ -193,7 +193,7 @@
   <div class="loader">Loading constraints…</div>
 </div>
 
-<script src="/js/constraints-pending.js?v=1"></script>
+<script src="/js/constraints-pending.js?v=2"></script>
 <script>
 (async function() {
 
@@ -429,6 +429,16 @@
   // ──────────────────────────────────────────────────────────────────
   const PENDING = (window.PENDING_CONSTRAINTS || []);
   const PENDING_IDS = new Set(PENDING.map(c => c.id));
+
+  // Prune old approved/rejected IDs that aren't in the current pending list
+  // (e.g. after the candidate catalog is updated)
+  (function _pruneStale() {
+    const ap = getSet(AK), rj = getSet(RK);
+    let changed = false;
+    for (const id of [...ap]) if (!PENDING_IDS.has(id)) { ap.delete(id); changed = true; }
+    for (const id of [...rj]) if (!PENDING_IDS.has(id)) { rj.delete(id); changed = true; }
+    if (changed) { setApproved(ap); setRejected(rj); }
+  })();
 
   // ──────────────────────────────────────────────────────────────────
   // Compute matching states for both active + pending

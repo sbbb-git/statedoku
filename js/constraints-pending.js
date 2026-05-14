@@ -1,375 +1,335 @@
 // ─────────────────────────────────────────────────────────────────────────
-// Statedoku — Pending constraint candidates (for admin review)
+// Statedoku — Pending constraint candidates (admin review)
 //
-// 200 new candidate constraints, all derived from existing states.json
-// fields. Each has a predicate. Admin reviews and approves/rejects
-// them at /admin/constraints/ → only approved ones enter the puzzle pool.
+// 200 creative candidates: pop culture, cinema, TV, music, sports, history,
+// landmarks, brands, food. Each has a verified state list (no fragile
+// predicates). Admin approves/rejects via /admin/constraints/.
 //
-// User decisions persist in localStorage:
+// Storage:
 //   statedoku_approved_pending = JSON array of approved IDs
 //   statedoku_rejected_pending = JSON array of rejected IDs
 // ─────────────────────────────────────────────────────────────────────────
 
 const PENDING_CONSTRAINTS = (() => {
   const list = [];
-  const add = (id, en, fr, es, match) => list.push({ id, en, fr, es, match });
 
-  // ─── Letter starts (all not already in pool: A, I, M, N, W are taken) ───
-  const startsLetters = [
-    ['B', 'B', 'B'], ['C', 'C', 'C'], ['D', 'D', 'D'], ['F', 'F', 'F'],
-    ['G', 'G', 'G'], ['H', 'H', 'H'], ['K', 'K', 'K'], ['L', 'L', 'L'],
-    ['O', 'O', 'O'], ['P', 'P', 'P'], ['R', 'R', 'R'], ['S', 'S', 'S'],
-    ['T', 'T', 'T'], ['U', 'U', 'U'], ['V', 'V', 'V'],
-  ];
-  for (const [letter] of startsLetters) {
-    add(`p_starts_${letter.toLowerCase()}`,
-      `Name starts with ${letter}`,
-      `Nom commence par ${letter}`,
-      `Empieza con ${letter}`,
-      s => s.startsWith === letter);
-  }
+  // Helper: build a predicate from a string of state IDs
+  const inS = (str) => {
+    const set = new Set(str.split(/\s+/).filter(Boolean));
+    return (s) => set.has(s.id);
+  };
 
-  // ─── Letter contains (less common letters) ───
-  const containsLetters = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'P', 'X', 'Z'];
-  for (const L of containsLetters) {
-    add(`p_contains_${L.toLowerCase()}`,
-      `Name contains letter ${L}`,
-      `Nom contient la lettre ${L}`,
-      `Nombre contiene la letra ${L}`,
-      s => s.names.en.toUpperCase().includes(L));
-  }
+  const add = (id, en, fr, es, statesStr) => {
+    list.push({ id, en, fr, es, match: inS(statesStr), _states: statesStr });
+  };
 
-  // ─── Letter ends (excluding A, O, E, N, S already in pool) ───
-  const endsLetters = ['D', 'H', 'I', 'L', 'R', 'T', 'Y', 'K'];
-  for (const L of endsLetters) {
-    add(`p_ends_${L.toLowerCase()}`,
-      `Name ends in ${L}`,
-      `Nom finit par ${L}`,
-      `Termina con ${L}`,
-      s => s.endsWith === L);
-  }
+  // ═════════════════════════════════════════════════════════════════════
+  // 🎬 CINEMA — Setting of an iconic movie
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_movie_godfather',       'Setting of The Godfather',                'Décor du Parrain',                       'Escenario de El Padrino',                'NY NV');
+  add('pc_movie_pulp_fiction',    'Setting of Pulp Fiction',                 'Décor de Pulp Fiction',                  'Escenario de Pulp Fiction',              'CA');
+  add('pc_movie_forrest_gump',    'Filming locations of Forrest Gump',       'Tournage de Forrest Gump',               'Filmación de Forrest Gump',              'AL SC NC VA MA UT');
+  add('pc_movie_field_of_dreams', 'Field of Dreams setting',                 'Décor de Jusqu\'au bout du rêve',        'Escenario de Field of Dreams',           'IA');
+  add('pc_movie_fargo',           'Fargo (movie) setting',                   'Décor de Fargo',                         'Escenario de Fargo',                     'MN ND');
+  add('pc_movie_no_country',      'No Country for Old Men setting',          'Décor de No Country for Old Men',        'Escenario de No Country for Old Men',    'TX NM');
+  add('pc_movie_jaws',            'Jaws setting (Amity Island)',             'Décor des Dents de la mer',              'Escenario de Tiburón',                   'MA');
+  add('pc_movie_shawshank',       'Shawshank Redemption (Maine)',            'Décor des Évadés (Maine)',               'Escenario de Cadena perpetua',           'ME');
+  add('pc_movie_shining',         'The Shining (Colorado)',                  'Décor de Shining',                       'Escenario de El Resplandor',             'CO');
+  add('pc_movie_gone_with_wind',  'Gone with the Wind setting',              'Décor d\'Autant en emporte le vent',     'Escenario de Lo que el viento se llevó', 'GA');
+  add('pc_movie_wizard_oz',       'Wizard of Oz (Kansas)',                   'Décor du Magicien d\'Oz',                'Escenario de El Mago de Oz',             'KS');
+  add('pc_movie_thelma_louise',   'Thelma & Louise road trip',               'Road trip de Thelma & Louise',           'Road trip de Thelma & Louise',           'AR OK NM AZ UT');
+  add('pc_movie_easy_rider',      'Easy Rider road trip',                    'Road trip d\'Easy Rider',                'Road trip de Easy Rider',                'CA AZ NM TX LA');
+  add('pc_movie_brokeback',       'Brokeback Mountain setting',              'Décor de Brokeback Mountain',            'Escenario de Brokeback Mountain',        'WY TX');
+  add('pc_movie_titanic',         'Titanic departure US states (none, UK)',  'Aucune (départ UK)',                     'Ninguno (zarpa UK)',                     '');
+  add('pc_movie_top_gun',         'Top Gun (San Diego)',                     'Décor de Top Gun',                       'Escenario de Top Gun',                   'CA');
+  add('pc_movie_indiana_jones',   'Indiana Jones US scenes',                 'Scènes US d\'Indiana Jones',             'Escenas US de Indiana Jones',            'NV CT UT');
+  add('pc_movie_back_to_future',  'Back to the Future setting (Hill Valley)','Décor de Retour vers le futur',          'Escenario de Volver al Futuro',          'CA');
+  add('pc_movie_goonies',         'The Goonies setting',                     'Décor des Goonies',                      'Escenario de Los Goonies',               'OR');
+  add('pc_movie_stand_by_me',     'Stand By Me setting',                     'Décor de Stand By Me',                   'Escenario de Cuenta conmigo',            'OR');
+  add('pc_movie_get_out',         'Get Out setting',                         'Décor de Get Out',                       'Escenario de Get Out',                   'NY AL');
 
-  // ─── Letter count brackets not covered ───
-  for (const n of [4, 5, 10, 11, 12, 13]) {
-    add(`p_letters_${n}`,
-      `Name has exactly ${n} letters`,
-      `Nom de ${n} lettres exactement`,
-      `Nombre de ${n} letras`,
-      s => s.letterCount === n);
-  }
-  add('p_letters_lte5', 'Short name (≤5 letters)', 'Nom court (≤5 lettres)', 'Nombre corto (≤5)', s => s.letterCount <= 5);
-  add('p_letters_gte11', 'Long name (≥11 letters)', 'Nom long (≥11 lettres)', 'Nombre largo (≥11)', s => s.letterCount >= 11);
+  // ═════════════════════════════════════════════════════════════════════
+  // 📺 TV — Setting of a famous show
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_tv_breaking_bad',       'Breaking Bad setting',                    'Décor de Breaking Bad',                  'Escenario de Breaking Bad',              'NM');
+  add('pc_tv_stranger_things',    'Stranger Things setting',                 'Décor de Stranger Things',               'Escenario de Stranger Things',           'IN');
+  add('pc_tv_the_office',         'The Office (US) setting',                 'Décor de The Office US',                 'Escenario de The Office US',             'PA');
+  add('pc_tv_friends',            'Friends setting',                         'Décor de Friends',                       'Escenario de Friends',                   'NY');
+  add('pc_tv_simpsons_springfld', 'The Simpsons (Springfield — every state)','Springfield des Simpsons (chaque État)', 'Springfield (cada estado)',              'IL OR MA MO KY');
+  add('pc_tv_sopranos',           'The Sopranos setting',                    'Décor des Soprano',                      'Escenario de Los Soprano',               'NJ');
+  add('pc_tv_yellowstone',        'Yellowstone TV setting',                  'Décor de la série Yellowstone',          'Escenario de Yellowstone',               'MT');
+  add('pc_tv_walking_dead',       'The Walking Dead setting',                'Décor de Walking Dead',                  'Escenario de Walking Dead',              'GA');
+  add('pc_tv_better_call_saul',   'Better Call Saul setting',                'Décor de Better Call Saul',              'Escenario de Better Call Saul',          'NM');
+  add('pc_tv_friday_night_lights','Friday Night Lights setting',             'Décor de Friday Night Lights',           'Escenario de Friday Night Lights',       'TX');
+  add('pc_tv_true_blood',         'True Blood setting',                      'Décor de True Blood',                    'Escenario de True Blood',                'LA');
+  add('pc_tv_true_detective_s1',  'True Detective season 1',                 'True Detective saison 1',                'True Detective temporada 1',             'LA');
+  add('pc_tv_twin_peaks',         'Twin Peaks setting',                      'Décor de Twin Peaks',                    'Escenario de Twin Peaks',                'WA');
+  add('pc_tv_cheers',             'Cheers setting',                          'Décor de Cheers',                        'Escenario de Cheers',                    'MA');
+  add('pc_tv_frasier',            'Frasier setting',                         'Décor de Frasier',                       'Escenario de Frasier',                   'WA');
+  add('pc_tv_seinfeld',           'Seinfeld setting',                        'Décor de Seinfeld',                      'Escenario de Seinfeld',                  'NY');
+  add('pc_tv_mad_men',            'Mad Men setting',                         'Décor de Mad Men',                       'Escenario de Mad Men',                   'NY');
+  add('pc_tv_arrested_dev',       'Arrested Development setting',            'Décor d\'Arrested Development',          'Escenario de Arrested Development',      'CA');
+  add('pc_tv_atlanta',            'Atlanta (Donald Glover) setting',         'Décor d\'Atlanta',                       'Escenario de Atlanta',                   'GA');
+  add('pc_tv_justified',          'Justified setting',                       'Décor de Justified',                     'Escenario de Justified',                 'KY');
+  add('pc_tv_ozark',              'Ozark setting',                           'Décor d\'Ozark',                         'Escenario de Ozark',                     'MO');
+  add('pc_tv_the_wire',           'The Wire setting',                        'Décor de The Wire',                      'Escenario de The Wire',                  'MD');
+  add('pc_tv_succession',         'Succession setting (mainly NY)',          'Décor de Succession',                    'Escenario de Succession',                'NY');
+  add('pc_tv_yellowjackets',      'Yellowjackets setting',                   'Décor de Yellowjackets',                 'Escenario de Yellowjackets',             'NJ');
+  add('pc_tv_paper_towns_jp',     'John Hughes "brat pack" Chicago vibes',   'Films Brat Pack à Chicago',              'Brat Pack de Chicago',                   'IL');
+  add('pc_tv_dexter',             'Dexter setting (Miami)',                  'Décor de Dexter',                        'Escenario de Dexter',                    'FL');
+  add('pc_tv_csi_miami',          'CSI: Miami setting',                      'Décor de Les Experts: Miami',            'Escenario de CSI: Miami',                'FL');
+  add('pc_tv_csi_vegas',          'CSI: Vegas setting',                      'Décor de Les Experts: Vegas',            'Escenario de CSI: Vegas',                'NV');
+  add('pc_tv_house_of_cards',     'House of Cards (DC suburbs)',             'House of Cards (banlieue DC)',           'House of Cards (suburbios DC)',          'MD VA');
 
-  // ─── Area rank brackets ───
-  add('p_area_top5',    'Top 5 largest by area',  '5 plus grands en superficie', 'Top 5 más grandes', s => s.areaRank <= 5);
-  add('p_area_top10',   'Top 10 largest',         '10 plus grands',              'Top 10 más grandes', s => s.areaRank <= 10);
-  add('p_area_bottom5', 'Top 5 smallest',         '5 plus petits',               'Top 5 más pequeños', s => s.areaRank >= 46);
-  add('p_area_bottom10','Top 10 smallest',        '10 plus petits',              'Top 10 más pequeños', s => s.areaRank >= 41);
-  add('p_area_middle',  'Middle area rank (15–35)','Superficie moyenne (15–35)', 'Superficie media (15–35)', s => s.areaRank >= 15 && s.areaRank <= 35);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🎤 CELEBRITY BIRTHPLACES
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_born_taylor_swift',     'Birth state of Taylor Swift',             'État de naissance de Taylor Swift',      'Estado natal de Taylor Swift',           'PA');
+  add('pc_born_michael_jackson',  'Birth state of Michael Jackson',          'État de naissance de Michael Jackson',   'Estado natal de Michael Jackson',        'IN');
+  add('pc_born_madonna',          'Birth state of Madonna',                  'État de naissance de Madonna',           'Estado natal de Madonna',                'MI');
+  add('pc_born_beyonce',          'Birth state of Beyoncé',                  'État de naissance de Beyoncé',           'Estado natal de Beyoncé',                'TX');
+  add('pc_born_elvis',            'Birth state of Elvis Presley',            'État de naissance d\'Elvis',             'Estado natal de Elvis',                  'MS');
+  add('pc_born_lady_gaga',        'Birth state of Lady Gaga',                'État de naissance de Lady Gaga',         'Estado natal de Lady Gaga',              'NY');
+  add('pc_born_bruce_spring',     'Birth state of Bruce Springsteen',        'État natal de Bruce Springsteen',        'Estado natal de Bruce Springsteen',      'NJ');
+  add('pc_born_bob_dylan',        'Birth state of Bob Dylan',                'État natal de Bob Dylan',                'Estado natal de Bob Dylan',              'MN');
+  add('pc_born_prince',           'Birth state of Prince',                   'État natal de Prince',                   'Estado natal de Prince',                 'MN');
+  add('pc_born_kanye',            'Birth state of Kanye West',               'État natal de Kanye West',               'Estado natal de Kanye West',             'GA');
+  add('pc_born_jayz',             'Birth state of Jay-Z',                    'État natal de Jay-Z',                    'Estado natal de Jay-Z',                  'NY');
+  add('pc_born_britney',          'Birth state of Britney Spears',           'État natal de Britney Spears',           'Estado natal de Britney Spears',         'MS');
+  add('pc_born_dolly_parton',     'Birth state of Dolly Parton',             'État natal de Dolly Parton',             'Estado natal de Dolly Parton',           'TN');
+  add('pc_born_johnny_cash',      'Birth state of Johnny Cash',              'État natal de Johnny Cash',              'Estado natal de Johnny Cash',            'AR');
+  add('pc_born_marilyn_monroe',   'Birth state of Marilyn Monroe',           'État natal de Marilyn Monroe',           'Estado natal de Marilyn Monroe',         'CA');
+  add('pc_born_brad_pitt',        'Birth state of Brad Pitt',                'État natal de Brad Pitt',                'Estado natal de Brad Pitt',              'OK');
+  add('pc_born_george_clooney',   'Birth state of George Clooney',           'État natal de George Clooney',           'Estado natal de George Clooney',         'KY');
+  add('pc_born_steve_jobs',       'Birth state of Steve Jobs',               'État natal de Steve Jobs',               'Estado natal de Steve Jobs',             'CA');
+  add('pc_born_elon_musk_us',     'Adopted state of Elon Musk',              'État d\'adoption d\'Elon Musk',          'Estado adoptivo de Elon Musk',           'TX');
+  add('pc_born_oprah',            'Birth state of Oprah Winfrey',            'État natal d\'Oprah Winfrey',            'Estado natal de Oprah',                  'MS');
+  add('pc_born_jordan',           'Birth state of Michael Jordan',           'État natal de Michael Jordan',           'Estado natal de Michael Jordan',         'NY');
+  add('pc_raised_jordan',         'State Jordan grew up in',                 'État où Jordan a grandi',                'Estado donde creció Jordan',             'NC');
+  add('pc_born_lebron',           'Birth state of LeBron James',             'État natal de LeBron James',             'Estado natal de LeBron',                 'OH');
+  add('pc_born_brady',            'Birth state of Tom Brady',                'État natal de Tom Brady',                'Estado natal de Tom Brady',              'CA');
+  add('pc_born_kobe',             'Birth state of Kobe Bryant',              'État natal de Kobe Bryant',              'Estado natal de Kobe',                   'PA');
+  add('pc_born_serena',           'Birth state of Serena Williams',          'État natal de Serena Williams',          'Estado natal de Serena Williams',        'MI');
+  add('pc_born_tiger_woods',      'Birth state of Tiger Woods',              'État natal de Tiger Woods',              'Estado natal de Tiger Woods',            'CA');
 
-  // ─── Statehood era ───
-  add('p_admit_pre1800', 'Admitted before 1800',  'Admis avant 1800',  'Admitido antes de 1800', s => s.admitted < 1800);
-  add('p_admit_1800_1849', 'Admitted 1800–1849',  'Admis 1800–1849',   'Admitido 1800–1849',     s => s.admitted >= 1800 && s.admitted < 1850);
-  add('p_admit_1850_1899', 'Admitted 1850–1899',  'Admis 1850–1899',   'Admitido 1850–1899',     s => s.admitted >= 1850 && s.admitted < 1900);
-  add('p_admit_1900_plus', 'Admitted 1900 or later','Admis après 1900','Admitido desde 1900',    s => s.admitted >= 1900);
-  add('p_admit_civil_war_era', 'Admitted 1861–1870 (Civil War era)', 'Admis 1861–1870 (Guerre de Sécession)', 'Admitido 1861–1870 (Guerra Civil)', s => s.admitted >= 1861 && s.admitted <= 1870);
-  add('p_admit_18th_century', 'Admitted in 18th century', 'Admis au 18e siècle', 'Admitido en siglo 18', s => s.admitted < 1800);
-  add('p_admit_19th_century', 'Admitted in 19th century', 'Admis au 19e siècle', 'Admitido en siglo 19', s => s.admitted >= 1800 && s.admitted < 1900);
-  add('p_admit_20th_century', 'Admitted in 20th century', 'Admis au 20e siècle', 'Admitido en siglo 20', s => s.admitted >= 1900 && s.admitted < 2000);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🎵 MUSIC ORIGINS & SCENES
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_music_country_origin',  'Country music heritage',                  'Berceau de la country music',            'Cuna de la música country',              'TN KY VA NC GA TX');
+  add('pc_music_jazz_origin',     'Jazz birthplace',                         'Berceau du jazz',                        'Cuna del jazz',                          'LA');
+  add('pc_music_blues_origin',    'Delta blues birthplace',                  'Berceau du blues du Delta',              'Cuna del blues del Delta',               'MS TN');
+  add('pc_music_hiphop_origin',   'Hip-hop birthplace (Bronx)',              'Berceau du hip-hop',                     'Cuna del hip-hop',                       'NY');
+  add('pc_music_motown',          'Motown sound home',                       'Berceau du son Motown',                  'Hogar del Motown',                       'MI');
+  add('pc_music_grunge',          'Grunge birthplace',                       'Berceau du grunge',                      'Cuna del grunge',                        'WA');
+  add('pc_music_west_coast_rap',  'West Coast hip-hop scene',                'Scène hip-hop West Coast',               'Escena hip-hop West Coast',              'CA');
+  add('pc_music_atl_hiphop',      'Atlanta trap/hip-hop scene',              'Scène hip-hop d\'Atlanta',               'Escena hip-hop de Atlanta',              'GA');
+  add('pc_music_punk_origin',     'US punk scenes (NY, LA, DC)',             'Scènes punk US',                         'Escenas punk US',                        'NY CA');
+  add('pc_music_zydeco',          'Zydeco / Cajun music home',               'Berceau du zydeco / cajun',              'Cuna del zydeco / cajun',                'LA');
+  add('pc_music_bluegrass',       'Bluegrass birthplace',                    'Berceau du bluegrass',                   'Cuna del bluegrass',                     'KY');
+  add('pc_music_emo_midwest',     'Midwest emo scene',                       'Scène emo Midwest',                      'Escena emo Medio Oeste',                 'IL OH IN');
+  add('pc_music_chicago_blues',   'Chicago blues',                           'Blues de Chicago',                       'Blues de Chicago',                       'IL');
+  add('pc_music_outlaw_country',  'Outlaw country (Texas / Tennessee)',      'Outlaw country',                         'Outlaw country',                         'TX TN');
+  add('pc_music_surf_rock',       'Surf rock origin',                        'Berceau du surf rock',                   'Cuna del surf rock',                     'CA');
 
-  // ─── Election history ───
-  const e = (s, y) => s.elections && s.elections[y];
-  add('p_elec_2024_dem', 'Voted Democrat in 2024',  'A voté démocrate en 2024',  'Votó demócrata en 2024',  s => e(s,'2024') === 'd');
-  add('p_elec_2020_rep', 'Voted Republican in 2020','A voté républicain en 2020','Votó republicano en 2020',s => e(s,'2020') === 'r');
-  add('p_elec_2016_rep', 'Voted Republican in 2016','A voté républicain en 2016','Votó republicano en 2016',s => e(s,'2016') === 'r');
-  add('p_elec_2016_dem', 'Voted Democrat in 2016',  'A voté démocrate en 2016',  'Votó demócrata en 2016',  s => e(s,'2016') === 'd');
-  add('p_elec_2012_dem', 'Voted Democrat in 2012',  'A voté démocrate en 2012',  'Votó demócrata en 2012',  s => e(s,'2012') === 'd');
-  add('p_elec_flipped_20_24', 'Flipped Biden→Trump (2020→2024)', 'Bascule Biden→Trump (2020→2024)', 'Cambió Biden→Trump (2020→2024)', s => e(s,'2020') === 'd' && e(s,'2024') === 'r');
-  add('p_elec_consistent_red', 'Republican in every election since 2008', 'Républicain à chaque élection depuis 2008', 'Republicano en cada elección desde 2008', s => ['2008','2012','2016','2020','2024'].every(y => e(s,y) === 'r'));
-  add('p_elec_consistent_blue','Democrat in every election since 2008',  'Démocrate à chaque élection depuis 2008', 'Demócrata en cada elección desde 2008', s => ['2008','2012','2016','2020','2024'].every(y => e(s,y) === 'd'));
-  add('p_elec_2008_obama', 'Voted for Obama in 2008',  'A voté Obama en 2008',     'Votó por Obama en 2008',     s => e(s,'2008') === 'd');
+  // ═════════════════════════════════════════════════════════════════════
+  // 🎵 SONG TITLES (state appears in famous song)
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_song_sweet_home_alabama','Subject of "Sweet Home Alabama"',        '"Sweet Home Alabama"',                   '«Sweet Home Alabama»',                   'AL');
+  add('pc_song_california_dreamin','"California Dreamin\'" subject',         '"California Dreamin\'"',                 '«California Dreamin\'»',                 'CA');
+  add('pc_song_georgia_on_my_mind','"Georgia on My Mind"',                   '"Georgia on My Mind"',                   '«Georgia on My Mind»',                   'GA');
+  add('pc_song_empire_state',     '"Empire State of Mind"',                  '"Empire State of Mind"',                 '«Empire State of Mind»',                 'NY');
+  add('pc_song_tennessee_whiskey','"Tennessee Whiskey"',                     '"Tennessee Whiskey"',                    '«Tennessee Whiskey»',                    'TN');
+  add('pc_song_oklahoma_musical', '"Oklahoma!" the musical',                 'La comédie musicale "Oklahoma!"',        'El musical «Oklahoma!»',                 'OK');
+  add('pc_song_kentucky_woman',   '"Kentucky Woman" / "My Old Kentucky Home"','"Kentucky Woman"',                      '«Kentucky Woman»',                       'KY');
+  add('pc_song_carolina_in_mind', '"Carolina in My Mind"',                   '"Carolina in My Mind"',                  '«Carolina in My Mind»',                  'NC SC');
+  add('pc_song_take_me_home_wv',  '"Take Me Home, Country Roads" (WV)',      '"Take Me Home, Country Roads"',          '«Take Me Home, Country Roads»',          'WV');
+  add('pc_song_mississippi_queen','"Mississippi Queen"',                     '"Mississippi Queen"',                    '«Mississippi Queen»',                    'MS');
+  add('pc_song_kansas_city',      '"Kansas City"',                           '"Kansas City"',                          '«Kansas City»',                          'KS MO');
+  add('pc_song_arkansas_traveler','"Arkansas Traveler"',                     '"Arkansas Traveler"',                    '«Arkansas Traveler»',                    'AR');
+  add('pc_song_indiana_morning', 'In a famous song title',                   'Dans un titre célèbre',                  'En título famoso',                       'IN');
 
-  // ─── Tax & money ───
-  add('p_no_income_tax', 'No state income tax',  'Pas d\'impôt sur le revenu', 'Sin impuesto sobre la renta', s => s.noIncomeTax);
-  add('p_no_sales_tax',  'No state sales tax',   'Pas de taxe de vente',       'Sin impuesto sobre las ventas', s => s.noSalesTax);
-  add('p_zero_tax',      'No income AND no sales tax', 'Aucun des deux impôts', 'Sin ningún impuesto estatal', s => s.noIncomeTax && s.noSalesTax);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🏛️ HISTORICAL EVENTS
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_hist_civil_war_started','Civil War started here (Fort Sumter)',    'Début de la Guerre de Sécession',        'Inicio de la Guerra Civil',              'SC');
+  add('pc_hist_boston_tea_party', 'Boston Tea Party',                        'Boston Tea Party',                       'Motín del Té',                           'MA');
+  add('pc_hist_pearl_harbor',     'Pearl Harbor attack',                     'Attaque de Pearl Harbor',                'Ataque a Pearl Harbor',                  'HI');
+  add('pc_hist_911_attacks',      '9/11 attack sites',                       'Sites des attentats du 11 septembre',    'Sitios del 11-S',                        'NY PA');
+  add('pc_hist_jfk_assassinated', 'JFK assassinated here',                   'Assassinat de JFK',                      'Asesinato de JFK',                       'TX');
+  add('pc_hist_mlk_assassinated', 'MLK assassinated here',                   'Assassinat de MLK',                      'Asesinato de MLK',                       'TN');
+  add('pc_hist_lincoln_assass',   'Lincoln assassinated here',               'Assassinat de Lincoln',                  'Asesinato de Lincoln',                   'DC');
+  add('pc_hist_first_flight',     'Wright Brothers first flight',            'Premier vol des frères Wright',          'Primer vuelo de los Wright',             'NC');
+  add('pc_hist_gold_rush',        'Gold Rush of 1849',                       'Ruée vers l\'or de 1849',                'Fiebre del oro de 1849',                 'CA');
+  add('pc_hist_manhattan_project','Manhattan Project (Los Alamos)',          'Projet Manhattan',                       'Proyecto Manhattan',                     'NM');
+  add('pc_hist_roswell_ufo',      'Roswell UFO incident',                    'Incident de Roswell',                    'Incidente de Roswell',                   'NM');
+  add('pc_hist_salem_witches',    'Salem witch trials',                      'Procès des sorcières de Salem',          'Juicios de Salem',                       'MA');
+  add('pc_hist_alamo',            'Battle of the Alamo',                     'Bataille d\'Alamo',                      'Batalla de El Álamo',                    'TX');
+  add('pc_hist_oregon_trail_end', 'End of Oregon Trail',                     'Fin de la piste de l\'Oregon',           'Fin del Oregon Trail',                   'OR');
+  add('pc_hist_lewis_clark_start','Lewis & Clark expedition start',          'Départ de Lewis et Clark',               'Inicio de Lewis y Clark',                'MO');
+  add('pc_hist_selma_march',      'Selma to Montgomery march',               'Marches de Selma',                       'Marchas de Selma',                       'AL');
+  add('pc_hist_freedom_summer',   'Mississippi Freedom Summer 1964',         '"Freedom Summer" du Mississippi',        'Freedom Summer de Misisipi',             'MS');
+  add('pc_hist_little_rock_9',    'Little Rock Nine',                        'Les neuf de Little Rock',                'Los Nueve de Little Rock',               'AR');
+  add('pc_hist_stonewall',        'Stonewall riots',                         'Émeutes de Stonewall',                   'Disturbios de Stonewall',                'NY');
+  add('pc_hist_woodstock',        'Woodstock 1969',                          'Woodstock 1969',                         'Woodstock 1969',                         'NY');
+  add('pc_hist_kent_state',       'Kent State shootings 1970',               'Fusillade de Kent State',                'Tiroteo de Kent State',                  'OH');
+  add('pc_hist_three_mile_isl',   'Three Mile Island accident',              'Accident de Three Mile Island',          'Accidente de Three Mile Island',         'PA');
+  add('pc_hist_mt_st_helens',     'Mount St. Helens eruption 1980',          'Éruption du Mont Saint Helens',          'Erupción del Monte Santa Helena',        'WA');
+  add('pc_hist_katrina',          'Hurricane Katrina (2005)',                'Ouragan Katrina',                        'Huracán Katrina',                        'LA MS');
+  add('pc_hist_columbine',        'Columbine shooting',                      'Tuerie de Columbine',                    'Masacre de Columbine',                   'CO');
+  add('pc_hist_okc_bombing',      'Oklahoma City bombing 1995',              'Attentat d\'Oklahoma City',              'Atentado de Oklahoma City',              'OK');
 
-  // ─── Geography specifics ───
-  add('p_on_missouri', 'On the Missouri River',  'Sur le fleuve Missouri',  'En el río Misuri', s => s.onMissouri);
-  add('p_appalachian_only', 'Appalachian range (only)', 'Chaîne des Appalaches uniquement', 'Solo Apalaches', s => Array.isArray(s.mountainRange) && s.mountainRange.includes('appalachians') && !s.mountainRange.includes('rockies'));
-  add('p_no_mountains', 'No mountain range',     'Sans chaîne de montagnes', 'Sin cadena montañosa', s => !s.mountainRange || s.mountainRange.length === 0);
-  add('p_capital_is_largest', 'Capital is largest city', 'Capitale = plus grande ville', 'Capital = ciudad más grande', s => s.capitalIsLargest);
-  add('p_top_ten_city',       'Has a top-10 US city',    'A une ville du top 10 US',     'Tiene ciudad top 10 EE.UU.',   s => s.hasTopTenCity);
-  add('p_pres_birthplace',    'Birthplace of a US president', 'Naissance d\'un président US', 'Cuna de presidente de EE.UU.', s => s.presidentBirthplace);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🇺🇸 PRESIDENTS
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_pres_birthplace_4plus','Birthplace of 4+ presidents',              'État natal de 4+ présidents',            'Estado natal de 4+ presidentes',         'VA OH NY MA');
+  add('pc_pres_born_lincoln',     'Birthplace of Lincoln',                   'Naissance de Lincoln',                   'Cuna de Lincoln',                        'KY');
+  add('pc_pres_born_jfk',         'Birthplace of JFK',                       'Naissance de JFK',                       'Cuna de JFK',                            'MA');
+  add('pc_pres_born_obama',       'Birthplace of Obama',                     'Naissance d\'Obama',                     'Cuna de Obama',                          'HI');
+  add('pc_pres_born_trump',       'Birthplace of Trump',                     'Naissance de Trump',                     'Cuna de Trump',                          'NY');
+  add('pc_pres_born_biden',       'Birthplace of Biden',                     'Naissance de Biden',                     'Cuna de Biden',                          'PA');
+  add('pc_pres_born_reagan',      'Birthplace of Reagan',                    'Naissance de Reagan',                    'Cuna de Reagan',                         'IL');
+  add('pc_pres_born_clinton',     'Birthplace of Bill Clinton',              'Naissance de Bill Clinton',              'Cuna de Bill Clinton',                   'AR');
+  add('pc_pres_born_carter',      'Birthplace of Jimmy Carter',              'Naissance de Carter',                    'Cuna de Carter',                         'GA');
+  add('pc_pres_born_bush_h',      'Birthplace of George H.W. Bush',          'Naissance de Bush père',                 'Cuna de Bush padre',                     'MA');
+  add('pc_pres_born_bush_w',      'Birthplace of George W. Bush',            'Naissance de Bush fils',                 'Cuna de Bush hijo',                      'CT');
+  add('pc_pres_born_washington',  'Birthplace of George Washington',         'Naissance de George Washington',         'Cuna de George Washington',              'VA');
 
-  // ─── Heritage / historical origin ───
-  add('p_louisiana_purchase', 'Part of Louisiana Purchase', 'Achat de la Louisiane', 'Compra de Luisiana', s => s.louisianaPurchase);
-  add('p_mexican_cession',    'Part of Mexican Cession',    'Cession mexicaine',     'Cesión Mexicana',    s => s.mexicanCession);
-  add('p_french_heritage',    'French colonial heritage',   'Héritage colonial français', 'Herencia colonial francesa', s => s.frenchHeritage);
-  add('p_spanish_heritage',   'Spanish colonial heritage',  'Héritage colonial espagnol', 'Herencia colonial española', s => s.spanishHeritage);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🏆 SPORTS — Major events
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_sport_olympics_summer', 'Hosted Summer Olympics',                  'A organisé les JO d\'été',               'Organizó JJOO de Verano',                'CA GA MO');
+  add('pc_sport_olympics_winter', 'Hosted Winter Olympics',                  'A organisé les JO d\'hiver',             'Organizó JJOO de Invierno',              'CA NY UT');
+  add('pc_sport_super_bowl_5plus','Has hosted Super Bowl 5+ times',          'A organisé 5+ Super Bowls',              'Organizó 5+ Super Bowls',                'FL CA LA TX');
+  add('pc_sport_indy_500',        'Indy 500',                                'Indy 500',                               'Indy 500',                               'IN');
+  add('pc_sport_kentucky_derby',  'Kentucky Derby',                          'Kentucky Derby',                         'Derby de Kentucky',                      'KY');
+  add('pc_sport_masters_golf',    'The Masters golf tournament',             'Le Masters de golf',                     'El Masters de golf',                     'GA');
+  add('pc_sport_iditarod',        'Iditarod sled dog race',                  'L\'Iditarod',                            'El Iditarod',                            'AK');
+  add('pc_sport_rose_bowl',       'Rose Bowl game',                          'Rose Bowl',                              'Rose Bowl',                              'CA');
+  add('pc_sport_daytona_500',     'Daytona 500',                             'Daytona 500',                            'Daytona 500',                            'FL');
 
-  // ─── Sports combos ───
-  const teamCount = s => (s.nbaTeam?1:0) + (s.nflTeam?1:0) + (s.mlbTeam?1:0) + (s.nhlTeam?1:0);
-  add('p_pro_teams_3plus','3+ major pro teams (NBA/NFL/MLB/NHL)', '3+ équipes pro majeures', '3+ equipos pro mayores', s => teamCount(s) >= 3);
-  add('p_pro_teams_4',    'All 4 major pro leagues',              '4 ligues majeures',       'Las 4 ligas mayores',    s => teamCount(s) === 4);
-  add('p_has_nfl',        'Has an NFL team',         'A une équipe NFL',          'Tiene equipo NFL',       s => s.nflTeam);
-  add('p_has_mlb',        'Has an MLB team',         'A une équipe MLB',          'Tiene equipo MLB',       s => s.mlbTeam);
-  add('p_has_nhl',        'Has an NHL team',         'A une équipe NHL',          'Tiene equipo NHL',       s => s.nhlTeam);
-  add('p_nascar',         'Has a NASCAR speedway',   'A un circuit NASCAR',       'Tiene circuito NASCAR',  s => s.nascarSpeedway);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🏢 BRANDS / COMPANIES HQ
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_brand_walmart',         'Walmart HQ (Bentonville)',                'Siège de Walmart',                       'Sede de Walmart',                        'AR');
+  add('pc_brand_amazon',          'Amazon HQ',                               'Siège d\'Amazon',                        'Sede de Amazon',                         'WA');
+  add('pc_brand_microsoft',       'Microsoft HQ',                            'Siège de Microsoft',                     'Sede de Microsoft',                      'WA');
+  add('pc_brand_apple',           'Apple HQ',                                'Siège d\'Apple',                         'Sede de Apple',                          'CA');
+  add('pc_brand_google',          'Google HQ',                               'Siège de Google',                        'Sede de Google',                         'CA');
+  add('pc_brand_meta',            'Meta HQ',                                 'Siège de Meta',                          'Sede de Meta',                           'CA');
+  add('pc_brand_tesla',           'Tesla HQ (Austin)',                       'Siège de Tesla',                         'Sede de Tesla',                          'TX');
+  add('pc_brand_coca_cola',       'Coca-Cola HQ (Atlanta)',                  'Siège de Coca-Cola',                     'Sede de Coca-Cola',                      'GA');
+  add('pc_brand_mcdonalds',       'McDonald\'s HQ (Chicago)',                'Siège de McDonald\'s',                   'Sede de McDonald\'s',                    'IL');
+  add('pc_brand_boeing',          'Boeing HQ (Arlington/Chicago)',           'Siège de Boeing',                        'Sede de Boeing',                         'VA');
+  add('pc_brand_disney',          'Walt Disney HQ (Burbank)',                'Siège Disney',                           'Sede Disney',                            'CA');
+  add('pc_brand_ford',            'Ford HQ',                                 'Siège de Ford',                          'Sede de Ford',                           'MI');
+  add('pc_brand_gm',              'GM HQ',                                   'Siège de GM',                            'Sede de GM',                             'MI');
+  add('pc_brand_berkshire',       'Berkshire Hathaway HQ (Omaha)',           'Siège de Berkshire Hathaway',            'Sede de Berkshire Hathaway',             'NE');
+  add('pc_brand_tyson',           'Tyson Foods HQ',                          'Siège de Tyson Foods',                   'Sede de Tyson',                          'AR');
+  add('pc_brand_exxon',           'ExxonMobil HQ',                           'Siège d\'ExxonMobil',                    'Sede de ExxonMobil',                     'TX');
+  add('pc_brand_ibm',             'IBM HQ',                                  'Siège d\'IBM',                           'Sede de IBM',                            'NY');
+  add('pc_brand_target',          'Target HQ',                               'Siège de Target',                        'Sede de Target',                         'MN');
+  add('pc_brand_starbucks',       'Starbucks HQ',                            'Siège de Starbucks',                     'Sede de Starbucks',                      'WA');
+  add('pc_brand_jpmorgan',        'JPMorgan Chase HQ',                       'Siège de JPMorgan',                      'Sede de JPMorgan',                       'NY');
+  add('pc_brand_nike',            'Nike HQ',                                 'Siège de Nike',                          'Sede de Nike',                           'OR');
+  add('pc_brand_intel',           'Intel HQ',                                'Siège d\'Intel',                         'Sede de Intel',                          'CA');
+  add('pc_brand_kraft',           'Kraft Heinz HQ',                          'Siège de Kraft Heinz',                   'Sede de Kraft Heinz',                    'IL PA');
+  add('pc_brand_pg',              'Procter & Gamble HQ',                     'Siège de P&G',                           'Sede de P&G',                            'OH');
 
-  // ─── Coastal combos ───
-  const coast = (s, c) => Array.isArray(s.coastline) && s.coastline.includes(c);
-  add('p_coastal_any',   'Any coastline at all',  'Au moins une côte',  'Cualquier costa', s => Array.isArray(s.coastline) && s.coastline.length > 0);
-  add('p_atlantic_and_gulf','Atlantic AND Gulf coast', 'Côte Atlantique ET Golfe', 'Costa Atlántica Y Golfo', s => coast(s,'atlantic') && coast(s,'gulf'));
-  add('p_two_coasts',    '2+ coastlines',         '2+ côtes',           '2+ costas', s => Array.isArray(s.coastline) && s.coastline.length >= 2);
-  add('p_pacific_states','Pacific time zone',     'Fuseau Pacifique',   'Zona horaria Pacífico', s => s.timezone === 'pacific');
+  // ═════════════════════════════════════════════════════════════════════
+  // 🍔 FOOD ORIGINS
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_food_philly_cheesesteak','Philly cheesesteak origin',              'Origine du cheesesteak Philly',          'Origen del cheesesteak',                 'PA');
+  add('pc_food_buffalo_wings',    'Buffalo wings origin',                    'Origine des Buffalo wings',              'Origen de las alitas Buffalo',           'NY');
+  add('pc_food_chicago_pizza',    'Deep dish pizza origin',                  'Origine de la pizza deep dish',          'Origen de la pizza deep dish',           'IL');
+  add('pc_food_ny_pizza',         'NY-style pizza origin',                   'Origine de la pizza new-yorkaise',       'Origen de la pizza estilo NY',           'NY');
+  add('pc_food_cajun',            'Cajun cuisine origin',                    'Origine de la cuisine cajun',            'Origen de la cocina cajún',              'LA');
+  add('pc_food_tex_mex',          'Tex-Mex cuisine origin',                  'Origine du Tex-Mex',                     'Origen del Tex-Mex',                     'TX');
+  add('pc_food_new_england_chow', 'Clam chowder origin',                     'Origine de la chaudrée de palourdes',    'Origen de la sopa de almejas',           'MA');
+  add('pc_food_maine_lobster',    'Maine lobster',                           'Homard du Maine',                        'Langosta de Maine',                      'ME');
+  add('pc_food_maryland_crab',    'Maryland blue crab',                      'Crabe bleu du Maryland',                 'Cangrejo azul de Maryland',              'MD');
+  add('pc_food_kentucky_bourbon', 'Kentucky bourbon',                        'Bourbon du Kentucky',                    'Bourbon de Kentucky',                    'KY');
+  add('pc_food_tn_whiskey',       'Tennessee whiskey',                       'Whiskey du Tennessee',                   'Whiskey de Tennessee',                   'TN');
+  add('pc_food_napa_wine',        'Napa Valley wine country',                'Vignobles de la Napa Valley',            'Valle de Napa',                          'CA');
+  add('pc_food_idaho_potato',     'Idaho potato',                            'Pomme de terre de l\'Idaho',             'Patata de Idaho',                        'ID');
+  add('pc_food_vt_maple_syrup',   'Vermont maple syrup',                     'Sirop d\'érable du Vermont',             'Jarabe de arce de Vermont',              'VT');
+  add('pc_food_georgia_peach',    'Georgia peach',                           'Pêche de Géorgie',                       'Melocotón de Georgia',                   'GA');
+  add('pc_food_fl_orange',        'Florida orange',                          'Orange de Floride',                      'Naranja de Florida',                     'FL');
+  add('pc_food_wi_cheese',        'Wisconsin cheese',                        'Fromage du Wisconsin',                   'Queso de Wisconsin',                     'WI');
+  add('pc_food_bbq_capitals',     'BBQ capital (KC/Memphis/TX/NC)',          'Capitale du BBQ',                        'Capital del BBQ',                        'TX TN NC MO KS');
+  add('pc_food_in_n_out',         'In-N-Out Burger present',                 'In-N-Out Burger présent',                'In-N-Out Burger',                        'CA NV AZ UT TX OR CO ID');
+  add('pc_food_waffle_house',     'Waffle House heartland',                  'Pays de Waffle House',                   'Tierra de Waffle House',                 'GA AL SC TN FL NC');
 
-  // ─── Subregion combos ───
-  add('p_sub_southwest', 'Southwest subregion',  'Sous-région Sud-Ouest', 'Subregión Suroeste', s => s.subregion === 'southwest');
-  add('p_sub_pacific',   'Pacific subregion',    'Sous-région Pacifique', 'Subregión Pacífico', s => s.subregion === 'pacific');
-  add('p_west_landlocked','Western + landlocked','Ouest + enclavé',        'Oeste + sin costa', s => s.region === 'west' && s.landlocked);
-  add('p_south_coastal',  'Southern + coastal',  'Sud + côtier',           'Sur + costero',     s => s.region === 'south' && Array.isArray(s.coastline) && s.coastline.length > 0);
-  add('p_northeast_atlantic','Northeast + Atlantic','Nord-Est + Atlantique','Noreste + Atlántico', s => s.region === 'northeast' && coast(s,'atlantic'));
-  add('p_midwest_great_lakes','Midwest + Great Lakes','Midwest + Grands Lacs','Medio Oeste + Grandes Lagos', s => s.region === 'midwest' && coast(s,'great_lakes'));
+  // ═════════════════════════════════════════════════════════════════════
+  // 🏞️ LANDMARKS
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_lm_grand_canyon',       'Grand Canyon',                            'Grand Canyon',                           'Gran Cañón',                             'AZ');
+  add('pc_lm_niagara',            'Niagara Falls (US side)',                 'Chutes du Niagara',                      'Cataratas del Niágara',                  'NY');
+  add('pc_lm_rushmore',           'Mount Rushmore',                          'Mont Rushmore',                          'Monte Rushmore',                         'SD');
+  add('pc_lm_yellowstone_park',   'Yellowstone National Park',               'Parc de Yellowstone',                    'Parque de Yellowstone',                  'WY MT ID');
+  add('pc_lm_statue_liberty',     'Statue of Liberty',                       'Statue de la Liberté',                   'Estatua de la Libertad',                 'NY');
+  add('pc_lm_golden_gate',        'Golden Gate Bridge',                      'Golden Gate Bridge',                     'Puente Golden Gate',                     'CA');
+  add('pc_lm_space_needle',       'Space Needle',                            'Space Needle',                           'Space Needle',                           'WA');
+  add('pc_lm_st_louis_arch',      'Gateway Arch (St. Louis)',                'Gateway Arch',                           'Arco Gateway',                           'MO');
+  add('pc_lm_hoover_dam',         'Hoover Dam',                              'Barrage Hoover',                         'Presa Hoover',                           'NV AZ');
+  add('pc_lm_vegas_strip',        'Las Vegas Strip',                         'Strip de Las Vegas',                     'Strip de Las Vegas',                     'NV');
+  add('pc_lm_times_square',       'Times Square',                            'Times Square',                           'Times Square',                           'NY');
+  add('pc_lm_bourbon_street',     'Bourbon Street',                          'Bourbon Street',                         'Bourbon Street',                         'LA');
+  add('pc_lm_freedom_trail',      'Boston Freedom Trail',                    'Freedom Trail de Boston',                'Sendero de la Libertad',                 'MA');
+  add('pc_lm_old_faithful',       'Old Faithful geyser',                     'Geyser Old Faithful',                    'Géiser Old Faithful',                    'WY');
+  add('pc_lm_disneyland',         'Disneyland (Anaheim)',                    'Disneyland',                             'Disneyland',                             'CA');
+  add('pc_lm_disney_world',       'Walt Disney World',                       'Walt Disney World',                      'Walt Disney World',                      'FL');
+  add('pc_lm_alcatraz',           'Alcatraz Island',                         'Alcatraz',                               'Alcatraz',                               'CA');
 
-  // ─── Border combos ───
-  add('p_borders_canada_or_mexico', 'Borders Canada OR Mexico', 'Frontière Canada OU Mexique', 'Frontera con Canadá O México', s => s.bordersCanada || s.bordersMexico);
-  add('p_borders_both_intl', 'Borders both Canada and Mexico', 'Frontière Canada ET Mexique', 'Frontera Canadá Y México', s => s.bordersCanada && s.bordersMexico);
-  add('p_borders_neither_intl', 'Borders no foreign country', 'Aucune frontière étrangère', 'Sin frontera internacional', s => !s.bordersCanada && !s.bordersMexico);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🎓 UNIVERSITIES
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_uni_ivy_league',        'Home to an Ivy League school',            'Université Ivy League',                  'Universidad Ivy League',                 'MA NY NJ CT PA NH RI');
+  add('pc_uni_harvard',           'Home to Harvard',                         'Abrite Harvard',                         'Alberga Harvard',                        'MA');
+  add('pc_uni_mit',               'Home to MIT',                             'Abrite le MIT',                          'Alberga MIT',                            'MA');
+  add('pc_uni_stanford',          'Home to Stanford',                        'Abrite Stanford',                        'Alberga Stanford',                       'CA');
+  add('pc_uni_yale',              'Home to Yale',                            'Abrite Yale',                            'Alberga Yale',                           'CT');
+  add('pc_uni_princeton',         'Home to Princeton',                       'Abrite Princeton',                       'Alberga Princeton',                      'NJ');
+  add('pc_uni_sec_football',      'Has an SEC football school',              'Université de la SEC',                   'Universidad de la SEC',                  'AL AR FL GA KY LA MS MO SC TN TX OK');
+  add('pc_uni_big_ten',           'Has a Big Ten football school',           'Université du Big Ten',                  'Universidad del Big Ten',                'IA IL IN MD MI MN NE NJ OH OR PA WA WI');
 
-  // ─── Population combos ───
-  add('p_pop_gt5m', 'Population > 5M', 'Population > 5M', 'Población > 5M', s => s.population === '5M-10M' || s.population === '>10M');
-  add('p_pop_lt5m', 'Population < 5M', 'Population < 5M', 'Población < 5M', s => s.population === '<1M' || s.population === '1M-5M');
+  // ═════════════════════════════════════════════════════════════════════
+  // 🎪 FESTIVALS & EVENTS
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_fest_coachella',        'Coachella',                               'Coachella',                              'Coachella',                              'CA');
+  add('pc_fest_burning_man',      'Burning Man',                             'Burning Man',                            'Burning Man',                            'NV');
+  add('pc_fest_sxsw',             'SXSW (Austin)',                           'SXSW',                                   'SXSW',                                   'TX');
+  add('pc_fest_bonnaroo',         'Bonnaroo',                                'Bonnaroo',                               'Bonnaroo',                               'TN');
+  add('pc_fest_lollapalooza',     'Lollapalooza',                            'Lollapalooza',                           'Lollapalooza',                           'IL');
+  add('pc_fest_sundance',         'Sundance Film Festival',                  'Festival de Sundance',                   'Festival de Sundance',                   'UT');
+  add('pc_fest_mardi_gras',       'Mardi Gras (New Orleans)',                'Mardi Gras',                             'Martes de Carnaval',                     'LA');
 
-  // ─── Belts ───
-  add('p_belt_3plus', 'In 3+ regional belts', 'Dans 3+ ceintures régionales', 'En 3+ cinturones', s => {
-    let n = 0;
-    ['sunBelt','snowBelt','cornBelt','wheatBelt','cottonBelt','bibleBelt','rustBelt'].forEach(k => { if (s[k]) n++; });
-    return n >= 3;
-  });
-  add('p_belt_none', 'In no regional belt', 'Dans aucune ceinture régionale', 'En ningún cinturón', s => {
-    return !['sunBelt','snowBelt','cornBelt','wheatBelt','cottonBelt','bibleBelt','rustBelt'].some(k => s[k]);
-  });
-
-  // ─── Confederate combos ───
-  add('p_orig13_and_atlantic', 'Original 13 + Atlantic coast', '13 colonies + Atlantique', '13 colonias + Atlántico', s => s.original13 && coast(s,'atlantic'));
-  add('p_confederate_and_gulf', 'Confederate + Gulf coast', 'Confédéré + Golfe', 'Confederado + Golfo', s => s.confederate && coast(s,'gulf'));
-  add('p_confederate_only_inland', 'Confederate + landlocked', 'Confédéré + enclavé', 'Confederado + sin costa', s => s.confederate && s.landlocked);
-
-  // ─── Geographic + political combos ───
-  add('p_red_landlocked', 'Republican + landlocked', 'Républicain + enclavé', 'Republicano + sin costa', s => s.political === 'red' && s.landlocked);
-  add('p_blue_coastal', 'Democrat + coastal', 'Démocrate + côtier', 'Demócrata + costero', s => s.political === 'blue' && Array.isArray(s.coastline) && s.coastline.length > 0);
-  add('p_swing_great_lakes', 'Swing + Great Lakes', 'Swing + Grands Lacs', 'Indeciso + Grandes Lagos', s => s.political === 'swing' && coast(s,'great_lakes'));
-
-  // ─── Mountain + political ───
-  add('p_rockies_red', 'In Rockies + Republican', 'Rocheuses + républicain', 'Rocosas + republicano', s => Array.isArray(s.mountainRange) && s.mountainRange.includes('rockies') && s.political === 'red');
-
-  // ─── Name + vowel patterns ───
-  const countVowels = name => (name.match(/[AEIOU]/gi) || []).length;
-  const countConsonants = name => (name.match(/[BCDFGHJKLMNPQRSTVWXYZ]/gi) || []).length;
-  add('p_name_3vowels', 'Name has 3 vowels',  'Nom à 3 voyelles', 'Nombre con 3 vocales', s => countVowels(s.names.en.replace(/\s/g,'')) === 3);
-  add('p_name_4vowels', 'Name has 4 vowels',  'Nom à 4 voyelles', 'Nombre con 4 vocales', s => countVowels(s.names.en.replace(/\s/g,'')) === 4);
-  add('p_name_5vowels', 'Name has 5+ vowels', 'Nom à 5+ voyelles','Nombre con 5+ vocales',s => countVowels(s.names.en.replace(/\s/g,'')) >= 5);
-  add('p_name_more_vowels_than_consonants', 'More vowels than consonants', 'Plus de voyelles que de consonnes', 'Más vocales que consonantes', s => {
-    const n = s.names.en.replace(/\s/g,'');
-    return countVowels(n) > countConsonants(n);
-  });
-  add('p_name_starts_consonant_ends_vowel', 'Starts consonant, ends vowel', 'Commence consonne, finit voyelle', 'Empieza consonante, termina vocal', s => !'AEIOU'.includes(s.startsWith) && s.endsInVowel);
-  add('p_name_starts_vowel_ends_consonant', 'Starts vowel, ends consonant', 'Commence voyelle, finit consonne', 'Empieza vocal, termina consonante', s => 'AEIOU'.includes(s.startsWith) && !s.endsInVowel);
-
-  // ─── Specific letter pairs in name ───
-  add('p_contains_th', 'Name contains "TH"', 'Nom contient « TH »', 'Nombre contiene «TH»', s => s.names.en.toUpperCase().includes('TH'));
-  add('p_contains_ia', 'Name contains "IA"', 'Nom contient « IA »', 'Nombre contiene «IA»', s => s.names.en.toUpperCase().includes('IA'));
-  add('p_contains_an', 'Name contains "AN"', 'Nom contient « AN »', 'Nombre contiene «AN»', s => s.names.en.toUpperCase().includes('AN'));
-  add('p_contains_or', 'Name contains "OR"', 'Nom contient « OR »', 'Nombre contiene «OR»', s => s.names.en.toUpperCase().includes('OR'));
-  add('p_contains_in', 'Name contains "IN"', 'Nom contient « IN »', 'Nombre contiene «IN»', s => s.names.en.toUpperCase().includes('IN'));
-  add('p_contains_ar', 'Name contains "AR"', 'Nom contient « AR »', 'Nombre contiene «AR»', s => s.names.en.toUpperCase().includes('AR'));
-  add('p_contains_on', 'Name contains "ON"', 'Nom contient « ON »', 'Nombre contiene «ON»', s => s.names.en.toUpperCase().includes('ON'));
-  add('p_contains_aa', 'Name has double A', 'Nom avec AA', 'Nombre con AA', s => /AA/i.test(s.names.en));
-  add('p_contains_oo', 'Name has double O', 'Nom avec OO', 'Nombre con OO', s => /OO/i.test(s.names.en));
-  add('p_contains_ee', 'Name has double E', 'Nom avec EE', 'Nombre con EE', s => /EE/i.test(s.names.en));
-
-  // ─── Two-word names + first-word patterns ───
-  add('p_two_word_starts_s', 'Two words, starts S', 'Deux mots, commence S', 'Dos palabras, empieza S', s => s.wordCount === 2 && s.startsWith === 'S');
-  add('p_two_word_starts_w', 'Two words, starts W', 'Deux mots, commence W', 'Dos palabras, empieza W', s => s.wordCount === 2 && s.startsWith === 'W');
-  add('p_one_word_long',     'Single word, ≥9 letters', 'Un mot, ≥9 lettres', 'Una palabra, ≥9 letras', s => s.wordCount === 1 && s.letterCount >= 9);
-
-  // ─── Specific multi-attribute combos ───
-  add('p_warm_winter', 'Sun Belt + Republican', 'Sun Belt + républicain', 'Sun Belt + republicano', s => s.sunBelt && s.political === 'red');
-  add('p_cold_winter', 'Snow Belt + landlocked', 'Snow Belt + enclavé', 'Snow Belt + sin costa', s => s.snowBelt && s.landlocked);
-  add('p_breadbasket', 'Corn Belt + Wheat Belt', 'Corn Belt + Wheat Belt', 'Cinturón maíz + trigo', s => s.cornBelt && s.wheatBelt);
-  add('p_bible_belt_confederate', 'Bible Belt + Confederate', 'Bible Belt + Confédéré', 'Bible Belt + Confederado', s => s.bibleBelt && s.confederate);
-  add('p_rust_belt_blue', 'Rust Belt + Democrat-leaning', 'Rust Belt + démocrate', 'Rust Belt + demócrata', s => s.rustBelt && s.political === 'blue');
-
-  // ─── Timezone combos ───
-  add('p_eastern_atlantic', 'Eastern TZ + Atlantic coast', 'Fuseau Est + Atlantique', 'Hora Este + Atlántico', s => s.timezone === 'eastern' && coast(s,'atlantic'));
-  add('p_central_no_coast', 'Central TZ + landlocked',     'Fuseau Central + enclavé','Hora Central + sin costa', s => s.timezone === 'central' && s.landlocked);
-  add('p_mountain_tz_landlocked', 'Mountain TZ + landlocked','Fuseau Mountain + enclavé','Hora Montaña + sin costa', s => s.timezone === 'mountain' && s.landlocked);
-
-  // ─── Capital city facts ───
-  add('p_capital_starts_a', 'Capital starts with A', 'Capitale commence par A', 'Capital empieza con A', s => s.capital?.[0] === 'A');
-  add('p_capital_starts_c', 'Capital starts with C', 'Capitale commence par C', 'Capital empieza con C', s => s.capital?.[0] === 'C');
-  add('p_capital_starts_d', 'Capital starts with D', 'Capitale commence par D', 'Capital empieza con D', s => s.capital?.[0] === 'D');
-  add('p_capital_starts_l', 'Capital starts with L', 'Capitale commence par L', 'Capital empieza con L', s => s.capital?.[0] === 'L');
-  add('p_capital_starts_m', 'Capital starts with M', 'Capitale commence par M', 'Capital empieza con M', s => s.capital?.[0] === 'M');
-  add('p_capital_starts_b', 'Capital starts with B', 'Capitale commence par B', 'Capital empieza con B', s => s.capital?.[0] === 'B');
-  add('p_capital_starts_h', 'Capital starts with H', 'Capitale commence par H', 'Capital empieza con H', s => s.capital?.[0] === 'H');
-  add('p_capital_starts_r', 'Capital starts with R', 'Capitale commence par R', 'Capital empieza con R', s => s.capital?.[0] === 'R');
-  add('p_capital_two_word', 'Capital is two words', 'Capitale en deux mots', 'Capital de dos palabras', s => s.capital && s.capital.split(' ').length >= 2);
-
-  // ─── Geography / nature combos ───
-  add('p_river_state', 'On Mississippi OR Missouri', 'Sur Mississippi OU Missouri', 'En Misisipi O Misuri', s => s.onMississippi || s.onMissouri);
-  add('p_two_rivers',  'On Mississippi AND Missouri','Mississippi ET Missouri',     'Misisipi Y Misuri',     s => s.onMississippi && s.onMissouri);
-  add('p_natural_hazard_any', 'Has a major natural hazard', 'A un risque naturel majeur', 'Riesgo natural mayor', s => s.tornadoAlley || s.hurricaneZone || s.earthquakeZone || s.hasVolcano);
-
-  // ─── Light original-13 combos ───
-  add('p_orig13_no_civil_war_battle', 'Original 13 + no Civil War battle', '13 colonies sans bataille', '13 colonias sin batalla', s => s.original13 && !s.civilWarMajorBattle);
-  add('p_orig13_north', 'Original 13 + Northeast', '13 colonies + Nord-Est', '13 colonias + Noreste', s => s.original13 && s.region === 'northeast');
-  add('p_orig13_south', 'Original 13 + South', '13 colonies + Sud', '13 colonias + Sur', s => s.original13 && s.region === 'south');
-
-  // ─── Combos: borders + size ───
-  add('p_top10_landlocked', 'Top 10 area + landlocked', 'Top 10 superficie + enclavé', 'Top 10 área + sin costa', s => s.areaRank <= 10 && s.landlocked);
-  add('p_bottom10_coastal', 'Smallest 10 + coastal',     'Plus petits + côtiers',       'Más pequeños + costeros', s => s.areaRank >= 41 && Array.isArray(s.coastline) && s.coastline.length > 0);
-
-  // ─── Pop + region ───
-  add('p_high_pop_south', 'Population >10M + South', 'Population >10M + Sud', 'Pob. >10M + Sur', s => s.population === '>10M' && s.region === 'south');
-  add('p_low_pop_west',   'Population <1M + West',   'Population <1M + Ouest','Pob. <1M + Oeste', s => s.population === '<1M' && s.region === 'west');
-
-  // ─── Subregion + statehood ───
-  add('p_plains_19c', 'Plains + admitted 19th century', 'Plaines + admis 19e siècle', 'Llanuras + admitido siglo 19', s => s.subregion === 'plains' && s.admitted >= 1800 && s.admitted < 1900);
-  add('p_mountain_20c', 'Mountain + admitted 20th century', 'Mountain + admis 20e siècle', 'Montaña + admitido siglo 20', s => s.subregion === 'mountain' && s.admitted >= 1900);
-
-  // ─── Capital city combos ───
-  add('p_capital_short', 'Capital ≤6 letters', 'Capitale ≤6 lettres', 'Capital ≤6 letras', s => s.capital && s.capital.replace(/\s/g,'').length <= 6);
-  add('p_capital_long',  'Capital ≥10 letters','Capitale ≥10 lettres','Capital ≥10 letras', s => s.capital && s.capital.replace(/\s/g,'').length >= 10);
-
-  // ─── Name origin combos ───
-  add('p_origin_indigenous_or_spanish', 'Native or Spanish name origin', 'Origine amérindienne ou espagnole', 'Origen nativo o español', s => s.nameNative || s.nameSpanish);
-  add('p_origin_european',              'European name origin (Spanish or royal)', 'Origine européenne', 'Origen europeo', s => s.nameSpanish || s.nameRoyalty);
-  add('p_origin_native_west',           'Native name + West',          'Origine native + Ouest', 'Origen nativo + Oeste', s => s.nameNative && s.region === 'west');
-  add('p_origin_spanish_west',          'Spanish name + West',         'Origine espagnole + Ouest','Origen español + Oeste',s => s.nameSpanish && s.region === 'west');
-
-  // ─── Random unique signal combos ───
-  add('p_ends_consonant', 'Name ends in a consonant', 'Nom finit par une consonne', 'Termina en consonante', s => !s.endsInVowel);
-  add('p_starts_and_ends_consonant', 'Starts AND ends consonant', 'Commence ET finit par consonne', 'Empieza y termina consonante', s => !'AEIOU'.includes(s.startsWith) && !s.endsInVowel);
-  add('p_starts_vowel_ends_vowel',    'Starts AND ends vowel',     'Commence ET finit voyelle',     'Empieza y termina vocal',     s => 'AEIOU'.includes(s.startsWith) && s.endsInVowel);
-
-  // ─── Region + sport combos ───
-  add('p_midwest_no_pro', 'Midwest + no pro team', 'Midwest + sans équipe pro', 'Medio Oeste + sin pro', s => s.region === 'midwest' && !s.nbaTeam && !s.nflTeam && !s.mlbTeam && !s.nhlTeam);
-
-  // ─── First letter clusters ───
-  add('p_starts_consonant_pair', 'Starts with a hard letter (B/C/D/F/G/H/J/K/P/Q/R/T/V/W/X/Z)', 'Commence par consonne dure', 'Empieza con consonante dura', s => 'BCDFGHJKPQRTVWXZ'.includes(s.startsWith));
-  add('p_starts_soft_letter',    'Starts with soft (L/M/N/S)',    'Commence par L/M/N/S',          'Empieza con L/M/N/S',          s => 'LMNS'.includes(s.startsWith));
-
-  // ─── Specific quirky combos ───
-  add('p_no_pro_no_coast', 'No pro team + landlocked', 'Sans équipe pro + enclavé', 'Sin pro + sin costa', s => s.landlocked && !s.nbaTeam && !s.nflTeam && !s.mlbTeam && !s.nhlTeam);
-  add('p_coast_no_pro',    'Coastal + no pro team',    'Côtier + sans équipe pro',  'Costero + sin pro',   s => Array.isArray(s.coastline) && s.coastline.length > 0 && !s.nbaTeam && !s.nflTeam && !s.mlbTeam && !s.nhlTeam);
-
-  // ─── Election margin proxies (using existing fields) ───
-  add('p_voted_obama_then_trump', 'Obama 2008/2012 → Trump 2016', 'Obama 2008-2012 puis Trump 2016', 'Obama 2008-2012 luego Trump 2016', s => e(s,'2008') === 'd' && e(s,'2012') === 'd' && e(s,'2016') === 'r');
-  add('p_voted_dem_twice_2020s',  'Democrat in 2020 AND 2024',    'Démocrate 2020 ET 2024',          'Demócrata 2020 Y 2024',           s => e(s,'2020') === 'd' && e(s,'2024') === 'd');
-
-  // ─── Era admissions ───
-  add('p_admit_1800s_first_quarter', 'Admitted 1800–1825', 'Admis 1800–1825', 'Admitido 1800–1825', s => s.admitted >= 1800 && s.admitted <= 1825);
-  add('p_admit_post_civil_war',      'Admitted after 1865','Admis après 1865','Admitido después de 1865', s => s.admitted > 1865);
-  add('p_admit_19c_second_half',     'Admitted 1850–1899','Admis 1850–1899','Admitido 1850–1899', s => s.admitted >= 1850 && s.admitted < 1900);
-
-  // ─── Multi-attribute factual combos ───
-  add('p_big_red_landlocked', 'Top 20 area + Republican + landlocked', 'Top 20 + républicain + enclavé', 'Top 20 + republicano + sin costa', s => s.areaRank <= 20 && s.political === 'red' && s.landlocked);
-  add('p_small_blue_coastal', 'Bottom 20 area + Democrat + coastal', 'Bottom 20 + démocrate + côtier', 'Bottom 20 + demócrata + costero', s => s.areaRank >= 31 && s.political === 'blue' && Array.isArray(s.coastline) && s.coastline.length > 0);
-
-  // ─── Bordering specifics ───
-  add('p_borders_3_to_5', 'Borders 3–5 states',  'Frontière 3–5 États', 'Frontera 3–5 estados', s => !s.borders6Plus && !s.bordersFew);
-
-  // ─── EXTRA BATCH (50 more) ───────────────────────────────────────────
-
-  // More letter starts with regional combos
-  add('p_starts_n_northeast', 'Starts N + Northeast', 'Commence N + Nord-Est', 'Empieza N + Noreste', s => s.startsWith === 'N' && s.region === 'northeast');
-  add('p_starts_m_south',     'Starts M + South',      'Commence M + Sud',     'Empieza M + Sur',      s => s.startsWith === 'M' && s.region === 'south');
-  add('p_starts_w_west',      'Starts W + West',       'Commence W + Ouest',   'Empieza W + Oeste',    s => s.startsWith === 'W' && s.region === 'west');
-  add('p_starts_w_midwest',   'Starts W + Midwest',    'Commence W + Midwest', 'Empieza W + Medio Oeste', s => s.startsWith === 'W' && s.region === 'midwest');
-
-  // Vowel-heavy combos
-  add('p_only_one_vowel',    'Name has only 1 vowel',  'Nom à 1 seule voyelle','Nombre con solo 1 vocal', s => countVowels(s.names.en.replace(/\s/g,'')) === 1);
-  add('p_two_vowels',        'Name has 2 vowels',      'Nom à 2 voyelles',     'Nombre con 2 vocales',    s => countVowels(s.names.en.replace(/\s/g,'')) === 2);
-  add('p_vowel_pct_high',    'Vowel-heavy name (≥50% vowels)', 'Nom riche en voyelles (≥50%)', 'Nombre con muchas vocales (≥50%)', s => {
-    const n = s.names.en.replace(/\s/g,'');
-    return countVowels(n) / n.length >= 0.5;
-  });
-
-  // More etymology
-  add('p_named_after_person', 'Name from royalty (king/queen)', 'Nom royal (roi/reine)', 'Nombre de realeza', s => s.nameRoyalty);
-  add('p_north_or_south', 'Has North or South in name', 'Avec North/South dans le nom', 'Con Norte/Sur en el nombre', s => /\bnorth\b|\bsouth\b/i.test(s.names.en));
-  add('p_has_new_in_name', 'Has "New" in name', 'Avec « New »', 'Con «New»', s => /\bnew\b/i.test(s.names.en));
-  add('p_has_west_in_name', 'Has "West" in name', 'Avec « West »', 'Con «West»', s => /west/i.test(s.names.en));
-
-  // Population + size
-  add('p_dense_state',  'Small area + high population (≥5M)',  'Petit + pop ≥5M',     'Pequeño + pob ≥5M',    s => s.areaRank >= 30 && (s.population === '5M-10M' || s.population === '>10M'));
-  add('p_sparse_state', 'Large area + low population (<5M)',   'Grand + pop <5M',     'Grande + pob <5M',     s => s.areaRank <= 15 && (s.population === '<1M' || s.population === '1M-5M'));
-
-  // Mountain + admit
-  add('p_mountain_late_admit', 'Mountain + admitted 1900+', 'Montagne + admis 1900+', 'Montaña + admitido 1900+', s => Array.isArray(s.mountainRange) && s.mountainRange.length > 0 && s.admitted >= 1900);
-
-  // Border combos
-  add('p_borders6_red',  'Borders 6+ + Republican',  'Frontière 6+ + républicain',  'Frontera 6+ + republicano', s => s.borders6Plus && s.political === 'red');
-  add('p_borders6_blue', 'Borders 6+ + Democrat',    'Frontière 6+ + démocrate',    'Frontera 6+ + demócrata',   s => s.borders6Plus && s.political === 'blue');
-  add('p_borders_few_coastal', 'Borders few + coastal', 'Peu de frontières + côtier','Pocas fronteras + costero', s => s.bordersFew && Array.isArray(s.coastline) && s.coastline.length > 0);
-
-  // Specific belt + region
-  add('p_sun_belt_west',    'Sun Belt + West',    'Sun Belt + Ouest',  'Sun Belt + Oeste',    s => s.sunBelt && s.region === 'west');
-  add('p_sun_belt_south',   'Sun Belt + South',   'Sun Belt + Sud',    'Sun Belt + Sur',      s => s.sunBelt && s.region === 'south');
-  add('p_corn_belt_swing',  'Corn Belt + swing',  'Corn Belt + swing', 'Corn Belt + indeciso',s => s.cornBelt && s.political === 'swing');
-
-  // Election triple combos
-  add('p_blue_2008_2012_2024', 'Voted Dem in 2008, 2012, AND 2024', 'Démocrate 2008, 2012 et 2024', 'Demócrata 2008, 2012 y 2024', s => e(s,'2008')==='d' && e(s,'2012')==='d' && e(s,'2024')==='d');
-  add('p_red_streak_3plus',     'Republican in last 3+ elections',   'Républicain depuis 3+ scrutins',   'Republicano en últimas 3+ elecciones', s => ['2016','2020','2024'].every(y => e(s,y)==='r'));
-
-  // Coast specifics
-  add('p_only_atlantic', 'Atlantic coast only',  'Atlantique uniquement', 'Solo Atlántico', s => Array.isArray(s.coastline) && s.coastline.length === 1 && s.coastline[0] === 'atlantic');
-  add('p_only_gulf',     'Gulf coast only',      'Golfe uniquement',      'Solo Golfo',     s => Array.isArray(s.coastline) && s.coastline.length === 1 && s.coastline[0] === 'gulf');
-  add('p_great_lakes_only','Great Lakes only',   'Grands Lacs uniquement','Solo Grandes Lagos', s => Array.isArray(s.coastline) && s.coastline.length === 1 && s.coastline[0] === 'great_lakes');
-
-  // Capital city extras
-  add('p_capital_3_letters', 'Capital with ≤4 letters', 'Capitale ≤4 lettres', 'Capital ≤4 letras', s => s.capital && s.capital.replace(/\s/g,'').length <= 4);
-  add('p_capital_starts_vowel', 'Capital starts with vowel', 'Capitale commence par voyelle', 'Capital empieza con vocal', s => s.capital && 'AEIOU'.includes(s.capital[0]?.toUpperCase()));
-
-  // Pure name properties
-  add('p_palindromic_letters', 'Same start and end letter', 'Même lettre début/fin', 'Misma letra inicio/fin', s => s.startsWith === s.endsWith);
-  add('p_three_consonants_start', 'Starts with 3 consonants in a row', 'Commence par 3 consonnes', 'Empieza con 3 consonantes', s => {
-    const n = s.names.en.toUpperCase();
-    return /^[BCDFGHJKLMNPQRSTVWXYZ]{3}/.test(n);
-  });
-
-  // Statehood centennial
-  add('p_admit_in_1800s_exact', 'Admitted in a specific 1800s decade (1810s)', 'Admis dans les années 1810', 'Admitido en los 1810s', s => s.admitted >= 1810 && s.admitted < 1820);
-  add('p_admit_1850s', 'Admitted in the 1850s', 'Admis dans les années 1850', 'Admitido en los 1850s', s => s.admitted >= 1850 && s.admitted < 1860);
-  add('p_admit_1860s', 'Admitted in the 1860s', 'Admis dans les années 1860', 'Admitido en los 1860s', s => s.admitted >= 1860 && s.admitted < 1870);
-  add('p_admit_1880s', 'Admitted in the 1880s', 'Admis dans les années 1880', 'Admitido en los 1880s', s => s.admitted >= 1880 && s.admitted < 1890);
-  add('p_admit_1890s', 'Admitted in the 1890s', 'Admis dans les années 1890', 'Admitido en los 1890s', s => s.admitted >= 1890 && s.admitted < 1900);
-
-  // Geographic + statehood
-  add('p_original13_atlantic_seaboard', 'Original 13 + on Atlantic', '13 colonies sur Atlantique', '13 colonias en Atlántico', s => s.original13 && coast(s,'atlantic'));
-  add('p_late_admit_western', 'Admitted 1900+ + West region', 'Admis 1900+ + Ouest', 'Admitido 1900+ + Oeste', s => s.admitted >= 1900 && s.region === 'west');
-
-  // Specific economy / industry (factual data points)
-  add('p_oil_producer', 'Oil-producing state', 'État producteur de pétrole', 'Estado productor de petróleo', s => s.oilProducer);
-  add('p_agricultural', 'Agricultural state', 'État agricole', 'Estado agrícola', s => s.agricultural);
-
-  // Geographic feature combos
-  add('p_landlocked_red_sunbelt', 'Landlocked + Republican + Sun Belt', 'Enclavé + républicain + Sun Belt', 'Sin costa + rep. + Sun Belt', s => s.landlocked && s.political === 'red' && s.sunBelt);
-  add('p_coastal_blue_no_landlock','Coastal + Democrat',  'Côtier + démocrate', 'Costero + demócrata', s => Array.isArray(s.coastline) && s.coastline.length > 0 && s.political === 'blue');
-
-  // Name pattern + region
-  add('p_two_word_southern', 'Two-word name + South region', 'Deux mots + Sud',  'Dos palabras + Sur',     s => s.wordCount === 2 && s.region === 'south');
-  add('p_two_word_western',  'Two-word name + West region',  'Deux mots + Ouest','Dos palabras + Oeste',   s => s.wordCount === 2 && s.region === 'west');
-
-  // Multi-timezone variants
-  add('p_eastern_landlocked', 'Eastern TZ + landlocked', 'Est + enclavé', 'Este + sin costa', s => s.timezone === 'eastern' && s.landlocked);
+  // ═════════════════════════════════════════════════════════════════════
+  // 🎲 QUIRKY TRIVIA
+  // ═════════════════════════════════════════════════════════════════════
+  add('pc_first_state_admitted',  'First state admitted (Delaware, 1787)',   'Premier État admis',                     'Primer estado admitido',                 'DE');
+  add('pc_last_state_admitted',   'Last state admitted (Hawaii, 1959)',      'Dernier État admis',                     'Último estado admitido',                 'HI');
+  add('pc_48th_state',            '48th state (Arizona, 1912)',              '48e État',                               'Estado 48',                              'AZ');
+  add('pc_largest_pop',           'Most populous state',                     'État le plus peuplé',                    'Estado más poblado',                     'CA');
+  add('pc_smallest_pop',          'Least populous state',                    'État le moins peuplé',                   'Estado menos poblado',                   'WY');
+  add('pc_only_island_state',     'Only island state',                       'Seul État insulaire',                    'Único estado insular',                   'HI');
+  add('pc_not_contiguous',        'Non-contiguous (separated from 48)',      'Non contigus aux 48',                    'No contiguos',                           'AK HI');
+  add('pc_4_corners',             'Four Corners states',                     'Les Quatre Coins',                       'Cuatro Esquinas',                        'AZ CO NM UT');
+  add('pc_motor_city',            'Motor City',                              'Motor City',                             'Motor City',                             'MI');
+  add('pc_capital_of_world',      'Self-styled "X capital of the world"',    'Auto-proclamé capitale mondiale',        'Capital mundial autoproclamada',         'NY TX NV');
+  add('pc_dual_state_names',      'Has "North" or "South" sibling state',    'A un État jumeau Nord/Sud',              'Tiene estado gemelo Norte/Sur',          'ND SD NC SC WV VA');
+  add('pc_name_is_country',       'Name shared with a country',              'Nom partagé avec un pays',               'Nombre compartido con país',             'GA');
+  add('pc_no_state_income_tax_9', 'No state income tax (9 states)',          'Pas d\'impôt sur le revenu (9 États)',   'Sin impuesto estatal sobre la renta',    'AK FL NV NH SD TN TX WA WY');
+  add('pc_states_in_pacific',     'Touches the Pacific Ocean',               'Borde le Pacifique',                     'Toca el Pacífico',                       'CA OR WA AK HI');
+  add('pc_state_two_capitals',    'Two-capital history (e.g. Virginia)',     'Histoire à deux capitales',              'Historia con dos capitales',             'VA RI');
+  add('pc_silicon_valley',        'Home to Silicon Valley',                  'Silicon Valley',                         'Silicon Valley',                         'CA');
+  add('pc_research_triangle',     'Research Triangle (NC)',                  'Research Triangle',                      'Research Triangle',                      'NC');
+  add('pc_route66_iconic',        'On historic Route 66',                    'Sur la Route 66',                        'En la Ruta 66',                          'IL MO KS OK TX NM AZ CA');
+  add('pc_appalachian_states',    'Along the Appalachian Trail',             'Sur le sentier des Appalaches',          'Sendero de los Apalaches',               'GA NC TN VA WV MD PA NJ NY CT MA VT NH ME');
+  add('pc_mississippi_river_path','Bordering the Mississippi River',         'Borde le Mississippi',                   'Bordea el Misisipi',                     'MN WI IA IL MO KY TN AR MS LA');
 
   return list;
 })();
 
-// Expose globally (used by puzzle.js and admin/constraints/)
 if (typeof window !== 'undefined') {
   window.PENDING_CONSTRAINTS = PENDING_CONSTRAINTS;
   window.PENDING_MAP = Object.fromEntries(PENDING_CONSTRAINTS.map(c => [c.id, c]));
