@@ -54,8 +54,6 @@ const Puzzle = (() => {
     ['earthquake_zone', 'sub_new_england', 'sub_mid_atlantic'],
     ['has_glaciers', 'sub_new_england', 'sub_deep_south'],
     // Geography
-    ['appalachian', 'sub_mountain', 'sub_pacific'],
-    ['mt_appalachians', 'sub_mountain', 'sub_pacific'],
     ['desert_state', 'sub_new_england', 'sub_deep_south'],
     // Cultural belts
     ['rust_belt', 'sub_deep_south', 'sub_mountain'],
@@ -90,33 +88,28 @@ const Puzzle = (() => {
     'bible_belt', 'rust_belt',
     // Politics
     'political_red', 'political_blue', 'political_swing',
-    'trump_2024', 'biden_2020',
     // Timezones
     'tz_eastern', 'tz_central', 'tz_mountain', 'tz_pacific', 'multi_timezone',
     // History (iconic only)
     'original_13', 'confederate',
     'statehood_pre_1800', 'statehood_1900s',
     // Geography (curated)
-    'on_mississippi', 'mt_rockies', 'mt_appalachians',
-    'desert_state', 'four_corners', 'great_plains', 'appalachian',
-    'tornado_alley', 'hurricane_zone', 'earthquake_zone',
+    'on_mississippi', 'mt_rockies', 'desert_state', 'four_corners', 'great_plains', 'tornado_alley', 'hurricane_zone', 'earthquake_zone',
     'has_volcano', 'has_glaciers',
-    'on_appalachian_trail', 'on_continental_divide', 'has_caves',
-    'high_elevation', 'low_elevation', 'route_66',
+    'route_66',
     // Cities & geography (factual)
     'has_million_city', 'largest_state', 'smallest_state',
     'capital_named_after_president', 'capital_starts_with_s',
     'borders_6_plus', 'borders_few',
-    // Pro sports — only NBA and "no major team"
-    'has_nba', 'no_pro_team',
+    // Pro sports — only NBA
+    'has_nba',
     // Name origin (NEW category)
     'name_native_origin', 'name_spanish_origin', 'name_royalty_origin',
     // Name properties (general)
-    'two_word_name', 'ends_in_vowel', 'double_letter',
-    'vowel_start', 'consonant_start',
-    'has_new',
+    'two_word_name', 'double_letter',
+    'vowel_start', 'has_new',
     'ends_in_a', 'ends_in_o', 'ends_in_e', 'ends_in_n', 'ends_in_s',
-    'starts_and_ends_vowel', 'double_s', 'two_word_starts_n',
+    'starts_and_ends_vowel', 'two_word_starts_n',
     'contains_letter_k', 'contains_letter_w', 'contains_letter_v', 'contains_letter_y',
     'short_name', 'long_name',
     // Name length
@@ -162,8 +155,6 @@ const Puzzle = (() => {
       case 'political_red':    return state.political === 'red';
       case 'political_blue':   return state.political === 'blue';
       case 'political_swing':  return state.political === 'swing';
-      case 'trump_2024':       return state.elections && state.elections['2024'] === 'r';
-      case 'biden_2020':       return state.elections && state.elections['2020'] === 'd';
       // Timezones
       case 'tz_eastern':  return state.timezone === 'eastern';
       case 'tz_central':  return state.timezone === 'central';
@@ -178,11 +169,9 @@ const Puzzle = (() => {
       // Geography
       case 'on_mississippi':  return !!state.onMississippi;
       case 'mt_rockies':      return Array.isArray(state.mountainRange) && state.mountainRange.includes('rockies');
-      case 'mt_appalachians': return Array.isArray(state.mountainRange) && state.mountainRange.includes('appalachians');
       case 'desert_state':    return !!state.desertState;
       case 'four_corners':    return !!state.fourCorners;
       case 'great_plains':    return !!state.greatPlains;
-      case 'appalachian':     return !!state.appalachian;
       // Culture / belts
       case 'bible_belt':    return !!state.bibleBelt;
       case 'rust_belt':     return !!state.rustBelt;
@@ -193,13 +182,10 @@ const Puzzle = (() => {
       case 'smallest_state':     return state.areaRank >= 46;
       // Sports
       case 'has_nba': return !!state.nbaTeam;
-      case 'no_pro_team': return !state.nbaTeam && !state.nflTeam && !state.mlbTeam && !state.nhlTeam;
       // Name
       case 'two_word_name':  return state.wordCount === 2;
-      case 'ends_in_vowel':  return !!state.endsInVowel;
       case 'double_letter':  return !!state.doubleLetter;
       case 'vowel_start':    return 'AEIOU'.includes(state.startsWith);
-      case 'consonant_start':return !'AEIOU'.includes(state.startsWith);
       case 'has_new':   return state.names.en.includes('New');
 
       // ───────── 100 NEW CONSTRAINTS ─────────
@@ -215,11 +201,6 @@ const Puzzle = (() => {
       case 'earthquake_zone':       return !!state.earthquakeZone;
       case 'has_volcano':           return !!state.hasVolcano;
       case 'has_glaciers':          return !!state.hasGlaciers;
-      case 'on_appalachian_trail':  return !!state.appalachianTrail;
-      case 'on_continental_divide': return !!state.continentalDivide;
-      case 'has_caves':             return !!state.hasCaves;
-      case 'high_elevation':        return !!state.highElevation;
-      case 'low_elevation':         return !!state.lowElevation;
       case 'multi_timezone':        return !!state.multiTimezone;
       // History (kept: factual statehood dates only)
       case 'statehood_pre_1800':   return !!state.statehoodPre1800;
@@ -247,7 +228,6 @@ const Puzzle = (() => {
       case 'contains_letter_y':      return state.names.en.toUpperCase().includes('Y');
       case 'short_name':             return state.letterCount <= 5;
       case 'long_name':              return state.letterCount >= 10;
-      case 'double_s':               return /SS/i.test(state.names.en);
       case 'two_word_starts_n':      return state.wordCount === 2 && state.startsWith === 'N';
 
       default:
@@ -304,8 +284,7 @@ const Puzzle = (() => {
     'original_13', 'confederate',
     'statehood_pre_1800', 'statehood_1900s',
     // Geographic features with cultural weight
-    'on_mississippi', 'four_corners', 'mt_rockies', 'mt_appalachians',
-    'desert_state', 'route_66',
+    'on_mississippi', 'four_corners', 'mt_rockies', 'desert_state', 'route_66',
     // Cultural regions
     'sub_new_england', 'sub_deep_south', 'sub_mid_atlantic', 'sub_mountain',
     'rust_belt', 'bible_belt',
@@ -313,9 +292,8 @@ const Puzzle = (() => {
     'sun_belt', 'snow_belt', 'corn_belt', 'wheat_belt', 'cotton_belt',
     // Natural
     'tornado_alley', 'hurricane_zone', 'has_volcano',
-    'on_appalachian_trail',
     // Misc
-    'great_plains', 'appalachian', 'two_word_name',
+    'great_plains', 'two_word_name',
     // Name origin (new, culturally rich)
     'name_native_origin', 'name_spanish_origin', 'name_royalty_origin',
   ]);
@@ -323,15 +301,11 @@ const Puzzle = (() => {
     'coast_gulf', 'coast_atlantic', 'coast_pacific', 'coast_great_lakes',
     'border_mexico', 'border_canada', 'landlocked',
     'political_swing', 'political_red', 'political_blue',
-    'trump_2024', 'biden_2020',
     'has_million_city', 'largest_state', 'smallest_state',
     'capital_named_after_president', 'capital_starts_with_s',
-    'has_nba', 'no_pro_team',
-    'has_new',
-    'double_letter', 'ends_in_vowel',
-    'earthquake_zone', 'has_glaciers',
-    'high_elevation', 'low_elevation', 'multi_timezone',
-    'on_continental_divide', 'has_caves',
+    'has_nba', 'has_new',
+    'double_letter', 'earthquake_zone', 'has_glaciers',
+    'multi_timezone',
     'borders_6_plus', 'borders_few',
   ]);
   // Union for pre-filter (interesting cols appear first in search)
@@ -414,10 +388,9 @@ const Puzzle = (() => {
   // Groups where ALL rows are boring are deprioritised — used only as fallback.
   const BORING_ROW = new Set([
     'letters_6','letters_7','letters_8','letters_9',
-    'vowel_start','consonant_start',
-    'starts_a','starts_i','starts_m','starts_n','starts_w',
+    'vowel_start','starts_a','starts_i','starts_m','starts_n','starts_w',
     'ends_in_a','ends_in_o','ends_in_e','ends_in_n','ends_in_s',
-    'starts_and_ends_vowel','double_s','two_word_starts_n',
+    'starts_and_ends_vowel','two_word_starts_n',
     'contains_letter_k','contains_letter_w','contains_letter_v','contains_letter_y',
     'short_name','long_name',
   ]);
@@ -575,7 +548,7 @@ const Puzzle = (() => {
   }
 
   // One-time purge of stale cached puzzles (bump CACHE_GEN to invalidate)
-  const CACHE_GEN = 'gen4';
+  const CACHE_GEN = 'gen5';
   (function _purgeOldPuzzleCaches() {
     try {
       if (localStorage.getItem('statedoku_cache_gen') === CACHE_GEN) return;
