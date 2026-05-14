@@ -22,6 +22,15 @@ const ANTHROPIC_MODEL = 'claude-haiku-4-5';   // cheap + fast (~$0.0008 / tweet)
 // "launch"    → 1 tweet/day, promoting the daily puzzle with link
 const PHASE = 'prelaunch';
 
+// Public launch date. Drives the countdown / "imminent" phrasing in prelaunch.
+const LAUNCH_DATE = '2026-05-25';
+
+function _daysUntilLaunch() {
+  const now = new Date();
+  const launch = new Date(LAUNCH_DATE + 'T13:00:00Z'); // 9am ET
+  return Math.ceil((launch - now) / 86400000);
+}
+
 // ───── OAuth 1.0a (Twitter) ──────────────────────────────────────────────
 function percentEncode(str) {
   return encodeURIComponent(str)
@@ -86,19 +95,33 @@ Hard rules (every tweet):
 - Do NOT wrap the tweet in quotes.
 - Output ONLY the tweet text, no explanations, no preamble.`;
 
-// PRELAUNCH — only "something's coming" teasers. Both cron slots use this list.
-// Each entry is a distinct angle so consecutive tweets don't echo.
-const PRELAUNCH_STYLES = [
+// PRELAUNCH — "something's coming" teasers. The style chosen depends on how
+// many days remain until LAUNCH_DATE so the tweets escalate naturally:
+//   ≥7 days  → mysterious, no hints
+//   3-6 days → start hinting at the form ("daily", "US states")
+//   1-2 days → explicit countdown with the date
+//   0 days   → launch day fallback (PHASE flip recommended)
+const PRELAUNCH_FAR = [
   'a short cryptic "something\'s coming" teaser — no details, just hype',
   'an "incoming" type post — mysterious, hints at a project for US geography fans',
   'a one-liner that hints at a new daily ritual coming soon for state-heads',
-  'a teaser framed as a countdown vibe ("soon", "almost there", "any day now") without giving a date',
   'a teaser comparing the unnamed thing to NYT-style daily games (Wordle / Connections) — vague, not revealing what it is',
   'a teaser that addresses geography nerds directly ("if you know your states, stay tuned")',
-  'a teaser that hints something is brewing for people who love US maps and trivia',
   'a "save this account" / "follow if you like..." style soft CTA without explaining what\'s coming',
   'a playful "guess what we\'re building" type post — invites curiosity, refuses to spoil',
-  'an under-promise / over-deliver tease: "you\'re gonna want to be here when this drops"',
+];
+
+const PRELAUNCH_NEAR = [
+  'a teaser that drops the hint that something for US geography fans is launching this month — still vague, still no link',
+  'an "almost time" post — hints we\'re days away, builds anticipation',
+  'a "you\'ll know it when you see it" type tease — confident, playful',
+  'a "bookmark this account" style nudge — landing this week, no link yet',
+  'a "pulling up the chairs" type post — final preparations, something dropping soon',
+];
+
+const PRELAUNCH_COUNTDOWN = (daysLeft) => [
+  `a hype tweet revealing the launch is on Monday May 25 — ${daysLeft} day${daysLeft === 1 ? '' : 's'} to go. No link yet but use the date.`,
+  `an "almost here" tweet ${daysLeft === 1 ? 'with the launch day TOMORROW' : 'with the launch in ' + daysLeft + ' days'}. Build excitement, mention May 25 specifically.`,
 ];
 
 const LAUNCH_STYLES = [
@@ -122,16 +145,22 @@ function buildPrompt() {
   const utcHour = now.getUTCHours();
 
   if (PHASE === 'prelaunch') {
-    // Both daily slots (morning + evening) pull from the same teaser pool.
-    // Offset the evening slot by +5 so morning and evening tweets never use
-    // the same angle on the same day.
     const isMorningSlot = utcHour < 15;
-    const idx = (doy * 2 + (isMorningSlot ? 0 : 5)) % PRELAUNCH_STYLES.length;
-    const style = PRELAUNCH_STYLES[idx];
+    const daysLeft = _daysUntilLaunch();
+
+    // Pick the right escalation tier
+    let pool;
+    if (daysLeft >= 7) pool = PRELAUNCH_FAR;
+    else if (daysLeft >= 3) pool = PRELAUNCH_NEAR;
+    else if (daysLeft >= 1) pool = PRELAUNCH_COUNTDOWN(daysLeft);
+    else pool = PRELAUNCH_FAR; // safety: if PHASE wasn't flipped on launch day
+
+    const idx = (doy * 2 + (isMorningSlot ? 0 : 5)) % pool.length;
+    const style = pool[idx];
 
     return `${PRELAUNCH_PERSONA}
 
-Today is ${dateLong}.
+Today is ${dateLong}. Launch day is Monday May 25 (${daysLeft} day${daysLeft === 1 ? '' : 's'} away).
 
 Write ONE tweet for ${isMorningSlot ? 'this morning' : 'this evening'} in this style: ${style}.`;
   }
