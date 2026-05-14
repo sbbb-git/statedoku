@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="../css/style.css?v=8">
+  <link rel="stylesheet" href="../css/style.css?v=9">
 
   <script type="application/ld+json">
   {
@@ -108,7 +108,7 @@
     <div id="email-cta" hidden>
       <span class="ec-icon">📧</span>
       <span class="ec-text" data-i18n="email_cta">No te pierdas el puzzle de mañana — recíbelo por email</span>
-      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">Suscribirse</button>
+      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">Apúntame</button>
       <button class="ec-close" id="ec-dismiss" aria-label="Cerrar">✕</button>
     </div>
 
@@ -147,10 +147,10 @@
       <div class="banner-icon banner-icon-fail">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </div>
-      <h3 data-i18n="game_over">Fin del juego</h3>
+      <h3 data-i18n="game_over">Sin intentos</h3>
       <div id="gameover-solution"></div>
       <div class="share-row" data-banner="gameover"></div>
-      <p class="banner-sub" data-i18n="come_back">Vuelve mañana.</p>
+      <p class="banner-sub" data-i18n="come_back">Nuevo puzzle a medianoche.</p>
     </div>
   </div>
 
@@ -230,7 +230,7 @@
           <span data-i18n="email_label">Tu email</span>
           <input type="email" id="email-input" required placeholder="tu@ejemplo.com" autocomplete="email">
         </label>
-        <button type="submit" class="email-submit" data-i18n="subscribe">Suscribirse</button>
+        <button type="submit" class="email-submit" data-i18n="subscribe">Apúntame</button>
         <p class="email-status" id="email-status" hidden></p>
       </form>
       <p class="email-gdpr" data-i18n="email_gdpr">Solo guardamos tu email + hora. Sin tracking, sin terceros.</p>
@@ -246,9 +246,9 @@
 <script src="../js/admin.js"></script>
 <script src="../js/analytics.js"></script>
 <script src="../js/reminders.js"></script>
-<script src="../js/email.js?v=3"></script>
+<script src="../js/email.js?v=4"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/puzzle.js"></script>
-<script src="../js/game.js?v=5"></script>
+<script src="../js/game.js?v=6"></script>
 </body>
 </html>

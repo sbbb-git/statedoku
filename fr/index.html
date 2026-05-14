@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="../css/style.css?v=8">
+  <link rel="stylesheet" href="../css/style.css?v=9">
 
   <script type="application/ld+json">
   {
@@ -107,8 +107,8 @@
   <div id="game-wrap">
     <div id="email-cta" hidden>
       <span class="ec-icon">📧</span>
-      <span class="ec-text" data-i18n="email_cta">Ne ratez pas le puzzle de demain — recevez-le par mail</span>
-      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">S'inscrire</button>
+      <span class="ec-text" data-i18n="email_cta">Reçois le puzzle quotidien par mail</span>
+      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">Je m'inscris</button>
       <button class="ec-close" id="ec-dismiss" aria-label="Fermer">✕</button>
     </div>
 
@@ -147,10 +147,10 @@
       <div class="banner-icon banner-icon-fail">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </div>
-      <h3 data-i18n="game_over">Partie terminée</h3>
+      <h3 data-i18n="game_over">Plus d'essais</h3>
       <div id="gameover-solution"></div>
       <div class="share-row" data-banner="gameover"></div>
-      <p class="banner-sub" data-i18n="come_back">Revenez demain.</p>
+      <p class="banner-sub" data-i18n="come_back">Prochain puzzle à minuit.</p>
     </div>
   </div>
 
@@ -220,20 +220,20 @@
   <div class="modal-overlay"></div>
   <div class="modal-content email-modal-content">
     <div class="modal-header">
-      <h3 data-i18n="email_modal_title">Puzzle quotidien par mail</h3>
+      <h3 data-i18n="email_modal_title">Un puzzle. Chaque jour. Dans ta boîte.</h3>
       <button class="modal-close" aria-label="Fermer">✕</button>
     </div>
     <div class="email-body">
-      <p class="email-tagline" data-i18n="email_modal_sub">Un court mail par jour avec le puzzle du jour. Désinscription en 1 clic.</p>
+      <p class="email-tagline" data-i18n="email_modal_sub">Livré vers midi (heure de New York). Désinscription en 1 clic.</p>
       <form id="email-form" autocomplete="on">
         <label class="email-label">
-          <span data-i18n="email_label">Votre email</span>
-          <input type="email" id="email-input" required placeholder="vous@exemple.com" autocomplete="email">
+          <span data-i18n="email_label">Ton email</span>
+          <input type="email" id="email-input" required placeholder="toi@exemple.com" autocomplete="email">
         </label>
-        <button type="submit" class="email-submit" data-i18n="subscribe">S'inscrire</button>
+        <button type="submit" class="email-submit" data-i18n="subscribe">Je m'inscris</button>
         <p class="email-status" id="email-status" hidden></p>
       </form>
-      <p class="email-gdpr" data-i18n="email_gdpr">On stocke uniquement votre email + heure. Aucun tracking, aucun tiers.</p>
+      <p class="email-gdpr" data-i18n="email_gdpr">Juste ton email. Aucun tracking, aucun tiers.</p>
     </div>
   </div>
 </div>
@@ -246,9 +246,9 @@
 <script src="../js/admin.js"></script>
 <script src="../js/analytics.js"></script>
 <script src="../js/reminders.js"></script>
-<script src="../js/email.js?v=3"></script>
+<script src="../js/email.js?v=4"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/puzzle.js"></script>
-<script src="../js/game.js?v=5"></script>
+<script src="../js/game.js?v=6"></script>
 </body>
 </html>

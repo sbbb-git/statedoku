@@ -12,36 +12,39 @@ const FROM_EMAIL = 'reminders@statedoku.com';
 const FROM_NAME  = 'Statedoku';
 
 const SUBJECTS = {
-  en: '🇺🇸 Today\'s Statedoku is live',
-  fr: '🇺🇸 Le Statedoku du jour est en ligne',
-  es: '🇺🇸 El Statedoku de hoy está listo',
+  en: "Today's grid is live 🗺️",
+  fr: "La grille du jour est là 🗺️",
+  es: "La cuadrícula de hoy está lista 🗺️",
+};
+
+const BTN = {
+  en: 'Play now →',
+  fr: 'Jouer →',
+  es: 'Jugar →',
 };
 
 const BODIES = {
   en: (dateLong) => `
-    <p>Good morning — your daily Statedoku is waiting.</p>
-    <p><strong>${dateLong}</strong></p>
-    <p>Solve the 3×3 grid in 3 mistakes or fewer.</p>
-    <p><a href="${SITE_URL}" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">Play today's puzzle →</a></p>
+    <p style="font-size:15px">Today's grid is up.</p>
+    <p style="color:#525252">${dateLong}</p>
+    <p><a href="${SITE_URL}" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.en}</a></p>
   `,
   fr: (dateLong) => `
-    <p>Bonjour — votre Statedoku du jour vous attend.</p>
-    <p><strong>${dateLong}</strong></p>
-    <p>Résolvez la grille 3×3 en 3 erreurs ou moins.</p>
-    <p><a href="${SITE_URL}/fr/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">Jouer maintenant →</a></p>
+    <p style="font-size:15px">La grille du jour est en ligne.</p>
+    <p style="color:#525252">${dateLong}</p>
+    <p><a href="${SITE_URL}/fr/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.fr}</a></p>
   `,
   es: (dateLong) => `
-    <p>Buenos días — tu Statedoku diario te espera.</p>
-    <p><strong>${dateLong}</strong></p>
-    <p>Resuelve la cuadrícula 3×3 en 3 errores o menos.</p>
-    <p><a href="${SITE_URL}/es/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">Jugar ahora →</a></p>
+    <p style="font-size:15px">La cuadrícula de hoy ya está.</p>
+    <p style="color:#525252">${dateLong}</p>
+    <p><a href="${SITE_URL}/es/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.es}</a></p>
   `,
 };
 
 const UNSUB = {
-  en: t => `<p style="color:#888;font-size:11px;margin-top:32px">You're getting this because you subscribed to Statedoku daily reminders. <a href="${SITE_URL}/api/unsubscribe?token=${t}" style="color:#888">Unsubscribe</a>.</p>`,
-  fr: t => `<p style="color:#888;font-size:11px;margin-top:32px">Vous recevez ce mail car vous êtes inscrit aux rappels quotidiens Statedoku. <a href="${SITE_URL}/api/unsubscribe?token=${t}" style="color:#888">Se désinscrire</a>.</p>`,
-  es: t => `<p style="color:#888;font-size:11px;margin-top:32px">Recibes esto porque te suscribiste a los recordatorios diarios de Statedoku. <a href="${SITE_URL}/api/unsubscribe?token=${t}" style="color:#888">Cancelar suscripción</a>.</p>`,
+  en: t => `<p style="color:#999;font-size:11px;margin-top:32px">Subscribed to daily Statedoku · <a href="${SITE_URL}/api/unsubscribe?token=${t}" style="color:#999">Unsubscribe</a></p>`,
+  fr: t => `<p style="color:#999;font-size:11px;margin-top:32px">Inscrit aux mails quotidiens Statedoku · <a href="${SITE_URL}/api/unsubscribe?token=${t}" style="color:#999">Se désinscrire</a></p>`,
+  es: t => `<p style="color:#999;font-size:11px;margin-top:32px">Suscrito a los emails diarios de Statedoku · <a href="${SITE_URL}/api/unsubscribe?token=${t}" style="color:#999">Cancelar</a></p>`,
 };
 
 function _today() {
