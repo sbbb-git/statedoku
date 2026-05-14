@@ -243,7 +243,7 @@ const Game = (() => {
       return s && !(row === r && col === c);
     }));
 
-    const MIN_QUERY_LEN = 3;
+    const MIN_QUERY_LEN = 4;
 
     function renderDropdown(query) {
       dropdown.innerHTML = '';
