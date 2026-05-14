@@ -4,11 +4,20 @@
 // Bindings required (set in Cloudflare Pages → Settings → Functions):
 //   - STATS_DB (D1 database)
 
+import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
+
 const ALLOWED_EVENTS = ['puzzle_start', 'puzzle_solve', 'puzzle_lost'];
 
 export async function onRequestPost({ request, env }) {
   if (!env.STATS_DB) {
     return new Response('STATS_DB binding missing', { status: 500 });
+  }
+
+  // Rate limit: 60 events per IP per minute (generous — covers a normal day of play)
+  const ip = getClientIp(request);
+  const rl = rateLimit('events:' + ip, 60, 60_000);
+  if (!rl.ok) {
+    return new Response(null, { status: 429 });
   }
 
   let body;

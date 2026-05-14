@@ -2,6 +2,8 @@
 // Body: { email, hour_utc, lang }
 // Returns: { ok: true } on success
 
+import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
+
 function _rand(bytes = 24) {
   const a = new Uint8Array(bytes);
   crypto.getRandomValues(a);
@@ -16,8 +18,28 @@ function _validEmail(e) {
 export async function onRequestPost({ request, env }) {
   if (!env.STATS_DB) return new Response('Database not configured', { status: 500 });
 
+  // Rate limit: 5 subscribe attempts per IP per 5 minutes
+  const ip = getClientIp(request);
+  const rl = rateLimit('subscribe:' + ip, 5, 5 * 60_000);
+  if (!rl.ok) {
+    return new Response(JSON.stringify({ ok: false, error: 'Too many attempts. Try again in a few minutes.' }), {
+      status: 429,
+      headers: {
+        'content-type': 'application/json',
+        'retry-after': Math.ceil((rl.resetAt - Date.now()) / 1000).toString(),
+      },
+    });
+  }
+
   let body;
   try { body = await request.json(); } catch { return _bad('Invalid JSON'); }
+
+  // Honeypot: if "website" field exists in payload, silently accept but drop
+  if (body.website) {
+    return new Response(JSON.stringify({ ok: true }), {
+      headers: { 'content-type': 'application/json' },
+    });
+  }
 
   const email = (body.email || '').trim().toLowerCase();
   const hour = parseInt(body.hour_utc, 10);
