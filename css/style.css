@@ -2311,3 +2311,124 @@ footer, main, .score-bar {
   #preview-banner { padding: 7px 10px; font-size: 0.74rem; gap: 8px; }
   #preview-banner .pb-cta { font-size: 0.72rem; }
 }
+
+/* ─────────────────── Stats modal — email CTA replaces browser-notif ─────────────────── */
+.stats-email-cta {
+  width: calc(100% - 28px);
+  margin: 14px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px;
+  background: var(--navy);
+  color: #fff;
+  border: none; border-radius: var(--r-md);
+  font: 700 0.88rem/1.25 var(--font);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--d-fast), transform var(--d-fast);
+}
+.stats-email-cta:hover { background: var(--navy-soft); transform: translateY(-1px); }
+.stats-email-cta .rec-ico { font-size: 1.1rem; }
+.stats-email-cta .rec-text { flex: 1; }
+.stats-email-cta .rec-arr { color: var(--gold); font-weight: 800; }
+
+/* ─────────────────── Result card — email CTA card-style (more prominent) ─────────────────── */
+.result-email-cta {
+  margin-top: 10px;
+  width: 100%;
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  background: var(--navy);
+  color: #fff;
+  border: none; border-radius: var(--r-md);
+  font: 800 0.88rem/1.25 var(--font);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--d-fast), transform var(--d-fast);
+}
+.result-email-cta:hover { background: var(--navy-soft); transform: translateY(-1px); }
+.result-email-cta .rec-ico { font-size: 1.05rem; }
+.result-email-cta .rec-text { flex: 1; text-align: left; }
+.result-email-cta .rec-arr { color: var(--gold); }
+
+/* ─────────────────── Game-over: show ALL valid states per cell ─────────────────── */
+.gos-opts {
+  display: flex; flex-wrap: wrap; gap: 3px;
+  justify-content: center;
+  padding: 4px;
+}
+.gos-opt {
+  font: 800 0.65rem/1 ui-monospace, Menlo, monospace;
+  background: var(--surface-2);
+  color: var(--text-2);
+  padding: 3px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+.gos-opt.gos-opt-pick {
+  background: var(--green); color: #fff;
+  box-shadow: 0 1px 2px rgba(5,150,105,0.25);
+}
+
+/* ─────────────────── Streak fire emoji tiers ─────────────────── */
+.stat-value.streak-warm   { color: #C2410C; }
+.stat-value.streak-orange { color: #EA580C; }
+.stat-value.streak-red    { color: var(--red); }
+.stat-value.streak-gold   { color: var(--gold); text-shadow: 0 0 8px rgba(245,158,11,0.35); }
+
+/* ─────────────────── First-time onboarding tooltip ─────────────────── */
+#first-tip {
+  position: absolute;
+  top: 70px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: var(--r-md);
+  font-weight: 700; font-size: 0.85rem;
+  box-shadow: var(--shadow-md);
+  z-index: 8;
+  animation: tipBounce 1.8s ease-in-out infinite;
+  pointer-events: none;
+  white-space: nowrap;
+}
+#first-tip::after {
+  content: ''; position: absolute;
+  bottom: -6px; left: 50%; transform: translateX(-50%);
+  border: 6px solid transparent; border-bottom: 0;
+  border-top-color: var(--navy);
+}
+@keyframes tipBounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, -4px); }
+}
+
+/* ─────────────────── Skeleton loader (replaces #loading) ─────────────────── */
+#loading {
+  margin-top: 24px;
+  width: 100%; max-width: 480px;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+}
+#loading::before {
+  content: '';
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.18 / 1;
+  background:
+    linear-gradient(90deg, var(--surface-2) 25%, var(--surface) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─────────────────── Mobile <380px: collapse lang-switcher into icon-btn ─────────────────── */
+@media (max-width: 380px) {
+  .lang-switcher { display: none; }
+}

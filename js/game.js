@@ -82,16 +82,39 @@ const Game = (() => {
     if (typeof Analytics !== 'undefined') {
       Analytics.track('puzzle_start', { puzzle_date: _dateStr });
     }
+
+    // First-time onboarding tooltip (dismisses on first cell tap or after 8s)
+    _maybeShowFirstTimeTooltip();
+  }
+
+  function _maybeShowFirstTimeTooltip() {
+    const KEY = 'statedoku_onboarded_v1';
+    if (localStorage.getItem(KEY)) return;
+    if (_solved || _gameOver) { localStorage.setItem(KEY, '1'); return; }
+    const lang = I18n.getLang();
+    const txt = lang === 'fr' ? '👆 Tape sur une case pour commencer'
+              : lang === 'es' ? '👆 Toca una celda para empezar'
+              : '👆 Tap a cell to start';
+    const tip = document.createElement('div');
+    tip.id = 'first-tip';
+    tip.textContent = txt;
+    document.querySelector('#game-wrap')?.appendChild(tip);
+    const dismiss = () => {
+      localStorage.setItem(KEY, '1');
+      tip.remove();
+      document.querySelector('.grid-outer')?.removeEventListener('click', dismiss);
+    };
+    setTimeout(() => document.querySelector('.grid-outer')?.addEventListener('click', dismiss, { once: true }), 100);
+    setTimeout(dismiss, 8000);
   }
 
   function _updateDateDisplay() {
     const el = document.getElementById('puzzle-date');
     if (!el) return;
     if (_puzzle && _puzzle._preview) {
-      const lang = I18n.getLang();
-      el.textContent = lang === 'fr' ? 'Preview · sortie 1er juin'
-                    : lang === 'es' ? 'Preview · sale 1 de junio'
-                    : 'Preview · launches June 1';
+      // Banner above grid already says "Preview — Day #1 drops Monday June 1".
+      // Score bar stays clean — hide the date label entirely during preview.
+      el.textContent = '';
       _showPreviewBanner();
       return;
     }
@@ -402,20 +425,24 @@ const Game = (() => {
     if (el) el.style.display = 'flex';
     const solEl = document.getElementById('gameover-solution');
     if (solEl) {
-      const lang = I18n.getLang();
       solEl.innerHTML = '';
       for (let r = 0; r < 3; r++) {
         for (let c = 0; c < 3; c++) {
           const sid = _puzzle.solution[r][c];
-          const st = _stateMap[sid];
+          const validIds = (_puzzle.cells && _puzzle.cells[r] && _puzzle.cells[r][c]) || [sid];
           const div = document.createElement('div');
           div.className = 'gos-cell';
-          div.innerHTML = `<span class="gos-abbr">${st.id}</span><span class="gos-name">${st.names[lang]}</span>`;
+          // List EVERY state that satisfied row + col, highlight the unique solution
+          const optsHtml = validIds.map(id =>
+            `<span class="gos-opt${id === sid ? ' gos-opt-pick' : ''}">${id}</span>`
+          ).join('');
+          div.innerHTML = `<div class="gos-opts">${optsHtml}</div>`;
           solEl.appendChild(div);
         }
       }
     }
     _renderInlineShareRow('gameover');
+    _injectResultEmailCTA('gameover');
   }
 
   // ── Win ───────────────────────────────────────────────────────────────────
@@ -446,11 +473,11 @@ const Game = (() => {
     if (typeof Ads !== 'undefined' && Ads.refresh) Ads.refresh();
   }
 
-  // After-solve email CTA — discreet link below share row, only if not already subscribed
-  function _injectResultEmailCTA() {
+  // After-solve / after-gameover email CTA — prominent card below share row
+  function _injectResultEmailCTA(which = 'solved') {
     if (typeof EmailReminder === 'undefined') return;
     if (localStorage.getItem('statedoku_email_subscribed')) return;
-    const banner = document.getElementById('solved-banner');
+    const banner = document.getElementById(which + '-banner');
     if (!banner || banner.querySelector('.result-email-cta')) return;
     const cta = document.createElement('button');
     cta.type = 'button';
@@ -458,7 +485,7 @@ const Game = (() => {
     const txt = (typeof I18n !== 'undefined' && I18n.t)
       ? (I18n.t('email_get_tomorrow') !== 'email_get_tomorrow' ? I18n.t('email_get_tomorrow') : null)
       : null;
-    cta.innerHTML = `📧 <span>${txt || 'Get tomorrow\'s puzzle by email →'}</span>`;
+    cta.innerHTML = `<span class="rec-ico">📧</span><span class="rec-text">${txt || "Tomorrow's puzzle in your inbox"}</span><span class="rec-arr">→</span>`;
     cta.addEventListener('click', () => EmailReminder.openModal());
     banner.appendChild(cta);
   }
@@ -766,7 +793,19 @@ const Game = (() => {
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
     set('stat-played',    s.played);
     set('stat-win-rate',  s.played ? Math.round(s.won/s.played*100)+'%' : '—');
-    set('stat-streak',    s.streak);
+    // Streak with progressive fire emoji (longer streak = hotter fire)
+    const streakEl = document.getElementById('stat-streak');
+    if (streakEl) {
+      const n = s.streak || 0;
+      let prefix = '';
+      let tier = '';
+      if (n >= 30)      { prefix = '🔥 '; tier = 'streak-gold'; }
+      else if (n >= 14) { prefix = '🔥 '; tier = 'streak-red'; }
+      else if (n >= 7)  { prefix = '🔥 '; tier = 'streak-orange'; }
+      else if (n >= 3)  { prefix = '🔥 '; tier = 'streak-warm'; }
+      streakEl.textContent = prefix + n;
+      streakEl.className = 'stat-value ' + tier;
+    }
     set('stat-best-time', s.bestTime ? _fmt(s.bestTime) : '—');
   }
 
@@ -1215,10 +1254,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('btn-howto')?.addEventListener('click', () => Game.showHowToPlay());
   document.getElementById('btn-share-banner')?.addEventListener('click', () => Game.share());
   document.getElementById('btn-share-gameover-banner')?.addEventListener('click', () => Game.share());
-  document.getElementById('reminder-toggle')?.addEventListener('click', () => Game._toggleReminder?.());
-  document.getElementById('reminder-time')?.addEventListener('change', () => {
-    if (typeof Reminders !== 'undefined' && Reminders.isEnabled()) {
-      Reminders.enable(document.getElementById('reminder-time').value);
-    }
+  document.getElementById('stats-email-cta')?.addEventListener('click', () => {
+    document.querySelectorAll('.modal').forEach(m => m.classList.remove('open'));
+    if (typeof EmailReminder !== 'undefined') EmailReminder.openModal();
   });
 });
