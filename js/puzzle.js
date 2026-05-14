@@ -263,6 +263,19 @@ const Puzzle = (() => {
     return states.filter(s => matches(s, rowC) && matches(s, colC));
   }
 
+  // States that appear in too many constraints. The puzzle generator caps how
+  // many of these can appear in a single solution to avoid them being
+  // "the answer" every day. CA/NY/TX each match ~25-30 active constraints
+  // while smaller states match ~5. Without this cap, the daily grid would
+  // feel repetitive — like a Paris metro puzzle where Châtelet was a valid
+  // answer every day.
+  const DOMINANT_STATES = new Set(['CA', 'NY', 'TX']);
+  const MAX_DOMINANT_PER_PUZZLE = 2;
+
+  function _countDominant(flatIds) {
+    return flatIds.filter(id => DOMINANT_STATES.has(id)).length;
+  }
+
   // Check if a 3×3 grid has exactly 1 valid assignment (global backtracking)
   function hasUniqueSolution(grid) {
     const used = new Set();
@@ -365,6 +378,11 @@ const Puzzle = (() => {
             return false;
           })(0);
 
+          // Hard cap: no more than MAX_DOMINANT_PER_PUZZLE of CA/NY/TX in the
+          // solution. Skip combos that violate this — keeps these big states
+          // from monopolising daily answers.
+          if (_countDominant(flat) > MAX_DOMINANT_PER_PUZZLE) continue;
+
           const solution = [flat.slice(0,3), flat.slice(3,6), flat.slice(6,9)];
           found.push({
             rows: rowGroup,
@@ -379,13 +397,16 @@ const Puzzle = (() => {
     return found;
   }
 
-  // Score a puzzle: cultural/historical constraints = 2pts, geographic/political = 1pt
+  // Score a puzzle: cultural/historical constraints = 2pts, geographic/political = 1pt.
+  // Penalty: each CA/NY/TX cell in the solution subtracts 2 points — among
+  // otherwise-equal puzzles, prefer the ones that don't lean on dominant states.
   function _score(puzzle) {
     let s = 0;
     for (const c of [...puzzle.rows, ...puzzle.cols]) {
       if (SCORE2.has(c)) s += 2;
       else if (SCORE1.has(c)) s += 1;
     }
+    s -= _countDominant(puzzle.solution.flat()) * 2;
     return s;
   }
 
@@ -502,6 +523,8 @@ const Puzzle = (() => {
             if (allSolutions.length !== 1) continue;
 
             const flat = allSolutions[0];
+            // Cap dominant states even in relaxed fallback
+            if (_countDominant(flat) > MAX_DOMINANT_PER_PUZZLE) continue;
             const solution = [flat.slice(0,3), flat.slice(3,6), flat.slice(6,9)];
             return {
               date: dateStr,
@@ -552,7 +575,7 @@ const Puzzle = (() => {
   }
 
   // One-time purge of stale cached puzzles (bump CACHE_GEN to invalidate)
-  const CACHE_GEN = 'gen3';
+  const CACHE_GEN = 'gen4';
   (function _purgeOldPuzzleCaches() {
     try {
       if (localStorage.getItem('statedoku_cache_gen') === CACHE_GEN) return;
