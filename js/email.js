@@ -34,18 +34,25 @@ const EmailReminder = (() => {
     if (m) m.classList.remove('open');
   }
 
-  function _localHourToUTC(timeStr) {
-    // timeStr = "HH:MM" in the user's local timezone — convert to UTC hour 0..23
-    const [hh, mm] = timeStr.split(':').map(n => parseInt(n, 10));
-    const now = new Date();
-    const local = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm);
-    return local.getUTCHours();
+  // Compute UTC hour corresponding to a given hour in America/New_York
+  // (handles EST/EDT automatically, twice-a-year safe)
+  function _nyHourToUTC(nyHour) {
+    const d = new Date();
+    d.setUTCHours(12, 0, 0, 0); // noon UTC today as a reference moment
+    const fmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      hour: 'numeric',
+      hour12: false,
+    });
+    const nyAtNoonUTC = parseInt(fmt.format(d), 10); // ex: 8 in EDT (UTC-4), 7 in EST (UTC-5)
+    const offset = 12 - nyAtNoonUTC; // ex: 4 in EDT, 5 in EST
+    return ((nyHour + offset) % 24 + 24) % 24;
   }
 
   async function _submit(e) {
     e.preventDefault();
     const email = document.getElementById('email-input').value.trim();
-    const time  = document.getElementById('email-time').value || '09:00';
+    const hourUTC = _nyHourToUTC(12); // fixed: noon New York time
     const lang  = (typeof I18n !== 'undefined' && I18n.getLang) ? I18n.getLang() : 'en';
     const status = document.getElementById('email-status');
     const btn = document.querySelector('#email-form .email-submit');
@@ -57,7 +64,7 @@ const EmailReminder = (() => {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ email, hour_utc: _localHourToUTC(time), lang }),
+        body: JSON.stringify({ email, hour_utc: hourUTC, lang }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) {
