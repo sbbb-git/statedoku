@@ -1,140 +1,126 @@
 # Statedoku — Launch plan (May 25 → June 1, 2026)
 
-> **Reality check first.** You'll likely have 0–10 visits per day during the first
-> week. That's normal. The point of this week is not traffic — it's to seed
-> credibility, capture early emails on `/launch/`, and have your accounts/posts
-> ready so that **launch day** (Monday June 1) compounds.
+> **Channels** : Twitter (90% du jus) + Hacker News + Product Hunt le jour J.
+> **Reddit** : skipped — trop de risque ban pour un compte neuf, ROI faible.
 
 ---
 
-## 🎯 The two pages
+## 🎯 Les deux pages
 
-- **`/launch/`** — coming-soon page with email signup. Bot tweets link here.
-  Marketing posts (Twitter, Reddit) link here during prelaunch week.
-- **`/`** — full game (already live). "Sneak peek" link in `/launch/` header
-  for the curious. The bot will switch to linking here on June 1.
+- **`/launch/`** — coming-soon page avec email signup. Bot tweete + tweets manuels linkent là pendant la semaine.
+- **`/`** — full game (live + en mode preview locké jusqu'au 1er juin). Switch auto vers la génération quotidienne le 1er juin à minuit UTC.
 
 ---
 
-## 📅 Daily orders
+## 📅 Daily orders (résumé)
 
-### Mon May 25 — D-7 · Soft teaser
-- **9:00 ET**: Bot auto-posts (✅ already configured, no action)
-- **Manual (5 min)**: Follow 30 niche accounts from `strategic-accounts.md`. Like 5 of their recent tweets.
-- **Goal**: 0–5 followers. That's success.
+| Jour | Action principale | Temps |
+|---|---|---|
+| **Lun 25 mai** D-7 | Follow 30 comptes niche + 1 tweet manuel le soir | 15 min |
+| **Mar 26 mai** D-6 | 1 emoji-grid tweet (viral format) + reply aux questions | 10 min |
+| **Mer 27 mai** D-5 | 1 engagement-bait tweet ("Name 4 states bordering Mexico") | 10 min |
+| **Jeu 28 mai** D-4 | First reveal tweet avec lien `/launch/` | 10 min |
+| **Ven 29 mai** D-3 | Social proof tweet | 5 min |
+| **Sam 30 mai** D-2 | Constraint showcase tweet | 5 min |
+| **Dim 31 mai** D-1 | Final countdown + draft HN + PH submissions | 20 min |
+| **Lun 1 juin** D-0 | LAUNCH (HN + PH + Twitter blitz) | 1-2h |
 
-### Tue May 26 — D-6 · Format viral test
-- **9:00 ET**: Bot auto-posts
-- **Manual (5 min)**: Post manually an emoji-grid screenshot, **no link**, just:
-  ```
-  Statedoku 🗺️ 26/05
-  🟩🟩🟩
-  🟩🟥🟩
-  🟩🟩🟩
-  ```
-  Reply to any comment with "June 1 ↗".
-- **Goal**: Spark curiosity. 1 reply = win.
+**Détail complet + drafts ready-to-paste** : voir `marketing/twitter-playbook.md`
 
-### Wed May 27 — D-5 · Visual quiet day
-- **9:00 ET**: Bot auto-posts (now in "NEAR" tone — hints we're close)
-- **Manual (10 min)**: Post one US-geography fun fact in a punchy tweet:
-  > "Only 4 states begin with the letter A. Can you name them?"
+---
 
-  No link. Pure engagement bait. Reply to anyone who tries.
-- **Goal**: 50+ impressions, 5 replies.
+## 🤖 Le bot fait le gros du boulot
 
-### Thu May 28 — D-4 · Reddit awareness (manual, no automation)
-- **9:00 ET**: Bot auto-posts
-- **Manual (30 min)**: Post the **prelaunch Reddit drafts** (`reddit-drafts.md`):
-  - 1 post in **r/SideProject** ("Daily US-states puzzle launching June 1 — coming-soon page open")
-  - 1 post in **r/geography**
-- **Stagger** posts 3+ hours apart. Link → `/launch/` (not `/`)
-- **Reply** to the first 5 comments on each within the first hour.
-- **Goal**: 20–100 email signups if a post catches. Otherwise 0. Both are fine.
+Le bot Twitter @Statedoku poste **2x/jour** automatiquement (9h ET + 19h ET) pendant la semaine de prelaunch. Le ton escalade tout seul (mystérieux → countdown).
 
-### Fri May 29 — D-3 · DM round
-- **9:00 ET**: Bot auto-posts
-- **Manual (15 min)**: DM every account that liked/replied to your posts this week. Just:
-  > "Hey — coming-soon page is up if you want first dibs Monday. statedoku.com/launch"
-- **Goal**: 10 DMs out, 3 signups back.
-
-### Sat May 30 — D-2 · Visual proof
-- **9:00 ET**: Bot auto-posts (countdown — explicit "June 1")
-- **Manual (10 min)**: Post a constraint pair as a teaser:
-  > "Today's intersection: Pacific coast × Borders Mexico = California. There are 99 more like this. June 1."
-- **Goal**: 1 quote-tweet from a micro-influencer would be huge.
-
-### Sun May 31 — D-1 · Final assets
-- **9:00 ET**: Bot auto-posts ("LAUNCH TOMORROW")
-- **Manual (30 min)**:
-  - Draft your **Show HN** post in a doc (title: `Show HN: Statedoku – daily US states puzzle`)
-  - Draft your **Product Hunt** submission
-  - Verify Twitter Card preview of `statedoku.com` with `https://cards-dev.twitter.com/validator`
-- **Goal**: All assets ready to fire Monday morning.
-
-### Mon June 1 — D-0 · LAUNCH 🚀
-
-**8:00 ET** — Flip the bot to launch phase:
+**Action requise une seule fois avant le 25 mai** :
 ```bash
 cd bot
-# Edit src/worker.js → change PHASE = 'launch'
 wrangler deploy
 ```
 
-**8:30 ET** — Submit **Show HN** post to Hacker News
-**8:30 ET** — Submit to **Product Hunt**
-**8:45 ET** — Post the launch tweet (one tweet, not a thread — clean direct message):
-> "Day #1 of @Statedoku is live 🇺🇸 Daily US-states puzzle. Free, no signup, daily reset. statedoku.com"
-**9:00 ET** — Post your **3 Reddit launch posts** (different from D-4 ones, see `reddit-drafts.md`)
-**Throughout the day** — Reply to every comment, tweet, DM in <15 min.
-**End of day** — Post a "thanks for Day #1 — Day #2 drops at midnight" recap tweet.
-
-**Goals (realistic)**:
-- 100–500 page visits
-- 20–100 puzzles completed
-- 3–10 emoji-grid shares
-- 5–20 new email subscribers (on top of those captured at `/launch/` pre-launch)
+**Action requise le 1er juin matin** :
+```bash
+cd bot
+# Edit src/worker.js → PHASE = 'launch'
+wrangler deploy
+```
 
 ---
 
 ## ⚙️ Setup checklist (do BEFORE May 25)
 
-- [ ] **Bot Twitter deployed** with `PHASE = 'prelaunch'` and `LAUNCH_DATE = '2026-06-01'` (✅)
-- [ ] **Bot cron**: 2 posts/day in prelaunch (`0 13 * * *` + `0 23 * * *`) (✅)
-- [ ] **Test a bot post manually** before May 25:
-  ```bash
-  cd bot
-  wrangler deploy
-  curl "https://statedoku-twitter-bot.YOUR_ACCOUNT.workers.dev/?key=YOUR_KEY&dry=1"
-  ```
-- [ ] **Email worker deployed** (✅ done)
-- [ ] **`/launch/` page live** — check https://statedoku.com/launch/ renders, the form submits, you receive yourself a test email tomorrow at noon NYC.
-- [ ] **OG image** renders in Twitter Card Validator + Facebook Sharing Debugger for BOTH `/` and `/launch/`
-- [ ] **Search Console** has the sitemap submitted
+- [ ] **Bot Twitter** redéployé avec `LAUNCH_DATE='2026-06-01'` (✅ code prêt)
+- [ ] **`/launch/` page** live et formulaire testé (envoie-toi un mail) (✅ code prêt)
+- [ ] **Email worker** déployé et envoie à midi NYC chaque jour (✅ done)
+- [ ] **30 comptes Twitter niches** identifiés dans `strategic-accounts.md` (✅)
+- [ ] **Hacker News compte** créé (juste un account, pas besoin de karma préalable pour Show HN)
+- [ ] **Product Hunt compte** créé + page produit en draft (peut être soumis 24h avant)
+- [ ] **OG image** vérifiée dans Twitter Card Validator pour `/` et `/launch/`
+- [ ] **Search Console** indexed, sitemap submitted
+
+---
+
+## 🚀 Jour J (Lundi 1er juin)
+
+### Timeline ET (heure US Est)
+
+```
+07:00 ET  → Wake up. Coffee. Verify site loads.
+08:00 ET  → Flip bot to launch (wrangler deploy)
+08:30 ET  → Submit Show HN post (titre: "Show HN: Statedoku – daily US states puzzle")
+08:30 ET  → Submit to Product Hunt
+08:45 ET  → Manual launch tweet (voir twitter-playbook.md)
+09:00 ET  → Reply à tous les commentaires HN dans les 15 min (CRITIQUE)
+10:00 ET  → Continue à reply, quote-tweet les early supporters
+13:00 ET  → Bot tweete son premier "launch" tweet automatiquement
+16:00 ET  → Constraint-showcase tweet (engagement bait)
+22:00 ET  → Recap tweet (X players, Y solved, Z signups)
+```
+
+### Si HN hits front page
+
+- Reply à TOUS les commentaires dans l'heure (HN aime les founders réactifs)
+- Tweet une mise à jour : "Hit #X on HN, blown away by the response"
+- Garde ton site monitoring (Cloudflare Analytics) ouvert
+
+### Si HN flop
+
+C'est OK. Re-soumets dans 30 jours avec un meilleur titre + un angle "growth update" ("Statedoku - 1000 daily players after 1 month").
+
+---
+
+## 📊 Expectations honnêtes
+
+| Day | Visits | Email signups | Followers cumulés |
+|---|---|---|---|
+| 25 mai | 0–5 | 0–2 | 0–5 |
+| 27 mai | 5–20 | 1–5 | 5–15 |
+| 30 mai | 10–50 | 3–15 | 15–40 |
+| 31 mai | 20–80 | 5–25 | 25–60 |
+| **1 juin LAUNCH** | **100–10000** *si HN hits* | 10–200 | 50–500 |
+
+**Le pire scenario** : 200 visites, 5 signups, 10 followers. **C'est normal et c'est OK.** La majorité des indie launches font ça. Le truc c'est de continuer Day 2, Day 3, Day 30.
 
 ---
 
 ## 🎯 What NOT to do
 
-- ❌ **No "I built this" thread**. The story-of-the-build angle is not the play. Lead with the product, not the journey.
-- ❌ Don't run paid ads.
-- ❌ Don't post identical text on multiple subreddits — Reddit shadowbans for that.
-- ❌ Don't tag huge accounts (>1M followers).
-- ❌ Don't change the puzzle algorithm during launch week. Whatever ships May 25 = what ships June 1.
+- ❌ **Pas de Reddit** (ban risk élevé, ROI faible pour un compte neuf)
+- ❌ **Pas de paid ads** (mauvaise targeting pour la niche)
+- ❌ **Pas de thread "I built this in 6 weeks"** — lead with product, pas avec le journey indie hacker
+- ❌ **Pas de tagging compte >1M followers** (cringe + ignored)
+- ❌ **Pas de DMs froids** pour pousser ton site (= spam reports)
+- ❌ **Pas de pause de communication** entre J0 et J+7. Continue à poster.
 
 ---
 
-## 📊 Honest expectations
+## 📚 Fichiers à consulter
 
-| Day | Visits | Signups (/launch/) | Followers |
-|---|---|---|---|
-| May 25 | 0–5 | 0–2 | 0–3 |
-| May 26 | 0–10 | 0–3 | 0–5 |
-| May 27 | 5–20 | 1–5 | 2–10 |
-| May 28 | 10–200 *if Reddit hits* | 5–50 | 5–30 |
-| May 29 | 5–30 | 2–10 | 2–10 |
-| May 30 | 10–50 | 3–15 | 5–15 |
-| May 31 | 20–80 | 5–25 | 10–25 |
-| **June 1 LAUNCH** | **100–1000** *if HN hits* | 10–80 | 30–200 |
+| Fichier | Quand |
+|---|---|
+| `marketing/twitter-playbook.md` | **Tous les jours** — drafts ready-to-paste + engagement tactics |
+| `marketing/strategic-accounts.md` | Avant le 25 mai pour follow les comptes |
+| `bot/src/worker.js` | Le 1er juin pour flip PHASE='launch' |
 
-Plan for 30 days, not 1 day. Day 1 traction matters less than whether you keep posting on day 30.
+Pas de Reddit. Pas de stress. Just Twitter + HN + PH + email. Plan resserré, exécutable.
