@@ -1480,6 +1480,155 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_dual_state_names',    '🤝 Has a North/South sibling',           'A un État jumeau N/S',           'Tiene estado gemelo N/S',           'ND SD NC SC WV VA');
   add('pc_state_capital_small', '🏛️ State capital is small (<100k pop)',  'Capitale petite (<100k)',        'Capital pequeña (<100k)',           'VT AK MT NH SD');
 
+  // ═══════════════════════════════════════════════════════════════════════
+  // BATCH 4 — 100 CLASSIC CANDIDATES (LETTER / SPELLING / CLASSIC THEMES)
+  // ═══════════════════════════════════════════════════════════════════════
+
+  // ─── 🔤 LETTERS IN THE NAME ───
+  add('pc_contains_k',          '🔤 Name contains the letter K',          'Nom contient un K',              'Nombre contiene K',                 'AK AR KS KY NE NY ND OK SD');
+  add('pc_contains_w',          '🔤 Name contains the letter W',          'Nom contient un W',              'Nombre contiene W',                 'DE HI IA NH NJ NM NY WA WV WI WY');
+  add('pc_contains_h',          '🔤 Name contains the letter H',          'Nom contient un H',              'Nombre contiene H',                 'HI ID NH NC OH OK SC UT WA');
+  add('pc_contains_y',          '🔤 Name contains the letter Y',          'Nom contient un Y',              'Nombre contiene Y',                 'KY MD NJ NY PA WY');
+  add('pc_contains_double_s',   '🔤 Name contains "ss"',                  'Nom contient « ss »',            'Nombre contiene «ss»',              'MA MS TN');
+  add('pc_contains_double_n',   '🔤 Name contains "nn"',                  'Nom contient « nn »',            'Nombre contiene «nn»',              'CT MN PA TN');
+  add('pc_contains_double_i',   '🔤 Name contains "ii"',                  'Nom contient « ii »',            'Nombre contiene «ii»',              'HI');
+  add('pc_contains_double_a',   '🔤 Three or more A\'s in name',          'Trois A ou plus',                'Tres o más letras A',               'AL AK AR IN LA MA NE NV PA');
+  add('pc_contains_double_e',   '🔤 Two or more E\'s in name',            'Deux E ou plus',                 'Dos o más letras E',                'DE TN');
+  add('pc_contains_substring_an','🔤 Name contains "an"',                  'Nom contient « an »',            'Nombre contiene «an»',              'AR IN KS LA MD MT NC PA SC');
+  add('pc_contains_substring_or','🔤 Name contains "or"',                  'Nom contient « or »',            'Nombre contiene «or»',              'CA CO FL GA NC ND OR SC SD');
+  add('pc_contains_substring_in','🔤 Name contains "in"',                  'Nom contient « in »',            'Nombre contiene «in»',              'IL IN ME MN VA VT WV WI');
+  add('pc_contains_substring_is','🔤 Name contains "is"',                  'Nom contient « is »',            'Nombre contiene «is»',              'IL LA MS MO WI');
+  add('pc_contains_substring_new','🔤 Name starts with "New"',              'Commence par « New »',           'Empieza con «New»',                 'NH NJ NM NY');
+  add('pc_contains_north_south','🧭 Name has "North" or "South"',         'Nom avec « North » ou « South »','Nombre con «North» o «South»',     'NC ND SC SD');
+  add('pc_contains_west',       '🧭 Name has "West"',                     'Nom avec « West »',              'Nombre con «West»',                 'WV');
+
+  // ─── 🔡 FIRST / LAST LETTER ───
+  add('pc_starts_with_c',       '🔡 Name starts with C',                  'Commence par C',                 'Empieza con C',                     'CA CO CT');
+  add('pc_starts_with_o',       '🔡 Name starts with O',                  'Commence par O',                 'Empieza con O',                     'OH OK OR');
+  add('pc_starts_with_s',       '🔡 Name starts with S',                  'Commence par S',                 'Empieza con S',                     'SC SD');
+  add('pc_starts_with_t',       '🔡 Name starts with T',                  'Commence par T',                 'Empieza con T',                     'TN TX');
+  add('pc_starts_with_k',       '🔡 Name starts with K',                  'Commence par K',                 'Empieza con K',                     'KS KY');
+  add('pc_starts_with_consonant_h_to_p','🔡 Name starts H–P',              'Commence H–P',                   'Empieza H–P',                       'HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA');
+  add('pc_starts_with_a_or_i',  '🔡 Name starts A or I',                  'Commence par A ou I',            'Empieza con A o I',                 'AL AK AZ AR ID IL IN IA');
+  add('pc_starts_with_m_or_w',  '🔡 Name starts M or W',                  'Commence par M ou W',            'Empieza con M o W',                 'ME MD MA MI MN MS MO MT WA WV WI WY');
+  add('pc_starts_and_ends_a',   '🔡 Starts and ends with A',              'Commence et termine par A',      'Empieza y termina con A',           'AL AK AZ');
+  add('pc_starts_and_ends_same','🔡 Starts and ends with same letter',    'Même lettre début/fin',          'Misma letra inicio/fin',            'AL AK AZ OH');
+  add('pc_ends_in_i',           '🔡 Name ends in I',                      'Termine par I',                  'Termina con I',                     'HI MS MO');
+  add('pc_ends_in_t',           '🔡 Name ends in T',                      'Termine par T',                  'Termina con T',                     'CT VT');
+  add('pc_ends_in_d',           '🔡 Name ends in D',                      'Termine par D',                  'Termina con D',                     'MD RI');
+  add('pc_ends_in_consonant',   '🔡 Name ends in a consonant',            'Termine par consonne',           'Termina en consonante',             'AR CT IL KS MA MI NY OR TX VT WA WI');
+  add('pc_ends_in_t_or_d',      '🔡 Name ends in T or D',                 'Termine par T ou D',             'Termina con T o D',                 'CT VT MD RI');
+
+  // ─── 📏 LETTER COUNT ───
+  add('pc_letters_4_to_5',      '📏 Name is 4–5 letters',                 'Nom de 4–5 lettres',             'Nombre 4–5 letras',                 'IA OH UT ID ME TX');
+  add('pc_letters_exactly_4',   '📏 Name is exactly 4 letters',           'Nom de 4 lettres',               'Nombre de 4 letras',                'IA OH UT');
+  add('pc_letters_exactly_5',   '📏 Name is exactly 5 letters',           'Nom de 5 lettres',               'Nombre de 5 letras',                'ID ME TX');
+  add('pc_letters_11_exact',    '📏 Name is exactly 11 letters',          'Nom de 11 lettres',              'Nombre 11 letras',                  'CT MS RI');
+  add('pc_letters_12_plus',     '📏 Name has 12+ letters',                'Nom de 12+ lettres',             'Nombre 12+ letras',                 'CT MA MS NH NC PA RI SC ND SD WV');
+  add('pc_letters_13_plus',     '📏 Name has 13+ letters',                'Nom de 13+ lettres',             'Nombre 13+ letras',                 'MA NH NC SC');
+  add('pc_one_word_long',       '📏 Single word ≥9 letters',              'Un seul mot ≥9 lettres',         'Una palabra ≥9 letras',             'CA CT LA MN MS MO TN WA WI');
+  add('pc_one_word_short',      '📏 Single word ≤6 letters',              'Un seul mot ≤6 lettres',         'Una palabra ≤6 letras',             'AK HI ID IA KS ME NV OH OR TX UT');
+
+  // ─── 🔠 VOWELS / CONSONANTS ───
+  add('pc_more_vowels_than_cons','🔠 More vowels than consonants',         'Plus de voyelles que consonnes', 'Más vocales que consonantes',       'HI IA OH IO IA AK');
+  add('pc_starts_vowel_not_a',  '🔠 Starts with vowel (not A)',           'Voyelle au début (pas A)',       'Vocal inicial (no A)',              'ID IL IN IA OH OK OR UT');
+  add('pc_starts_consonant',    '🔠 Starts with a consonant',             'Consonne au début',              'Consonante inicial',                'CA CO CT DE FL GA HI KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND PA RI SC SD TN TX VT VA WA WV WI WY');
+  add('pc_two_consecutive_vowels','🔠 Two consecutive vowels in name',    'Deux voyelles consécutives',     'Dos vocales seguidas',              'HI IA LA ME ID OH');
+  add('pc_only_vowel_a_used',   '🔠 Only vowel used is A',                'Seule voyelle utilisée : A',     'Única vocal usada: A',              'AL AK AR KS');
+
+  // ─── 🗣️ SYLLABLES ───
+  add('pc_one_syllable',        '🗣️ Name is one syllable',                'Nom monosyllabique',             'Nombre monosílabo',                 'ME');
+  add('pc_two_syllables',       '🗣️ Name is two syllables',               'Nom bisyllabique',               'Nombre bisílabo',                   'AK AR IA KS NV NJ NY OH TX UT VT');
+  add('pc_five_plus_syllables', '🗣️ Five+ syllables',                     '5+ syllabes',                    '5+ sílabas',                        'CA LA PA WV');
+
+  // ─── 🌎 GEOGRAPHY CLASSIC ───
+  add('pc_borders_canada',      '🌎 Borders Canada',                      'Frontière avec le Canada',       'Frontera con Canadá',               'AK WA ID MT ND MN MI OH PA NY VT NH ME');
+  add('pc_borders_ocean',       '🌊 Borders an ocean',                    'Borde un océan',                 'Linda con un océano',               'ME NH MA RI CT NY NJ DE MD VA NC SC GA FL AL MS LA TX CA OR WA AK HI');
+  add('pc_great_lakes_2',       '🏞️ Borders a Great Lake',                'Borde un Grand Lac',             'Borde un Gran Lago',                'MN WI IL IN MI OH PA NY');
+  add('pc_borders_pacific',     '🌊 Pacific coastline',                   'Côte Pacifique',                 'Costa del Pacífico',                'CA OR WA AK HI');
+  add('pc_borders_atlantic',    '🌊 Atlantic coastline',                  'Côte Atlantique',                'Costa del Atlántico',               'ME NH MA RI CT NY NJ DE MD VA NC SC GA FL');
+  add('pc_mississippi_river',   '🛶 Crossed by the Mississippi River',    'Traversé par le Mississippi',    'Atravesado por Mississippi',        'MN WI IA IL MO KY TN AR MS LA');
+  add('pc_rockies_in_state',    '⛰️ Rocky Mountains pass through',        'Rocheuses dans l\'État',         'Montañas Rocosas',                  'NM CO WY MT ID UT');
+  add('pc_appalachians_in_state','⛰️ Appalachian range pass through',     'Appalaches dans l\'État',        'Montañas Apalaches',                'AL GA NC SC TN VA WV KY OH PA NY VT NH ME MD');
+  add('pc_landlocked',          '🏞️ Landlocked (no coast, no Great Lake)','Enclavé',                        'Sin salida al mar',                 'AZ AR CO ID IA KS KY MO MT NE NV NM ND OK SD TN UT VT WV WY');
+  add('pc_sea_level_low',       '🏖️ Lowest point near/below sea level',   'Point bas près du niveau mer',   'Punto bajo cerca del mar',          'CA LA FL DE MD NC VA NJ NY');
+  add('pc_mountain_west',       '🏔️ Mountain West region',                'Mountain West',                  'Oeste montañoso',                   'MT ID WY NV UT CO AZ NM');
+
+  // ─── 📜 HISTORY CLASSIC ───
+  add('pc_thirteen_colonies',   '📜 One of the 13 original colonies',     '13 colonies originelles',        '13 colonias originales',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI');
+  add('pc_admitted_before_1800','📜 Admitted before 1800',                'Admis avant 1800',               'Admitido antes de 1800',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI VT KY TN');
+  add('pc_admitted_1800s',      '📜 Admitted in the 1800s',               'Admis au XIXe siècle',           'Admitido en el siglo XIX',          'OH LA IN MS IL AL ME MO AR MI FL TX IA WI CA MN OR KS WV NV NE CO ND SD MT WA ID WY UT');
+  add('pc_admitted_after_civil','📜 Admitted 1865–1900',                  'Admis 1865–1900',                'Admitido 1865–1900',                'NE CO ND SD MT WA ID WY UT');
+  add('pc_admitted_20th_century','📜 Admitted in the 20th century',       'Admis au XXe siècle',            'Admitido en el siglo XX',           'OK NM AZ AK HI');
+  add('pc_louisiana_purchase',  '📜 In Louisiana Purchase territory',     'Achat de la Louisiane',          'Compra de Luisiana',                'AR IA KS LA MN MO MT NE ND OK SD WY CO');
+  add('pc_civil_war_union',     '📜 Union state in Civil War',            'Camp de l\'Union',               'Lado de la Unión',                  'CA CT IL IN IA KS ME MA MI MN NV NH NJ NY OH OR PA RI VT WV WI');
+  add('pc_oregon_trail',        '🐎 On the Oregon Trail',                 'Sur la piste de l\'Oregon',      'Sendero de Oregón',                 'MO KS NE WY ID OR');
+  add('pc_pony_express',        '🐎 On the Pony Express route',           'Pony Express',                   'Pony Express',                      'MO KS NE CO WY UT NV CA');
+  add('pc_old_west',            '🤠 Classic Old West frontier',           'Far West classique',             'Lejano Oeste clásico',              'TX AZ NM CA NV CO WY MT KS OK');
+
+  // ─── 🏛️ STATE NAME ORIGIN ───
+  add('pc_named_after_person',  '👤 Named after a real person',           'Nommé d\'après une personne',    'Nombre por una persona',            'LA MD NC SC GA WA PA DE NY');
+  add('pc_named_after_river',   '🏞️ Named after a river',                 'Nommé d\'après un fleuve',       'Nombre por un río',                 'AL AR CT IL MN MS MO OH OR TN WI');
+  add('pc_named_native_tribe',  '🪶 Named after a Native tribe',          'Nommé d\'après une tribu',       'Nombre por una tribu',              'AL AR IL IA KS MA NE OK SD ND UT');
+  add('pc_named_after_queen_2', '👑 Named for a queen specifically',      'Nommé d\'après une reine',       'Nombre por una reina',              'MD VA');
+  add('pc_french_origin_name',  '🇫🇷 Name of French origin',               'Nom d\'origine française',       'Nombre de origen francés',          'LA VT IL ME OR AR MI');
+
+  // ─── 🏙️ CAPITALS ───
+  add('pc_capital_same_letter', '🏛️ Capital starts with same letter as state','Capitale même initiale','Capital con misma inicial',      'DE HI IN OK');
+  add('pc_capital_is_largest',  '🏛️ Capital is also the largest city',    'Capitale = plus grande ville',   'Capital = ciudad más grande',       'AZ AR CO GA HI HI IN MA MS OK RI SC UT WV WY');
+  add('pc_capital_two_words',   '🏛️ Capital city has two words',          'Capitale en deux mots',          'Capital con dos palabras',          'AR IA NM ND OK SD UT');
+  add('pc_capital_under_50k',   '🏛️ Capital under 50k population',        'Capitale <50k habitants',        'Capital <50k habitantes',           'VT MT SD KY AK');
+
+  // ─── 🌾 AGRICULTURE TOP ───
+  add('pc_top_corn',            '🌽 Top corn producer',                   'Top maïs',                       'Top productor de maíz',             'IA IL NE MN IN OH SD WI');
+  add('pc_top_wheat',           '🌾 Top wheat producer',                  'Top blé',                        'Top productor de trigo',            'KS ND MT WA OK SD ID NE');
+  add('pc_top_soybean',         '🫘 Top soybean producer',                'Top soja',                       'Top productor de soja',             'IL IA IN MO MN OH NE SD ND');
+  add('pc_top_cotton',          '☁️ Top cotton producer',                 'Top coton',                      'Top productor de algodón',          'TX GA AL MS AR LA NC');
+  add('pc_top_tobacco',         '🚬 Top tobacco producer',                'Top tabac',                      'Top productor de tabaco',           'NC KY VA TN GA SC');
+  add('pc_top_apple',           '🍎 Top apple producer',                  'Top pommes',                     'Top productor de manzanas',         'WA NY MI PA CA VA WV');
+  add('pc_top_potato',          '🥔 Top potato producer',                 'Top pommes de terre',            'Top productor de papas',            'ID WA WI OR CO MN ND MI');
+  add('pc_top_rice',            '🍚 Top rice producer',                   'Top riz',                        'Top productor de arroz',            'AR LA TX MS CA MO');
+  add('pc_top_peanut',          '🥜 Top peanut producer',                 'Top cacahuètes',                 'Top productor de cacahuetes',       'GA AL FL TX NC OK VA');
+
+  // ─── 🎵 MUSIC CLASSIC ───
+  add('pc_jazz_birthplace_2',   '🎷 Jazz birthplace / hub',               'Berceau du jazz',                'Cuna del jazz',                     'LA TN MO IL NY MS');
+  add('pc_country_music_2',     '🎸 Country music heartland',             'Country',                        'Country',                           'TN TX KY OK AR MS LA');
+  add('pc_blues_birthplace',    '🎶 Blues birthplace',                    'Berceau du blues',               'Cuna del blues',                    'MS TN LA AL TX');
+  add('pc_motown_state',        '🎤 Motown / Detroit sound',              'Motown',                         'Motown',                            'MI');
+  add('pc_grunge_state',        '🎸 Grunge scene origin',                 'Berceau du grunge',              'Cuna del grunge',                   'WA');
+
+  // ─── 🏈 SPORTS CLASSIC ───
+  add('pc_no_pro_team',         '🏟️ No major pro sports team',            'Sans franchise majeure',         'Sin equipo profesional mayor',      'AK ID ME MT NH NM ND SD VT WV WY');
+  add('pc_pga_major_hosted',    '⛳ PGA major championship hosted',       'Major PGA accueilli',            'Major PGA',                         'NY GA NJ CA WA OK NC PA SC FL');
+  add('pc_super_bowl_host',     '🏆 Super Bowl host state',               'Super Bowl accueilli',           'Anfitrión Super Bowl',              'FL CA TX LA AZ MN IN GA NJ NV');
+
+  // ─── 💰 ECONOMY ───
+  add('pc_no_income_tax',       '💰 No state income tax',                 'Pas d\'impôt sur revenu d\'État','Sin impuesto estatal a la renta',   'AK FL NV NH SD TN TX WA WY');
+  add('pc_top_oil_producer',    '🛢️ Top oil producer',                    'Top pétrole',                    'Top productor de petróleo',         'TX OK LA AK ND CA NM WY');
+  add('pc_top_coal_producer',   '⛏️ Top coal producer',                   'Top charbon',                    'Top productor de carbón',           'WV KY PA WY MT VA AL IL IN OH');
+  add('pc_top_natural_gas',     '🔥 Top natural gas producer',            'Top gaz naturel',                'Top productor de gas natural',      'TX PA LA OK WY WV CO NM');
+
+  // ─── 🏞️ NATIONAL PARKS ICONIC ───
+  add('pc_iconic_national_park','🏞️ Has a top-10 national park',          'Parc national top 10',           'Top 10 parque nacional',            'WY MT UT AZ CA CO WA TN');
+  add('pc_first_national_park', '🏞️ Yellowstone (1st nat\'l park) crosses','Yellowstone le traverse',       'Yellowstone lo cruza',              'WY MT ID');
+
+  // ─── 🌡️ CLIMATE CLASSIC ───
+  add('pc_below_freezing_winter','❄️ Avg winter below freezing',          'Hiver < 0°C en moyenne',         'Invierno bajo 0°C',                 'MN ND MT AK WI NH VT ME');
+  add('pc_hurricane_landfall_2','🌀 Frequent hurricane landfall',        'Ouragans fréquents',             'Huracanes frecuentes',              'FL TX LA AL MS GA NC SC NJ NY');
+  add('pc_tornado_alley_3',     '🌪️ Tornado Alley',                       'Allée des tornades',             'Callejón de tornados',              'TX OK KS NE SD ND IA MO AR LA');
+  add('pc_drought_prone',       '🏜️ Drought-prone',                       'Sujet à la sécheresse',          'Propenso a sequía',                 'CA AZ NV NM TX OK CO UT');
+
+  // ─── ⏰ TIME ZONES ───
+  add('pc_eastern_time',        '🕒 Eastern Time Zone',                   'Fuseau Est',                     'Zona horaria Este',                 'ME NH VT MA RI CT NY NJ DE PA MD DC VA WV NC SC GA FL OH MI IN KY TN');
+  add('pc_central_time',        '🕒 Central Time Zone',                   'Fuseau Centre',                  'Zona horaria Central',              'AL AR IL IA KS LA MN MS MO NE ND OK SD TX WI');
+  add('pc_mountain_time',       '🕒 Mountain Time Zone',                  'Fuseau Montagnes',               'Zona horaria Montaña',              'AZ CO ID MT NM UT WY');
+  add('pc_multiple_time_zones', '🕒 Spans multiple time zones',           'Plusieurs fuseaux',              'Múltiples zonas horarias',          'AK FL ID KS KY MI NE ND OR SD TN TX');
+
+  // ─── 🦅 STATE SYMBOLS ───
+  add('pc_state_bird_cardinal', '🐦 State bird is the Cardinal',          'Oiseau d\'État : cardinal',      'Ave estatal: cardenal',             'IL IN KY NC OH VA WV');
+  add('pc_state_tree_oak',      '🌳 State tree is an oak',                'Arbre d\'État : chêne',          'Árbol estatal: roble',              'CT DC GA IL IA MD NJ');
+  add('pc_state_flower_rose',   '🌹 State flower is a rose',              'Fleur d\'État : rose',           'Flor estatal: rosa',                'GA IA NY ND OK DC');
+
   return list;
 })();
 
