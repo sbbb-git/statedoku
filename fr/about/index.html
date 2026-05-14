@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+
+  <title>À propos de Statedoku — Le puzzle quotidien des États américains</title>
+  <meta name="description" content="L'histoire derrière Statedoku : un puzzle quotidien gratuit qui combine la logique du Sudoku avec la géographie américaine. Indépendant, sans inscription, pensé mobile.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/fr/about/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/about/">
+  <link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/about/">
+  <link rel="alternate" hreflang="es" href="https://statedoku.com/es/about/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=6">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="À propos de Statedoku">
+  <meta property="og:description" content="L'histoire derrière le puzzle quotidien des États américains qui mêle Sudoku et géographie.">
+  <meta property="og:url" content="https://statedoku.com/fr/about/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/fr/" class="logo">State<em>doku</em></a>
+  <nav class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="en" onclick="location.href='/about/'">EN</button>
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="es" onclick="location.href='/es/about/'">ES</button>
+    </div>
+  </nav>
+</header>
+
+<main class="legal-main">
+  <article class="legal-page">
+    <h1>À propos de Statedoku</h1>
+    <p class="legal-meta">Le puzzle quotidien des États américains, expliqué</p>
+
+    <h2>Qu'est-ce que c'est</h2>
+    <p><strong>Statedoku</strong> est un puzzle quotidien gratuit dans lequel vous remplissez une grille 3×3 avec des États américains. Chaque ligne et chaque colonne a une contrainte (genre « frontière avec le Mexique » ou « nommé d'après un roi »), et chaque cellule doit contenir un État qui respecte les deux. Chaque État ne peut être utilisé qu'une fois. Vous avez droit à 3 erreurs. Résolvez la grille avant d'épuiser vos chances.</p>
+    <p>Un nouveau puzzle sort tous les jours à minuit, le même pour tout le monde dans le monde entier. Résolvez-le, partagez votre grille emoji, revenez demain.</p>
+
+    <h2>Pourquoi on l'a créé</h2>
+    <p>Wordle a prouvé que <strong>les puzzles quotidiens simples peuvent être addictifs</strong> — il suffit d'une contrainte petite et intelligente, et d'une expérience partagée à l'échelle mondiale. On voulait appliquer la même recette à la géographie : un petit rituel qui vous apprend quelque chose en jouant.</p>
+    <p>Statedoku récompense la <strong>vraie connaissance de la géographie américaine</strong> (où sont les États, leurs frontières, leurs spécificités) plutôt que des astuces de vocabulaire. Tous les jours, n'importe qui avec des bases solides peut résoudre la grille ; les jours difficiles creusent l'étymologie des noms, les dates d'admission ou l'histoire politique.</p>
+
+    <h2>Ce qui le rend différent</h2>
+    <p>Il existe plein de puzzles quotidiens. Statedoku se distingue parce que :</p>
+    <ul>
+      <li><strong>Combinatoire, pas aléatoire</strong>. Chaque grille a mathématiquement <em>une seule</em> solution. Pas de hasard.</li>
+      <li><strong>~100 contraintes différentes</strong> tournent — régions, frontières, montagnes, ceintures économiques, histoire, politique, origine des noms, sports, motifs alphabétiques — pas deux jours pareils.</li>
+      <li><strong>Mobile first</strong>. Pensé pour les pouces. Tapez sur une cellule, tapez 3 lettres, choisissez un État. Bottom-sheet, grosses zones tactiles, safe area iPhone.</li>
+      <li><strong>Multilingue</strong>. Anglais, français, espagnol — toutes les contraintes traduites.</li>
+      <li><strong>Privacy-first</strong>. Aucun compte, aucun tracking utilisateur, aucune base serveur. Votre progression reste sur votre appareil.</li>
+    </ul>
+
+    <h2>Sous le capot</h2>
+    <p>Statedoku est un site statique hébergé sur <strong>Cloudflare Pages</strong>. Le générateur de puzzle tourne entièrement dans votre navigateur — à partir de la date du jour, il produit déterministiquement une et une seule grille. Conséquences :</p>
+    <ul>
+      <li>Pas de backend à attaquer ou maintenir</li>
+      <li>Le site charge en moins de 100 ms partout dans le monde (CDN Cloudflare)</li>
+      <li>Tous les joueurs d'une même date voient exactement le même puzzle</li>
+      <li>Vous pouvez jouer hors-ligne une fois la page chargée (PWA)</li>
+    </ul>
+
+    <h2>Roadmap</h2>
+    <p>Ce qui arrive, dans l'ordre :</p>
+    <ul>
+      <li><strong>Archive</strong> — rejouer n'importe quel puzzle passé</li>
+      <li><strong>Mode difficile</strong> — contraintes plus obscures, moins d'aides</li>
+      <li><strong>Thèmes quotidiens</strong> — lundi géographie, mardi histoire, etc.</li>
+      <li><strong>Premium optionnel</strong> — sans pub, archive complète, thèmes, pour le prix d'un café</li>
+      <li><strong>Plus de pays</strong> — Eurodoku (UE), Asiadoku (Asie), etc.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>Bug, idée, partenariat : <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>.</p>
+
+    <p class="legal-back"><a href="/fr/">→ Jouer au puzzle du jour</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/how-to-play/">Comment jouer</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/fr/archive/">Archives</a> &nbsp;·&nbsp; <a href="/fr/privacy/">Confidentialité</a> &nbsp;·&nbsp; <a href="/fr/terms/">Conditions</a></p>
+</footer>
+
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

@@ -413,8 +413,26 @@ const Game = (() => {
     _renderResultEmojiGrid();
     _renderResultStats();
     _renderInlineShareRow('solved');
+    _injectResultEmailCTA();
     _fireConfetti();
     if (typeof Ads !== 'undefined' && Ads.refresh) Ads.refresh();
+  }
+
+  // After-solve email CTA — discreet link below share row, only if not already subscribed
+  function _injectResultEmailCTA() {
+    if (typeof EmailReminder === 'undefined') return;
+    if (localStorage.getItem('statedoku_email_subscribed')) return;
+    const banner = document.getElementById('solved-banner');
+    if (!banner || banner.querySelector('.result-email-cta')) return;
+    const cta = document.createElement('button');
+    cta.type = 'button';
+    cta.className = 'result-email-cta';
+    const txt = (typeof I18n !== 'undefined' && I18n.t)
+      ? (I18n.t('email_get_tomorrow') !== 'email_get_tomorrow' ? I18n.t('email_get_tomorrow') : null)
+      : null;
+    cta.innerHTML = `📧 <span>${txt || 'Get tomorrow\'s puzzle by email →'}</span>`;
+    cta.addEventListener('click', () => EmailReminder.openModal());
+    banner.appendChild(cta);
   }
 
   // ── Compact result helpers (mini emoji grid, inline stats, inline share row) ──

@@ -210,7 +210,8 @@
     "email_network_error": "Network error. Please try again.",
     "time": "time",
     "mistakes": "mistakes",
-    "errors": "mistakes"
+    "errors": "mistakes",
+    "email_get_tomorrow": "Get tomorrow's puzzle by email →"
   },
   "fr": {
     "title": "Statedoku",
@@ -423,7 +424,8 @@
     "email_network_error": "Erreur réseau. Réessayez plus tard.",
     "time": "temps",
     "mistakes": "erreurs",
-    "errors": "erreurs"
+    "errors": "erreurs",
+    "email_get_tomorrow": "Recevoir le puzzle de demain par mail →"
   },
   "es": {
     "title": "Statedoku",
@@ -636,6 +638,7 @@
     "email_network_error": "Error de red. Inténtalo más tarde.",
     "time": "tiempo",
     "mistakes": "errores",
-    "errors": "errores"
+    "errors": "errores",
+    "email_get_tomorrow": "Recibe el puzzle de mañana por email →"
   }
 }
