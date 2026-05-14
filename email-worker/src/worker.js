@@ -25,7 +25,7 @@ const BTN = {
 
 const BODIES = {
   en: (dateLong) => `
-    <p style="font-size:15px">Today's grid is up.</p>
+    <p style="font-size:15px">Today's grid is live.</p>
     <p style="color:#525252">${dateLong}</p>
     <p><a href="${SITE_URL}" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.en}</a></p>
   `,
@@ -35,7 +35,7 @@ const BODIES = {
     <p><a href="${SITE_URL}/fr/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.fr}</a></p>
   `,
   es: (dateLong) => `
-    <p style="font-size:15px">La cuadrícula de hoy ya está.</p>
+    <p style="font-size:15px">La cuadrícula de hoy está lista.</p>
     <p style="color:#525252">${dateLong}</p>
     <p><a href="${SITE_URL}/es/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.es}</a></p>
   `,
@@ -60,7 +60,10 @@ async function _sendOne(sub, env) {
   const lang = ['en','fr','es'].includes(sub.lang) ? sub.lang : 'en';
   const html = `
     <div style="font-family:system-ui,-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#0A0A0A;line-height:1.55">
-      <h1 style="font-size:22px;font-weight:900;color:#0F2147;margin-bottom:18px;letter-spacing:-0.02em">State<span style="color:#DC2626">doku</span></h1>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <span style="font-size:26px;line-height:1">🇺🇸</span>
+        <h1 style="font-size:22px;font-weight:900;color:#0F2147;letter-spacing:-0.02em;margin:0">State<span style="color:#DC2626">doku</span></h1>
+      </div>
       ${BODIES[lang](_longDate(lang))}
       ${UNSUB[lang](sub.token)}
     </div>
