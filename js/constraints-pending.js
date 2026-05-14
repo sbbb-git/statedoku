@@ -561,6 +561,444 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_pair_with_neighbor',   '🤜🤛 In a famous neighbor-state rivalry','Rivalité entre États voisins', 'Rivalidad entre estados vecinos',
       'TX OK KS MO OH MI AL NC SC FL GA');
 
+  // ═════════════════════════════════════════════════════════════════════
+  //  BATCH 2 — 200 MORE CANDIDATES (all ≥5 states)
+  // ═════════════════════════════════════════════════════════════════════
+
+  // ─── 🍔 REGIONAL SANDWICHES & ICONIC DISHES ───
+  add('pc_iconic_sandwich',      '🥪 Has a signature regional sandwich',  'Sandwich régional signature',   'Sándwich regional con firma',
+      'PA NY MA LA IL FL ME NJ MO TX');
+  add('pc_hot_chicken_culture',  '🔥 Spicy fried chicken tradition',      'Tradition du poulet épicé',     'Tradición de pollo picante',
+      'TN GA AL FL TX LA');
+  add('pc_iconic_pie',           '🥧 Has an iconic regional pie',         'Tarte régionale célèbre',       'Tarta regional famosa',
+      'FL MA IN PA KY MO');
+  add('pc_iconic_cocktail',      '🍹 Has a signature cocktail named after it','Cocktail régional','Cóctel regional con firma',
+      'NY LA NV CA TN KY');
+  add('pc_oyster_country',       '🦪 Famous oyster region',               'Pays de l\'huître',             'Tierra de la ostra',
+      'LA MD VA WA OR CT MA RI ME');
+  add('pc_blueberry_country',    '🫐 Top blueberry producer',             'Pays de la myrtille',           'Tierra del arándano',
+      'ME MI NJ OR WA NC GA FL');
+  add('pc_cherry_country',       '🍒 Top cherry producer',                'Pays de la cerise',             'Tierra de la cereza',
+      'MI WA OR UT CA');
+  add('pc_pecan_country',        '🌰 Top pecan producer',                 'Pays de la pacane',             'Tierra de la pacana',
+      'GA NM TX OK LA AL MS AR');
+  add('pc_peach_country',        '🍑 Top peach producer',                 'Pays de la pêche',              'Tierra del melocotón',
+      'CA SC GA NJ AL PA WA');
+  add('pc_cranberry_country',    '🫘 Top cranberry producer',             'Pays de la canneberge',         'Tierra del arándano rojo',
+      'WI MA NJ OR WA');
+  add('pc_strawberry_country',   '🍓 Top strawberry producer',            'Pays de la fraise',             'Tierra de la fresa',
+      'CA FL NC OR WA MI');
+  add('pc_bourbon_distillery',   '🥃 Has multiple bourbon distilleries',  'Plusieurs distilleries de bourbon','Múltiples destilerías de bourbon',
+      'KY TN IN VA TX NY CO');
+  add('pc_iconic_brewery',       '🍺 Home to an iconic legacy brewery',   'Brasserie légendaire',          'Cervecería legendaria',
+      'MO WI CO MA VA TX NY GA');
+
+  // ─── 🎬 MOVIES BY GENRE / DECADE ───
+  add('pc_john_hughes_movie',    '🎬 Setting of a John Hughes movie',     'Décor d\'un John Hughes',       'Escenario de John Hughes',
+      'IL MI WI');
+  add('pc_christmas_movie',      '🎄 Classic Christmas movie setting',    'Décor d\'un film de Noël culte','Escenario de película navideña',
+      'IL NY MA CA');
+  add('pc_teen_movie_classic',   '🎬 Iconic teen movie setting',          'Décor de teen movie culte',     'Escenario de teen movie',
+      'CA IL NY TX OH');
+  add('pc_sports_movie',         '🏟️ Iconic sports movie setting',        'Décor de film sportif culte',   'Escenario de película deportiva',
+      'IN IA TX OK PA NY MA');
+  add('pc_80s_action_movie',     '💥 Classic 80s action movie setting',   'Décor d\'action 80\'s',         'Escenario de acción de los 80',
+      'CA NY TX WA OR');
+  add('pc_disaster_movie_set',   '🌋 Disaster movie setting',             'Décor de film catastrophe',     'Escenario de película catástrofe',
+      'CA WA NY FL TX MO');
+  add('pc_noir_film_set',        '🕵️ Classic film noir setting',          'Décor de film noir',            'Escenario de film noir',
+      'CA NY NV IL LA');
+  add('pc_coming_of_age',        '🎬 Iconic coming-of-age movie setting', 'Coming-of-age culte',           'Película de iniciación icónica',
+      'OR ME CA IN NY MA');
+
+  // ─── 📺 MORE TV ───
+  add('pc_political_drama_tv',   '📺 Setting of a major political drama', 'Décor de drama politique',      'Escenario de drama político',
+      'DC MD VA NY CA');
+  add('pc_cop_show_setting',     '🚓 Setting of a major cop show',        'Décor de série policière',      'Escenario de serie policial',
+      'NY CA IL HI FL LA TX MD');
+  add('pc_medical_drama_set',    '🏥 Setting of a medical TV drama',      'Décor de série médicale',       'Escenario de drama médico',
+      'WA IL NY MA CA GA');
+  add('pc_courtroom_show',       '⚖️ Setting of a major courtroom show',  'Décor de série juridique',      'Escenario de serie judicial',
+      'NY CA TX FL IL');
+  add('pc_legal_drama_setting',  '📺 Major legal drama setting',          'Drama juridique majeur',        'Drama legal mayor',
+      'IL MA NY CA TX');
+  add('pc_supernatural_tv',      '👻 Iconic supernatural TV setting',     'Série fantastique culte',       'Serie sobrenatural icónica',
+      'OR CA NY MA OH GA');
+  add('pc_cartoon_setting',      '🎨 Iconic animated/cartoon setting',    'Décor d\'animation culte',      'Escenario de dibujo animado',
+      'IL OR CA NY TX RI');
+  add('pc_anthology_horror_tv',  '😱 Anthology horror TV setting',        'Anthologie horreur TV',         'Antología horror TV',
+      'CA TX LA NY FL');
+  add('pc_western_tv',           '🤠 Setting of a classic Western TV',    'Décor de western TV',           'Escenario de western TV',
+      'TX MT WY AZ NM CA');
+
+  // ─── 🎵 MUSIC / SPECIFIC ARTISTS ───
+  add('pc_birthplace_diva_pop',  '👑 Birthed an iconic pop diva',         'Diva pop née ici',              'Cuna de diva pop',
+      'TX NY CA NJ MI MS');
+  add('pc_birthplace_jazz_great','🎺 Birthed a jazz legend',              'Légende du jazz née ici',       'Leyenda del jazz',
+      'LA MO IL NY MS AL');
+  add('pc_birthplace_blues_great','🎷 Birthed a blues legend',            'Légende du blues née ici',      'Leyenda del blues',
+      'MS TN AL TX LA AR');
+  add('pc_birthplace_metal_band','🤘 Birthed a major metal band',         'Groupe métal majeur né ici',    'Grupo metal mayor',
+      'CA NY FL MI TX OH');
+  add('pc_birthplace_emo_band', '🖤 Birthed an emo / pop-punk band',      'Groupe emo / pop-punk',         'Grupo emo / pop-punk',
+      'NJ CA IL FL TX NY MA');
+  add('pc_birthplace_rb_singer','🎤 Birthed an R&B icon',                 'Icône R&B née ici',             'Ícono R&B',
+      'GA TN NY IL CA TX OH MI');
+  add('pc_americana_artist',    '🪕 Americana / folk artist origin',      'Origine artiste folk / americana','Origen folk / americana',
+      'TN KY NY TX CA NC VA OR WA');
+  add('pc_drag_show_scene',     '🌈 Strong drag scene (RuPaul-tour)',     'Scène drag forte',              'Escena drag fuerte',
+      'NY CA IL TX FL NV GA');
+  add('pc_woodstock_legacy',    '🎵 Hosted a Woodstock-style festival',   'Festival type Woodstock',       'Festival tipo Woodstock',
+      'NY CA NV TN IL TX UT');
+  add('pc_one_hit_wonder_band', '🎸 Birthed a famous one-hit-wonder band','Tube d\'un coup',              'One-hit-wonder',
+      'CA TX NY IL OH NJ');
+
+  // ─── 🏟️ MORE SPORTS ───
+  add('pc_5plus_super_bowl_apps','🏈 5+ Super Bowl appearances',          '5+ apparitions au Super Bowl',  '5+ apariciones Super Bowl',
+      'MA PA NY TX CO MD WA');
+  add('pc_4plus_world_series',  '⚾ 4+ World Series wins',                '4+ titres MLB',                 '4+ títulos MLB',
+      'MA NY MO CA OH PA MI');
+  add('pc_top_nfl_qb_origin',   '🏈 Top NFL QB hails from here',         'État natal de QB NFL star',     'Cuna de QB NFL estrella',
+      'CA TX PA AL OH FL LA');
+  add('pc_nba_dynasty_state',   '🏀 Has hosted an NBA dynasty',          'Dynastie NBA',                  'Dinastía NBA',
+      'CA MA IL TX MI');
+  add('pc_pga_major_host',      '⛳ Has hosted a PGA major',              'A organisé un Major PGA',       'Organizó un Major PGA',
+      'GA NY CA MO IL OH WI MA');
+  add('pc_us_open_tennis_host', '🎾 Has hosted a Grand Slam tennis event','A organisé un Grand Slam',     'Organizó un Grand Slam',
+      'NY');
+  add('pc_major_marathon',      '🏃 Hosts a World Marathon Major',       'Marathon majeur',               'Maratón mayor',
+      'MA NY IL');
+  add('pc_high_school_football','🏈 High school football is a religion', 'Football lycée = religion',     'Fútbol HS = religión',
+      'TX OK FL OH PA');
+  add('pc_hockey_culture',      '🏒 Strong hockey heritage culture',     'Culture hockey forte',          'Cultura hockey fuerte',
+      'MN MA MI WI NY MA');
+  add('pc_lacrosse_hotbed',     '🥍 Lacrosse hotbed',                    'Pôle lacrosse',                 'Centro de lacrosse',
+      'MD NY VA MA NJ PA');
+  add('pc_rodeo_culture',       '🤠 Major rodeo culture',                'Culture rodéo majeure',         'Cultura rodeo mayor',
+      'TX OK WY NV NM AZ CO MT');
+  add('pc_iditarod_sled',       '🛷 Sled dog racing culture',            'Culture courses de traîneau',   'Cultura trineos',
+      'AK MN WI MI MT WY');
+  add('pc_surf_culture',        '🏄 Surf culture',                       'Culture surf',                  'Cultura del surf',
+      'CA HI FL TX NC');
+  add('pc_skater_culture',      '🛹 Major skateboarding scene',          'Scène skate majeure',           'Escena skate mayor',
+      'CA AZ FL NY TX OR');
+
+  // ─── 🦅 MORE WILDLIFE / NATURE ───
+  add('pc_sea_turtle_nesting',  '🐢 Sea turtle nesting beaches',         'Nidification tortues marines',  'Anidación tortugas marinas',
+      'FL NC SC GA AL MS LA TX CA HI');
+  add('pc_iconic_state_animal', '🐾 State animal is iconic in pop culture','Animal d\'État iconique',     'Animal estatal icónico',
+      'KY MD NJ VT NC NY MA FL TN');
+  add('pc_hot_springs',         '♨️ Famous natural hot springs',         'Sources chaudes célèbres',      'Aguas termales famosas',
+      'AR WY CA NM CO MT NV OR ID AK');
+  add('pc_redwood_forest',      '🌲 Has a major redwood/sequoia forest', 'Forêts de séquoias',            'Bosques de secuoyas',
+      'CA OR');
+  add('pc_geyser_field',        '💨 Has geysers / volcanic activity',    'Geysers / activité volcanique', 'Géiseres / actividad volcánica',
+      'WY CA AK HI NV');
+  add('pc_petrified_forest',    '🪵 Famous petrified forest',            'Forêt pétrifiée',               'Bosque petrificado',
+      'AZ NM CA NV ND');
+  add('pc_iconic_mountain_peak','⛰️ Has a famous named peak',            'Sommet emblématique',           'Pico emblemático',
+      'CO WA AK CA WY NH TN NC');
+  add('pc_long_river_state',    '🏞️ Bordered by major US river',         'Frontière fluviale majeure',    'Frontera fluvial mayor',
+      'MN WI IA MO IL TN KY AR MS LA');
+  add('pc_big_lake',            '🌊 Has a Great Lake OR major freshwater lake','Grands Lacs ou grand lac','Gran lago',
+      'MN WI IL IN MI OH PA NY UT NV CA WA OR');
+  add('pc_canyon_country',      '🏜️ Famous canyon landscape',            'Canyons célèbres',              'Cañones famosos',
+      'AZ UT CO NV NM ID');
+  add('pc_desert_landscape',    '🌵 Major desert landscape',             'Paysage désertique majeur',     'Paisaje desértico mayor',
+      'AZ NV CA NM UT TX');
+
+  // ─── 🏛️ HISTORICAL FIRSTS ───
+  add('pc_first_state_park',    '🌳 Site of an early national park (pre-1900)','Premier parc national','Primer parque nacional',
+      'WY CA NY MT SD');
+  add('pc_first_state_women_vote','🗳️ Early to grant women\'s suffrage', 'Précurseur droit de vote des femmes','Pionero sufragio femenino',
+      'WY UT WA CO ID AZ KS OR');
+  add('pc_first_state_legal_cannabis','🌿 Pioneer in cannabis legalization','Pionnier cannabis légal',   'Pionero cannabis legal',
+      'CO WA OR AK CA NV');
+  add('pc_revolutionary_battle','⚔️ Site of a Revolutionary War battle', 'Site d\'une bataille de la Révolution','Sitio de batalla revolucionaria',
+      'MA NY NJ PA VA SC');
+  add('pc_civil_war_battle_major','⚔️ Site of a major Civil War battle', 'Site de bataille majeure',      'Sitio de batalla mayor',
+      'VA PA MD TN MS GA SC');
+  add('pc_war_of_1812_site',    '⚔️ War of 1812 battlefield',            'Champ de bataille 1812',        'Campo de batalla de 1812',
+      'MD NY OH LA AL');
+  add('pc_underground_rr_station','🚂 Underground Railroad station',     'Étape du chemin de fer clandestin','Estación del Underground RR',
+      'OH PA NY MA IL IN MI');
+  add('pc_lewis_clark_route',   '🧭 On the Lewis & Clark expedition',    'Sur l\'itinéraire Lewis et Clark','En la ruta Lewis y Clark',
+      'MO IL IA KS NE SD ND MT ID OR WA');
+  add('pc_oregon_trail_route',  '🐂 On the Oregon Trail route',          'Sur la Piste de l\'Oregon',     'En el Oregon Trail',
+      'MO KS NE WY ID OR');
+  add('pc_iconic_explorer_route','🧭 On a famous explorer\'s historical route','Itinéraire d\'explorateur','Ruta de explorador',
+      'NM CA AZ TX FL LA MO');
+  add('pc_gold_rush_era',       '⛏️ 19th-century gold rush state',       'Ruée vers l\'or au 19e',        'Fiebre del oro del siglo 19',
+      'CA CO AK NV SD MT');
+
+  // ─── 🚂 INFRASTRUCTURE / ARCHITECTURE ───
+  add('pc_flw_buildings',       '🏛️ Has a Frank Lloyd Wright building',  'Bâtiment de Frank Lloyd Wright','Edificio de Frank Lloyd Wright',
+      'PA IL WI AZ CA NY');
+  add('pc_art_deco_district',   '🏙️ Iconic Art Deco district',           'Quartier Art Déco',             'Distrito Art Déco',
+      'FL NY MI CA IL');
+  add('pc_spanish_mission_arch','⛪ Spanish Mission architecture',       'Architecture missions espagnoles','Arquitectura misión española',
+      'CA AZ NM TX FL');
+  add('pc_skyline_5plus_tall',  '🏙️ Skyline with 5+ skyscrapers ≥250 m','Skyline avec 5+ gratte-ciel ≥250m','Skyline con 5+ rascacielos',
+      'NY IL TX CA GA PA MA OH FL');
+  add('pc_iconic_bridge',       '🌉 Iconic American bridge',             'Pont américain iconique',       'Puente icónico',
+      'CA NY MA PA WA MI LA MD');
+  add('pc_historic_train_ride', '🚂 Iconic scenic train ride',           'Train touristique mythique',    'Tren panorámico icónico',
+      'CO AZ VT VA WV NH NM AK CA');
+  add('pc_underground_subway',  '🚇 Has a subway / metro system',        'A un métro',                    'Tiene metro',
+      'NY IL MA PA GA MD CA OR WA');
+  add('pc_amtrak_corridor',     '🚆 On the Northeast Corridor (Amtrak)', 'Sur le Northeast Corridor',     'En el Northeast Corridor',
+      'MA RI CT NY NJ PA DE MD DC VA');
+
+  // ─── 🎨 ARTS / MUSEUMS ───
+  add('pc_smithsonian_branch',  '🏛️ Has a Smithsonian museum branch',    'A un musée Smithsonian',        'Tiene museo Smithsonian',
+      'DC NY MA AZ VA');
+  add('pc_pop_art_legacy',      '🎨 Major pop art / pop culture museum', 'Musée pop art / pop culture',   'Museo pop art / cultura pop',
+      'PA NY CA OH FL');
+  add('pc_modern_art_top',      '🖼️ Top-tier modern art museum',         'Musée d\'art moderne majeur',   'Museo de arte moderno mayor',
+      'NY CA MA DC PA IL');
+
+  // ─── 🎓 EDUCATION DETAILS ───
+  add('pc_5plus_top100_unis',   '🎓 5+ top-100 universities',            '5+ universités top 100',        '5+ universidades top 100',
+      'CA NY MA TX PA IL');
+  add('pc_top_journalism',      '📰 Top-10 journalism school',           'Top 10 école de journalisme',   'Top 10 periodismo',
+      'NY MO IL CA NC TX');
+  add('pc_top_film_school',     '🎬 Top-10 film school',                 'Top 10 école de cinéma',        'Top 10 escuela de cine',
+      'CA NY MA FL TX');
+  add('pc_top_music_school',    '🎼 Top-10 music conservatory',          'Top 10 conservatoire',          'Top 10 conservatorio',
+      'MA NY OH IN PA CA');
+  add('pc_top_engineering_2',   '🔧 5+ engineering schools in US News top 50','5+ écoles ingé top 50','5+ ingeniería top 50',
+      'CA MA TX IL OH NY');
+  add('pc_west_point_alum',     '🎖️ Birthed a famous West Point graduate','Diplômé West Point célèbre',  'Egresado de West Point famoso',
+      'OH VA KS PA TX KY');
+
+  // ─── 🚀 SCIENCE / SPACE ───
+  add('pc_meteor_crater_site',  '☄️ Famous meteor crater',               'Cratère de météorite',          'Cráter de meteorito',
+      'AZ TX KS IA');
+  add('pc_strong_storm_chaser', '🌪️ Strong storm-chaser culture',        'Culture chasseurs de tempête',  'Cultura cazadores de tormentas',
+      'OK TX KS NE IA MO SD ND');
+  add('pc_hurricane_threat_high','🌀 High annual hurricane threat',      'Risque cyclonique élevé',       'Alto riesgo de huracán',
+      'FL TX LA AL MS NC SC GA VA');
+  add('pc_earthquake_threat',   '🌋 Significant earthquake risk',        'Risque sismique notable',       'Riesgo sísmico notable',
+      'CA AK NV WA OR HI MO');
+  add('pc_high_altitude_state', '⛰️ Average elevation > 4,000 ft',       'Altitude moyenne >1200m',       'Elevación media >1200m',
+      'CO WY UT NV NM ID MT AZ');
+
+  // ─── 🌍 IMMIGRATION CULTURE ───
+  add('pc_strong_hispanic_pop', '🌮 Strong Hispanic-American heritage',  'Forte présence hispano-américaine','Fuerte herencia hispano-americana',
+      'CA TX NM FL AZ NV NY IL CO NJ');
+  add('pc_strong_asian_pop',    '🥢 Strong Asian-American heritage',     'Forte présence asio-américaine','Fuerte herencia asiático-americana',
+      'CA NY HI WA NJ TX MA');
+  add('pc_french_canadian',     '⚜️ Strong French-Canadian heritage',    'Forte présence franco-canadienne','Fuerte herencia franco-canadiense',
+      'ME NH VT MA RI');
+  add('pc_cajun_creole',        '🎵 Cajun / Creole cultural legacy',     'Patrimoine cajun / créole',     'Herencia cajún / criolla',
+      'LA AL MS TX');
+  add('pc_iconic_chinatown',    '🏮 Has an iconic Chinatown',            'Chinatown emblématique',        'Chinatown icónico',
+      'CA NY MA IL HI WA');
+  add('pc_japanese_internment', '⛓️ Site of WWII Japanese internment camp','Camp d\'internement WWII',    'Campo de internamiento WWII',
+      'CA AZ AR ID UT WY CO');
+
+  // ─── 🎭 MUSIC / STAGE LEGENDS ───
+  add('pc_iconic_state_song',   '🎵 State song is widely known nationally','Hymne d\'État largement connu','Himno estatal muy conocido',
+      'AL CA GA KY NY OK TN WV');
+  add('pc_country_artist_5plus','🎤 5+ Grand Ole Opry inductees',        '5+ membres du Grand Ole Opry',  '5+ del Grand Ole Opry',
+      'TN KY TX OK AL GA AR');
+  add('pc_top_classical_orch',  '🎻 Top-tier symphony orchestra',        'Orchestre symphonique de premier plan','Orquesta sinfónica de élite',
+      'NY MA IL OH PA CA TX CO');
+  add('pc_opera_house_major',   '🎭 Major opera house',                  'Opéra majeur',                  'Ópera mayor',
+      'NY IL CA TX MA PA FL');
+
+  // ─── 🎰 GAMBLING / NIGHTLIFE ───
+  add('pc_nightlife_top',       '🍸 Top nightlife destination',          'Top destination vie nocturne',  'Top destino vida nocturna',
+      'NV NY FL CA TN IL LA TX');
+  add('pc_iconic_casino_resort','🎰 Iconic mega-casino resort',          'Casino-resort emblématique',    'Casino-resort icónico',
+      'NV NJ CT MI MS CA PA');
+  add('pc_horse_betting_top',   '🐎 Major pari-mutuel horse betting',    'Paris hippiques majeurs',       'Apuestas hípicas mayores',
+      'KY NY FL CA MD AR LA');
+
+  // ─── 🎙️ COMEDY / TALK ───
+  add('pc_late_night_filmed',   '🎙️ Late-night talk show is filmed here','Late-night show tourné ici',   'Late-night se filma aquí',
+      'NY CA');
+  add('pc_iconic_radio_dj',     '📻 Birthed a legendary radio DJ',       'Animateur radio légendaire',    'DJ de radio legendario',
+      'NY CA IL OH MI MA');
+  add('pc_iconic_comedy_movie', '🤣 Setting of a classic comedy movie',  'Décor de comédie culte',        'Escenario de comedia clásica',
+      'NY CA NJ IL MA NV');
+
+  // ─── 🏁 RACING / TRANSPORT ───
+  add('pc_top_drag_racing',     '🏁 Top NHRA drag racing track',         'Circuit dragster NHRA majeur',  'Pista NHRA',
+      'IN CA TX FL OH IL TN AZ');
+  add('pc_motorcycle_culture',  '🏍️ Strong motorcycle culture',          'Culture moto forte',            'Fuerte cultura motorista',
+      'CA FL TX SD WI NC AZ');
+  add('pc_sturgis_biker_rally', '🏍️ Hosts a major biker rally',          'Grand rassemblement motard',    'Rally motero mayor',
+      'SD AZ NV FL CA');
+  add('pc_classic_car_show',    '🚙 Major classic car culture',          'Culture voitures anciennes',    'Cultura coche clásico',
+      'CA AZ FL TX MI IL OH PA');
+
+  // ─── 🎯 POP SUBCULTURE ───
+  add('pc_renaissance_faire',   '🏰 Hosts a major Renaissance Faire',    'Foire Renaissance majeure',     'Feria Renacentista',
+      'TX CA NY MN AZ MD PA GA WI MI OH');
+  add('pc_haunted_house_tour',  '🎃 Major haunted-house attraction',     'Maison hantée touristique',     'Casa embrujada turística',
+      'CA TX NY OH IL FL PA');
+  add('pc_furry_convention',    '🐺 Hosts a major furry convention',     'Conv. furry majeure',           'Convención furry mayor',
+      'PA CA IL TX FL CO');
+  add('pc_anime_convention',    '🎌 Hosts a top-10 anime convention',    'Top conv. anime',               'Top convención anime',
+      'CA TX GA IL OH MA WA AZ');
+  add('pc_comic_con_major',     '🦸 Hosts a major Comic Con',            'Comic Con majeur',              'Comic Con mayor',
+      'CA NY IL TX FL WA');
+
+  // ─── 🌆 CITY-LEVEL POP CULTURE ───
+  add('pc_iconic_drinking_age', '🍻 Iconic college party town',          'Ville campus festive',          'Ciudad universitaria fiestera',
+      'WI MA IN AZ FL CA TX GA');
+  add('pc_food_truck_culture',  '🚚 Vibrant food truck scene',           'Culture food truck',            'Cultura food truck',
+      'CA TX OR WA NY IL TN');
+  add('pc_brunch_culture',      '🥞 Brunch capital',                     'Capitale du brunch',            'Capital del brunch',
+      'NY CA IL DC TX MA GA');
+  add('pc_thrift_culture',      '🧥 Famous thrift / vintage scene',      'Scène friperie célèbre',        'Escena vintage famosa',
+      'NY CA TX IL OR WA');
+
+  // ─── 🎲 QUIRKY LAWS / FIRSTS ───
+  add('pc_no_self_serve_gas',   '⛽ Can\'t pump your own gas (some/all)','Plein interdit en self',        'Sin auto-servicio gasolina',
+      'OR NJ');
+  add('pc_iowa_caucus_state',   '🗳️ Holds an early presidential primary','Primaire présidentielle précoce','Primarias presidenciales tempranas',
+      'IA NH SC NV');
+  add('pc_oldest_continuous_legislature','🏛️ Oldest continuous legislature','Plus vieille assemblée',  'Asamblea más antigua',
+      'VA NH MA MD');
+  add('pc_unique_county_naming','🗺️ County governance is unique (parish/borough)','Comtés au nom unique','Condados con nomenclatura única',
+      'LA AK');
+
+  // ─── 🦅 FILM / TV — More ───
+  add('pc_drag_race_setting',   '👑 Setting of RuPaul\'s Drag Race spinoff','Décor de spin-off Drag Race','Escenario de spin-off Drag Race',
+      'CA NY IL TX FL');
+  add('pc_reality_dating_show', '💕 Setting of a major dating reality',  'Décor d\'une téléréalité dating','Escenario reality de citas',
+      'CA NV FL HI NY');
+  add('pc_amazing_race_start',  '🌍 Hosted Amazing Race start/finish',   'Étape Amazing Race',            'Etapa Amazing Race',
+      'CA NY TX FL NV HI');
+  add('pc_survivor_audition_city','🗳️ Major Survivor casting call city','Casting Survivor',              'Casting Survivor',
+      'CA NY TX FL IL');
+  add('pc_pawn_stars_setting',  '💰 Setting of Pawn Stars',              'Décor de Pawn Stars',           'Escenario de Pawn Stars',
+      'NV');
+  add('pc_storage_wars_setting','📦 Setting of Storage Wars',            'Décor de Storage Wars',         'Escenario de Storage Wars',
+      'CA TX');
+
+  // ─── 🎂 HOLIDAYS / EVENTS ───
+  add('pc_thanksgiving_parade', '🦃 Hosts an iconic Thanksgiving parade','Parade de Thanksgiving',        'Desfile de Acción de Gracias',
+      'NY MI IL MA TX');
+  add('pc_iconic_4th_of_july',  '🎆 Iconic 4th of July fireworks city',  'Feu d\'artifice 4 juillet',     'Fuegos del 4 de Julio',
+      'NY DC MA PA TX CA FL');
+  add('pc_iconic_new_year',     '🎉 Iconic New Year\'s Eve event',       'Réveillon du Nouvel An culte',  'Fin de Año icónico',
+      'NY NV CA TX FL TN');
+  add('pc_oktoberfest_celeb',   '🍻 Major Oktoberfest celebration',      'Oktoberfest majeur',            'Oktoberfest mayor',
+      'OH WI MO PA NY KY IL TX');
+  add('pc_st_patricks_parade',  '☘️ Major St. Patrick\'s Day parade',    'Grande parade Saint-Patrick',   'Gran desfile San Patricio',
+      'NY MA IL PA NJ MI OH');
+
+  // ─── 🏫 UNIQUE HIGH SCHOOL CULTURE ───
+  add('pc_friday_lights_culture','🏈 Friday Night Lights HS culture',    'Culture football HS',           'Cultura fútbol HS',
+      'TX OK FL OH PA GA');
+  add('pc_iconic_prom_culture', '👗 Iconic American prom culture',       'Bal de promo emblématique',     'Baile de graduación icónico',
+      'TX CA NY OH IL');
+
+  // ─── 🐎 ZOO / AQUARIUM ───
+  add('pc_top10_us_zoo',        '🦓 Has a top-10 US zoo',                'Top 10 zoos US',                'Top 10 zoos US',
+      'CA NY MO TX OH IL CO PA OR FL DC NE');
+  add('pc_major_aquarium',      '🐠 Major public aquarium',              'Aquarium majeur',               'Acuario mayor',
+      'GA CA TN MD MA IL FL TX NJ');
+
+  // ─── 🎤 RADIO / NEWS ───
+  add('pc_npr_member_strong',   '📻 Strong NPR member station presence', 'Forte présence NPR',            'Fuerte presencia NPR',
+      'NY MA CA DC IL MN TX WA OR CO');
+  add('pc_iconic_newspaper',    '📰 Has a nationally iconic newspaper',  'Journal national emblématique', 'Diario nacional icónico',
+      'NY DC CA IL MA TX');
+
+  // ─── 🌃 SUBCULTURE CITIES ───
+  add('pc_punk_diy_scene',      '🎸 Strong punk / DIY scene',            'Scène punk / DIY forte',        'Escena punk / DIY',
+      'NY CA WA OR TX IL MA');
+  add('pc_goth_subculture',     '🖤 Notable goth subculture',            'Sous-culture goth',             'Subcultura gótica',
+      'CA NY OH MI IL TX FL');
+  add('pc_iconic_drag_bar',     '🌈 Iconic drag-bar city',               'Bar drag emblématique',         'Bar drag icónico',
+      'NY CA IL TX FL NV GA');
+
+  // ─── 🐎 HORSE / PETS ───
+  add('pc_most_pet_friendly',   '🐶 Most pet-friendly state',            'État pet-friendly',             'Estado pet-friendly',
+      'CO OR WA CA AZ NY MA TX FL VT');
+  add('pc_dog_breed_origin',    '🐕 Origin of a recognized US dog breed','Origine de race canine US',     'Origen de raza canina US',
+      'MA AK BO LA MD CA');
+
+  // ─── 🌃 REGIONAL ACCENTS ───
+  add('pc_strong_southern_drawl','🗣️ Strong Southern drawl heritage',    'Accent sudiste prononcé',       'Acento sureño fuerte',
+      'AL GA MS LA TN SC AR TX KY');
+  add('pc_strong_midwest_accent','🗣️ Distinct Midwestern accent',        'Accent midwest distinct',       'Acento medioeste distintivo',
+      'MN WI MI ND SD');
+  add('pc_strong_ne_accent',    '🗣️ Strong East-Coast accent',          'Accent Côte Est',               'Acento costa este',
+      'MA NY NJ RI');
+
+  // ─── ⛽ ENERGY ───
+  add('pc_top_wind_power',      '💨 Top wind-power producing state',     'Top éolien',                    'Top eólica',
+      'TX IA OK KS IL ND CO MN');
+  add('pc_top_solar_power',     '☀️ Top solar-power producing state',    'Top solaire',                   'Top solar',
+      'CA TX FL NC AZ NV NJ MA NY');
+  add('pc_top_hydro_power',     '💧 Top hydroelectric producer',         'Top hydroélectricité',          'Top hidroeléctrica',
+      'WA OR NY MT AZ CA AL TN');
+  add('pc_top_nuclear_power',   '⚛️ Top nuclear power producer',         'Top nucléaire',                 'Top nuclear',
+      'IL PA SC AL NC GA TN AZ');
+
+  // ─── 🎪 OBSCURE FUN STUFF ───
+  add('pc_chess_club_strong',   '♟️ Strong chess tournament tradition',  'Tradition d\'échecs',           'Tradición de ajedrez',
+      'NY CA MO TX IL FL WA');
+  add('pc_iconic_spelling_bee', '🐝 Birthed multiple Scripps Spelling Bee champions','Plusieurs champions Spelling Bee','Múltiples campeones Spelling Bee',
+      'TX CA NJ FL OH IL');
+  add('pc_top_robotics_team',   '🤖 Strong high-school robotics culture','Culture robotique scolaire',    'Cultura robótica escolar',
+      'CA MI TX OH NY MA IL');
+  add('pc_iconic_summer_carnival','🎡 Iconic summer carnival/boardwalk', 'Carnaval estival célèbre',     'Carnaval/paseo de verano',
+      'NJ NY CA FL MD MA RI');
+  add('pc_iconic_water_park',   '💦 Iconic water park',                  'Parc aquatique célèbre',        'Parque acuático icónico',
+      'WI TX FL CA NJ OH PA TN');
+
+  // ─── 🎵 RECORD LABELS / HIP-HOP DETAILS ───
+  add('pc_classic_hiphop_label','🎤 Home of an iconic hip-hop label',    'Label hip-hop iconique',        'Sello hip-hop icónico',
+      'NY GA TN CA TX LA');
+  add('pc_iconic_trap_scene',   '🎤 Birthed the trap-music scene',       'Berceau de la trap',            'Cuna del trap',
+      'GA TN FL LA TX');
+
+  // ─── 🍕 ICONIC CUISINE BY ETHNIC GROUP ───
+  add('pc_tex_mex_culture',     '🌮 Tex-Mex culinary stronghold',        'Bastion Tex-Mex',               'Bastión Tex-Mex',
+      'TX NM AZ CA NV');
+  add('pc_creole_culture',      '🎷 Creole culinary tradition',          'Cuisine créole',                'Cocina criolla',
+      'LA FL TX MS AL');
+  add('pc_chinese_takeout',     '🥡 Iconic Chinese-takeout culture',     'Culture de la livraison chinoise','Cultura comida china a domicilio',
+      'NY CA IL MA TX NJ');
+
+  // ─── 🎯 CLOSING BATCH ───
+  add('pc_strong_civil_war_lore','⚔️ Strong Civil War heritage tourism', 'Tourisme guerre de Sécession',  'Turismo Guerra Civil',
+      'VA GA SC TN PA MS AL MD');
+  add('pc_strong_wwi_wwii_memorial','🪖 Major WWI / WWII memorial site', 'Mémorial WWI / WWII majeur',    'Memorial WWI / WWII mayor',
+      'DC VA HI NM MO KS PA');
+  add('pc_top_birding_dest',    '🦜 Top birding destination',            'Top destination ornithologique','Top destino ornitológico',
+      'TX FL CA NJ OH AZ NM AK');
+  add('pc_stargazing_top',      '🌌 Designated International Dark Sky Place','Réserve de ciel étoilé',   'Reserva de cielo estrellado',
+      'UT NM AZ ID CO TX NV PA WV ME');
+  add('pc_disney_park_state',   '🏰 Has a Disney park or studio',        'Parc ou studio Disney',         'Parque o estudio Disney',
+      'CA FL');
+  add('pc_iconic_lighthouse_state','🗼 Famous for its lighthouses',      'Connu pour ses phares',         'Famoso por sus faros',
+      'ME MI MA NY MD WI VA NC OR');
+  add('pc_top_cinco_de_mayo',   '🎉 Major Cinco de Mayo celebration',    'Grande fête de Cinco de Mayo',  'Gran celebración Cinco de Mayo',
+      'CA TX AZ NM CO IL');
+  add('pc_iconic_zoo_animal',   '🐼 Has hosted a famous zoo animal (panda, gorilla, etc.)','Animal zoo célèbre','Animal de zoo famoso',
+      'DC GA CA TN MO IL');
+  add('pc_iconic_train_station','🚉 Iconic historic train station',      'Gare historique emblématique',  'Estación histórica icónica',
+      'NY IL DC PA CA WA');
+  add('pc_state_quarter_unique','🪙 State quarter design considered iconic','Quarter d\'État iconique',   'Quarter estatal icónico',
+      'NY DE PA NJ GA CT MA MD HI AK');
+  add('pc_iconic_state_dessert','🍰 Iconic state-named dessert',         'Dessert régional iconique',     'Postre regional icónico',
+      'NY MA FL KY MO IN NC');
+  add('pc_signature_state_song','🎶 Has a song that everyone associates with it','Chanson signature','Canción característica',
+      'TN GA AL CA NY OK VA');
+  add('pc_iconic_state_smell',  '👃 State has an iconic regional smell (BBQ smoke, bourbon, ocean...)','Odeur régionale','Olor regional',
+      'TN KY ME LA TX HI');
+  add('pc_iconic_state_color',  '🎨 State has an iconic color association','Couleur associée',           'Color asociado',
+      'KY OR FL TX OK NE');
+  add('pc_thrift_store_culture','🧥 Thrift store / flea market culture', 'Brocantes / friperies',         'Mercadillos / vintage',
+      'TX OH PA IN MI WI MO');
+
   return list;
 })();
 
