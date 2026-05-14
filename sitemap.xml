@@ -46,19 +46,34 @@
   </url>
   <url>
     <loc>https://statedoku.com/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statedoku.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://statedoku.com/es/about/"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://statedoku.com/fr/about/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://statedoku.com/es/about/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url>
     <loc>https://statedoku.com/how-to-play/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statedoku.com/how-to-play/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/how-to-play/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://statedoku.com/es/how-to-play/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://statedoku.com/fr/how-to-play/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://statedoku.com/es/how-to-play/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url>
     <loc>https://statedoku.com/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statedoku.com/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://statedoku.com/es/faq/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://statedoku.com/fr/faq/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://statedoku.com/es/faq/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url>
     <loc>https://statedoku.com/privacy/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://statedoku.com/privacy/"/>
