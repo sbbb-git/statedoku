@@ -2,322 +2,528 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Constraints — Statedoku Admin</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-<link rel="stylesheet" href="/css/style.css?v=3">
 <style>
-  body { background: var(--bg); }
-  .c-shell { max-width: 1200px; margin: 0 auto; padding: 24px 18px 80px; }
-  .c-top { display:flex; align-items:center; justify-content:space-between; margin-bottom: 16px; gap: 12px; flex-wrap: wrap; }
-  .c-h1 { font-size: 1.55rem; font-weight: 900; letter-spacing:-.02em; color: var(--navy); }
-  .c-h1 em { color: var(--red); font-style: normal; }
-  .c-sub { font-size: .85rem; color: var(--text-2); }
-  .c-back { background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; font-size: .78rem; font-weight: 700; text-decoration: none; color: var(--text-2); }
-  .c-back:hover { background: var(--surface-3); color: var(--text); }
-
-  .c-summary { display:flex; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
-  .c-stat {
-    flex: 1; min-width: 130px;
-    background: #fff; border: 1px solid var(--border); border-radius: 12px;
-    padding: 14px 16px;
+  :root {
+    --navy: #0F2147; --red: #DC2626; --gold: #F59E0B; --green: #059669;
+    --bg: #FAFAF9; --surface: #FFFFFF; --surface-2: #F5F5F4;
+    --border: #E5E5E5;
+    --text: #0A0A0A; --text-2: #525252; --text-3: #A3A3A3;
   }
-  .c-stat-v { font-size: 1.5rem; font-weight: 900; color: var(--navy); letter-spacing: -.02em; }
-  .c-stat-l { font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased;
+    padding: 0; min-height: 100dvh;
+  }
 
-  .c-toolbar { display:flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
-  .c-search {
+  /* Sticky top bar */
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--navy); color: #fff;
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  }
+  .top h1 { font-size: 1rem; font-weight: 800; letter-spacing: -.01em; }
+  .top h1 small { font-weight: 600; opacity: 0.65; margin-left: 8px; }
+  .top a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: .8rem; font-weight: 700; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; }
+  .top a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  /* Stats strip */
+  .strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border); border-bottom: 1px solid var(--border);
+  }
+  .strip > div { background: #fff; padding: 14px 18px; }
+  .strip-v { font-size: 1.5rem; font-weight: 900; color: var(--navy); line-height: 1; }
+  .strip-l { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); margin-top: 4px; }
+
+  /* Toolbar */
+  .toolbar {
+    padding: 14px 20px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    background: #fff; border-bottom: 1px solid var(--border);
+    position: sticky; top: 52px; z-index: 9;
+  }
+  .toolbar input {
     flex: 1; min-width: 200px;
     padding: 9px 14px; border-radius: 999px; border: 1px solid var(--border);
     background: #fff; font-size: .9rem; outline: none;
   }
-  .c-search:focus { border-color: var(--navy); }
-  .c-filter {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+  .toolbar input:focus { border-color: var(--navy); }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 7px 13px; border-radius: 999px; border: 1px solid var(--border);
     background: #fff; font-size: .78rem; cursor: pointer;
-    font-weight: 700; color: var(--text-2);
+    font-weight: 700; color: var(--text-2); white-space: nowrap;
   }
-  .c-filter.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-  .c-filter-count { opacity: 0.7; font-weight: 600; }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
 
-  .c-cat {
-    margin-top: 22px;
-  }
-  .c-cat-title {
-    font-size: .68rem; font-weight: 900; text-transform: uppercase; letter-spacing: .14em;
-    color: var(--navy); margin-bottom: 10px;
-    display: flex; align-items: baseline; gap: 8px;
-  }
-  .c-cat-count { font-size: .65rem; color: var(--text-3); font-weight: 700; letter-spacing: .08em; }
+  /* Content */
+  .content { padding: 0 0 80px; }
 
-  .c-list {
+  .cat {
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-head {
+    padding: 16px 20px 10px;
+    background: var(--surface-2);
+    font-size: .7rem; font-weight: 900; text-transform: uppercase; letter-spacing: .14em;
+    color: var(--navy);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .cat-head .ct { color: var(--text-3); font-weight: 700; letter-spacing: .08em; }
+
+  .row {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 10px;
-  }
-
-  .c-card {
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    padding: 12px 20px;
     background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 14px 12px;
-    display: flex; flex-direction: column;
-    gap: 6px;
-    position: relative;
-    transition: border-color .15s, transform .15s;
+    border-top: 1px solid var(--border);
+    align-items: center;
   }
-  .c-card.disabled { opacity: 0.45; background: var(--surface-2); }
-  .c-card.warn { border-color: #FBBF24; background: #FFFBEB; }
-  .c-card-head {
-    display:flex; align-items:flex-start; justify-content: space-between; gap: 8px;
+  .row:hover { background: #FAFAF9; }
+  .row.disabled { opacity: 0.42; background: var(--surface-2); }
+  .row.warn { background: #FFFBEB; }
+  .row.warn:hover { background: #FEF3C7; }
+
+  .row-main { min-width: 0; }
+  .row-title {
+    font-weight: 700; font-size: .95rem; color: var(--text);
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   }
-  .c-card-title { font-weight: 800; font-size: .95rem; color: var(--text); line-height: 1.25; }
-  .c-card-id { font-family: ui-monospace, Menlo, monospace; font-size: .68rem; color: var(--text-3); margin-top: 2px; }
-  .c-badge {
-    font-size: .65rem; font-weight: 800; padding: 3px 8px; border-radius: 999px;
-    background: var(--surface-2); color: var(--text-2);
-    white-space: nowrap;
+  .row-id { font-family: ui-monospace, Menlo, monospace; font-size: .68rem; color: var(--text-3); font-weight: 600; }
+  .row-states {
+    margin-top: 6px;
+    display: flex; flex-wrap: wrap; gap: 4px;
   }
-  .c-badge.b-ok { background: #D1FAE5; color: #065F46; }
-  .c-badge.b-low { background: #FEF3C7; color: #92400E; }
-  .c-badge.b-bad { background: #FEE2E2; color: #991B1B; }
-  .c-states {
-    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;
-  }
-  .c-state {
-    font-size: .65rem; font-weight: 700;
-    background: #F3F4F6; color: var(--text-2);
+  .row-states span {
+    font-size: .68rem; font-weight: 700;
+    background: #EEF2FB; color: var(--navy);
     padding: 2px 6px; border-radius: 4px;
     font-family: ui-monospace, Menlo, monospace;
   }
-  .c-card-foot {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 6px; gap: 8px;
+  .row-states.empty span { background: #FEE2E2; color: var(--red); }
+
+  .row-badge {
+    font-size: .7rem; font-weight: 800; padding: 4px 10px; border-radius: 999px;
+    white-space: nowrap;
+    background: #D1FAE5; color: #065F46;
   }
-  .c-disable {
-    font-size: .68rem; font-weight: 800;
-    padding: 5px 10px; border-radius: 6px;
-    background: var(--surface-2); border: 1px solid var(--border);
+  .row-badge.low { background: #FEF3C7; color: #92400E; }
+  .row-badge.bad { background: #FEE2E2; color: #991B1B; }
+
+  .row-btn {
+    font-size: .72rem; font-weight: 800;
+    padding: 7px 12px; border-radius: 8px;
+    background: #fff; border: 1px solid var(--border);
     color: var(--text-2); cursor: pointer;
-    transition: background .15s;
+    transition: all .15s;
   }
-  .c-disable:hover { background: var(--red); color: #fff; border-color: var(--red); }
-  .c-card.disabled .c-disable { background: var(--green); color: #fff; border-color: var(--green); }
-  .c-card.disabled .c-disable::before { content: '✓ Re-enable'; }
-  .c-card:not(.disabled) .c-disable::before { content: '× Disable'; }
-
-  .c-translations { font-size: .72rem; color: var(--text-3); display: flex; gap: 8px; flex-wrap: wrap; }
-  .c-translations span { background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
-
-  .c-locked {
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center; padding: 60px 24px;
-    color: var(--text-2);
+  .row-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
+  .row.disabled .row-btn {
+    background: var(--green); color: #fff; border-color: var(--green);
   }
-  .c-locked svg { width: 40px; height: 40px; color: var(--text-3); margin-bottom: 12px; }
-  .c-locked h2 { font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
-  .c-locked p { font-size: .85rem; }
+  .row.disabled .row-btn::before { content: '✓ Re-enable'; }
+  .row:not(.disabled) .row-btn::before { content: '✕ Disable'; }
+
+  .empty-state {
+    text-align: center; padding: 60px 24px; color: var(--text-3);
+  }
+  .loader {
+    text-align: center; padding: 80px 24px; color: var(--text-3); font-size: .9rem;
+  }
+  .loader::before {
+    content: ''; display: inline-block; width: 18px; height: 18px;
+    border: 2px solid var(--border); border-top-color: var(--navy);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+    vertical-align: middle; margin-right: 10px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .err {
+    margin: 20px; padding: 16px; background: #FEE2E2; color: #991B1B;
+    border-radius: 8px; font-size: .85rem; font-family: ui-monospace, Menlo, monospace;
+  }
+
+  @media (max-width: 600px) {
+    .strip { grid-template-columns: repeat(2, 1fr); }
+    .strip-v { font-size: 1.25rem; }
+    .row { grid-template-columns: 1fr auto; }
+    .row-btn { grid-column: 2; grid-row: 1; }
+    .row-badge { grid-column: 1 / -1; justify-self: start; }
+    .toolbar { top: 50px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="c-shell" id="c-locked-view">
-  <div class="c-locked">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="11" width="18" height="11" rx="2"/>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-    </svg>
-    <h2>Restricted</h2>
-    <p>Enter the access key to unlock.</p>
-  </div>
+<div class="top">
+  <h1>Constraints catalog <small id="count-label"></small></h1>
+  <a href="/admin/">← Admin</a>
 </div>
 
-<div class="c-shell" id="c-admin-view" style="display:none">
-  <div class="c-top">
-    <div>
-      <div class="c-h1">Constraints catalog</div>
-      <div class="c-sub">Review every constraint, see matching states, disable any you don't like.</div>
-    </div>
-    <a class="c-back" href="/admin/">← Back to admin</a>
-  </div>
+<div class="strip" id="strip"></div>
 
-  <div class="c-summary" id="c-summary"></div>
-
-  <div class="c-toolbar">
-    <input class="c-search" id="c-search" placeholder="Search constraint id, label, or US state code (CA, TX, NY...)">
-    <button class="c-filter" data-filter="all">All</button>
-    <button class="c-filter" data-filter="low">≤5 states <span class="c-filter-count">⚠️</span></button>
-    <button class="c-filter" data-filter="disabled">Disabled</button>
-  </div>
-
-  <div id="c-content"></div>
+<div class="toolbar">
+  <input id="search" placeholder="Search by name, id, or state code (CA, TX, NY…)" autocomplete="off">
+  <button class="chip active" data-filter="all">All</button>
+  <button class="chip" data-filter="low">⚠️ ≤5 states</button>
+  <button class="chip" data-filter="disabled">Disabled</button>
 </div>
 
-<script src="/config.js?v=3"></script>
-<script src="/js/admin.js?v=3"></script>
-<script src="/js/i18n.js?v=3"></script>
-<script src="/js/puzzle.js?v=3"></script>
+<div class="content" id="content">
+  <div class="loader">Loading constraints…</div>
+</div>
+
 <script>
 (async function() {
-  // ── Auth gate ─────────────────────────────────────────────────────────
-  if (!Admin.isAuthenticated()) {
-    location.hash = 'admin';
-    Admin.init();
-    const poll = setInterval(() => {
-      if (Admin.isAuthenticated()) { clearInterval(poll); render(); }
-    }, 200);
-  } else {
-    render();
+
+  const ENGLISH_FALLBACK = {}; // populated from translations.json
+
+  // ──────────────────────────────────────────────────────────────────
+  // Fetch data with absolute paths (avoids /admin/constraints/ resolution bugs)
+  // ──────────────────────────────────────────────────────────────────
+  let states, translations;
+  try {
+    const [statesRes, transRes] = await Promise.all([
+      fetch('/data/states.json'),
+      fetch('/data/translations.json'),
+    ]);
+    if (!statesRes.ok) throw new Error('states.json HTTP ' + statesRes.status);
+    if (!transRes.ok) throw new Error('translations.json HTTP ' + transRes.status);
+    states = await statesRes.json();
+    translations = await transRes.json();
+  } catch (e) {
+    document.getElementById('content').innerHTML = `<div class="err">Failed to load data: ${e.message}</div>`;
+    return;
   }
 
-  // ── Categories (groups constraints under human-readable headings) ─────
+  // ──────────────────────────────────────────────────────────────────
+  // Hard-coded constraint catalog (mirrors ALL_CONSTRAINTS in puzzle.js)
+  // ──────────────────────────────────────────────────────────────────
+  const ALL_CONSTRAINTS = [
+    // Regions
+    'region_west', 'region_south', 'region_midwest', 'region_northeast',
+    // Subregions
+    'sub_new_england', 'sub_mid_atlantic', 'sub_deep_south', 'sub_plains', 'sub_mountain',
+    // Population
+    'pop_lt1m', 'pop_1m5m', 'pop_5m10m', 'pop_gt10m',
+    // Coastline / borders
+    'coast_atlantic', 'coast_pacific', 'coast_gulf', 'coast_great_lakes',
+    'landlocked', 'border_canada', 'border_mexico',
+    // Belts
+    'sun_belt', 'snow_belt', 'corn_belt', 'wheat_belt', 'cotton_belt',
+    'bible_belt', 'rust_belt',
+    // Politics
+    'political_red', 'political_blue', 'political_swing',
+    'trump_2024', 'biden_2020',
+    // Timezones
+    'tz_eastern', 'tz_central', 'tz_mountain', 'tz_pacific', 'multi_timezone',
+    // History
+    'original_13', 'confederate', 'statehood_pre_1800', 'statehood_1900s',
+    // Geography
+    'on_mississippi', 'mt_rockies', 'mt_appalachians',
+    'desert_state', 'four_corners', 'great_plains', 'appalachian',
+    'tornado_alley', 'hurricane_zone', 'earthquake_zone',
+    'has_volcano', 'has_glaciers',
+    'on_appalachian_trail', 'on_continental_divide', 'has_caves',
+    'high_elevation', 'low_elevation', 'route_66',
+    // Cities & capitals
+    'has_million_city', 'largest_state', 'smallest_state',
+    'capital_named_after_president', 'capital_starts_with_s',
+    'borders_6_plus', 'borders_few',
+    // Sports
+    'has_nba', 'no_pro_team',
+    // Name origin
+    'name_native_origin', 'name_spanish_origin', 'name_royalty_origin',
+    // Name properties
+    'two_word_name', 'ends_in_vowel', 'double_letter',
+    'vowel_start', 'consonant_start', 'has_new',
+    'ends_in_a', 'ends_in_o', 'ends_in_e', 'ends_in_n', 'ends_in_s',
+    'starts_and_ends_vowel', 'double_s', 'two_word_starts_n',
+    'contains_letter_k', 'contains_letter_w', 'contains_letter_v', 'contains_letter_y',
+    'short_name', 'long_name',
+    // Letter count
+    'letters_6', 'letters_7', 'letters_8', 'letters_9',
+    // Starts with letter
+    'starts_a', 'starts_i', 'starts_m', 'starts_n', 'starts_w',
+  ];
+
+  // ──────────────────────────────────────────────────────────────────
+  // Matches function (mirrors puzzle.js)
+  // ──────────────────────────────────────────────────────────────────
+  function matches(state, c) {
+    if (c.length === 8 && c.startsWith('starts_')) return state.startsWith === c[7].toUpperCase();
+    if (c.startsWith('letters_'))                  return state.letterCount === parseInt(c.slice(8), 10);
+
+    switch (c) {
+      case 'region_west':      return state.region === 'west';
+      case 'region_south':     return state.region === 'south';
+      case 'region_midwest':   return state.region === 'midwest';
+      case 'region_northeast': return state.region === 'northeast';
+      case 'sub_new_england':  return state.subregion === 'new_england';
+      case 'sub_mid_atlantic': return state.subregion === 'mid_atlantic';
+      case 'sub_deep_south':   return state.subregion === 'deep_south';
+      case 'sub_plains':       return state.subregion === 'plains';
+      case 'sub_mountain':     return state.subregion === 'mountain';
+      case 'pop_lt1m':   return state.population === '<1M';
+      case 'pop_1m5m':   return state.population === '1M-5M';
+      case 'pop_5m10m':  return state.population === '5M-10M';
+      case 'pop_gt10m':  return state.population === '>10M';
+      case 'coast_atlantic':   return state.coastline?.includes('atlantic');
+      case 'coast_pacific':    return state.coastline?.includes('pacific');
+      case 'coast_gulf':       return state.coastline?.includes('gulf');
+      case 'coast_great_lakes':return state.coastline?.includes('great_lakes');
+      case 'landlocked':       return !!state.landlocked;
+      case 'border_canada':    return !!state.bordersCanada;
+      case 'border_mexico':    return !!state.bordersMexico;
+      case 'sun_belt':    return !!state.sunBelt;
+      case 'snow_belt':   return !!state.snowBelt;
+      case 'corn_belt':   return !!state.cornBelt;
+      case 'wheat_belt':  return !!state.wheatBelt;
+      case 'cotton_belt': return !!state.cottonBelt;
+      case 'bible_belt':  return !!state.bibleBelt;
+      case 'rust_belt':   return !!state.rustBelt;
+      case 'political_red':    return state.political === 'red';
+      case 'political_blue':   return state.political === 'blue';
+      case 'political_swing':  return state.political === 'swing';
+      case 'trump_2024':       return state.elections && state.elections['2024'] === 'r';
+      case 'biden_2020':       return state.elections && state.elections['2020'] === 'd';
+      case 'tz_eastern':  return state.timezone === 'eastern';
+      case 'tz_central':  return state.timezone === 'central';
+      case 'tz_mountain': return state.timezone === 'mountain';
+      case 'tz_pacific':  return state.timezone === 'pacific';
+      case 'multi_timezone': return !!state.multiTimezone;
+      case 'original_13':       return !!state.original13;
+      case 'confederate':       return !!state.confederate;
+      case 'statehood_pre_1800':return !!state.statehoodPre1800;
+      case 'statehood_1900s':   return !!state.statehood1900s;
+      case 'on_mississippi': return !!state.onMississippi;
+      case 'mt_rockies':     return state.mountainRange?.includes('rockies');
+      case 'mt_appalachians':return state.mountainRange?.includes('appalachians');
+      case 'desert_state':   return !!state.desertState;
+      case 'four_corners':   return !!state.fourCorners;
+      case 'great_plains':   return !!state.greatPlains;
+      case 'appalachian':    return !!state.appalachian;
+      case 'tornado_alley':  return !!state.tornadoAlley;
+      case 'hurricane_zone': return !!state.hurricaneZone;
+      case 'earthquake_zone':return !!state.earthquakeZone;
+      case 'has_volcano':    return !!state.hasVolcano;
+      case 'has_glaciers':   return !!state.hasGlaciers;
+      case 'on_appalachian_trail':  return !!state.appalachianTrail;
+      case 'on_continental_divide': return !!state.continentalDivide;
+      case 'has_caves':      return !!state.hasCaves;
+      case 'high_elevation': return !!state.highElevation;
+      case 'low_elevation':  return !!state.lowElevation;
+      case 'route_66':       return !!state.route66;
+      case 'has_million_city':              return !!state.hasMillionCity;
+      case 'largest_state':                 return state.areaRank <= 5;
+      case 'smallest_state':                return state.areaRank >= 46;
+      case 'capital_named_after_president': return !!state.capitalNamedAfterPresident;
+      case 'capital_starts_with_s':         return !!state.capitalStartsWithS;
+      case 'borders_6_plus': return !!state.borders6Plus;
+      case 'borders_few':    return !!state.bordersFew;
+      case 'has_nba':       return !!state.nbaTeam;
+      case 'no_pro_team':   return !state.nbaTeam && !state.nflTeam && !state.mlbTeam && !state.nhlTeam;
+      case 'name_native_origin':  return !!state.nameNative;
+      case 'name_spanish_origin': return !!state.nameSpanish;
+      case 'name_royalty_origin': return !!state.nameRoyalty;
+      case 'two_word_name':       return state.wordCount === 2;
+      case 'ends_in_vowel':       return !!state.endsInVowel;
+      case 'double_letter':       return !!state.doubleLetter;
+      case 'vowel_start':         return 'AEIOU'.includes(state.startsWith);
+      case 'consonant_start':     return !'AEIOU'.includes(state.startsWith);
+      case 'has_new':             return state.names?.en?.includes('New');
+      case 'ends_in_a':           return state.endsWith === 'A';
+      case 'ends_in_o':           return state.endsWith === 'O';
+      case 'ends_in_e':           return state.endsWith === 'E';
+      case 'ends_in_n':           return state.endsWith === 'N';
+      case 'ends_in_s':           return state.endsWith === 'S';
+      case 'starts_and_ends_vowel': return 'AEIOU'.includes(state.startsWith) && state.endsInVowel;
+      case 'double_s':            return !!state.doubleS;
+      case 'two_word_starts_n':   return state.wordCount === 2 && state.startsWith === 'N';
+      case 'contains_letter_k':   return state.names?.en?.toUpperCase().includes('K');
+      case 'contains_letter_w':   return state.names?.en?.toUpperCase().includes('W');
+      case 'contains_letter_v':   return state.names?.en?.toUpperCase().includes('V');
+      case 'contains_letter_y':   return state.names?.en?.toUpperCase().includes('Y');
+      case 'short_name':          return state.letterCount <= 6;
+      case 'long_name':           return state.letterCount >= 10;
+      default: return false;
+    }
+  }
+
+  // ──────────────────────────────────────────────────────────────────
+  // Categories (labels for grouping)
+  // ──────────────────────────────────────────────────────────────────
   const CATEGORIES = [
-    { id: 'regions',    label: 'Regions',         match: id => id.startsWith('region_') },
-    { id: 'subregions', label: 'Subregions',      match: id => id.startsWith('sub_') },
-    { id: 'population', label: 'Population',      match: id => id.startsWith('pop_') },
-    { id: 'coast',      label: 'Coastlines & borders', match: id => id.startsWith('coast_') || id === 'landlocked' || id.startsWith('border_') || id.startsWith('borders_') },
-    { id: 'belts',      label: 'Belts (cultural / climatic)', match: id => id.endsWith('_belt') || id === 'route_66' },
-    { id: 'politics',   label: 'Politics',        match: id => id.startsWith('political_') || id === 'trump_2024' || id === 'biden_2020' },
-    { id: 'timezones',  label: 'Timezones',       match: id => id.startsWith('tz_') || id === 'multi_timezone' },
-    { id: 'history',    label: 'History',         match: id => id === 'original_13' || id === 'confederate' || id.startsWith('statehood_') },
-    { id: 'geography',  label: 'Geography & nature', match: id => ['on_mississippi','mt_rockies','mt_appalachians','desert_state','four_corners','great_plains','appalachian','tornado_alley','hurricane_zone','earthquake_zone','has_volcano','has_glaciers','on_appalachian_trail','on_continental_divide','has_caves','high_elevation','low_elevation'].includes(id) },
-    { id: 'cities',     label: 'Cities & capitals', match: id => ['has_million_city','largest_state','smallest_state','capital_named_after_president','capital_starts_with_s'].includes(id) },
-    { id: 'sports',     label: 'Sports',          match: id => ['has_nba','no_pro_team'].includes(id) },
-    { id: 'name_origin',label: 'Name origin',     match: id => id.startsWith('name_') },
-    { id: 'name_props', label: 'Name properties', match: id => ['two_word_name','ends_in_vowel','double_letter','vowel_start','consonant_start','has_new','starts_and_ends_vowel','double_s','two_word_starts_n','short_name','long_name'].includes(id) || id.startsWith('ends_in_') || id.startsWith('contains_letter_') },
-    { id: 'letters',    label: 'Letter count',    match: id => id.startsWith('letters_') },
-    { id: 'starts',     label: 'Starts with letter', match: id => id.startsWith('starts_') && !['starts_and_ends_vowel'].includes(id) },
-    { id: 'other',      label: 'Other',           match: id => true }, // catch-all (must be last)
+    { label: 'Regions',         match: id => id.startsWith('region_') },
+    { label: 'Subregions',      match: id => id.startsWith('sub_') },
+    { label: 'Population',      match: id => id.startsWith('pop_') },
+    { label: 'Coasts & borders',match: id => id.startsWith('coast_') || id === 'landlocked' || id.startsWith('border_') || id.startsWith('borders_') },
+    { label: 'Belts',           match: id => id.endsWith('_belt') || id === 'route_66' },
+    { label: 'Politics',        match: id => id.startsWith('political_') || id === 'trump_2024' || id === 'biden_2020' },
+    { label: 'Timezones',       match: id => id.startsWith('tz_') || id === 'multi_timezone' },
+    { label: 'History',         match: id => id === 'original_13' || id === 'confederate' || id.startsWith('statehood_') },
+    { label: 'Geography & nature', match: id => ['on_mississippi','mt_rockies','mt_appalachians','desert_state','four_corners','great_plains','appalachian','tornado_alley','hurricane_zone','earthquake_zone','has_volcano','has_glaciers','on_appalachian_trail','on_continental_divide','has_caves','high_elevation','low_elevation'].includes(id) },
+    { label: 'Cities & capitals', match: id => ['has_million_city','largest_state','smallest_state','capital_named_after_president','capital_starts_with_s'].includes(id) },
+    { label: 'Sports',          match: id => ['has_nba','no_pro_team'].includes(id) },
+    { label: 'Name origin',     match: id => id.startsWith('name_') },
+    { label: 'Name properties', match: id => ['two_word_name','ends_in_vowel','double_letter','vowel_start','consonant_start','has_new','starts_and_ends_vowel','double_s','two_word_starts_n','short_name','long_name'].includes(id) || id.startsWith('ends_in_') || id.startsWith('contains_letter_') },
+    { label: 'Letter count',    match: id => id.startsWith('letters_') },
+    { label: 'Starts with letter', match: id => id.startsWith('starts_') && id !== 'starts_and_ends_vowel' },
+    { label: 'Other',           match: id => true },
   ];
 
   function categorize(id) {
-    for (const c of CATEGORIES) if (c.match(id)) return c;
-    return CATEGORIES[CATEGORIES.length - 1];
+    for (const c of CATEGORIES) if (c.match(id)) return c.label;
+    return 'Other';
   }
 
-  function badge(n) {
-    if (n <= 4) return { cls: 'b-bad', text: `${n} states` };
-    if (n <= 7) return { cls: 'b-low', text: `${n} states` };
-    return { cls: 'b-ok', text: `${n} states` };
+  // ──────────────────────────────────────────────────────────────────
+  // Disabled set (persisted in localStorage)
+  // ──────────────────────────────────────────────────────────────────
+  const DK = 'statedoku_disabled_constraints';
+  function getDisabled() {
+    try { return new Set(JSON.parse(localStorage.getItem(DK) || '[]')); }
+    catch { return new Set(); }
+  }
+  function setDisabled(set) {
+    localStorage.setItem(DK, JSON.stringify([...set]));
+    // Purge cached puzzles
+    Object.keys(localStorage).filter(k => k.includes('_puzzle_')).forEach(k => localStorage.removeItem(k));
   }
 
-  let states = [], all = [], disabled = new Set();
-  let filter = 'all', search = '';
-
-  async function render() {
-    document.getElementById('c-locked-view').style.display = 'none';
-    document.getElementById('c-admin-view').style.display = 'block';
-
-    await I18n.init('en');
-    states = await Puzzle.loadStates();
-    all = Puzzle.getAllConstraints();
-    disabled = new Set(Puzzle.getDisabled());
-
-    drawSummary();
-    drawList();
-    wireToolbar();
+  // ──────────────────────────────────────────────────────────────────
+  // Compute matching states once
+  // ──────────────────────────────────────────────────────────────────
+  const matchMap = {};
+  for (const id of ALL_CONSTRAINTS) {
+    matchMap[id] = states.filter(s => matches(s, id)).map(s => s.id);
   }
 
-  function drawSummary() {
-    const total = all.length;
+  const labelOf = (id) => {
+    const en = translations?.en?.constraints?.[id];
+    return en || id.replace(/_/g, ' ');
+  };
+  const labelFr = (id) => translations?.fr?.constraints?.[id] || '';
+
+  // ──────────────────────────────────────────────────────────────────
+  // Render
+  // ──────────────────────────────────────────────────────────────────
+  let filter = 'all', search = '', disabled = getDisabled();
+
+  function badgeClass(n) {
+    if (n <= 4) return 'bad';
+    if (n <= 7) return 'low';
+    return '';
+  }
+
+  function drawStrip() {
+    const total = ALL_CONSTRAINTS.length;
     const enabled = total - disabled.size;
-    const lowCount = all.filter(id => Puzzle.countMatching(id, states) <= 5).length;
-    const html = `
-      <div class="c-stat"><div class="c-stat-v">${total}</div><div class="c-stat-l">Total constraints</div></div>
-      <div class="c-stat"><div class="c-stat-v">${enabled}</div><div class="c-stat-l">Enabled</div></div>
-      <div class="c-stat"><div class="c-stat-v" style="color:#92400E">${lowCount}</div><div class="c-stat-l">≤5 states (rare)</div></div>
-      <div class="c-stat"><div class="c-stat-v" style="color:#991B1B">${disabled.size}</div><div class="c-stat-l">Disabled</div></div>
+    const low = ALL_CONSTRAINTS.filter(id => matchMap[id].length <= 5).length;
+    document.getElementById('strip').innerHTML = `
+      <div><div class="strip-v">${total}</div><div class="strip-l">Total</div></div>
+      <div><div class="strip-v">${enabled}</div><div class="strip-l">Enabled</div></div>
+      <div><div class="strip-v" style="color:#92400E">${low}</div><div class="strip-l">≤5 states</div></div>
+      <div><div class="strip-v" style="color:#991B1B">${disabled.size}</div><div class="strip-l">Disabled</div></div>
     `;
-    document.getElementById('c-summary').innerHTML = html;
+    document.getElementById('count-label').textContent = `· ${total} active`;
   }
 
-  function getLabel(id, lang) {
-    const t = I18n._dict && I18n._dict[lang] && I18n._dict[lang].constraints && I18n._dict[lang].constraints[id];
-    return t || id;
-  }
-
-  function cardHtml(id) {
-    const matching = states.filter(s => Puzzle.matches(s, id));
-    const n = matching.length;
-    const b = badge(n);
+  function rowHtml(id) {
+    const sts = matchMap[id];
+    const n = sts.length;
     const isDis = disabled.has(id);
-    const labelEn = I18n.constraint ? I18n.constraint(id) : id;
-    const stateChips = matching.map(s => `<span class="c-state">${s.id}</span>`).join('');
+    const lbl = labelOf(id);
+    const fr  = labelFr(id);
+    const states_html = sts.length
+      ? sts.map(s => `<span>${s}</span>`).join('')
+      : `<span>— none —</span>`;
     return `
-      <div class="c-card ${isDis ? 'disabled' : ''} ${n <= 5 ? 'warn' : ''}" data-id="${id}" data-n="${n}">
-        <div class="c-card-head">
-          <div>
-            <div class="c-card-title">${labelEn}</div>
-            <div class="c-card-id">${id}</div>
-          </div>
-          <span class="c-badge ${b.cls}">${b.text}</span>
+      <div class="row ${isDis ? 'disabled' : ''} ${n <= 5 ? 'warn' : ''}" data-id="${id}">
+        <div class="row-main">
+          <div class="row-title">${lbl}${fr && fr !== lbl ? ` <span style="color:var(--text-3);font-size:.78rem;font-weight:500">· ${fr}</span>` : ''} <span class="row-id">${id}</span></div>
+          <div class="row-states ${n === 0 ? 'empty' : ''}">${states_html}</div>
         </div>
-        <div class="c-states">${stateChips || '<span style="color:var(--text-3);font-size:.7rem">— no matching states —</span>'}</div>
-        <div class="c-card-foot">
-          <span class="c-translations"></span>
-          <button class="c-disable" data-id="${id}"></button>
-        </div>
+        <span class="row-badge ${badgeClass(n)}">${n} state${n === 1 ? '' : 's'}</span>
+        <button class="row-btn"></button>
       </div>
     `;
   }
 
-  function drawList() {
-    const ids = all.filter(id => {
-      if (filter === 'low' && Puzzle.countMatching(id, states) > 5) return false;
-      if (filter === 'disabled' && !disabled.has(id)) return false;
+  function applyFilter(ids) {
+    return ids.filter(id => {
+      if (filter === 'low'      && matchMap[id].length > 5) return false;
+      if (filter === 'disabled' && !disabled.has(id))       return false;
       if (!search) return true;
       const q = search.toLowerCase();
-      const label = (I18n.constraint(id) || '').toLowerCase();
-      const matchedStates = states.filter(s => Puzzle.matches(s, id)).map(s => s.id);
-      return id.toLowerCase().includes(q) || label.includes(q) || matchedStates.includes(search.toUpperCase());
+      if (id.toLowerCase().includes(q)) return true;
+      if (labelOf(id).toLowerCase().includes(q)) return true;
+      if (labelFr(id).toLowerCase().includes(q)) return true;
+      if (matchMap[id].includes(search.toUpperCase())) return true;
+      return false;
     });
+  }
 
+  function drawList() {
+    const ids = applyFilter(ALL_CONSTRAINTS);
+    if (!ids.length) {
+      document.getElementById('content').innerHTML = `<div class="empty-state">No constraint matches that filter.</div>`;
+      return;
+    }
     const grouped = {};
     for (const id of ids) {
       const cat = categorize(id);
-      (grouped[cat.id] = grouped[cat.id] || { label: cat.label, ids: [] }).ids.push(id);
+      (grouped[cat] = grouped[cat] || []).push(id);
     }
-
-    const order = CATEGORIES.map(c => c.id);
+    const order = CATEGORIES.map(c => c.label);
     let html = '';
-    for (const cid of order) {
-      const g = grouped[cid]; if (!g || !g.ids.length) continue;
-      html += `<div class="c-cat">
-        <div class="c-cat-title">${g.label} <span class="c-cat-count">${g.ids.length}</span></div>
-        <div class="c-list">${g.ids.map(cardHtml).join('')}</div>
+    for (const cat of order) {
+      const arr = grouped[cat]; if (!arr || !arr.length) continue;
+      html += `<div class="cat">
+        <div class="cat-head">${cat} <span class="ct">${arr.length}</span></div>
+        ${arr.map(rowHtml).join('')}
       </div>`;
     }
-    if (!html) html = `<p style="text-align:center;color:var(--text-3);padding:40px">No constraint matches your filter.</p>`;
-    document.getElementById('c-content').innerHTML = html;
+    document.getElementById('content').innerHTML = html;
 
-    document.querySelectorAll('.c-disable').forEach(btn => {
+    document.querySelectorAll('.row-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const id = btn.dataset.id;
+        const id = btn.closest('.row').dataset.id;
         if (disabled.has(id)) disabled.delete(id); else disabled.add(id);
-        Puzzle.setDisabled([...disabled]);
-        drawSummary();
-        drawList();
+        setDisabled(disabled);
+        drawStrip();
+        // Toggle row class without full redraw for snap
+        const r = btn.closest('.row');
+        r.classList.toggle('disabled', disabled.has(id));
       });
     });
   }
 
-  function wireToolbar() {
-    document.getElementById('c-search').addEventListener('input', e => {
-      search = e.target.value.trim();
+  // Toolbar wiring
+  document.getElementById('search').addEventListener('input', e => {
+    search = e.target.value.trim();
+    drawList();
+  });
+  document.querySelectorAll('.chip').forEach(c => {
+    c.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      filter = c.dataset.filter;
       drawList();
     });
-    document.querySelectorAll('.c-filter').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.c-filter').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filter = btn.dataset.filter;
-        drawList();
-      });
-    });
-    document.querySelector('.c-filter[data-filter="all"]').classList.add('active');
-  }
+  });
+
+  drawStrip();
+  drawList();
 })();
 </script>
 
