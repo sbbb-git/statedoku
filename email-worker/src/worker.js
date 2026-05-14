@@ -56,7 +56,7 @@ function _longDate(lang) {
   return new Date().toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric' });
 }
 
-async function _sendOne(sub) {
+async function _sendOne(sub, env) {
   const lang = ['en','fr','es'].includes(sub.lang) ? sub.lang : 'en';
   const html = `
     <div style="font-family:system-ui,-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#0A0A0A;line-height:1.55">
@@ -67,19 +67,23 @@ async function _sendOne(sub) {
   `;
   const subject = SUBJECTS[lang];
 
-  const res = await fetch('https://api.mailchannels.net/tx/v1/send', {
+  // Resend API — free 3000 emails/mo, clean. Requires verified domain (DKIM/SPF set in CF DNS)
+  const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'authorization': `Bearer ${env.RESEND_API_KEY}`,
+      'content-type': 'application/json',
+    },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: sub.email }] }],
-      from: { email: FROM_EMAIL, name: FROM_NAME },
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      to: [sub.email],
       subject,
-      content: [{ type: 'text/html', value: html }],
+      html,
     }),
   });
   if (!res.ok) {
     const t = await res.text();
-    throw new Error(`MailChannels ${res.status}: ${t}`);
+    throw new Error(`Resend ${res.status}: ${t}`);
   }
   return true;
 }
@@ -96,7 +100,7 @@ async function _runHourly(env) {
   let ok = 0, fail = 0;
   for (const sub of (results || [])) {
     try {
-      await _sendOne(sub);
+      await _sendOne(sub, env);
       await env.STATS_DB
         .prepare('UPDATE email_subscribers SET last_sent_date = ? WHERE email = ?')
         .bind(today, sub.email).run();
