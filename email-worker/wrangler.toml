@@ -10,7 +10,7 @@ crons = ["5 * * * *"]
 [[d1_databases]]
 binding = "STATS_DB"
 database_name = "statedoku-stats"
-database_id = "REPLACE_WITH_D1_ID"   # → run: wrangler d1 list   then paste id here
+database_id = "b7668016-99c2-47a9-a2a4-f8249c7a4f2c"
 
 # ─────────────────────────────────────────────────────────────────────────
 # Setup checklist (one-time):
