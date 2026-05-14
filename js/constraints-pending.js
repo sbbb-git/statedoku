@@ -812,8 +812,6 @@ const PENDING_CONSTRAINTS = (() => {
       'NV NY FL CA TN IL LA TX');
   add('pc_iconic_casino_resort','🎰 Iconic mega-casino resort',          'Casino-resort emblématique',    'Casino-resort icónico',
       'NV NJ CT MI MS CA PA');
-  add('pc_horse_betting_top',   '🐎 Major pari-mutuel horse betting',    'Paris hippiques majeurs',       'Apuestas hípicas mayores',
-      'KY NY FL CA MD AR LA');
 
   // ─── 🎙️ COMEDY / TALK ───
   add('pc_late_night_filmed',   '🎙️ Late-night talk show is filmed here','Late-night show tourné ici',   'Late-night se filma aquí',
@@ -850,8 +848,6 @@ const PENDING_CONSTRAINTS = (() => {
       'WI MA IN AZ FL CA TX GA');
   add('pc_food_truck_culture',  '🚚 Vibrant food truck scene',           'Culture food truck',            'Cultura food truck',
       'CA TX OR WA NY IL TN');
-  add('pc_brunch_culture',      '🥞 Brunch capital',                     'Capitale du brunch',            'Capital del brunch',
-      'NY CA IL DC TX MA GA');
   add('pc_thrift_culture',      '🧥 Famous thrift / vintage scene',      'Scène friperie célèbre',        'Escena vintage famosa',
       'NY CA TX IL OR WA');
 
@@ -866,14 +862,10 @@ const PENDING_CONSTRAINTS = (() => {
       'LA AK');
 
   // ─── 🦅 FILM / TV — More ───
-  add('pc_drag_race_setting',   '👑 Setting of RuPaul\'s Drag Race spinoff','Décor de spin-off Drag Race','Escenario de spin-off Drag Race',
-      'CA NY IL TX FL');
   add('pc_reality_dating_show', '💕 Setting of a major dating reality',  'Décor d\'une téléréalité dating','Escenario reality de citas',
       'CA NV FL HI NY');
   add('pc_amazing_race_start',  '🌍 Hosted Amazing Race start/finish',   'Étape Amazing Race',            'Etapa Amazing Race',
       'CA NY TX FL NV HI');
-  add('pc_survivor_audition_city','🗳️ Major Survivor casting call city','Casting Survivor',              'Casting Survivor',
-      'CA NY TX FL IL');
   add('pc_pawn_stars_setting',  '💰 Setting of Pawn Stars',              'Décor de Pawn Stars',           'Escenario de Pawn Stars',
       'NV');
   add('pc_storage_wars_setting','📦 Setting of Storage Wars',            'Décor de Storage Wars',         'Escenario de Storage Wars',
@@ -894,8 +886,6 @@ const PENDING_CONSTRAINTS = (() => {
   // ─── 🏫 UNIQUE HIGH SCHOOL CULTURE ───
   add('pc_friday_lights_culture','🏈 Friday Night Lights HS culture',    'Culture football HS',           'Cultura fútbol HS',
       'TX OK FL OH PA GA');
-  add('pc_iconic_prom_culture', '👗 Iconic American prom culture',       'Bal de promo emblématique',     'Baile de graduación icónico',
-      'TX CA NY OH IL');
 
   // ─── 🐎 ZOO / AQUARIUM ───
   add('pc_top10_us_zoo',        '🦓 Has a top-10 US zoo',                'Top 10 zoos US',                'Top 10 zoos US',
@@ -910,12 +900,8 @@ const PENDING_CONSTRAINTS = (() => {
       'NY DC CA IL MA TX');
 
   // ─── 🌃 SUBCULTURE CITIES ───
-  add('pc_punk_diy_scene',      '🎸 Strong punk / DIY scene',            'Scène punk / DIY forte',        'Escena punk / DIY',
-      'NY CA WA OR TX IL MA');
   add('pc_goth_subculture',     '🖤 Notable goth subculture',            'Sous-culture goth',             'Subcultura gótica',
       'CA NY OH MI IL TX FL');
-  add('pc_iconic_drag_bar',     '🌈 Iconic drag-bar city',               'Bar drag emblématique',         'Bar drag icónico',
-      'NY CA IL TX FL NV GA');
 
   // ─── 🐎 HORSE / PETS ───
   add('pc_most_pet_friendly',   '🐶 Most pet-friendly state',            'État pet-friendly',             'Estado pet-friendly',
@@ -962,8 +948,6 @@ const PENDING_CONSTRAINTS = (() => {
   // ─── 🍕 ICONIC CUISINE BY ETHNIC GROUP ───
   add('pc_tex_mex_culture',     '🌮 Tex-Mex culinary stronghold',        'Bastion Tex-Mex',               'Bastión Tex-Mex',
       'TX NM AZ CA NV');
-  add('pc_creole_culture',      '🎷 Creole culinary tradition',          'Cuisine créole',                'Cocina criolla',
-      'LA FL TX MS AL');
   add('pc_chinese_takeout',     '🥡 Iconic Chinese-takeout culture',     'Culture de la livraison chinoise','Cultura comida china a domicilio',
       'NY CA IL MA TX NJ');
 
@@ -1026,33 +1010,23 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_tv_curb_setting',     '📺 Curb Your Enthusiasm setting',        'Décor Curb',                     'Escenario Curb',                    'CA NY FL');
   add('pc_tv_grey_anatomy',     '🏥 Grey\'s Anatomy setting',             'Décor Grey\'s Anatomy',          'Escenario Grey\'s Anatomy',         'WA');
   add('pc_tv_modernfamily',     '📺 Modern Family setting',               'Décor Modern Family',            'Escenario Modern Family',           'CA');
-  add('pc_tv_himym_setting',    '📺 How I Met Your Mother setting',       'Décor HIMYM',                    'Escenario HIMYM',                   'NY');
-  add('pc_tv_bigbangtheory',    '📺 Big Bang Theory setting',             'Décor Big Bang',                 'Escenario Big Bang',                'CA');
-  add('pc_tv_brooklyn99',       '📺 Brooklyn Nine-Nine setting',          'Décor Brooklyn 9-9',             'Escenario Brooklyn 9-9',            'NY');
   add('pc_tv_parks_recreation', '📺 Parks & Rec setting',                 'Décor Parks & Rec',              'Escenario Parks & Rec',             'IN');
   add('pc_tv_community',        '📺 Community setting',                   'Décor Community',                'Escenario Community',               'CO');
-  add('pc_tv_psych_setting',    '📺 Psych setting',                       'Décor Psych',                    'Escenario Psych',                   'CA');
-  add('pc_tv_monk_setting',     '📺 Monk setting',                        'Décor Monk',                     'Escenario Monk',                    'CA');
   add('pc_tv_succession_real',  '📺 Succession setting',                  'Décor Succession',               'Escenario Succession',              'NY CT');
   add('pc_tv_white_lotus',      '🌴 White Lotus seasons',                 'Saisons White Lotus',            'Temporadas White Lotus',            'HI');
   add('pc_tv_severance_filmed', '📺 Severance setting (Lumon HQ)',        'Lumon HQ Severance',             'Sede Lumon Severance',              'NJ NY');
   add('pc_tv_andor_us_loc',     '📺 Star Wars Andor US filming',          'Tournages Andor US',             'Rodaje Andor US',                   'CA NV NM AZ');
   add('pc_tv_wednesday_filmed', '🖤 Wednesday Addams setting',            'Décor Wednesday',                'Escenario Wednesday',               'VT NH MA');
   add('pc_tv_dahmer_setting',   '📺 Dahmer (Netflix) setting',            'Décor Dahmer',                   'Escenario Dahmer',                  'WI');
-  add('pc_tv_inventing_anna',   '📺 Inventing Anna setting',              'Décor Inventing Anna',           'Escenario Inventing Anna',          'NY CA');
   add('pc_tv_squidgame_set',    '📺 Squid Game (US filming)',             'Tournages Squid Game US',        'Rodaje Squid Game US',              'LA CA');
-  add('pc_tv_30rock',           '📺 30 Rock setting',                     'Décor 30 Rock',                  'Escenario 30 Rock',                 'NY');
   add('pc_tv_west_wing',        '📺 West Wing setting',                   'Décor West Wing',                'Escenario West Wing',               'DC MD');
   add('pc_tv_handmaids_tale',   '📺 Handmaid\'s Tale (US setting)',       'Décor Handmaid\'s Tale',         'Escenario Handmaid\'s Tale',        'MA NH');
-  add('pc_tv_billions',         '📺 Billions setting',                    'Décor Billions',                 'Escenario Billions',                'NY CT');
   add('pc_tv_ted_lasso_us',     '⚽ Ted Lasso US callbacks',              'Rappels US Ted Lasso',           'Referencias US Ted Lasso',          'KS MO');
 
   // ─── 🎤 MUSIC — Specific scenes & icons ───
   add('pc_music_outkast_origin','🎤 Birthed OutKast / Atlanta hip-hop',   'OutKast / Atlanta hip-hop',      'OutKast / Atlanta hip-hop',         'GA');
   add('pc_music_motown_artists','🎤 Major Motown artist origin',          'Origine artiste Motown',         'Origen artista Motown',             'MI TN MS');
   add('pc_music_grunge_artists','🎸 Major grunge band origin',            'Origine groupe grunge',          'Origen grupo grunge',               'WA OR');
-  add('pc_music_punk_la',       '🎸 LA punk scene origin',                'Origine punk LA',                'Origen punk LA',                    'CA');
-  add('pc_music_punk_nyc',      '🎸 NYC punk scene origin',               'Origine punk NYC',               'Origen punk NYC',                   'NY');
   add('pc_music_doomtree',      '🎤 Major underground hip-hop label',     'Label hip-hop underground',      'Sello hip-hop underground',         'MN GA NY CA');
   add('pc_music_americana_arts','🎤 Major Americana artist origin',       'Origine americana',              'Origen americana',                  'TN TX NC VA OR WA');
   add('pc_music_taylor_swift',  '🎤 Taylor Swift Eras Tour stops',        'Stops Eras Tour',                'Eras Tour stops',                   'CA NV AZ TX MA FL GA IL MI MO MN OH PA WA TN IN LA NJ NY DC');
@@ -1072,7 +1046,6 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_born_first_lady',     '👑 Birth state of a First Lady',         'Naissance First Lady',           'Cuna First Lady',                   'NY GA TX AR FL VA');
   add('pc_born_grammy_lifetime','🎤 Birth state of a Grammy Lifetime Achievement winner','Lifetime Achievement Grammy','Lifetime Grammy','TN GA MS MI TX NY CA AL LA');
   add('pc_born_rock_hof',       '🎸 Birth state of a Rock & Roll HoF inductee','Inductee R&R HoF','Inductee R&R HoF',                            'TN GA MS NY MI CA TX OH MA NJ');
-  add('pc_born_country_hof',    '🤠 Birth state of a Country Music HoF inductee','Country HoF',           'Country HoF',                       'TN TX KY AR GA LA OK MS AL VA NC');
   add('pc_born_bball_hof',      '🏀 Birth state of a Basketball HoF inductee','Naissance Basketball HoF','Cuna Basketball HoF',                  'NC NY PA IN IL CA MI KY TX');
   add('pc_born_fb_hof_qb',      '🏈 Birth state of a Football HoF QB',    'QB Hall of Fame',                'QB Hall of Fame',                   'TX CA PA AL FL LA OH MI');
   add('pc_born_mlb_hof_pitcher','⚾ Birth state of a MLB HoF pitcher',    'Pitcher MLB HoF',                'Pitcher MLB HoF',                   'CA NY TX PA OH AL IL MA');
@@ -1084,10 +1057,8 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_born_nhl_mvp_us',     '🏒 Birth state of a US-born NHL MVP',    'MVP NHL US né ici',              'MVP NHL US',                        'MN MA MI NY CA');
   add('pc_born_oscar_actor',    '🏆 Birth state of an Oscar Best Actor winner','Oscar Meilleur Acteur','Oscar Mejor Actor',                      'CA NY TX MA OH IL NJ IN');
   add('pc_born_oscar_actress',  '🏆 Birth state of an Oscar Best Actress winner','Oscar Meilleure Actrice','Oscar Mejor Actriz',                'CA NY TX GA IL MA OH');
-  add('pc_born_directors_top',  '🎥 Birth state of a top film director',  'Réalisateur top',                'Director top',                      'NY CA IL NJ OH TX');
   add('pc_born_authors_top',    '📚 Birth state of a top American novelist','Romancier US top','Novelista US top',                              'NY CA IL MS NJ OH PA');
   add('pc_born_journalists_top','📰 Birth state of a Pulitzer journalist','Pulitzer journaliste',           'Pulitzer periodista',               'NY CA TX MA IL DC PA OH');
-  add('pc_born_designers_top',  '👗 Birth state of a top US fashion designer','Designer mode US','Diseñador moda US',                           'NY CA TX IL MA');
   add('pc_born_chefs_top',      '👨‍🍳 Birth state of a top US chef',         'Chef US top',                    'Chef US top',                       'NY CA LA IL TX MA');
   add('pc_born_comedians_top',  '🎙️ Birth state of a top stand-up',        'Comique top',                    'Cómico top',                        'NY CA IL OH MA MI NJ FL');
   add('pc_born_late_night_hosts','🎙️ Birth state of a late-night host',    'Animateur late-night',           'Presentador late-night',            'IN MA OH NJ NY IA NE');
@@ -1120,14 +1091,10 @@ const PENDING_CONSTRAINTS = (() => {
   // ─── 🎓 EDUCATION SPECIFIC ───
   add('pc_uni_oldest_5plus',    '🎓 Has a uni founded before 1800',       'Université pré-1800',            'Universidad pre-1800',              'MA CT NJ PA VA RI NY NH SC');
   add('pc_top_50_publics',      '🎓 5+ top-50 public universities',       '5+ top-50 publiques',            '5+ top-50 públicas',                'CA TX NY VA NC MI WI IL FL OH');
-  add('pc_law_school_t14',      '⚖️ Has a T14 law school',                'École droit T14',                'Derecho T14',                       'NY CA MA IL VA CT MI PA');
   add('pc_med_school_t10',      '🩺 Has a top-10 medical school',         'Top 10 médecine',                'Top 10 medicina',                   'MA CA MD PA NY NC MI');
-  add('pc_top_engineering_grad','🔧 Top-10 engineering grad school',      'Top 10 ingénierie',              'Top 10 ingeniería',                 'MA CA TX IL GA MI');
-  add('pc_top_mba_program',     '💼 Top-10 MBA program',                  'Top 10 MBA',                     'Top 10 MBA',                        'PA MA CA IL NY NC IN MI NH');
   add('pc_top_culinary_school', '🍽️ Top-5 culinary school',               'Top 5 école culinaire',          'Top 5 culinaria',                   'NY RI CA VT OR');
   add('pc_top_design_school',   '🎨 Top-10 design school',                'Top 10 design',                  'Top 10 diseño',                     'NY CA RI IL MA');
   add('pc_top_acting_school',   '🎭 Top-10 acting school',                'Top 10 école de théâtre',        'Top 10 actuación',                  'NY CA CT MA');
-  add('pc_top_music_program',   '🎼 Top-10 music conservatory',           'Top 10 conservatoire',           'Top 10 conservatorio',              'NY MA OH IN PA CA');
 
   // ─── 🏛️ HISTORICAL — Specific events ───
   add('pc_hist_constitution_1','🏛️ First state to ratify Constitution',  'Premier à ratifier',             'Primero en ratificar',              'DE');
@@ -1146,18 +1113,14 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_consul_offices_dc',   '🏛️ Has 10+ foreign consulates',          '10+ consulats étrangers',        '10+ consulados',                    'NY CA TX FL IL DC GA');
   add('pc_immigrant_states',    '🌍 Top 10 immigrant-receiving',          'Top 10 immigration',             'Top 10 inmigración',                'CA NY TX FL NJ IL MA WA AZ MD');
   add('pc_diaspora_irish_top',  '☘️ Top Irish diaspora pop',               'Forte diaspora irlandaise',      'Diáspora irlandesa',                'MA NY IL PA NJ CT MI');
-  add('pc_diaspora_italian_top','🍝 Top Italian diaspora pop',             'Forte diaspora italienne',       'Diáspora italiana',                 'NY NJ MA PA CT CA IL RI');
-  add('pc_diaspora_chinese_top','🥢 Top Chinese-American pop',             'Forte communauté chinoise',      'Comunidad china',                   'CA NY HI MA WA NJ TX');
   add('pc_diaspora_mexican_top','🇲🇽 Top Mexican-American pop',            'Forte communauté mexicaine',     'Comunidad mexicana',                'CA TX AZ IL NM CO NV NY');
   add('pc_diaspora_korean',     '🇰🇷 Top Korean-American pop',            'Forte communauté coréenne',      'Comunidad coreana',                 'CA NJ NY GA TX VA');
   add('pc_diaspora_vietnamese', '🇻🇳 Top Vietnamese-American pop',        'Forte communauté vietnamienne',  'Comunidad vietnamita',              'CA TX WA VA GA FL');
   add('pc_diaspora_indian',     '🇮🇳 Top Indian-American pop',            'Forte communauté indienne',      'Comunidad india',                   'CA NJ TX IL NY VA GA');
 
   // ─── 🎤 MUSIC FESTIVALS DEEPER ───
-  add('pc_burning_man_states',  '🔥 Burning Man pilgrimage',              'Pèlerinage Burning Man',         'Peregrinaje Burning Man',           'NV CA');
   add('pc_eaux_claires_etc',    '🎵 Hosts a major indie music festival',  'Festival indie majeur',          'Festival indie mayor',              'CA TN TX NY MA WI MN OR');
   add('pc_country_fest_top',    '🤠 Major country music festival',        'Festival country majeur',        'Festival country mayor',            'TN TX FL GA AL KY');
-  add('pc_jazz_fest_top',       '🎷 Major jazz festival',                 'Festival jazz majeur',           'Festival jazz mayor',               'LA RI CA NY IL WA');
   add('pc_edm_fest_top',        '🎵 Major EDM festival',                  'Festival EDM majeur',            'Festival EDM mayor',                'NV FL CA TX NY GA');
   add('pc_hip_hop_fest_top',    '🎤 Major hip-hop festival',              'Festival hip-hop majeur',        'Festival hip-hop mayor',            'CA NY GA TX FL NV MD');
   add('pc_punk_fest_top',       '🎸 Major punk / metal festival',         'Festival punk / metal',          'Festival punk / metal',             'CA TX FL NV NJ');
@@ -1173,10 +1136,8 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_pro_team_animal',     '🦅 Pro team named after a bird',         'Équipe nommée d\'un oiseau',     'Equipo con nombre de ave',          'AZ MD PA WA GA');
   add('pc_pro_team_state',      '🏟️ Pro team with state name',            'Équipe avec nom d\'État',        'Equipo con nombre de estado',       'MN GA UT WA AZ NJ');
   add('pc_pro_team_old_west',   '🤠 Pro team with cowboy / pioneer name', 'Équipe nom cowboy',              'Equipo nombre vaquero',             'TX CO NV');
-  add('pc_3plus_pro_franchises','🏟️ Has 3+ major league franchises',      '3+ franchises majeures',         '3+ franquicias mayores',            'CA NY MA TX FL IL CO PA OH MI MN');
   add('pc_minor_league_strong', '⚾ Top minor-league baseball culture',   'Pôle baseball mineur',           'Béisbol menor fuerte',              'CA FL TX NY OH PA NC TN GA');
   add('pc_college_basketball_top','🏀 Top-25 college basketball regular','Top 25 basket NCAA régulier',    'Top 25 basket NCAA',                'NC KY IN KS CA AZ MI VA OH IL');
-  add('pc_college_football_top','🏈 Top-10 college football program',     'Top 10 football NCAA',           'Top 10 fútbol NCAA',                'AL GA OH MI OK TX FL TN');
 
   // ─── 🍔 FOOD — Regional specifics ───
   add('pc_seafood_capital',     '🦀 Famous seafood region',               'Région fruits de mer',           'Región de mariscos',                'MD ME MA LA WA FL OR');
@@ -1189,7 +1150,6 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_ramen_capital',       '🍜 Top US ramen scene',                  'Top scène ramen',                'Top escena ramen',                  'CA NY WA HI IL TX');
   add('pc_pho_capital',         '🍜 Top US Vietnamese pho scene',         'Top scène phở US',               'Top escena phở US',                 'CA TX WA VA GA TX');
   add('pc_michelin_starred',    '⭐ Has Michelin-starred restaurants',    'Restos étoilés Michelin',        'Restaurantes Michelin',             'CA NY IL NV FL DC WA TX');
-  add('pc_food_truck_culture',  '🚚 Vibrant food-truck scene',            'Scène food-truck',               'Escena food-truck',                 'CA TX OR WA NY IL TN PA');
   add('pc_state_drink_iconic',  '🥤 Has an iconic regional beverage',     'Boisson régionale',              'Bebida regional',                   'GA KY TN NC SC NY CA AL TX');
   add('pc_state_dessert',       '🍨 Has a signature dessert',             'Dessert régional signature',     'Postre regional',                   'PA NY MA RI WI OH KY MO IN');
 
@@ -1197,11 +1157,8 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_no_helmet_motorcycle','🏍️ No motorcycle helmet law',            'Pas d\'obligation casque moto',  'Sin obligación casco moto',         'IL IA NH FL TX CO MI');
   add('pc_open_carry_legal',    '🔫 Open-carry firearms legal',           'Port apparent légal',            'Porte abierto legal',               'AZ NV TX OK GA LA NM VA WV AL');
   add('pc_helmet_bicycle_law',  '🚲 Mandatory bicycle helmet (under 18)', 'Casque vélo <18 obligatoire',    'Casco bici <18 obligatorio',        'CA NY MA WA DE NJ FL');
-  add('pc_no_lottery_state',    '🎰 No state lottery',                    'Pas de loterie',                 'Sin lotería',                       'AL AK HI NV UT');
-  add('pc_legal_recreational_pot','🌿 Recreational cannabis fully legal','Cannabis récréatif légal',       'Cannabis recreativo legal',         'AK AZ CA CO CT DE IL ME MA MD MI MN MO MT NV NJ NM NY OH OR RI VT VA WA');
   add('pc_legal_psilocybin',    '🍄 Decriminalized psilocybin in some city','Psilocybine décriminalisée','Psilocibina despenalizada',           'OR CO CA WA MI MA');
   add('pc_homeschool_strong',   '🏠 Strong homeschool culture',           'Culture école à la maison',      'Cultura educación en casa',         'TX FL UT GA AL OK NC');
-  add('pc_no_state_income_tax', '💸 No state income tax',                 'Pas d\'impôt sur revenu',        'Sin impuesto sobre renta',          'AK FL NV NH SD TN TX WA WY');
   add('pc_unicameral_legis',    '🏛️ Unicameral state legislature',        'Législature unicamérale',        'Legislatura unicameral',            'NE');
 
   // ─── 🚗 ROAD / TRANSPORT NICHE ───
@@ -1220,13 +1177,10 @@ const PENDING_CONSTRAINTS = (() => {
 
   // ─── 🚀 TECH HUBS ───
   add('pc_unicorn_companies',   '🦄 Has 10+ tech unicorns',               '10+ licornes tech',              '10+ unicornios tech',               'CA NY MA WA TX IL');
-  add('pc_silicon_x_nickname',  '💻 Self-styled "Silicon X" hub',         'Surnom Silicon X',               'Apodo Silicon X',                   'CA UT NC TX MA WA');
   add('pc_top_vc_funding',      '💰 Top-10 venture capital state',        'Top 10 capital risque',          'Top 10 capital riesgo',             'CA NY MA TX WA IL CO GA');
   add('pc_remote_work_friendly','💻 Top remote-work-friendly state',      'État remote-work friendly',      'Estado remote-work friendly',       'CO FL TX NC SC TN ID NV');
 
   // ─── 🎨 CULTURE / FESTIVALS ───
-  add('pc_iconic_state_fair',   '🎡 Iconic state fair (1M+ visitors)',    'Foire d\'État emblématique',     'Feria estatal icónica',             'TX MN IA OH OK NY MO WI IN GA');
-  add('pc_renfaire_top',        '🏰 Major Renaissance Faire',             'Renaissance Faire majeur',       'Feria renacentista mayor',          'TX CA NY MN AZ MD PA GA WI MI OH');
   add('pc_pride_top10',         '🌈 Top-10 Pride parade size',            'Top 10 Pride',                   'Top 10 Pride',                      'NY CA IL TX WA MA FL DC GA');
   add('pc_jewish_culture',      '✡️ Strong Jewish-American culture',     'Forte présence juive-américaine','Fuerte presencia judía',            'NY NJ CA FL MA MD IL PA');
   add('pc_muslim_culture',      '☪️ Strong Muslim-American culture',     'Forte présence musulmane',       'Fuerte presencia musulmana',        'NY CA MI IL TX VA NJ');
@@ -1238,15 +1192,12 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_nsf_grants_top',      '🔬 Top NSF funding recipient',           'Top financement NSF',            'Top financiación NSF',              'CA MA NY IL TX MD WA CO');
   add('pc_nobel_winners_5plus', '🏅 Birthplace of 5+ Nobel laureates',    '5+ prix Nobel',                  '5+ premios Nobel',                  'NY CA IL MA PA OH');
   add('pc_macarthur_fellows',   '🧠 Birthplace of 5+ MacArthur fellows',  '5+ bourses MacArthur',           '5+ becas MacArthur',                'NY CA MA IL PA TX MI MN');
-  add('pc_rhodes_scholars',     '🎓 Birthplace of 5+ Rhodes Scholars',    '5+ Rhodes',                      '5+ Rhodes',                         'CA NY MA TX VA PA IL');
 
   // ─── 🌍 INTERNATIONAL TRADE ───
   add('pc_top_export_state',    '📦 Top US export state',                 'Top État exportateur',           'Top estado exportador',             'TX CA LA WA IL NY MI');
   add('pc_top_import_state',    '📥 Top US import state',                 'Top État importateur',           'Top estado importador',             'CA TX IL NJ MI LA');
   add('pc_top_agri_export',     '🌾 Top agricultural export',             'Top exportateur agricole',       'Top exportador agrícola',           'IA IL CA NE MN IN');
   add('pc_top_auto_manufact',   '🚗 Top US auto manufacturer',            'Top constructeur auto',          'Top fabricante autos',              'MI OH IN KY TN AL SC MS');
-  add('pc_top_aerospace_state', '🚀 Top aerospace manufacturer',          'Top aérospatial',                'Top aeroespacial',                  'WA CA AZ TX FL GA KS AL OH MO');
-  add('pc_top_oil_producer',    '🛢️ Top oil/gas producer',                'Top producteur pétrole',         'Top productor petróleo',            'TX OK ND NM CO WY LA AK CA WV PA');
   add('pc_top_renewable_energy','⚡ Top renewable energy producer',       'Top renouvelables',              'Top renovables',                    'TX CA IA OK KS WY ND OR WA');
 
   // ─── 🦅 WILDLIFE / NATURE ───
@@ -1254,16 +1205,12 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_black_bear_huntable', '🐻 Black bear hunting state',            'Chasse ours noir',               'Caza oso negro',                    'AK ME NY NH WV PA MI WI MN VT MA NJ NC GA TN VA WY MT ID');
   add('pc_wild_horses_state',   '🐴 Wild mustang population',             'Mustangs sauvages',              'Mustangs salvajes',                 'NV WY UT MT OR CO');
   add('pc_wild_buffalo',        '🦬 Wild buffalo herd',                   'Bisons sauvages',                'Bisontes salvajes',                 'WY MT SD UT AZ OK');
-  add('pc_alligator_native_old','🐊 Native American alligator',           'Alligator américain',            'Caimán americano',                  'FL LA GA AL MS SC NC TX OK AR');
   add('pc_iconic_state_bird',   '🐦 Iconic state bird (≥5 share it)',     'Oiseau d\'État iconique',        'Ave estatal icónica',               'IL IN KY NC OH VA WV AR FL MS TN TX KS MT NE ND OR WY');
-  add('pc_iconic_state_animal', '🐾 Iconic state mammal (≥5 share it)',   'Mammifère d\'État',              'Mamífero estatal',                  'WY OK KS NE ND SD TX OK MT WY');
 
   // ─── 🌧️ CLIMATE / WEATHER ───
   add('pc_4_distinct_seasons',  '🌳 4 distinct seasons climate',          '4 saisons distinctes',           '4 estaciones distintas',            'MA NY NH ME VT WI MI MN OH PA');
   add('pc_subtropical_climate', '🌴 Subtropical climate',                 'Climat subtropical',             'Clima subtropical',                 'FL TX LA GA AL SC NC HI');
-  add('pc_arid_desert_climate', '🌵 Arid / desert climate',               'Climat aride',                   'Clima árido',                       'AZ NV NM UT CA TX');
   add('pc_humid_continental',   '❄️ Humid continental climate',           'Climat continental humide',      'Clima continental húmedo',          'MN WI MI NY MA PA OH IL IA');
-  add('pc_oceanic_climate',     '🌊 Oceanic climate',                     'Climat océanique',               'Clima oceánico',                    'WA OR CA');
   add('pc_tropical_climate',    '🌴 Tropical climate',                    'Climat tropical',                'Clima tropical',                    'FL HI');
   add('pc_iconic_drought_zone', '☀️ Recurring major drought',             'Sécheresses récurrentes',        'Sequías recurrentes',               'CA AZ NM TX NV OK KS UT CO');
   add('pc_iconic_blizzard_zone','❄️ Major blizzard zone',                  'Zone de blizzards',              'Zona de ventiscas',                 'NE KS OK MN ND SD WY MT WI MA NH ME NY');
@@ -1274,29 +1221,21 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_iconic_theater_old',  '🎭 Historic Broadway-era theater',       'Théâtre historique',             'Teatro histórico',                  'NY MA CA IL DC GA');
   add('pc_iconic_movie_theater','🎬 Historic single-screen movie theater','Cinéma historique',              'Cine histórico',                    'CA NY IL TX FL OH NJ');
   add('pc_grand_ole_opry',      '🤠 Grand Ole Opry venue history',        'Histoire Grand Ole Opry',        'Historia Grand Ole Opry',           'TN');
-  add('pc_iconic_drive_in',     '🚗 5+ active drive-in theaters',         '5+ drive-ins actifs',            '5+ autocines activos',              'PA NY OH NC TN IN MI WI CA TX FL VA');
 
   // ─── 🎮 GAMING ───
   add('pc_game_dev_hub_top',    '🎮 Top game-dev industry hub',           'Pôle jeu vidéo',                 'Centro videojuego',                 'CA WA TX MA NY GA NC IL');
-  add('pc_esports_arena_top',   '🎮 Major esports tournament city',       'Tournois esports',               'Torneos esports',                   'CA TX NV NY GA WA');
   add('pc_console_origin',      '🎮 Major game studio HQ',                'Siège studio jeu majeur',        'Sede estudio juego mayor',          'CA WA TX MA NY');
 
   // ─── 🎪 NICHE EVENTS ───
-  add('pc_iditarod_state',      '🛷 Iditarod sled-dog race',              'Iditarod',                       'Iditarod',                          'AK');
   add('pc_kentucky_derby_state','🐎 Kentucky Derby',                      'Kentucky Derby',                 'Kentucky Derby',                    'KY');
-  add('pc_indy_500_state',      '🏎️ Indianapolis 500',                    'Indy 500',                       'Indy 500',                          'IN');
-  add('pc_pikes_peak_climb',    '⛰️ Pikes Peak hill climb',               'Pikes Peak',                     'Pikes Peak',                        'CO');
   add('pc_bonneville_speed',    '🏎️ Bonneville Salt Flats speed trials',  'Bonneville',                     'Bonneville',                        'UT');
-  add('pc_burning_man_culture', '🔥 Burning Man counterculture state',    'Burning Man',                    'Burning Man',                       'NV CA');
   add('pc_groundhog_day_state', '🐀 Groundhog Day tradition',             'Groundhog Day',                  'Día de la Marmota',                 'PA');
   add('pc_punxsutawney_etc',    '🐀 Multiple Groundhog Day events',       'Multiples Groundhog Day',        'Múltiples Groundhog Day',           'PA OH WI MI NY');
 
   // ─── 📚 LITERATURE / PUBLISHING ───
-  add('pc_pulitzer_publishers', '📰 Has a Pulitzer-winning newspaper',    'Journal Pulitzer',               'Periódico Pulitzer',                'NY CA IL DC FL MA TX VA WI GA');
   add('pc_top_publisher_hq',    '📚 Major book publisher HQ',             'Maison d\'édition',              'Editorial mayor',                   'NY CA MA');
   add('pc_top_writing_program', '✍️ Top creative writing program',        'Top programme écriture',         'Top escritura creativa',            'IA NY MA CA TX VA NC MI');
   add('pc_iconic_independent_bookstore','📖 Iconic independent bookstore','Librairie indépendante culte',   'Librería independiente icónica',    'CA NY IL OR WA MA');
-  add('pc_us_poet_laureate',    '🖋️ Birth state of US Poet Laureate',     'Naissance Poet Laureate',        'Cuna Poet Laureate',                'CA NY IL MA OH PA');
 
   // ─── 🎨 ARTS ───
   add('pc_top_art_museum_2',    '🖼️ Top-20 US art museum',                'Top 20 musée d\'art',            'Top 20 museo arte',                 'NY MA DC CA IL PA TX OH MO MD MI MN GA');
@@ -1310,17 +1249,13 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_iconic_skyline',      '🏙️ Iconic city skyline (≥5 skyscrapers ≥250m)','Skyline iconique','Skyline icónica',                          'NY IL TX CA GA PA MA OH FL MO');
   add('pc_modernist_houses',    '🏠 Famous mid-century modern architecture','Architecture mid-century','Arquitectura mid-century',              'CA AZ NM IL CT');
   add('pc_colonial_architecture','🏛️ Famous Colonial-era architecture',  'Architecture coloniale',         'Arquitectura colonial',             'MA VA SC PA RI CT');
-  add('pc_iconic_lighthouse',   '🗼 50+ historic lighthouses',            '50+ phares historiques',         '50+ faros históricos',              'MI ME MA NY MD VA NC FL WI MN');
   add('pc_iconic_courthouse',   '⚖️ Famous historic courthouse',          'Palais de justice historique',   'Tribunal histórico',                'VA MA NY GA TN KY');
 
   // ─── 🦅 NATIONAL MONUMENTS ───
   add('pc_natl_monument_5plus', '🏛️ 5+ National Monuments',               '5+ monuments nationaux',         '5+ monumentos nacionales',          'AZ NM UT CA CO MT WY');
-  add('pc_battlefield_park',    '⚔️ Has a National Battlefield Park',     'Champ de bataille national',     'Campo de batalla nacional',         'VA PA MD TN GA SC MS');
 
   // ─── 🚂 TRANSPORTATION HUBS ───
   add('pc_busy_airport_3plus',  '✈️ 3+ top-50 US airports',               '3+ aéroports top 50',            '3+ aeropuertos top 50',             'CA TX NY FL IL GA');
-  add('pc_cruise_port_top',     '🚢 Top cruise port',                     'Port croisière',                 'Puerto crucero',                    'FL TX CA LA NY MD WA NJ');
-  add('pc_major_subway',        '🚇 Subway / metro system',               'Métro',                          'Metro',                             'NY IL MA PA GA MD CA OR WA');
 
   // ─── 🚫 GUN CULTURE ───
   add('pc_high_gun_ownership',  '🔫 Top gun-ownership rate',              'Top possession armes',           'Top posesión armas',                'MT WY AK ID AR MS AL OK TN KY WV');
@@ -1337,17 +1272,13 @@ const PENDING_CONSTRAINTS = (() => {
   // ─── 🎓 GREEK LIFE ───
   add('pc_greek_life_heavy',    '🏛️ Heavy fraternity / sorority culture','Forte vie grecque',              'Fuerte vida griega',                'AL AR FL GA KY LA MS MO OK SC TN TX VA WV NC');
   add('pc_iconic_college_town', '🎓 Iconic college town culture',         'Ville universitaire culte',      'Ciudad universitaria',              'IN MA WI CA AZ FL MI NC TX');
-  add('pc_hbcu_strong',         '🎓 Strong HBCU tradition',               'Forte tradition HBCU',           'Fuerte tradición HBCU',             'DC GA AL FL MD NC SC TN TX VA LA MS');
 
   // ─── 🌳 OUTDOOR / RECREATIONAL ───
-  add('pc_kayak_canoe_top',     '🛶 Top kayaking / canoeing destination', 'Top kayak / canoë',              'Top kayak / canoa',                 'MN WI MI ME NH VT NY FL CA WA OR CO AK');
   add('pc_iconic_fishing',      '🎣 Iconic fishing destination',          'Pêche emblématique',             'Pesca icónica',                     'MT WY CO ID OR WA UT AK CA AL FL LA WI MN');
   add('pc_iconic_hunting',      '🦌 Iconic hunting culture',              'Culture de la chasse',           'Cultura de caza',                   'MT WY CO ID TX MI WI MN PA NY');
-  add('pc_iconic_hiking',       '🥾 Iconic hiking destination',           'Randonnée emblématique',         'Senderismo icónico',                'CO CA UT WA OR WY MT NH VT NC TN ME AZ NV NM');
   add('pc_iconic_rock_climbing','🧗 Iconic rock-climbing destination',    'Escalade emblématique',          'Escalada icónica',                  'CO UT CA WY MT NV WA');
   add('pc_iconic_mountain_bike','🚵 Iconic mountain-biking trails',       'Vélo de montagne emblématique',  'MTB icónico',                       'CO UT CA AZ WY MT OR WA');
   add('pc_iconic_off_road',     '🚙 Iconic off-road destination',         'Tout-terrain emblématique',      'Off-road icónico',                  'UT NV CO AZ NM OR');
-  add('pc_iconic_road_trip_2',  '🚗 Iconic road-trip start/end',          'Road trip iconique',             'Road trip icónico',                 'CA OR WA NV UT AZ NM TX OK MO IL KY TN NC VA');
 
   // ─── 🌽 AGRICULTURE ───
   add('pc_top_corn_producer',   '🌽 Top corn producer',                   'Top maïs',                       'Top maíz',                          'IA IL NE MN IN SD OH MO');
@@ -1364,7 +1295,6 @@ const PENDING_CONSTRAINTS = (() => {
   // ─── 🎄 SEASONAL TRADITIONS ───
   add('pc_christmas_tree_state','🎄 Top Christmas-tree producer',         'Top sapin de Noël',              'Top árbol Navidad',                 'OR NC PA WA WI MI NY');
   add('pc_pumpkin_producer',    '🎃 Top pumpkin producer',                'Top citrouille',                 'Top calabaza',                      'IL CA PA OH NY MI');
-  add('pc_maple_syrup_state',   '🍁 Top maple-syrup producer',            'Top sirop d\'érable',            'Top jarabe arce',                   'VT NY NH ME WI MI');
   add('pc_apple_cider_state',   '🍎 Top apple-cider producer',            'Top cidre',                      'Top sidra',                         'NY MI PA WI CT NH VA WA');
 
   // ─── 🏥 HEALTHCARE ───
@@ -1390,23 +1320,17 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_cabot_trail_us',      '🛣️ Iconic coastal scenic drive',         'Route panoramique côtière',      'Carretera escénica costera',        'CA OR WA ME MA NH');
 
   // ─── 🎲 QUIRKY / WEIRD ───
-  add('pc_alien_lore_strong',   '👽 Famous UFO / alien lore',             'Folklore OVNI',                  'Folclor OVNI',                      'NM AZ NV CA OR WA');
   add('pc_bigfoot_lore',        '👣 Strong Bigfoot folklore',             'Folklore Bigfoot',               'Folclor Bigfoot',                   'OR WA CA AK ID MT BC');
   add('pc_loch_ness_clones',    '🐍 Famous "monster" lake lore',          'Légendes de monstres lacustres', 'Leyendas de monstruos lacustres',   'VT NY NE CA');
   add('pc_haunted_places',      '👻 5+ famous haunted places',            '5+ lieux hantés',                '5+ lugares embrujados',             'MA RI LA CA NV CO IL TN PA NY');
-  add('pc_serial_killer_lore',  '🔪 Notorious serial-killer history',     'Histoire de tueurs en série',    'Historia de asesinos en serie',     'WA FL UT IL KS NY CA WI');
-  add('pc_mob_history',         '🕴️ Mafia history',                       'Histoire mafieuse',              'Historia mafiosa',                  'NY NJ IL NV FL MA RI PA');
-  add('pc_cult_history',        '👁️ Famous cult / sect history',          'Histoire de sectes',             'Historia de sectas',                'TX CA UT CO OR WA AZ FL');
   add('pc_witch_trial_lore',    '🔥 Salem-witch-trial-era heritage',      'Procès de sorcellerie',          'Juicios de brujas',                 'MA CT VA');
 
   // ─── 🍻 BEER / SPIRITS ───
   add('pc_craft_brewery_top',   '🍺 Top craft brewery density',           'Densité brasseries',             'Densidad cervecerías',              'VT OR ME MT CO WA CA NM AK PA');
-  add('pc_bourbon_main',        '🥃 Major bourbon-distillery state',      'Distilleries bourbon',           'Destilerías bourbon',               'KY TN IN VA NY CO TX');
   add('pc_rum_distillery',      '🍹 Major rum distillery',                'Distilleries de rhum',           'Destilerías ron',                   'PR FL HI CA NY');
   add('pc_iconic_brewery_old',  '🍺 Has a pre-Prohibition brewery still active','Brasserie pré-Prohibition','Cervecería pre-Prohibición',         'WI MO PA MA OH MN');
 
   // ─── ☎️ COMMUNICATION / TECH HUBS ───
-  add('pc_telecom_hub',         '📡 Major telecom hub',                   'Pôle télécoms',                  'Centro telecom',                    'TX NJ NY VA GA CA');
   add('pc_data_center_hub',     '💾 Major data-center cluster',           'Centre de données',              'Centro de datos',                   'VA TX NY OR GA NC IA');
   add('pc_cable_company_hq',    '📺 Major cable / streaming HQ',          'Siège câble / streaming',        'Sede cable / streaming',            'CA NY GA PA CO');
   add('pc_iconic_newsroom',     '📰 Iconic national newsroom',            'Rédaction nationale culte',      'Redacción nacional icónica',        'NY DC CA IL MA');
@@ -1416,7 +1340,6 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_elopement_state',     '💑 Top elopement state',                 'Top fugues amoureuses',          'Top fugas amorosas',                'NV TN CO CA VT NY');
 
   // ─── 🦅 HISTORICAL "FIRSTS" ───
-  add('pc_first_state_park',    '🌳 Has one of first state parks',        'Premier parc d\'État',           'Primer parque estatal',             'NY CA MA NJ PA');
   add('pc_first_university',    '🎓 Has one of first US universities',    'Premières universités',          'Primeras universidades',            'MA VA CT NY NJ PA RI');
   add('pc_first_skyscraper',    '🏙️ First-skyscraper era city',           'Premiers gratte-ciel',           'Primer rascacielos',                'IL NY PA MO');
   add('pc_first_aviation',      '✈️ Aviation firsts',                     'Premières en aviation',          'Primeras en aviación',              'NC OH CA WA');
@@ -1425,8 +1348,6 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_jordan_peele_movie',  '🎬 Jordan Peele film setting',           'Décor de Peele',                 'Escenario de Peele',                'NY CA AL');
   add('pc_christopher_nolan_us','🎬 Nolan film US locations',             'Décor US Nolan',                 'Escenario US Nolan',                'NV CO CA NY NJ');
   add('pc_p_t_anderson_us',     '🎬 P.T. Anderson film setting',          'Décor de P.T. Anderson',         'Escenario P.T. Anderson',           'CA TX NV');
-  add('pc_safdie_brothers',     '🎬 Safdie Brothers film setting',        'Décor des Safdie',               'Escenario Safdie',                  'NY NJ');
-  add('pc_greta_gerwig_us',     '🎬 Greta Gerwig film setting',           'Décor de Gerwig',                'Escenario Gerwig',                  'CA NY MA');
 
   // ─── 📺 NETWORK / STREAMING SHOWS ───
   add('pc_netflix_drama',       '📺 Setting of a major Netflix drama',    'Décor drama Netflix',            'Escenario drama Netflix',           'CA NY GA NM KY NJ FL TX');
@@ -1444,18 +1365,11 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_top_piano_brand',     '🎹 Major piano brand HQ',                'Marque de pianos',               'Marca de pianos',                   'NY MA');
 
   // ─── 🚓 LAW ENFORCEMENT ───
-  add('pc_iconic_state_trooper','🚓 Iconic state trooper / highway patrol','Police d\'État emblématique',  'Patrulla estatal icónica',          'TX CA AZ NY NJ FL OK IL');
-  add('pc_fbi_field_office',    '🕵️ Major FBI field office',              'Bureau FBI majeur',              'Oficina FBI mayor',                 'DC NY CA TX FL IL GA');
 
   // ─── 🎫 STATE QUARTER DESIGN ───
-  add('pc_state_quarter_iconic','🪙 State quarter design considered iconic','Quarter d\'État iconique',     'Quarter estatal icónico',           'NY DE PA NJ GA CT MA MD HI AK');
   add('pc_state_flag_unique',   '🚩 Unique state flag (not just seal)',   'Drapeau d\'État unique',         'Bandera estatal única',             'TX CA AK AZ NM OK MD');
 
   // ─── 🎤 COMEDY ICONIC ───
-  add('pc_snl_setting_etc',     '🎙️ Iconic SNL setting / featured',       'Décor SNL iconique',             'Escenario SNL icónico',             'NY');
-  add('pc_iconic_comedy_movie', '🎬 Iconic comedy setting',               'Décor de comédie iconique',      'Escenario comedia icónica',         'NY CA NJ IL MA NV');
-  add('pc_iconic_comedy_club',  '🎙️ Iconic comedy-club city',              'Club de comédie iconique',       'Club de comedia icónico',           'NY CA IL MA TX TN FL CO');
-  add('pc_podcast_studio',      '🎙️ Major podcast studio',                'Studio podcast majeur',          'Estudio podcast mayor',             'CA NY MA TX GA CO IL');
 
   // ─── 🏛️ DEMOCRACY MILESTONES ───
   add('pc_first_woman_governor_more','👩‍💼 Has had ≥3 woman governors',       '≥3 femmes gouverneurs',           '≥3 gobernadoras',                   'AZ TX OR KS WA CT NH NM AL OH MI MA RI VT NY');
@@ -1468,15 +1382,10 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_lowest_population',   '👥 Top 5 least populous',                'Top 5 moins peuplés',            'Top 5 menos poblados',              'WY VT AK ND SD');
 
   // ─── 🎯 NATIONAL HERITAGE ───
-  add('pc_route_66_state',      '🛣️ On historic Route 66',                'Route 66',                       'Ruta 66',                           'IL MO KS OK TX NM AZ CA');
-  add('pc_appalachian_trail_2', '🥾 On Appalachian Trail',                'Sentier des Appalaches',         'Sendero de los Apalaches',          'GA NC TN VA WV MD PA NJ NY CT MA VT NH ME');
-  add('pc_pacific_crest_trail', '🥾 On Pacific Crest Trail',              'Pacific Crest Trail',            'Pacific Crest Trail',               'CA OR WA');
   add('pc_continental_divide_t','🥾 On Continental Divide Trail',         'Continental Divide Trail',       'Continental Divide Trail',          'NM CO WY ID MT');
 
   // ─── 📚 NICHE TRIVIA ───
-  add('pc_only_island_state',   '🏝️ Only island state',                   'Seul État insulaire',            'Único estado insular',              'HI');
   add('pc_non_contiguous',      '🗺️ Non-contiguous to 48',                'Non contigus aux 48',            'No contiguos',                      'AK HI');
-  add('pc_state_capitol_dome',  '🏛️ State Capitol has a famous dome',     'Capitole avec coupole célèbre',  'Capitolio con cúpula famosa',       'TX MN IA WV MT IN UT WI PA CO RI MO MS NE OH');
   add('pc_dual_state_names',    '🤝 Has a North/South sibling',           'A un État jumeau N/S',           'Tiene estado gemelo N/S',           'ND SD NC SC WV VA');
   add('pc_state_capital_small', '🏛️ State capital is small (<100k pop)',  'Capitale petite (<100k)',        'Capital pequeña (<100k)',           'VT AK MT NH SD');
 
@@ -1491,7 +1400,6 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_contains_y',          '🔤 Name contains the letter Y',          'Nom contient un Y',              'Nombre contiene Y',                 'KY MD NJ NY PA WY');
   add('pc_contains_double_s',   '🔤 Name contains "ss"',                  'Nom contient « ss »',            'Nombre contiene «ss»',              'MA MS TN');
   add('pc_contains_double_n',   '🔤 Name contains "nn"',                  'Nom contient « nn »',            'Nombre contiene «nn»',              'CT MN PA TN');
-  add('pc_contains_double_i',   '🔤 Name contains "ii"',                  'Nom contient « ii »',            'Nombre contiene «ii»',              'HI');
   add('pc_contains_double_a',   '🔤 Three or more A\'s in name',          'Trois A ou plus',                'Tres o más letras A',               'AL AK AR IN LA MA NE NV PA');
   add('pc_contains_double_e',   '🔤 Two or more E\'s in name',            'Deux E ou plus',                 'Dos o más letras E',                'DE TN');
   add('pc_contains_substring_an','🔤 Name contains "an"',                  'Nom contient « an »',            'Nombre contiene «an»',              'AR IN KS LA MD MT NC PA SC');
@@ -1545,14 +1453,9 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_borders_canada',      '🌎 Borders Canada',                      'Frontière avec le Canada',       'Frontera con Canadá',               'AK WA ID MT ND MN MI OH PA NY VT NH ME');
   add('pc_borders_ocean',       '🌊 Borders an ocean',                    'Borde un océan',                 'Linda con un océano',               'ME NH MA RI CT NY NJ DE MD VA NC SC GA FL AL MS LA TX CA OR WA AK HI');
   add('pc_great_lakes_2',       '🏞️ Borders a Great Lake',                'Borde un Grand Lac',             'Borde un Gran Lago',                'MN WI IL IN MI OH PA NY');
-  add('pc_borders_pacific',     '🌊 Pacific coastline',                   'Côte Pacifique',                 'Costa del Pacífico',                'CA OR WA AK HI');
-  add('pc_borders_atlantic',    '🌊 Atlantic coastline',                  'Côte Atlantique',                'Costa del Atlántico',               'ME NH MA RI CT NY NJ DE MD VA NC SC GA FL');
-  add('pc_mississippi_river',   '🛶 Crossed by the Mississippi River',    'Traversé par le Mississippi',    'Atravesado por Mississippi',        'MN WI IA IL MO KY TN AR MS LA');
-  add('pc_rockies_in_state',    '⛰️ Rocky Mountains pass through',        'Rocheuses dans l\'État',         'Montañas Rocosas',                  'NM CO WY MT ID UT');
   add('pc_appalachians_in_state','⛰️ Appalachian range pass through',     'Appalaches dans l\'État',        'Montañas Apalaches',                'AL GA NC SC TN VA WV KY OH PA NY VT NH ME MD');
   add('pc_landlocked',          '🏞️ Landlocked (no coast, no Great Lake)','Enclavé',                        'Sin salida al mar',                 'AZ AR CO ID IA KS KY MO MT NE NV NM ND OK SD TN UT VT WV WY');
   add('pc_sea_level_low',       '🏖️ Lowest point near/below sea level',   'Point bas près du niveau mer',   'Punto bajo cerca del mar',          'CA LA FL DE MD NC VA NJ NY');
-  add('pc_mountain_west',       '🏔️ Mountain West region',                'Mountain West',                  'Oeste montañoso',                   'MT ID WY NV UT CO AZ NM');
 
   // ─── 📜 HISTORY CLASSIC ───
   add('pc_thirteen_colonies',   '📜 One of the 13 original colonies',     '13 colonies originelles',        '13 colonias originales',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI');
@@ -1560,9 +1463,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_admitted_1800s',      '📜 Admitted in the 1800s',               'Admis au XIXe siècle',           'Admitido en el siglo XIX',          'OH LA IN MS IL AL ME MO AR MI FL TX IA WI CA MN OR KS WV NV NE CO ND SD MT WA ID WY UT');
   add('pc_admitted_after_civil','📜 Admitted 1865–1900',                  'Admis 1865–1900',                'Admitido 1865–1900',                'NE CO ND SD MT WA ID WY UT');
   add('pc_admitted_20th_century','📜 Admitted in the 20th century',       'Admis au XXe siècle',            'Admitido en el siglo XX',           'OK NM AZ AK HI');
-  add('pc_louisiana_purchase',  '📜 In Louisiana Purchase territory',     'Achat de la Louisiane',          'Compra de Luisiana',                'AR IA KS LA MN MO MT NE ND OK SD WY CO');
   add('pc_civil_war_union',     '📜 Union state in Civil War',            'Camp de l\'Union',               'Lado de la Unión',                  'CA CT IL IN IA KS ME MA MI MN NV NH NJ NY OH OR PA RI VT WV WI');
-  add('pc_oregon_trail',        '🐎 On the Oregon Trail',                 'Sur la piste de l\'Oregon',      'Sendero de Oregón',                 'MO KS NE WY ID OR');
   add('pc_pony_express',        '🐎 On the Pony Express route',           'Pony Express',                   'Pony Express',                      'MO KS NE CO WY UT NV CA');
   add('pc_old_west',            '🤠 Classic Old West frontier',           'Far West classique',             'Lejano Oeste clásico',              'TX AZ NM CA NV CO WY MT KS OK');
 
@@ -1587,7 +1488,6 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_top_tobacco',         '🚬 Top tobacco producer',                'Top tabac',                      'Top productor de tabaco',           'NC KY VA TN GA SC');
   add('pc_top_apple',           '🍎 Top apple producer',                  'Top pommes',                     'Top productor de manzanas',         'WA NY MI PA CA VA WV');
   add('pc_top_potato',          '🥔 Top potato producer',                 'Top pommes de terre',            'Top productor de papas',            'ID WA WI OR CO MN ND MI');
-  add('pc_top_rice',            '🍚 Top rice producer',                   'Top riz',                        'Top productor de arroz',            'AR LA TX MS CA MO');
   add('pc_top_peanut',          '🥜 Top peanut producer',                 'Top cacahuètes',                 'Top productor de cacahuetes',       'GA AL FL TX NC OK VA');
 
   // ─── 🎵 MUSIC CLASSIC ───
@@ -1595,16 +1495,12 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_country_music_2',     '🎸 Country music heartland',             'Country',                        'Country',                           'TN TX KY OK AR MS LA');
   add('pc_blues_birthplace',    '🎶 Blues birthplace',                    'Berceau du blues',               'Cuna del blues',                    'MS TN LA AL TX');
   add('pc_motown_state',        '🎤 Motown / Detroit sound',              'Motown',                         'Motown',                            'MI');
-  add('pc_grunge_state',        '🎸 Grunge scene origin',                 'Berceau du grunge',              'Cuna del grunge',                   'WA');
 
   // ─── 🏈 SPORTS CLASSIC ───
   add('pc_no_pro_team',         '🏟️ No major pro sports team',            'Sans franchise majeure',         'Sin equipo profesional mayor',      'AK ID ME MT NH NM ND SD VT WV WY');
   add('pc_pga_major_hosted',    '⛳ PGA major championship hosted',       'Major PGA accueilli',            'Major PGA',                         'NY GA NJ CA WA OK NC PA SC FL');
-  add('pc_super_bowl_host',     '🏆 Super Bowl host state',               'Super Bowl accueilli',           'Anfitrión Super Bowl',              'FL CA TX LA AZ MN IN GA NJ NV');
 
   // ─── 💰 ECONOMY ───
-  add('pc_no_income_tax',       '💰 No state income tax',                 'Pas d\'impôt sur revenu d\'État','Sin impuesto estatal a la renta',   'AK FL NV NH SD TN TX WA WY');
-  add('pc_top_oil_producer',    '🛢️ Top oil producer',                    'Top pétrole',                    'Top productor de petróleo',         'TX OK LA AK ND CA NM WY');
   add('pc_top_coal_producer',   '⛏️ Top coal producer',                   'Top charbon',                    'Top productor de carbón',           'WV KY PA WY MT VA AL IL IN OH');
   add('pc_top_natural_gas',     '🔥 Top natural gas producer',            'Top gaz naturel',                'Top productor de gas natural',      'TX PA LA OK WY WV CO NM');
 
@@ -1625,7 +1521,6 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_multiple_time_zones', '🕒 Spans multiple time zones',           'Plusieurs fuseaux',              'Múltiples zonas horarias',          'AK FL ID KS KY MI NE ND OR SD TN TX');
 
   // ─── 🦅 STATE SYMBOLS ───
-  add('pc_state_bird_cardinal', '🐦 State bird is the Cardinal',          'Oiseau d\'État : cardinal',      'Ave estatal: cardenal',             'IL IN KY NC OH VA WV');
   add('pc_state_tree_oak',      '🌳 State tree is an oak',                'Arbre d\'État : chêne',          'Árbol estatal: roble',              'CT DC GA IL IA MD NJ');
   add('pc_state_flower_rose',   '🌹 State flower is a rose',              'Fleur d\'État : rose',           'Flor estatal: rosa',                'GA IA NY ND OK DC');
 

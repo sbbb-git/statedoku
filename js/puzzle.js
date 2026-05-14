@@ -557,7 +557,10 @@ const Puzzle = (() => {
   }
   function _activeConstraints() {
     const dis = _getDisabled();
-    return ALL_CONSTRAINTS.filter(c => !dis.has(c));
+    // Merge built-in pool with admin-approved pending candidates so approved
+    // constraints actually appear as columns in generated puzzles.
+    const merged = [...ALL_CONSTRAINTS, ..._approvedPendingList()];
+    return merged.filter(c => !dis.has(c));
   }
   function _activeRowGroups() {
     const dis = _getDisabled();
