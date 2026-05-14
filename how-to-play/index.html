@@ -80,81 +80,23 @@
 
 <main class="legal-main">
   <article class="legal-page">
-    <h1>How to Play Statedoku</h1>
-    <p class="legal-meta">A 2-minute guide to the daily US states puzzle</p>
+    <h1>How to play</h1>
 
-    <p>Statedoku is a daily puzzle that mixes <strong>Sudoku's grid uniqueness rule</strong> with <strong>American geography</strong>. The board is a 3×3 grid. Each cell must be filled with a US state that satisfies <em>both</em> its row constraint and its column constraint. Each of the 50 US states can be used at most once.</p>
+    <h2>The rules</h2>
+    <ol>
+      <li>The grid is 3×3. Each row and each column has a constraint label.</li>
+      <li>Tap a cell, type a few letters of a US state, pick from the list.</li>
+      <li>The state you place must match <strong>both</strong> the row and column constraint.</li>
+      <li>Each state can be used <strong>only once</strong>. You have <strong>3 mistakes</strong> per day.</li>
+    </ol>
 
-    <h2>The 5-step rulebook</h2>
+    <h2>Example</h2>
+    <p>Row: <em>Pacific coast</em>. Column: <em>Borders Mexico</em>. The cell where they meet → <strong>California</strong>.</p>
 
-    <h3>1. Read the row and column labels</h3>
-    <p>Every row has a label (e.g. <em>"Pacific coast"</em>, <em>"borders Mexico"</em>, <em>"original 13 colonies"</em>). Every column also has a label (e.g. <em>"starts with M"</em>, <em>"NBA team"</em>, <em>"named from a Spanish word"</em>). The state you place in row R, column C must satisfy <strong>both</strong> the row R constraint and the column C constraint.</p>
+    <h2>Sharing</h2>
+    <p>After solving, share an emoji grid (🟩🟥⬜) like Wordle.</p>
 
-    <h3>2. Tap a cell to open the search</h3>
-    <p>A bottom-sheet input slides up. Above the input, you'll see <strong>two tags</strong>: the constraints for the cell you tapped (row label × column label). Type at least <strong>3 letters</strong> of a state name — matching states will appear in the dropdown.</p>
-
-    <h3>3. Pick a state that fits both constraints</h3>
-    <p>Tap the state you think satisfies both row and column. Two outcomes:</p>
-    <ul>
-      <li><strong>Correct (green)</strong>: the cell locks. A small green ★ appears in the corner. You can't change it.</li>
-      <li><strong>Wrong (red flash)</strong>: the cell flashes red, the state is removed, and you lose one of your 3 mistakes.</li>
-    </ul>
-
-    <h3>4. Fill all 9 cells before 3 mistakes</h3>
-    <p>The top bar shows your remaining mistakes as 3 dots (●●●). Each wrong guess turns one red. If you reach 3 mistakes, the puzzle ends and shows the full solution. Otherwise, fill all 9 cells correctly to win the day.</p>
-
-    <h3>5. Share your result</h3>
-    <p>On the victory banner, tap "Share". You'll get a copy-pasteable emoji grid:</p>
-    <pre style="background:var(--surface-2); padding:14px; border-radius:8px; font-family:ui-monospace,Menlo,monospace; font-size:.85rem; line-height:1.6;">
-Statedoku 🗺️ 13/05
-🟩🟩🟩
-🟩🟥🟩
-🟩🟩🟩
-statedoku.com</pre>
-    <p>Paste it on Twitter, WhatsApp, Discord, iMessage — anywhere. Friends can play the same puzzle and compare.</p>
-
-    <h2>A worked example</h2>
-    <p>Say the puzzle is:</p>
-    <ul>
-      <li><strong>Row 1</strong>: <em>Pacific coast</em></li>
-      <li><strong>Row 2</strong>: <em>Borders Mexico</em></li>
-      <li><strong>Row 3</strong>: <em>Original 13 colonies</em></li>
-      <li><strong>Col 1</strong>: <em>Starts with C</em></li>
-      <li><strong>Col 2</strong>: <em>Two-word name</em></li>
-      <li><strong>Col 3</strong>: <em>Republican-leaning</em></li>
-    </ul>
-    <p>For row 1, column 1 (<em>Pacific coast</em> AND <em>Starts with C</em>): only one state fits — <strong>California</strong>.</p>
-    <p>For row 2, column 2 (<em>Borders Mexico</em> AND <em>Two-word name</em>): only one fits — <strong>New Mexico</strong>.</p>
-    <p>And so on. Every Statedoku puzzle has <strong>exactly one valid solution</strong>. If you find a placement that works, it's correct.</p>
-
-    <h2>Tips to get better</h2>
-    <p><strong>1. Start with the rarest cells.</strong> Some intersections only have 1 possible state. Find these first — they unlock the rest.</p>
-    <p><strong>2. Eliminate by row.</strong> If a row says "Pacific coast", only 5 states qualify (CA, OR, WA, AK, HI). Cross-check which of those also fit each column.</p>
-    <p><strong>3. Use the "uniqueness" rule.</strong> Each state appears at most once. If a state must go in row 1, it can't appear in row 2 or 3.</p>
-    <p><strong>4. Read labels carefully.</strong> "Has an NBA team" is different from "no major pro team". "Named from a Spanish word" only fits 6 states.</p>
-    <p><strong>5. Don't panic at "weird" constraints.</strong> Things like "Mount Rockies", "Tornado Alley", or "Rust Belt" are well-defined geographic concepts — once you know the list, they're not so hard.</p>
-
-    <h2>What kind of knowledge helps?</h2>
-    <p>Average US geography knowledge gets you ~60% of the puzzle. The rest comes from:</p>
-    <ul>
-      <li><strong>Capitals & big cities</strong> — knowing that Washington's capital is Olympia (not Seattle!) helps</li>
-      <li><strong>Politics</strong> — recent election results, party leaning</li>
-      <li><strong>History</strong> — Original 13, Confederate states, statehood timeline</li>
-      <li><strong>Geography</strong> — mountain ranges, rivers, deserts, time zones</li>
-      <li><strong>Trivia</strong> — name origins, double letters, borders</li>
-    </ul>
-    <p>If you don't know a constraint, the search dropdown helps — typing 3+ letters reveals matching states. But you still need to know which one satisfies the row label too.</p>
-
-    <h2>Frequently asked</h2>
-    <p>For more details, see the full <a href="/faq/">FAQ</a>. Quick answers:</p>
-    <ul>
-      <li><strong>Is it free?</strong> Yes, 100%.</li>
-      <li><strong>Do I need an account?</strong> No.</li>
-      <li><strong>How often?</strong> One new puzzle daily, at midnight your local time.</li>
-      <li><strong>Mobile support?</strong> Yes, mobile-first design.</li>
-    </ul>
-
-    <p class="legal-back"><a href="/">→ Try today's puzzle</a></p>
+    <p class="legal-back"><a href="/">→ Play today's puzzle</a></p>
   </article>
 </main>
 
