@@ -27,7 +27,7 @@
     "played": "Played",
     "win_rate": "Win Rate",
     "best_time": "Best Time",
-    "solved": "Solved!",
+    "solved": "Solved! 🇺🇸",
     "solved_msg": "You completed today's Statedoku!",
     "game_over": "Out of tries",
     "game_over_msg": "You used all 3 mistakes. Today's solution:",
@@ -211,7 +211,8 @@
     "time": "time",
     "mistakes": "mistakes",
     "errors": "mistakes",
-    "email_get_tomorrow": "📧 Tomorrow's puzzle in your inbox →"
+    "email_get_tomorrow": "📧 Tomorrow's puzzle in your inbox →",
+    "loading": "🇺🇸 Loading puzzle…"
   },
   "fr": {
     "title": "Statedoku",
@@ -241,7 +242,7 @@
     "played": "Joués",
     "win_rate": "Taux de victoire",
     "best_time": "Meilleur temps",
-    "solved": "Réussi !",
+    "solved": "Réussi ! 🇺🇸",
     "solved_msg": "Tu as terminé le Statedoku du jour !",
     "game_over": "Plus d'essais",
     "game_over_msg": "Tu as utilisé tes 3 erreurs. Solution du jour :",
@@ -425,7 +426,8 @@
     "time": "temps",
     "mistakes": "erreurs",
     "errors": "erreurs",
-    "email_get_tomorrow": "📧 Le puzzle de demain dans ta boîte →"
+    "email_get_tomorrow": "📧 Le puzzle de demain dans ta boîte →",
+    "loading": "🇺🇸 Chargement du puzzle…"
   },
   "es": {
     "title": "Statedoku",
@@ -455,7 +457,7 @@
     "played": "Jugados",
     "win_rate": "Tasa de victoria",
     "best_time": "Mejor tiempo",
-    "solved": "¡Resuelto!",
+    "solved": "¡Resuelto! 🇺🇸",
     "solved_msg": "¡Completaste el Statedoku de hoy!",
     "game_over": "Sin intentos",
     "game_over_msg": "Has agotado tus 3 errores. Solución de hoy:",
@@ -639,6 +641,7 @@
     "time": "tiempo",
     "mistakes": "errores",
     "errors": "errores",
-    "email_get_tomorrow": "📧 El puzzle de mañana en tu bandeja →"
+    "email_get_tomorrow": "📧 El puzzle de mañana en tu bandeja →",
+    "loading": "🇺🇸 Cargando puzzle…"
   }
 }
