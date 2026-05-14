@@ -85,12 +85,40 @@ const Game = (() => {
   }
 
   function _updateDateDisplay() {
+    const el = document.getElementById('puzzle-date');
+    if (!el) return;
+    if (_puzzle && _puzzle._preview) {
+      const lang = I18n.getLang();
+      el.textContent = lang === 'fr' ? 'Preview · sortie 1er juin'
+                    : lang === 'es' ? 'Preview · sale 1 de junio'
+                    : 'Preview · launches June 1';
+      _showPreviewBanner();
+      return;
+    }
     const d = new Date(_dateStr + 'T00:00:00');
     const lang   = I18n.getLang();
     const locale = lang === 'fr' ? 'fr-FR' : lang === 'es' ? 'es-ES' : 'en-US';
     const opts   = { weekday:'long', month:'long', day:'numeric' };
-    const el = document.getElementById('puzzle-date');
-    if (el) el.textContent = d.toLocaleDateString(locale, opts);
+    el.textContent = d.toLocaleDateString(locale, opts);
+  }
+
+  function _showPreviewBanner() {
+    if (document.getElementById('preview-banner')) return;
+    const lang = I18n.getLang();
+    const txt = lang === 'fr' ? 'Aperçu — Day #1 sort le lundi 1er juin'
+              : lang === 'es' ? 'Vista previa — Day #1 sale el lunes 1 de junio'
+              : "Preview — Day #1 drops Monday June 1";
+    const cta = lang === 'fr' ? 'Réserver ma place →'
+              : lang === 'es' ? 'Reservar mi lugar →'
+              : 'Get Day #1 in my inbox →';
+    const banner = document.createElement('div');
+    banner.id = 'preview-banner';
+    banner.innerHTML = `
+      <span class="pb-text">${txt}</span>
+      <a href="/launch/" class="pb-cta">${cta}</a>
+    `;
+    const main = document.querySelector('main');
+    if (main) main.insertBefore(banner, main.firstChild);
   }
 
   function _updateScore() {

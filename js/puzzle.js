@@ -562,7 +562,43 @@ const Puzzle = (() => {
     } catch(e) {}
   })();
 
+  // ─── PRELAUNCH PREVIEW ────────────────────────────────────────────────
+  // Until launch day, every date returns the same fixed "preview" puzzle.
+  // This way the / page still works (something to play with) but doesn't
+  // burn through the daily content before the public launch.
+  const LAUNCH_DATE = '2026-06-01';
+  const PREVIEW_PUZZLE = {
+    rows: ['statehood_1900s', 'sub_new_england', 'sub_deep_south'],
+    cols: ['borders_few', 'pop_5m10m', 'double_letter'],
+    solution: [['AK','AZ','HI'], ['ME','MA','CT'], ['FL','SC','MS']],
+  };
+
+  async function _buildPreviewPuzzle(dateStr) {
+    const states = await loadStates();
+    const cells = PREVIEW_PUZZLE.rows.map(rc =>
+      PREVIEW_PUZZLE.cols.map(cc =>
+        states.filter(s => matches(s, rc) && matches(s, cc)).map(s => s.id)
+      )
+    );
+    return {
+      date: dateStr,
+      rows: PREVIEW_PUZZLE.rows,
+      cols: PREVIEW_PUZZLE.cols,
+      solution: PREVIEW_PUZZLE.solution,
+      cells,
+      _preview: true,
+    };
+  }
+
   async function getPuzzle(dateStr) {
+    // PREVIEW mode: lock to a single puzzle until LAUNCH_DATE
+    if (dateStr < LAUNCH_DATE) {
+      if (_puzzleCache[dateStr]) return _puzzleCache[dateStr];
+      const p = await _buildPreviewPuzzle(dateStr);
+      _puzzleCache[dateStr] = p;
+      return p;
+    }
+
     if (_puzzleCache[dateStr]) return _puzzleCache[dateStr];
 
     const storageKey = CONFIG.STORAGE_KEY + '_puzzle_' + dateStr;
