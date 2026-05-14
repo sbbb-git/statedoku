@@ -193,7 +193,7 @@
   <div class="loader">Loading constraints…</div>
 </div>
 
-<script src="/js/constraints-pending.js?v=2"></script>
+<script src="/js/constraints-pending.js?v=3"></script>
 <script>
 (async function() {
 
@@ -438,6 +438,22 @@
     for (const id of [...ap]) if (!PENDING_IDS.has(id)) { ap.delete(id); changed = true; }
     for (const id of [...rj]) if (!PENDING_IDS.has(id)) { rj.delete(id); changed = true; }
     if (changed) { setApproved(ap); setRejected(rj); }
+  })();
+
+  // Auto-reject any pending candidate with ≤3 matching states.
+  // Cheap pre-compute using the _states string field; idempotent.
+  (function _autoRejectThin() {
+    const rj = getSet(RK), ap = getSet(AK);
+    let changed = false;
+    for (const c of PENDING) {
+      if (ap.has(c.id) || rj.has(c.id)) continue;
+      const n = (c._states || '').trim().split(/\s+/).filter(Boolean).length;
+      if (n <= 3) {
+        rj.add(c.id);
+        changed = true;
+      }
+    }
+    if (changed) setRejected(rj);
   })();
 
   // ──────────────────────────────────────────────────────────────────
