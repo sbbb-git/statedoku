@@ -1,0 +1,29 @@
+name = "statedoku-email-reminders"
+main = "src/worker.js"
+compatibility_date = "2024-09-23"
+
+# Cron — every hour at minute 5 (so it doesn't collide with anything)
+[triggers]
+crons = ["5 * * * *"]
+
+# Bind the SAME D1 used for analytics (statedoku-stats)
+[[d1_databases]]
+binding = "STATS_DB"
+database_name = "statedoku-stats"
+database_id = "REPLACE_WITH_D1_ID"   # → run: wrangler d1 list   then paste id here
+
+# ─────────────────────────────────────────────────────────────────────────
+# Setup checklist (one-time):
+#
+# 1. cd email-worker
+# 2. npm i -g wrangler   # if not already
+# 3. wrangler login
+# 4. wrangler d1 list                                # find statedoku-stats id, paste above
+# 5. wrangler d1 execute statedoku-stats --remote --file=../bot/d1-schema-email.sql
+# 6. Configure MailChannels lockdown TXT record (see README.md)
+# 7. wrangler deploy
+#
+# That's it. The cron fires every hour at :05 and sends to subscribers
+# whose subscribed `hour_utc` matches the current UTC hour and who haven't
+# received today's email yet.
+# ─────────────────────────────────────────────────────────────────────────
