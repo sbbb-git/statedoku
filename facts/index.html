@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+
+  <title>Fun Facts About All 50 US States 🇺🇸 | Statedoku</title>
+  <meta name="description" content="A curated collection of weird, surprising, and verified fun facts about each of the 50 US states. From the oldest road in the country to the only state with a unicameral legislature.">
+  <meta name="keywords" content="us states fun facts, weird facts about US states, american states trivia, geography facts, statedoku">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/facts/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=14">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fun Facts About All 50 US States 🇺🇸">
+  <meta property="og:description" content="A curated collection of weird, surprising, and verified fun facts about each of the 50 US states.">
+  <meta property="og:url" content="https://statedoku.com/facts/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Fun Facts About All 50 US States",
+    "description": "Curated trivia for every US state, hand-checked.",
+    "url": "https://statedoku.com/facts/",
+    "isPartOf": { "@type": "WebSite", "name": "Statedoku", "url": "https://statedoku.com/" }
+  }
+  </script>
+
+  <style>
+    /* Page-specific styles */
+    .facts-hero {
+      max-width: 720px; margin: 32px auto 24px; padding: 0 18px;
+      text-align: center;
+    }
+    .facts-hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      font-weight: 900; letter-spacing: -0.025em;
+      color: var(--text); margin-bottom: 8px;
+    }
+    .facts-hero h1 .flag { display: inline-block; transform: rotate(-3deg); margin-left: 4px; }
+    .facts-hero p {
+      color: var(--text-2); font-size: .95rem; line-height: 1.55;
+    }
+    .facts-hero .cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px;
+      padding: 9px 18px;
+      background: var(--navy); color: #fff;
+      border-radius: 999px;
+      text-decoration: none; font-weight: 700; font-size: .85rem;
+      transition: background var(--d-fast);
+    }
+    .facts-hero .cta:hover { background: var(--navy-soft); }
+
+    /* Sticky toolbar */
+    .facts-tools {
+      position: sticky; top: 56px; z-index: 5;
+      background: var(--bg);
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .facts-search {
+      max-width: 720px; margin: 0 auto;
+      display: flex; gap: 8px;
+    }
+    .facts-search input {
+      flex: 1;
+      padding: 10px 14px;
+      font: inherit; font-size: .92rem;
+      border: 1px solid var(--border); border-radius: 999px;
+      outline: none; background: #fff;
+    }
+    .facts-search input:focus { border-color: var(--navy); }
+
+    /* States grid */
+    .facts-grid {
+      max-width: 720px; margin: 24px auto 80px; padding: 0 18px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+
+    .state-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px 22px 18px;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 120px;
+    }
+    .state-card h2 {
+      font-size: 1.25rem; font-weight: 900;
+      color: var(--navy); letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    }
+    .state-card .abbr {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: .68rem; font-weight: 800; letter-spacing: 0.06em;
+      background: #EEF2FB; color: var(--navy);
+      padding: 2px 6px; border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .state-card .nickname {
+      font-size: .82rem; color: var(--text-3);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    .state-card ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .state-card li {
+      padding: 7px 0 7px 22px;
+      position: relative;
+      font-size: .9rem; line-height: 1.55;
+      color: var(--text-2);
+      border-bottom: 1px dashed var(--border);
+    }
+    .state-card li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .state-card li::before {
+      content: '→';
+      position: absolute; left: 0; top: 7px;
+      color: var(--red); font-weight: 800;
+    }
+    .state-card li strong { color: var(--text); font-weight: 700; }
+    .state-card li em { color: var(--navy); font-style: normal; font-weight: 600; }
+
+    /* Quick alphabet jump */
+    .alpha-jump {
+      max-width: 720px; margin: 14px auto;
+      padding: 0 18px;
+      display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;
+    }
+    .alpha-jump a {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: .75rem; font-weight: 700;
+      color: var(--text-2); background: var(--surface-2);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .alpha-jump a:hover { background: var(--navy); color: #fff; }
+
+    .empty {
+      text-align: center; padding: 60px 24px;
+      color: var(--text-3); font-size: .9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn" data-lang="es" onclick="location.href='/es/'">ES</button>
+    </div>
+    <a class="icon-btn" href="/" title="Play today's puzzle" aria-label="Play">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main>
+
+<div class="facts-hero">
+  <h1>Fun facts about all 50 US states <span class="flag">🇺🇸</span></h1>
+  <p>A hand-picked collection of trivia from every state in the union. Geography, history, weird laws, pop culture — all verified, no Wikipedia copy-paste.</p>
+  <a class="cta" href="/">▶ Play today's puzzle</a>
+</div>
+
+<div class="facts-tools">
+  <div class="facts-search">
+    <input type="search" id="facts-search-input" placeholder="Search a state, fact, or city…" autocomplete="off">
+  </div>
+</div>
+
+<nav class="alpha-jump" aria-label="Alphabet jump">
+  <a href="#alabama">A</a>
+  <a href="#california">C</a>
+  <a href="#delaware">D</a>
+  <a href="#florida">F</a>
+  <a href="#georgia">G</a>
+  <a href="#hawaii">H</a>
+  <a href="#idaho">I</a>
+  <a href="#kansas">K</a>
+  <a href="#louisiana">L</a>
+  <a href="#maine">M</a>
+  <a href="#nebraska">N</a>
+  <a href="#ohio">O</a>
+  <a href="#pennsylvania">P</a>
+  <a href="#rhode-island">R</a>
+  <a href="#south-carolina">S</a>
+  <a href="#tennessee">T</a>
+  <a href="#utah">U</a>
+  <a href="#vermont">V</a>
+  <a href="#washington">W</a>
+</nav>
+
+<div class="facts-grid" id="facts-grid">
+
+<article class="state-card" id="alabama" data-state="alabama">
+  <h2>Alabama <span class="abbr">AL</span></h2>
+  <p class="nickname">The Yellowhammer State · Capital: Montgomery</p>
+  <ul>
+    <li>The <strong>Saturn V rocket</strong> that took Apollo 11 to the Moon was designed in Huntsville, nicknamed <em>"Rocket City"</em>.</li>
+    <li>The <strong>civil rights march from Selma to Montgomery</strong> in 1965 directly led to the Voting Rights Act later that year.</li>
+    <li>It's the only US state with both <strong>Mardi Gras tradition</strong> (Mobile started it before New Orleans) and <strong>peanut farms producing 50%+ of US output</strong>.</li>
+    <li>Helen Keller, born in Tuscumbia, learned to speak after she was deaf-blind — her first signed word was <em>"water"</em>.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="alaska" data-state="alaska">
+  <h2>Alaska <span class="abbr">AK</span></h2>
+  <p class="nickname">The Last Frontier · Capital: Juneau</p>
+  <ul>
+    <li>Bought from Russia in 1867 for <strong>$7.2 million</strong> — about 2 cents per acre. Critics called it "Seward's Folly" before gold and oil were discovered.</li>
+    <li>The <strong>capital Juneau is not connected by road</strong> to the rest of the United States. You can only reach it by boat or plane.</li>
+    <li>It has <strong>more coastline than all other US states combined</strong> (over 6,600 miles).</li>
+    <li>The state has <em>two</em> time zones, but most of it runs on Alaska Time — making <strong>noon in Anchorage = 4 PM in New York</strong>.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="arizona" data-state="arizona">
+  <h2>Arizona <span class="abbr">AZ</span></h2>
+  <p class="nickname">The Grand Canyon State · Capital: Phoenix</p>
+  <ul>
+    <li>The <strong>Grand Canyon</strong> is so deep that an average of <em>five layers of New York's Empire State Building</em> could fit inside it.</li>
+    <li>Arizona does <strong>not observe Daylight Saving Time</strong> (except on the Navajo Nation in the northeast).</li>
+    <li>Phoenix is the <strong>5th most populous city in the US</strong> — and the only state capital with over 1.5 million residents.</li>
+    <li>The state flag features a copper star representing Arizona being the largest copper producer in the US.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="arkansas" data-state="arkansas">
+  <h2>Arkansas <span class="abbr">AR</span></h2>
+  <p class="nickname">The Natural State · Capital: Little Rock</p>
+  <ul>
+    <li>Walmart was founded in <strong>Bentonville</strong>, Arkansas in 1962. The company is still HQ'd there.</li>
+    <li>The state is home to the <strong>only active diamond mine in the United States</strong> open to the public — you keep what you find.</li>
+    <li>Bill Clinton served as governor here for 11 years before becoming the 42nd president.</li>
+    <li>The phrase <em>"Hot Springs"</em> on the map is literal — Hot Springs National Park has 47 thermal springs feeding the historic bathhouse row.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="california" data-state="california">
+  <h2>California <span class="abbr">CA</span></h2>
+  <p class="nickname">The Golden State · Capital: Sacramento</p>
+  <ul>
+    <li>If California were a country, its GDP would rank <strong>4th globally</strong> — bigger than the UK, France, or Russia.</li>
+    <li>Death Valley once recorded the <strong>highest air temperature ever measured on Earth</strong> (134°F / 56.7°C in 1913).</li>
+    <li>The first <strong>McDonald's</strong> opened in San Bernardino in 1948; the first <strong>Apple computer</strong> was built in Los Altos in 1976.</li>
+    <li>It's the only state with both the <em>highest point in the lower 48</em> (Mt. Whitney, 14,505 ft) and the <em>lowest point in North America</em> (Badwater Basin, -282 ft) — within 85 miles of each other.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="colorado" data-state="colorado">
+  <h2>Colorado <span class="abbr">CO</span></h2>
+  <p class="nickname">The Centennial State · Capital: Denver</p>
+  <ul>
+    <li>Denver, the "Mile High City," is exactly <strong>5,280 feet above sea level</strong> — one mile.</li>
+    <li>Colorado has <strong>58 peaks over 14,000 feet</strong> — more than any other state. Climbers call them "fourteeners."</li>
+    <li>It was the first state to <strong>legalize recreational marijuana</strong> (2014).</li>
+    <li>The cheeseburger was invented here in 1935, at the Humpty Dumpty Drive-In in Denver.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="connecticut" data-state="connecticut">
+  <h2>Connecticut <span class="abbr">CT</span></h2>
+  <p class="nickname">The Constitution State · Capital: Hartford</p>
+  <ul>
+    <li>Hartford is the <strong>insurance capital of the world</strong> — Aetna, The Hartford, and others were founded here.</li>
+    <li>Yale University, founded in 1701, has the <strong>third oldest collegiate library in the US</strong>.</li>
+    <li>The first hamburger was actually served here at <strong>Louis' Lunch</strong> in New Haven, 1895 (before California even thought about it).</li>
+    <li>Connecticut has the <strong>highest per-capita income</strong> of any US state.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="delaware" data-state="delaware">
+  <h2>Delaware <span class="abbr">DE</span></h2>
+  <p class="nickname">The First State · Capital: Dover</p>
+  <ul>
+    <li>Was the <strong>first state to ratify the US Constitution</strong>, on December 7, 1787.</li>
+    <li>It's the <strong>second smallest state</strong> by area but <strong>home to more than half of all Fortune 500 companies</strong> (legally — they incorporate here for tax reasons).</li>
+    <li>The state has only <strong>three counties</strong> — the fewest of any state.</li>
+    <li>President Joe Biden was born in Scranton, PA, but represented Delaware in the US Senate for 36 years.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="florida" data-state="florida">
+  <h2>Florida <span class="abbr">FL</span></h2>
+  <p class="nickname">The Sunshine State · Capital: Tallahassee</p>
+  <ul>
+    <li>Florida is the only US state that <strong>borders both the Atlantic Ocean and the Gulf of Mexico</strong>.</li>
+    <li>Disney World in Orlando is <strong>larger than the city of San Francisco</strong> (40+ square miles).</li>
+    <li>The state is home to over <strong>1.5 million alligators</strong> — about one for every 14 humans.</li>
+    <li>Florida grows <strong>more oranges than any other state</strong>, accounting for 70% of US orange production.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="georgia" data-state="georgia">
+  <h2>Georgia <span class="abbr">GA</span></h2>
+  <p class="nickname">The Peach State · Capital: Atlanta</p>
+  <ul>
+    <li>Coca-Cola was invented in Atlanta in 1886 by pharmacist John Pemberton. The original formula contained cocaine.</li>
+    <li>Despite the nickname, Georgia is only the <strong>3rd largest peach producer</strong> (after California and South Carolina).</li>
+    <li>Atlanta's Hartsfield-Jackson is the <strong>busiest airport in the world</strong> by passenger traffic.</li>
+    <li>The state name is shared with the country Georgia (no relation — both named after Saint George).</li>
+  </ul>
+</article>
+
+<article class="state-card" id="hawaii" data-state="hawaii">
+  <h2>Hawaii <span class="abbr">HI</span></h2>
+  <p class="nickname">The Aloha State · Capital: Honolulu</p>
+  <ul>
+    <li>The only US state that <strong>grows coffee commercially</strong> — Kona coffee from the Big Island.</li>
+    <li>Hawaii is <strong>moving toward Japan</strong> at about 3 inches per year (Pacific tectonic plate drift).</li>
+    <li>It's the only US state made entirely of islands — and the only one where the capital is located on an island.</li>
+    <li>Hawaiian is the only US state's <strong>official language alongside English</strong>.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="idaho" data-state="idaho">
+  <h2>Idaho <span class="abbr">ID</span></h2>
+  <p class="nickname">The Gem State · Capital: Boise</p>
+  <ul>
+    <li>Idaho produces <strong>about 30% of all US potatoes</strong> — most fast-food fries come from here.</li>
+    <li>The state has more <strong>whitewater rapids miles than any other US state</strong>.</li>
+    <li>Hells Canyon, on the Idaho-Oregon border, is <strong>deeper than the Grand Canyon</strong> (7,993 ft vs 6,093 ft).</li>
+    <li>The name "Idaho" was made up by lobbyist George M. Willing, who claimed it meant "gem of the mountains" in Shoshone. It doesn't mean anything in any Native language.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="illinois" data-state="illinois">
+  <h2>Illinois <span class="abbr">IL</span></h2>
+  <p class="nickname">The Prairie State · Capital: Springfield</p>
+  <ul>
+    <li>Chicago invented the <strong>skyscraper</strong> — the Home Insurance Building (1885) was the first.</li>
+    <li>Lincoln spent most of his political career in Springfield, IL — but was born in Kentucky.</li>
+    <li>The state produces <strong>more pumpkins than any other</strong> — over 90% of US Halloween jack-o-lanterns originate here.</li>
+    <li>Route 66 starts in Chicago and ends in Santa Monica, CA.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="indiana" data-state="indiana">
+  <h2>Indiana <span class="abbr">IN</span></h2>
+  <p class="nickname">The Hoosier State · Capital: Indianapolis</p>
+  <ul>
+    <li>The <strong>Indianapolis 500</strong>, held every Memorial Day weekend, is the largest single-day sporting event in the world.</li>
+    <li>Michael Jackson was born in <strong>Gary, Indiana</strong> in 1958, the 7th of 10 children.</li>
+    <li>The state name means "Land of the Indians" — though the state's Native population was forcibly removed by the 1840s.</li>
+    <li>Indiana is the only state with a <strong>basketball religion</strong> — high school games regularly sell out 20,000-seat arenas.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="iowa" data-state="iowa">
+  <h2>Iowa <span class="abbr">IA</span></h2>
+  <p class="nickname">The Hawkeye State · Capital: Des Moines</p>
+  <ul>
+    <li>Iowa produces <strong>more corn than any other state</strong> — about 13 billion bushels per year.</li>
+    <li>It's the only state <strong>bordered entirely by two rivers</strong> (Mississippi on the east, Missouri on the west).</li>
+    <li>The Iowa caucus is the <strong>first electoral event</strong> of every US presidential primary cycle.</li>
+    <li>"Field of Dreams" was filmed here — the baseball diamond is still there as a tourist attraction.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="kansas" data-state="kansas">
+  <h2>Kansas <span class="abbr">KS</span></h2>
+  <p class="nickname">The Sunflower State · Capital: Topeka</p>
+  <ul>
+    <li>Kansas is the <strong>geographic center of the contiguous 48 states</strong> (the exact point is near Lebanon, KS).</li>
+    <li>The state averages <strong>50+ tornadoes per year</strong> — "Tornado Alley" runs right through it.</li>
+    <li>"The Wizard of Oz" famously starts in Kansas with Dorothy on a farm.</li>
+    <li>Hutchinson hosts the <strong>only underground salt museum in the western hemisphere</strong>, 650 feet below ground.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="kentucky" data-state="kentucky">
+  <h2>Kentucky <span class="abbr">KY</span></h2>
+  <p class="nickname">The Bluegrass State · Capital: Frankfort</p>
+  <ul>
+    <li>The state produces <strong>95% of the world's bourbon</strong>. By federal law, only bourbon made in the US can be called bourbon, and most comes from KY.</li>
+    <li>The <strong>Kentucky Derby</strong>, held since 1875, is the oldest continuously held sporting event in the US.</li>
+    <li>Fort Knox stores roughly <strong>$300 billion in gold bullion</strong> on behalf of the US government.</li>
+    <li>Mammoth Cave National Park has the <strong>longest cave system in the world</strong> — over 420 miles mapped.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="louisiana" data-state="louisiana">
+  <h2>Louisiana <span class="abbr">LA</span></h2>
+  <p class="nickname">The Pelican State · Capital: Baton Rouge</p>
+  <ul>
+    <li>Louisiana is the only US state where the legal system is based on <strong>French civil law</strong>, not English common law.</li>
+    <li>The state has <em>parishes</em> instead of counties — a legacy of French Catholic administration.</li>
+    <li>Jazz was born in <strong>New Orleans</strong> around 1900. So was Mardi Gras as we know it.</li>
+    <li>It's losing land to the Gulf of Mexico at a rate of <strong>about one football field every 100 minutes</strong> (subsidence + sea level rise).</li>
+  </ul>
+</article>
+
+<article class="state-card" id="maine" data-state="maine">
+  <h2>Maine <span class="abbr">ME</span></h2>
+  <p class="nickname">The Pine Tree State · Capital: Augusta</p>
+  <ul>
+    <li>Maine produces about <strong>40% of all US lobster</strong>, with over 4,000 licensed lobster traps in operation.</li>
+    <li>The state is so foggy that <strong>Eastport, ME</strong> is the easternmost city in the US — the first place to see sunrise.</li>
+    <li>Stephen King is from Bangor and sets many of his novels in fictional Maine towns (Castle Rock, Derry, Salem's Lot).</li>
+    <li>L.L. Bean's flagship store in Freeport is open <strong>24 hours a day, 365 days a year</strong> — no locks on the doors.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="maryland" data-state="maryland">
+  <h2>Maryland <span class="abbr">MD</span></h2>
+  <p class="nickname">The Old Line State · Capital: Annapolis</p>
+  <ul>
+    <li>The <strong>US Naval Academy</strong> is in Annapolis — every Navy officer trains there.</li>
+    <li>Maryland's state sport is <strong>jousting</strong> (since 1962, predating any other state's official sport).</li>
+    <li>The Chesapeake Bay produces <strong>more blue crab than any other US body of water</strong>.</li>
+    <li>The Star-Spangled Banner was written during the British attack on Fort McHenry in Baltimore, 1814.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="massachusetts" data-state="massachusetts">
+  <h2>Massachusetts <span class="abbr">MA</span></h2>
+  <p class="nickname">The Bay State · Capital: Boston</p>
+  <ul>
+    <li>The <strong>first public school</strong> (Boston Latin, 1635) and <strong>first university</strong> (Harvard, 1636) in the US were both founded here.</li>
+    <li>Basketball was invented in <strong>Springfield, MA</strong> by James Naismith in 1891 — using a soccer ball and two peach baskets.</li>
+    <li>Boston's "Big Dig" was the most expensive highway project in US history ($24 billion when finished in 2007).</li>
+    <li>Cape Cod's lobster rolls, Boston cream pie, and Fluffernutter sandwiches all originated here.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="michigan" data-state="michigan">
+  <h2>Michigan <span class="abbr">MI</span></h2>
+  <p class="nickname">The Great Lakes State · Capital: Lansing</p>
+  <ul>
+    <li>Detroit gave the world <strong>Motown, the assembly line, and the modern car</strong> — Ford, GM, and Chrysler all HQ in Michigan.</li>
+    <li>You're never more than 6 miles from a lake or stream anywhere in the state. <strong>Over 11,000 inland lakes</strong>.</li>
+    <li>The Mackinac Bridge connecting Michigan's two peninsulas is <strong>5 miles long</strong> — one of the longest suspension bridges in the world.</li>
+    <li>Battle Creek is the "Cereal Capital of the World" — Kellogg's and Post Cereals both started here.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="minnesota" data-state="minnesota">
+  <h2>Minnesota <span class="abbr">MN</span></h2>
+  <p class="nickname">The Land of 10,000 Lakes · Capital: Saint Paul</p>
+  <ul>
+    <li>Actually has <strong>over 11,842 lakes</strong> of at least 10 acres — the "10,000" branding undersells it.</li>
+    <li>The <strong>Mall of America</strong> in Bloomington is the largest mall in the US (5.6 million square feet).</li>
+    <li>Bob Dylan and Prince were both born in Minnesota.</li>
+    <li>The headwaters of the <strong>Mississippi River</strong> are in Lake Itasca in northern Minnesota — you can walk across the source.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="mississippi" data-state="mississippi">
+  <h2>Mississippi <span class="abbr">MS</span></h2>
+  <p class="nickname">The Magnolia State · Capital: Jackson</p>
+  <ul>
+    <li>The state is home to the birthplace of <strong>Elvis Presley</strong> (Tupelo) and the <strong>blues</strong> (Delta region).</li>
+    <li>It's one of the <strong>only states with a name containing four "i"s</strong>, four "s"s, and two "p"s — a spelling-bee favorite.</li>
+    <li>Mississippi has the <strong>most miles of navigable inland waterways</strong> of any state.</li>
+    <li>Root beer was invented in Biloxi by pharmacist Edward Adolf Barq Sr. in 1898.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="missouri" data-state="missouri">
+  <h2>Missouri <span class="abbr">MO</span></h2>
+  <p class="nickname">The Show-Me State · Capital: Jefferson City</p>
+  <ul>
+    <li>Kansas City has <strong>more fountains than any city in the world except Rome</strong>.</li>
+    <li>The <strong>Gateway Arch</strong> in St. Louis is the tallest monument in the US (630 feet) — and the only one you can ride inside.</li>
+    <li>Mark Twain was born and raised in Hannibal, MO — the model for Tom Sawyer's town.</li>
+    <li>The ice cream cone was invented at the 1904 World's Fair in St. Louis.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="montana" data-state="montana">
+  <h2>Montana <span class="abbr">MT</span></h2>
+  <p class="nickname">Big Sky Country · Capital: Helena</p>
+  <ul>
+    <li>Montana has <strong>three times more cattle than people</strong>.</li>
+    <li>The state contains <strong>Glacier National Park</strong>, where 26 glaciers remain (down from 150 in 1850).</li>
+    <li>Northeastern Montana has the <strong>only Indian reservation</strong> that issues its own passports (the Blackfeet Nation).</li>
+    <li>Some Montana counties are larger than the entire state of Connecticut.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="nebraska" data-state="nebraska">
+  <h2>Nebraska <span class="abbr">NE</span></h2>
+  <p class="nickname">The Cornhusker State · Capital: Lincoln</p>
+  <ul>
+    <li>Nebraska has the only <strong>unicameral state legislature</strong> in the US (single chamber, no senate vs house).</li>
+    <li>Berkshire Hathaway, Warren Buffett's company, is HQ'd in Omaha.</li>
+    <li>The <strong>Reuben sandwich</strong> was invented in Omaha at the Blackstone Hotel, 1925.</li>
+    <li>Nebraska's official soft drink is <strong>Kool-Aid</strong> (invented in Hastings, 1927).</li>
+  </ul>
+</article>
+
+<article class="state-card" id="nevada" data-state="nevada">
+  <h2>Nevada <span class="abbr">NV</span></h2>
+  <p class="nickname">The Silver State · Capital: Carson City</p>
+  <ul>
+    <li>Las Vegas was built on a desert with no natural water source — the <strong>Hoover Dam (1936)</strong> made it possible.</li>
+    <li>About <strong>87% of Nevada is owned by the federal government</strong> — the highest percentage of any state.</li>
+    <li>Nevada is the only US state where <strong>prostitution is legal</strong> in some counties.</li>
+    <li>Area 51, near Rachel, NV, is still officially classified — the US government only confirmed its existence in 2013.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="new-hampshire" data-state="new hampshire">
+  <h2>New Hampshire <span class="abbr">NH</span></h2>
+  <p class="nickname">The Granite State · Capital: Concord</p>
+  <ul>
+    <li>New Hampshire's primary is <strong>the first in every presidential election cycle</strong> by state law.</li>
+    <li>It's the only state with both <strong>no sales tax AND no income tax</strong> (relies on property + business taxes).</li>
+    <li>The state motto <em>"Live Free or Die"</em> appears on every license plate.</li>
+    <li>Mount Washington recorded a wind gust of <strong>231 mph in 1934</strong> — held the world record until 1996.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="new-jersey" data-state="new jersey">
+  <h2>New Jersey <span class="abbr">NJ</span></h2>
+  <p class="nickname">The Garden State · Capital: Trenton</p>
+  <ul>
+    <li>Despite its tiny size, NJ is the <strong>most densely populated US state</strong> — 1,263 people per square mile.</li>
+    <li>The state has <strong>more diners per capita</strong> than anywhere else in the world.</li>
+    <li>Edison Lab in Menlo Park, NJ produced the lightbulb, phonograph, and motion picture camera.</li>
+    <li>Bruce Springsteen, Bon Jovi, and Frank Sinatra were all born in New Jersey.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="new-mexico" data-state="new mexico">
+  <h2>New Mexico <span class="abbr">NM</span></h2>
+  <p class="nickname">The Land of Enchantment · Capital: Santa Fe</p>
+  <ul>
+    <li>Santa Fe is the <strong>oldest state capital in the US</strong> (founded 1610) and the <strong>highest in elevation</strong> (7,199 ft).</li>
+    <li>The <strong>Manhattan Project</strong> (which built the first atomic bomb) was based in Los Alamos.</li>
+    <li>Roswell is famous for the 1947 UFO incident — still debated today.</li>
+    <li>New Mexico's official state question is <em>"red or green?"</em> — referring to chile pepper sauce.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="new-york" data-state="new york">
+  <h2>New York <span class="abbr">NY</span></h2>
+  <p class="nickname">The Empire State · Capital: Albany</p>
+  <ul>
+    <li>New York City has its own <strong>distinct accent recognizable worldwide</strong> ("cawfee", "tawk", etc.).</li>
+    <li>The <strong>NYC subway has 472 stations</strong> — more than any other system in the world.</li>
+    <li>Hip-hop was born in the Bronx in 1973 at a back-to-school party hosted by DJ Kool Herc.</li>
+    <li>Despite the name, the State Capitol is in Albany, not NYC.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="north-carolina" data-state="north carolina">
+  <h2>North Carolina <span class="abbr">NC</span></h2>
+  <p class="nickname">The Tar Heel State · Capital: Raleigh</p>
+  <ul>
+    <li>The <strong>first powered airplane flight</strong> took place at Kitty Hawk in 1903.</li>
+    <li>NC produces <strong>more sweet potatoes than any other state</strong> (over 60% of US output).</li>
+    <li>Krispy Kreme started in Winston-Salem in 1937 — selling at first to local grocery stores, not retail.</li>
+    <li>The state is home to <strong>Pepsi (New Bern) and Mountain Dew (Knoxville-area)</strong> — both Carolina inventions.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="north-dakota" data-state="north dakota">
+  <h2>North Dakota <span class="abbr">ND</span></h2>
+  <p class="nickname">The Peace Garden State · Capital: Bismarck</p>
+  <ul>
+    <li>The state produces over <strong>50% of all US sunflower oil</strong>.</li>
+    <li>North Dakota has the <strong>most northerly point in the contiguous US</strong> (excluding Alaska).</li>
+    <li>The Bakken oil formation here made the state the #2 oil producer behind Texas in 2014.</li>
+    <li>Theodore Roosevelt ranched in the Badlands here for 2 years and called it the experience that "made him president."</li>
+  </ul>
+</article>
+
+<article class="state-card" id="ohio" data-state="ohio">
+  <h2>Ohio <span class="abbr">OH</span></h2>
+  <p class="nickname">The Buckeye State · Capital: Columbus</p>
+  <ul>
+    <li>Ohio has produced <strong>8 US presidents</strong> — second only to Virginia.</li>
+    <li>The Wright Brothers grew up in Dayton — and tested their first flight machines on Ohio farmland.</li>
+    <li>Cleveland is home to the <strong>Rock and Roll Hall of Fame</strong> because Cleveland DJ Alan Freed coined the term "rock and roll" in 1951.</li>
+    <li>Ohio's nickname comes from the buckeye tree, whose nuts vaguely resemble a buck's eye.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="oklahoma" data-state="oklahoma">
+  <h2>Oklahoma <span class="abbr">OK</span></h2>
+  <p class="nickname">The Sooner State · Capital: Oklahoma City</p>
+  <ul>
+    <li>Oklahoma has more <strong>man-made lakes than any other state</strong> (over 200).</li>
+    <li>The state was settled in a <em>literal race</em> — the 1889 Land Rush, where settlers raced from the border to claim plots.</li>
+    <li>OKC bombed the federal building in 1995 (Murrah Building) was the deadliest domestic terror attack pre-9/11.</li>
+    <li>Garth Brooks, Brad Pitt, and Reba McEntire are all from Oklahoma.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="oregon" data-state="oregon">
+  <h2>Oregon <span class="abbr">OR</span></h2>
+  <p class="nickname">The Beaver State · Capital: Salem</p>
+  <ul>
+    <li>You can't pump your own gas in Oregon (with limited exceptions added in 2023). Attendants do it.</li>
+    <li>The state contains <strong>Crater Lake</strong> — the deepest lake in the US (1,949 feet).</li>
+    <li>Nike is HQ'd in Beaverton, Oregon.</li>
+    <li>Portland, OR has more <strong>microbreweries per capita</strong> than any other US city.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="pennsylvania" data-state="pennsylvania">
+  <h2>Pennsylvania <span class="abbr">PA</span></h2>
+  <p class="nickname">The Keystone State · Capital: Harrisburg</p>
+  <ul>
+    <li>The <strong>Declaration of Independence</strong> and <strong>US Constitution</strong> were both signed in Philadelphia.</li>
+    <li>Hershey, PA was built entirely around the chocolate factory — the streetlights are shaped like Hershey's Kisses.</li>
+    <li>Pennsylvania has the <strong>oldest US zoo</strong> (Philadelphia Zoo, 1874) and the <strong>only operational US oil derrick used as a tourist attraction</strong>.</li>
+    <li>Taylor Swift was born in West Reading, PA.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="rhode-island" data-state="rhode island">
+  <h2>Rhode Island <span class="abbr">RI</span></h2>
+  <p class="nickname">The Ocean State · Capital: Providence</p>
+  <ul>
+    <li>The smallest US state — you can drive across it in under <strong>45 minutes</strong>.</li>
+    <li>The state's official name is actually <em>"State of Rhode Island and Providence Plantations"</em> — until 2020 when voters dropped "Providence Plantations".</li>
+    <li>Rhode Island has the <strong>longest official name</strong> of any state and the longest coastline relative to its size.</li>
+    <li>The country's first synagogue still in use (Touro Synagogue, 1763) is in Newport, RI.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="south-carolina" data-state="south carolina">
+  <h2>South Carolina <span class="abbr">SC</span></h2>
+  <p class="nickname">The Palmetto State · Capital: Columbia</p>
+  <ul>
+    <li>The Civil War started here when Confederate forces fired on Fort Sumter in Charleston Harbor, April 12, 1861.</li>
+    <li>SC produces over <strong>10% of US peaches</strong> — more than Georgia in most years.</li>
+    <li>The first opera house in the US opened in Charleston in 1735.</li>
+    <li>Sweet tea is the unofficial state drink — it's served everywhere from gas stations to weddings.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="south-dakota" data-state="south dakota">
+  <h2>South Dakota <span class="abbr">SD</span></h2>
+  <p class="nickname">The Mount Rushmore State · Capital: Pierre</p>
+  <ul>
+    <li><strong>Mount Rushmore</strong>, with the faces of Washington, Jefferson, Lincoln, and Theodore Roosevelt, was carved from 1927 to 1941.</li>
+    <li>The Sturgis Motorcycle Rally draws <strong>500,000+ riders</strong> every August — bigger than the city of Pierre.</li>
+    <li>South Dakota has the <strong>only Crazy Horse Memorial</strong>, still being carved after 75 years.</li>
+    <li>Sioux Falls is home to the largest US trust company because of South Dakota's friendly trust laws.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="tennessee" data-state="tennessee">
+  <h2>Tennessee <span class="abbr">TN</span></h2>
+  <p class="nickname">The Volunteer State · Capital: Nashville</p>
+  <ul>
+    <li>Nashville is "Music City" — home to country music, the Grand Ole Opry, and over 180 recording studios.</li>
+    <li>Memphis gave the world both <strong>Elvis Presley's Graceland</strong> and the <strong>Civil Rights Museum</strong> (at the Lorraine Motel where MLK was assassinated).</li>
+    <li>Tennessee whiskey (Jack Daniel's, George Dickel) is legally distinct from bourbon — it requires <em>maple charcoal filtering</em>.</li>
+    <li>The state has the <strong>highest concentration of black bears</strong> in the eastern US (Great Smoky Mountains).</li>
+  </ul>
+</article>
+
+<article class="state-card" id="texas" data-state="texas">
+  <h2>Texas <span class="abbr">TX</span></h2>
+  <p class="nickname">The Lone Star State · Capital: Austin</p>
+  <ul>
+    <li>Texas was its <strong>own independent country</strong> for 9 years (1836–1845) before joining the US.</li>
+    <li>It's the only state that can legally <strong>fly its flag at the same height as the US flag</strong>.</li>
+    <li>NASA's mission control in Houston coordinated every Apollo mission — "Houston, we have a problem" was real.</li>
+    <li>Texas produces about <strong>40% of US oil</strong> and would be the 9th-largest country economy if it were independent.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="utah" data-state="utah">
+  <h2>Utah <span class="abbr">UT</span></h2>
+  <p class="nickname">The Beehive State · Capital: Salt Lake City</p>
+  <ul>
+    <li>The <strong>Great Salt Lake</strong> is so salty that you float effortlessly — saltier than the Pacific Ocean.</li>
+    <li>Utah was settled by <strong>Mormons fleeing religious persecution</strong> in the 1840s. About 60% of the state is still LDS.</li>
+    <li>Salt Lake City hosted the <strong>2002 Winter Olympics</strong> — and is bidding for 2034.</li>
+    <li>Utah has the highest average <strong>peak elevation of any state</strong> outside Colorado.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="vermont" data-state="vermont">
+  <h2>Vermont <span class="abbr">VT</span></h2>
+  <p class="nickname">The Green Mountain State · Capital: Montpelier</p>
+  <ul>
+    <li>Montpelier is the <strong>only state capital without a McDonald's</strong>.</li>
+    <li>Vermont produces <strong>50%+ of US maple syrup</strong>. It takes 40 gallons of sap to make 1 gallon of syrup.</li>
+    <li>It was an <strong>independent republic</strong> from 1777 to 1791 — like Texas, before joining the US.</li>
+    <li>Vermont has more <strong>covered bridges per capita</strong> than any other state.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="virginia" data-state="virginia">
+  <h2>Virginia <span class="abbr">VA</span></h2>
+  <p class="nickname">The Old Dominion · Capital: Richmond</p>
+  <ul>
+    <li>Virginia has been home to <strong>8 US presidents</strong>, more than any other state.</li>
+    <li>The first English colony, <strong>Jamestown (1607)</strong>, was settled here — 13 years before Plymouth Rock.</li>
+    <li>The Pentagon, just outside DC in Arlington, is the <strong>largest office building in the world</strong> by floor area.</li>
+    <li>Roanoke Colony — North America's first English colony — disappeared without trace in 1590 in what's now coastal NC, then claimed by Virginia.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="washington" data-state="washington">
+  <h2>Washington <span class="abbr">WA</span></h2>
+  <p class="nickname">The Evergreen State · Capital: Olympia</p>
+  <ul>
+    <li><strong>Starbucks, Amazon, and Microsoft</strong> are all HQ'd in Washington — Pike Place, Seattle, Redmond respectively.</li>
+    <li>The state grows over <strong>2/3 of US apples</strong> and is the leading producer of cherries, raspberries, and pears.</li>
+    <li>Mt. Rainier (14,411 ft) is technically an active volcano — last eruption was in 1894.</li>
+    <li>Olympic National Park contains <strong>three distinct ecosystems</strong> (rainforest, alpine, coast) within a single park.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="west-virginia" data-state="west virginia">
+  <h2>West Virginia <span class="abbr">WV</span></h2>
+  <p class="nickname">The Mountain State · Capital: Charleston</p>
+  <ul>
+    <li>West Virginia <strong>split from Virginia in 1863</strong> to remain in the Union during the Civil War — making it the only state created by seceding from another state.</li>
+    <li>The state is <strong>completely within the Appalachian Mountains</strong> — every county is mountainous.</li>
+    <li>"Take Me Home, Country Roads" (John Denver, 1971) immortalized the state forever — even though Denver had never lived there.</li>
+    <li>The New River Gorge Bridge is the <strong>longest single-arch steel bridge in the western hemisphere</strong>.</li>
+  </ul>
+</article>
+
+<article class="state-card" id="wisconsin" data-state="wisconsin">
+  <h2>Wisconsin <span class="abbr">WI</span></h2>
+  <p class="nickname">The Badger State · Capital: Madison</p>
+  <ul>
+    <li>Wisconsin makes <strong>~25% of all US cheese</strong> — and 100% of the country's brick cheese.</li>
+    <li>The state is the only one where <strong>cheesemakers must be licensed</strong> (since 2005).</li>
+    <li>Green Bay is the <strong>smallest US city with a major pro sports franchise</strong> (the Packers, owned by its citizens).</li>
+    <li>Wisconsin invented the <strong>typewriter</strong> (1868, Milwaukee) and the <strong>blender</strong> (1922, Racine).</li>
+  </ul>
+</article>
+
+<article class="state-card" id="wyoming" data-state="wyoming">
+  <h2>Wyoming <span class="abbr">WY</span></h2>
+  <p class="nickname">The Equality State · Capital: Cheyenne</p>
+  <ul>
+    <li>Wyoming was the <strong>first US state/territory to give women the right to vote</strong> (1869) — 50 years before the 19th Amendment.</li>
+    <li>It's the <strong>least populous US state</strong> (~580k people, fewer than Washington DC).</li>
+    <li>Yellowstone, the world's first national park, is mostly in Wyoming. The Grand Prismatic Spring there is bigger than a football field.</li>
+    <li>The state has <strong>more pronghorn antelope than people</strong>.</li>
+  </ul>
+</article>
+
+</div>
+
+<div class="empty" id="facts-empty" hidden>No state matches that search. Try a different term.</div>
+
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/">Play</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a></p>
+</footer>
+
+<script>
+(function() {
+  const input = document.getElementById('facts-search-input');
+  const cards = Array.from(document.querySelectorAll('.state-card'));
+  const empty = document.getElementById('facts-empty');
+  input?.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    let hits = 0;
+    for (const c of cards) {
+      const text = c.textContent.toLowerCase();
+      if (!q || text.includes(q)) { c.hidden = false; hits++; }
+      else c.hidden = true;
+    }
+    empty.hidden = hits > 0;
+  });
+})();
+</script>
+
+</body>
+</html>
