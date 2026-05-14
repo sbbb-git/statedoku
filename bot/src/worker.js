@@ -68,40 +68,37 @@ async function postTweet(text, env) {
 // ───── Prompts ───────────────────────────────────────────────────────────
 const PRELAUNCH_PERSONA = `You run the @Statedoku Twitter account.
 
-Statedoku is a NEW daily puzzle game launching soon — it mixes Sudoku grid logic with US geography (players fill a 3×3 grid with US states that satisfy row+column constraints). The game is NOT live yet, so we're building an audience first.
+Statedoku is a NEW daily puzzle game launching soon — it mixes Sudoku grid logic with US geography (players fill a 3×3 grid with US states that satisfy row+column constraints). The game is NOT live yet — we're building hype and an audience first.
 
-Voice: casual, witty, slightly nerdy. Like a friend who's obsessed with US geography facts and is excited to share them. Curious and playful. NEVER corporate. NEVER use em-dashes or fancy unicode dashes.
+The ONLY goal right now: tease that something is coming. Build curiosity. Make people want to follow the account to find out what it is. Do NOT reveal the rules of the game. Do NOT explain it's a puzzle. Stay mysterious but fun.
+
+Voice: casual, witty, slightly nerdy, mysterious. Like a friend dropping hints about a project they're cooking. Curious and playful. NEVER corporate. NEVER use em-dashes or fancy unicode dashes.
 
 Hard rules (every tweet):
 - Under 270 characters total.
-- 1-2 emojis max (no emoji spam, no flag overload).
+- MUST include exactly one US flag emoji 🇺🇸 somewhere in the tweet.
+- 1-2 emojis MAX TOTAL (so 🇺🇸 + at most one other).
 - Sound human (use contractions, mix sentence lengths).
 - Do NOT include any link or URL.
 - Do NOT use the hashtag #Statedoku yet (we keep it for launch).
 - Do NOT mention "statedoku.com" or call to play — the game isn't live yet.
+- Do NOT explain what the game is or how it works.
 - Do NOT wrap the tweet in quotes.
 - Output ONLY the tweet text, no explanations, no preamble.`;
 
-// Two distinct tweet types, used at different times of the day.
-const PRELAUNCH_MORNING_STYLES = [
-  'a teaser "something\'s coming" post hinting at a new daily geography game, without revealing details',
-  'a relatable observation about how bad most Americans (or non-Americans) are at US geography, ending with a hint that help is coming',
-  'a poll-style question that gets state-heads to reply (e.g. "name a state without using its first letter")',
-  'an "incoming" / "soon" type post building hype, mysterious but fun',
-  'a pop-culture comparison (Wordle, Connections, NYT games) framing why daily games are great, hinting a new one is coming',
-  'a hot take or playful opinion about a US geography topic (best state shape, weirdest border, etc.)',
-  'a "tell me you\'re from [region] without telling me you\'re from [region]" style prompt',
-];
-
-const PRELAUNCH_EVENING_STYLES = [
-  'a surprising fun fact about a single US state (history, geography, name origin, weird law, etc.) — pick a non-obvious one',
-  'a "did you know" about US state borders, shapes, or geography quirks',
-  'a fact about a state capital (origin of the name, oddities, smallest/largest, etc.)',
-  'a fact about state names: native origins, royal references, what they actually mean',
-  'a comparison between two states that share something weird (same shape, share a border, name twins, etc.)',
-  'a fact about US regions, belts (Sun Belt, Rust Belt, Bible Belt, etc.) or unofficial geographic groupings',
-  'a number-based geography fact (e.g. "the smallest state is 245× smaller than the largest", "X states have a Pacific coast", etc.)',
-  'a quirky superlative (the only state that..., the state with the most..., the only one shaped like...)',
+// PRELAUNCH — only "something's coming" teasers. Both cron slots use this list.
+// Each entry is a distinct angle so consecutive tweets don't echo.
+const PRELAUNCH_STYLES = [
+  'a short cryptic "something\'s coming" teaser — no details, just hype',
+  'an "incoming" type post — mysterious, hints at a project for US geography fans',
+  'a one-liner that hints at a new daily ritual coming soon for state-heads',
+  'a teaser framed as a countdown vibe ("soon", "almost there", "any day now") without giving a date',
+  'a teaser comparing the unnamed thing to NYT-style daily games (Wordle / Connections) — vague, not revealing what it is',
+  'a teaser that addresses geography nerds directly ("if you know your states, stay tuned")',
+  'a teaser that hints something is brewing for people who love US maps and trivia',
+  'a "save this account" / "follow if you like..." style soft CTA without explaining what\'s coming',
+  'a playful "guess what we\'re building" type post — invites curiosity, refuses to spoil',
+  'an under-promise / over-deliver tease: "you\'re gonna want to be here when this drops"',
 ];
 
 const LAUNCH_STYLES = [
@@ -125,11 +122,12 @@ function buildPrompt() {
   const utcHour = now.getUTCHours();
 
   if (PHASE === 'prelaunch') {
-    // Mornings (12:00 UTC slot) → hype/teaser. Evenings (18:00 UTC slot) → fun fact.
+    // Both daily slots (morning + evening) pull from the same teaser pool.
+    // Offset the evening slot by +5 so morning and evening tweets never use
+    // the same angle on the same day.
     const isMorningSlot = utcHour < 15;
-    const styleList = isMorningSlot ? PRELAUNCH_MORNING_STYLES : PRELAUNCH_EVENING_STYLES;
-    // Rotate independently within each slot so morning and evening don't echo
-    const style = styleList[(doy + (isMorningSlot ? 0 : 3)) % styleList.length];
+    const idx = (doy * 2 + (isMorningSlot ? 0 : 5)) % PRELAUNCH_STYLES.length;
+    const style = PRELAUNCH_STYLES[idx];
 
     return `${PRELAUNCH_PERSONA}
 
@@ -189,14 +187,14 @@ async function generateTweetText(env) {
 // Fallback if Claude API is unavailable
 function fallbackTweet() {
   if (PHASE === 'prelaunch') {
-    const facts = [
-      'Rhode Island is so small you can drive across it in about 45 minutes 🚗',
-      'Alaska has more coastline than the rest of the US states combined.',
-      'Hawaii is the only state that grows coffee commercially ☕',
-      'Maine is the only US state whose name is just one syllable.',
-      'Wyoming has fewer people than 31 individual US cities.',
+    const teasers = [
+      'Something is coming for state-heads 🇺🇸',
+      'Stay tuned 🇺🇸 a new daily ritual is brewing',
+      'If you know your US states, you\'re going to want to be here soon 🇺🇸',
+      'Quietly building something for people who love US geography 🇺🇸',
+      'Almost there 🇺🇸 something\'s landing soon',
     ];
-    return facts[Math.floor(Math.random() * facts.length)];
+    return teasers[Math.floor(Math.random() * teasers.length)];
   }
   const date = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   return `🇺🇸 Today's Statedoku is live\n\n${date}\n\nSolve the 3x3 US states grid in 3 mistakes or fewer.\n\n${SITE_URL}\n\n#Statedoku`;

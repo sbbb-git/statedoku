@@ -2,13 +2,13 @@ name = "statedoku-twitter-bot"
 main = "src/worker.js"
 compatibility_date = "2024-09-23"
 
-# Cron — prelaunch phase: 2 tweets/day
-#   13:00 UTC = 09:00 ET / 15:00 Paris   → morning slot (teaser / hype)
-#   19:00 UTC = 15:00 ET / 21:00 Paris   → evening slot (fun fact)
+# Cron — prelaunch phase: 2 tweets/day, optimized for US audience
+#   13:00 UTC = 09:00 ET / 06:00 PT / 15:00 Paris   → US morning commute
+#   23:00 UTC = 19:00 ET / 16:00 PT / 01:00 Paris   → US after-work prime time
 # When you flip PHASE='launch' in worker.js, change this to a single cron
 # like "0 14 * * *" for one daily tweet.
 [triggers]
-crons = ["0 13 * * *", "0 19 * * *"]
+crons = ["0 13 * * *", "0 23 * * *"]
 
 # ─────────────────────────────────────────────────────────────────────────
 # Secrets to set (NEVER commit these to git):

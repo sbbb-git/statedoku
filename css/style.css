@@ -1256,46 +1256,23 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   .archive-nav button { width: 32px; height: 32px; }
 }
 
-/* ─────────────────── SEO intro block (homepage) ─────────────────── */
+/* ─────────────────── SEO nav (homepage) — compact inline links ─────────────────── */
 .seo-intro {
-  max-width: 520px;
   width: 100%;
-  margin: 28px auto 0;
-  padding: 22px 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: var(--text-2);
+  text-align: center;
+  margin: 8px auto 0;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  color: var(--text-3);
 }
-.seo-intro h2 {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-.seo-intro p { margin-bottom: 10px; }
-.seo-intro p:last-child { margin-bottom: 0; }
-.seo-intro strong { color: var(--text); font-weight: 700; }
-.seo-intro em { color: var(--navy); font-style: normal; font-weight: 600; }
 .seo-intro a {
-  color: var(--navy);
+  color: var(--text-2);
   text-decoration: none;
   font-weight: 700;
-  border-bottom: 2px solid transparent;
-  transition: border-color var(--d-fast) var(--ease);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--d-fast) var(--ease), color var(--d-fast) var(--ease);
 }
-.seo-intro a:hover { border-bottom-color: var(--gold); }
-@media (max-width: 480px) {
-  .seo-intro {
-    padding: 18px 18px;
-    font-size: 0.82rem;
-    border-radius: var(--r-sm);
-  }
-  .seo-intro h2 { font-size: 0.92rem; }
-}
+.seo-intro a:hover { color: var(--navy); border-bottom-color: var(--gold); }
 
 /* ─────────────────── Legal pages (Privacy / Terms) ─────────────────── */
 .legal-body { background: var(--bg); }
