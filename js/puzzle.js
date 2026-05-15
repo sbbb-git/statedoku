@@ -455,6 +455,24 @@ const Puzzle = (() => {
     return null;
   }
 
+  // Find the "Golden State" for a puzzle: a state in the solution that satisfies
+  // ALL 3 column constraints (a column-wildcard — it could be placed in any of
+  // the 3 cells of its row). Since our row groups are mutex by design, a state
+  // can satisfy at most 1 row constraint, so "all 6 criteria" is impossible —
+  // the meaningful version is "all 3 columns".
+  // Inspired by Tubedoku's Golden Station Easter egg. Rewards observant players.
+  function _findGoldenState(puzzle, states) {
+    if (!puzzle || !puzzle.solution || !puzzle.cols) return null;
+    const cols = puzzle.cols;
+    const solutionIds = new Set(puzzle.solution.flat());
+    for (const stateId of solutionIds) {
+      const state = states.find(s => s.id === stateId);
+      if (!state) continue;
+      if (cols.every(c => matches(state, c))) return stateId;
+    }
+    return null;
+  }
+
   function generatePuzzle(dateStr, states) {
     const baseSeed = dateToSeed(dateStr);
 
@@ -470,10 +488,17 @@ const Puzzle = (() => {
       : -1;
 
     const result = _generateForSeed(baseSeed, states, prevGroupIdx);
-    if (result) { const { _activeGroupIdx, ...rest } = result; return { ...rest, date: dateStr }; }
+    if (result) {
+      const { _activeGroupIdx, ...rest } = result;
+      const out = { ...rest, date: dateStr };
+      out.goldenState = _findGoldenState(out, states);
+      return out;
+    }
 
     // Absolute fallback — should never be reached
-    return generatePuzzleRelaxed(dateStr, states, mulberry32(baseSeed));
+    const fallback = generatePuzzleRelaxed(dateStr, states, mulberry32(baseSeed));
+    if (fallback) fallback.goldenState = _findGoldenState(fallback, states);
+    return fallback;
   }
 
   function generatePuzzleRelaxed(dateStr, states, rng) {
@@ -577,7 +602,7 @@ const Puzzle = (() => {
   }
 
   // One-time purge of stale cached puzzles (bump CACHE_GEN to invalidate)
-  const CACHE_GEN = 'gen5';
+  const CACHE_GEN = 'gen6';   // bump when puzzle structure changes
   (function _purgeOldPuzzleCaches() {
     try {
       if (localStorage.getItem('statedoku_cache_gen') === CACHE_GEN) return;
@@ -609,7 +634,7 @@ const Puzzle = (() => {
         states.filter(s => matches(s, rc) && matches(s, cc)).map(s => s.id)
       )
     );
-    return {
+    const preview = {
       date: dateStr,
       rows: PREVIEW_PUZZLE.rows,
       cols: PREVIEW_PUZZLE.cols,
@@ -617,6 +642,8 @@ const Puzzle = (() => {
       cells,
       _preview: true,
     };
+    preview.goldenState = _findGoldenState(preview, states);
+    return preview;
   }
 
   async function getPuzzle(dateStr) {

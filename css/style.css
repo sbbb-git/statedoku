@@ -2471,3 +2471,54 @@ footer, main, .score-bar {
   fill: #E5E7EB;
   opacity: 0.55;
 }
+
+/* ─────────────────── Golden State (Easter egg) ─────────────────── */
+.cell.golden {
+  background: linear-gradient(135deg, #FEF3C7, #FFFFFF) !important;
+  border-color: #F59E0B !important;
+  box-shadow: 0 0 0 2px #FCD34D, 0 0 24px rgba(245, 158, 11, 0.5) !important;
+  position: relative;
+}
+.cell.golden .cell-abbr { color: #92400E !important; }
+.cell-golden-star {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 1rem;
+  animation: golden-pulse 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes golden-pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.95; }
+  50%      { transform: scale(1.15) rotate(8deg); opacity: 1; }
+}
+
+.golden-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 14px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.45), 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 9999;
+  opacity: 0;
+  transition: transform 320ms cubic-bezier(.22,.84,.48,1.02), opacity 200ms;
+  pointer-events: none;
+  max-width: calc(100vw - 32px);
+}
+.golden-toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.golden-toast .gt-star {
+  font-size: 1.8rem;
+  animation: golden-pulse 1s ease-in-out infinite;
+}
+.golden-toast .gt-text { line-height: 1.3; }
+.golden-toast .gt-text small { opacity: 0.92; font-size: 0.78rem; }

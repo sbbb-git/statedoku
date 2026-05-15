@@ -13,6 +13,7 @@ const Game = (() => {
   let _solveTime  = null;
   let _dateStr    = null;
   let _errors     = 0;
+  let _goldenFound = false;
 
   // US flag SVG — official proportions (19:10), 13 stripes, 50 stars in 9 rows (6,5,6,5,6,5,6,5,6)
   function _buildFlagSVG() {
@@ -203,13 +204,17 @@ const Game = (() => {
           if (isCorrect) {
             cell.classList.add('locked');
             cell.setAttribute('tabindex', '-1');
-            cell.setAttribute('aria-label', `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]}) — locked`);
+            const isGolden = _puzzle.goldenState && placed === _puzzle.goldenState;
+            if (isGolden) cell.classList.add('golden');
+            cell.setAttribute('aria-label',
+              `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]})${isGolden ? ' — 🌟 Golden State' : ''} — locked`);
           } else {
             cell.setAttribute('aria-label', `${state.names[lang]} — wrong`);
           }
           cell.innerHTML = `
             <span class="cell-abbr">${state.id}</span>
             <span class="cell-name">${state.names[lang]}</span>
+            ${(_puzzle.goldenState && placed === _puzzle.goldenState && isCorrect) ? '<span class="cell-golden-star" aria-hidden="true">🌟</span>' : ''}
           `;
         } else {
           cell.classList.add('empty');
@@ -367,6 +372,15 @@ const Game = (() => {
     if (isCorrect) {
       // Lock the cell with the correct state
       _grid[r][c] = stateId;
+
+      // Golden State detection: did the player just place the puzzle's secret
+      // column-wildcard state? One-time bonus per puzzle.
+      if (_puzzle.goldenState && stateId === _puzzle.goldenState && !_goldenFound) {
+        _goldenFound = true;
+        _bumpStat('golden_total', 1);
+        _showGoldenToast(stateId);
+      }
+
       _closeSearch();
       _selectedCell = null;
       _renderCells();
@@ -627,7 +641,8 @@ const Game = (() => {
       }
       grid += '\n';
     }
-    return `Statedoku 🗺️ ${ds}\n${grid.trim()}`;
+    const gold = (_goldenFound && _puzzle.goldenState) ? ' 🌟' : '';
+    return `Statedoku 🗺️ ${ds}${gold}\n${grid.trim()}`;
   }
   // Backwards-compat: full share text (body + URL)
   function getShareText() { return `${getShareBody()}\n${SITE_URL}`; }
@@ -814,7 +829,7 @@ const Game = (() => {
   // ── Persistence ───────────────────────────────────────────────────────────
   function _saveProgress() {
     localStorage.setItem(CONFIG.STORAGE_KEY+'_progress_'+_dateStr,
-      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, startTime:_startTime, errors:_errors, solveTime:_solveTime }));
+      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, startTime:_startTime, errors:_errors, solveTime:_solveTime, goldenFound:_goldenFound }));
   }
 
   function _loadProgress() {
@@ -828,6 +843,7 @@ const Game = (() => {
       _startTime = d.startTime || Date.now();
       _errors    = d.errors    || 0;
       _solveTime = d.solveTime || null;
+      _goldenFound = !!d.goldenFound;
 
       // ── Defensive: detect corrupt progress (states visible but game not won/lost)
       // This can happen after a dev panel "Solve" run, or a stale wrong-flash save.
@@ -917,6 +933,40 @@ const Game = (() => {
     localStorage.removeItem(CONFIG.STORAGE_KEY + '_progress_' + _dateStr);
     localStorage.removeItem(CONFIG.STORAGE_KEY + '_puzzle_'   + _dateStr);
     location.reload();
+  }
+
+  // ── Golden State helpers ──────────────────────────────────────────────
+  function _bumpStat(key, delta) {
+    try {
+      const cur = parseInt(localStorage.getItem(CONFIG.STORAGE_KEY + '_' + key) || '0', 10);
+      localStorage.setItem(CONFIG.STORAGE_KEY + '_' + key, String(cur + delta));
+    } catch {}
+  }
+
+  function _showGoldenToast(stateId) {
+    const state = _stateMap[stateId];
+    const name = state ? state.names[I18n.getLang()] : stateId;
+    // Reuse the announcer for a11y
+    _announce(`🌟 Golden State found: ${name}`);
+    // Visual toast
+    let toast = document.getElementById('golden-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'golden-toast';
+      toast.className = 'golden-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<span class="gt-star">🌟</span><span class="gt-text"><strong>Golden State!</strong><br><small>${name} satisfies all 3 column criteria</small></span>`;
+    toast.classList.remove('show');
+    // Force reflow so the animation re-triggers
+    void toast.offsetWidth;
+    toast.classList.add('show');
+    clearTimeout(_showGoldenToast._t);
+    _showGoldenToast._t = setTimeout(() => toast.classList.remove('show'), 3800);
+    // Light haptic on mobile
+    if (navigator.vibrate) { try { navigator.vibrate([20, 30, 20]); } catch {} }
   }
 
   return { init, share, showStats, showHowToPlay, rerender, _toggleReminder,
