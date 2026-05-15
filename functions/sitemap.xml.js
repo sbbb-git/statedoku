@@ -80,12 +80,21 @@ export async function onRequestGet({ request }) {
   ];
   const stateEntries = stateSlugs.map(slug => [`${BASE}/states/${slug}/`, { priority: 0.7 }]);
 
+  // 5 subpages per state — map, history, geography, people, sports
+  const SUBTOPICS = ['map','history','geography','people','sports'];
+  const stateSubpageEntries = [];
+  for (const slug of stateSlugs) {
+    for (const t of SUBTOPICS) {
+      stateSubpageEntries.push([`${BASE}/states/${slug}/${t}/`, { priority: 0.6 }]);
+    }
+  }
+
   // Scheduled long-tail pages — only included once today >= publishDate
   const scheduled = Object.entries(SCHEDULE)
     .filter(([url, date]) => today >= date)
     .map(([url]) => [`${BASE}${url}`, { priority: 0.8 }]);
 
-  const all = [...evergreen, ...stateEntries, ...scheduled];
+  const all = [...evergreen, ...stateEntries, ...stateSubpageEntries, ...scheduled];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
