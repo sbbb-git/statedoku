@@ -5,12 +5,12 @@
 const LONGTAIL_SLUGS = [
   ['state-abbreviations',    '2026-05-15'],
   ['states-and-capitals',    '2026-05-15'],
-  ['13-colonies',            '2026-05-18'],
-  ['landlocked-states',      '2026-05-20'],
-  ['states-bordering-mexico','2026-05-22'],
-  ['states-bordering-canada','2026-05-25'],
-  ['largest-states',         '2026-05-27'],
-  ['no-income-tax',          '2026-05-30'],
+  ['13-colonies',            '2026-05-15'],
+  ['landlocked-states',      '2026-05-15'],
+  ['states-bordering-mexico','2026-05-15'],
+  ['states-bordering-canada','2026-05-15'],
+  ['largest-states',         '2026-05-15'],
+  ['no-income-tax',          '2026-05-15'],
 ];
 const SCHEDULE = {};
 for (const [slug, date] of LONGTAIL_SLUGS) {
