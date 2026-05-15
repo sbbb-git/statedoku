@@ -55,6 +55,16 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://statedoku.com/learn/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statedoku.com/learn/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/learn/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://statedoku.com/es/learn/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url><loc>https://statedoku.com/fr/learn/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://statedoku.com/es/learn/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
     <loc>https://statedoku.com/about/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://statedoku.com/about/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/about/"/>
