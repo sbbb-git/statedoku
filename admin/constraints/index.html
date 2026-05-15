@@ -234,6 +234,7 @@
   <div class="loader">Loading constraints…</div>
 </div>
 
+<script src="/js/constraints-approved.js?v=1"></script>
 <script src="/js/constraints-pending.js?v=11"></script>
 <script>
 (async function() {
@@ -460,7 +461,14 @@
   };
   const getDisabled = () => getSet(DK);
   const setDisabled = (s) => setSet(DK, s);
-  const getApproved = () => getSet(AK);
+  // Approved = union of repo-level (constraints-approved.js) + local staging.
+  // Repo IDs always count as approved here even if not in localStorage.
+  const REPO_APPROVED = new Set(window.APPROVED_PENDING || []);
+  const getApproved = () => {
+    const local = getSet(AK);
+    REPO_APPROVED.forEach(id => local.add(id));
+    return local;
+  };
   const setApproved = (s) => setSet(AK, s);
   const getRejected = () => getSet(RK);
   const setRejected = (s) => setSet(RK, s);

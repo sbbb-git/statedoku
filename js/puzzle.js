@@ -665,7 +665,12 @@ const Puzzle = (() => {
 
   function _approvedPendingList() {
     if (typeof PENDING_CONSTRAINTS === 'undefined') return [];
-    const approved = _getApprovedPending();
+    // Merge two sources of truth, with the static repo file as the baseline
+    // (shared with all players) and per-device localStorage as a local override
+    // (admin can stage additional approvals before promoting them to the repo).
+    const fromRepo = (typeof APPROVED_PENDING !== 'undefined') ? APPROVED_PENDING : [];
+    const fromLocal = _getApprovedPending();
+    const approved = new Set([...fromRepo, ...fromLocal]);
     return PENDING_CONSTRAINTS.filter(c => approved.has(c.id)).map(c => c.id);
   }
 
