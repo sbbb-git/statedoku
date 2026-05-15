@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+
+  <title>The 4 US Regions Explained (Northeast, South, Midwest, West) | Statedoku</title>
+  <meta name="description" content="The official US Census Bureau divides the country into 4 regions and 9 subregions. Learn which states are in each, why the divisions matter, and a memorization method that sticks.">
+  <meta name="keywords" content="us regions, 4 regions of the united states, us census regions, northeast states, south states, midwest states, west states, what are the 5 regions of the us">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/learn/us-regions/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=14">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The 4 US Regions Explained">
+  <meta property="og:description" content="Northeast, South, Midwest, West — every state mapped, with subregions and memorization tips.">
+  <meta property="og:url" content="https://statedoku.com/learn/us-regions/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LearningResource",
+    "name":"The 4 US Regions Explained",
+    "description":"Region-by-region breakdown of the 50 US states, with Census Bureau definitions.",
+    "url":"https://statedoku.com/learn/us-regions/",
+    "inLanguage":"en",
+    "learningResourceType":"Guide"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"How many regions does the US have?","acceptedAnswer":{"@type":"Answer","text":"The US Census Bureau officially divides the country into 4 regions: Northeast, South, Midwest, and West. These are further divided into 9 subregions. You'll sometimes see informal 5-region or 7-region splits in textbooks, but Census 4 is the standard reference."}},
+      {"@type":"Question","name":"What are the 4 regions of the US?","acceptedAnswer":{"@type":"Answer","text":"Northeast (9 states), South (16 states + DC), Midwest (12 states), and West (13 states)."}},
+      {"@type":"Question","name":"What's the difference between the South and the Deep South?","acceptedAnswer":{"@type":"Answer","text":"'South' is the Census region of 16 states from Delaware to Texas. 'Deep South' is an informal cultural label for 5–7 states with the strongest plantation-era heritage — usually Alabama, Georgia, Louisiana, Mississippi, and South Carolina."}},
+      {"@type":"Question","name":"Is Texas in the South or the Southwest?","acceptedAnswer":{"@type":"Answer","text":"Officially, Texas is in the Census South region (West South Central subregion). Culturally, Texas often groups with the Southwest (Arizona, New Mexico, Nevada). Both classifications are common."}}
+    ]
+  }
+  </script>
+
+  <style>
+    .reg-hero { max-width: 720px; margin: 32px auto 18px; padding: 0 18px; text-align: center; }
+    .reg-hero h1 { font-size: clamp(1.9rem, 5.5vw, 2.6rem); font-weight: 900; letter-spacing: -0.025em; margin: 0 0 10px; line-height: 1.15; }
+    .reg-hero .sub { color: var(--text-2); font-size: 1rem; line-height: 1.55; }
+    .reg-main { max-width: 720px; margin: 0 auto; padding: 18px 18px 60px; line-height: 1.65; }
+    .reg-main h2 { margin-top: 38px; margin-bottom: 12px; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.015em; }
+    .reg-main h3 { margin-top: 22px; margin-bottom: 8px; font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+    .reg-main p { margin-bottom: 12px; }
+    .region-card { border-left: 6px solid var(--rcol); background: var(--rcol-bg); padding: 18px 20px; border-radius: 0 12px 12px 0; margin: 18px 0; }
+    .region-card[data-r="northeast"] { --rcol: #1E40AF; --rcol-bg: #EFF6FF; }
+    .region-card[data-r="south"]     { --rcol: #B91C1C; --rcol-bg: #FEF2F2; }
+    .region-card[data-r="midwest"]   { --rcol: #B45309; --rcol-bg: #FFFBEB; }
+    .region-card[data-r="west"]      { --rcol: #047857; --rcol-bg: #ECFDF5; }
+    .region-card h3 { margin-top: 0; color: var(--rcol); font-size: 1.15rem; }
+    .region-card .count { font-size: .85rem; color: var(--text-3); font-weight: 500; }
+    .state-pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .state-pills a { display: inline-block; padding: 4px 10px; background: rgba(15,33,71,0.06); color: var(--text); border-radius: 999px; font-size: .85rem; font-weight: 600; text-decoration: none; transition: background 120ms; }
+    .state-pills a:hover { background: rgba(15,33,71,0.12); }
+    .tip { background: #FFF7ED; border-left: 3px solid var(--gold); padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: .93rem; }
+    .cta-card { background: linear-gradient(135deg, var(--navy), var(--navy-soft)); color: #fff; padding: 22px; border-radius: 14px; margin: 32px 0; text-align: center; }
+    .cta-card h3 { color: #fff; margin: 0 0 8px; }
+    .cta-card p { margin: 0 0 12px; color: rgba(255,255,255,0.85); }
+    .cta-card a { display: inline-block; background: var(--gold); color: var(--navy); padding: 10px 22px; border-radius: 999px; font-weight: 800; text-decoration: none; font-size: .92rem; }
+    table.compare { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .92rem; }
+    table.compare th, table.compare td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    table.compare th { background: #F8FAFC; font-weight: 700; }
+  </style>
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/learn/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← Learn</a></nav>
+</header>
+
+<main>
+  <section class="reg-hero">
+    <h1>The 4 US Regions Explained</h1>
+    <p class="sub">The Census Bureau divides the 50 states into Northeast, South, Midwest, and West — plus 9 subregions. Here's every state mapped, with the cultural and historical reasoning behind each line.</p>
+  </section>
+
+  <article class="reg-main">
+    <p>If you've ever wondered why politicians say "the South" or why weather forecasts group "the Midwest", the answer is the <strong>US Census Bureau's 4-region division</strong>, first formalized in 1910. These four buckets show up in news, polling, sports, agriculture data, and education materials — so learning them isn't just trivia, it's how the country talks about itself.</p>
+
+    <p>You'll sometimes see a "5-region" or "7-region" split in textbooks. Those are informal. The Census 4 is the canonical reference, and it's what we use across <a href="/">Statedoku</a> and the <a href="/learn/">50-states learning guide</a>.</p>
+
+    <h2>The 4 regions at a glance</h2>
+    <table class="compare">
+      <tr><th>Region</th><th>States</th><th>Population</th><th>Subregions</th></tr>
+      <tr><td><strong>Northeast</strong></td><td>9</td><td>~57M</td><td>New England, Mid-Atlantic</td></tr>
+      <tr><td><strong>South</strong></td><td>16 + DC</td><td>~129M</td><td>South Atlantic, East South Central, West South Central</td></tr>
+      <tr><td><strong>Midwest</strong></td><td>12</td><td>~69M</td><td>East North Central, West North Central / Plains</td></tr>
+      <tr><td><strong>West</strong></td><td>13</td><td>~79M</td><td>Mountain, Pacific</td></tr>
+    </table>
+
+    <h2 id="northeast">Northeast (9 states)</h2>
+    <div class="region-card" data-r="northeast">
+      <h3>Northeast <span class="count">— 9 states · oldest region by US history</span></h3>
+      <p>The smallest region by area, the densest by population, and the cradle of American history. From the Mayflower landing in Massachusetts (1620) to Wall Street, the Northeast is where the country started and where its financial system still lives.</p>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">New England (6)</h4>
+      <div class="state-pills">
+        <a href="/states/maine/">Maine</a><a href="/states/new-hampshire/">New Hampshire</a><a href="/states/vermont/">Vermont</a><a href="/states/massachusetts/">Massachusetts</a><a href="/states/rhode-island/">Rhode Island</a><a href="/states/connecticut/">Connecticut</a>
+      </div>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">Mid-Atlantic (3)</h4>
+      <div class="state-pills">
+        <a href="/states/new-york/">New York</a><a href="/states/new-jersey/">New Jersey</a><a href="/states/pennsylvania/">Pennsylvania</a>
+      </div>
+    </div>
+    <div class="tip">💡 Easy to remember: New England is six small states in the top-right corner. Add NY + NJ + PA — three big ones below it — and you have the Northeast.</div>
+
+    <h2 id="south">South (16 states + DC)</h2>
+    <div class="region-card" data-r="south">
+      <h3>South <span class="count">— 16 states + DC · the largest region by population</span></h3>
+      <p>The largest region by both states and people. Stretches from Delaware down to Florida, then west to Texas and Oklahoma. Within this region, the "Deep South" (AL, GA, LA, MS, SC) and Texas have distinct cultural identities — but for Census, statistics, and political analysis, all sixteen are South.</p>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">South Atlantic (8)</h4>
+      <div class="state-pills">
+        <a href="/states/delaware/">Delaware</a><a href="/states/maryland/">Maryland</a><a href="/states/virginia/">Virginia</a><a href="/states/west-virginia/">West Virginia</a><a href="/states/north-carolina/">North Carolina</a><a href="/states/south-carolina/">South Carolina</a><a href="/states/georgia/">Georgia</a><a href="/states/florida/">Florida</a>
+      </div>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">East South Central (4)</h4>
+      <div class="state-pills">
+        <a href="/states/kentucky/">Kentucky</a><a href="/states/tennessee/">Tennessee</a><a href="/states/alabama/">Alabama</a><a href="/states/mississippi/">Mississippi</a>
+      </div>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">West South Central (4)</h4>
+      <div class="state-pills">
+        <a href="/states/arkansas/">Arkansas</a><a href="/states/louisiana/">Louisiana</a><a href="/states/oklahoma/">Oklahoma</a><a href="/states/texas/">Texas</a>
+      </div>
+    </div>
+    <div class="tip">💡 Yes, Texas is officially South (not Southwest). That surprises many people. Same for Delaware — it's South, despite being a tiny coastal state right next to Pennsylvania.</div>
+
+    <h2 id="midwest">Midwest (12 states)</h2>
+    <div class="region-card" data-r="midwest">
+      <h3>Midwest <span class="count">— 12 states · the heartland</span></h3>
+      <p>America's agricultural and industrial heartland. The Great Lakes states power the eastern half (manufacturing, automotive, the original "Rust Belt"). The Plains states power the western half (corn, wheat, cattle). If you want to understand the American food supply, this is the region.</p>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">East North Central (5)</h4>
+      <div class="state-pills">
+        <a href="/states/wisconsin/">Wisconsin</a><a href="/states/michigan/">Michigan</a><a href="/states/illinois/">Illinois</a><a href="/states/indiana/">Indiana</a><a href="/states/ohio/">Ohio</a>
+      </div>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">West North Central / Plains (7)</h4>
+      <div class="state-pills">
+        <a href="/states/minnesota/">Minnesota</a><a href="/states/iowa/">Iowa</a><a href="/states/missouri/">Missouri</a><a href="/states/north-dakota/">North Dakota</a><a href="/states/south-dakota/">South Dakota</a><a href="/states/nebraska/">Nebraska</a><a href="/states/kansas/">Kansas</a>
+      </div>
+    </div>
+    <div class="tip">💡 Missouri is Midwest — not South. Despite being south of Iowa, the Census puts it here. Same logic for Kansas (the geographic center of the contiguous 48 states is in KS).</div>
+
+    <h2 id="west">West (13 states)</h2>
+    <div class="region-card" data-r="west">
+      <h3>West <span class="count">— 13 states · the biggest region by area</span></h3>
+      <p>The largest region by area, by a wide margin. Stretches from the Rockies to the Pacific, plus Alaska and Hawaii. Mountain states are vast and sparsely populated. Pacific states (especially California) drive a huge share of the US economy.</p>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">Mountain (8)</h4>
+      <div class="state-pills">
+        <a href="/states/montana/">Montana</a><a href="/states/idaho/">Idaho</a><a href="/states/wyoming/">Wyoming</a><a href="/states/nevada/">Nevada</a><a href="/states/utah/">Utah</a><a href="/states/colorado/">Colorado</a><a href="/states/arizona/">Arizona</a><a href="/states/new-mexico/">New Mexico</a>
+      </div>
+      <h4 style="margin:14px 0 6px;font-size:.95rem;font-weight:700;">Pacific (5)</h4>
+      <div class="state-pills">
+        <a href="/states/washington/">Washington</a><a href="/states/oregon/">Oregon</a><a href="/states/california/">California</a><a href="/states/alaska/">Alaska</a><a href="/states/hawaii/">Hawaii</a>
+      </div>
+    </div>
+    <div class="tip">💡 Alaska and Hawaii are both Pacific subregion West — even though they're nowhere near Washington or Oregon geographically. The Census groups them with the Pacific because they're the non-contiguous parts of the US west of the lower 48.</div>
+
+    <div class="cta-card">
+      <h3>Lock the regions in with a daily puzzle</h3>
+      <p>Statedoku uses region constraints almost every day. Five minutes a day, you'll start seeing the regions automatically.</p>
+      <a href="/">Play today's puzzle →</a>
+    </div>
+
+    <h2>Why "the 5 regions" isn't quite right</h2>
+    <p>Some elementary-school textbooks teach <strong>5 regions</strong>: Northeast, Southeast, Midwest, Southwest, West. This splits the Census South into Southeast (FL, GA, AL, MS, SC, NC, VA, KY, TN, WV, MD, DE) and Southwest (TX, OK, NM, AZ — sometimes also LA and AR). It's a useful cultural simplification.</p>
+
+    <p>Others teach <strong>7 or 9 regions</strong> based on cultural and historical groupings: New England, Mid-Atlantic, Appalachia, Deep South, Midwest, Great Plains, Mountain West, Pacific Coast. These are all valid lenses.</p>
+
+    <p>For SEO, news, polling, and data work, <strong>stick with the Census 4</strong>. It's the version Wikipedia uses, the federal government uses, and the version most adult Americans recognize when you say "Midwest" or "South".</p>
+
+    <h2 id="memorize">How to memorize the 4 regions</h2>
+    <ol>
+      <li><strong>Northeast = anything above DC, hugging the Atlantic.</strong> 9 states.</li>
+      <li><strong>South = DC down to FL, then west to TX.</strong> 16 states. Everything below the Mason-Dixon line is South, including Delaware (just barely).</li>
+      <li><strong>Midwest = Great Lakes + Plains.</strong> 12 states. Picture a tilted rectangle from Ohio to North Dakota down to Kansas.</li>
+      <li><strong>West = everything west of the Plains.</strong> 13 states. Includes mountains, deserts, the Pacific coast, plus Alaska and Hawaii.</li>
+    </ol>
+
+    <p style="margin-top:24px;">Try a quick test: name 3 states in each region without looking. If you can, you've internalized the structure. If you can't, the <a href="/learn/">full 50-states guide</a> walks through them region by region.</p>
+
+    <p style="margin-top:32px;">
+      <a href="/learn/" style="color:var(--navy);font-weight:700;text-decoration:none;">→ The full 50-states guide</a><br>
+      <a href="/learn/state-capitals/" style="color:var(--navy);font-weight:700;text-decoration:none;">→ Memorize all 50 state capitals</a><br>
+      <a href="/quiz/" style="color:var(--navy);font-weight:700;text-decoration:none;">→ Quick regions quiz</a><br>
+      <a href="/states/" style="color:var(--navy);font-weight:700;text-decoration:none;">→ Browse all 50 state pages</a>
+    </p>
+  </article>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/states/">All states</a> &nbsp;·&nbsp; <a href="/archive/">Archive</a></p>
+</footer>
+
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

@@ -243,6 +243,34 @@
     .sg-filter.active {
       background: var(--navy); color: #fff; border-color: var(--navy);
     }
+
+    /* US tilemap (positional, mobile-friendly) */
+    .us-map {
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      gap: clamp(2px, 0.4vw, 5px);
+      aspect-ratio: 13/8;
+      max-width: 900px;
+      margin: 12px auto 22px;
+      padding: 6px;
+    }
+    .us-map .tile {
+      display: flex; align-items: center; justify-content: center;
+      background: #94A3B8;
+      color: #fff; font-weight: 800;
+      font-size: clamp(0.55rem, 1.4vw, 0.92rem);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: transform 120ms, outline-color 120ms;
+      outline: 2px solid transparent;
+      letter-spacing: 0.02em;
+    }
+    .us-map .tile:hover { transform: scale(1.15); z-index: 1; outline-color: rgba(15,33,71,0.4); }
+    .us-map .tile[data-region="northeast"] { background: #1E40AF; }
+    .us-map .tile[data-region="south"]     { background: #B91C1C; }
+    .us-map .tile[data-region="midwest"]   { background: #B45309; }
+    .us-map .tile[data-region="west"]      { background: #047857; }
   </style>
 </head>
 <body class="legal-body">
@@ -263,6 +291,63 @@
     <h1>How to Learn the 50 US States (Fast)</h1>
     <p class="sub">A method built on regions, not flashcards. Most adults can name all 50 inside a week — with daily practice that doesn't feel like studying.</p>
     <a href="/" class="cta">Play today's puzzle →</a>
+  </section>
+
+
+  <section style="max-width:900px;margin:0 auto;padding:0 18px;">
+    <p style="text-align:center;color:var(--text-3);font-size:.85rem;margin:0 0 4px;">Click any state below to see its facts and capital · color = region</p>
+    <div class="us-map" role="img" aria-label="Clickable map of all 50 US states, colored by region">
+<a href="/states/alabama/" class="tile" data-region="south" style="grid-area:7/8;" title="Alabama">AL</a>
+<a href="/states/alaska/" class="tile" data-region="west" style="grid-area:3/1;" title="Alaska">AK</a>
+<a href="/states/arizona/" class="tile" data-region="west" style="grid-area:7/3;" title="Arizona">AZ</a>
+<a href="/states/arkansas/" class="tile" data-region="south" style="grid-area:6/6;" title="Arkansas">AR</a>
+<a href="/states/california/" class="tile" data-region="west" style="grid-area:6/2;" title="California">CA</a>
+<a href="/states/colorado/" class="tile" data-region="west" style="grid-area:6/4;" title="Colorado">CO</a>
+<a href="/states/connecticut/" class="tile" data-region="northeast" style="grid-area:4/12;" title="Connecticut">CT</a>
+<a href="/states/delaware/" class="tile" data-region="northeast" style="grid-area:5/12;" title="Delaware">DE</a>
+<a href="/states/florida/" class="tile" data-region="south" style="grid-area:8/9;" title="Florida">FL</a>
+<a href="/states/georgia/" class="tile" data-region="south" style="grid-area:7/9;" title="Georgia">GA</a>
+<a href="/states/hawaii/" class="tile" data-region="west" style="grid-area:6/1;" title="Hawaii">HI</a>
+<a href="/states/idaho/" class="tile" data-region="west" style="grid-area:4/3;" title="Idaho">ID</a>
+<a href="/states/illinois/" class="tile" data-region="midwest" style="grid-area:4/7;" title="Illinois">IL</a>
+<a href="/states/indiana/" class="tile" data-region="midwest" style="grid-area:4/8;" title="Indiana">IN</a>
+<a href="/states/iowa/" class="tile" data-region="midwest" style="grid-area:5/6;" title="Iowa">IA</a>
+<a href="/states/kansas/" class="tile" data-region="midwest" style="grid-area:7/5;" title="Kansas">KS</a>
+<a href="/states/kentucky/" class="tile" data-region="south" style="grid-area:5/8;" title="Kentucky">KY</a>
+<a href="/states/louisiana/" class="tile" data-region="south" style="grid-area:7/6;" title="Louisiana">LA</a>
+<a href="/states/maine/" class="tile" data-region="northeast" style="grid-area:1/11;" title="Maine">ME</a>
+<a href="/states/maryland/" class="tile" data-region="northeast" style="grid-area:5/11;" title="Maryland">MD</a>
+<a href="/states/massachusetts/" class="tile" data-region="northeast" style="grid-area:3/13;" title="Massachusetts">MA</a>
+<a href="/states/michigan/" class="tile" data-region="midwest" style="grid-area:3/9;" title="Michigan">MI</a>
+<a href="/states/minnesota/" class="tile" data-region="midwest" style="grid-area:4/6;" title="Minnesota">MN</a>
+<a href="/states/mississippi/" class="tile" data-region="south" style="grid-area:7/7;" title="Mississippi">MS</a>
+<a href="/states/missouri/" class="tile" data-region="midwest" style="grid-area:5/7;" title="Missouri">MO</a>
+<a href="/states/montana/" class="tile" data-region="west" style="grid-area:4/4;" title="Montana">MT</a>
+<a href="/states/nebraska/" class="tile" data-region="midwest" style="grid-area:6/5;" title="Nebraska">NE</a>
+<a href="/states/nevada/" class="tile" data-region="west" style="grid-area:5/3;" title="Nevada">NV</a>
+<a href="/states/new-hampshire/" class="tile" data-region="northeast" style="grid-area:2/11;" title="New Hampshire">NH</a>
+<a href="/states/new-jersey/" class="tile" data-region="northeast" style="grid-area:4/11;" title="New Jersey">NJ</a>
+<a href="/states/new-mexico/" class="tile" data-region="west" style="grid-area:7/4;" title="New Mexico">NM</a>
+<a href="/states/new-york/" class="tile" data-region="northeast" style="grid-area:3/12;" title="New York">NY</a>
+<a href="/states/north-carolina/" class="tile" data-region="south" style="grid-area:6/8;" title="North Carolina">NC</a>
+<a href="/states/north-dakota/" class="tile" data-region="midwest" style="grid-area:4/5;" title="North Dakota">ND</a>
+<a href="/states/ohio/" class="tile" data-region="midwest" style="grid-area:4/9;" title="Ohio">OH</a>
+<a href="/states/oklahoma/" class="tile" data-region="south" style="grid-area:8/5;" title="Oklahoma">OK</a>
+<a href="/states/oregon/" class="tile" data-region="west" style="grid-area:4/2;" title="Oregon">OR</a>
+<a href="/states/pennsylvania/" class="tile" data-region="northeast" style="grid-area:3/11;" title="Pennsylvania">PA</a>
+<a href="/states/rhode-island/" class="tile" data-region="northeast" style="grid-area:4/13;" title="Rhode Island">RI</a>
+<a href="/states/south-carolina/" class="tile" data-region="south" style="grid-area:6/9;" title="South Carolina">SC</a>
+<a href="/states/south-dakota/" class="tile" data-region="midwest" style="grid-area:5/5;" title="South Dakota">SD</a>
+<a href="/states/tennessee/" class="tile" data-region="south" style="grid-area:6/7;" title="Tennessee">TN</a>
+<a href="/states/texas/" class="tile" data-region="south" style="grid-area:8/6;" title="Texas">TX</a>
+<a href="/states/utah/" class="tile" data-region="west" style="grid-area:6/3;" title="Utah">UT</a>
+<a href="/states/vermont/" class="tile" data-region="northeast" style="grid-area:2/10;" title="Vermont">VT</a>
+<a href="/states/virginia/" class="tile" data-region="south" style="grid-area:5/9;" title="Virginia">VA</a>
+<a href="/states/washington/" class="tile" data-region="west" style="grid-area:3/2;" title="Washington">WA</a>
+<a href="/states/west-virginia/" class="tile" data-region="south" style="grid-area:4/10;" title="West Virginia">WV</a>
+<a href="/states/wisconsin/" class="tile" data-region="midwest" style="grid-area:3/8;" title="Wisconsin">WI</a>
+<a href="/states/wyoming/" class="tile" data-region="west" style="grid-area:5/4;" title="Wyoming">WY</a>
+</div>
   </section>
 
   <article class="learn-main">
