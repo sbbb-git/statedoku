@@ -80,9 +80,8 @@ export async function onRequestGet({ request }) {
   ];
   const stateEntries = stateSlugs.map(slug => [`${BASE}/states/${slug}/`, { priority: 0.7 }]);
 
-  // 10 subpages per state — map, history, geography, people, sports,
-  // elections, travel, weather, symbols, fun-facts
-  const SUBTOPICS = ['map','history','geography','people','sports','elections','travel','weather','symbols','fun-facts'];
+  // 12 subpages per state
+  const SUBTOPICS = ['map','history','geography','people','sports','elections','travel','weather','symbols','fun-facts','economy','food'];
   const stateSubpageEntries = [];
   for (const slug of stateSlugs) {
     for (const t of SUBTOPICS) {
@@ -90,12 +89,25 @@ export async function onRequestGet({ request }) {
     }
   }
 
-  // Scheduled long-tail pages — only included once today >= publishDate
+  // 100 top US city pages
+  const CITIES = ['new-york','los-angeles','chicago','houston','phoenix','philadelphia','san-antonio','san-diego','dallas','san-jose','austin','jacksonville','fort-worth','columbus','charlotte','san-francisco','indianapolis','seattle','denver','washington','boston','el-paso','nashville','detroit','oklahoma-city','portland','las-vegas','memphis','louisville','baltimore','milwaukee','albuquerque','tucson','fresno','sacramento','mesa','kansas-city','atlanta','omaha','colorado-springs','raleigh','miami','long-beach','virginia-beach','oakland','minneapolis','tulsa','arlington','new-orleans','wichita','cleveland','tampa','bakersfield','aurora','honolulu','anaheim','santa-ana','corpus-christi','riverside','lexington','stockton','henderson','saint-paul','st-louis','cincinnati','pittsburgh','greensboro','anchorage','plano','lincoln','orlando','irvine','newark','durham','chula-vista','toledo','fort-wayne','st-petersburg','laredo','jersey-city','chandler','madison','lubbock','scottsdale','reno','buffalo','gilbert','glendale','north-las-vegas','winston-salem','chesapeake','norfolk','fremont','garland','irving','hialeah','richmond','boise','spokane','baton-rouge','tacoma'];
+  const cityEntries = [[`${BASE}/cities/`, { priority: 0.8 }]];
+  for (const c of CITIES) cityEntries.push([`${BASE}/cities/${c}/`, { priority: 0.65 }]);
+
+  // 30 /learn/ deep dives
+  const LEARN_NEW = ['state-mottos','state-nicknames','state-flags','state-birds','state-flowers','state-trees','state-songs','state-capitals-pronunciation','state-license-plates','state-quarters','states-by-statehood-year','states-by-time-zone','states-by-population','electoral-college','swing-states','states-presidents-born','states-largest-cities','states-without-capital-largest','states-with-oceans','states-with-great-lakes','states-with-mountains','states-with-deserts','states-with-national-parks','cheapest-states-to-live','most-expensive-states','best-states-for-retirees','states-by-region-list','us-territories','states-confederate','state-sport'];
+  const learnNewEntries = LEARN_NEW.map(slug => [`${BASE}/learn/${slug}/`, { priority: 0.7 }]);
+
+  // 13 region pages
+  const REGION_HUB = [[`${BASE}/regions/`, { priority: 0.8 }]];
+  const REGIONS = ['northeast','south','midwest','west','new-england','mid-atlantic','south-atlantic','east-south-central','west-south-central','east-north-central','west-north-central','mountain','pacific'];
+  for (const r of REGIONS) REGION_HUB.push([`${BASE}/regions/${r}/`, { priority: 0.7 }]);
+
   const scheduled = Object.entries(SCHEDULE)
     .filter(([url, date]) => today >= date)
     .map(([url]) => [`${BASE}${url}`, { priority: 0.8 }]);
 
-  const all = [...evergreen, ...stateEntries, ...stateSubpageEntries, ...scheduled];
+  const all = [...evergreen, ...stateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...scheduled];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
