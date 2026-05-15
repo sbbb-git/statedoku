@@ -80,8 +80,9 @@ export async function onRequestGet({ request }) {
   ];
   const stateEntries = stateSlugs.map(slug => [`${BASE}/states/${slug}/`, { priority: 0.7 }]);
 
-  // 5 subpages per state — map, history, geography, people, sports
-  const SUBTOPICS = ['map','history','geography','people','sports'];
+  // 10 subpages per state — map, history, geography, people, sports,
+  // elections, travel, weather, symbols, fun-facts
+  const SUBTOPICS = ['map','history','geography','people','sports','elections','travel','weather','symbols','fun-facts'];
   const stateSubpageEntries = [];
   for (const slug of stateSlugs) {
     for (const t of SUBTOPICS) {

@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#0F2147">
   <meta name="color-scheme" content="light">
   <title>Alaska Map — Geography, Cities, Borders | Statedoku</title>
-  <meta name="description" content="Interactive map of Alaska showing all 50 US states for context. Capital Juneau, largest city Anchorage, area rank #1. 0 bordering states.">
-  <meta name="keywords" content="alaska map, alaska state map, alaska location, alaska borders, alaska cities">
+  <meta name="description" content="Interactive map of Alaska showing its location, Juneau (capital), Anchorage (largest city), and 0 bordering states.">
+  <meta name="keywords" content="alaska map, alaska state map, alaska location">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://statedoku.com/states/alaska/map/">
   <link rel="alternate" hreflang="en" href="https://statedoku.com/states/alaska/map/">
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="/css/style.css?v=17">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Alaska Map — Geography, Cities, Borders">
-  <meta property="og:description" content="Interactive map of Alaska showing all 50 US states for context. Capital Juneau, largest city Anchorage, area rank #1. 0 bordering states.">
+  <meta property="og:description" content="Interactive map of Alaska showing its location, Juneau (capital), Anchorage (largest city), and 0 bordering states.">
   <meta property="og:url" content="https://statedoku.com/states/alaska/map/">
   <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
   <style>
@@ -32,13 +32,13 @@
     .ss-hero .meta { color: var(--text-2); font-size: 1rem; }
     .ss-hero .badge { display: inline-block; background: var(--region-color, #B91C1C); color: #fff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: .9rem; margin-right: 6px; letter-spacing: .04em; }
     .ss-main { max-width: 720px; margin: 0 auto; padding: 18px 18px 60px; line-height: 1.65; }
-    .ss-main h2 { margin-top: 32px; margin-bottom: 12px; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; }
-    .ss-main h3 { margin-top: 22px; margin-bottom: 8px; font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+    .ss-main h2 { margin-top: 30px; margin-bottom: 10px; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.015em; }
+    .ss-main h3 { margin-top: 20px; margin-bottom: 8px; font-size: 1rem; font-weight: 700; color: var(--navy); }
     .ss-main p, .ss-main li { line-height: 1.65; }
-    .ss-main ul { padding-left: 22px; margin-bottom: 14px; }
-    .ss-main ul li { margin-bottom: 6px; }
-    .nav-tabs { display: flex; flex-wrap: wrap; gap: 6px; max-width: 720px; margin: 14px auto 0; padding: 0 18px; }
-    .nav-tabs a { padding: 6px 14px; border-radius: 999px; background: #F1F5F9; color: var(--text-2); text-decoration: none; font-size: .85rem; font-weight: 600; transition: all 120ms; }
+    .ss-main ul { padding-left: 22px; margin-bottom: 12px; }
+    .ss-main ul li { margin-bottom: 5px; }
+    .nav-tabs { display: flex; flex-wrap: wrap; gap: 5px; max-width: 900px; margin: 14px auto 0; padding: 0 18px; }
+    .nav-tabs a { padding: 5px 12px; border-radius: 999px; background: #F1F5F9; color: var(--text-2); text-decoration: none; font-size: .8rem; font-weight: 600; transition: all 120ms; white-space: nowrap; }
     .nav-tabs a:hover { background: #E2E8F0; color: var(--navy); }
     .nav-tabs a.active { background: var(--navy); color: #fff; }
     .cta-card { background: linear-gradient(135deg, var(--navy), var(--navy-soft)); color: #fff; padding: 22px; border-radius: 14px; margin: 28px 0; text-align: center; }
@@ -49,6 +49,12 @@
     .related-grid a { display: block; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--navy); text-decoration: none; font-weight: 600; font-size: .9rem; transition: all 120ms; }
     .related-grid a:hover { background: #F8FAFC; border-color: var(--navy); }
     .us-svgmap-wrap { max-width: 720px; margin: 18px auto; }
+    .factbox { background: #F8FAFC; border-left: 4px solid var(--gold); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+    .factbox strong { color: var(--navy); }
+    .symbol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 14px 0; }
+    .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+    .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
+    .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
   </style>
 </head>
 <body class="legal-body">
@@ -63,6 +69,11 @@
   <a href="/states/alaska/geography/" >Geography</a>
   <a href="/states/alaska/people/" >People</a>
   <a href="/states/alaska/sports/" >Sports</a>
+  <a href="/states/alaska/elections/" >Elections</a>
+  <a href="/states/alaska/travel/" >Travel</a>
+  <a href="/states/alaska/weather/" >Weather</a>
+  <a href="/states/alaska/symbols/" >Symbols</a>
+  <a href="/states/alaska/fun-facts/" >Fun facts</a>
 </nav><main>
   <section class="ss-hero">
     <p class="crumb"><a href="/">Home</a> · <a href="/states/">States</a> · <a href="/states/alaska/">Alaska</a> · Map</p>
@@ -72,28 +83,26 @@
   <div class="ss-main">
     <div class="us-svgmap-wrap" data-us-map data-highlight="AK" aria-label="Map of the 50 US states with Alaska highlighted"></div>
 
-    <h2>About this map</h2>
-    <p>The map above shows Alaska's location within the United States. Alaska is highlighted in gold, with other states colored by region: <strong style="color:#1E40AF">Northeast</strong>, <strong style="color:#B91C1C">South</strong>, <strong style="color:#B45309">Midwest</strong>, and <strong style="color:#047857">West</strong>. Click any other state to see its facts and history.</p>
-
-    <h3>Major cities</h3><p>Anchorage is by far the largest city (~290k, nearly half the state population) but Juneau is the capital — reachable only by sea or air, no road connects it to the rest of Alaska. Fairbanks is the inland hub. Sitka was the Russian capital.</p>
-    <h3>Geography in a nutshell</h3><p>Mount Denali (20,310 ft) is the highest peak in North America. The Alaska Range, Brooks Range, and Aleutian volcanic arc dominate the geography. Alaska has more coastline than the rest of the United States combined.</p>
+    <h2>Quick facts</h2>
+    <ul>
+      <li><strong>Capital:</strong> Juneau</li>
+      <li><strong>Largest city:</strong> Anchorage</li>
+      <li><strong>Population:</strong> under 1 million</li>
+      <li><strong>Area rank:</strong> #1 of 50</li>
+      <li><strong>Region:</strong> West</li>
+      <li><strong>Admitted:</strong> 1959</li>
+      <li><strong>Bordering states:</strong> 0</li>
+      <li><strong>Time zone:</strong> alaska</li>
+    </ul>
 
     
 
     <div class="cta-card">
       <h3>Play the daily geography puzzle</h3>
-      <p>Statedoku uses Alaska's region, borders, and history as daily constraints. Five minutes a day to lock the map in.</p>
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Explore Alaska further</h2>
-    <div class="related-grid">
-      <a href="/states/alaska/">→ Alaska overview</a>
-      <a href="/states/alaska/history/">→ Alaska history</a>
-      <a href="/states/alaska/geography/">→ Alaska geography</a>
-      <a href="/states/alaska/people/">→ Famous people from Alaska</a>
-      <a href="/states/alaska/sports/">→ Alaska sports</a>
-    </div>
+    <h2>Explore further</h2><div class="related-grid"><a href="/states/alaska/">→ Overview</a><a href="/states/alaska/history/">→ History</a><a href="/states/alaska/geography/">→ Geography</a><a href="/states/alaska/people/">→ People</a><a href="/states/alaska/sports/">→ Sports</a><a href="/states/alaska/elections/">→ Elections</a></div>
   </div>
 </main>
 <footer>
