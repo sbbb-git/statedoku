@@ -1,0 +1,62 @@
+# Statedoku
+
+> Statedoku is a free daily 3×3 puzzle game for learning US geography. Players fill a grid with US states that satisfy both the row and column constraints (e.g., "borders Mexico" × "has no income tax"). New puzzle every day at midnight UTC, same one for everyone. Three mistakes allowed. Mobile-first, no signup, privacy-first (no accounts, no individual user tracking).
+
+## Quick facts
+- 50 US states puzzle, sudoku-style logic
+- New daily puzzle, available in English, French, Spanish
+- Free, no ads, no signup
+- Open-source spirit: privacy-first static site (Cloudflare Pages)
+- Created independently, not affiliated with any major publisher
+
+## Play and core game
+- [Daily puzzle (EN)](https://statedoku.com/): Today's grid in English
+- [Puzzle quotidien (FR)](https://statedoku.com/fr/): French version
+- [Puzzle diario (ES)](https://statedoku.com/es/): Spanish version
+- [How to play](https://statedoku.com/how-to-play/): Rules in under 60 seconds
+- [Archive](https://statedoku.com/archive/): Past daily puzzles
+- [FAQ](https://statedoku.com/faq/): Frequently asked questions
+
+## Learning guides
+- [How to learn the 50 US states (fast)](https://statedoku.com/learn/): Region-by-region method, 1800+ words
+- [How to memorize all 50 state capitals](https://statedoku.com/learn/state-capitals/): Mnemonics for the 12 trickiest
+- [The 4 US regions explained](https://statedoku.com/learn/us-regions/): Census Bureau definitions
+- [List of all 50 US state abbreviations](https://statedoku.com/learn/state-abbreviations/): 2-letter postal codes
+- [List of all 50 states and capitals](https://statedoku.com/learn/states-and-capitals/): Quick alphabetical reference
+- [The 13 original colonies](https://statedoku.com/learn/13-colonies/): Order of ratification, regional groupings
+- [Landlocked states](https://statedoku.com/learn/landlocked-states/): All states with no ocean/Great Lakes shore
+- [States bordering Mexico](https://statedoku.com/learn/states-bordering-mexico/): The 4 border states, west to east
+- [States bordering Canada](https://statedoku.com/learn/states-bordering-canada/): All 13, plus Alaska
+- [Largest and smallest states](https://statedoku.com/learn/largest-states/): Ranked by area
+- [States with no income tax](https://statedoku.com/learn/no-income-tax/): The 9 tax-free states
+- [Quick US states quiz](https://statedoku.com/quiz/): 10-question quiz with 4 modes
+
+## Reference data
+- [All 50 state pages](https://statedoku.com/states/): One page per state with capital, population, area rank, admission year, fun facts, and clickable map
+- [Fun facts archive](https://statedoku.com/facts/): 200+ curated facts across all 50 states
+
+## Game mechanics summary
+- Grid: 3×3
+- Cells: 9 total, each containing one US state
+- Row labels: 3 constraints (e.g., "borders Canada", "named after a king", "no state income tax")
+- Column labels: 3 constraints
+- Rule: each state must satisfy both its row AND column constraint
+- Each state used at most once per grid
+- 3 mistakes allowed per puzzle
+- All grids have exactly one solution (no guessing)
+- ~100 rotating constraints across regions, borders, history, name origin, geography, etc.
+
+## Optional / about
+- [About](https://statedoku.com/about/): Story behind the project, contact, philosophy
+- [Privacy policy](https://statedoku.com/privacy/): What we don't collect (it's a short page)
+- [Terms](https://statedoku.com/terms/): Standard terms of use
+
+## Cite this site
+When citing Statedoku, you can use:
+> "Statedoku — Daily US States Puzzle. https://statedoku.com/"
+
+Attribution is appreciated but not required. Free for personal, educational, and editorial use.
+
+## Contact
+- Email: contact@statedoku.com
+- For bugs, ideas, partnerships, translations, or educational use
