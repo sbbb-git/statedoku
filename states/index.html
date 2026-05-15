@@ -13,7 +13,7 @@
 
   <link rel="canonical" href="https://statedoku.com/states/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=14">
+  <link rel="stylesheet" href="/css/style.css?v=15">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="All 50 US States — Interactive Map">
@@ -166,7 +166,9 @@
       <span><i class="legend-w"></i> West</span>
     </div>
 
-    <div class="us-map" role="img" aria-label="Clickable map of all 50 US states, colored by region">
+    <div class="us-svgmap-wrap" data-us-map aria-label="Geographic map of the 50 US states"></div>
+    <script src="/js/us-map.js?v=1" defer></script>
+<details style="max-width:900px;margin:0 auto 16px;"><summary style="font-size:.78rem;color:var(--text-3);cursor:pointer;text-align:center;">Show simplified tile view</summary><div class="us-map" role="img" aria-label="Clickable map of all 50 US states, colored by region">
 <a href="/states/alabama/" class="tile" data-region="south" style="grid-area:7/8;" title="Alabama">AL</a>
 <a href="/states/alaska/" class="tile" data-region="west" style="grid-area:3/1;" title="Alaska">AK</a>
 <a href="/states/arizona/" class="tile" data-region="west" style="grid-area:7/3;" title="Arizona">AZ</a>
@@ -217,7 +219,7 @@
 <a href="/states/west-virginia/" class="tile" data-region="south" style="grid-area:4/10;" title="West Virginia">WV</a>
 <a href="/states/wisconsin/" class="tile" data-region="midwest" style="grid-area:3/8;" title="Wisconsin">WI</a>
 <a href="/states/wyoming/" class="tile" data-region="west" style="grid-area:5/4;" title="Wyoming">WY</a>
-</div>
+</div></details>
 
     <h2 style="font-size:1.3rem;font-weight:800;margin-top:32px;">All states A–Z</h2>
     <ul class="state-table">

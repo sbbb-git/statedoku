@@ -2432,3 +2432,37 @@ footer, main, .score-bar {
 @media (max-width: 380px) {
   .lang-switcher { display: none; }
 }
+
+/* ─────────────────── Geographic US states SVG map ─────────────────── */
+.us-svgmap-wrap {
+  max-width: 900px;
+  margin: 12px auto 22px;
+  padding: 6px;
+}
+.us-svgmap-wrap svg.us-svgmap {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.us-svgmap .state {
+  fill: #94A3B8;
+  stroke: #fff;
+  stroke-width: 0.8;
+  transition: fill 120ms, transform 120ms, filter 120ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.us-svgmap .state[data-region="northeast"] { fill: #1E40AF; }
+.us-svgmap .state[data-region="south"]     { fill: #B91C1C; }
+.us-svgmap .state[data-region="midwest"]   { fill: #B45309; }
+.us-svgmap .state[data-region="west"]      { fill: #047857; }
+.us-svgmap .state:hover {
+  fill: #0F2147;
+  filter: brightness(1.15);
+}
+.us-svgmap .state.is-highlight {
+  fill: #FFD400;
+  stroke: #0F2147;
+  stroke-width: 1.6;
+  filter: drop-shadow(0 2px 6px rgba(255,212,0,0.55));
+}
