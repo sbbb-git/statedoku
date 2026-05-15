@@ -2,18 +2,22 @@
 // Replaces the static sitemap.xml from this date forward.
 
 // Drip schedule: each URL becomes indexable on its scheduled date.
-const SCHEDULE = {
-  // Live immediately
-  '/learn/state-abbreviations/':   '2026-05-15',
-  '/learn/states-and-capitals/':   '2026-05-15',
-  // Dripped
-  '/learn/13-colonies/':           '2026-05-18',
-  '/learn/landlocked-states/':     '2026-05-20',
-  '/learn/states-bordering-mexico/':'2026-05-22',
-  '/learn/states-bordering-canada/':'2026-05-25',
-  '/learn/largest-states/':        '2026-05-27',
-  '/learn/no-income-tax/':         '2026-05-30',
-};
+const LONGTAIL_SLUGS = [
+  ['state-abbreviations',    '2026-05-15'],
+  ['states-and-capitals',    '2026-05-15'],
+  ['13-colonies',            '2026-05-18'],
+  ['landlocked-states',      '2026-05-20'],
+  ['states-bordering-mexico','2026-05-22'],
+  ['states-bordering-canada','2026-05-25'],
+  ['largest-states',         '2026-05-27'],
+  ['no-income-tax',          '2026-05-30'],
+];
+const SCHEDULE = {};
+for (const [slug, date] of LONGTAIL_SLUGS) {
+  SCHEDULE[`/learn/${slug}/`] = date;
+  SCHEDULE[`/fr/learn/${slug}/`] = date;
+  SCHEDULE[`/es/learn/${slug}/`] = date;
+}
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
