@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+
+  <title>US States Quiz — Quick Test of All 50 States & Capitals | Statedoku</title>
+  <meta name="description" content="Free 10-question US states quiz. Test your knowledge of all 50 state names, capitals, and regions. Mobile-friendly, no signup, instant scoring.">
+  <meta name="keywords" content="us states quiz, 50 states quiz, state capitals quiz, us geography quiz, name all 50 states, states and capitals quiz">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/quiz/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=14">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="US States Quiz — Test All 50 States & Capitals">
+  <meta property="og:description" content="Free 10-question US states quiz. No signup, instant scoring.">
+  <meta property="og:url" content="https://statedoku.com/quiz/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Quiz",
+    "name":"US States Quiz",
+    "about":"All 50 US states, capitals, and regions",
+    "url":"https://statedoku.com/quiz/",
+    "inLanguage":"en",
+    "educationalLevel":"beginner"
+  }
+  </script>
+
+  <style>
+    .quiz-hero { max-width: 720px; margin: 32px auto 12px; padding: 0 18px; text-align: center; }
+    .quiz-hero h1 { font-size: clamp(1.9rem, 5.5vw, 2.6rem); font-weight: 900; letter-spacing: -0.025em; margin: 0 0 8px; }
+    .quiz-hero p { color: var(--text-2); font-size: .95rem; }
+    .quiz-main { max-width: 560px; margin: 0 auto; padding: 14px 18px 50px; }
+    .quiz-pick { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 14px 0; }
+    .quiz-pick button {
+      background: #fff; border: 1px solid var(--border); color: var(--text-2);
+      padding: 8px 16px; border-radius: 999px;
+      font-size: .88rem; font-weight: 700; cursor: pointer;
+      transition: all 120ms;
+    }
+    .quiz-pick button:hover { border-color: var(--navy); color: var(--navy); }
+    .quiz-pick button.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .quiz-box {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; margin: 20px 0;
+      box-shadow: 0 4px 16px rgba(15,33,71,0.05);
+    }
+    .quiz-prog {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .82rem; color: var(--text-3); margin-bottom: 14px; font-weight: 600;
+    }
+    .quiz-q {
+      font-size: 1.15rem; font-weight: 700; margin: 8px 0 16px;
+      color: var(--text); min-height: 56px;
+    }
+    .quiz-options { display: grid; gap: 8px; }
+    .quiz-options button {
+      background: #fff; border: 1.5px solid var(--border);
+      padding: 12px 16px; border-radius: 10px;
+      font-size: .95rem; font-weight: 600; color: var(--text);
+      text-align: left; cursor: pointer;
+      transition: all 120ms;
+    }
+    .quiz-options button:hover { border-color: var(--navy); background: #F8FAFC; }
+    .quiz-options button.correct { background: #DCFCE7; border-color: #16A34A; color: #14532D; }
+    .quiz-options button.wrong   { background: #FEE2E2; border-color: #DC2626; color: #7F1D1D; }
+    .quiz-options button:disabled { cursor: default; }
+    .quiz-feedback {
+      margin-top: 14px; padding: 12px 14px; border-radius: 10px;
+      font-size: .9rem; display: none;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.correct { background: #ECFDF5; color: #065F46; border-left: 3px solid #16A34A; }
+    .quiz-feedback.wrong { background: #FEF2F2; color: #991B1B; border-left: 3px solid #DC2626; }
+    .quiz-next {
+      width: 100%; padding: 14px; margin-top: 14px;
+      background: var(--navy); color: #fff; border: none;
+      border-radius: 10px; font-weight: 800; font-size: 1rem; cursor: pointer;
+      display: none;
+    }
+    .quiz-next.show { display: block; }
+    .quiz-next:hover { background: var(--navy-soft); }
+    .quiz-result {
+      text-align: center; padding: 30px 24px;
+    }
+    .quiz-result .score {
+      font-size: 3rem; font-weight: 900; color: var(--navy);
+      margin: 6px 0;
+    }
+    .quiz-result .grade { font-size: 1.05rem; color: var(--text-2); margin-bottom: 18px; }
+    .quiz-result .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .quiz-result a, .quiz-result button {
+      display: inline-block; padding: 11px 20px; border-radius: 999px;
+      font-weight: 800; font-size: .9rem; text-decoration: none;
+      border: 1.5px solid var(--navy); cursor: pointer;
+    }
+    .quiz-result .primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .quiz-result .secondary { background: #fff; color: var(--navy); }
+    .seo-block {
+      margin-top: 40px; padding: 0 4px; line-height: 1.65;
+      color: var(--text-2); font-size: .9rem;
+    }
+    .seo-block h2 { color: var(--text); font-size: 1.1rem; font-weight: 800; margin: 22px 0 8px; }
+    .seo-block a { color: var(--navy); font-weight: 700; text-decoration: none; }
+  </style>
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/learn/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← Learn</a></nav>
+</header>
+
+<main>
+  <section class="quiz-hero">
+    <h1>US States Quiz</h1>
+    <p>10 questions on the 50 states, capitals, and regions. No signup, instant scoring.</p>
+  </section>
+
+  <div class="quiz-main">
+    <div class="quiz-pick" id="mode-picker" role="tablist">
+      <button data-mode="mixed" class="active">Mixed (10)</button>
+      <button data-mode="capitals">Capitals only</button>
+      <button data-mode="regions">Regions only</button>
+      <button data-mode="abbr">Abbreviations</button>
+    </div>
+
+    <div id="quiz-screen" class="quiz-box">
+      <div class="quiz-prog"><span id="qprog">Question 1 / 10</span><span id="qscore">Score: 0</span></div>
+      <div class="quiz-q" id="qtext">Loading…</div>
+      <div class="quiz-options" id="qopts"></div>
+      <div class="quiz-feedback" id="qfb"></div>
+      <button class="quiz-next" id="qnext">Next question →</button>
+    </div>
+
+    <div id="result-screen" class="quiz-box quiz-result" hidden>
+      <p style="font-size:.85rem;color:var(--text-3);margin:0;text-transform:uppercase;letter-spacing:.05em;font-weight:600;">Your score</p>
+      <p class="score" id="rscore">0 / 10</p>
+      <p class="grade" id="rgrade">—</p>
+      <div class="actions">
+        <button class="primary" id="r-again">Play again</button>
+        <a class="secondary" href="/">Daily puzzle →</a>
+      </div>
+      <p style="margin-top:24px;font-size:.85rem;color:var(--text-3);">
+        Want to improve? Read the <a href="/learn/" style="color:var(--navy);font-weight:700;text-decoration:none;">full method</a> or the <a href="/learn/state-capitals/" style="color:var(--navy);font-weight:700;text-decoration:none;">capitals guide</a>.
+      </p>
+    </div>
+
+    <div class="seo-block">
+      <h2>How the quiz works</h2>
+      <p>Each round picks 10 random questions across three categories: state capitals (which capital matches the state, or vice versa), regions (which region a state belongs to), and abbreviations (matching the 2-letter code to the state). Mixed mode rotates all three. Capitals-only, regions-only, and abbreviations-only let you drill a specific weakness.</p>
+      <h2>Want to learn the states properly?</h2>
+      <p>The <a href="/learn/">50 states guide</a> walks you through every state by region in under a week. The <a href="/learn/state-capitals/">capitals guide</a> adds mnemonics for the 12 trickiest. The <a href="/learn/us-regions/">regions guide</a> covers the Census Bureau's 4-region division.</p>
+      <h2>Or play the daily puzzle</h2>
+      <p>Statedoku is a daily 3×3 puzzle that quietly drills geography. Five minutes a day. <a href="/">Today's puzzle →</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/states/">All states</a> &nbsp;·&nbsp; <a href="/archive/">Archive</a></p>
+</footer>
+
+<script>
+const STATES = [
+  {n:"Alabama",a:"AL",c:"Montgomery",r:"south"},{n:"Alaska",a:"AK",c:"Juneau",r:"west"},
+  {n:"Arizona",a:"AZ",c:"Phoenix",r:"west"},{n:"Arkansas",a:"AR",c:"Little Rock",r:"south"},
+  {n:"California",a:"CA",c:"Sacramento",r:"west"},{n:"Colorado",a:"CO",c:"Denver",r:"west"},
+  {n:"Connecticut",a:"CT",c:"Hartford",r:"northeast"},{n:"Delaware",a:"DE",c:"Dover",r:"northeast"},
+  {n:"Florida",a:"FL",c:"Tallahassee",r:"south"},{n:"Georgia",a:"GA",c:"Atlanta",r:"south"},
+  {n:"Hawaii",a:"HI",c:"Honolulu",r:"west"},{n:"Idaho",a:"ID",c:"Boise",r:"west"},
+  {n:"Illinois",a:"IL",c:"Springfield",r:"midwest"},{n:"Indiana",a:"IN",c:"Indianapolis",r:"midwest"},
+  {n:"Iowa",a:"IA",c:"Des Moines",r:"midwest"},{n:"Kansas",a:"KS",c:"Topeka",r:"midwest"},
+  {n:"Kentucky",a:"KY",c:"Frankfort",r:"south"},{n:"Louisiana",a:"LA",c:"Baton Rouge",r:"south"},
+  {n:"Maine",a:"ME",c:"Augusta",r:"northeast"},{n:"Maryland",a:"MD",c:"Annapolis",r:"northeast"},
+  {n:"Massachusetts",a:"MA",c:"Boston",r:"northeast"},{n:"Michigan",a:"MI",c:"Lansing",r:"midwest"},
+  {n:"Minnesota",a:"MN",c:"Saint Paul",r:"midwest"},{n:"Mississippi",a:"MS",c:"Jackson",r:"south"},
+  {n:"Missouri",a:"MO",c:"Jefferson City",r:"midwest"},{n:"Montana",a:"MT",c:"Helena",r:"west"},
+  {n:"Nebraska",a:"NE",c:"Lincoln",r:"midwest"},{n:"Nevada",a:"NV",c:"Carson City",r:"west"},
+  {n:"New Hampshire",a:"NH",c:"Concord",r:"northeast"},{n:"New Jersey",a:"NJ",c:"Trenton",r:"northeast"},
+  {n:"New Mexico",a:"NM",c:"Santa Fe",r:"west"},{n:"New York",a:"NY",c:"Albany",r:"northeast"},
+  {n:"North Carolina",a:"NC",c:"Raleigh",r:"south"},{n:"North Dakota",a:"ND",c:"Bismarck",r:"midwest"},
+  {n:"Ohio",a:"OH",c:"Columbus",r:"midwest"},{n:"Oklahoma",a:"OK",c:"Oklahoma City",r:"south"},
+  {n:"Oregon",a:"OR",c:"Salem",r:"west"},{n:"Pennsylvania",a:"PA",c:"Harrisburg",r:"northeast"},
+  {n:"Rhode Island",a:"RI",c:"Providence",r:"northeast"},{n:"South Carolina",a:"SC",c:"Columbia",r:"south"},
+  {n:"South Dakota",a:"SD",c:"Pierre",r:"midwest"},{n:"Tennessee",a:"TN",c:"Nashville",r:"south"},
+  {n:"Texas",a:"TX",c:"Austin",r:"south"},{n:"Utah",a:"UT",c:"Salt Lake City",r:"west"},
+  {n:"Vermont",a:"VT",c:"Montpelier",r:"northeast"},{n:"Virginia",a:"VA",c:"Richmond",r:"south"},
+  {n:"Washington",a:"WA",c:"Olympia",r:"west"},{n:"West Virginia",a:"WV",c:"Charleston",r:"south"},
+  {n:"Wisconsin",a:"WI",c:"Madison",r:"midwest"},{n:"Wyoming",a:"WY",c:"Cheyenne",r:"west"},
+];
+
+const REGION_LABELS = {northeast:"Northeast",south:"South",midwest:"Midwest",west:"West"};
+
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function makeQuestion(type) {
+  const s = STATES[(Math.random()*STATES.length)|0];
+  if (type === 'capitals' || (type === 'mixed' && Math.random() < .33)) {
+    const wrongs = shuffle(STATES.filter(x => x.c !== s.c)).slice(0,3).map(x => x.c);
+    return { q: `What is the capital of <strong>${s.n}</strong>?`, opts: shuffle([s.c, ...wrongs]), ans: s.c, why: `${s.c} has been the capital of ${s.n} since ${s.n === "New Mexico" ? "1610" : "the state was admitted"}.` };
+  }
+  if (type === 'regions' || (type === 'mixed' && Math.random() < .5)) {
+    const wrongs = shuffle(Object.keys(REGION_LABELS).filter(r => r !== s.r)).slice(0,3).map(r => REGION_LABELS[r]);
+    return { q: `Which region is <strong>${s.n}</strong> in?`, opts: shuffle([REGION_LABELS[s.r], ...wrongs]), ans: REGION_LABELS[s.r], why: `${s.n} is in the ${REGION_LABELS[s.r]} region per the US Census Bureau.` };
+  }
+  // abbreviations
+  const wrongs = shuffle(STATES.filter(x => x.a !== s.a)).slice(0,3).map(x => x.a);
+  return { q: `What is the 2-letter abbreviation for <strong>${s.n}</strong>?`, opts: shuffle([s.a, ...wrongs]), ans: s.a, why: `${s.n} → ${s.a}.` };
+}
+
+let mode = 'mixed', current = 0, score = 0, qList = [];
+
+function startQuiz(m) {
+  mode = m;
+  current = 0; score = 0;
+  qList = Array.from({length: 10}, () => makeQuestion(m));
+  document.getElementById('result-screen').hidden = true;
+  document.getElementById('quiz-screen').hidden = false;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = qList[current];
+  document.getElementById('qprog').textContent = `Question ${current+1} / 10`;
+  document.getElementById('qscore').textContent = `Score: ${score}`;
+  document.getElementById('qtext').innerHTML = q.q;
+  const opts = document.getElementById('qopts');
+  opts.innerHTML = '';
+  q.opts.forEach(opt => {
+    const b = document.createElement('button');
+    b.textContent = opt;
+    b.onclick = () => answer(opt, q, b);
+    opts.appendChild(b);
+  });
+  document.getElementById('qfb').className = 'quiz-feedback';
+  document.getElementById('qfb').textContent = '';
+  document.getElementById('qnext').className = 'quiz-next';
+}
+
+function answer(opt, q, btn) {
+  const buttons = document.getElementById('qopts').querySelectorAll('button');
+  buttons.forEach(b => { b.disabled = true; if (b.textContent === q.ans) b.classList.add('correct'); });
+  const fb = document.getElementById('qfb');
+  if (opt === q.ans) {
+    score++;
+    fb.className = 'quiz-feedback show correct';
+    fb.textContent = `✓ Correct. ${q.why}`;
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'quiz-feedback show wrong';
+    fb.innerHTML = `✗ Not quite. The answer is <strong>${q.ans}</strong>. ${q.why}`;
+  }
+  document.getElementById('qscore').textContent = `Score: ${score}`;
+  document.getElementById('qnext').className = 'quiz-next show';
+  document.getElementById('qnext').textContent = (current === qList.length - 1) ? 'See results →' : 'Next question →';
+}
+
+document.getElementById('qnext').onclick = () => {
+  current++;
+  if (current >= qList.length) return showResult();
+  renderQuestion();
+};
+
+function showResult() {
+  document.getElementById('quiz-screen').hidden = true;
+  document.getElementById('result-screen').hidden = false;
+  document.getElementById('rscore').textContent = `${score} / 10`;
+  const grade = score === 10 ? "Perfect — you know the 50 states cold." : score >= 8 ? "Strong. A bit of polish and you're at 10/10." : score >= 6 ? "Solid base. The full guide will close the gap." : score >= 4 ? "Worth a refresher. Start with the regions guide." : "Plenty of room. Start with the 50 states guide and play daily.";
+  document.getElementById('rgrade').textContent = grade;
+}
+
+document.getElementById('r-again').onclick = () => startQuiz(mode);
+
+document.querySelectorAll('#mode-picker button').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('#mode-picker button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    startQuiz(btn.dataset.mode);
+  };
+});
+
+startQuiz('mixed');
+</script>
+
+</body>
+</html>

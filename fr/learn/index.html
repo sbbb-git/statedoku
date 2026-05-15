@@ -66,6 +66,34 @@
     .toc a:hover { text-decoration: underline; }
     .faq-q { font-weight: 700; margin-top: 14px; margin-bottom: 4px; }
     .faq-a { color: var(--text-2); }
+
+    .state-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin: 18px 0 24px; }
+    .sg-card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--region-color, #94A3B8); border-radius: 10px; padding: 12px 14px; transition: transform 120ms, box-shadow 120ms, border-color 120ms; }
+    .sg-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(15,33,71,0.08); border-color: var(--region-color, #94A3B8); }
+    .sg-card[data-region="northeast"] { --region-color: #1E40AF; }
+    .sg-card[data-region="south"]     { --region-color: #B91C1C; }
+    .sg-card[data-region="midwest"]   { --region-color: #B45309; }
+    .sg-card[data-region="west"]      { --region-color: #047857; }
+    .sg-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+    .sg-abbr { font-weight: 900; font-size: .82rem; color: var(--region-color, #94A3B8); background: rgba(15,33,71,0.04); padding: 2px 6px; border-radius: 4px; letter-spacing: .02em; }
+    .sg-name { font-weight: 800; font-size: 1rem; color: var(--text); }
+    .sg-cap { font-size: .76rem; color: var(--text-3); margin-bottom: 8px; font-weight: 500; }
+    .sg-fact { font-size: .87rem; color: var(--text-2); line-height: 1.45; }
+    .region-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 14px; font-size: .82rem; color: var(--text-2); }
+    .region-legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .region-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+    .legend-ne { background: #1E40AF; } .legend-s { background: #B91C1C; } .legend-mw { background: #B45309; } .legend-w { background: #047857; }
+    .sg-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px; }
+    .sg-filter { border: 1px solid var(--border); background: #fff; color: var(--text-2); padding: 5px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600; cursor: pointer; transition: all 120ms; }
+    .sg-filter:hover { border-color: var(--navy); color: var(--navy); }
+    .sg-filter.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .us-map { display: grid; grid-template-columns: repeat(13, 1fr); grid-template-rows: repeat(8, 1fr); gap: clamp(2px, 0.4vw, 5px); aspect-ratio: 13/8; max-width: 900px; margin: 12px auto 22px; padding: 6px; }
+    .us-map .tile { display: flex; align-items: center; justify-content: center; background: #94A3B8; color: #fff; font-weight: 800; font-size: clamp(0.55rem, 1.4vw, 0.92rem); text-decoration: none; border-radius: 4px; transition: transform 120ms, outline-color 120ms; outline: 2px solid transparent; letter-spacing: 0.02em; }
+    .us-map .tile:hover { transform: scale(1.15); z-index: 1; outline-color: rgba(15,33,71,0.4); }
+    .us-map .tile[data-region="northeast"] { background: #1E40AF; }
+    .us-map .tile[data-region="south"]     { background: #B91C1C; }
+    .us-map .tile[data-region="midwest"]   { background: #B45309; }
+    .us-map .tile[data-region="west"]      { background: #047857; }
   </style>
 </head>
 <body class="legal-body">
@@ -86,6 +114,63 @@
     <h1>Apprendre les 50 États américains (rapidement)</h1>
     <p class="sub">Une méthode basée sur les régions, pas sur les flashcards. La plupart des adultes peuvent nommer les 50 États en moins d'une semaine — avec une pratique quotidienne qui ne ressemble pas à du bachotage.</p>
     <a href="/fr/" class="cta">Jouer le puzzle du jour →</a>
+  </section>
+
+
+  <section style="max-width:900px;margin:0 auto;padding:0 18px;">
+    <p style="text-align:center;color:var(--text-3);font-size:.85rem;margin:0 0 4px;">Clique sur un État ci-dessous pour voir ses faits et sa capitale · couleur = région</p>
+    <div class="us-map" role="img" aria-label="Clickable map of all 50 US states, colored by region">
+<a href="/states/alabama/" class="tile" data-region="south" style="grid-area:7/8;" title="Alabama">AL</a>
+<a href="/states/alaska/" class="tile" data-region="west" style="grid-area:3/1;" title="Alaska">AK</a>
+<a href="/states/arizona/" class="tile" data-region="west" style="grid-area:7/3;" title="Arizona">AZ</a>
+<a href="/states/arkansas/" class="tile" data-region="south" style="grid-area:6/6;" title="Arkansas">AR</a>
+<a href="/states/california/" class="tile" data-region="west" style="grid-area:6/2;" title="California">CA</a>
+<a href="/states/colorado/" class="tile" data-region="west" style="grid-area:6/4;" title="Colorado">CO</a>
+<a href="/states/connecticut/" class="tile" data-region="northeast" style="grid-area:4/12;" title="Connecticut">CT</a>
+<a href="/states/delaware/" class="tile" data-region="northeast" style="grid-area:5/12;" title="Delaware">DE</a>
+<a href="/states/florida/" class="tile" data-region="south" style="grid-area:8/9;" title="Florida">FL</a>
+<a href="/states/georgia/" class="tile" data-region="south" style="grid-area:7/9;" title="Georgia">GA</a>
+<a href="/states/hawaii/" class="tile" data-region="west" style="grid-area:6/1;" title="Hawaii">HI</a>
+<a href="/states/idaho/" class="tile" data-region="west" style="grid-area:4/3;" title="Idaho">ID</a>
+<a href="/states/illinois/" class="tile" data-region="midwest" style="grid-area:4/7;" title="Illinois">IL</a>
+<a href="/states/indiana/" class="tile" data-region="midwest" style="grid-area:4/8;" title="Indiana">IN</a>
+<a href="/states/iowa/" class="tile" data-region="midwest" style="grid-area:5/6;" title="Iowa">IA</a>
+<a href="/states/kansas/" class="tile" data-region="midwest" style="grid-area:7/5;" title="Kansas">KS</a>
+<a href="/states/kentucky/" class="tile" data-region="south" style="grid-area:5/8;" title="Kentucky">KY</a>
+<a href="/states/louisiana/" class="tile" data-region="south" style="grid-area:7/6;" title="Louisiana">LA</a>
+<a href="/states/maine/" class="tile" data-region="northeast" style="grid-area:1/11;" title="Maine">ME</a>
+<a href="/states/maryland/" class="tile" data-region="northeast" style="grid-area:5/11;" title="Maryland">MD</a>
+<a href="/states/massachusetts/" class="tile" data-region="northeast" style="grid-area:3/13;" title="Massachusetts">MA</a>
+<a href="/states/michigan/" class="tile" data-region="midwest" style="grid-area:3/9;" title="Michigan">MI</a>
+<a href="/states/minnesota/" class="tile" data-region="midwest" style="grid-area:4/6;" title="Minnesota">MN</a>
+<a href="/states/mississippi/" class="tile" data-region="south" style="grid-area:7/7;" title="Mississippi">MS</a>
+<a href="/states/missouri/" class="tile" data-region="midwest" style="grid-area:5/7;" title="Missouri">MO</a>
+<a href="/states/montana/" class="tile" data-region="west" style="grid-area:4/4;" title="Montana">MT</a>
+<a href="/states/nebraska/" class="tile" data-region="midwest" style="grid-area:6/5;" title="Nebraska">NE</a>
+<a href="/states/nevada/" class="tile" data-region="west" style="grid-area:5/3;" title="Nevada">NV</a>
+<a href="/states/new-hampshire/" class="tile" data-region="northeast" style="grid-area:2/11;" title="New Hampshire">NH</a>
+<a href="/states/new-jersey/" class="tile" data-region="northeast" style="grid-area:4/11;" title="New Jersey">NJ</a>
+<a href="/states/new-mexico/" class="tile" data-region="west" style="grid-area:7/4;" title="New Mexico">NM</a>
+<a href="/states/new-york/" class="tile" data-region="northeast" style="grid-area:3/12;" title="New York">NY</a>
+<a href="/states/north-carolina/" class="tile" data-region="south" style="grid-area:6/8;" title="North Carolina">NC</a>
+<a href="/states/north-dakota/" class="tile" data-region="midwest" style="grid-area:4/5;" title="North Dakota">ND</a>
+<a href="/states/ohio/" class="tile" data-region="midwest" style="grid-area:4/9;" title="Ohio">OH</a>
+<a href="/states/oklahoma/" class="tile" data-region="south" style="grid-area:8/5;" title="Oklahoma">OK</a>
+<a href="/states/oregon/" class="tile" data-region="west" style="grid-area:4/2;" title="Oregon">OR</a>
+<a href="/states/pennsylvania/" class="tile" data-region="northeast" style="grid-area:3/11;" title="Pennsylvania">PA</a>
+<a href="/states/rhode-island/" class="tile" data-region="northeast" style="grid-area:4/13;" title="Rhode Island">RI</a>
+<a href="/states/south-carolina/" class="tile" data-region="south" style="grid-area:6/9;" title="South Carolina">SC</a>
+<a href="/states/south-dakota/" class="tile" data-region="midwest" style="grid-area:5/5;" title="South Dakota">SD</a>
+<a href="/states/tennessee/" class="tile" data-region="south" style="grid-area:6/7;" title="Tennessee">TN</a>
+<a href="/states/texas/" class="tile" data-region="south" style="grid-area:8/6;" title="Texas">TX</a>
+<a href="/states/utah/" class="tile" data-region="west" style="grid-area:6/3;" title="Utah">UT</a>
+<a href="/states/vermont/" class="tile" data-region="northeast" style="grid-area:2/10;" title="Vermont">VT</a>
+<a href="/states/virginia/" class="tile" data-region="south" style="grid-area:5/9;" title="Virginia">VA</a>
+<a href="/states/washington/" class="tile" data-region="west" style="grid-area:3/2;" title="Washington">WA</a>
+<a href="/states/west-virginia/" class="tile" data-region="south" style="grid-area:4/10;" title="West Virginia">WV</a>
+<a href="/states/wisconsin/" class="tile" data-region="midwest" style="grid-area:3/8;" title="Wisconsin">WI</a>
+<a href="/states/wyoming/" class="tile" data-region="west" style="grid-area:5/4;" title="Wyoming">WY</a>
+</div>
   </section>
 
   <article class="learn-main">
@@ -215,6 +300,286 @@
       </ul>
     </div>
     <div class="tip">💡 Four Corners est le seul endroit où quatre États se rejoignent en un point : <strong>Utah, Colorado, Arizona, New Mexico</strong>. Retiens ce détail et tu ancres quatre États d'un coup.</div>
+
+    
+    <h2 id="browse">Les 50 États avec un fun fact chacun</h2>
+    <div class="region-legend">
+      <span><i class="legend-ne"></i> Northeast</span>
+      <span><i class="legend-s"></i> South</span>
+      <span><i class="legend-mw"></i> Midwest</span>
+      <span><i class="legend-w"></i> West</span>
+    </div>
+    <div class="sg-filters" role="tablist">
+      <button class="sg-filter active" data-region="all">Tous (50)</button>
+      <button class="sg-filter" data-region="northeast">Nord-Est</button>
+      <button class="sg-filter" data-region="south">Sud</button>
+      <button class="sg-filter" data-region="midwest">Midwest</button>
+      <button class="sg-filter" data-region="west">Ouest</button>
+    </div>
+    <div class="state-grid" id="state-grid">
+<a class="sg-card" data-region="south" href="/facts/#alabama">
+  <div class="sg-head"><span class="sg-abbr">AL</span><span class="sg-name">Alabama</span></div>
+  <div class="sg-cap">Yellowhammer State · Capitale : Montgomery</div>
+  <div class="sg-fact">La fusée Saturn V qui a emmené Apollo 11 sur la Lune a été conçue à Huntsville, surnommée « Rocket City ».</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#alaska">
+  <div class="sg-head"><span class="sg-abbr">AK</span><span class="sg-name">Alaska</span></div>
+  <div class="sg-cap">Last Frontier · Capitale : Juneau</div>
+  <div class="sg-fact">Acheté à la Russie en 1867 pour 7,2 millions de dollars — environ 2 cents par acre. On l'a appelé « la folie de Seward » avant qu'on y trouve or et pétrole.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#arizona">
+  <div class="sg-head"><span class="sg-abbr">AZ</span><span class="sg-name">Arizona</span></div>
+  <div class="sg-cap">Grand Canyon State · Capitale : Phoenix</div>
+  <div class="sg-fact">Le Grand Canyon est si profond qu'on pourrait y empiler en moyenne cinq Empire State Buildings.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#arkansas">
+  <div class="sg-head"><span class="sg-abbr">AR</span><span class="sg-name">Arkansas</span></div>
+  <div class="sg-cap">Natural State · Capitale : Little Rock</div>
+  <div class="sg-fact">Walmart a été fondé à Bentonville en 1962. Le siège y est toujours.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#california">
+  <div class="sg-head"><span class="sg-abbr">CA</span><span class="sg-name">Californie</span></div>
+  <div class="sg-cap">Golden State · Capitale : Sacramento</div>
+  <div class="sg-fact">Si la Californie était un pays, son PIB serait le 4e mondial — devant le Royaume-Uni, la France et la Russie.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#colorado">
+  <div class="sg-head"><span class="sg-abbr">CO</span><span class="sg-name">Colorado</span></div>
+  <div class="sg-cap">Centennial State · Capitale : Denver</div>
+  <div class="sg-fact">Denver, « Mile High City », est exactement à 1 609 m d'altitude — un mile.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#connecticut">
+  <div class="sg-head"><span class="sg-abbr">CT</span><span class="sg-name">Connecticut</span></div>
+  <div class="sg-cap">Constitution State · Capitale : Hartford</div>
+  <div class="sg-fact">Hartford est la capitale mondiale de l'assurance — Aetna, The Hartford et d'autres y sont nées.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#delaware">
+  <div class="sg-head"><span class="sg-abbr">DE</span><span class="sg-name">Delaware</span></div>
+  <div class="sg-cap">First State · Capitale : Dover</div>
+  <div class="sg-fact">Premier État à ratifier la Constitution américaine, le 7 décembre 1787.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#florida">
+  <div class="sg-head"><span class="sg-abbr">FL</span><span class="sg-name">Floride</span></div>
+  <div class="sg-cap">Sunshine State · Capitale : Tallahassee</div>
+  <div class="sg-fact">Seul État américain bordé à la fois par l'Atlantique et le Golfe du Mexique.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#georgia">
+  <div class="sg-head"><span class="sg-abbr">GA</span><span class="sg-name">Géorgie</span></div>
+  <div class="sg-cap">Peach State · Capitale : Atlanta</div>
+  <div class="sg-fact">Coca-Cola a été inventé à Atlanta en 1886 par le pharmacien John Pemberton. La recette originale contenait de la cocaïne.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#hawaii">
+  <div class="sg-head"><span class="sg-abbr">HI</span><span class="sg-name">Hawaï</span></div>
+  <div class="sg-cap">Aloha State · Capitale : Honolulu</div>
+  <div class="sg-fact">Seul État américain à cultiver le café commercialement — le café Kona de la Grande Île.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#idaho">
+  <div class="sg-head"><span class="sg-abbr">ID</span><span class="sg-name">Idaho</span></div>
+  <div class="sg-cap">Gem State · Capitale : Boise</div>
+  <div class="sg-fact">L'Idaho produit environ 30 % de toutes les pommes de terre américaines — la plupart des frites fast-food en viennent.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#illinois">
+  <div class="sg-head"><span class="sg-abbr">IL</span><span class="sg-name">Illinois</span></div>
+  <div class="sg-cap">Prairie State · Capitale : Springfield</div>
+  <div class="sg-fact">Chicago a inventé le gratte-ciel — le Home Insurance Building (1885) fut le premier.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#indiana">
+  <div class="sg-head"><span class="sg-abbr">IN</span><span class="sg-name">Indiana</span></div>
+  <div class="sg-cap">Hoosier State · Capitale : Indianapolis</div>
+  <div class="sg-fact">L'Indianapolis 500, chaque Memorial Day, est le plus gros événement sportif d'une journée au monde.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#iowa">
+  <div class="sg-head"><span class="sg-abbr">IA</span><span class="sg-name">Iowa</span></div>
+  <div class="sg-cap">Hawkeye State · Capitale : Des Moines</div>
+  <div class="sg-fact">L'Iowa produit plus de maïs que n'importe quel autre État — environ 13 milliards de boisseaux par an.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#kansas">
+  <div class="sg-head"><span class="sg-abbr">KS</span><span class="sg-name">Kansas</span></div>
+  <div class="sg-cap">Sunflower State · Capitale : Topeka</div>
+  <div class="sg-fact">Le Kansas est le centre géographique des 48 États contigus (point exact près de Lebanon, KS).</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#kentucky">
+  <div class="sg-head"><span class="sg-abbr">KY</span><span class="sg-name">Kentucky</span></div>
+  <div class="sg-cap">Bluegrass State · Capitale : Frankfort</div>
+  <div class="sg-fact">Produit 95 % du bourbon mondial. Légalement, seul le bourbon fait aux USA peut s'appeler bourbon — l'essentiel vient du KY.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#louisiana">
+  <div class="sg-head"><span class="sg-abbr">LA</span><span class="sg-name">Louisiane</span></div>
+  <div class="sg-cap">Pelican State · Capitale : Baton Rouge</div>
+  <div class="sg-fact">Seul État américain dont le système légal est basé sur le droit civil français, pas le common law anglais.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#maine">
+  <div class="sg-head"><span class="sg-abbr">ME</span><span class="sg-name">Maine</span></div>
+  <div class="sg-cap">Pine Tree State · Capitale : Augusta</div>
+  <div class="sg-fact">Le Maine produit environ 40 % de tout le homard américain, avec plus de 4 000 casiers en activité.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#maryland">
+  <div class="sg-head"><span class="sg-abbr">MD</span><span class="sg-name">Maryland</span></div>
+  <div class="sg-cap">Old Line State · Capitale : Annapolis</div>
+  <div class="sg-fact">L'Académie navale américaine se trouve à Annapolis — chaque officier de la Navy y est formé.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#massachusetts">
+  <div class="sg-head"><span class="sg-abbr">MA</span><span class="sg-name">Massachusetts</span></div>
+  <div class="sg-cap">Bay State · Capitale : Boston</div>
+  <div class="sg-fact">La première école publique (Boston Latin, 1635) et la première université (Harvard, 1636) des USA y ont été fondées.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#michigan">
+  <div class="sg-head"><span class="sg-abbr">MI</span><span class="sg-name">Michigan</span></div>
+  <div class="sg-cap">Great Lakes State · Capitale : Lansing</div>
+  <div class="sg-fact">Detroit a donné au monde la Motown, la chaîne de montage et la voiture moderne — Ford, GM et Chrysler y sont tous basés.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#minnesota">
+  <div class="sg-head"><span class="sg-abbr">MN</span><span class="sg-name">Minnesota</span></div>
+  <div class="sg-cap">Land of 10,000 Lakes · Capitale : Saint Paul</div>
+  <div class="sg-fact">Plus de 11 842 lacs d'au moins 4 hectares — l'étiquette « 10 000 lacs » est sous-vendue.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#mississippi">
+  <div class="sg-head"><span class="sg-abbr">MS</span><span class="sg-name">Mississippi</span></div>
+  <div class="sg-cap">Magnolia State · Capitale : Jackson</div>
+  <div class="sg-fact">Berceau d'Elvis Presley (Tupelo) et du blues (région du Delta).</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#missouri">
+  <div class="sg-head"><span class="sg-abbr">MO</span><span class="sg-name">Missouri</span></div>
+  <div class="sg-cap">Show-Me State · Capitale : Jefferson City</div>
+  <div class="sg-fact">Kansas City compte plus de fontaines que n'importe quelle ville au monde, sauf Rome.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#montana">
+  <div class="sg-head"><span class="sg-abbr">MT</span><span class="sg-name">Montana</span></div>
+  <div class="sg-cap">Big Sky Country · Capitale : Helena</div>
+  <div class="sg-fact">Trois fois plus de bovins que d'habitants.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#nebraska">
+  <div class="sg-head"><span class="sg-abbr">NE</span><span class="sg-name">Nebraska</span></div>
+  <div class="sg-cap">Cornhusker State · Capitale : Lincoln</div>
+  <div class="sg-fact">Seul État américain à avoir une législature unicamérale (une seule chambre, pas de Sénat vs Chambre).</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#nevada">
+  <div class="sg-head"><span class="sg-abbr">NV</span><span class="sg-name">Nevada</span></div>
+  <div class="sg-cap">Silver State · Capitale : Carson City</div>
+  <div class="sg-fact">Las Vegas a été bâtie dans le désert sans source d'eau naturelle — le barrage Hoover (1936) l'a rendu possible.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#new-hampshire">
+  <div class="sg-head"><span class="sg-abbr">NH</span><span class="sg-name">Nouveau-Hampshire</span></div>
+  <div class="sg-cap">Granite State · Capitale : Concord</div>
+  <div class="sg-fact">La primaire du New Hampshire est la première de chaque cycle présidentiel par loi d'État.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#new-jersey">
+  <div class="sg-head"><span class="sg-abbr">NJ</span><span class="sg-name">New Jersey</span></div>
+  <div class="sg-cap">Garden State · Capitale : Trenton</div>
+  <div class="sg-fact">Malgré sa petite taille, c'est l'État le plus densément peuplé — 487 personnes au km².</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#new-mexico">
+  <div class="sg-head"><span class="sg-abbr">NM</span><span class="sg-name">Nouveau-Mexique</span></div>
+  <div class="sg-cap">Land of Enchantment · Capitale : Santa Fe</div>
+  <div class="sg-fact">Santa Fe est la plus ancienne capitale d'État américaine (fondée en 1610) et la plus haute (2 195 m).</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#new-york">
+  <div class="sg-head"><span class="sg-abbr">NY</span><span class="sg-name">New York</span></div>
+  <div class="sg-cap">Empire State · Capitale : Albany</div>
+  <div class="sg-fact">New York City a son propre accent reconnaissable dans le monde entier (« cawfee », « tawk », etc.).</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#north-carolina">
+  <div class="sg-head"><span class="sg-abbr">NC</span><span class="sg-name">Caroline du Nord</span></div>
+  <div class="sg-cap">Tar Heel State · Capitale : Raleigh</div>
+  <div class="sg-fact">Le premier vol motorisé a eu lieu à Kitty Hawk en 1903.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#north-dakota">
+  <div class="sg-head"><span class="sg-abbr">ND</span><span class="sg-name">Dakota du Nord</span></div>
+  <div class="sg-cap">Peace Garden State · Capitale : Bismarck</div>
+  <div class="sg-fact">Produit plus de 50 % de toute l'huile de tournesol américaine.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#ohio">
+  <div class="sg-head"><span class="sg-abbr">OH</span><span class="sg-name">Ohio</span></div>
+  <div class="sg-cap">Buckeye State · Capitale : Columbus</div>
+  <div class="sg-fact">L'Ohio a produit 8 présidents américains — second seulement après la Virginie.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#oklahoma">
+  <div class="sg-head"><span class="sg-abbr">OK</span><span class="sg-name">Oklahoma</span></div>
+  <div class="sg-cap">Sooner State · Capitale : Oklahoma City</div>
+  <div class="sg-fact">Plus de lacs artificiels que n'importe quel autre État (plus de 200).</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#oregon">
+  <div class="sg-head"><span class="sg-abbr">OR</span><span class="sg-name">Oregon</span></div>
+  <div class="sg-cap">Beaver State · Capitale : Salem</div>
+  <div class="sg-fact">On ne peut pas faire son plein soi-même en Oregon (avec quelques exceptions depuis 2023). Des employés s'en chargent.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#pennsylvania">
+  <div class="sg-head"><span class="sg-abbr">PA</span><span class="sg-name">Pennsylvanie</span></div>
+  <div class="sg-cap">Keystone State · Capitale : Harrisburg</div>
+  <div class="sg-fact">La Déclaration d'Indépendance et la Constitution américaine ont toutes deux été signées à Philadelphie.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#rhode-island">
+  <div class="sg-head"><span class="sg-abbr">RI</span><span class="sg-name">Rhode Island</span></div>
+  <div class="sg-cap">Ocean State · Capitale : Providence</div>
+  <div class="sg-fact">Le plus petit État américain — on le traverse en voiture en moins de 45 minutes.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#south-carolina">
+  <div class="sg-head"><span class="sg-abbr">SC</span><span class="sg-name">Caroline du Sud</span></div>
+  <div class="sg-cap">Palmetto State · Capitale : Columbia</div>
+  <div class="sg-fact">La Guerre civile y a commencé quand les Confédérés ont tiré sur Fort Sumter à Charleston, le 12 avril 1861.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#south-dakota">
+  <div class="sg-head"><span class="sg-abbr">SD</span><span class="sg-name">Dakota du Sud</span></div>
+  <div class="sg-cap">Mount Rushmore State · Capitale : Pierre</div>
+  <div class="sg-fact">Le Mont Rushmore, avec Washington, Jefferson, Lincoln et Theodore Roosevelt, a été sculpté de 1927 à 1941.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#tennessee">
+  <div class="sg-head"><span class="sg-abbr">TN</span><span class="sg-name">Tennessee</span></div>
+  <div class="sg-cap">Volunteer State · Capitale : Nashville</div>
+  <div class="sg-fact">Nashville est « Music City » — country, Grand Ole Opry, plus de 180 studios d'enregistrement.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#texas">
+  <div class="sg-head"><span class="sg-abbr">TX</span><span class="sg-name">Texas</span></div>
+  <div class="sg-cap">Lone Star State · Capitale : Austin</div>
+  <div class="sg-fact">Le Texas a été son propre pays indépendant pendant 9 ans (1836–1845) avant de rejoindre les USA.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#utah">
+  <div class="sg-head"><span class="sg-abbr">UT</span><span class="sg-name">Utah</span></div>
+  <div class="sg-cap">Beehive State · Capitale : Salt Lake City</div>
+  <div class="sg-fact">Le Grand Lac Salé est si salé qu'on flotte sans effort — plus salé que l'océan Pacifique.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#vermont">
+  <div class="sg-head"><span class="sg-abbr">VT</span><span class="sg-name">Vermont</span></div>
+  <div class="sg-cap">Green Mountain State · Capitale : Montpelier</div>
+  <div class="sg-fact">Montpelier est la seule capitale d'État américaine sans McDonald's.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#virginia">
+  <div class="sg-head"><span class="sg-abbr">VA</span><span class="sg-name">Virginie</span></div>
+  <div class="sg-cap">Old Dominion · Capitale : Richmond</div>
+  <div class="sg-fact">La Virginie a vu naître 8 présidents américains, plus que tout autre État.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#washington">
+  <div class="sg-head"><span class="sg-abbr">WA</span><span class="sg-name">Washington</span></div>
+  <div class="sg-cap">Evergreen State · Capitale : Olympia</div>
+  <div class="sg-fact">Starbucks, Amazon et Microsoft sont tous basés à Washington — Pike Place, Seattle, Redmond respectivement.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#west-virginia">
+  <div class="sg-head"><span class="sg-abbr">WV</span><span class="sg-name">Virginie-Occidentale</span></div>
+  <div class="sg-cap">Mountain State · Capitale : Charleston</div>
+  <div class="sg-fact">S'est séparée de la Virginie en 1863 pour rester dans l'Union pendant la Guerre civile — seul État créé par sécession d'un autre État.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#wisconsin">
+  <div class="sg-head"><span class="sg-abbr">WI</span><span class="sg-name">Wisconsin</span></div>
+  <div class="sg-cap">Badger State · Capitale : Madison</div>
+  <div class="sg-fact">Produit environ 25 % de tout le fromage américain — et 100 % du fromage brick du pays.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#wyoming">
+  <div class="sg-head"><span class="sg-abbr">WY</span><span class="sg-name">Wyoming</span></div>
+  <div class="sg-cap">Equality State · Capitale : Cheyenne</div>
+  <div class="sg-fact">Premier État/territoire américain à donner le droit de vote aux femmes (1869) — 50 ans avant le 19e amendement.</div>
+</a>
+    </div>
+    <script>
+      (function(){
+        const filters = document.querySelectorAll('.sg-filter');
+        const cards = document.querySelectorAll('.sg-card');
+        filters.forEach(btn => btn.addEventListener('click', () => {
+          filters.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const r = btn.dataset.region;
+          cards.forEach(c => { c.style.display = (r === 'all' || c.dataset.region === r) ? '' : 'none'; });
+        }));
+      })();
+    </script>
 
     <div class="practice-cta">
       <h3>Apprendre sans réviser</h3>
