@@ -62,7 +62,7 @@
       {
         "@type": "Question",
         "name": "What are the 50 states in alphabetical order?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New Mexico, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming." }
       },
       {
         "@type": "Question",
@@ -163,6 +163,86 @@
     .toc a:hover { text-decoration: underline; }
     .faq-q { font-weight: 700; margin-top: 14px; margin-bottom: 4px; }
     .faq-a { color: var(--text-2); }
+
+    /* State grid — alphabetical, colored by region, links to /facts/ */
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 10px;
+      margin: 18px 0 24px;
+    }
+    .sg-card {
+      display: block; text-decoration: none; color: inherit;
+      background: #fff; border: 1px solid var(--border);
+      border-left: 4px solid var(--region-color, #94A3B8);
+      border-radius: 10px; padding: 12px 14px;
+      transition: transform var(--d-fast), box-shadow var(--d-fast), border-color var(--d-fast);
+    }
+    .sg-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(15,33,71,0.08);
+      border-color: var(--region-color, #94A3B8);
+    }
+    .sg-card[data-region="northeast"] { --region-color: #1E40AF; }
+    .sg-card[data-region="south"]     { --region-color: #B91C1C; }
+    .sg-card[data-region="midwest"]   { --region-color: #B45309; }
+    .sg-card[data-region="west"]      { --region-color: #047857; }
+    .sg-head {
+      display: flex; align-items: baseline; gap: 8px;
+      margin-bottom: 4px;
+    }
+    .sg-abbr {
+      font-weight: 900; font-size: .82rem;
+      color: var(--region-color, #94A3B8);
+      background: rgba(15,33,71,0.04);
+      padding: 2px 6px; border-radius: 4px;
+      letter-spacing: .02em;
+    }
+    .sg-name { font-weight: 800; font-size: 1rem; color: var(--text); }
+    .sg-cap {
+      font-size: .76rem; color: var(--text-3);
+      margin-bottom: 8px; font-weight: 500;
+    }
+    .sg-fact {
+      font-size: .87rem; color: var(--text-2);
+      line-height: 1.45;
+    }
+
+    /* Region legend */
+    .region-legend {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin: 6px 0 14px; font-size: .82rem;
+      color: var(--text-2);
+    }
+    .region-legend span {
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .region-legend i {
+      display: inline-block; width: 10px; height: 10px;
+      border-radius: 2px;
+    }
+    .legend-ne { background: #1E40AF; }
+    .legend-s  { background: #B91C1C; }
+    .legend-mw { background: #B45309; }
+    .legend-w  { background: #047857; }
+
+    /* Filter pills */
+    .sg-filters {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin: 10px 0 14px;
+    }
+    .sg-filter {
+      border: 1px solid var(--border);
+      background: #fff; color: var(--text-2);
+      padding: 5px 12px; border-radius: 999px;
+      font-size: .8rem; font-weight: 600;
+      cursor: pointer;
+      transition: all var(--d-fast);
+    }
+    .sg-filter:hover { border-color: var(--navy); color: var(--navy); }
+    .sg-filter.active {
+      background: var(--navy); color: #fff; border-color: var(--navy);
+    }
   </style>
 </head>
 <body class="legal-body">
@@ -194,6 +274,7 @@
       <a href="#south">South</a>
       <a href="#midwest">Midwest</a>
       <a href="#west">West</a>
+      <a href="#browse">All 50 + fun facts</a>
       <a href="#tricks">Memory tricks</a>
       <a href="#confusions">Common confusions</a>
       <a href="#faq">FAQ</a>
@@ -318,6 +399,293 @@
       <p>Statedoku is a daily puzzle that quietly drills geography into your head. Every state gets used. After a month, you won't need flashcards.</p>
       <a href="/">Play today's puzzle →</a>
     </div>
+
+    <h2 id="browse">Browse all 50 states with a fun fact</h2>
+    <p>One curious fact per state. Click any card to see more on the <a href="/facts/">facts page</a>. Color = region.</p>
+
+    <div class="region-legend">
+      <span><i class="legend-ne"></i> Northeast</span>
+      <span><i class="legend-s"></i> South</span>
+      <span><i class="legend-mw"></i> Midwest</span>
+      <span><i class="legend-w"></i> West</span>
+    </div>
+
+    <div class="sg-filters" role="tablist">
+      <button class="sg-filter active" data-region="all">All 50</button>
+      <button class="sg-filter" data-region="northeast">Northeast</button>
+      <button class="sg-filter" data-region="south">South</button>
+      <button class="sg-filter" data-region="midwest">Midwest</button>
+      <button class="sg-filter" data-region="west">West</button>
+    </div>
+
+    <div class="state-grid" id="state-grid">
+<a class="sg-card" data-region="south" href="/facts/#alabama">
+  <div class="sg-head"><span class="sg-abbr">AL</span><span class="sg-name">Alabama</span></div>
+  <div class="sg-cap">Yellowhammer State · Capital: Montgomery</div>
+  <div class="sg-fact">The Saturn V rocket that took Apollo 11 to the Moon was designed in Huntsville, nicknamed "Rocket City".</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#alaska">
+  <div class="sg-head"><span class="sg-abbr">AK</span><span class="sg-name">Alaska</span></div>
+  <div class="sg-cap">Last Frontier · Capital: Juneau</div>
+  <div class="sg-fact">Bought from Russia in 1867 for $7.2 million — about 2 cents per acre. Critics called it "Seward's Folly" before gold and oil were discovered.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#arizona">
+  <div class="sg-head"><span class="sg-abbr">AZ</span><span class="sg-name">Arizona</span></div>
+  <div class="sg-cap">Grand Canyon State · Capital: Phoenix</div>
+  <div class="sg-fact">The Grand Canyon is so deep that an average of five layers of New York's Empire State Building could fit inside it.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#arkansas">
+  <div class="sg-head"><span class="sg-abbr">AR</span><span class="sg-name">Arkansas</span></div>
+  <div class="sg-cap">Natural State · Capital: Little Rock</div>
+  <div class="sg-fact">Walmart was founded in Bentonville, Arkansas in 1962. The company is still HQ'd there.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#california">
+  <div class="sg-head"><span class="sg-abbr">CA</span><span class="sg-name">California</span></div>
+  <div class="sg-cap">Golden State · Capital: Sacramento</div>
+  <div class="sg-fact">If California were a country, its GDP would rank 4th globally — bigger than the UK, France, or Russia.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#colorado">
+  <div class="sg-head"><span class="sg-abbr">CO</span><span class="sg-name">Colorado</span></div>
+  <div class="sg-cap">Centennial State · Capital: Denver</div>
+  <div class="sg-fact">Denver, the "Mile High City," is exactly 5,280 feet above sea level — one mile.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#connecticut">
+  <div class="sg-head"><span class="sg-abbr">CT</span><span class="sg-name">Connecticut</span></div>
+  <div class="sg-cap">Constitution State · Capital: Hartford</div>
+  <div class="sg-fact">Hartford is the insurance capital of the world — Aetna, The Hartford, and others were founded here.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#delaware">
+  <div class="sg-head"><span class="sg-abbr">DE</span><span class="sg-name">Delaware</span></div>
+  <div class="sg-cap">First State · Capital: Dover</div>
+  <div class="sg-fact">Was the first state to ratify the US Constitution, on December 7, 1787.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#florida">
+  <div class="sg-head"><span class="sg-abbr">FL</span><span class="sg-name">Florida</span></div>
+  <div class="sg-cap">Sunshine State · Capital: Tallahassee</div>
+  <div class="sg-fact">Florida is the only US state that borders both the Atlantic Ocean and the Gulf of Mexico.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#georgia">
+  <div class="sg-head"><span class="sg-abbr">GA</span><span class="sg-name">Georgia</span></div>
+  <div class="sg-cap">Peach State · Capital: Atlanta</div>
+  <div class="sg-fact">Coca-Cola was invented in Atlanta in 1886 by pharmacist John Pemberton. The original formula contained cocaine.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#hawaii">
+  <div class="sg-head"><span class="sg-abbr">HI</span><span class="sg-name">Hawaii</span></div>
+  <div class="sg-cap">Aloha State · Capital: Honolulu</div>
+  <div class="sg-fact">The only US state that grows coffee commercially — Kona coffee from the Big Island.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#idaho">
+  <div class="sg-head"><span class="sg-abbr">ID</span><span class="sg-name">Idaho</span></div>
+  <div class="sg-cap">Gem State · Capital: Boise</div>
+  <div class="sg-fact">Idaho produces about 30% of all US potatoes — most fast-food fries come from here.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#illinois">
+  <div class="sg-head"><span class="sg-abbr">IL</span><span class="sg-name">Illinois</span></div>
+  <div class="sg-cap">Prairie State · Capital: Springfield</div>
+  <div class="sg-fact">Chicago invented the skyscraper — the Home Insurance Building (1885) was the first.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#indiana">
+  <div class="sg-head"><span class="sg-abbr">IN</span><span class="sg-name">Indiana</span></div>
+  <div class="sg-cap">Hoosier State · Capital: Indianapolis</div>
+  <div class="sg-fact">The Indianapolis 500, held every Memorial Day weekend, is the largest single-day sporting event in the world.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#iowa">
+  <div class="sg-head"><span class="sg-abbr">IA</span><span class="sg-name">Iowa</span></div>
+  <div class="sg-cap">Hawkeye State · Capital: Des Moines</div>
+  <div class="sg-fact">Iowa produces more corn than any other state — about 13 billion bushels per year.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#kansas">
+  <div class="sg-head"><span class="sg-abbr">KS</span><span class="sg-name">Kansas</span></div>
+  <div class="sg-cap">Sunflower State · Capital: Topeka</div>
+  <div class="sg-fact">Kansas is the geographic center of the contiguous 48 states (the exact point is near Lebanon, KS).</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#kentucky">
+  <div class="sg-head"><span class="sg-abbr">KY</span><span class="sg-name">Kentucky</span></div>
+  <div class="sg-cap">Bluegrass State · Capital: Frankfort</div>
+  <div class="sg-fact">The state produces 95% of the world's bourbon. By federal law, only bourbon made in the US can be called bourbon, and most comes from KY.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#louisiana">
+  <div class="sg-head"><span class="sg-abbr">LA</span><span class="sg-name">Louisiana</span></div>
+  <div class="sg-cap">Pelican State · Capital: Baton Rouge</div>
+  <div class="sg-fact">Louisiana is the only US state where the legal system is based on French civil law, not English common law.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#maine">
+  <div class="sg-head"><span class="sg-abbr">ME</span><span class="sg-name">Maine</span></div>
+  <div class="sg-cap">Pine Tree State · Capital: Augusta</div>
+  <div class="sg-fact">Maine produces about 40% of all US lobster, with over 4,000 licensed lobster traps in operation.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#maryland">
+  <div class="sg-head"><span class="sg-abbr">MD</span><span class="sg-name">Maryland</span></div>
+  <div class="sg-cap">Old Line State · Capital: Annapolis</div>
+  <div class="sg-fact">The US Naval Academy is in Annapolis — every Navy officer trains there.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#massachusetts">
+  <div class="sg-head"><span class="sg-abbr">MA</span><span class="sg-name">Massachusetts</span></div>
+  <div class="sg-cap">Bay State · Capital: Boston</div>
+  <div class="sg-fact">The first public school (Boston Latin, 1635) and first university (Harvard, 1636) in the US were both founded here.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#michigan">
+  <div class="sg-head"><span class="sg-abbr">MI</span><span class="sg-name">Michigan</span></div>
+  <div class="sg-cap">Great Lakes State · Capital: Lansing</div>
+  <div class="sg-fact">Detroit gave the world Motown, the assembly line, and the modern car — Ford, GM, and Chrysler all HQ in Michigan.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#minnesota">
+  <div class="sg-head"><span class="sg-abbr">MN</span><span class="sg-name">Minnesota</span></div>
+  <div class="sg-cap">Land of 10,000 Lakes · Capital: Saint Paul</div>
+  <div class="sg-fact">Actually has over 11,842 lakes of at least 10 acres — the "10,000" branding undersells it.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#mississippi">
+  <div class="sg-head"><span class="sg-abbr">MS</span><span class="sg-name">Mississippi</span></div>
+  <div class="sg-cap">Magnolia State · Capital: Jackson</div>
+  <div class="sg-fact">The state is home to the birthplace of Elvis Presley (Tupelo) and the blues (Delta region).</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#missouri">
+  <div class="sg-head"><span class="sg-abbr">MO</span><span class="sg-name">Missouri</span></div>
+  <div class="sg-cap">Show-Me State · Capital: Jefferson City</div>
+  <div class="sg-fact">Kansas City has more fountains than any city in the world except Rome.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#montana">
+  <div class="sg-head"><span class="sg-abbr">MT</span><span class="sg-name">Montana</span></div>
+  <div class="sg-cap">Big Sky Country · Capital: Helena</div>
+  <div class="sg-fact">Montana has three times more cattle than people.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#nebraska">
+  <div class="sg-head"><span class="sg-abbr">NE</span><span class="sg-name">Nebraska</span></div>
+  <div class="sg-cap">Cornhusker State · Capital: Lincoln</div>
+  <div class="sg-fact">Nebraska has the only unicameral state legislature in the US (single chamber, no senate vs house).</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#nevada">
+  <div class="sg-head"><span class="sg-abbr">NV</span><span class="sg-name">Nevada</span></div>
+  <div class="sg-cap">Silver State · Capital: Carson City</div>
+  <div class="sg-fact">Las Vegas was built on a desert with no natural water source — the Hoover Dam (1936) made it possible.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#new-hampshire">
+  <div class="sg-head"><span class="sg-abbr">NH</span><span class="sg-name">New Hampshire</span></div>
+  <div class="sg-cap">Granite State · Capital: Concord</div>
+  <div class="sg-fact">New Hampshire's primary is the first in every presidential election cycle by state law.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#new-jersey">
+  <div class="sg-head"><span class="sg-abbr">NJ</span><span class="sg-name">New Jersey</span></div>
+  <div class="sg-cap">Garden State · Capital: Trenton</div>
+  <div class="sg-fact">Despite its tiny size, NJ is the most densely populated US state — 1,263 people per square mile.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#new-mexico">
+  <div class="sg-head"><span class="sg-abbr">NM</span><span class="sg-name">New Mexico</span></div>
+  <div class="sg-cap">Land of Enchantment · Capital: Santa Fe</div>
+  <div class="sg-fact">Santa Fe is the oldest state capital in the US (founded 1610) and the highest in elevation (7,199 ft).</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#new-york">
+  <div class="sg-head"><span class="sg-abbr">NY</span><span class="sg-name">New York</span></div>
+  <div class="sg-cap">Empire State · Capital: Albany</div>
+  <div class="sg-fact">New York City has its own distinct accent recognizable worldwide ("cawfee", "tawk", etc.).</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#north-carolina">
+  <div class="sg-head"><span class="sg-abbr">NC</span><span class="sg-name">North Carolina</span></div>
+  <div class="sg-cap">Tar Heel State · Capital: Raleigh</div>
+  <div class="sg-fact">The first powered airplane flight took place at Kitty Hawk in 1903.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#north-dakota">
+  <div class="sg-head"><span class="sg-abbr">ND</span><span class="sg-name">North Dakota</span></div>
+  <div class="sg-cap">Peace Garden State · Capital: Bismarck</div>
+  <div class="sg-fact">The state produces over 50% of all US sunflower oil.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#ohio">
+  <div class="sg-head"><span class="sg-abbr">OH</span><span class="sg-name">Ohio</span></div>
+  <div class="sg-cap">Buckeye State · Capital: Columbus</div>
+  <div class="sg-fact">Ohio has produced 8 US presidents — second only to Virginia.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#oklahoma">
+  <div class="sg-head"><span class="sg-abbr">OK</span><span class="sg-name">Oklahoma</span></div>
+  <div class="sg-cap">Sooner State · Capital: Oklahoma City</div>
+  <div class="sg-fact">Oklahoma has more man-made lakes than any other state (over 200).</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#oregon">
+  <div class="sg-head"><span class="sg-abbr">OR</span><span class="sg-name">Oregon</span></div>
+  <div class="sg-cap">Beaver State · Capital: Salem</div>
+  <div class="sg-fact">You can't pump your own gas in Oregon (with limited exceptions added in 2023). Attendants do it.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#pennsylvania">
+  <div class="sg-head"><span class="sg-abbr">PA</span><span class="sg-name">Pennsylvania</span></div>
+  <div class="sg-cap">Keystone State · Capital: Harrisburg</div>
+  <div class="sg-fact">The Declaration of Independence and US Constitution were both signed in Philadelphia.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#rhode-island">
+  <div class="sg-head"><span class="sg-abbr">RI</span><span class="sg-name">Rhode Island</span></div>
+  <div class="sg-cap">Ocean State · Capital: Providence</div>
+  <div class="sg-fact">The smallest US state — you can drive across it in under 45 minutes.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#south-carolina">
+  <div class="sg-head"><span class="sg-abbr">SC</span><span class="sg-name">South Carolina</span></div>
+  <div class="sg-cap">Palmetto State · Capital: Columbia</div>
+  <div class="sg-fact">The Civil War started here when Confederate forces fired on Fort Sumter in Charleston Harbor, April 12, 1861.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#south-dakota">
+  <div class="sg-head"><span class="sg-abbr">SD</span><span class="sg-name">South Dakota</span></div>
+  <div class="sg-cap">Mount Rushmore State · Capital: Pierre</div>
+  <div class="sg-fact">Mount Rushmore, with the faces of Washington, Jefferson, Lincoln, and Theodore Roosevelt, was carved from 1927 to 1941.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#tennessee">
+  <div class="sg-head"><span class="sg-abbr">TN</span><span class="sg-name">Tennessee</span></div>
+  <div class="sg-cap">Volunteer State · Capital: Nashville</div>
+  <div class="sg-fact">Nashville is "Music City" — home to country music, the Grand Ole Opry, and over 180 recording studios.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#texas">
+  <div class="sg-head"><span class="sg-abbr">TX</span><span class="sg-name">Texas</span></div>
+  <div class="sg-cap">Lone Star State · Capital: Austin</div>
+  <div class="sg-fact">Texas was its own independent country for 9 years (1836–1845) before joining the US.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#utah">
+  <div class="sg-head"><span class="sg-abbr">UT</span><span class="sg-name">Utah</span></div>
+  <div class="sg-cap">Beehive State · Capital: Salt Lake City</div>
+  <div class="sg-fact">The Great Salt Lake is so salty that you float effortlessly — saltier than the Pacific Ocean.</div>
+</a>
+<a class="sg-card" data-region="northeast" href="/facts/#vermont">
+  <div class="sg-head"><span class="sg-abbr">VT</span><span class="sg-name">Vermont</span></div>
+  <div class="sg-cap">Green Mountain State · Capital: Montpelier</div>
+  <div class="sg-fact">Montpelier is the only state capital without a McDonald's.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#virginia">
+  <div class="sg-head"><span class="sg-abbr">VA</span><span class="sg-name">Virginia</span></div>
+  <div class="sg-cap">Old Dominion · Capital: Richmond</div>
+  <div class="sg-fact">Virginia has been home to 8 US presidents, more than any other state.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#washington">
+  <div class="sg-head"><span class="sg-abbr">WA</span><span class="sg-name">Washington</span></div>
+  <div class="sg-cap">Evergreen State · Capital: Olympia</div>
+  <div class="sg-fact">Starbucks, Amazon, and Microsoft are all HQ'd in Washington — Pike Place, Seattle, Redmond respectively.</div>
+</a>
+<a class="sg-card" data-region="south" href="/facts/#west-virginia">
+  <div class="sg-head"><span class="sg-abbr">WV</span><span class="sg-name">West Virginia</span></div>
+  <div class="sg-cap">Mountain State · Capital: Charleston</div>
+  <div class="sg-fact">West Virginia split from Virginia in 1863 to remain in the Union during the Civil War — making it the only state created by seceding from another state.</div>
+</a>
+<a class="sg-card" data-region="midwest" href="/facts/#wisconsin">
+  <div class="sg-head"><span class="sg-abbr">WI</span><span class="sg-name">Wisconsin</span></div>
+  <div class="sg-cap">Badger State · Capital: Madison</div>
+  <div class="sg-fact">Wisconsin makes ~25% of all US cheese — and 100% of the country's brick cheese.</div>
+</a>
+<a class="sg-card" data-region="west" href="/facts/#wyoming">
+  <div class="sg-head"><span class="sg-abbr">WY</span><span class="sg-name">Wyoming</span></div>
+  <div class="sg-cap">Equality State · Capital: Cheyenne</div>
+  <div class="sg-fact">Wyoming was the first US state/territory to give women the right to vote (1869) — 50 years before the 19th Amendment.</div>
+</a>
+    </div>
+
+    <script>
+      // Region filter
+      (function(){
+        const filters = document.querySelectorAll('.sg-filter');
+        const cards = document.querySelectorAll('.sg-card');
+        filters.forEach(btn => btn.addEventListener('click', () => {
+          filters.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const r = btn.dataset.region;
+          cards.forEach(c => {
+            c.style.display = (r === 'all' || c.dataset.region === r) ? '' : 'none';
+          });
+        }));
+      })();
+    </script>
 
     <h2 id="tricks">Memory tricks that actually work</h2>
 
