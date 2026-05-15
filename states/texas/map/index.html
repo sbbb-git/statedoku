@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0F2147">
   <meta name="color-scheme" content="light">
-  <title>Texas Map — Cities, Borders, Geography Guide | Statedoku</title>
-  <meta name="description" content="Interactive Texas state map. Locate Austin (capital), Houston (largest city), borders with 4 states, and key geographic features.">
-  <meta name="keywords" content="texas map, texas state map, texas location, where is texas, texas cities">
+  <title>Texas Map — Geography, Cities, Borders, Highways | Statedoku</title>
+  <meta name="description" content="Complete interactive Texas state map. Locate Austin, Houston, 4 bordering states, major highways, geographic regions, and natural features.">
+  <meta name="keywords" content="texas map, texas state map, texas location, texas cities, texas borders">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://statedoku.com/states/texas/map/">
   <link rel="alternate" hreflang="en" href="https://statedoku.com/states/texas/map/">
@@ -20,8 +20,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
   <link rel="stylesheet" href="/css/style.css?v=17">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Texas Map — Cities, Borders, Geography Guide">
-  <meta property="og:description" content="Interactive Texas state map. Locate Austin (capital), Houston (largest city), borders with 4 states, and key geographic features.">
+  <meta property="og:title" content="Texas Map — Geography, Cities, Borders, Highways">
+  <meta property="og:description" content="Complete interactive Texas state map. Locate Austin, Houston, 4 bordering states, major highways, geographic regions, and natural features.">
   <meta property="og:url" content="https://statedoku.com/states/texas/map/">
   <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
   <script type="application/ld+json">
@@ -33,7 +33,7 @@
 ]}
 </script>
   <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is Texas located?","acceptedAnswer":{"@type":"Answer","text":"Texas is in the South region of the United States. Its capital is Austin and its largest city is Houston. The state ranks #2 of 50 by total area."}},{"@type":"Question","name":"What states border Texas?","acceptedAnswer":{"@type":"Answer","text":"Texas borders New Mexico, Oklahoma, Arkansas, Louisiana. That's 4 bordering states in total."}},{"@type":"Question","name":"Is Texas on the coast?","acceptedAnswer":{"@type":"Answer","text":"Yes, Texas has coastline on the gulf."}},{"@type":"Question","name":"What time zone is Texas in?","acceptedAnswer":{"@type":"Answer","text":"Texas observes Central Time (the state spans multiple time zones)."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is Texas located?","acceptedAnswer":{"@type":"Answer","text":"Texas is in the South region of the United States. Its capital is Austin and its largest city is Houston. The state ranks #2 of 50 by total area."}},{"@type":"Question","name":"What states border Texas?","acceptedAnswer":{"@type":"Answer","text":"Texas borders New Mexico, Oklahoma, Arkansas, Louisiana. That's 4 bordering states."}},{"@type":"Question","name":"Is Texas on the coast?","acceptedAnswer":{"@type":"Answer","text":"Yes, Texas has coastline on the gulf."}},{"@type":"Question","name":"What time zone is Texas in?","acceptedAnswer":{"@type":"Answer","text":"Texas observes Central Time (the state spans multiple time zones)."}},{"@type":"Question","name":"What is the capital of Texas?","acceptedAnswer":{"@type":"Answer","text":"The capital is Austin. The largest city in the state is Houston, not Austin."}},{"@type":"Question","name":"How big is Texas?","acceptedAnswer":{"@type":"Answer","text":"Texas ranks #2 of 50 by area."}},{"@type":"Question","name":"Does Texas border Mexico or Canada?","acceptedAnswer":{"@type":"Answer","text":"Texas borders Mexico."}},{"@type":"Question","name":"What region is Texas in?","acceptedAnswer":{"@type":"Answer","text":"Texas is in the South region, specifically the plains subregion (US Census Bureau classification)."}}]}
 </script>
   <style>
     .ss-hero { max-width: 900px; margin: 28px auto 14px; padding: 0 18px; text-align: center; }
@@ -61,14 +61,17 @@
     .related-grid a:hover { background: #F8FAFC; border-color: var(--navy); }
     .us-svgmap-wrap { max-width: 720px; margin: 18px auto; }
     .factbox { background: #F8FAFC; border-left: 4px solid var(--gold); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
-    .symbol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 14px 0; }
-    .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
-    .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
-    .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
-    .faq-block { margin-top: 24px; }
     .faq-block details { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; padding: 10px 14px; }
     .faq-block summary { cursor: pointer; font-weight: 700; color: var(--navy); }
     .faq-block details[open] summary { margin-bottom: 8px; }
+    table.compare { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .9rem; }
+    table.compare th, table.compare td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    table.compare th { background: #F8FAFC; font-weight: 700; color: var(--navy); font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+    .timeline-block { border-left: 3px solid var(--navy); padding-left: 16px; margin: 14px 0; }
+    .timeline-block .year { font-weight: 800; color: var(--navy); font-size: 1.05rem; }
+    .trivia-box { background: linear-gradient(135deg, #FFF7ED, #FEF3C7); border-radius: 12px; padding: 16px 18px; margin: 16px 0; }
+    .trivia-box h3 { margin: 0 0 8px; color: #92400E; }
+    .trivia-box ul { margin: 0; padding-left: 22px; }
   </style>
 </head>
 <body class="legal-body">
@@ -100,14 +103,18 @@
     <div class="us-svgmap-wrap" data-us-map data-highlight="TX" aria-label="Map of the 50 US states with Texas highlighted in gold"></div>
 
     <h2>Texas on the US map</h2>
-    <p>Texas is located in the <strong>South</strong> region of the United States — specifically the plains subregion. With an area ranking of <strong>#2 of 50</strong>, it is one of the largest US states. The map above highlights Texas in gold and color-codes the other 49 states by region.</p>
+    <p>Texas sits in the <strong>South</strong> region of the United States — specifically the plains subregion as defined by the US Census Bureau. With an area ranking of <strong>#2 of 50</strong>, Texas is one of the largest US states by total area. The map above highlights Texas in gold and color-codes the 49 other states by region.</p>
 
-    <h2>Key cities</h2>
-    <p>The capital of Texas is <strong>Austin</strong>. The largest city by population is <strong>Houston</strong>. As is the case with most US states, the capital is not the largest city — this is by design, dating back to the late 18th and 19th centuries when state founders deliberately chose smaller, more centrally located towns to host state government and avoid concentrating political and commercial power in the same place.</p>
+    <p>Whether you're a student studying US geography, a traveler planning a road trip, a teacher building a lesson plan, or simply curious, the goal of this page is to give you a complete picture of where Texas is and what surrounds it. Click any other state on the map above to navigate to its dedicated page.</p>
+
+    <h2>Capital and largest city</h2>
+    <p>The capital of Texas is <strong>Austin</strong>. The largest city by population, however, is <strong>Houston</strong> — not Austin. This pattern (capital ≠ largest city) holds for about 33 of the 50 US states, including most of the famous mismatches like California (Sacramento, not LA), Florida (Tallahassee, not Miami), and New York (Albany, not NYC).</p>
+
+    <p>The historical reason for these mismatches dates to the late 18th and 19th centuries. When state founders chose capitals, they often deliberately picked smaller, more centrally located towns to avoid concentrating political and commercial power in the same place. They worried that a capital in a major port or commercial city would be too vulnerable to mob influence (a real concern at the time) and would skew political decisions toward commercial interests.</p>
 
     <h2>Borders and neighbors</h2>
-    <p>Texas shares land borders with <strong>4 other US states</strong>: <a href="/states/new-mexico/">New Mexico</a>, <a href="/states/oklahoma/">Oklahoma</a>, <a href="/states/arkansas/">Arkansas</a>, <a href="/states/louisiana/">Louisiana</a>.</p>
-    <p>Texas also shares an international border with <strong>Mexico</strong> — one of only 4 US states to do so (the others are California, Arizona, and New Mexico if not this state itself).</p>
+    <p>Texas shares land borders with <strong>4 other US states</strong>: <a href="/states/new-mexico/">New Mexico</a>, <a href="/states/oklahoma/">Oklahoma</a>, <a href="/states/arkansas/">Arkansas</a>, <a href="/states/louisiana/">Louisiana</a>. Each link goes to that state's dedicated page where you can see its own map, history, and facts.</p>
+    <p>Texas also shares an international border with <strong>Mexico</strong> — one of only 4 US states to do so (California, Arizona, New Mexico, Texas). The US-Mexico border runs roughly 1,954 miles total, the most-crossed international border in the world.</p>
     
 
     <h2>Geographic features at a glance</h2>
@@ -115,37 +122,58 @@
       <li><strong>Total area rank:</strong> #2 of 50</li>
       <li><strong>Population:</strong> over 10 million</li>
       <li><strong>Coastline:</strong> gulf</li>
+      <li><strong>Mountain ranges:</strong> no major mountain ranges</li>
+      <li><strong>Time zone:</strong> Central (spans multiple)</li>
+      <li><strong>Region:</strong> South — plains subregion</li>
+      
+      <li><strong>Great Plains:</strong> yes</li>
       
       
-      <li><strong>Great Plains:</strong> yes — part of the central US plains</li>
       
       
       
-      
-      
+      <li><strong>Route 66:</strong> on the historic Route 66 corridor</li>
     </ul>
 
-    <h2>How to use this map</h2>
-    <p>The map above is interactive — click any state to see its facts and history. Texas appears in <strong>gold</strong> to make it easy to find. The other states are colored by region: <strong style="color:#1E40AF">Northeast (blue)</strong>, <strong style="color:#B91C1C">South (red)</strong>, <strong style="color:#B45309">Midwest (orange)</strong>, and <strong style="color:#047857">West (green)</strong>. This color coding follows the standard US Census Bureau region definitions and helps you build a mental map of US geography as you explore.</p>
+    <h2>Major highways and transportation</h2>
+    <p>Texas is connected to the rest of the country by the federal Interstate Highway System (planned by President Eisenhower in the 1950s). The historic Route 66 — the "Mother Road" running from Chicago to Los Angeles — passes through Texas. Major airports serve Houston and Austin, with regional connections to the rest of the state. Amtrak rail service connects parts of Texas to the national passenger rail network, though geographic isolation and population density vary.</p>
 
-    <h2>Bordering states</h2><p>Texas shares borders with 4 other US states.</p><div class="related-grid"><a href="/states/new-mexico/">→ New Mexico (NM)</a><a href="/states/oklahoma/">→ Oklahoma (OK)</a><a href="/states/arkansas/">→ Arkansas (AR)</a><a href="/states/louisiana/">→ Louisiana (LA)</a></div>
+    <h2>Texas notable firsts</h2>
+    <ul>
+      <li>Largest contiguous US state by area; was its own country 1836-1845</li>
+    </ul>
+    <div class="trivia-box">
+    <h3>🌟 Texas trivia</h3>
+    <ul>
+      <li>Texas was its <strong>own independent country</strong> for 9 years (1836–1845) before joining the US.</li>
+        <li>It's the only state that can legally <strong>fly its flag at the same height as the US flag</strong>.</li>
+        <li>NASA's mission control in Houston coordinated every Apollo mission — "Houston, we have a problem" was real.</li>
+        <li>Texas produces about <strong>40% of US oil</strong> and would be the 9th-largest country economy if it were independent.</li>
+    </ul>
+  </div>
+    
+    <h2>Bordering states (4)</h2><p>Texas shares borders with 4 other US states, listed alphabetically below. Each link goes to the dedicated state page.</p><div class="related-grid"><a href="/states/new-mexico/">→ New Mexico (NM)</a><a href="/states/oklahoma/">→ Oklahoma (OK)</a><a href="/states/arkansas/">→ Arkansas (AR)</a><a href="/states/louisiana/">→ Louisiana (LA)</a></div>
 
     <div class="cta-card">
-      <h3>Practice US geography daily</h3>
-      <p>Statedoku is a free 3×3 daily puzzle that quietly teaches US geography. Texas appears as the answer or as a constraint clue on most days that match its region, borders, or quirks.</p>
+      <h3>Practice US geography daily — free</h3>
+      <p>Statedoku is a 3×3 daily geography puzzle. Texas appears as an answer or constraint clue on most days that match its region, borders, time zone, or quirks. Five minutes a day.</p>
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2 id="faq">Common questions</h2>
+    <h2 id="faq">Frequently asked questions about Texas</h2>
     <div class="faq-block">
       <details><summary>Where is Texas located?</summary><p>Texas is in the South region of the United States. Its capital is Austin and its largest city is Houston. The state ranks #2 of 50 by total area.</p></details>
-      <details><summary>What states border Texas?</summary><p>Texas borders New Mexico, Oklahoma, Arkansas, Louisiana. That's 4 bordering states in total.</p></details>
+      <details><summary>What states border Texas?</summary><p>Texas borders New Mexico, Oklahoma, Arkansas, Louisiana. That's 4 bordering states.</p></details>
       <details><summary>Is Texas on the coast?</summary><p>Yes, Texas has coastline on the gulf.</p></details>
       <details><summary>What time zone is Texas in?</summary><p>Texas observes Central Time (the state spans multiple time zones).</p></details>
+      <details><summary>What is the capital of Texas?</summary><p>The capital is Austin. The largest city in the state is Houston, not Austin.</p></details>
+      <details><summary>How big is Texas?</summary><p>Texas ranks #2 of 50 by area.</p></details>
+      <details><summary>Does Texas border Mexico or Canada?</summary><p>Texas borders Mexico.</p></details>
+      <details><summary>What region is Texas in?</summary><p>Texas is in the South region, specifically the plains subregion (US Census Bureau classification).</p></details>
     </div>
 
     
-    <h2>Explore Texas</h2><div class="related-grid"><a href="/states/texas/">→ Overview</a><a href="/states/texas/history/">→ History</a><a href="/states/texas/geography/">→ Geography</a><a href="/states/texas/people/">→ People</a><a href="/states/texas/sports/">→ Sports</a><a href="/states/texas/elections/">→ Elections</a><a href="/states/texas/travel/">→ Travel</a><a href="/states/texas/weather/">→ Weather</a></div>
+    <h2>Explore further</h2><div class="related-grid"><a href="/states/texas/">→ Overview</a><a href="/states/texas/history/">→ History</a><a href="/states/texas/geography/">→ Geography</a><a href="/states/texas/people/">→ People</a><a href="/states/texas/sports/">→ Sports</a><a href="/states/texas/elections/">→ Elections</a><a href="/states/texas/travel/">→ Travel</a><a href="/states/texas/weather/">→ Weather</a><a href="/states/texas/symbols/">→ Symbols</a><a href="/states/texas/fun-facts/">→ Fun facts</a></div>
   </div>
 </main>
 <footer>

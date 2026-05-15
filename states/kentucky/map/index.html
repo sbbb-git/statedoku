@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0F2147">
   <meta name="color-scheme" content="light">
-  <title>Kentucky Map — Cities, Borders, Geography Guide | Statedoku</title>
-  <meta name="description" content="Interactive Kentucky state map. Locate Frankfort (capital), Louisville (largest city), borders with 7 states, and key geographic features.">
-  <meta name="keywords" content="kentucky map, kentucky state map, kentucky location, where is kentucky, kentucky cities">
+  <title>Kentucky Map — Geography, Cities, Borders, Highways | Statedoku</title>
+  <meta name="description" content="Complete interactive Kentucky state map. Locate Frankfort, Louisville, 7 bordering states, major highways, geographic regions, and natural features.">
+  <meta name="keywords" content="kentucky map, kentucky state map, kentucky location, kentucky cities, kentucky borders">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://statedoku.com/states/kentucky/map/">
   <link rel="alternate" hreflang="en" href="https://statedoku.com/states/kentucky/map/">
@@ -20,8 +20,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
   <link rel="stylesheet" href="/css/style.css?v=17">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Kentucky Map — Cities, Borders, Geography Guide">
-  <meta property="og:description" content="Interactive Kentucky state map. Locate Frankfort (capital), Louisville (largest city), borders with 7 states, and key geographic features.">
+  <meta property="og:title" content="Kentucky Map — Geography, Cities, Borders, Highways">
+  <meta property="og:description" content="Complete interactive Kentucky state map. Locate Frankfort, Louisville, 7 bordering states, major highways, geographic regions, and natural features.">
   <meta property="og:url" content="https://statedoku.com/states/kentucky/map/">
   <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
   <script type="application/ld+json">
@@ -33,7 +33,7 @@
 ]}
 </script>
   <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is Kentucky located?","acceptedAnswer":{"@type":"Answer","text":"Kentucky is in the South region of the United States. Its capital is Frankfort and its largest city is Louisville. The state ranks #37 of 50 by total area."}},{"@type":"Question","name":"What states border Kentucky?","acceptedAnswer":{"@type":"Answer","text":"Kentucky borders Illinois, Indiana, Ohio, West Virginia, Virginia, Tennessee, Missouri. That's 7 bordering states in total."}},{"@type":"Question","name":"Is Kentucky on the coast?","acceptedAnswer":{"@type":"Answer","text":"No, Kentucky is landlocked. It has no ocean coastline and no Great Lakes shoreline."}},{"@type":"Question","name":"What time zone is Kentucky in?","acceptedAnswer":{"@type":"Answer","text":"Kentucky observes Eastern Time (the state spans multiple time zones)."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is Kentucky located?","acceptedAnswer":{"@type":"Answer","text":"Kentucky is in the South region of the United States. Its capital is Frankfort and its largest city is Louisville. The state ranks #37 of 50 by total area."}},{"@type":"Question","name":"What states border Kentucky?","acceptedAnswer":{"@type":"Answer","text":"Kentucky borders Illinois, Indiana, Ohio, West Virginia, Virginia, Tennessee, Missouri. That's 7 bordering states."}},{"@type":"Question","name":"Is Kentucky on the coast?","acceptedAnswer":{"@type":"Answer","text":"No, Kentucky is landlocked."}},{"@type":"Question","name":"What time zone is Kentucky in?","acceptedAnswer":{"@type":"Answer","text":"Kentucky observes Eastern Time (the state spans multiple time zones)."}},{"@type":"Question","name":"What is the capital of Kentucky?","acceptedAnswer":{"@type":"Answer","text":"The capital is Frankfort. The largest city in the state is Louisville, not Frankfort."}},{"@type":"Question","name":"How big is Kentucky?","acceptedAnswer":{"@type":"Answer","text":"Kentucky ranks #37 of 50 by area."}},{"@type":"Question","name":"Does Kentucky border Mexico or Canada?","acceptedAnswer":{"@type":"Answer","text":"Kentucky does not share an international border."}},{"@type":"Question","name":"What region is Kentucky in?","acceptedAnswer":{"@type":"Answer","text":"Kentucky is in the South region, specifically the upland south subregion (US Census Bureau classification)."}}]}
 </script>
   <style>
     .ss-hero { max-width: 900px; margin: 28px auto 14px; padding: 0 18px; text-align: center; }
@@ -61,14 +61,17 @@
     .related-grid a:hover { background: #F8FAFC; border-color: var(--navy); }
     .us-svgmap-wrap { max-width: 720px; margin: 18px auto; }
     .factbox { background: #F8FAFC; border-left: 4px solid var(--gold); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
-    .symbol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 14px 0; }
-    .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
-    .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
-    .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
-    .faq-block { margin-top: 24px; }
     .faq-block details { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; padding: 10px 14px; }
     .faq-block summary { cursor: pointer; font-weight: 700; color: var(--navy); }
     .faq-block details[open] summary { margin-bottom: 8px; }
+    table.compare { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .9rem; }
+    table.compare th, table.compare td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    table.compare th { background: #F8FAFC; font-weight: 700; color: var(--navy); font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+    .timeline-block { border-left: 3px solid var(--navy); padding-left: 16px; margin: 14px 0; }
+    .timeline-block .year { font-weight: 800; color: var(--navy); font-size: 1.05rem; }
+    .trivia-box { background: linear-gradient(135deg, #FFF7ED, #FEF3C7); border-radius: 12px; padding: 16px 18px; margin: 16px 0; }
+    .trivia-box h3 { margin: 0 0 8px; color: #92400E; }
+    .trivia-box ul { margin: 0; padding-left: 22px; }
   </style>
 </head>
 <body class="legal-body">
@@ -100,13 +103,17 @@
     <div class="us-svgmap-wrap" data-us-map data-highlight="KY" aria-label="Map of the 50 US states with Kentucky highlighted in gold"></div>
 
     <h2>Kentucky on the US map</h2>
-    <p>Kentucky is located in the <strong>South</strong> region of the United States — specifically the upland south subregion. With an area ranking of <strong>#37 of 50</strong>, it is a moderately-sized state. The map above highlights Kentucky in gold and color-codes the other 49 states by region.</p>
+    <p>Kentucky sits in the <strong>South</strong> region of the United States — specifically the upland south subregion as defined by the US Census Bureau. With an area ranking of <strong>#37 of 50</strong>, Kentucky is mid-sized for the United States. The map above highlights Kentucky in gold and color-codes the 49 other states by region.</p>
 
-    <h2>Key cities</h2>
-    <p>The capital of Kentucky is <strong>Frankfort</strong>. The largest city by population is <strong>Louisville</strong>. As is the case with most US states, the capital is not the largest city — this is by design, dating back to the late 18th and 19th centuries when state founders deliberately chose smaller, more centrally located towns to host state government and avoid concentrating political and commercial power in the same place.</p>
+    <p>Whether you're a student studying US geography, a traveler planning a road trip, a teacher building a lesson plan, or simply curious, the goal of this page is to give you a complete picture of where Kentucky is and what surrounds it. Click any other state on the map above to navigate to its dedicated page.</p>
+
+    <h2>Capital and largest city</h2>
+    <p>The capital of Kentucky is <strong>Frankfort</strong>. The largest city by population, however, is <strong>Louisville</strong> — not Frankfort. This pattern (capital ≠ largest city) holds for about 33 of the 50 US states, including most of the famous mismatches like California (Sacramento, not LA), Florida (Tallahassee, not Miami), and New York (Albany, not NYC).</p>
+
+    <p>The historical reason for these mismatches dates to the late 18th and 19th centuries. When state founders chose capitals, they often deliberately picked smaller, more centrally located towns to avoid concentrating political and commercial power in the same place. They worried that a capital in a major port or commercial city would be too vulnerable to mob influence (a real concern at the time) and would skew political decisions toward commercial interests.</p>
 
     <h2>Borders and neighbors</h2>
-    <p>Kentucky shares land borders with <strong>7 other US states</strong>: <a href="/states/illinois/">Illinois</a>, <a href="/states/indiana/">Indiana</a>, <a href="/states/ohio/">Ohio</a>, <a href="/states/west-virginia/">West Virginia</a>, <a href="/states/virginia/">Virginia</a>, <a href="/states/tennessee/">Tennessee</a>, <a href="/states/missouri/">Missouri</a>.</p>
+    <p>Kentucky shares land borders with <strong>7 other US states</strong>: <a href="/states/illinois/">Illinois</a>, <a href="/states/indiana/">Indiana</a>, <a href="/states/ohio/">Ohio</a>, <a href="/states/west-virginia/">West Virginia</a>, <a href="/states/virginia/">Virginia</a>, <a href="/states/tennessee/">Tennessee</a>, <a href="/states/missouri/">Missouri</a>. Each link goes to that state's dedicated page where you can see its own map, history, and facts.</p>
     
     
 
@@ -116,6 +123,8 @@
       <li><strong>Population:</strong> 1 to 5 million</li>
       <li><strong>Coastline:</strong> landlocked (no ocean access)</li>
       <li><strong>Mountain ranges:</strong> appalachians</li>
+      <li><strong>Time zone:</strong> Eastern (spans multiple)</li>
+      <li><strong>Region:</strong> South — upland south subregion</li>
       
       
       <li><strong>Appalachian range:</strong> yes</li>
@@ -123,29 +132,60 @@
       
       
       
+      
     </ul>
 
-    <h2>How to use this map</h2>
-    <p>The map above is interactive — click any state to see its facts and history. Kentucky appears in <strong>gold</strong> to make it easy to find. The other states are colored by region: <strong style="color:#1E40AF">Northeast (blue)</strong>, <strong style="color:#B91C1C">South (red)</strong>, <strong style="color:#B45309">Midwest (orange)</strong>, and <strong style="color:#047857">West (green)</strong>. This color coding follows the standard US Census Bureau region definitions and helps you build a mental map of US geography as you explore.</p>
+    <h2>Major highways and transportation</h2>
+    <p>Kentucky is connected to the rest of the country by the federal Interstate Highway System (planned by President Eisenhower in the 1950s). Major airports serve Louisville and Frankfort, with regional connections to the rest of the state. Amtrak rail service connects parts of Kentucky to the national passenger rail network, though geographic isolation and population density vary.</p>
 
-    <h2>Bordering states</h2><p>Kentucky shares borders with 7 other US states.</p><div class="related-grid"><a href="/states/illinois/">→ Illinois (IL)</a><a href="/states/indiana/">→ Indiana (IN)</a><a href="/states/ohio/">→ Ohio (OH)</a><a href="/states/west-virginia/">→ West Virginia (WV)</a><a href="/states/virginia/">→ Virginia (VA)</a><a href="/states/tennessee/">→ Tennessee (TN)</a><a href="/states/missouri/">→ Missouri (MO)</a></div>
+    <h2>Kentucky notable firsts</h2>
+    <ul>
+      <li>15th state, the first west of the Appalachians</li>
+    </ul>
+    <div class="trivia-box">
+    <h3>🌟 Kentucky trivia</h3>
+    <ul>
+      <li>The state produces <strong>95% of the world's bourbon</strong>. By federal law, only bourbon made in the US can be called bourbon, and most comes from KY.</li>
+        <li>The <strong>Kentucky Derby</strong>, held since 1875, is the oldest continuously held sporting event in the US.</li>
+        <li>Fort Knox stores roughly <strong>$300 billion in gold bullion</strong> on behalf of the US government.</li>
+        <li>Mammoth Cave National Park has the <strong>longest cave system in the world</strong> — over 420 miles mapped.</li>
+    </ul>
+  </div>
+    <h2>Kentucky vs similar states</h2>
+    <p>How does Kentucky compare with 3 other states in the same region and size category?</p>
+    <table class="compare">
+      <thead><tr><th>State</th><th>Capital</th><th>Pop</th><th>Area rank</th><th>Admitted</th></tr></thead>
+      <tbody>
+      <tr style="background:#FEF3C7"><td><a href="/states/kentucky/">Kentucky</a></td><td>Frankfort</td><td>1 to 5 million</td><td>#37</td><td>1792</td></tr>
+      <tr><td><a href="/states/alabama/">Alabama</a></td><td>Montgomery</td><td>1 to 5 million</td><td>#30</td><td>1819</td></tr>
+      <tr><td><a href="/states/arkansas/">Arkansas</a></td><td>Little Rock</td><td>1 to 5 million</td><td>#29</td><td>1836</td></tr>
+      <tr><td><a href="/states/georgia/">Georgia</a></td><td>Atlanta</td><td>over 10 million</td><td>#24</td><td>1788</td></tr>
+      </tbody>
+    </table>
+    <h2>Bordering states (7)</h2><p>Kentucky shares borders with 7 other US states, listed alphabetically below. Each link goes to the dedicated state page.</p><div class="related-grid"><a href="/states/illinois/">→ Illinois (IL)</a><a href="/states/indiana/">→ Indiana (IN)</a><a href="/states/ohio/">→ Ohio (OH)</a><a href="/states/west-virginia/">→ West Virginia (WV)</a><a href="/states/virginia/">→ Virginia (VA)</a><a href="/states/tennessee/">→ Tennessee (TN)</a><a href="/states/missouri/">→ Missouri (MO)</a></div>
 
     <div class="cta-card">
-      <h3>Practice US geography daily</h3>
-      <p>Statedoku is a free 3×3 daily puzzle that quietly teaches US geography. Kentucky appears as the answer or as a constraint clue on most days that match its region, borders, or quirks.</p>
+      <h3>Practice US geography daily — free</h3>
+      <p>Statedoku is a 3×3 daily geography puzzle. Kentucky appears as an answer or constraint clue on most days that match its region, borders, time zone, or quirks. Five minutes a day.</p>
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2 id="faq">Common questions</h2>
+    <h2 id="faq">Frequently asked questions about Kentucky</h2>
     <div class="faq-block">
       <details><summary>Where is Kentucky located?</summary><p>Kentucky is in the South region of the United States. Its capital is Frankfort and its largest city is Louisville. The state ranks #37 of 50 by total area.</p></details>
-      <details><summary>What states border Kentucky?</summary><p>Kentucky borders Illinois, Indiana, Ohio, West Virginia, Virginia, Tennessee, Missouri. That's 7 bordering states in total.</p></details>
-      <details><summary>Is Kentucky on the coast?</summary><p>No, Kentucky is landlocked. It has no ocean coastline and no Great Lakes shoreline.</p></details>
+      <details><summary>What states border Kentucky?</summary><p>Kentucky borders Illinois, Indiana, Ohio, West Virginia, Virginia, Tennessee, Missouri. That's 7 bordering states.</p></details>
+      <details><summary>Is Kentucky on the coast?</summary><p>No, Kentucky is landlocked.</p></details>
       <details><summary>What time zone is Kentucky in?</summary><p>Kentucky observes Eastern Time (the state spans multiple time zones).</p></details>
+      <details><summary>What is the capital of Kentucky?</summary><p>The capital is Frankfort. The largest city in the state is Louisville, not Frankfort.</p></details>
+      <details><summary>How big is Kentucky?</summary><p>Kentucky ranks #37 of 50 by area.</p></details>
+      <details><summary>Does Kentucky border Mexico or Canada?</summary><p>Kentucky does not share an international border.</p></details>
+      <details><summary>What region is Kentucky in?</summary><p>Kentucky is in the South region, specifically the upland south subregion (US Census Bureau classification).</p></details>
     </div>
 
-    <h2>Similar states</h2><p>If you found this page useful, you may also want to explore states with similar geography, history, or culture:</p><div class="related-grid"><a href="/states/alabama/map/">→ Alabama — map</a><a href="/states/arkansas/map/">→ Arkansas — map</a><a href="/states/georgia/map/">→ Georgia — map</a><a href="/states/louisiana/map/">→ Louisiana — map</a></div>
-    <h2>Explore Kentucky</h2><div class="related-grid"><a href="/states/kentucky/">→ Overview</a><a href="/states/kentucky/history/">→ History</a><a href="/states/kentucky/geography/">→ Geography</a><a href="/states/kentucky/people/">→ People</a><a href="/states/kentucky/sports/">→ Sports</a><a href="/states/kentucky/elections/">→ Elections</a><a href="/states/kentucky/travel/">→ Travel</a><a href="/states/kentucky/weather/">→ Weather</a></div>
+    <h2>Similar states to Kentucky</h2>
+    <p>If this page interested you, you may also want to explore states with similar geography, history, or culture. These states share Kentucky's region (South) and similar size category:</p>
+    <div class="related-grid"><a href="/states/alabama/map/">→ Alabama — map</a><a href="/states/arkansas/map/">→ Arkansas — map</a><a href="/states/georgia/map/">→ Georgia — map</a><a href="/states/louisiana/map/">→ Louisiana — map</a></div>
+    <h2>Explore further</h2><div class="related-grid"><a href="/states/kentucky/">→ Overview</a><a href="/states/kentucky/history/">→ History</a><a href="/states/kentucky/geography/">→ Geography</a><a href="/states/kentucky/people/">→ People</a><a href="/states/kentucky/sports/">→ Sports</a><a href="/states/kentucky/elections/">→ Elections</a><a href="/states/kentucky/travel/">→ Travel</a><a href="/states/kentucky/weather/">→ Weather</a><a href="/states/kentucky/symbols/">→ Symbols</a><a href="/states/kentucky/fun-facts/">→ Fun facts</a></div>
   </div>
 </main>
 <footer>
