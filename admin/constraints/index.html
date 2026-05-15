@@ -228,6 +228,7 @@
   <button class="chip" data-filter="low">⚠️ ≤5 states</button>
   <button class="chip" data-filter="disabled">Disabled</button>
   <button class="chip" data-filter="coverage">📊 State coverage</button>
+  <button class="chip" id="export-approved" style="margin-left:auto;background:#065F46;color:#fff" title="Copy JSON of all approved IDs to clipboard">📋 Export approved → repo</button>
 </div>
 
 <div class="content" id="content">
@@ -756,6 +757,22 @@
       filter = c.dataset.filter;
       drawList();
     });
+  });
+
+  // Export approved → clipboard (ready to paste into js/constraints-approved.js)
+  document.getElementById('export-approved').addEventListener('click', async () => {
+    const ids = [...approved].sort();
+    const json = JSON.stringify(ids, null, 2);
+    try {
+      await navigator.clipboard.writeText(json);
+      const btn = document.getElementById('export-approved');
+      const orig = btn.textContent;
+      btn.textContent = `✓ Copied ${ids.length} IDs`;
+      setTimeout(() => { btn.textContent = orig; }, 2000);
+    } catch (e) {
+      // Fallback: prompt
+      prompt(`Copy this (${ids.length} IDs):`, json);
+    }
   });
 
   drawStrip();
