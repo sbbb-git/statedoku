@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /bin/
+Disallow: /cdn-cgi/
 Disallow: /*?date=archive
 Disallow: /*?dev=
 Disallow: /*?control=
