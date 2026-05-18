@@ -80,6 +80,10 @@ export async function onRequestGet({ request }) {
   ];
   const stateEntries = stateSlugs.map(slug => [`${BASE}/states/${slug}/`, { priority: 0.7 }]);
 
+  // 50 ES state overview pages (LATAM target)
+  const esStateEntries = [[`${BASE}/es/states/`, { priority: 0.8 }]];
+  for (const slug of stateSlugs) esStateEntries.push([`${BASE}/es/states/${slug}/`, { priority: 0.65 }]);
+
   // 12 subpages per state
   const SUBTOPICS = ['map','history','geography','people','sports','elections','travel','weather','symbols','fun-facts','economy','food'];
   const stateSubpageEntries = [];
@@ -107,7 +111,7 @@ export async function onRequestGet({ request }) {
     .filter(([url, date]) => today >= date)
     .map(([url]) => [`${BASE}${url}`, { priority: 0.8 }]);
 
-  const all = [...evergreen, ...stateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...scheduled];
+  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...scheduled];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
