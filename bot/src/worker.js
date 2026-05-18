@@ -122,8 +122,8 @@ const PRELAUNCH_NEAR = [
 ];
 
 const PRELAUNCH_COUNTDOWN = (daysLeft) => [
-  `a hype tweet revealing the launch is on Monday May 25 — ${daysLeft} day${daysLeft === 1 ? '' : 's'} to go. No link yet but use the date.`,
-  `an "almost here" tweet ${daysLeft === 1 ? 'with the launch day TOMORROW' : 'with the launch in ' + daysLeft + ' days'}. Build excitement, mention May 25 specifically.`,
+  `a hype tweet revealing the launch is on Monday June 1 — ${daysLeft} day${daysLeft === 1 ? '' : 's'} to go. No link yet but use the date.`,
+  `an "almost here" tweet ${daysLeft === 1 ? 'with the launch day TOMORROW' : 'with the launch in ' + daysLeft + ' days'}. Build excitement, mention June 1 specifically.`,
 ];
 
 const LAUNCH_STYLES = [
@@ -139,35 +139,91 @@ const LAUNCH_STYLES = [
 function _todayDateStr() { return new Date().toISOString().slice(0, 10); }
 function _dayOfYear(d) { return Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 86400000); }
 
+// Fetch a random fun fact about a US state from the live site.
+// Returns null on any failure (so the bot can fall back to a teaser).
+async function pickRandomFunFact() {
+  try {
+    const resp = await fetch(`${SITE_URL}/data/facts.json`, { cf: { cacheTtl: 3600 } });
+    if (!resp.ok) return null;
+    const facts = await resp.json();
+    if (!Array.isArray(facts) || !facts.length) return null;
+    return facts[Math.floor(Math.random() * facts.length)];
+  } catch {
+    return null;
+  }
+}
+
+// Build a fun-fact tweet prompt. Used in prelaunch (evening slot) + launch (every other day).
+function buildFunFactPrompt(fact, isPrelaunch, dateLong, daysLeft = 0) {
+  const personaCore = `You run the @Statedoku Twitter account. Your job is to share a US states / geography fun fact in a fun, conversational way.
+
+Voice: casual, witty, slightly nerdy. Like a friend who can't help themselves when a cool fact crosses their mind. NEVER corporate. NEVER use em-dashes.
+
+Hard rules (every tweet):
+- Under 270 characters total.
+- MUST include exactly one US flag emoji 🇺🇸 somewhere.
+- 1-2 emojis MAX TOTAL (so 🇺🇸 + at most one other).
+- Don't say "fun fact" or "did you know" — show, don't announce.
+- Use the fact as inspiration; reword it in your own punchy way.
+- Do NOT wrap the tweet in quotes.
+- Output ONLY the tweet text, no explanations, no preamble.`;
+
+  const ctx = isPrelaunch
+    ? `Today is ${dateLong}. The Statedoku puzzle launches in ${daysLeft} day${daysLeft === 1 ? '' : 's'} (June 1). Do NOT include any link or hashtag yet. You can hint that something is coming (one short line), but the fact is the star.`
+    : `Today is ${dateLong}. Statedoku is the daily US states puzzle, live at ${SITE_URL}. End with: a brief CTA (e.g. "Today's puzzle: ${SITE_URL}") and the hashtag #Statedoku.`;
+
+  return `${personaCore}
+
+${ctx}
+
+Fact to base your tweet on (rephrase it, don't copy verbatim):
+"${fact.text}"
+(state: ${fact.state}${fact.abbr ? ', ' + fact.abbr : ''})
+
+Write ONE tweet now.`;
+}
+
 // Pick which prompt to send to Claude based on phase + current UTC hour.
-function buildPrompt() {
+async function buildPrompt() {
   const now = new Date();
   const dateLong = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   const doy = _dayOfYear(now);
   const utcHour = now.getUTCHours();
+  const isMorningSlot = utcHour < 15;
 
   if (PHASE === 'prelaunch') {
-    const isMorningSlot = utcHour < 15;
     const daysLeft = _daysUntilLaunch();
 
-    // Pick the right escalation tier
+    // MIX: morning slot = teaser/hype. Evening slot = fun fact.
+    // This guarantees variety and gives followers both vibes.
+    if (!isMorningSlot) {
+      const fact = await pickRandomFunFact();
+      if (fact) return buildFunFactPrompt(fact, true, dateLong, daysLeft);
+      // else fall through to teaser if fetch failed
+    }
+
+    // Teaser tier escalation by days-to-launch
     let pool;
     if (daysLeft >= 7) pool = PRELAUNCH_FAR;
     else if (daysLeft >= 3) pool = PRELAUNCH_NEAR;
     else if (daysLeft >= 1) pool = PRELAUNCH_COUNTDOWN(daysLeft);
-    else pool = PRELAUNCH_FAR; // safety: if PHASE wasn't flipped on launch day
+    else pool = PRELAUNCH_FAR;
 
     const idx = (doy * 2 + (isMorningSlot ? 0 : 5)) % pool.length;
     const style = pool[idx];
 
     return `${PRELAUNCH_PERSONA}
 
-Today is ${dateLong}. Launch day is Monday May 25 (${daysLeft} day${daysLeft === 1 ? '' : 's'} away).
+Today is ${dateLong}. Launch day is Monday June 1 (${daysLeft} day${daysLeft === 1 ? '' : 's'} away).
 
 Write ONE tweet for ${isMorningSlot ? 'this morning' : 'this evening'} in this style: ${style}.`;
   }
 
-  // LAUNCH phase — promotes the live puzzle with link + hashtag
+  // LAUNCH phase — alternate every other day between fun-fact and puzzle CTA
+  if (doy % 2 === 0) {
+    const fact = await pickRandomFunFact();
+    if (fact) return buildFunFactPrompt(fact, false, dateLong);
+  }
   const style = LAUNCH_STYLES[doy % LAUNCH_STYLES.length];
   return `You write the daily tweet for @Statedoku — a free daily puzzle game (${SITE_URL}) that mixes Sudoku grid logic with US geography. Players fill a 3×3 grid with US states matching row + column constraints, like "Pacific coast × Borders Mexico = California". 3 mistakes allowed.
 
@@ -187,7 +243,7 @@ Requirements:
 }
 
 async function generateTweetText(env) {
-  const prompt = buildPrompt();
+  const prompt = await buildPrompt();
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
