@@ -111,7 +111,13 @@ export async function onRequestGet({ request }) {
     .filter(([url, date]) => today >= date)
     .map(([url]) => [`${BASE}${url}`, { priority: 0.8 }]);
 
-  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...scheduled];
+  // New: API hub + printable map page
+  const extras = [
+    [`${BASE}/api/`, { priority: 0.7 }],
+    [`${BASE}/learn/printable-us-states-map/`, { priority: 0.85 }],
+  ];
+
+  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">

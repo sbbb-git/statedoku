@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F2147">
+  <title>US States JSON API (Free) — Statedoku Developer API</title>
+  <meta name="description" content="Free public JSON API for US states data: capitals, populations, regions, borders. CORS enabled, no auth required, attribution welcome. Updated 2026.">
+  <meta name="keywords" content="us states api, free states json api, us states data, state capitals api, us geography api, json us states">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://statedoku.com/api/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=17">
+
+  <meta property="og:title" content="Free US States JSON API">
+  <meta property="og:description" content="50 states, capitals, populations, regions, borders. CORS enabled, no auth. Free with attribution.">
+  <meta property="og:url" content="https://statedoku.com/api/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
+
+  <style>
+    .api-hero { max-width: 720px; margin: 32px auto 12px; padding: 0 18px; text-align: center; }
+    .api-hero h1 { font-size: clamp(1.9rem, 5.5vw, 2.6rem); font-weight: 900; letter-spacing: -0.025em; margin: 0 0 8px; }
+    .api-hero p { color: var(--text-2); }
+    .api-main { max-width: 720px; margin: 0 auto; padding: 18px 18px 60px; line-height: 1.65; }
+    .api-main h2 { margin-top: 30px; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; }
+    .api-main h3 { margin-top: 22px; font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+    pre { background: #0F2147; color: #E2E8F0; padding: 14px 18px; border-radius: 8px; overflow-x: auto; font-size: .82rem; line-height: 1.55; font-family: 'SF Mono', Menlo, Monaco, monospace; }
+    code { background: rgba(15,33,71,0.08); padding: 2px 6px; border-radius: 4px; font-size: .85em; font-family: 'SF Mono', Menlo, Monaco, monospace; }
+    pre code { background: transparent; padding: 0; }
+    .endpoint { background: #F8FAFC; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin: 12px 0; }
+    .endpoint .method { display: inline-block; background: #16A34A; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: .78rem; font-weight: 800; letter-spacing: .04em; margin-right: 6px; }
+    .endpoint .path { font-family: 'SF Mono', Menlo, monospace; font-size: .92rem; font-weight: 700; color: var(--navy); }
+    .endpoint p { margin: 8px 0 0; color: var(--text-2); font-size: .92rem; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .92rem; }
+    table th, table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    table th { background: #F8FAFC; font-weight: 700; color: var(--navy); font-size: .82rem; text-transform: uppercase; letter-spacing: .03em; }
+    .badge-cors { display: inline-block; background: #DCFCE7; color: #14532D; padding: 3px 10px; border-radius: 999px; font-size: .78rem; font-weight: 700; margin-right: 6px; }
+    .cta-card { background: linear-gradient(135deg, var(--navy), var(--navy-soft)); color: #fff; padding: 22px; border-radius: 14px; margin: 28px 0; text-align: center; }
+    .cta-card h3 { color: #fff; margin: 0 0 8px; }
+    .cta-card p { margin: 0 0 12px; color: rgba(255,255,255,0.85); }
+    .cta-card a { display: inline-block; background: var(--gold); color: var(--navy); padding: 10px 22px; border-radius: 999px; font-weight: 800; text-decoration: none; font-size: .92rem; }
+  </style>
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← Home</a></nav>
+</header>
+
+<main>
+  <section class="api-hero">
+    <h1>Statedoku US States API</h1>
+    <p>
+      <span class="badge-cors">FREE</span>
+      <span class="badge-cors">CORS</span>
+      <span class="badge-cors">NO AUTH</span>
+    </p>
+    <p>A free, public JSON API for US states data. Use it in your projects, tutorials, demos, or learning material.</p>
+  </section>
+
+  <article class="api-main">
+
+    <h2>Quick example</h2>
+    <pre><code>curl https://statedoku.com/api/states/california
+
+{
+  "id": "CA",
+  "name": "California",
+  "capital": "Sacramento",
+  "largestCity": "Los Angeles",
+  "region": "west",
+  "areaRank": 3,
+  "admitted": 1850,
+  ...
+}</code></pre>
+
+    <h2>Endpoints</h2>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="path">/api/states</span>
+      <p>Returns all 50 US states as a JSON array.</p>
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="path">/api/states/{id}</span>
+      <p>Returns a single state. The <code>{id}</code> can be a USPS 2-letter abbreviation (<code>CA</code>, <code>tx</code>) or a name slug (<code>california</code>, <code>new-york</code>).</p>
+    </div>
+
+    <h2>Query parameters</h2>
+    <table>
+      <thead><tr><th>Parameter</th><th>Example</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>fields</code></td><td><code>?fields=id,capital,region</code></td><td>Return only these fields. Comma-separated.</td></tr>
+        <tr><td><code>region</code></td><td><code>?region=west</code></td><td>Filter to only states in a region. Valid values: <code>west</code>, <code>south</code>, <code>midwest</code>, <code>northeast</code>.</td></tr>
+        <tr><td><code>pretty</code></td><td><code>?pretty=true</code></td><td>Pretty-print the JSON response.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Response fields</h2>
+    <p>Each state object contains:</p>
+    <table>
+      <thead><tr><th>Field</th><th>Type</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><code>id</code></td><td>string (2 letters)</td><td><code>"CA"</code></td></tr>
+        <tr><td><code>name</code></td><td>string</td><td><code>"California"</code></td></tr>
+        <tr><td><code>names</code></td><td>object</td><td><code>{en, fr, es}</code></td></tr>
+        <tr><td><code>capital</code></td><td>string</td><td><code>"Sacramento"</code></td></tr>
+        <tr><td><code>largestCity</code></td><td>string</td><td><code>"Los Angeles"</code></td></tr>
+        <tr><td><code>region</code></td><td>string</td><td><code>"west"</code></td></tr>
+        <tr><td><code>subregion</code></td><td>string</td><td><code>"pacific"</code></td></tr>
+        <tr><td><code>population</code></td><td>string (range)</td><td><code>"&gt;10M"</code></td></tr>
+        <tr><td><code>areaRank</code></td><td>number (1-50)</td><td><code>3</code></td></tr>
+        <tr><td><code>admitted</code></td><td>number (year)</td><td><code>1850</code></td></tr>
+        <tr><td><code>timezone</code></td><td>string</td><td><code>"pacific"</code></td></tr>
+        <tr><td><code>coastline</code></td><td>array</td><td><code>["pacific"]</code></td></tr>
+        <tr><td><code>landlocked</code></td><td>boolean</td><td><code>false</code></td></tr>
+        <tr><td><code>bordersCanada</code></td><td>boolean</td><td><code>false</code></td></tr>
+        <tr><td><code>bordersMexico</code></td><td>boolean</td><td><code>true</code></td></tr>
+        <tr><td><code>original13</code></td><td>boolean</td><td><code>false</code></td></tr>
+        <tr><td><code>confederate</code></td><td>boolean</td><td><code>false</code></td></tr>
+        <tr><td><code>presidentBirthplace</code></td><td>boolean</td><td><code>true</code></td></tr>
+        <tr><td><code>noIncomeTax</code></td><td>boolean</td><td><code>false</code></td></tr>
+      </tbody>
+    </table>
+
+    <h2>JavaScript example</h2>
+    <pre><code>// All 50 states
+const states = await fetch('https://statedoku.com/api/states').then(r => r.json());
+console.log(`There are ${states.length} states.`);
+
+// Just the West coast
+const west = await fetch('https://statedoku.com/api/states?region=west')
+  .then(r => r.json());
+
+// Get California
+const ca = await fetch('https://statedoku.com/api/states/CA').then(r => r.json());
+console.log(`${ca.name} capital is ${ca.capital}.`);
+
+// Just capitals
+const capitals = await fetch('https://statedoku.com/api/states?fields=name,capital')
+  .then(r => r.json());</code></pre>
+
+    <h2>Python example</h2>
+    <pre><code>import requests
+
+# All 50
+states = requests.get('https://statedoku.com/api/states').json()
+
+# Single state
+ca = requests.get('https://statedoku.com/api/states/CA').json()
+print(f"{ca['name']} → {ca['capital']}")
+
+# With filters
+sun_belt = requests.get(
+    'https://statedoku.com/api/states',
+    params={'region': 'south', 'fields': 'name,capital,population'}
+).json()</code></pre>
+
+    <h2>Rate limits & caching</h2>
+    <p>The API is cached aggressively at the edge (1 day TTL). Hammer it freely. There's no hard rate limit, but please cache responses client-side too.</p>
+
+    <h2>License & attribution</h2>
+    <p>Free to use for any purpose — personal, commercial, educational. <strong>Attribution appreciated</strong> but not required. If you build something cool with it, a link to <code>https://statedoku.com/</code> in your project's credits is the kind thing to do.</p>
+
+    <h2>Suggested attribution</h2>
+    <pre><code>&lt;!-- Data from --&gt;
+&lt;a href="https://statedoku.com/api/"&gt;Statedoku US States API&lt;/a&gt;</code></pre>
+
+    <h2>Source & changelog</h2>
+    <p>Data is curated and maintained by Statedoku. Updates happen as state-level data evolves (rare for stable fields like capitals, more common for population estimates). The raw underlying dataset is also available at <code>https://statedoku.com/data/states.json</code> if you want all 137 internal fields.</p>
+
+    <div class="cta-card">
+      <h3>Built something with the API?</h3>
+      <p>Let us know — we love seeing what people build. Reply by email or tag us on Twitter.</p>
+      <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>
+    </div>
+
+    <h2>Related resources</h2>
+    <ul>
+      <li><a href="/data/states.json">Raw JSON dump</a> — all 137 fields per state, for advanced use</li>
+      <li><a href="/data/us-map.svg">US states SVG map</a> — geographic, Albers projection, 224KB</li>
+      <li><a href="/learn/">Learn the 50 states</a> — full guide</li>
+      <li><a href="/states/">All 50 state pages</a> — per-state HTML guides</li>
+    </ul>
+  </article>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/api/">API</a></p>
+</footer>
+</body>
+</html>
