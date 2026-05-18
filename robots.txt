@@ -2,10 +2,13 @@ User-agent: *
 Allow: /
 Disallow: /bin/
 Disallow: /cdn-cgi/
+Disallow: /api/
 Disallow: /*?date=archive
 Disallow: /*?dev=
 Disallow: /*?control=
 Disallow: /*?ctrl=
+Disallow: /*?nocache=
+Disallow: /*?b=
 
 Sitemap: https://statedoku.com/sitemap.xml
 
