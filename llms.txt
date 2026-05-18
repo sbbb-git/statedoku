@@ -34,6 +34,8 @@
 ## Reference data
 - [All 50 state pages](https://statedoku.com/states/): One page per state with capital, population, area rank, admission year, fun facts, and clickable map
 - [Fun facts archive](https://statedoku.com/facts/): 200+ curated facts across all 50 states
+- [Free US states JSON API](https://statedoku.com/api/): Public, CORS-enabled, no auth. Returns curated state data.
+- [Free printable US states map](https://statedoku.com/learn/printable-us-states-map/): Blank + labeled + table versions for teachers, parents, homeschool. Press Ctrl+P.
 
 ## Game mechanics summary
 - Grid: 3×3
