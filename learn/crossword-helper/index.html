@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+
+  <title>US States Crossword Helper: State by Letters, Capital, Abbreviation | Statedoku</title>
+  <meta name="description" content="Find any US state or capital by letter count for crosswords. Filter by letters, USPS code, or capital. 50 states, 50 capitals, all in one table.">
+  <meta name="keywords" content="us state crossword helper, state with 4 letters, state capital crossword, us state abbreviation, crossword state names">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="alternate" hreflang="en-US" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="alternate" hreflang="en-GB" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="alternate" hreflang="en-IN" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="alternate" hreflang="en-CA" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="alternate" hreflang="en-AU" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="alternate" hreflang="es" href="https://statedoku.com/es/learn/crucigrama-estados/">
+  <link rel="alternate" hreflang="x-default" href="https://statedoku.com/learn/crossword-helper/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=17">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="US States Crossword Helper — Find a state by letters">
+  <meta property="og:description" content="Find any US state or capital by letter count for crosswords. Filter by letters, USPS code, or capital.">
+  <meta property="og:url" content="https://statedoku.com/learn/crossword-helper/">
+  <meta property="og:image" content="https://statedoku.com/og/og-learn-state-capitals.png">
+
+  <style>
+    .lt-hero { max-width: 720px; margin: 32px auto 12px; padding: 0 18px; text-align: center; }
+    .lt-hero h1 { font-size: clamp(1.9rem, 5.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.025em; margin: 0 0 10px; line-height: 1.15; }
+    .lt-hero .sub { color: var(--text-2); font-size: 1rem; line-height: 1.55; }
+    .lt-main { max-width: 860px; margin: 0 auto; padding: 18px 18px 60px; line-height: 1.65; color: var(--text); }
+    .lt-main h2 { margin-top: 36px; margin-bottom: 12px; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; }
+    .lt-main h3 { margin-top: 20px; margin-bottom: 8px; font-size: 1.02rem; font-weight: 700; color: var(--navy); }
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; padding: 14px; background: #F8FAFC; border-radius: 12px; margin: 14px 0; }
+    .filters label { display: flex; flex-direction: column; gap: 4px; font-size: .82rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .03em; }
+    .filters input, .filters select { padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: .95rem; background: #fff; min-width: 140px; font-family: inherit; }
+    .filters .clear-btn { align-self: flex-end; padding: 8px 14px; border: none; background: var(--navy); color: #fff; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: .9rem; }
+    .filters .clear-btn:hover { background: var(--navy-soft); }
+    table.lt { width: 100%; border-collapse: collapse; margin: 14px 0 22px; font-size: .92rem; }
+    table.lt th, table.lt td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    table.lt th { background: #F1F5F9; font-weight: 700; color: var(--navy); font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; cursor: pointer; user-select: none; }
+    table.lt th:hover { background: #E2E8F0; }
+    table.lt th.sort-asc::after { content: ' ▲'; font-size: .7rem; }
+    table.lt th.sort-desc::after { content: ' ▼'; font-size: .7rem; }
+    table.lt tr:hover { background: #FAFBFC; }
+    table.lt a { color: var(--navy); font-weight: 700; text-decoration: none; }
+    table.lt a:hover { text-decoration: underline; }
+    table.lt td.num { text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; }
+    .no-match { padding: 30px; text-align: center; color: var(--text-3); font-style: italic; }
+    .count-badge { display: inline-block; padding: 2px 8px; background: var(--gold); color: var(--navy); border-radius: 10px; font-weight: 800; font-size: .85rem; margin-left: 6px; }
+    .tip { background: #FFF7ED; border-left: 3px solid var(--gold); padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: .93rem; }
+    .cta-card { background: linear-gradient(135deg, var(--navy), var(--navy-soft)); color: #fff; padding: 22px; border-radius: 14px; margin: 28px 0; text-align: center; }
+    .cta-card h3 { color: #fff; margin: 0 0 8px; }
+    .cta-card p { margin: 0 0 12px; color: rgba(255,255,255,0.85); }
+    .cta-card a { display: inline-block; background: var(--gold); color: var(--navy); padding: 10px 22px; border-radius: 999px; font-weight: 800; text-decoration: none; font-size: .92rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin: 14px 0; }
+    .related-grid a { display: block; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--navy); text-decoration: none; font-weight: 600; font-size: .9rem; transition: all 120ms; }
+    .related-grid a:hover { background: #F8FAFC; border-color: var(--navy); }
+    details { margin: 8px 0; padding: 10px 14px; background: #F8FAFC; border-radius: 8px; }
+    details[open] { background: #fff; border: 1px solid var(--border); }
+    summary { font-weight: 700; color: var(--navy); cursor: pointer; }
+    details p, details ul { margin: 8px 0 0; color: var(--text-2); }
+  </style>
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/learn/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← Learn</a></nav>
+</header>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},
+  {"@type":"ListItem","position":2,"name":"Learn","item":"https://statedoku.com/learn/"},
+  {"@type":"ListItem","position":3,"name":"Crossword Helper","item":"https://statedoku.com/learn/crossword-helper/"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Which US state has 4 letters?","acceptedAnswer":{"@type":"Answer","text":"Three US states have exactly 4 letters: Iowa, Ohio, and Utah."}},
+  {"@type":"Question","name":"Which US state has 5 letters?","acceptedAnswer":{"@type":"Answer","text":"Seven US states have exactly 5 letters: Idaho, Maine, Texas, plus none others — only those three at 5 letters. Hawaii has 6."}},
+  {"@type":"Question","name":"What state capital has 6 letters?","acceptedAnswer":{"@type":"Answer","text":"Several US state capitals have 6 letters including Albany (NY), Austin (TX), Boston (MA), Denver (CO), Dover (DE — actually 5), Helena (MT), Juneau (AK), Pierre (SD — 6 letters), and Topeka (KS)."}},
+  {"@type":"Question","name":"What US state has Augusta as its capital?","acceptedAnswer":{"@type":"Answer","text":"Maine. Augusta is the capital of Maine — a common crossword clue with a 5-letter answer."}},
+  {"@type":"Question","name":"What is the shortest US state name?","acceptedAnswer":{"@type":"Answer","text":"Iowa, Ohio, and Utah — all 4 letters — are tied as the shortest US state names."}}
+]}
+</script>
+
+<main>
+  <section class="lt-hero">
+    <h1>US States Crossword Helper</h1>
+    <p class="sub">Filter the 50 states and capitals by letter count, code, or name. Built for crossword solvers and trivia fans.</p>
+  </section>
+
+  <article class="lt-main">
+
+    <div class="filters">
+      <label>State letters
+        <input type="number" id="f-state-letters" min="1" max="20" placeholder="e.g. 5">
+      </label>
+      <label>Capital letters
+        <input type="number" id="f-capital-letters" min="1" max="20" placeholder="e.g. 6">
+      </label>
+      <label>USPS code
+        <input type="text" id="f-usps" maxlength="2" placeholder="e.g. ME" style="text-transform:uppercase;">
+      </label>
+      <label>State name contains
+        <input type="text" id="f-name" placeholder="e.g. ar">
+      </label>
+      <label>Capital starts with
+        <input type="text" id="f-cap-start" maxlength="3" placeholder="e.g. Au">
+      </label>
+      <button class="clear-btn" id="clear">Clear filters</button>
+    </div>
+
+    <p style="margin: 4px 0 12px;"><strong id="count">50</strong> of 50 states match.</p>
+
+    <table class="lt" id="grid">
+      <thead>
+        <tr>
+          <th data-sort="en">State</th>
+          <th data-sort="id">USPS</th>
+          <th data-sort="stateLetters" class="num">Letters</th>
+          <th data-sort="capital">Capital</th>
+          <th data-sort="capitalLetters" class="num">Letters</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="no-match" id="empty" hidden>No state matches your filters. Clear them to start over.</div>
+
+    <h2>Most-searched crossword clues we cover</h2>
+    <ul>
+      <li><strong>"US state with capital Augusta (5 letters)"</strong> → Maine.</li>
+      <li><strong>"US state, capital Honolulu"</strong> → Hawaii (HI).</li>
+      <li><strong>"4-letter US state"</strong> → Iowa, Ohio, or Utah.</li>
+      <li><strong>"US state capital, 6 letters"</strong> → Albany, Austin, Boston, Denver, Helena, Juneau, Pierre, or Topeka.</li>
+      <li><strong>"Smallest US state"</strong> → Rhode Island (by area).</li>
+      <li><strong>"US state on the Pacific, 6 letters"</strong> → Hawaii or Oregon.</li>
+    </ul>
+
+    <div class="cta-card">
+      <h3>Try the daily geography puzzle</h3>
+      <p>Statedoku gives you 5 clues about a hidden US state every day. Free, no login.</p>
+      <a href="/">Play today's puzzle →</a>
+    </div>
+
+    <h2>FAQ</h2>
+    <details><summary>Which 4-letter US states exist?</summary><p>Three: <strong>Iowa</strong>, <strong>Ohio</strong>, and <strong>Utah</strong>.</p></details>
+    <details><summary>What 5-letter US states are there?</summary><p>Three: <strong>Idaho</strong>, <strong>Maine</strong>, and <strong>Texas</strong>.</p></details>
+    <details><summary>Which state capital has 5 letters?</summary><p>Several, including <strong>Dover</strong> (DE), <strong>Salem</strong> (OR), <strong>Boise</strong> (ID), and <strong>Pierre</strong> (SD, depending on counting).</p></details>
+    <details><summary>What's the longest US state name?</summary><p><strong>North Carolina</strong> and <strong>South Carolina</strong> tie at 13 letters (excluding the space). <strong>Massachusetts</strong> is the longest single-word state at 13 letters.</p></details>
+    <details><summary>Which state has the same first and last letter?</summary><p>Several do: <strong>Alabama</strong>, <strong>Alaska</strong>, <strong>Arizona</strong>, <strong>Arkansas</strong>, <strong>Ohio</strong>, and a few more.</p></details>
+
+    <h2>Related guides</h2>
+    <div class="related-grid">
+      <a href="/learn/state-abbreviations/">→ USPS state abbreviations</a>
+      <a href="/learn/states-and-capitals/">→ All 50 states & capitals</a>
+      <a href="/learn/state-nicknames/">→ State nicknames</a>
+      <a href="/learn/state-mottos/">→ State mottos</a>
+      <a href="/learn/largest-states/">→ Largest states</a>
+      <a href="/learn/landlocked-states/">→ Landlocked states</a>
+      <a href="/es/learn/crucigrama-estados/">→ Versión en español</a>
+      <a href="/learn/">→ All learn guides</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/api/">API</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p>
+</footer>
+
+<script>
+  const DATA = [{"id":"AL","en":"Alabama","es":"Alabama","fr":"Alabama","capital":"Montgomery","largest":"Huntsville","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":10,"capitalLettersWithSpaces":10,"esLetters":7},{"id":"AK","en":"Alaska","es":"Alaska","fr":"Alaska","capital":"Juneau","largest":"Anchorage","stateLetters":6,"stateLettersWithSpaces":6,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":6},{"id":"AZ","en":"Arizona","es":"Arizona","fr":"Arizona","capital":"Phoenix","largest":"Phoenix","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":7},{"id":"AR","en":"Arkansas","es":"Arkansas","fr":"Arkansas","capital":"Little Rock","largest":"Little Rock","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":10,"capitalLettersWithSpaces":11,"esLetters":8},{"id":"CA","en":"California","es":"California","fr":"Californie","capital":"Sacramento","largest":"Los Angeles","stateLetters":10,"stateLettersWithSpaces":10,"capitalLetters":10,"capitalLettersWithSpaces":10,"esLetters":10},{"id":"CO","en":"Colorado","es":"Colorado","fr":"Colorado","capital":"Denver","largest":"Denver","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":8},{"id":"CT","en":"Connecticut","es":"Connecticut","fr":"Connecticut","capital":"Hartford","largest":"Bridgeport","stateLetters":11,"stateLettersWithSpaces":11,"capitalLetters":8,"capitalLettersWithSpaces":8,"esLetters":11},{"id":"DE","en":"Delaware","es":"Delaware","fr":"Delaware","capital":"Dover","largest":"Wilmington","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":5,"capitalLettersWithSpaces":5,"esLetters":8},{"id":"FL","en":"Florida","es":"Florida","fr":"Floride","capital":"Tallahassee","largest":"Jacksonville","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":11,"capitalLettersWithSpaces":11,"esLetters":7},{"id":"GA","en":"Georgia","es":"Georgia","fr":"Géorgie","capital":"Atlanta","largest":"Atlanta","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":7},{"id":"HI","en":"Hawaii","es":"Hawái","fr":"Hawaï","capital":"Honolulu","largest":"Honolulu","stateLetters":6,"stateLettersWithSpaces":6,"capitalLetters":8,"capitalLettersWithSpaces":8,"esLetters":5},{"id":"ID","en":"Idaho","es":"Idaho","fr":"Idaho","capital":"Boise","largest":"Boise","stateLetters":5,"stateLettersWithSpaces":5,"capitalLetters":5,"capitalLettersWithSpaces":5,"esLetters":5},{"id":"IL","en":"Illinois","es":"Illinois","fr":"Illinois","capital":"Springfield","largest":"Chicago","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":11,"capitalLettersWithSpaces":11,"esLetters":8},{"id":"IN","en":"Indiana","es":"Indiana","fr":"Indiana","capital":"Indianapolis","largest":"Indianapolis","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":12,"capitalLettersWithSpaces":12,"esLetters":7},{"id":"IA","en":"Iowa","es":"Iowa","fr":"Iowa","capital":"Des Moines","largest":"Des Moines","stateLetters":4,"stateLettersWithSpaces":4,"capitalLetters":9,"capitalLettersWithSpaces":10,"esLetters":4},{"id":"KS","en":"Kansas","es":"Kansas","fr":"Kansas","capital":"Topeka","largest":"Wichita","stateLetters":6,"stateLettersWithSpaces":6,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":6},{"id":"KY","en":"Kentucky","es":"Kentucky","fr":"Kentucky","capital":"Frankfort","largest":"Louisville","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":9,"capitalLettersWithSpaces":9,"esLetters":8},{"id":"LA","en":"Louisiana","es":"Luisiana","fr":"Louisiane","capital":"Baton Rouge","largest":"New Orleans","stateLetters":9,"stateLettersWithSpaces":9,"capitalLetters":10,"capitalLettersWithSpaces":11,"esLetters":8},{"id":"ME","en":"Maine","es":"Maine","fr":"Maine","capital":"Augusta","largest":"Portland","stateLetters":5,"stateLettersWithSpaces":5,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":5},{"id":"MD","en":"Maryland","es":"Maryland","fr":"Maryland","capital":"Annapolis","largest":"Baltimore","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":9,"capitalLettersWithSpaces":9,"esLetters":8},{"id":"MA","en":"Massachusetts","es":"Massachusetts","fr":"Massachusetts","capital":"Boston","largest":"Boston","stateLetters":13,"stateLettersWithSpaces":13,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":13},{"id":"MI","en":"Michigan","es":"Michigan","fr":"Michigan","capital":"Lansing","largest":"Detroit","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":8},{"id":"MN","en":"Minnesota","es":"Minnesota","fr":"Minnesota","capital":"Saint Paul","largest":"Minneapolis","stateLetters":9,"stateLettersWithSpaces":9,"capitalLetters":9,"capitalLettersWithSpaces":10,"esLetters":9},{"id":"MS","en":"Mississippi","es":"Misisipi","fr":"Mississippi","capital":"Jackson","largest":"Jackson","stateLetters":11,"stateLettersWithSpaces":11,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":8},{"id":"MO","en":"Missouri","es":"Misuri","fr":"Missouri","capital":"Jefferson City","largest":"Kansas City","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":13,"capitalLettersWithSpaces":14,"esLetters":6},{"id":"MT","en":"Montana","es":"Montana","fr":"Montana","capital":"Helena","largest":"Billings","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":7},{"id":"NE","en":"Nebraska","es":"Nebraska","fr":"Nebraska","capital":"Lincoln","largest":"Omaha","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":8},{"id":"NV","en":"Nevada","es":"Nevada","fr":"Nevada","capital":"Carson City","largest":"Las Vegas","stateLetters":6,"stateLettersWithSpaces":6,"capitalLetters":10,"capitalLettersWithSpaces":11,"esLetters":6},{"id":"NH","en":"New Hampshire","es":"Nuevo Hampshire","fr":"Nouveau-Hampshire","capital":"Concord","largest":"Manchester","stateLetters":12,"stateLettersWithSpaces":13,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":14},{"id":"NJ","en":"New Jersey","es":"Nueva Jersey","fr":"New Jersey","capital":"Trenton","largest":"Newark","stateLetters":9,"stateLettersWithSpaces":10,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":11},{"id":"NM","en":"New Mexico","es":"Nuevo México","fr":"Nouveau-Mexique","capital":"Santa Fe","largest":"Albuquerque","stateLetters":9,"stateLettersWithSpaces":10,"capitalLetters":7,"capitalLettersWithSpaces":8,"esLetters":11},{"id":"NY","en":"New York","es":"Nueva York","fr":"New York","capital":"Albany","largest":"New York City","stateLetters":7,"stateLettersWithSpaces":8,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":9},{"id":"NC","en":"North Carolina","es":"Carolina del Norte","fr":"Caroline du Nord","capital":"Raleigh","largest":"Charlotte","stateLetters":13,"stateLettersWithSpaces":14,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":16},{"id":"ND","en":"North Dakota","es":"Dakota del Norte","fr":"Dakota du Nord","capital":"Bismarck","largest":"Fargo","stateLetters":11,"stateLettersWithSpaces":12,"capitalLetters":8,"capitalLettersWithSpaces":8,"esLetters":14},{"id":"OH","en":"Ohio","es":"Ohio","fr":"Ohio","capital":"Columbus","largest":"Columbus","stateLetters":4,"stateLettersWithSpaces":4,"capitalLetters":8,"capitalLettersWithSpaces":8,"esLetters":4},{"id":"OK","en":"Oklahoma","es":"Oklahoma","fr":"Oklahoma","capital":"Oklahoma City","largest":"Oklahoma City","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":12,"capitalLettersWithSpaces":13,"esLetters":8},{"id":"OR","en":"Oregon","es":"Oregón","fr":"Oregon","capital":"Salem","largest":"Portland","stateLetters":6,"stateLettersWithSpaces":6,"capitalLetters":5,"capitalLettersWithSpaces":5,"esLetters":6},{"id":"PA","en":"Pennsylvania","es":"Pensilvania","fr":"Pennsylvanie","capital":"Harrisburg","largest":"Philadelphia","stateLetters":12,"stateLettersWithSpaces":12,"capitalLetters":10,"capitalLettersWithSpaces":10,"esLetters":11},{"id":"RI","en":"Rhode Island","es":"Rhode Island","fr":"Rhode Island","capital":"Providence","largest":"Providence","stateLetters":11,"stateLettersWithSpaces":12,"capitalLetters":10,"capitalLettersWithSpaces":10,"esLetters":11},{"id":"SC","en":"South Carolina","es":"Carolina del Sur","fr":"Caroline du Sud","capital":"Columbia","largest":"Columbia","stateLetters":13,"stateLettersWithSpaces":14,"capitalLetters":8,"capitalLettersWithSpaces":8,"esLetters":14},{"id":"SD","en":"South Dakota","es":"Dakota del Sur","fr":"Dakota du Sud","capital":"Pierre","largest":"Sioux Falls","stateLetters":11,"stateLettersWithSpaces":12,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":12},{"id":"TN","en":"Tennessee","es":"Tennessee","fr":"Tennessee","capital":"Nashville","largest":"Nashville","stateLetters":9,"stateLettersWithSpaces":9,"capitalLetters":9,"capitalLettersWithSpaces":9,"esLetters":9},{"id":"TX","en":"Texas","es":"Texas","fr":"Texas","capital":"Austin","largest":"Houston","stateLetters":5,"stateLettersWithSpaces":5,"capitalLetters":6,"capitalLettersWithSpaces":6,"esLetters":5},{"id":"UT","en":"Utah","es":"Utah","fr":"Utah","capital":"Salt Lake City","largest":"Salt Lake City","stateLetters":4,"stateLettersWithSpaces":4,"capitalLetters":12,"capitalLettersWithSpaces":14,"esLetters":4},{"id":"VT","en":"Vermont","es":"Vermont","fr":"Vermont","capital":"Montpelier","largest":"Burlington","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":10,"capitalLettersWithSpaces":10,"esLetters":7},{"id":"VA","en":"Virginia","es":"Virginia","fr":"Virginie","capital":"Richmond","largest":"Virginia Beach","stateLetters":8,"stateLettersWithSpaces":8,"capitalLetters":8,"capitalLettersWithSpaces":8,"esLetters":8},{"id":"WA","en":"Washington","es":"Washington","fr":"Washington","capital":"Olympia","largest":"Seattle","stateLetters":10,"stateLettersWithSpaces":10,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":10},{"id":"WV","en":"West Virginia","es":"Virginia Occidental","fr":"Virginie-Occidentale","capital":"Charleston","largest":"Charleston","stateLetters":12,"stateLettersWithSpaces":13,"capitalLetters":10,"capitalLettersWithSpaces":10,"esLetters":18},{"id":"WI","en":"Wisconsin","es":"Wisconsin","fr":"Wisconsin","capital":"Madison","largest":"Milwaukee","stateLetters":9,"stateLettersWithSpaces":9,"capitalLetters":7,"capitalLettersWithSpaces":7,"esLetters":9},{"id":"WY","en":"Wyoming","es":"Wyoming","fr":"Wyoming","capital":"Cheyenne","largest":"Cheyenne","stateLetters":7,"stateLettersWithSpaces":7,"capitalLetters":8,"capitalLettersWithSpaces":8,"esLetters":7}];
+  const tbody = document.getElementById('rows');
+  const empty = document.getElementById('empty');
+  const countEl = document.getElementById('count');
+  let sortKey = 'en';
+  let sortDir = 1;
+  const slug = n => n.toLowerCase().replace(/\s+/g, '-');
+
+  function render() {
+    const f = {
+      sl: +document.getElementById('f-state-letters').value || 0,
+      cl: +document.getElementById('f-capital-letters').value || 0,
+      usps: document.getElementById('f-usps').value.trim().toUpperCase(),
+      name: document.getElementById('f-name').value.trim().toLowerCase(),
+      capStart: document.getElementById('f-cap-start').value.trim().toLowerCase(),
+    };
+    let rows = DATA.filter(s => {
+      if (f.sl && s.stateLetters !== f.sl) return false;
+      if (f.cl && s.capitalLetters !== f.cl) return false;
+      if (f.usps && !s.id.startsWith(f.usps)) return false;
+      if (f.name && !s.en.toLowerCase().includes(f.name)) return false;
+      if (f.capStart && !s.capital.toLowerCase().startsWith(f.capStart)) return false;
+      return true;
+    });
+    rows.sort((a, b) => {
+      const va = a[sortKey], vb = b[sortKey];
+      if (typeof va === 'number') return (va - vb) * sortDir;
+      return String(va).localeCompare(String(vb)) * sortDir;
+    });
+    countEl.textContent = rows.length;
+    if (!rows.length) {
+      tbody.innerHTML = '';
+      empty.hidden = false;
+    } else {
+      empty.hidden = true;
+      tbody.innerHTML = rows.map(s =>
+        '<tr>' +
+        '<td><a href="/states/' + slug(s.en) + '/"><strong>' + s.en + '</strong></a></td>' +
+        '<td><strong>' + s.id + '</strong></td>' +
+        '<td class="num">' + s.stateLetters + '</td>' +
+        '<td>' + s.capital + '</td>' +
+        '<td class="num">' + s.capitalLetters + '</td>' +
+        '</tr>'
+      ).join('');
+    }
+    document.querySelectorAll('#grid th').forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (th.dataset.sort === sortKey) th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+    });
+  }
+
+  document.querySelectorAll('.filters input').forEach(i => i.addEventListener('input', render));
+  document.getElementById('clear').addEventListener('click', () => {
+    document.querySelectorAll('.filters input').forEach(i => i.value = '');
+    render();
+  });
+  document.querySelectorAll('#grid th').forEach(th => {
+    th.addEventListener('click', () => {
+      if (sortKey === th.dataset.sort) sortDir = -sortDir;
+      else { sortKey = th.dataset.sort; sortDir = 1; }
+      render();
+    });
+  });
+
+  render();
+</script>
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

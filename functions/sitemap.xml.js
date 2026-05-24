@@ -111,10 +111,13 @@ export async function onRequestGet({ request }) {
     .filter(([url, date]) => today >= date)
     .map(([url]) => [`${BASE}${url}`, { priority: 0.8 }]);
 
-  // New: API hub + printable map page
+  // New: API hub + printable map page + crossword helpers + ES capitals hub
   const extras = [
     [`${BASE}/api/`, { priority: 0.7 }],
     [`${BASE}/learn/printable-us-states-map/`, { priority: 0.85 }],
+    [`${BASE}/learn/crossword-helper/`, { priority: 0.8, alternates: [['en', `${BASE}/learn/crossword-helper/`], ['es', `${BASE}/es/learn/crucigrama-estados/`]] }],
+    [`${BASE}/es/learn/crucigrama-estados/`, { priority: 0.8 }],
+    [`${BASE}/es/learn/capitales-de-estados/`, { priority: 0.9 }],
   ];
 
   const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled];

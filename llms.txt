@@ -36,6 +36,9 @@
 - [Fun facts archive](https://statedoku.com/facts/): 200+ curated facts across all 50 states
 - [Free US states JSON API](https://statedoku.com/api/): Public, CORS-enabled, no auth. Returns curated state data.
 - [Free printable US states map](https://statedoku.com/learn/printable-us-states-map/): Blank + labeled + table versions for teachers, parents, homeschool. Press Ctrl+P.
+- [US states crossword helper](https://statedoku.com/learn/crossword-helper/): Filter the 50 states/capitals by letter count, USPS code, capital prefix.
+- [Crucigrama de estados de EE.UU. (ES)](https://statedoku.com/es/learn/crucigrama-estados/): Spanish version of the crossword helper.
+- [Capitales de los 50 estados (ES)](https://statedoku.com/es/learn/capitales-de-estados/): All 50 US state capitals with Spanish names, answers to "¿Cuál es la capital de X?" queries.
 
 ## Game mechanics summary
 - Grid: 3×3
