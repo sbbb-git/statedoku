@@ -577,6 +577,17 @@ const Game = (() => {
   }
 
   async function _inlineShareClick(id) {
+    // Track share intent in CF Web Analytics (D1 not needed — just channel counts)
+    try {
+      if (typeof window !== 'undefined' && typeof window.cfTrack === 'function') {
+        window.cfTrack('share_clicked', {
+          channel: id,
+          result: _solved ? 'won' : (_gameOver ? 'lost' : 'in_progress'),
+          lang: document.documentElement.lang || 'en',
+        });
+      }
+    } catch (_) {}
+
     const body = getShareBody();
     const full = `${body}\n${SITE_URL}`;
     if (id === 'copy') {
