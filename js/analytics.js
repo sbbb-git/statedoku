@@ -33,6 +33,19 @@ const Analytics = (() => {
 
   function track(eventType, data = {}) {
     if (_shouldSkip()) return;
+
+    // Mirror puzzle events to Cloudflare Web Analytics custom events
+    // (lightweight aggregate counters, separate from the D1 detail store).
+    try {
+      if (typeof window !== 'undefined' && typeof window.cfTrack === 'function') {
+        const cfProps = {};
+        if (data.time_seconds != null) cfProps.t = data.time_seconds;
+        if (data.mistakes != null) cfProps.m = data.mistakes;
+        cfProps.lang = document.documentElement.lang || 'en';
+        window.cfTrack(eventType, cfProps);
+      }
+    } catch (_) {}
+
     if (!data.puzzle_date) return;
 
     // Dedupe per-event-per-puzzle-per-device so reloading doesn't inflate counts
