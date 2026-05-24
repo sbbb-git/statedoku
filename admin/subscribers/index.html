@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Subscribers — Statedoku Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+<link rel="stylesheet" href="/css/style.css?v=17">
+<style>
+  body { background: var(--bg); min-height: 100dvh; }
+  .a-shell { max-width: 1100px; margin: 0 auto; padding: 28px 18px 80px; }
+  .a-top { display:flex; align-items:center; justify-content:space-between; margin-bottom: 18px; gap: 12px; flex-wrap: wrap; }
+  .a-title { font-size: 1.6rem; font-weight: 900; letter-spacing:-.02em; color: var(--navy); }
+  .a-title em { color: var(--red); font-style: normal; }
+  .a-sub { font-size: .82rem; color: var(--text-2); margin-top: 2px; }
+  .a-back { font-size: .82rem; color: var(--text-2); text-decoration: none; font-weight: 600; }
+  .a-back:hover { color: var(--navy); }
+
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 18px 0; }
+  .stat-card { background: var(--surface, #fff); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .stat-card .v { font-size: 1.6rem; font-weight: 900; color: var(--navy); letter-spacing: -.02em; }
+  .stat-card .l { font-size: .72rem; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; padding: 12px 14px; background: #F8FAFC; border-radius: 12px; margin-bottom: 14px; align-items: flex-end; }
+  .filters label { display: flex; flex-direction: column; gap: 4px; font-size: .72rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .03em; }
+  .filters input, .filters select { padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: .92rem; background: #fff; min-width: 140px; font-family: inherit; }
+  .filters button { padding: 8px 14px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: .85rem; }
+  .filters .clr { background: #fff; border: 1px solid var(--border); color: var(--text-2); }
+  .filters .csv { background: var(--navy); color: #fff; margin-left: auto; }
+  .filters .csv:hover { background: var(--navy-soft, #1E3A8A); }
+
+  table.subs { width: 100%; border-collapse: collapse; font-size: .88rem; background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  table.subs th, table.subs td { padding: 9px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+  table.subs th { background: #F1F5F9; font-weight: 700; color: var(--navy); font-size: .76rem; text-transform: uppercase; letter-spacing: .03em; cursor: pointer; user-select: none; }
+  table.subs th:hover { background: #E2E8F0; }
+  table.subs th.sort-asc::after { content: ' ▲'; font-size: .65rem; }
+  table.subs th.sort-desc::after { content: ' ▼'; font-size: .65rem; }
+  table.subs tr:hover { background: #FAFBFC; }
+  table.subs tr.inactive td { color: var(--text-3); text-decoration: line-through; }
+  table.subs .badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+  table.subs .badge-green { background: #DCFCE7; color: #166534; }
+  table.subs .badge-red { background: #FEE2E2; color: #991B1B; }
+  table.subs .badge-blue { background: #DBEAFE; color: #1E40AF; }
+  table.subs .row-actions { white-space: nowrap; }
+  table.subs .deactivate-btn { background: transparent; border: 1px solid var(--border); color: var(--text-2); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: .76rem; font-weight: 700; }
+  table.subs .deactivate-btn:hover { border-color: var(--red); color: var(--red); }
+
+  .empty-state, .lock-state, .loading-state, .error-state {
+    text-align: center; padding: 60px 30px; background: #fff; border: 1px solid var(--border); border-radius: 12px; color: var(--text-2);
+  }
+  .empty-state h2, .lock-state h2, .error-state h2 { font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; font-weight: 800; }
+  .empty-state p, .lock-state p, .error-state p { font-size: .9rem; line-height: 1.55; margin-bottom: 10px; }
+  .lock-state .key-input { display: inline-flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .lock-state input { padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: .95rem; min-width: 280px; font-family: inherit; }
+  .lock-state button { padding: 9px 18px; background: var(--navy); color: #fff; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: .9rem; }
+  .lock-state button:hover { background: var(--navy-soft, #1E3A8A); }
+  .lock-state .err { color: var(--red); font-size: .82rem; min-height: 18px; }
+
+  .breakdowns { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 18px 0; }
+  .bd-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .bd-card h4 { font-size: .76rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+  .bd-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: .86rem; }
+  .bd-row .k { color: var(--text); }
+  .bd-row .v { font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 600px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    table.subs { font-size: .8rem; }
+    table.subs th, table.subs td { padding: 6px 8px; }
+    .filters .csv { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="a-shell">
+  <div class="a-top">
+    <div>
+      <a class="a-back" href="/admin/">← Admin home</a>
+      <div class="a-title">Email <em>subscribers</em></div>
+      <div class="a-sub" id="meta-sub">Loading…</div>
+    </div>
+    <button id="refresh-btn" class="filters" style="background:#fff;border:1px solid var(--border);padding:8px 14px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.85rem;display:none;">↻ Refresh</button>
+  </div>
+
+  <div id="lock-state" class="lock-state" style="display:none;">
+    <h2>🔒 Admin key required</h2>
+    <p>Paste your <code>ADMIN_API_KEY</code> (set in Cloudflare Pages env vars).<br>
+       It's stored only in your browser's localStorage on this device.</p>
+    <form class="key-input" id="key-form">
+      <input type="password" id="key-input" autocomplete="off" spellcheck="false" placeholder="Paste admin key…">
+      <button type="submit">Unlock</button>
+      <div class="err" id="key-err"></div>
+    </form>
+    <p style="margin-top:16px;font-size:.78rem;color:var(--text-3);">
+      Not set yet? Run:<br>
+      <code style="background:#F1F5F9;padding:3px 6px;border-radius:4px;">wrangler pages secret put ADMIN_API_KEY --project-name statedoku</code>
+    </p>
+  </div>
+
+  <div id="loading-state" class="loading-state" style="display:none;">
+    <p>Loading subscribers…</p>
+  </div>
+
+  <div id="error-state" class="error-state" style="display:none;">
+    <h2>Something went wrong</h2>
+    <p id="error-detail">—</p>
+    <button id="logout-btn" style="background:#fff;border:1px solid var(--border);padding:8px 14px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.85rem;">Reset admin key</button>
+  </div>
+
+  <div id="data-view" style="display:none;">
+    <div class="summary" id="summary"></div>
+    <div class="breakdowns" id="breakdowns"></div>
+
+    <div class="filters">
+      <label>Search email
+        <input type="text" id="f-email" placeholder="@gmail.com">
+      </label>
+      <label>Language
+        <select id="f-lang"><option value="">All</option></select>
+      </label>
+      <label>Country
+        <select id="f-country"><option value="">All</option></select>
+      </label>
+      <label>Status
+        <select id="f-status">
+          <option value="">All</option>
+          <option value="1">Active</option>
+          <option value="0">Inactive</option>
+        </select>
+      </label>
+      <button class="clr" id="clear-filters">Clear</button>
+      <button class="csv" id="export-csv">⬇ Export CSV</button>
+    </div>
+
+    <p style="margin: 6px 0 10px; font-size: .82rem; color: var(--text-2);">
+      <strong id="row-count">0</strong> shown · <span id="row-total">0</span> total
+    </p>
+
+    <table class="subs" id="table">
+      <thead>
+        <tr>
+          <th data-sort="email">Email</th>
+          <th data-sort="lang">Lang</th>
+          <th data-sort="country">Country</th>
+          <th data-sort="hour_utc">UTC hour</th>
+          <th data-sort="subscribed_at">Signed up</th>
+          <th data-sort="last_sent_date">Last sent</th>
+          <th data-sort="active">Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+
+    <div class="empty-state" id="empty-list" style="display:none;">
+      <h2>No subscribers yet</h2>
+      <p>The first signup will appear here.<br>Share <a href="/">statedoku.com</a> with the email modal to start collecting.</p>
+    </div>
+  </div>
+</div>
+
+<script src="/config.js?v=4"></script>
+<script src="/js/admin.js?v=4"></script>
+<script>
+(async function() {
+  // 1) Gate behind the admin password (client-side, same pattern as other admin pages)
+  if (!Admin.isAuthenticated()) {
+    location.hash = 'admin';
+    Admin.init();
+    document.querySelector('.a-shell').style.opacity = '0.3';
+    return;
+  }
+
+  // 2) Check we have an API key (separate from password — a server-side secret)
+  const KEY_STORAGE = 'statedoku_admin_api_key';
+  let apiKey = localStorage.getItem(KEY_STORAGE);
+
+  const $ = id => document.getElementById(id);
+  const show = (id) => ['lock-state', 'loading-state', 'error-state', 'data-view'].forEach(s => $(s).style.display = (s === id ? '' : 'none'));
+  const fmt = d => d ? new Date(d).toISOString().slice(0, 16).replace('T', ' ') : '—';
+
+  let allRows = [];
+  let summary = {};
+  let breakdowns = {};
+  let sortKey = 'subscribed_at';
+  let sortDir = -1; // newest first
+
+  async function loadData() {
+    show('loading-state');
+    try {
+      const r = await fetch('/api/admin/subscribers?limit=5000', {
+        headers: { 'X-Admin-Key': apiKey },
+        cache: 'no-store',
+      });
+      if (r.status === 401) {
+        localStorage.removeItem(KEY_STORAGE);
+        apiKey = null;
+        show('lock-state');
+        $('key-err').textContent = 'Wrong key. Try again.';
+        return;
+      }
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+      if (!data.ok) throw new Error(data.error || 'unknown');
+      allRows = data.subscribers || [];
+      summary = data.summary || {};
+      breakdowns = data.breakdowns || {};
+      $('meta-sub').textContent = `Last refreshed ${new Date(data.generated_at).toLocaleString()}`;
+      $('refresh-btn').style.display = '';
+      render();
+      show('data-view');
+    } catch (e) {
+      $('error-detail').textContent = e.message;
+      show('error-state');
+    }
+  }
+
+  function render() {
+    renderSummary();
+    renderBreakdowns();
+    renderFilters();
+    renderTable();
+  }
+
+  function renderSummary() {
+    const items = [
+      { l: 'Total', v: summary.total },
+      { l: 'Active', v: summary.active },
+      { l: 'Inactive', v: summary.inactive },
+      { l: 'Languages', v: summary.langs },
+      { l: 'Countries', v: summary.countries },
+    ];
+    $('summary').innerHTML = items.map(i => `<div class="stat-card"><div class="v">${i.v ?? 0}</div><div class="l">${i.l}</div></div>`).join('');
+  }
+
+  function renderBreakdowns() {
+    const cards = [];
+    if (breakdowns.byLang && breakdowns.byLang.length) {
+      cards.push(`<div class="bd-card"><h4>By language</h4>${breakdowns.byLang.map(r => `<div class="bd-row"><span class="k">${r.lang || '?'}</span><span class="v">${r.n}</span></div>`).join('')}</div>`);
+    }
+    if (breakdowns.byHour && breakdowns.byHour.length) {
+      cards.push(`<div class="bd-card"><h4>Preferred send hour (UTC)</h4>${breakdowns.byHour.map(r => `<div class="bd-row"><span class="k">${String(r.hour_utc).padStart(2,'0')}:00</span><span class="v">${r.n}</span></div>`).join('')}</div>`);
+    }
+    if (breakdowns.byCountry && breakdowns.byCountry.length) {
+      cards.push(`<div class="bd-card"><h4>By country (top 20)</h4>${breakdowns.byCountry.map(r => `<div class="bd-row"><span class="k">${r.country || '?'}</span><span class="v">${r.n}</span></div>`).join('')}</div>`);
+    }
+    $('breakdowns').innerHTML = cards.join('');
+  }
+
+  function renderFilters() {
+    const langs = [...new Set(allRows.map(r => r.lang).filter(Boolean))].sort();
+    const countries = [...new Set(allRows.map(r => r.country).filter(Boolean))].sort();
+    $('f-lang').innerHTML = '<option value="">All</option>' + langs.map(l => `<option value="${l}">${l}</option>`).join('');
+    $('f-country').innerHTML = '<option value="">All</option>' + countries.map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  function getFilteredSorted() {
+    const fe = $('f-email').value.trim().toLowerCase();
+    const fl = $('f-lang').value;
+    const fc = $('f-country').value;
+    const fs = $('f-status').value;
+    let rows = allRows.filter(r => {
+      if (fe && !(r.email || '').toLowerCase().includes(fe)) return false;
+      if (fl && r.lang !== fl) return false;
+      if (fc && r.country !== fc) return false;
+      if (fs !== '' && String(r.active) !== fs) return false;
+      return true;
+    });
+    rows.sort((a, b) => {
+      const va = a[sortKey], vb = b[sortKey];
+      if (va == null && vb == null) return 0;
+      if (va == null) return 1;
+      if (vb == null) return -1;
+      if (typeof va === 'number' && typeof vb === 'number') return (va - vb) * sortDir;
+      return String(va).localeCompare(String(vb)) * sortDir;
+    });
+    return rows;
+  }
+
+  function renderTable() {
+    const rows = getFilteredSorted();
+    $('row-count').textContent = rows.length;
+    $('row-total').textContent = allRows.length;
+    if (!rows.length) {
+      $('rows').innerHTML = '';
+      $('empty-list').style.display = '';
+    } else {
+      $('empty-list').style.display = 'none';
+      $('rows').innerHTML = rows.map(r => {
+        const cls = r.active ? '' : 'inactive';
+        const status = r.active
+          ? '<span class="badge badge-green">Active</span>'
+          : '<span class="badge badge-red">Inactive</span>';
+        const action = r.active
+          ? `<button class="deactivate-btn" data-email="${r.email}">Deactivate</button>`
+          : `<span style="font-size:.74rem;color:var(--text-3);">—</span>`;
+        return `<tr class="${cls}">
+          <td><a href="mailto:${r.email}" style="color:var(--navy);font-weight:600;text-decoration:none;">${r.email}</a></td>
+          <td><span class="badge badge-blue">${r.lang || '?'}</span></td>
+          <td>${r.country || '—'}</td>
+          <td>${String(r.hour_utc).padStart(2,'0')}:00</td>
+          <td>${fmt(r.subscribed_at)}</td>
+          <td>${r.last_sent_date || '—'}</td>
+          <td>${status}</td>
+          <td class="row-actions">${action}</td>
+        </tr>`;
+      }).join('');
+    }
+    document.querySelectorAll('#table th').forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (th.dataset.sort === sortKey) th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+    });
+  }
+
+  function csvEscape(v) {
+    if (v == null) return '';
+    const s = String(v);
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  }
+
+  function exportCSV() {
+    const rows = getFilteredSorted();
+    const headers = ['email', 'lang', 'country', 'hour_utc', 'subscribed_at_iso', 'last_sent_date', 'active'];
+    const csv = [headers.join(',')].concat(rows.map(r => [
+      r.email, r.lang, r.country, r.hour_utc,
+      r.subscribed_at ? new Date(r.subscribed_at).toISOString() : '',
+      r.last_sent_date || '', r.active,
+    ].map(csvEscape).join(','))).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `statedoku-subscribers-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  // Event handlers
+  $('key-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const v = $('key-input').value.trim();
+    if (!v) return;
+    localStorage.setItem(KEY_STORAGE, v);
+    apiKey = v;
+    $('key-err').textContent = '';
+    loadData();
+  });
+
+  $('logout-btn').addEventListener('click', () => {
+    localStorage.removeItem(KEY_STORAGE);
+    location.reload();
+  });
+
+  $('refresh-btn').addEventListener('click', loadData);
+  ['f-email', 'f-lang', 'f-country', 'f-status'].forEach(id => $(id).addEventListener('input', renderTable));
+  $('clear-filters').addEventListener('click', () => {
+    ['f-email', 'f-lang', 'f-country', 'f-status'].forEach(id => $(id).value = '');
+    renderTable();
+  });
+  $('export-csv').addEventListener('click', exportCSV);
+
+  document.addEventListener('click', async e => {
+    const btn = e.target.closest('.deactivate-btn');
+    if (!btn) return;
+    const email = btn.dataset.email;
+    if (!confirm(`Deactivate ${email}? They will stop receiving the daily email but their record stays in the DB.`)) return;
+    btn.disabled = true;
+    btn.textContent = 'Deactivating…';
+    try {
+      const r = await fetch(`/api/admin/subscribers?email=${encodeURIComponent(email)}`, {
+        method: 'DELETE',
+        headers: { 'X-Admin-Key': apiKey },
+      });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      await loadData();
+    } catch (err) {
+      alert('Failed: ' + err.message);
+      btn.disabled = false;
+      btn.textContent = 'Deactivate';
+    }
+  });
+
+  document.querySelectorAll('#table th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      if (sortKey === th.dataset.sort) sortDir = -sortDir;
+      else { sortKey = th.dataset.sort; sortDir = 1; }
+      renderTable();
+    });
+  });
+
+  // Start
+  if (!apiKey) show('lock-state');
+  else loadData();
+})();
+</script>
+
+</body>
+</html>
