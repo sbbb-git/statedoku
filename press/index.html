@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+
+  <title>Press Kit — Statedoku | Daily US Geography Puzzle</title>
+  <meta name="description" content="Press kit for Statedoku — daily 3×3 US states puzzle. Logos, screenshots (multiple sizes), founder bio, factsheet, blurbs in EN/FR/ES. Free use for journalists, bloggers, and aggregators.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/press/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/press/">
+  <link rel="alternate" hreflang="x-default" href="https://statedoku.com/press/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=17">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Statedoku Press Kit — Logos, screenshots, blurbs">
+  <meta property="og:description" content="Logos, 12 screenshots, founder bio, factsheet, blurbs in EN/FR/ES. Free use for journalists and bloggers.">
+  <meta property="og:url" content="https://statedoku.com/press/">
+  <meta property="og:image" content="https://statedoku.com/press/screenshots/press-solved-1200x630.png">
+
+  <style>
+    body { background: var(--bg, #F7F8FB); }
+    .pk-shell { max-width: 880px; margin: 0 auto; padding: 32px 18px 80px; }
+    .pk-hero { text-align: center; margin-bottom: 32px; }
+    .pk-hero .crumb { font-size: .8rem; color: var(--text-3); margin-bottom: 8px; }
+    .pk-hero .crumb a { color: var(--text-2); text-decoration: none; }
+    .pk-hero h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 900; letter-spacing: -0.025em; margin: 4px 0 10px; color: var(--navy); }
+    .pk-hero h1 em { color: var(--red); font-style: normal; }
+    .pk-hero .sub { color: var(--text-2); font-size: 1.05rem; line-height: 1.5; max-width: 580px; margin: 0 auto; }
+    .pk-quick-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px; }
+    .pk-quick-actions a { padding: 9px 18px; background: var(--navy); color: #fff; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: .88rem; }
+    .pk-quick-actions a.secondary { background: #fff; color: var(--navy); border: 1px solid var(--border); }
+    .pk-quick-actions a:hover { background: var(--navy-soft, #1E3A6B); color: #fff; }
+
+    .pk-section { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 18px; }
+    .pk-section h2 { font-size: 1.25rem; font-weight: 800; color: var(--navy); letter-spacing: -.015em; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .pk-section h3 { font-size: .92rem; font-weight: 700; color: var(--navy); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: .05em; }
+
+    .copy-block { position: relative; background: #F8FAFC; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .82rem; line-height: 1.55; color: var(--text); white-space: pre-wrap; word-wrap: break-word; }
+    .copy-btn { position: absolute; top: 8px; right: 8px; padding: 4px 10px; background: var(--navy); color: #fff; border: none; border-radius: 6px; font-size: .72rem; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .copy-btn:hover { background: var(--navy-soft, #1E3A6B); }
+    .copy-btn.copied { background: var(--green, #16A34A); }
+
+    .factsheet { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; font-size: .92rem; }
+    .factsheet dt { font-weight: 700; color: var(--text-2); }
+    .factsheet dd { margin: 0; color: var(--text); }
+    .factsheet dd a { color: var(--navy); font-weight: 600; }
+
+    .logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    .logo-tile { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
+    .logo-tile.dark-bg { background: var(--navy); }
+    .logo-tile img { max-width: 100%; max-height: 80px; display: block; margin: 0 auto 8px; }
+    .logo-tile a { font-size: .76rem; font-weight: 700; color: var(--navy); text-decoration: none; display: inline-block; padding: 4px 10px; background: #F1F5F9; border-radius: 6px; margin: 0 2px; }
+    .logo-tile.dark-bg a { color: #fff; background: rgba(255,255,255,.15); }
+    .logo-tile a:hover { background: var(--gold); color: var(--navy); }
+
+    .screenshot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .screenshot-tile { background: #F8FAFC; border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+    .screenshot-tile img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--border); display: block; margin-bottom: 8px; }
+    .screenshot-tile .name { font-size: .82rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .screenshot-tile .meta { font-size: .72rem; color: var(--text-3); margin-bottom: 8px; }
+    .screenshot-tile .dl-links a { font-size: .72rem; font-weight: 700; color: var(--navy); text-decoration: none; padding: 3px 8px; background: #fff; border: 1px solid var(--border); border-radius: 5px; margin-right: 4px; }
+    .screenshot-tile .dl-links a:hover { background: var(--navy); color: #fff; }
+
+    .lang-tabs { display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap; }
+    .lang-tabs button { padding: 6px 14px; background: #F1F5F9; color: var(--text-2); border: none; border-radius: 999px; font-weight: 700; font-size: .8rem; cursor: pointer; font-family: inherit; }
+    .lang-tabs button.active { background: var(--navy); color: #fff; }
+
+    .blurb { display: none; }
+    .blurb.active { display: block; }
+
+    .feature-list { padding-left: 22px; margin: 8px 0 14px; }
+    .feature-list li { margin-bottom: 6px; font-size: .92rem; }
+
+    .contact-card { background: linear-gradient(135deg, var(--navy), var(--navy-soft, #1E3A6B)); color: #fff; padding: 22px; border-radius: 14px; text-align: center; }
+    .contact-card h3 { color: #fff; margin: 0 0 8px; }
+    .contact-card p { margin: 0 0 12px; color: rgba(255,255,255,0.85); font-size: .9rem; }
+    .contact-card a { display: inline-block; background: var(--gold); color: var(--navy); padding: 10px 22px; border-radius: 999px; font-weight: 800; text-decoration: none; font-size: .92rem; }
+  </style>
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← Back to game</a></nav>
+</header>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},
+  {"@type":"ListItem","position":2,"name":"Press Kit","item":"https://statedoku.com/press/"}
+]}
+</script>
+
+<main>
+<div class="pk-shell">
+
+  <section class="pk-hero">
+    <p class="crumb"><a href="/">Home</a> · Press Kit</p>
+    <h1>State<em>doku</em> Press Kit</h1>
+    <p class="sub">Everything you need to write about Statedoku — logos, screenshots, blurbs in 3 languages, founder bio, factsheet. Free to use, no attribution required (but appreciated).</p>
+    <div class="pk-quick-actions">
+      <a href="#blurbs">Get the blurb</a>
+      <a href="#screenshots" class="secondary">Download screenshots</a>
+      <a href="#contact" class="secondary">Contact founder</a>
+    </div>
+  </section>
+
+  <section class="pk-section">
+    <h2>📋 Factsheet</h2>
+    <dl class="factsheet">
+      <dt>Product name</dt><dd>Statedoku</dd>
+      <dt>Tagline</dt><dd>Daily 3×3 grid puzzle to learn US geography.</dd>
+      <dt>Launch date</dt><dd>June 1, 2026</dd>
+      <dt>Pricing</dt><dd>Free — no signup, no ads, no tracking</dd>
+      <dt>Languages</dt><dd>English, French, Spanish</dd>
+      <dt>Platforms</dt><dd>Web (mobile + desktop), PWA-installable</dd>
+      <dt>Categories</dt><dd>Puzzle · Daily game · Educational · Geography</dd>
+      <dt>Founder</dt><dd>Sacha Bitoun (solo indie developer)</dd>
+      <dt>Headquarters</dt><dd>Paris, France</dd>
+      <dt>Live URL</dt><dd><a href="https://statedoku.com/">statedoku.com</a></dd>
+      <dt>How to play</dt><dd><a href="https://statedoku.com/how-to-play/">/how-to-play/</a></dd>
+      <dt>Free API</dt><dd><a href="https://statedoku.com/api/">/api/</a></dd>
+    </dl>
+  </section>
+
+  <section class="pk-section" id="blurbs">
+    <h2>✍️ Ready-to-paste blurbs</h2>
+    <p style="font-size:.88rem;color:var(--text-2);margin-bottom:14px;">Three lengths, three languages. Pick the one that fits your piece. Click "Copy" to grab it.</p>
+
+    <div class="lang-tabs" role="tablist">
+      <button class="active" data-lang="en">English</button>
+      <button data-lang="fr">Français</button>
+      <button data-lang="es">Español</button>
+    </div>
+
+    <!-- EN BLURBS -->
+    <div class="blurb active" data-lang="en">
+      <h3>One-liner (under 140 chars)</h3>
+      <div class="copy-block">Statedoku is a free daily 3×3 grid puzzle where you fill nine US states matching two constraints per cell. EN/FR/ES.<button class="copy-btn">Copy</button></div>
+
+      <h3>Short blurb (50 words)</h3>
+      <div class="copy-block">Statedoku is a daily geography puzzle: a 3×3 grid where each cell must be a US state that satisfies its row clue and its column clue (for example, "borders Canada" × "no income tax"). 100+ rotating clues, free, multilingual, no signup. Play: https://statedoku.com<button class="copy-btn">Copy</button></div>
+
+      <h3>Medium blurb (130 words)</h3>
+      <div class="copy-block">Statedoku is a free daily geography puzzle, Wordle-style for US states. Every day at midnight a new 3×3 grid drops. Each cell must be a US state that satisfies both its row clue AND its column clue — for example "borders Canada" × "no income tax" (answer: Alaska, Washington, or New Hampshire). 100+ rotating clues across regions, borders, history, economy, and geography. Every puzzle has exactly one solution — no guessing required. What sets it apart from other Wordle clones: logic + geography, not word-guessing. Free, no ads, no signup, no tracking. Multilingual (EN/FR/ES). Built by a solo indie developer. Launched June 1, 2026. Play at https://statedoku.com<button class="copy-btn">Copy</button></div>
+    </div>
+
+    <!-- FR BLURBS -->
+    <div class="blurb" data-lang="fr">
+      <h3>Une ligne (moins de 140 caractères)</h3>
+      <div class="copy-block">Statedoku est un puzzle quotidien gratuit en grille 3×3 où l'on place neuf États américains avec deux contraintes par cellule. EN/FR/ES.<button class="copy-btn">Copier</button></div>
+
+      <h3>Court (50 mots)</h3>
+      <div class="copy-block">Statedoku est un puzzle quotidien de géographie : une grille 3×3 où chaque cellule doit être un État américain qui satisfait à la fois sa contrainte de ligne et sa contrainte de colonne (par exemple "frontière avec le Canada" × "pas d'impôt sur le revenu"). 100+ contraintes rotatives, gratuit, multilingue, sans inscription. Jouer : https://statedoku.com<button class="copy-btn">Copier</button></div>
+
+      <h3>Moyen (130 mots)</h3>
+      <div class="copy-block">Statedoku est un puzzle de géographie quotidien gratuit, façon Wordle pour les États américains. Chaque jour à minuit, une nouvelle grille 3×3 apparaît. Chaque cellule doit être un État américain qui satisfait à la fois sa contrainte de ligne ET sa contrainte de colonne — par exemple "frontière avec le Canada" × "pas d'impôt sur le revenu" (réponse : Alaska, Washington ou New Hampshire). 100+ contraintes rotatives à travers régions, frontières, histoire, économie, géographie. Chaque grille a exactement une solution — sans deviner. Ce qui le différencie des autres clones Wordle : logique + géographie, pas de mots à trouver. Gratuit, sans pub, sans inscription, sans tracking. Multilingue (EN/FR/ES). Conçu par un dev indépendant. Lancé le 1er juin 2026. À jouer sur https://statedoku.com<button class="copy-btn">Copier</button></div>
+    </div>
+
+    <!-- ES BLURBS -->
+    <div class="blurb" data-lang="es">
+      <h3>Una línea (menos de 140 caracteres)</h3>
+      <div class="copy-block">Statedoku es un puzzle diario gratuito en cuadrícula 3×3 donde rellenas nueve estados de EE.UU. con dos restricciones por celda. EN/FR/ES.<button class="copy-btn">Copiar</button></div>
+
+      <h3>Corto (50 palabras)</h3>
+      <div class="copy-block">Statedoku es un puzzle diario de geografía: una cuadrícula 3×3 donde cada celda debe ser un estado de EE.UU. que cumple su pista de fila Y su pista de columna (por ejemplo "limita con Canadá" × "sin impuesto sobre la renta"). 100+ pistas rotativas, gratuito, multilingüe, sin registro. Jugar: https://statedoku.com<button class="copy-btn">Copiar</button></div>
+
+      <h3>Mediano (130 palabras)</h3>
+      <div class="copy-block">Statedoku es un puzzle diario de geografía gratuito, estilo Wordle para los estados de EE.UU. Cada día a medianoche aparece una nueva cuadrícula 3×3. Cada celda debe ser un estado de EE.UU. que cumpla a la vez su pista de fila Y su pista de columna — por ejemplo "limita con Canadá" × "sin impuesto sobre la renta" (respuesta: Alaska, Washington o Nuevo Hampshire). 100+ pistas rotativas entre regiones, fronteras, historia, economía y geografía. Cada puzzle tiene exactamente una solución — sin adivinar. Lo que lo diferencia de otros clones de Wordle: lógica + geografía, no adivinar palabras. Gratis, sin anuncios, sin registro, sin tracking. Multilingüe (EN/FR/ES). Hecho por un desarrollador indie. Lanzado el 1 de junio de 2026. Juega en https://statedoku.com<button class="copy-btn">Copiar</button></div>
+    </div>
+  </section>
+
+  <section class="pk-section">
+    <h2>⭐ Key features</h2>
+    <ul class="feature-list">
+      <li><strong>3×3 grid logic puzzle</strong> — each cell must satisfy both row + column constraint</li>
+      <li><strong>100+ rotating clues</strong> across geography, history, economy, borders, regions</li>
+      <li><strong>Provably unique solution</strong> — no guessing required</li>
+      <li><strong>Daily puzzle</strong> drops at midnight UTC</li>
+      <li><strong>3 lives per puzzle</strong> — forgiving but still challenging</li>
+      <li><strong>Free</strong>, no signup, no ads, no tracking</li>
+      <li><strong>Multilingual</strong>: English, French, Spanish</li>
+      <li><strong>Privacy-first</strong>: Cloudflare Web Analytics only (no GA4, no cookies)</li>
+      <li><strong>Free public JSON API</strong> for developers</li>
+      <li><strong>Open educational data</strong> with 35+ deep-dive guides on US states</li>
+    </ul>
+  </section>
+
+  <section class="pk-section">
+    <h2>🎨 Logos</h2>
+    <p style="font-size:.88rem;color:var(--text-2);margin-bottom:14px;">SVG (vector) is preferred for print and high-res use. PNG at multiple sizes for web.</p>
+    <div class="logo-grid">
+      <div class="logo-tile">
+        <img src="/logo-mark.svg" alt="Statedoku mark logo">
+        <div style="margin-top:6px"><a href="/logo-mark.svg" download>SVG</a> <a href="/logo-mark-512.png" download>PNG 512</a> <a href="/logo-mark-1024.png" download>1024</a></div>
+      </div>
+      <div class="logo-tile dark-bg">
+        <img src="/logo-mark.svg" alt="Statedoku mark on navy">
+        <div style="margin-top:6px;color:#fff;font-size:.74rem;font-weight:700;margin-bottom:4px;">On navy bg</div>
+        <div><a href="/logo-mark.svg" download>SVG</a></div>
+      </div>
+      <div class="logo-tile">
+        <img src="/favicon.svg" alt="Statedoku favicon" style="max-height:48px">
+        <div style="margin-top:6px;font-size:.74rem;color:var(--text-3);margin-bottom:4px;">Favicon</div>
+        <div><a href="/favicon.svg" download>SVG</a> <a href="/favicon-32.png" download>32px</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pk-section" id="screenshots">
+    <h2>📸 Screenshots</h2>
+    <p style="font-size:.88rem;color:var(--text-2);margin-bottom:14px;">Three game states, four sizes each. Use freely. The screenshots are auto-generated mockups — they faithfully represent the live UI.</p>
+
+    <h3>1. Empty grid (intro)</h3>
+    <div class="screenshot-grid">
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-intro-1080x720.png" alt="Statedoku empty grid 1080×720">
+        <div class="name">1080×720</div>
+        <div class="meta">General web / aggregators</div>
+        <div class="dl-links"><a href="/press/screenshots/press-intro-1080x720.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-intro-1920x1280.png" alt="Statedoku empty grid 1920×1280">
+        <div class="name">1920×1280</div>
+        <div class="meta">High-res / hero image</div>
+        <div class="dl-links"><a href="/press/screenshots/press-intro-1920x1280.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-intro-1200x630.png" alt="Statedoku empty grid 1200×630">
+        <div class="name">1200×630 (OG)</div>
+        <div class="meta">Social share / OG image</div>
+        <div class="dl-links"><a href="/press/screenshots/press-intro-1200x630.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-intro-mobile-540x960.png" alt="Statedoku empty grid mobile">
+        <div class="name">540×960 (mobile)</div>
+        <div class="meta">PH mobile gallery</div>
+        <div class="dl-links"><a href="/press/screenshots/press-intro-mobile-540x960.png" download>Download</a></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">2. Mid-game (one wrong guess)</h3>
+    <div class="screenshot-grid">
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-mid-1080x720.png" alt="Statedoku mid-game 1080×720">
+        <div class="name">1080×720</div>
+        <div class="meta">General web / aggregators</div>
+        <div class="dl-links"><a href="/press/screenshots/press-mid-1080x720.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-mid-1920x1280.png" alt="Statedoku mid-game 1920×1280">
+        <div class="name">1920×1280</div>
+        <div class="meta">High-res</div>
+        <div class="dl-links"><a href="/press/screenshots/press-mid-1920x1280.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-mid-1200x630.png" alt="Statedoku mid-game 1200×630">
+        <div class="name">1200×630 (OG)</div>
+        <div class="meta">Social share</div>
+        <div class="dl-links"><a href="/press/screenshots/press-mid-1200x630.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-mid-mobile-540x960.png" alt="Statedoku mid-game mobile">
+        <div class="name">540×960 (mobile)</div>
+        <div class="meta">PH mobile gallery</div>
+        <div class="dl-links"><a href="/press/screenshots/press-mid-mobile-540x960.png" download>Download</a></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">3. Solved (winning state)</h3>
+    <div class="screenshot-grid">
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-solved-1080x720.png" alt="Statedoku solved 1080×720">
+        <div class="name">1080×720</div>
+        <div class="meta">General web / aggregators</div>
+        <div class="dl-links"><a href="/press/screenshots/press-solved-1080x720.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-solved-1920x1280.png" alt="Statedoku solved 1920×1280">
+        <div class="name">1920×1280</div>
+        <div class="meta">High-res</div>
+        <div class="dl-links"><a href="/press/screenshots/press-solved-1920x1280.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-solved-1200x630.png" alt="Statedoku solved 1200×630">
+        <div class="name">1200×630 (OG)</div>
+        <div class="meta">Social share</div>
+        <div class="dl-links"><a href="/press/screenshots/press-solved-1200x630.png" download>Download</a></div>
+      </div>
+      <div class="screenshot-tile">
+        <img src="/press/screenshots/press-solved-mobile-540x960.png" alt="Statedoku solved mobile">
+        <div class="name">540×960 (mobile)</div>
+        <div class="meta">PH mobile gallery</div>
+        <div class="dl-links"><a href="/press/screenshots/press-solved-mobile-540x960.png" download>Download</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pk-section">
+    <h2>👤 Founder bio</h2>
+    <h3>Short (40 words)</h3>
+    <div class="copy-block">Sacha Bitoun is the solo indie developer behind Statedoku. Based in Paris, he built the game to scratch his own itch for a daily geography puzzle and to keep his US states knowledge sharp after moving back from the US.<button class="copy-btn">Copy</button></div>
+
+    <h3 style="margin-top:14px;">Photo</h3>
+    <p style="font-size:.85rem;color:var(--text-2);">Email <a href="mailto:contact@statedoku.com">contact@statedoku.com</a> for a high-res headshot.</p>
+  </section>
+
+  <section class="pk-section">
+    <h2>🎨 Brand colors</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;">
+      <div style="background:#0F2147;color:#fff;padding:14px;border-radius:8px;font-family:ui-monospace,monospace;font-size:.82rem;">
+        <div style="font-weight:700;margin-bottom:4px;">Navy</div>
+        <div>#0F2147</div>
+      </div>
+      <div style="background:#DC2626;color:#fff;padding:14px;border-radius:8px;font-family:ui-monospace,monospace;font-size:.82rem;">
+        <div style="font-weight:700;margin-bottom:4px;">Red</div>
+        <div>#DC2626</div>
+      </div>
+      <div style="background:#F59E0B;color:#0F2147;padding:14px;border-radius:8px;font-family:ui-monospace,monospace;font-size:.82rem;">
+        <div style="font-weight:700;margin-bottom:4px;">Gold</div>
+        <div>#F59E0B</div>
+      </div>
+      <div style="background:#16A34A;color:#fff;padding:14px;border-radius:8px;font-family:ui-monospace,monospace;font-size:.82rem;">
+        <div style="font-weight:700;margin-bottom:4px;">Green</div>
+        <div>#16A34A</div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:var(--text-3);margin-top:12px;">Inspired by the American navy/red/gold palette. Green is reserved for "solved" / correct states.</p>
+  </section>
+
+  <section class="pk-section">
+    <h2>🔗 Useful links</h2>
+    <ul style="padding-left:22px;font-size:.92rem;">
+      <li><a href="/">Live game (English)</a></li>
+      <li><a href="/fr/">Live game (French)</a></li>
+      <li><a href="/es/">Live game (Spanish)</a></li>
+      <li><a href="/how-to-play/">How to play</a></li>
+      <li><a href="/api/">Free JSON API for developers</a></li>
+      <li><a href="/learn/printable-us-states-map/">Free printable US states map</a></li>
+      <li><a href="/learn/">Learn the 50 states (35+ guides)</a></li>
+      <li><a href="https://github.com/sachabitoun17-ctrl/statedoku" rel="noopener" target="_blank">GitHub (project repo)</a></li>
+    </ul>
+  </section>
+
+  <section class="pk-section" id="contact">
+    <div class="contact-card">
+      <h3>Need something not here?</h3>
+      <p>Custom screenshot, interview, demo, or just a quick chat — happy to help.</p>
+      <a href="mailto:contact@statedoku.com?subject=Press%20inquiry%20%E2%80%94%20Statedoku">Email contact@statedoku.com</a>
+    </div>
+  </section>
+
+  <p style="text-align:center;font-size:.78rem;color:var(--text-3);margin-top:18px;">
+    All assets on this page are released under <strong>CC0 / public domain</strong> for editorial use.<br>
+    Attribution appreciated but not required: "Statedoku · statedoku.com".
+  </p>
+
+</div>
+</main>
+
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/cities/">Cities</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/api/">API</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p>
+</footer>
+
+<script>
+  // Language tabs
+  document.querySelectorAll('.lang-tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      document.querySelectorAll('.lang-tabs button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      document.querySelectorAll('.blurb').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    });
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const block = btn.parentElement;
+      const text = block.textContent.replace(/Copy(\s|$)|Copier(\s|$)|Copiar(\s|$)/g, '').trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1600);
+      } catch (e) {
+        alert('Copy failed — please select manually.');
+      }
+    });
+  });
+</script>
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
