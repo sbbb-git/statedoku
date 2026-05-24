@@ -120,6 +120,12 @@ export async function onRequestGet({ request }) {
     [`${BASE}/es/learn/capitales-de-estados/`, { priority: 0.9 }],
   ];
 
+  // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
+  const IS_A_STATE = ['las-vegas','boston','atlanta','miami','minneapolis','philadelphia','charlotte','seattle','portland','phoenix'];
+  const CAPITAL_OF = ['miami','pittsburgh','baltimore','milwaukee','las-vegas','charlotte','durham'];
+  for (const city of IS_A_STATE) extras.push([`${BASE}/learn/is-${city}-a-state/`, { priority: 0.75 }]);
+  for (const city of CAPITAL_OF) extras.push([`${BASE}/learn/capital-of-${city}/`, { priority: 0.75 }]);
+
   const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
