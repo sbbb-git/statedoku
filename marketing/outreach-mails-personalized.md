@@ -167,7 +167,7 @@ sacha@statedoku.com
 ---
 
 ## 6️⃣ Harsh Sharma — TechDator
-**To:** (no email extracted — use site contact form or try harsh@techdator.net)
+**To:** harsh@techdator.net (UNVERIFIED — best guess, may bounce. Backup: site contact form)
 **DA:** 40
 **Article:** "8 Best Wordle Alternatives in 2026" — fresh (2026-04-22).
 
@@ -195,7 +195,7 @@ Sacha
 ---
 
 ## 7️⃣ Magnitudle.com (rival but allies)
-**To:** (no email extracted — try hello@magnitudle.com or LinkedIn DM)
+**To:** hello@magnitudle.com (UNVERIFIED — best guess. Backup: LinkedIn DM)
 **DA:** 25
 **Article:** "The Best Wordle Alternatives in 2026 — Actually Reviewed"
 
@@ -250,7 +250,7 @@ sacha@statedoku.com
 ---
 
 ## 9️⃣ Crosswordle.com (fellow indie)
-**To:** (try contact@crosswordle.com or LinkedIn — no email in scrape)
+**To:** contact@crosswordle.com (UNVERIFIED — best guess. Backup: LinkedIn)
 **DA:** 30
 **Article:** "25 Best Wordle Alternatives (2026)"
 
@@ -278,7 +278,7 @@ Sacha
 ---
 
 ## 🔟 Vibe Arcade
-**To:** (no email — try LinkedIn / form on site)
+**To:** hello@vibearcade.com (UNVERIFIED — best guess. Backup: form on site)
 **DA:** 15
 **Article:** "Best Free Wordle Alternatives in 2026"
 
@@ -303,7 +303,7 @@ Sacha
 ---
 
 ## 1️⃣1️⃣ Den of Geek (Aaron Greenbaum or Matthew Byrd)
-**To:** (try editorial@denofgeek.com or pitch via Aaron's Twitter)
+**To:** editorial@denofgeek.com (UNVERIFIED — best guess. Backup: pitch Aaron Greenbaum on Twitter)
 **DA:** 85
 **Article:** "20 Best Wordle Clones For Your Daily Game Needs" (2022, stale)
 
@@ -338,7 +338,7 @@ Sacha
 ---
 
 ## 1️⃣2️⃣ Wordproxi.com
-**To:** (try contact@wordproxi.com)
+**To:** contact@wordproxi.com (UNVERIFIED — best guess)
 **DA:** 12
 **Article:** "Best Wordle Alternatives in 2026"
 
@@ -362,7 +362,7 @@ Sacha
 ---
 
 ## 1️⃣3️⃣ The Daily Chill Pill
-**To:** (no email extracted — site contact form)
+**To:** hello@thedailychillpill.com (UNVERIFIED — best guess. Backup: form on site)
 **DA:** 8
 **Article:** "The Best Free Wordle Alternatives in 2026"
 
@@ -387,7 +387,7 @@ Sacha
 ---
 
 ## 1️⃣4️⃣ Rushle.io
-**To:** (try contact@rushle.io)
+**To:** contact@rushle.io (UNVERIFIED — best guess)
 **DA:** 10
 **Article:** "Best Games Like Wordle in 2026 - Free Daily Word Puzzles"
 
