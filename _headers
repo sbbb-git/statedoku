@@ -37,6 +37,18 @@
 /manifest.json
   Cache-Control: public, no-cache, must-revalidate
 
+# llms.txt / llms-full.txt — served as text/plain so LLMs and curl clients
+# treat them as plain text (the .txt extension defaults to octet-stream on
+# some Cloudflare edges). Always revalidate so updates propagate.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, no-cache, must-revalidate
+  Access-Control-Allow-Origin: *
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, no-cache, must-revalidate
+  Access-Control-Allow-Origin: *
+
 # Long cache for static binaries (they rarely change; cache-bust with ?v=N)
 /favicon.svg
   Cache-Control: public, max-age=2592000
