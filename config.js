@@ -8,6 +8,11 @@ const CONFIG = {
   // Paste the token from data-cf-beacon='{"token":"XXX"}' here, then commit + push.
   CF_ANALYTICS_TOKEN: '9aaf696fd1464b2191238f4787ceca5c',
 
+  // Ahrefs Web Analytics — free, complements CF Analytics with SEO referrer data
+  // (Google query keywords, backlink-driven traffic, etc.).
+  // Get the data-key at https://app.ahrefs.com/web-analytics
+  AHREFS_KEY: '2EFX1+9bkFd8gDk9CVLD4A',
+
   // Superadmin: SHA-256 hash of the admin password.
   // ⚠️ Change immediately with: node bin/set-admin-password.mjs
   // Default password: ChangeMe_Statedoku_2026
@@ -41,6 +46,29 @@ const CONFIG = {
   s.defer = true;
   s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
   s.setAttribute('data-cf-beacon', JSON.stringify({ token: tok }));
+  (document.head || document.documentElement).appendChild(s);
+})();
+
+// ─────────────────────────────────────────────────────────────────────────
+// Ahrefs Web Analytics auto-loader.
+// Provides search-referrer + backlink-driven traffic data that CF doesn't.
+// Same skip rules: no admin, no localhost.
+// ─────────────────────────────────────────────────────────────────────────
+(function() {
+  const key = CONFIG.AHREFS_KEY;
+  if (!key || key.startsWith('INSERT_')) return;
+
+  // Skip admin pages — internal tooling, shouldn't inflate SEO stats.
+  if (location.pathname.startsWith('/admin/') || location.pathname.startsWith('/admin')) return;
+
+  // Skip local dev.
+  const host = location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local') || location.protocol === 'file:') return;
+
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://analytics.ahrefs.com/analytics.js';
+  s.setAttribute('data-key', key);
   (document.head || document.documentElement).appendChild(s);
 })();
 
