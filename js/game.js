@@ -364,13 +364,63 @@ const Game = (() => {
     document.getElementById('search-panel').classList.remove('open');
   }
 
+  // Backtracking: given the current _grid + remaining valid cell sets,
+  // is there at least one way to complete the puzzle without re-using states?
+  // Used by _selectState to reject picks that lock the puzzle into a dead-end.
+  function _isStillSolvable(grid) {
+    const used = new Set(grid.flat().filter(Boolean));
+    function bt(idx) {
+      if (idx === 9) return true;
+      const r = Math.floor(idx / 3), c = idx % 3;
+      if (grid[r][c]) return bt(idx + 1);
+      const opts = (_puzzle.cells && _puzzle.cells[r] && _puzzle.cells[r][c]) || [];
+      for (const id of opts) {
+        if (used.has(id)) continue;
+        used.add(id);
+        if (bt(idx + 1)) { used.delete(id); return true; }
+        used.delete(id);
+      }
+      return false;
+    }
+    return bt(0);
+  }
+
+  // Returns true if `stateId` satisfies BOTH the row and column constraints
+  // for the cell (r,c) — i.e. the player's pick is a legitimate answer to the
+  // visible clues, regardless of whether it matches the canonical solution.
+  function _isValidForCell(r, c, stateId) {
+    const valid = (_puzzle.cells && _puzzle.cells[r] && _puzzle.cells[r][c]) || [_puzzle.solution[r][c]];
+    return valid.includes(stateId);
+  }
+
   function _selectState(stateId) {
     if (!_selectedCell) return;
     const { r, c } = _selectedCell;
-    const isCorrect = _puzzle.solution[r][c] === stateId;
 
-    if (isCorrect) {
-      // Lock the cell with the correct state
+    // 1. Does the picked state satisfy BOTH row + col constraints?
+    const validForCell = _isValidForCell(r, c, stateId);
+
+    // 2. Is this state already used elsewhere in the grid?
+    const alreadyUsed = _grid.some((row, ri) => row.some((sid, ci) => sid === stateId && !(ri === r && ci === c)));
+
+    if (validForCell && !alreadyUsed) {
+      // 3. Tentatively lock the cell and check if the puzzle remains solvable.
+      const trial = _grid.map(row => row.slice());
+      trial[r][c] = stateId;
+
+      if (!_isStillSolvable(trial)) {
+        // 4a. Valid for THIS cell but breaks the global solution. No life lost
+        //     — the player understood the clues but happened to pick a state
+        //     that conflicts with another cell. Give them a clear, kind nudge.
+        _closeSearch();
+        _selectedCell = null;
+        _renderCells();
+        _announce(I18n.t('valid_but_conflict') || 'That state fits these two clues, but it would leave another cell with no valid answer. Try something else.');
+        _showToast(I18n.t('valid_but_conflict_toast') || 'Fits this cell — but conflicts elsewhere. Pick again.');
+        return;
+      }
+
+      // 4b. Valid + puzzle still solvable → accept and lock.
       _grid[r][c] = stateId;
 
       // Golden State detection: did the player just place the puzzle's secret
@@ -390,16 +440,18 @@ const Game = (() => {
       return;
     }
 
-    // Wrong: show the state briefly with red flash, then remove it.
-    // IMPORTANT: do NOT save the wrong state to progress — only commit the
-    // mistake count + the nulled cell once the flash is done. This prevents
-    // a reload during the 600ms flash from leaking the (wrong) state.
+    // 5. Hard-wrong: state does NOT satisfy clues (or it's a duplicate).
+    //    Penalize as before — flash, count a mistake, clear after 600ms.
     _errors = Math.min(_errors + 1, MAX_ERRORS);
     _grid[r][c] = stateId;
     _closeSearch();
     _renderCells();
     _updateScore();
-    _announce(I18n.t('wrong_state') || 'Wrong state, try again');
+    if (alreadyUsed) {
+      _announce(I18n.t('state_already_used') || `${stateId} is already on the board — pick a different state.`);
+    } else {
+      _announce(I18n.t('wrong_state') || 'Wrong state, try again');
+    }
 
     const cell = document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
     if (cell) {
@@ -461,8 +513,18 @@ const Game = (() => {
 
   // ── Win ───────────────────────────────────────────────────────────────────
   function _checkSolved() {
-    const ok = _grid.every((row, r) => row.every((s, c) => s && _puzzle.solution[r][c] === s));
-    if (!ok) return;
+    // Grid is "solved" if every cell holds a state that satisfies both its
+    // row and column constraint AND all 9 states are distinct.
+    // (We no longer require matching the canonical solution — any
+    //  row+col-valid combination with unique states wins. This matches the
+    //  user's mental model: "I answered the visible clues correctly".)
+    const allFilled = _grid.every(row => row.every(s => !!s));
+    if (!allFilled) return;
+    const ids = _grid.flat();
+    const uniq = new Set(ids);
+    if (uniq.size !== 9) return; // duplicate state somewhere
+    const allValid = _grid.every((row, r) => row.every((s, c) => _isValidForCell(r, c, s)));
+    if (!allValid) return;
     _solved = true;
     const elapsed = Math.floor((Date.now() - _startTime) / 1000);
     _solveTime = elapsed;

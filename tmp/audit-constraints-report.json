@@ -1,0 +1,1633 @@
+[
+  {
+    "c": "region_west",
+    "label": "Region: West",
+    "count": 13,
+    "matchedIds": [
+      "AK",
+      "AZ",
+      "CA",
+      "CO",
+      "HI",
+      "ID",
+      "MT",
+      "NM",
+      "NV",
+      "OR",
+      "UT",
+      "WA",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "region_south",
+    "label": "Region: South",
+    "count": 14,
+    "matchedIds": [
+      "AL",
+      "AR",
+      "FL",
+      "GA",
+      "KY",
+      "LA",
+      "MS",
+      "NC",
+      "OK",
+      "SC",
+      "TN",
+      "TX",
+      "VA",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "region_midwest",
+    "label": "Region: Midwest",
+    "count": 12,
+    "matchedIds": [
+      "IA",
+      "IL",
+      "IN",
+      "KS",
+      "MI",
+      "MN",
+      "MO",
+      "ND",
+      "NE",
+      "OH",
+      "SD",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "region_northeast",
+    "label": "Region: Northeast",
+    "count": 11,
+    "matchedIds": [
+      "CT",
+      "DE",
+      "MA",
+      "MD",
+      "ME",
+      "NH",
+      "NJ",
+      "NY",
+      "PA",
+      "RI",
+      "VT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "sub_new_england",
+    "label": "Subregion: New England",
+    "count": 6,
+    "matchedIds": [
+      "CT",
+      "MA",
+      "ME",
+      "NH",
+      "RI",
+      "VT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "sub_mid_atlantic",
+    "label": "Subregion: Mid-Atlantic",
+    "count": 6,
+    "matchedIds": [
+      "DE",
+      "MD",
+      "NJ",
+      "NY",
+      "PA",
+      "VA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "sub_deep_south",
+    "label": "Subregion: Deep South",
+    "count": 6,
+    "matchedIds": [
+      "AL",
+      "FL",
+      "GA",
+      "LA",
+      "MS",
+      "SC"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "sub_plains",
+    "label": "Subregion: Plains",
+    "count": 9,
+    "matchedIds": [
+      "IA",
+      "KS",
+      "MN",
+      "MO",
+      "ND",
+      "NE",
+      "OK",
+      "SD",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "sub_mountain",
+    "label": "Subregion: Mountain",
+    "count": 6,
+    "matchedIds": [
+      "CO",
+      "ID",
+      "MT",
+      "NV",
+      "UT",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "sub_pacific",
+    "label": "Subregion: Pacific",
+    "count": 3,
+    "matchedIds": [
+      "CA",
+      "OR",
+      "WA"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 3 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "pop_lt1m",
+    "label": "Pop <1M",
+    "count": 5,
+    "matchedIds": [
+      "AK",
+      "ND",
+      "SD",
+      "VT",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "pop_1m5m",
+    "label": "Pop 1-5M",
+    "count": 22,
+    "matchedIds": [
+      "AL",
+      "AR",
+      "CT",
+      "DE",
+      "HI",
+      "IA",
+      "ID",
+      "KS",
+      "KY",
+      "LA",
+      "ME",
+      "MS",
+      "MT",
+      "NE",
+      "NH",
+      "NM",
+      "NV",
+      "OK",
+      "OR",
+      "RI",
+      "UT",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "pop_5m10m",
+    "label": "Pop 5-10M",
+    "count": 13,
+    "matchedIds": [
+      "AZ",
+      "CO",
+      "IN",
+      "MA",
+      "MD",
+      "MN",
+      "MO",
+      "NJ",
+      "SC",
+      "TN",
+      "VA",
+      "WA",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "pop_gt10m",
+    "label": "Pop >10M",
+    "count": 10,
+    "matchedIds": [
+      "CA",
+      "FL",
+      "GA",
+      "IL",
+      "MI",
+      "NC",
+      "NY",
+      "OH",
+      "PA",
+      "TX"
+    ],
+    "severity": "CRITICAL",
+    "issues": [
+      "GROUND-TRUTH MISMATCH: expected 4 states, got 10",
+      "Extra states (per ground truth): GA, IL, MI, NC, OH, PA"
+    ]
+  },
+  {
+    "c": "coast_atlantic",
+    "label": "Atlantic coast",
+    "count": 14,
+    "matchedIds": [
+      "CT",
+      "DE",
+      "FL",
+      "GA",
+      "MA",
+      "MD",
+      "ME",
+      "NC",
+      "NH",
+      "NJ",
+      "NY",
+      "RI",
+      "SC",
+      "VA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "coast_pacific",
+    "label": "Pacific coast",
+    "count": 5,
+    "matchedIds": [
+      "AK",
+      "CA",
+      "HI",
+      "OR",
+      "WA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "coast_gulf",
+    "label": "Gulf coast",
+    "count": 5,
+    "matchedIds": [
+      "AL",
+      "FL",
+      "LA",
+      "MS",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "coast_great_lakes",
+    "label": "Great Lakes coast",
+    "count": 8,
+    "matchedIds": [
+      "IL",
+      "IN",
+      "MI",
+      "MN",
+      "NY",
+      "OH",
+      "PA",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "landlocked",
+    "label": "Landlocked",
+    "count": 20,
+    "matchedIds": [
+      "AR",
+      "AZ",
+      "CO",
+      "IA",
+      "ID",
+      "KS",
+      "KY",
+      "MO",
+      "MT",
+      "ND",
+      "NE",
+      "NM",
+      "NV",
+      "OK",
+      "SD",
+      "TN",
+      "UT",
+      "VT",
+      "WV",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "border_canada",
+    "label": "Borders Canada",
+    "count": 13,
+    "matchedIds": [
+      "AK",
+      "ID",
+      "ME",
+      "MI",
+      "MN",
+      "MT",
+      "ND",
+      "NH",
+      "NY",
+      "OH",
+      "PA",
+      "VT",
+      "WA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "border_mexico",
+    "label": "Borders Mexico",
+    "count": 4,
+    "matchedIds": [
+      "AZ",
+      "CA",
+      "NM",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "sun_belt",
+    "label": "Sun Belt",
+    "count": 11,
+    "matchedIds": [
+      "AL",
+      "AZ",
+      "CA",
+      "FL",
+      "GA",
+      "LA",
+      "MS",
+      "NM",
+      "NV",
+      "SC",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "snow_belt",
+    "label": "Snow Belt",
+    "count": 12,
+    "matchedIds": [
+      "IL",
+      "IN",
+      "MA",
+      "ME",
+      "MI",
+      "MN",
+      "NH",
+      "NY",
+      "OH",
+      "PA",
+      "VT",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "corn_belt",
+    "label": "Corn Belt",
+    "count": 11,
+    "matchedIds": [
+      "IA",
+      "IL",
+      "IN",
+      "KS",
+      "MI",
+      "MN",
+      "MO",
+      "NE",
+      "OH",
+      "SD",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "wheat_belt",
+    "label": "Wheat Belt",
+    "count": 8,
+    "matchedIds": [
+      "KS",
+      "MT",
+      "ND",
+      "NE",
+      "OK",
+      "SD",
+      "TX",
+      "WA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "cotton_belt",
+    "label": "Cotton Belt",
+    "count": 13,
+    "matchedIds": [
+      "AL",
+      "AR",
+      "AZ",
+      "CA",
+      "GA",
+      "LA",
+      "MO",
+      "MS",
+      "NC",
+      "OK",
+      "SC",
+      "TN",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "bible_belt",
+    "label": "Bible Belt",
+    "count": 16,
+    "matchedIds": [
+      "AL",
+      "AR",
+      "FL",
+      "GA",
+      "KS",
+      "KY",
+      "LA",
+      "MO",
+      "MS",
+      "NC",
+      "OK",
+      "SC",
+      "TN",
+      "TX",
+      "VA",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "rust_belt",
+    "label": "Rust Belt",
+    "count": 7,
+    "matchedIds": [
+      "IL",
+      "IN",
+      "MI",
+      "NY",
+      "OH",
+      "PA",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "political_red",
+    "label": "Red state",
+    "count": 24,
+    "matchedIds": [
+      "AK",
+      "AL",
+      "AR",
+      "FL",
+      "IA",
+      "ID",
+      "IN",
+      "KS",
+      "KY",
+      "LA",
+      "MO",
+      "MS",
+      "MT",
+      "ND",
+      "NE",
+      "OH",
+      "OK",
+      "SC",
+      "SD",
+      "TN",
+      "TX",
+      "UT",
+      "WV",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "political_blue",
+    "label": "Blue state",
+    "count": 18,
+    "matchedIds": [
+      "CA",
+      "CO",
+      "CT",
+      "DE",
+      "HI",
+      "IL",
+      "MA",
+      "MD",
+      "ME",
+      "MN",
+      "NJ",
+      "NM",
+      "NY",
+      "OR",
+      "RI",
+      "VA",
+      "VT",
+      "WA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "political_swing",
+    "label": "Swing state",
+    "count": 8,
+    "matchedIds": [
+      "AZ",
+      "GA",
+      "MI",
+      "NC",
+      "NH",
+      "NV",
+      "PA",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "tz_eastern",
+    "label": "Eastern Time",
+    "count": 22,
+    "matchedIds": [
+      "CT",
+      "DE",
+      "FL",
+      "GA",
+      "IN",
+      "KY",
+      "MA",
+      "MD",
+      "ME",
+      "MI",
+      "NC",
+      "NH",
+      "NJ",
+      "NY",
+      "OH",
+      "PA",
+      "RI",
+      "SC",
+      "TN",
+      "VA",
+      "VT",
+      "WV"
+    ],
+    "severity": "CRITICAL",
+    "issues": [
+      "GROUND-TRUTH MISMATCH: expected 21 states, got 22"
+    ]
+  },
+  {
+    "c": "tz_central",
+    "label": "Central Time",
+    "count": 15,
+    "matchedIds": [
+      "AL",
+      "AR",
+      "IA",
+      "IL",
+      "KS",
+      "LA",
+      "MN",
+      "MO",
+      "MS",
+      "ND",
+      "NE",
+      "OK",
+      "SD",
+      "TX",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "tz_mountain",
+    "label": "Mountain Time",
+    "count": 7,
+    "matchedIds": [
+      "AZ",
+      "CO",
+      "ID",
+      "MT",
+      "NM",
+      "UT",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "tz_pacific",
+    "label": "Pacific Time",
+    "count": 4,
+    "matchedIds": [
+      "CA",
+      "NV",
+      "OR",
+      "WA"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "multi_timezone",
+    "label": "Has multiple time zones",
+    "count": 14,
+    "matchedIds": [
+      "AK",
+      "AZ",
+      "FL",
+      "ID",
+      "IN",
+      "KS",
+      "KY",
+      "MI",
+      "ND",
+      "NE",
+      "OR",
+      "SD",
+      "TN",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "original_13",
+    "label": "Original 13 colonies",
+    "count": 13,
+    "matchedIds": [
+      "CT",
+      "DE",
+      "GA",
+      "MA",
+      "MD",
+      "NC",
+      "NH",
+      "NJ",
+      "NY",
+      "PA",
+      "RI",
+      "SC",
+      "VA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "confederate",
+    "label": "Confederate state",
+    "count": 11,
+    "matchedIds": [
+      "AL",
+      "AR",
+      "FL",
+      "GA",
+      "LA",
+      "MS",
+      "NC",
+      "SC",
+      "TN",
+      "TX",
+      "VA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "statehood_pre_1800",
+    "label": "Admitted before 1800",
+    "count": 16,
+    "matchedIds": [
+      "CT",
+      "DE",
+      "GA",
+      "KY",
+      "MA",
+      "MD",
+      "NC",
+      "NH",
+      "NJ",
+      "NY",
+      "PA",
+      "RI",
+      "SC",
+      "TN",
+      "VA",
+      "VT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "statehood_1900s",
+    "label": "Admitted in 1900s",
+    "count": 5,
+    "matchedIds": [
+      "AK",
+      "AZ",
+      "HI",
+      "NM",
+      "OK"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "on_mississippi",
+    "label": "On the Mississippi",
+    "count": 10,
+    "matchedIds": [
+      "AR",
+      "IA",
+      "IL",
+      "KY",
+      "LA",
+      "MN",
+      "MO",
+      "MS",
+      "TN",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "mt_rockies",
+    "label": "In the Rockies",
+    "count": 6,
+    "matchedIds": [
+      "CO",
+      "ID",
+      "MT",
+      "NM",
+      "UT",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "desert_state",
+    "label": "Desert state",
+    "count": 5,
+    "matchedIds": [
+      "AZ",
+      "CA",
+      "NM",
+      "NV",
+      "UT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "four_corners",
+    "label": "Four Corners",
+    "count": 4,
+    "matchedIds": [
+      "AZ",
+      "CO",
+      "NM",
+      "UT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "great_plains",
+    "label": "Great Plains",
+    "count": 10,
+    "matchedIds": [
+      "CO",
+      "KS",
+      "MN",
+      "MT",
+      "ND",
+      "NE",
+      "OK",
+      "SD",
+      "TX",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "tornado_alley",
+    "label": "Tornado Alley",
+    "count": 10,
+    "matchedIds": [
+      "AR",
+      "IA",
+      "KS",
+      "MN",
+      "MO",
+      "ND",
+      "NE",
+      "OK",
+      "SD",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "hurricane_zone",
+    "label": "Hurricane zone",
+    "count": 9,
+    "matchedIds": [
+      "AL",
+      "FL",
+      "GA",
+      "LA",
+      "MS",
+      "NC",
+      "SC",
+      "TX",
+      "VA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "earthquake_zone",
+    "label": "Earthquake zone",
+    "count": 8,
+    "matchedIds": [
+      "AK",
+      "AR",
+      "CA",
+      "MO",
+      "NV",
+      "OR",
+      "TN",
+      "WA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "has_volcano",
+    "label": "Has a volcano",
+    "count": 5,
+    "matchedIds": [
+      "AK",
+      "CA",
+      "HI",
+      "OR",
+      "WA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "has_glaciers",
+    "label": "Has glaciers",
+    "count": 4,
+    "matchedIds": [
+      "AK",
+      "MT",
+      "WA",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "route_66",
+    "label": "Route 66 state",
+    "count": 8,
+    "matchedIds": [
+      "AZ",
+      "CA",
+      "IL",
+      "KS",
+      "MO",
+      "NM",
+      "OK",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "has_million_city",
+    "label": "Has a million-plus city",
+    "count": 6,
+    "matchedIds": [
+      "AZ",
+      "CA",
+      "IL",
+      "NY",
+      "PA",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "largest_state",
+    "label": "Top 5 largest by area",
+    "count": 5,
+    "matchedIds": [
+      "AK",
+      "CA",
+      "MT",
+      "NM",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "smallest_state",
+    "label": "Bottom 5 by area",
+    "count": 5,
+    "matchedIds": [
+      "CT",
+      "DE",
+      "NH",
+      "NJ",
+      "RI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "capital_named_after_president",
+    "label": "Capital named after a president",
+    "count": 4,
+    "matchedIds": [
+      "MO",
+      "MS",
+      "NE",
+      "WI"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "capital_starts_with_s",
+    "label": "Capital starts with S",
+    "count": 5,
+    "matchedIds": [
+      "CA",
+      "IL",
+      "MN",
+      "NM",
+      "OR"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "borders_6_plus",
+    "label": "Borders 6+ states",
+    "count": 9,
+    "matchedIds": [
+      "AR",
+      "CO",
+      "ID",
+      "KY",
+      "MO",
+      "OK",
+      "PA",
+      "TN",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "borders_few",
+    "label": "Borders ≤2 states",
+    "count": 5,
+    "matchedIds": [
+      "AK",
+      "CA",
+      "FL",
+      "HI",
+      "ME"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "has_nba",
+    "label": "Has an NBA team",
+    "count": 21,
+    "matchedIds": [
+      "AZ",
+      "CA",
+      "CO",
+      "FL",
+      "GA",
+      "IL",
+      "IN",
+      "LA",
+      "MA",
+      "MI",
+      "MN",
+      "NC",
+      "NY",
+      "OH",
+      "OK",
+      "OR",
+      "PA",
+      "TN",
+      "TX",
+      "UT",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "name_native_origin",
+    "label": "Name from native tribe",
+    "count": 25,
+    "matchedIds": [
+      "AK",
+      "AL",
+      "AR",
+      "AZ",
+      "CT",
+      "IA",
+      "ID",
+      "IL",
+      "KS",
+      "KY",
+      "MA",
+      "MI",
+      "MN",
+      "MO",
+      "MS",
+      "ND",
+      "NE",
+      "OH",
+      "OK",
+      "SD",
+      "TN",
+      "TX",
+      "UT",
+      "WI",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "name_spanish_origin",
+    "label": "Spanish-origin name",
+    "count": 6,
+    "matchedIds": [
+      "CA",
+      "CO",
+      "FL",
+      "MT",
+      "NM",
+      "NV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "name_royalty_origin",
+    "label": "Named after royalty",
+    "count": 9,
+    "matchedIds": [
+      "DE",
+      "GA",
+      "LA",
+      "MD",
+      "NC",
+      "NY",
+      "SC",
+      "VA",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "two_word_name",
+    "label": "Two-word name",
+    "count": 10,
+    "matchedIds": [
+      "NC",
+      "ND",
+      "NH",
+      "NJ",
+      "NM",
+      "NY",
+      "RI",
+      "SC",
+      "SD",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "double_letter",
+    "label": "Double letter in name",
+    "count": 8,
+    "matchedIds": [
+      "CT",
+      "HI",
+      "IL",
+      "MA",
+      "MO",
+      "MS",
+      "PA",
+      "TN"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "vowel_start",
+    "label": "Starts with vowel",
+    "count": 12,
+    "matchedIds": [
+      "AK",
+      "AL",
+      "AR",
+      "AZ",
+      "IA",
+      "ID",
+      "IL",
+      "IN",
+      "OH",
+      "OK",
+      "OR",
+      "UT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "has_new",
+    "label": "Name starts with \"New\"",
+    "count": 4,
+    "matchedIds": [
+      "NH",
+      "NJ",
+      "NM",
+      "NY"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "ends_in_a",
+    "label": "Ends in A",
+    "count": 21,
+    "matchedIds": [
+      "AK",
+      "AL",
+      "AZ",
+      "CA",
+      "FL",
+      "GA",
+      "IA",
+      "IN",
+      "LA",
+      "MN",
+      "MT",
+      "NC",
+      "ND",
+      "NE",
+      "NV",
+      "OK",
+      "PA",
+      "SC",
+      "SD",
+      "VA",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "ends_in_o",
+    "label": "Ends in O",
+    "count": 4,
+    "matchedIds": [
+      "CO",
+      "ID",
+      "NM",
+      "OH"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "ends_in_e",
+    "label": "Ends in E",
+    "count": 4,
+    "matchedIds": [
+      "DE",
+      "ME",
+      "NH",
+      "TN"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "ends_in_n",
+    "label": "Ends in N",
+    "count": 4,
+    "matchedIds": [
+      "MI",
+      "OR",
+      "WA",
+      "WI"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "ends_in_s",
+    "label": "Ends in S",
+    "count": 5,
+    "matchedIds": [
+      "AR",
+      "IL",
+      "KS",
+      "MA",
+      "TX"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "starts_and_ends_vowel",
+    "label": "Starts AND ends with vowel",
+    "count": 8,
+    "matchedIds": [
+      "AK",
+      "AL",
+      "AZ",
+      "IA",
+      "ID",
+      "IN",
+      "OH",
+      "OK"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "two_word_starts_n",
+    "label": "Two-word, starts with N",
+    "count": 6,
+    "matchedIds": [
+      "NC",
+      "ND",
+      "NH",
+      "NJ",
+      "NM",
+      "NY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "contains_letter_k",
+    "label": "Contains K",
+    "count": 9,
+    "matchedIds": [
+      "AK",
+      "AR",
+      "KS",
+      "KY",
+      "ND",
+      "NE",
+      "NY",
+      "OK",
+      "SD"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "contains_letter_w",
+    "label": "Contains W",
+    "count": 11,
+    "matchedIds": [
+      "DE",
+      "HI",
+      "IA",
+      "NH",
+      "NJ",
+      "NM",
+      "NY",
+      "WA",
+      "WI",
+      "WV",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "contains_letter_v",
+    "label": "Contains V",
+    "count": 5,
+    "matchedIds": [
+      "NV",
+      "PA",
+      "VA",
+      "VT",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "contains_letter_y",
+    "label": "Contains Y",
+    "count": 6,
+    "matchedIds": [
+      "KY",
+      "MD",
+      "NJ",
+      "NY",
+      "PA",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "short_name",
+    "label": "Short name (≤5 letters)",
+    "count": 6,
+    "matchedIds": [
+      "IA",
+      "ID",
+      "ME",
+      "OH",
+      "TX",
+      "UT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "long_name",
+    "label": "Long name (≥10 letters)",
+    "count": 13,
+    "matchedIds": [
+      "CA",
+      "CT",
+      "MA",
+      "MS",
+      "NC",
+      "ND",
+      "NH",
+      "PA",
+      "RI",
+      "SC",
+      "SD",
+      "WA",
+      "WV"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "letters_6",
+    "label": "6 letters",
+    "count": 5,
+    "matchedIds": [
+      "AK",
+      "HI",
+      "KS",
+      "NV",
+      "OR"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "letters_7",
+    "label": "7 letters",
+    "count": 9,
+    "matchedIds": [
+      "AL",
+      "AZ",
+      "FL",
+      "GA",
+      "IN",
+      "MT",
+      "NY",
+      "VT",
+      "WY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "letters_8",
+    "label": "8 letters",
+    "count": 11,
+    "matchedIds": [
+      "AR",
+      "CO",
+      "DE",
+      "IL",
+      "KY",
+      "MD",
+      "MI",
+      "MO",
+      "NE",
+      "OK",
+      "VA"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "letters_9",
+    "label": "9 letters",
+    "count": 6,
+    "matchedIds": [
+      "LA",
+      "MN",
+      "NJ",
+      "NM",
+      "TN",
+      "WI"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "starts_a",
+    "label": "Starts with A",
+    "count": 4,
+    "matchedIds": [
+      "AK",
+      "AL",
+      "AR",
+      "AZ"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "starts_i",
+    "label": "Starts with I",
+    "count": 4,
+    "matchedIds": [
+      "IA",
+      "ID",
+      "IL",
+      "IN"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  },
+  {
+    "c": "starts_m",
+    "label": "Starts with M",
+    "count": 8,
+    "matchedIds": [
+      "MA",
+      "MD",
+      "ME",
+      "MI",
+      "MN",
+      "MO",
+      "MS",
+      "MT"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "starts_n",
+    "label": "Starts with N",
+    "count": 8,
+    "matchedIds": [
+      "NC",
+      "ND",
+      "NE",
+      "NH",
+      "NJ",
+      "NM",
+      "NV",
+      "NY"
+    ],
+    "severity": "OK",
+    "issues": []
+  },
+  {
+    "c": "starts_w",
+    "label": "Starts with W",
+    "count": 4,
+    "matchedIds": [
+      "WA",
+      "WI",
+      "WV",
+      "WY"
+    ],
+    "severity": "WARNING",
+    "issues": [
+      "Only 4 matches — may feel unfair"
+    ]
+  }
+]
