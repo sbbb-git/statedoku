@@ -65,6 +65,10 @@ const CONFIG = {
   const host = location.hostname;
   if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local') || location.protocol === 'file:') return;
 
+  // Skip if the page already includes the Ahrefs inline snippet (home pages do
+  // this so the Ahrefs install verifier finds the script in raw HTML).
+  if (document.querySelector('script[src*="analytics.ahrefs.com"]')) return;
+
   const s = document.createElement('script');
   s.async = true;
   s.src = 'https://analytics.ahrefs.com/analytics.js';
