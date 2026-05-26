@@ -24,3 +24,8 @@ node_modules/
 
 # OS
 Thumbs.db
+
+# Local-only outreach state (sender script tracks sends here)
+marketing/outreach-sent.json
+marketing/.Rhistory
+marketing/*.bak
