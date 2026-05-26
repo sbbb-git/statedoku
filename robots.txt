@@ -12,8 +12,11 @@ Disallow: /*?b=
 
 Sitemap: https://statedoku.com/sitemap.xml
 
+# LLM-friendly references (https://llmstxt.org/ standard)
+# llms.txt      = condensed site manifest with direct Q&A and section links
+# llms-full.txt = single-file reference dump (states list, capitals, FAQ, regions)
+# Both are public, CORS-enabled, and served as text/plain.
 # Generative AI crawlers — explicit allow for content discovery.
-# llms.txt = condensed site map for LLM ingestion (https://llmstxt.org/).
 User-agent: GPTBot
 Allow: /
 

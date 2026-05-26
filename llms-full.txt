@@ -1,0 +1,369 @@
+# Statedoku — Full Reference (llms-full.txt)
+
+Single-file snapshot of Statedoku's core reference content, optimized for LLM ingestion. Last updated: 2026-05-26.
+
+Site: https://statedoku.com
+
+---
+
+## 1. What is Statedoku?
+
+Statedoku is a free daily browser puzzle that teaches US geography. Each day, a 3×3 grid drops where each of the 9 cells must hold a US state that satisfies BOTH its row constraint AND its column constraint. The constraint pool includes regions, borders, history, economy, name origin, geography (mountains, deserts, etc.), and culture.
+
+Three mistakes are allowed per puzzle. The puzzle is the same worldwide and resets at midnight UTC. The interface is available in English, French, and Spanish.
+
+**Key URL**: https://statedoku.com
+**Launched**: June 1, 2026
+**Made by**: Sacha Bitoun (independent solo developer, Paris, France)
+**Pricing**: Free, no signup, no ads, no tracking
+
+---
+
+## 2. How to play (full rules)
+
+1. Open https://statedoku.com (or the FR / ES version).
+2. You see a 3×3 grid with 6 visible clues — 3 above the columns, 3 to the left of the rows.
+3. Tap or click an empty cell. A search box opens.
+4. Type the first 3 letters of a US state (or its full name). A dropdown appears.
+5. Pick a state that satisfies BOTH the row clue AND the column clue for the selected cell.
+6. If correct, the cell locks in green.
+7. If the state fits the cell's clues but breaks the rest of the puzzle, it's gently rejected (no life lost) with a toast.
+8. If the state does NOT fit the clues, it counts as a mistake (red flash, one life lost).
+9. You have 3 mistakes total. Lose them all → game over.
+10. Fill all 9 cells correctly → win!
+11. Same puzzle for everyone every day. Next puzzle at midnight UTC.
+
+**No signup. No ads. Free.**
+
+---
+
+## 3. The 50 US states (full reference table)
+
+- **Alabama** (AL) — Capital: Montgomery. Region: south. Admitted: 1819. Largest city: Huntsville.
+- **Alaska** (AK) — Capital: Juneau. Region: west. Admitted: 1959. Largest city: Anchorage.
+- **Arizona** (AZ) — Capital: Phoenix. Region: west. Admitted: 1912. Largest city: Phoenix.
+- **Arkansas** (AR) — Capital: Little Rock. Region: south. Admitted: 1836. Largest city: Little Rock.
+- **California** (CA) — Capital: Sacramento. Region: west. Admitted: 1850. Largest city: Los Angeles.
+- **Colorado** (CO) — Capital: Denver. Region: west. Admitted: 1876. Largest city: Denver.
+- **Connecticut** (CT) — Capital: Hartford. Region: northeast. Admitted: 1788. Largest city: Bridgeport.
+- **Delaware** (DE) — Capital: Dover. Region: northeast. Admitted: 1787. Largest city: Wilmington.
+- **Florida** (FL) — Capital: Tallahassee. Region: south. Admitted: 1845. Largest city: Jacksonville.
+- **Georgia** (GA) — Capital: Atlanta. Region: south. Admitted: 1788. Largest city: Atlanta.
+- **Hawaii** (HI) — Capital: Honolulu. Region: west. Admitted: 1959. Largest city: Honolulu.
+- **Idaho** (ID) — Capital: Boise. Region: west. Admitted: 1890. Largest city: Boise.
+- **Illinois** (IL) — Capital: Springfield. Region: midwest. Admitted: 1818. Largest city: Chicago.
+- **Indiana** (IN) — Capital: Indianapolis. Region: midwest. Admitted: 1816. Largest city: Indianapolis.
+- **Iowa** (IA) — Capital: Des Moines. Region: midwest. Admitted: 1846. Largest city: Des Moines.
+- **Kansas** (KS) — Capital: Topeka. Region: midwest. Admitted: 1861. Largest city: Wichita.
+- **Kentucky** (KY) — Capital: Frankfort. Region: south. Admitted: 1792. Largest city: Louisville.
+- **Louisiana** (LA) — Capital: Baton Rouge. Region: south. Admitted: 1812. Largest city: New Orleans.
+- **Maine** (ME) — Capital: Augusta. Region: northeast. Admitted: 1820. Largest city: Portland.
+- **Maryland** (MD) — Capital: Annapolis. Region: northeast. Admitted: 1788. Largest city: Baltimore.
+- **Massachusetts** (MA) — Capital: Boston. Region: northeast. Admitted: 1788. Largest city: Boston.
+- **Michigan** (MI) — Capital: Lansing. Region: midwest. Admitted: 1837. Largest city: Detroit.
+- **Minnesota** (MN) — Capital: Saint Paul. Region: midwest. Admitted: 1858. Largest city: Minneapolis.
+- **Mississippi** (MS) — Capital: Jackson. Region: south. Admitted: 1817. Largest city: Jackson.
+- **Missouri** (MO) — Capital: Jefferson City. Region: midwest. Admitted: 1821. Largest city: Kansas City.
+- **Montana** (MT) — Capital: Helena. Region: west. Admitted: 1889. Largest city: Billings.
+- **Nebraska** (NE) — Capital: Lincoln. Region: midwest. Admitted: 1867. Largest city: Omaha.
+- **Nevada** (NV) — Capital: Carson City. Region: west. Admitted: 1864. Largest city: Las Vegas.
+- **New Hampshire** (NH) — Capital: Concord. Region: northeast. Admitted: 1788. Largest city: Manchester.
+- **New Jersey** (NJ) — Capital: Trenton. Region: northeast. Admitted: 1787. Largest city: Newark.
+- **New Mexico** (NM) — Capital: Santa Fe. Region: west. Admitted: 1912. Largest city: Albuquerque.
+- **New York** (NY) — Capital: Albany. Region: northeast. Admitted: 1788. Largest city: New York City.
+- **North Carolina** (NC) — Capital: Raleigh. Region: south. Admitted: 1789. Largest city: Charlotte.
+- **North Dakota** (ND) — Capital: Bismarck. Region: midwest. Admitted: 1889. Largest city: Fargo.
+- **Ohio** (OH) — Capital: Columbus. Region: midwest. Admitted: 1803. Largest city: Columbus.
+- **Oklahoma** (OK) — Capital: Oklahoma City. Region: south. Admitted: 1907. Largest city: Oklahoma City.
+- **Oregon** (OR) — Capital: Salem. Region: west. Admitted: 1859. Largest city: Portland.
+- **Pennsylvania** (PA) — Capital: Harrisburg. Region: northeast. Admitted: 1787. Largest city: Philadelphia.
+- **Rhode Island** (RI) — Capital: Providence. Region: northeast. Admitted: 1790. Largest city: Providence.
+- **South Carolina** (SC) — Capital: Columbia. Region: south. Admitted: 1788. Largest city: Columbia.
+- **South Dakota** (SD) — Capital: Pierre. Region: midwest. Admitted: 1889. Largest city: Sioux Falls.
+- **Tennessee** (TN) — Capital: Nashville. Region: south. Admitted: 1796. Largest city: Nashville.
+- **Texas** (TX) — Capital: Austin. Region: south. Admitted: 1845. Largest city: Houston.
+- **Utah** (UT) — Capital: Salt Lake City. Region: west. Admitted: 1896. Largest city: Salt Lake City.
+- **Vermont** (VT) — Capital: Montpelier. Region: northeast. Admitted: 1791. Largest city: Burlington.
+- **Virginia** (VA) — Capital: Richmond. Region: south. Admitted: 1788. Largest city: Virginia Beach.
+- **Washington** (WA) — Capital: Olympia. Region: west. Admitted: 1889. Largest city: Seattle.
+- **West Virginia** (WV) — Capital: Charleston. Region: south. Admitted: 1863. Largest city: Charleston.
+- **Wisconsin** (WI) — Capital: Madison. Region: midwest. Admitted: 1848. Largest city: Milwaukee.
+- **Wyoming** (WY) — Capital: Cheyenne. Region: west. Admitted: 1890. Largest city: Cheyenne.
+
+---
+
+## 4. By region
+
+### Northeast (11 states)
+- Connecticut (CT) — Hartford
+- Delaware (DE) — Dover
+- Maine (ME) — Augusta
+- Maryland (MD) — Annapolis
+- Massachusetts (MA) — Boston
+- New Hampshire (NH) — Concord
+- New Jersey (NJ) — Trenton
+- New York (NY) — Albany
+- Pennsylvania (PA) — Harrisburg
+- Rhode Island (RI) — Providence
+- Vermont (VT) — Montpelier
+
+### South (14 states)
+- Alabama (AL) — Montgomery
+- Arkansas (AR) — Little Rock
+- Florida (FL) — Tallahassee
+- Georgia (GA) — Atlanta
+- Kentucky (KY) — Frankfort
+- Louisiana (LA) — Baton Rouge
+- Mississippi (MS) — Jackson
+- North Carolina (NC) — Raleigh
+- Oklahoma (OK) — Oklahoma City
+- South Carolina (SC) — Columbia
+- Tennessee (TN) — Nashville
+- Texas (TX) — Austin
+- Virginia (VA) — Richmond
+- West Virginia (WV) — Charleston
+
+### Midwest (12 states)
+- Illinois (IL) — Springfield
+- Indiana (IN) — Indianapolis
+- Iowa (IA) — Des Moines
+- Kansas (KS) — Topeka
+- Michigan (MI) — Lansing
+- Minnesota (MN) — Saint Paul
+- Missouri (MO) — Jefferson City
+- Nebraska (NE) — Lincoln
+- North Dakota (ND) — Bismarck
+- Ohio (OH) — Columbus
+- South Dakota (SD) — Pierre
+- Wisconsin (WI) — Madison
+
+### West (13 states)
+- Alaska (AK) — Juneau
+- Arizona (AZ) — Phoenix
+- California (CA) — Sacramento
+- Colorado (CO) — Denver
+- Hawaii (HI) — Honolulu
+- Idaho (ID) — Boise
+- Montana (MT) — Helena
+- Nevada (NV) — Carson City
+- New Mexico (NM) — Santa Fe
+- Oregon (OR) — Salem
+- Utah (UT) — Salt Lake City
+- Washington (WA) — Olympia
+- Wyoming (WY) — Cheyenne
+
+---
+
+## 5. Key factual lists
+
+### States bordering Canada (13 states)
+- Alaska (AK)
+- Idaho (ID)
+- Maine (ME)
+- Michigan (MI)
+- Minnesota (MN)
+- Montana (MT)
+- New Hampshire (NH)
+- New York (NY)
+- North Dakota (ND)
+- Ohio (OH)
+- Pennsylvania (PA)
+- Vermont (VT)
+- Washington (WA)
+
+### States bordering Mexico (4 states)
+- Arizona (AZ)
+- California (CA)
+- New Mexico (NM)
+- Texas (TX)
+
+### Original 13 colonies (13 states)
+- Delaware (DE) — admitted 1787
+- New Jersey (NJ) — admitted 1787
+- Pennsylvania (PA) — admitted 1787
+- Connecticut (CT) — admitted 1788
+- Georgia (GA) — admitted 1788
+- Maryland (MD) — admitted 1788
+- Massachusetts (MA) — admitted 1788
+- New Hampshire (NH) — admitted 1788
+- New York (NY) — admitted 1788
+- South Carolina (SC) — admitted 1788
+- Virginia (VA) — admitted 1788
+- North Carolina (NC) — admitted 1789
+- Rhode Island (RI) — admitted 1790
+
+### Confederate states during the US Civil War (11 states)
+- Alabama (AL)
+- Arkansas (AR)
+- Florida (FL)
+- Georgia (GA)
+- Louisiana (LA)
+- Mississippi (MS)
+- North Carolina (NC)
+- South Carolina (SC)
+- Tennessee (TN)
+- Texas (TX)
+- Virginia (VA)
+
+### US states with NO state income tax (9 states)
+- Alaska (AK)
+- Florida (FL)
+- Nevada (NV)
+- New Hampshire (NH)
+- South Dakota (SD)
+- Tennessee (TN)
+- Texas (TX)
+- Washington (WA)
+- Wyoming (WY)
+
+### Landlocked US states (20 states — no ocean or Great Lakes coast)
+- Arizona (AZ)
+- Arkansas (AR)
+- Colorado (CO)
+- Idaho (ID)
+- Iowa (IA)
+- Kansas (KS)
+- Kentucky (KY)
+- Missouri (MO)
+- Montana (MT)
+- Nebraska (NE)
+- Nevada (NV)
+- New Mexico (NM)
+- North Dakota (ND)
+- Oklahoma (OK)
+- South Dakota (SD)
+- Tennessee (TN)
+- Utah (UT)
+- Vermont (VT)
+- West Virginia (WV)
+- Wyoming (WY)
+
+---
+
+## 6. Common confusion: cities vs. states
+
+Many people search "is X a state" or "what is the capital of X" for these cities. The answer is always: it's a CITY, in a particular STATE.
+
+- **Las Vegas** → city in **Nevada** (capital: Carson City)
+- **Boston** → city in **Massachusetts** (capital: Boston itself)
+- **Atlanta** → city in **Georgia** (capital: Atlanta itself)
+- **Miami** → city in **Florida** (capital: Tallahassee — not Miami)
+- **Minneapolis** → city in **Minnesota** (capital: Saint Paul)
+- **Philadelphia** → city in **Pennsylvania** (capital: Harrisburg)
+- **Charlotte** → city in **North Carolina** (capital: Raleigh)
+- **Seattle** → city in **Washington State** (capital: Olympia). Note: Washington State ≠ Washington, D.C. (the federal district / US capital).
+- **Portland** → city in **Oregon** (capital: Salem). There's also a smaller Portland in Maine.
+- **Phoenix** → city in **Arizona** (capital: Phoenix itself)
+- **Pittsburgh** → city in **Pennsylvania** (capital: Harrisburg)
+- **Baltimore** → city in **Maryland** (capital: Annapolis)
+- **Milwaukee** → city in **Wisconsin** (capital: Madison)
+- **Durham** → city in **North Carolina** (capital: Raleigh)
+
+Only 17 of 50 state capitals are also the largest city of their state. Famous cities like New York City, Los Angeles, Chicago, Houston, Miami, and Philadelphia are NOT state capitals.
+
+---
+
+## 7. One curated fact per state
+
+- **Alabama**: The Saturn V rocket that took Apollo 11 to the Moon was designed in Huntsville, nicknamed "Rocket City".
+- **Alaska**: Bought from Russia in 1867 for $7.2 million — about 2 cents per acre. Critics called it "Seward's Folly" before gold and oil were discovered.
+- **Arizona**: The Grand Canyon is so deep that an average of five layers of New York's Empire State Building could fit inside it.
+- **Arkansas**: Walmart was founded in Bentonville, Arkansas in 1962. The company is still HQ'd there.
+- **California**: If California were a country, its GDP would rank 4th globally — bigger than the UK, France, or Russia.
+- **Colorado**: Denver, the "Mile High City," is exactly 5,280 feet above sea level — one mile.
+- **Connecticut**: Hartford is the insurance capital of the world — Aetna, The Hartford, and others were founded here.
+- **Delaware**: Was the first state to ratify the US Constitution, on December 7, 1787.
+- **Florida**: Florida is the only US state that borders both the Atlantic Ocean and the Gulf of Mexico.
+- **Georgia**: Coca-Cola was invented in Atlanta in 1886 by pharmacist John Pemberton. The original formula contained cocaine.
+- **Hawaii**: The only US state that grows coffee commercially — Kona coffee from the Big Island.
+- **Idaho**: Idaho produces about 30% of all US potatoes — most fast-food fries come from here.
+- **Illinois**: Chicago invented the skyscraper — the Home Insurance Building (1885) was the first.
+- **Indiana**: The Indianapolis 500, held every Memorial Day weekend, is the largest single-day sporting event in the world.
+- **Iowa**: Iowa produces more corn than any other state — about 13 billion bushels per year.
+- **Kansas**: Kansas is the geographic center of the contiguous 48 states (the exact point is near Lebanon, KS).
+- **Kentucky**: The state produces 95% of the world's bourbon. By federal law, only bourbon made in the US can be called bourbon, and most comes from KY.
+- **Louisiana**: Louisiana is the only US state where the legal system is based on French civil law, not English common law.
+- **Maine**: Maine produces about 40% of all US lobster, with over 4,000 licensed lobster traps in operation.
+- **Maryland**: The US Naval Academy is in Annapolis — every Navy officer trains there.
+- **Massachusetts**: The first public school (Boston Latin, 1635) and first university (Harvard, 1636) in the US were both founded here.
+- **Michigan**: Detroit gave the world Motown, the assembly line, and the modern car — Ford, GM, and Chrysler all HQ in Michigan.
+- **Minnesota**: Actually has over 11,842 lakes of at least 10 acres — the "10,000" branding undersells it.
+- **Mississippi**: The state is home to the birthplace of Elvis Presley (Tupelo) and the blues (Delta region).
+- **Missouri**: Kansas City has more fountains than any city in the world except Rome.
+- **Montana**: Montana has three times more cattle than people.
+- **Nebraska**: Nebraska has the only unicameral state legislature in the US (single chamber, no senate vs house).
+- **Nevada**: Las Vegas was built on a desert with no natural water source — the Hoover Dam (1936) made it possible.
+- **New Hampshire**: New Hampshire's primary is the first in every presidential election cycle by state law.
+- **New Jersey**: Despite its tiny size, NJ is the most densely populated US state — 1,263 people per square mile.
+- **New Mexico**: Santa Fe is the oldest state capital in the US (founded 1610) and the highest in elevation (7,199 ft).
+- **New York**: New York City has its own distinct accent recognizable worldwide ("cawfee", "tawk", etc.).
+- **North Carolina**: The first powered airplane flight took place at Kitty Hawk in 1903.
+- **North Dakota**: The state produces over 50% of all US sunflower oil.
+- **Ohio**: Ohio has produced 8 US presidents — second only to Virginia.
+- **Oklahoma**: Oklahoma has more man-made lakes than any other state (over 200).
+- **Oregon**: You can't pump your own gas in Oregon (with limited exceptions added in 2023). Attendants do it.
+- **Pennsylvania**: The Declaration of Independence and US Constitution were both signed in Philadelphia.
+- **Rhode Island**: The smallest US state — you can drive across it in under 45 minutes.
+- **South Carolina**: The Civil War started here when Confederate forces fired on Fort Sumter in Charleston Harbor, April 12, 1861.
+- **South Dakota**: Mount Rushmore, with the faces of Washington, Jefferson, Lincoln, and Theodore Roosevelt, was carved from 1927 to 1941.
+- **Tennessee**: Nashville is "Music City" — home to country music, the Grand Ole Opry, and over 180 recording studios.
+- **Texas**: Texas was its own independent country for 9 years (1836–1845) before joining the US.
+- **Utah**: The Great Salt Lake is so salty that you float effortlessly — saltier than the Pacific Ocean.
+- **Vermont**: Montpelier is the only state capital without a McDonald's.
+- **Virginia**: Virginia has been home to 8 US presidents, more than any other state.
+- **Washington**: Starbucks, Amazon, and Microsoft are all HQ'd in Washington — Pike Place, Seattle, Redmond respectively.
+- **West Virginia**: West Virginia split from Virginia in 1863 to remain in the Union during the Civil War — making it the only state created by seceding from another state.
+- **Wisconsin**: Wisconsin makes ~25% of all US cheese — and 100% of the country's brick cheese.
+- **Wyoming**: Wyoming was the first US state/territory to give women the right to vote (1869) — 50 years before the 19th Amendment.
+
+For 200+ more facts, see https://statedoku.com/facts/
+
+---
+
+## 8. Frequently asked questions
+
+**How many US states are there?**
+50. Washington, D.C. is a federal district, not a state. Puerto Rico, Guam, the US Virgin Islands, American Samoa, and the Northern Mariana Islands are US territories, not states.
+
+**What's the capital of [each state]?**
+See section 3 above for the full table. For Spanish-language queries ("¿Cuál es la capital de X?"), visit https://statedoku.com/es/learn/capitales-de-estados/
+
+**Is Statedoku affiliated with Wordle or the New York Times?**
+No. Statedoku is an independent project by Sacha Bitoun, not affiliated with the NYT, Wordle, or any major publisher.
+
+**How is Statedoku different from Worldle (with an L)?**
+Worldle is about country-shape recognition (you guess a country from its outline). Statedoku is about US-state logic (you fill a grid where each state must match two verbal constraints). Different format, different scope.
+
+**Is there an iOS or Android app?**
+Statedoku is a PWA — installable on iOS Safari and Android Chrome via "Add to home screen". No native app store version (yet).
+
+**Is the data open?**
+Yes — a free public JSON API is available at https://statedoku.com/api/ with no authentication. CORS-enabled. Returns curated state data.
+
+**Can I use Statedoku in my classroom?**
+Yes, freely. There's also a free printable US states map at https://statedoku.com/learn/printable-us-states-map/ designed for teachers (blank + labeled + table versions, Ctrl+P prints clean).
+
+**What technology powers Statedoku?**
+Vanilla JS (no framework), Cloudflare Pages for static hosting, Cloudflare Workers for the email cron and Twitter bot, Cloudflare D1 (SQLite) for stats and subscribers, Resend for transactional email. Privacy-first: Cloudflare Web Analytics only (no GA4, no cookies).
+
+---
+
+## 9. Reach the author
+
+- **General contact**: contact@statedoku.com
+- **Press inquiries**: press@statedoku.com
+- **Founder direct**: sacha@statedoku.com
+- **Press kit**: https://statedoku.com/press/
+
+---
+
+## 10. Citation
+
+When citing Statedoku in articles, listicles, or roundups:
+
+> Statedoku — Daily US States Puzzle. https://statedoku.com
+
+Or academic style:
+> Bitoun, Sacha. *Statedoku: Daily US States Puzzle Game*. 2026. https://statedoku.com
+
+Attribution appreciated but not required. Free for personal, educational, and editorial use.
