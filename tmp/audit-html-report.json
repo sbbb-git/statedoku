@@ -1,0 +1,355 @@
+{
+  "titleTooLong": [
+    {
+      "rel": "cities/washington/index.html",
+      "value": "What state is Washington, D.C. in? — Federal district, not a state",
+      "length": 66
+    },
+    {
+      "rel": "es/learn/capitales-de-estados/index.html",
+      "value": "Capitales de los 50 estados de EE.UU. — Lista completa (2026)",
+      "length": 61
+    },
+    {
+      "rel": "es/learn/crucigrama-estados/index.html",
+      "value": "Crucigrama de estados de EE.UU.: estado por letras, capital, código",
+      "length": 67
+    },
+    {
+      "rel": "fr/about/index.html",
+      "value": "À propos de Statedoku — Le puzzle quotidien des États américains",
+      "length": 64
+    },
+    {
+      "rel": "fr/learn/landlocked-states/index.html",
+      "value": "Les 20 États américains enclavés (liste, carte, capitales) | Statedoku",
+      "length": 70
+    },
+    {
+      "rel": "index.html",
+      "value": "Statedoku — Daily US States Puzzle | Sudoku Meets American Geography",
+      "length": 68
+    },
+    {
+      "rel": "learn/crossword-helper/index.html",
+      "value": "US States Crossword Helper: State by Letters, Capital, Abbreviation",
+      "length": 67
+    },
+    {
+      "rel": "states/alabama/symbols/index.html",
+      "value": "Alabama State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    },
+    {
+      "rel": "states/alaska/symbols/index.html",
+      "value": "Alaska State Symbols: Bird, Flower, Tree &amp; Flag (2026) | Statedoku",
+      "length": 70
+    },
+    {
+      "rel": "states/arizona/symbols/index.html",
+      "value": "Arizona State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    },
+    {
+      "rel": "states/arkansas/symbols/index.html",
+      "value": "Arkansas State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/california/symbols/index.html",
+      "value": "California State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 66
+    },
+    {
+      "rel": "states/colorado/symbols/index.html",
+      "value": "Colorado State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/connecticut/symbols/index.html",
+      "value": "Connecticut State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 67
+    },
+    {
+      "rel": "states/delaware/symbols/index.html",
+      "value": "Delaware State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/florida/symbols/index.html",
+      "value": "Florida State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    },
+    {
+      "rel": "states/georgia/symbols/index.html",
+      "value": "Georgia State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    },
+    {
+      "rel": "states/hawaii/symbols/index.html",
+      "value": "Hawaii State Symbols: Bird, Flower, Tree &amp; Flag (2026) | Statedoku",
+      "length": 70
+    },
+    {
+      "rel": "states/idaho/symbols/index.html",
+      "value": "Idaho State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 61
+    },
+    {
+      "rel": "states/illinois/symbols/index.html",
+      "value": "Illinois State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/indiana/symbols/index.html",
+      "value": "Indiana State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    },
+    {
+      "rel": "states/kansas/symbols/index.html",
+      "value": "Kansas State Symbols: Bird, Flower, Tree &amp; Flag (2026) | Statedoku",
+      "length": 70
+    },
+    {
+      "rel": "states/kentucky/symbols/index.html",
+      "value": "Kentucky State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/louisiana/symbols/index.html",
+      "value": "Louisiana State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 65
+    },
+    {
+      "rel": "states/maine/symbols/index.html",
+      "value": "Maine State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 61
+    },
+    {
+      "rel": "states/maryland/symbols/index.html",
+      "value": "Maryland State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/massachusetts/symbols/index.html",
+      "value": "Massachusetts State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 69
+    },
+    {
+      "rel": "states/michigan/symbols/index.html",
+      "value": "Michigan State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/minnesota/symbols/index.html",
+      "value": "Minnesota State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 65
+    },
+    {
+      "rel": "states/mississippi/symbols/index.html",
+      "value": "Mississippi State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 67
+    },
+    {
+      "rel": "states/missouri/symbols/index.html",
+      "value": "Missouri State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/montana/symbols/index.html",
+      "value": "Montana State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    },
+    {
+      "rel": "states/nebraska/symbols/index.html",
+      "value": "Nebraska State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/nevada/symbols/index.html",
+      "value": "Nevada State Symbols: Bird, Flower, Tree &amp; Flag (2026) | Statedoku",
+      "length": 70
+    },
+    {
+      "rel": "states/new-hampshire/symbols/index.html",
+      "value": "New Hampshire State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 69
+    },
+    {
+      "rel": "states/new-jersey/symbols/index.html",
+      "value": "New Jersey State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 66
+    },
+    {
+      "rel": "states/new-mexico/symbols/index.html",
+      "value": "New Mexico State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 66
+    },
+    {
+      "rel": "states/new-york/symbols/index.html",
+      "value": "New York State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/north-carolina/symbols/index.html",
+      "value": "North Carolina State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 70
+    },
+    {
+      "rel": "states/north-dakota/symbols/index.html",
+      "value": "North Dakota State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 68
+    },
+    {
+      "rel": "states/oklahoma/symbols/index.html",
+      "value": "Oklahoma State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/oregon/symbols/index.html",
+      "value": "Oregon State Symbols: Bird, Flower, Tree &amp; Flag (2026) | Statedoku",
+      "length": 70
+    },
+    {
+      "rel": "states/pennsylvania/symbols/index.html",
+      "value": "Pennsylvania State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 68
+    },
+    {
+      "rel": "states/rhode-island/symbols/index.html",
+      "value": "Rhode Island State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 68
+    },
+    {
+      "rel": "states/south-carolina/symbols/index.html",
+      "value": "South Carolina State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 70
+    },
+    {
+      "rel": "states/south-dakota/symbols/index.html",
+      "value": "South Dakota State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 68
+    },
+    {
+      "rel": "states/tennessee/symbols/index.html",
+      "value": "Tennessee State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 65
+    },
+    {
+      "rel": "states/texas/symbols/index.html",
+      "value": "Texas State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 61
+    },
+    {
+      "rel": "states/vermont/symbols/index.html",
+      "value": "Vermont State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    },
+    {
+      "rel": "states/virginia/symbols/index.html",
+      "value": "Virginia State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 64
+    },
+    {
+      "rel": "states/washington/symbols/index.html",
+      "value": "Washington State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 66
+    },
+    {
+      "rel": "states/west-virginia/symbols/index.html",
+      "value": "West Virginia State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 69
+    },
+    {
+      "rel": "states/wisconsin/symbols/index.html",
+      "value": "Wisconsin State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 65
+    },
+    {
+      "rel": "states/wyoming/symbols/index.html",
+      "value": "Wyoming State Symbols: Bird, Flower, Tree &amp;amp; Flag (2026)",
+      "length": 63
+    }
+  ],
+  "titleTooShort": [
+    {
+      "rel": "privacy/index.html",
+      "value": "Privacy Policy — Statedoku",
+      "length": 26
+    },
+    {
+      "rel": "terms/index.html",
+      "value": "Terms of Service — Statedoku",
+      "length": 28
+    }
+  ],
+  "descTooShort": [
+    {
+      "rel": "learn/state-songs/index.html",
+      "value": "Every US state's official song. Includes ",
+      "length": 41
+    },
+    {
+      "rel": "regions/west-south-central/index.html",
+      "value": "4 states — Arkansas, Louisiana, Oklahoma, Texas.",
+      "length": 48
+    },
+    {
+      "rel": "states/florida/economy/index.html",
+      "value": "Florida economic profile: GDP, top industries, major employers. GDP: <meta name=",
+      "length": 80
+    },
+    {
+      "rel": "states/illinois/economy/index.html",
+      "value": "Illinois economic profile: GDP, top industries, major employers. GDP: <meta name=",
+      "length": 81
+    },
+    {
+      "rel": "states/new-york/economy/index.html",
+      "value": "New York economic profile: GDP, top industries, major employers. GDP: ",
+      "length": 70
+    },
+    {
+      "rel": "states/texas/economy/index.html",
+      "value": "Texas economic profile: GDP, top industries, major employers. GDP: ",
+      "length": 67
+    }
+  ],
+  "descTooLong": [],
+  "ogMissing": [],
+  "ogIncomplete": [],
+  "twitterCardMissing": [],
+  "hreflangMissing": [],
+  "hreflangXDefaultMissing": [],
+  "canonicalMissing": [],
+  "metaRobotsNoindex": [
+    {
+      "rel": "admin/constraints/index.html",
+      "robots": "noindex,nofollow"
+    },
+    {
+      "rel": "admin/dashboard/index.html",
+      "robots": "noindex,nofollow"
+    },
+    {
+      "rel": "admin/index.html",
+      "robots": "noindex,nofollow"
+    },
+    {
+      "rel": "admin/subscribers/index.html",
+      "robots": "noindex,nofollow"
+    },
+    {
+      "rel": "logos/index.html",
+      "robots": "noindex"
+    },
+    {
+      "rel": "marketing/follow.html",
+      "robots": "noindex"
+    },
+    {
+      "rel": "marketing/tweets.html",
+      "robots": "noindex,nofollow"
+    }
+  ]
+}
