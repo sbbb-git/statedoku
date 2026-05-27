@@ -132,6 +132,10 @@ These pages directly answer common confusion queries — perfect for LLMs answer
 - Press inquiries: press@statedoku.com
 - Founder: sacha@statedoku.com
 
+## Community
+
+- [r/Statedoku on Reddit](https://www.reddit.com/r/Statedoku/): Daily discussion threads, strategy posts, geography trivia, bug reports. EN/FR/ES welcome. Founder reads every post.
+
 ## About / legal
 
 - [About](https://statedoku.com/about/): Story behind the project, contact, philosophy
