@@ -13,6 +13,11 @@ const CONFIG = {
   // Get the data-key at https://app.ahrefs.com/web-analytics
   AHREFS_KEY: '2EFX1+9bkFd8gDk9CVLD4A',
 
+  // Microsoft Clarity — free session replays + heatmaps + scroll maps.
+  // Shows WHERE users click/rage-click and how far they scroll. Get the ID
+  // at https://clarity.microsoft.com (project settings → tracking code).
+  CLARITY_ID: 'wxvtsnx9h8',
+
   // Superadmin: SHA-256 hash of the admin password.
   // ⚠️ Change immediately with: node bin/set-admin-password.mjs
   // Default password: ChangeMe_Statedoku_2026
@@ -75,6 +80,26 @@ const CONFIG = {
   s.setAttribute('data-key', key);
   (document.head || document.documentElement).appendChild(s);
 })();
+
+// ─────────────────────────────────────────────────────────────────────────
+// Microsoft Clarity auto-loader (session replays + heatmaps).
+// Same skip rules: no admin, no localhost.
+// ─────────────────────────────────────────────────────────────────────────
+(function(c, l, a, r, i) {
+  const id = CONFIG.CLARITY_ID;
+  if (!id || id.startsWith('INSERT_')) return;
+
+  // Skip admin pages — don't record internal tooling sessions.
+  if (location.pathname.startsWith('/admin/') || location.pathname.startsWith('/admin')) return;
+
+  // Skip local dev.
+  const host = location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local') || location.protocol === 'file:') return;
+
+  c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+  const t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + id + '?ref=bwt';
+  const y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+})(window, document, 'clarity', 'script', CONFIG.CLARITY_ID);
 
 // ─────────────────────────────────────────────────────────────────────────
 // Helper: send a custom event to Cloudflare Web Analytics.
