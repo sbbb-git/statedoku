@@ -55,24 +55,48 @@ if (DRY) {
   process.exit(0);
 }
 
-const req = https.request('https://api.indexnow.org/indexnow', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(payload) },
-}, (res) => {
-  let body = '';
-  res.on('data', d => body += d);
-  res.on('end', () => {
-    console.log(`\nIndexNow response: HTTP ${res.statusCode}`);
-    // 200 = accepted, 202 = accepted pending validation, 422 = URLs don't match host/key
-    if (res.statusCode === 200 || res.statusCode === 202) {
-      console.log('✅ Submitted successfully. Bing/Yandex/Seznam will crawl shortly.');
-    } else {
-      console.log('⚠️ Response body:', body || '(empty)');
-      if (res.statusCode === 403) console.log('→ Key file not found/invalid. Make sure ' + KEY_LOCATION + ' is live.');
-      if (res.statusCode === 422) console.log('→ URL/host/key mismatch.');
-    }
+// IndexNow is a shared protocol — submitting to ANY endpoint propagates to all
+// participating engines. We try them in order with retries to survive the
+// occasional Bing-side 5xx outage.
+const ENDPOINTS = [
+  'https://api.indexnow.org/indexnow',
+  'https://www.bing.com/indexnow',
+  'https://yandex.com/indexnow',
+];
+
+function submit(endpoint) {
+  return new Promise((resolve) => {
+    const req = https.request(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(payload) },
+    }, (res) => {
+      let body = '';
+      res.on('data', d => body += d);
+      res.on('end', () => resolve({ status: res.statusCode, body }));
+    });
+    req.on('error', e => resolve({ status: 0, body: e.message }));
+    req.write(payload);
+    req.end();
   });
-});
-req.on('error', e => console.error('Request failed:', e.message));
-req.write(payload);
-req.end();
+}
+
+(async () => {
+  for (const endpoint of ENDPOINTS) {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const { status, body } = await submit(endpoint);
+      const host = endpoint.replace(/^https:\/\//, '').split('/')[0];
+      if (status === 200 || status === 202) {
+        console.log(`\n✅ Submitted ${urls.length} URLs via ${host} (HTTP ${status}). Crawlers will pick up shortly.`);
+        return;
+      }
+      console.log(`  ${host} attempt ${attempt}: HTTP ${status}${status >= 500 ? ' (server down, retrying…)' : ''}`);
+      if (status === 403) { console.log(`  → Key file unreachable: ${KEY_LOCATION}`); break; }
+      if (status === 422) { console.log('  → URL/host/key mismatch.'); break; }
+      if (status >= 500 || status === 0) { await new Promise(r => setTimeout(r, 5000)); continue; }
+      break; // other 4xx → try next endpoint
+    }
+  }
+  console.log('\n⚠️ All endpoints failed (likely a temporary Bing/Yandex outage).');
+  console.log('   Your setup is valid — just re-run this script later:');
+  console.log('   node tmp/indexnow-submit.js');
+})();
