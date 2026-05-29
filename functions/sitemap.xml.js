@@ -126,6 +126,13 @@ export async function onRequestGet({ request }) {
   for (const city of IS_A_STATE) extras.push([`${BASE}/learn/is-${city}-a-state/`, { priority: 0.75 }]);
   for (const city of CAPITAL_OF) extras.push([`${BASE}/learn/capital-of-${city}/`, { priority: 0.75 }]);
 
+  // Press kit + FR/ES legal pages (were missing — flagged by Bing Webmaster Tools)
+  extras.push([`${BASE}/press/`, { priority: 0.6 }]);
+  extras.push([`${BASE}/fr/privacy/`, { priority: 0.3 }]);
+  extras.push([`${BASE}/fr/terms/`, { priority: 0.3 }]);
+  extras.push([`${BASE}/es/privacy/`, { priority: 0.3 }]);
+  extras.push([`${BASE}/es/terms/`, { priority: 0.3 }]);
+
   const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
