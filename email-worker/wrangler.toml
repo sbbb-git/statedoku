@@ -2,11 +2,10 @@ name = "statedoku-email-reminders"
 main = "src/worker.js"
 compatibility_date = "2024-09-23"
 
-# Cron — DISABLED during prelaunch.
-# Re-enable post-launch (2026-06-01) by restoring the crons line below.
+# Cron — ENABLED at launch (2026-06-01). Hourly run, sends to subscribers
+# whose `hour_utc` matches the current UTC hour and who haven't gotten today's mail.
 [triggers]
-crons = []
-# crons = ["5 * * * *"]   # every hour at minute 5 — re-enable after launch
+crons = ["5 * * * *"]   # every hour at minute 5
 
 # Bind the SAME D1 used for analytics (statedoku-stats)
 [[d1_databases]]
