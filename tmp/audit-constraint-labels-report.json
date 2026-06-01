@@ -1,0 +1,4260 @@
+{
+  "broken": [],
+  "tooLong": [
+    {
+      "id": "has_million_city",
+      "lang": "fr",
+      "source": "core",
+      "label": "Ville d'un million d'habitants"
+    },
+    {
+      "id": "capital_named_after_president",
+      "lang": "en",
+      "source": "core",
+      "label": "Capital named after a president"
+    },
+    {
+      "id": "capital_named_after_president",
+      "lang": "fr",
+      "source": "core",
+      "label": "Capitale au nom d'un président"
+    },
+    {
+      "id": "capital_named_after_president",
+      "lang": "es",
+      "source": "core",
+      "label": "Capital con nombre de presidente"
+    },
+    {
+      "id": "name_native_origin",
+      "lang": "en",
+      "source": "core",
+      "label": "Named from a Native American language"
+    },
+    {
+      "id": "name_native_origin",
+      "lang": "es",
+      "source": "core",
+      "label": "Nombre de origen nativo americano"
+    },
+    {
+      "id": "name_royalty_origin",
+      "lang": "en",
+      "source": "core",
+      "label": "Named after a king, queen or noble"
+    },
+    {
+      "id": "name_royalty_origin",
+      "lang": "fr",
+      "source": "core",
+      "label": "Nommé d'après un roi, une reine ou un noble"
+    },
+    {
+      "id": "name_royalty_origin",
+      "lang": "es",
+      "source": "core",
+      "label": "Nombrado por un rey, reina o noble"
+    },
+    {
+      "id": "starts_and_ends_vowel",
+      "lang": "fr",
+      "source": "core",
+      "label": "Commence et finit par voyelle"
+    },
+    {
+      "id": "two_word_starts_n",
+      "lang": "en",
+      "source": "core",
+      "label": "Two-word name starting with N"
+    },
+    {
+      "id": "pc_pro_team_animal_name",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🦅 Pro team named after an animal"
+    },
+    {
+      "id": "pc_pro_team_animal_name",
+      "lang": "es",
+      "source": "approved-pending",
+      "label": "Equipo pro con nombre de animal"
+    },
+    {
+      "id": "pc_real_housewives_franchise",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "📺 Has a Real Housewives franchise"
+    },
+    {
+      "id": "pc_real_housewives_franchise",
+      "lang": "fr",
+      "source": "approved-pending",
+      "label": "Une franchise des Real Housewives"
+    },
+    {
+      "id": "pc_real_housewives_franchise",
+      "lang": "es",
+      "source": "approved-pending",
+      "label": "Una franquicia de Real Housewives"
+    },
+    {
+      "id": "pc_stephen_king_setting",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "👻 Setting of a Stephen King novel"
+    },
+    {
+      "id": "pc_marvel_mcu_us_setting",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🦸 MCU film location in the US"
+    },
+    {
+      "id": "pc_tarantino_setting",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎬 Setting of a Tarantino film"
+    },
+    {
+      "id": "pc_top10_engineering_uni",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🔧 Top-10 engineering university"
+    },
+    {
+      "id": "pc_top_business_school",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎓 Has a top-10 business school"
+    },
+    {
+      "id": "pc_top_liberal_arts",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎓 Has a top-10 liberal arts college"
+    },
+    {
+      "id": "pc_top_liberal_arts",
+      "lang": "fr",
+      "source": "approved-pending",
+      "label": "Top 10 colleges arts libéraux"
+    },
+    {
+      "id": "pc_top_liberal_arts",
+      "lang": "es",
+      "source": "approved-pending",
+      "label": "Top 10 universidad de artes liberales"
+    },
+    {
+      "id": "pc_iconic_cocktail",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🍹 Has a signature cocktail named after it"
+    },
+    {
+      "id": "pc_disaster_movie_set",
+      "lang": "es",
+      "source": "approved-pending",
+      "label": "Escenario de película catástrofe"
+    },
+    {
+      "id": "pc_cop_show_setting",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🚓 Setting of a major cop show"
+    },
+    {
+      "id": "pc_medical_drama_set",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🏥 Setting of a medical TV drama"
+    },
+    {
+      "id": "pc_long_river_state",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🏞️ Bordered by major US river"
+    },
+    {
+      "id": "pc_underground_subway",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🚇 Has a subway / metro system"
+    },
+    {
+      "id": "pc_movie_spielberg",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎬 Setting of a Spielberg film"
+    },
+    {
+      "id": "pc_movie_scorsese",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎬 Setting of a Scorsese film"
+    },
+    {
+      "id": "pc_movie_anderson_wes",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎬 Setting of a Wes Anderson film"
+    },
+    {
+      "id": "pc_movie_eastwood",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎬 Setting of a Clint Eastwood film"
+    },
+    {
+      "id": "pc_movie_marvel_loc",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🦸 Filmed at major Marvel studios"
+    },
+    {
+      "id": "pc_movie_pixar_inspo",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎬 Visual inspiration for a Pixar film"
+    },
+    {
+      "id": "pc_music_taylor_swift",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎤 Taylor Swift Eras Tour stops"
+    },
+    {
+      "id": "pc_music_beyonce_tour",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎤 Beyoncé Renaissance Tour US stops"
+    },
+    {
+      "id": "pc_music_dylan_song",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎤 Subject of a Bob Dylan song"
+    },
+    {
+      "id": "pc_born_president_post60",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🏛️ Birth state of a post-1960 US president"
+    },
+    {
+      "id": "pc_born_president_post60",
+      "lang": "fr",
+      "source": "approved-pending",
+      "label": "Naissance président post-1960"
+    },
+    {
+      "id": "pc_born_first_lady",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "👑 Birth state of a First Lady"
+    },
+    {
+      "id": "pc_amusement_park_top",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🎢 Has a top-10 amusement park"
+    },
+    {
+      "id": "pc_hist_spanish_colonial",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🇪🇸 Spanish colonial heritage"
+    },
+    {
+      "id": "pc_hist_french_colonial",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🇫🇷 French colonial heritage"
+    },
+    {
+      "id": "pc_red_state_consistent",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🔴 Consistently red since 2000"
+    },
+    {
+      "id": "pc_blue_state_consistent",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🔵 Consistently blue since 2000"
+    },
+    {
+      "id": "pc_state_capital_small",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🏛️ State capital is small (<100k pop)"
+    },
+    {
+      "id": "pc_contains_k",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🔤 Name contains the letter K"
+    },
+    {
+      "id": "pc_contains_w",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🔤 Name contains the letter W"
+    },
+    {
+      "id": "pc_contains_h",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🔤 Name contains the letter H"
+    },
+    {
+      "id": "pc_contains_y",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🔤 Name contains the letter Y"
+    },
+    {
+      "id": "pc_sea_level_low",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🏖️ Lowest point near/below sea level"
+    },
+    {
+      "id": "pc_thirteen_colonies",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "📜 One of the 13 original colonies"
+    },
+    {
+      "id": "pc_admitted_20th_century",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "📜 Admitted in the 20th century"
+    },
+    {
+      "id": "pc_named_native_tribe",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🪶 Named after a Native tribe"
+    },
+    {
+      "id": "pc_capital_is_largest",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🏛️ Capital is also the largest city"
+    },
+    {
+      "id": "pc_capital_under_50k",
+      "lang": "en",
+      "source": "approved-pending",
+      "label": "🏛️ Capital under 50k population"
+    }
+  ],
+  "missingLang": [],
+  "pendingLabels": {
+    "pc_sonic_drive_in": {
+      "en": "🍔 Has Sonic Drive-In",
+      "fr": "Sonic Drive-In y est",
+      "es": "Tiene Sonic Drive-In"
+    },
+    "pc_whataburger": {
+      "en": "🍔 Has Whataburger",
+      "fr": "Whataburger y est",
+      "es": "Tiene Whataburger"
+    },
+    "pc_wawa": {
+      "en": "☕ Has Wawa",
+      "fr": "Wawa y est",
+      "es": "Tiene Wawa"
+    },
+    "pc_sheetz": {
+      "en": "⛽ Has Sheetz",
+      "fr": "Sheetz y est",
+      "es": "Tiene Sheetz"
+    },
+    "pc_publix": {
+      "en": "🛒 Has Publix grocery",
+      "fr": "Supermarchés Publix",
+      "es": "Supermercados Publix"
+    },
+    "pc_meijer": {
+      "en": "🛒 Has Meijer grocery",
+      "fr": "Supermarchés Meijer",
+      "es": "Supermercados Meijer"
+    },
+    "pc_trader_joes": {
+      "en": "Has a Trader Joe's nearby",
+      "fr": "Trader Joe's y est",
+      "es": "Hay un Trader Joe's"
+    },
+    "pc_ikea": {
+      "en": "🛏️ Has an IKEA",
+      "fr": "Il y a un IKEA",
+      "es": "Hay un IKEA"
+    },
+    "pc_dunkin_heartland": {
+      "en": "☕ Dunkin' country (East Coast)",
+      "fr": "Royaume de Dunkin'",
+      "es": "Reino de Dunkin'"
+    },
+    "pc_krispy_kreme": {
+      "en": "🍩 Krispy Kreme country",
+      "fr": "Pays de Krispy Kreme",
+      "es": "País de Krispy Kreme"
+    },
+    "pc_white_castle": {
+      "en": "🍔 Has a White Castle",
+      "fr": "White Castle y est",
+      "es": "Tiene White Castle"
+    },
+    "pc_steak_n_shake": {
+      "en": "🥩 Has Steak 'n Shake",
+      "fr": "Steak 'n Shake y est",
+      "es": "Tiene Steak 'n Shake"
+    },
+    "pc_culvers": {
+      "en": "🍦 Has Culver's",
+      "fr": "Culver's y est",
+      "es": "Tiene Culver's"
+    },
+    "pc_jack_in_the_box": {
+      "en": "🌮 Has Jack in the Box",
+      "fr": "Jack in the Box y est",
+      "es": "Tiene Jack in the Box"
+    },
+    "pc_bojangles": {
+      "en": "🍗 Has Bojangles",
+      "fr": "Bojangles y est",
+      "es": "Tiene Bojangles"
+    },
+    "pc_chickfila_concentrated": {
+      "en": "🐔 Chick-fil-A Southern stronghold",
+      "fr": "Bastion sudiste Chick-fil-A",
+      "es": "Bastión sureño Chick-fil-A"
+    },
+    "pc_in_n_out_present": {
+      "en": "🍔 Has In-N-Out",
+      "fr": "In-N-Out y est",
+      "es": "Tiene In-N-Out"
+    },
+    "pc_waffle_house": {
+      "en": "🧇 Waffle House country",
+      "fr": "Pays de Waffle House",
+      "es": "País de Waffle House"
+    },
+    "pc_aldi_top_states": {
+      "en": "🛒 Aldi heavy footprint",
+      "fr": "Forte présence Aldi",
+      "es": "Fuerte presencia Aldi"
+    },
+    "pc_kroger_states": {
+      "en": "🛒 Kroger states",
+      "fr": "Kroger y est",
+      "es": "Hay Kroger"
+    },
+    "pc_costco_top": {
+      "en": "🛒 Costco-heavy (≥10 warehouses)",
+      "fr": "Forte présence Costco",
+      "es": "Fuerte presencia Costco"
+    },
+    "pc_cracker_barrel": {
+      "en": "🪑 Cracker Barrel",
+      "fr": "Cracker Barrel y est",
+      "es": "Tiene Cracker Barrel"
+    },
+    "pc_dairy_queen": {
+      "en": "🍦 Dairy Queen heartland (Midwest)",
+      "fr": "Pays de Dairy Queen",
+      "es": "País de Dairy Queen"
+    },
+    "pc_nfl_team": {
+      "en": "🏈 Has an NFL team",
+      "fr": "A une équipe NFL",
+      "es": "Tiene equipo NFL"
+    },
+    "pc_nba_team": {
+      "en": "🏀 Has an NBA team",
+      "fr": "A une équipe NBA",
+      "es": "Tiene equipo NBA"
+    },
+    "pc_mlb_team": {
+      "en": "⚾ Has an MLB team",
+      "fr": "A une équipe MLB",
+      "es": "Tiene equipo MLB"
+    },
+    "pc_nhl_team": {
+      "en": "🏒 Has an NHL team",
+      "fr": "A une équipe NHL",
+      "es": "Tiene equipo NHL"
+    },
+    "pc_4_pro_leagues": {
+      "en": "🏆 The big four (NBA + NFL + MLB + NHL)",
+      "fr": "Les 4 ligues majeures",
+      "es": "Las 4 ligas mayores"
+    },
+    "pc_3plus_pro_leagues": {
+      "en": "🏆 3+ major pro leagues",
+      "fr": "3+ ligues majeures",
+      "es": "3+ ligas mayores"
+    },
+    "pc_super_bowl_host": {
+      "en": "🏟️ Has hosted a Super Bowl",
+      "fr": "A organisé un Super Bowl",
+      "es": "Organizó un Super Bowl"
+    },
+    "pc_nba_champ_25yr": {
+      "en": "🏀 NBA title in the last 25 years",
+      "fr": "Titre NBA depuis 25 ans",
+      "es": "Título NBA en últimos 25 años"
+    },
+    "pc_super_bowl_winner_25": {
+      "en": "🏈 Super Bowl ring in the last 25 yrs",
+      "fr": "Bague de Super Bowl depuis 25 ans",
+      "es": "Anillo de Super Bowl en 25 años"
+    },
+    "pc_world_series_25yr": {
+      "en": "⚾ World Series win since 2000",
+      "fr": "Vainqueur des World Series depuis 2000",
+      "es": "Campeón MLB desde 2000"
+    },
+    "pc_stanley_cup_25yr": {
+      "en": "🏒 Stanley Cup since 2000",
+      "fr": "Vainqueur de la Stanley Cup depuis 2000",
+      "es": "Stanley Cup desde 2000"
+    },
+    "pc_mls_team": {
+      "en": "⚽ Has an MLS team",
+      "fr": "A une équipe MLS",
+      "es": "Tiene equipo MLS"
+    },
+    "pc_wnba_team": {
+      "en": "🏀 Has a WNBA team",
+      "fr": "A une équipe WNBA",
+      "es": "Tiene equipo WNBA"
+    },
+    "pc_pro_team_animal_name": {
+      "en": "🦅 Pro team named after an animal",
+      "fr": "Équipe pro au nom d'animal",
+      "es": "Equipo pro con nombre de animal"
+    },
+    "pc_ncaa_basketball_blueblood": {
+      "en": "🏀 NCAA basketball blue blood",
+      "fr": "Mastodonte du basket NCAA",
+      "es": "Gigante del baloncesto NCAA"
+    },
+    "pc_acc_basketball": {
+      "en": "🏀 Has an ACC basketball school",
+      "fr": "Université de l'ACC",
+      "es": "Universidad de la ACC"
+    },
+    "pc_big12_school": {
+      "en": "🏈 Has a Big 12 school",
+      "fr": "Université du Big 12",
+      "es": "Universidad del Big 12"
+    },
+    "pc_pac12_legacy": {
+      "en": "🏈 Was in the original Pac-12",
+      "fr": "Anciennement Pac-12",
+      "es": "Antes Pac-12"
+    },
+    "pc_college_football_powerhouse": {
+      "en": "🏈 College football powerhouse",
+      "fr": "Mastodonte du football NCAA",
+      "es": "Potencia del fútbol NCAA"
+    },
+    "pc_wrestlemania_host": {
+      "en": "🤼 Has hosted WrestleMania",
+      "fr": "A organisé WrestleMania",
+      "es": "Organizó WrestleMania"
+    },
+    "pc_final_four_host": {
+      "en": "🏀 Has hosted an NCAA Final Four",
+      "fr": "A organisé un Final Four",
+      "es": "Organizó un Final Four"
+    },
+    "pc_olympics_host_any": {
+      "en": "🥇 Has hosted the Olympics",
+      "fr": "A organisé les JO",
+      "es": "Organizó los JJOO"
+    },
+    "pc_real_housewives_franchise": {
+      "en": "📺 Has a Real Housewives franchise",
+      "fr": "Une franchise des Real Housewives",
+      "es": "Una franquicia de Real Housewives"
+    },
+    "pc_bravo_show_setting": {
+      "en": "📺 Setting of a Bravo reality show",
+      "fr": "Décor d'une émission Bravo",
+      "es": "Escenario de un reality Bravo"
+    },
+    "pc_stephen_king_setting": {
+      "en": "👻 Setting of a Stephen King novel",
+      "fr": "Décor d'un Stephen King",
+      "es": "Escenario de Stephen King"
+    },
+    "pc_marvel_mcu_us_setting": {
+      "en": "🦸 MCU film location in the US",
+      "fr": "Lieu MCU aux US",
+      "es": "Locación MCU en EE.UU."
+    },
+    "pc_pixar_film_setting": {
+      "en": "🎬 Setting of a Pixar film",
+      "fr": "Décor d'un Pixar",
+      "es": "Escenario Pixar"
+    },
+    "pc_disney_animated_us_set": {
+      "en": "🏰 US setting of a Disney animated film",
+      "fr": "Décor US d'un Disney animé",
+      "es": "Escenario US de Disney animado"
+    },
+    "pc_coen_brothers_setting": {
+      "en": "🎬 Setting of a Coen Brothers film",
+      "fr": "Décor des frères Coen",
+      "es": "Escenario de los Coen"
+    },
+    "pc_tarantino_setting": {
+      "en": "🎬 Setting of a Tarantino film",
+      "fr": "Décor d'un Tarantino",
+      "es": "Escenario de Tarantino"
+    },
+    "pc_iconic_road_trip": {
+      "en": "🚗 Iconic American road trip route",
+      "fr": "Itinéraire road trip mythique",
+      "es": "Ruta road trip icónica"
+    },
+    "pc_western_film_setting": {
+      "en": "🤠 Setting of a classic Western",
+      "fr": "Décor de western classique",
+      "es": "Escenario de western clásico"
+    },
+    "pc_horror_movie_setting": {
+      "en": "🔪 Setting of iconic horror movies",
+      "fr": "Décor de films d'horreur cultes",
+      "es": "Escenario de horror icónico"
+    },
+    "pc_rock_hof_origin_10plus": {
+      "en": "🎸 Birthed 10+ Rock & Roll HoF inductees",
+      "fr": "10+ Hall of Fame du rock",
+      "es": "10+ Hall of Fame del rock"
+    },
+    "pc_country_music_artist_origin": {
+      "en": "🎵 Birthed 3+ country HoF artists",
+      "fr": "3+ stars country légendaires",
+      "es": "3+ leyendas country"
+    },
+    "pc_rap_artist_top": {
+      "en": "🎤 Birthed a top rap artist",
+      "fr": "Naissance d'un grand rappeur",
+      "es": "Cuna de un gran rapero"
+    },
+    "pc_indie_rock_scene": {
+      "en": "🎸 Famous indie-rock scene",
+      "fr": "Scène indie-rock connue",
+      "es": "Escena indie-rock conocida"
+    },
+    "pc_top_jazz_scenes": {
+      "en": "🎺 Historic jazz scene",
+      "fr": "Scène jazz historique",
+      "es": "Escena jazz histórica"
+    },
+    "pc_top_blues_scenes": {
+      "en": "🎷 Historic blues scene",
+      "fr": "Scène blues historique",
+      "es": "Escena blues histórica"
+    },
+    "pc_warped_tour_stop": {
+      "en": "🎸 Regular Vans Warped Tour stop",
+      "fr": "Étape régulière du Warped Tour",
+      "es": "Parada habitual del Warped Tour"
+    },
+    "pc_outdoor_amphitheater": {
+      "en": "🎤 Has an iconic outdoor amphitheater",
+      "fr": "Amphithéâtre extérieur mythique",
+      "es": "Anfiteatro icónico al aire libre"
+    },
+    "pc_top_jazz_festival": {
+      "en": "🎷 Hosts a major jazz festival",
+      "fr": "Festival de jazz majeur",
+      "es": "Festival de jazz mayor"
+    },
+    "pc_music_capital_nickname": {
+      "en": "🎵 Self-styled music capital",
+      "fr": "Capitale musicale auto-proclamée",
+      "es": "Capital musical autoproclamada"
+    },
+    "pc_state_bird_cardinal": {
+      "en": "🐦 State bird: Northern Cardinal",
+      "fr": "Oiseau d'État : cardinal rouge",
+      "es": "Ave estatal: cardenal"
+    },
+    "pc_state_bird_mockingbird": {
+      "en": "🐦 State bird: Mockingbird",
+      "fr": "Oiseau d'État : moqueur",
+      "es": "Ave estatal: cenzontle"
+    },
+    "pc_state_bird_meadowlark": {
+      "en": "🐦 State bird: Western Meadowlark",
+      "fr": "Oiseau d'État : sturnelle",
+      "es": "Ave estatal: pradero"
+    },
+    "pc_pizza_named_after_city": {
+      "en": "🍕 Has a pizza style named after a city",
+      "fr": "Style de pizza nommé d'une ville",
+      "es": "Estilo de pizza con nombre de ciudad"
+    },
+    "pc_bbq_style": {
+      "en": "🍖 Has its own BBQ tradition",
+      "fr": "Sa propre tradition BBQ",
+      "es": "Su propia tradición BBQ"
+    },
+    "pc_diner_culture": {
+      "en": "🥞 Iconic diner culture",
+      "fr": "Culture diner emblématique",
+      "es": "Cultura diner icónica"
+    },
+    "pc_lobster_country": {
+      "en": "🦞 Lobster country",
+      "fr": "Pays du homard",
+      "es": "Tierra de la langosta"
+    },
+    "pc_apple_orchard_state": {
+      "en": "🍎 Top apple state",
+      "fr": "Producteur de pommes majeur",
+      "es": "Productor de manzanas"
+    },
+    "pc_beer_craft_capital": {
+      "en": "🍺 Top craft-beer state",
+      "fr": "Capitale de la craft beer",
+      "es": "Capital de cerveza artesanal"
+    },
+    "pc_chili_culture": {
+      "en": "🌶️ Strong chili cookoff culture",
+      "fr": "Culture du chili / concours",
+      "es": "Cultura del chili"
+    },
+    "pc_donut_capital": {
+      "en": "🍩 Self-styled \"donut capital\"",
+      "fr": "Auto-proclamé capitale du donut",
+      "es": "Autoproclamada capital del donut"
+    },
+    "pc_known_for_cheese": {
+      "en": "🧀 Famous for its cheese",
+      "fr": "Connu pour son fromage",
+      "es": "Famoso por su queso"
+    },
+    "pc_known_for_potatoes": {
+      "en": "🥔 Famous for its potatoes",
+      "fr": "Connu pour ses patates",
+      "es": "Famoso por sus patatas"
+    },
+    "pc_known_for_maple": {
+      "en": "🍁 Famous for its maple syrup",
+      "fr": "Connu pour son sirop d'érable",
+      "es": "Famoso por su jarabe de arce"
+    },
+    "pc_wine_region_named": {
+      "en": "🍷 Famous American wine region",
+      "fr": "Région viticole célèbre",
+      "es": "Región vinícola famosa"
+    },
+    "pc_recreational_cannabis": {
+      "en": "🌿 Recreational cannabis legal",
+      "fr": "Cannabis récréatif légal",
+      "es": "Cannabis recreativo legal"
+    },
+    "pc_medical_cannabis_only": {
+      "en": "💊 Medical cannabis only",
+      "fr": "Cannabis médical uniquement",
+      "es": "Solo cannabis medicinal"
+    },
+    "pc_sports_betting_legal": {
+      "en": "🎰 Sports betting legal",
+      "fr": "Paris sportifs légaux",
+      "es": "Apuestas deportivas legales"
+    },
+    "pc_online_casino": {
+      "en": "🃏 Online casino legal",
+      "fr": "Casino en ligne légal",
+      "es": "Casino online legal"
+    },
+    "pc_no_state_lottery": {
+      "en": "🎟️ No state lottery",
+      "fr": "Pas de loterie d'État",
+      "es": "Sin lotería estatal"
+    },
+    "pc_no_state_income_tax": {
+      "en": "💸 No state income tax",
+      "fr": "Pas d'impôt sur le revenu",
+      "es": "Sin impuesto sobre la renta"
+    },
+    "pc_no_state_sales_tax": {
+      "en": "🧾 No state sales tax",
+      "fr": "Pas de taxe sur les ventes",
+      "es": "Sin impuesto sobre las ventas"
+    },
+    "pc_death_penalty_abolished": {
+      "en": "⚖️ Death penalty abolished",
+      "fr": "Peine de mort abolie",
+      "es": "Pena de muerte abolida"
+    },
+    "pc_commercial_casino": {
+      "en": "🎰 Has commercial casinos",
+      "fr": "Casinos commerciaux",
+      "es": "Casinos comerciales"
+    },
+    "pc_auto_plant": {
+      "en": "🚗 Major auto manufacturing plant",
+      "fr": "Grande usine automobile",
+      "es": "Planta automotriz importante"
+    },
+    "pc_big_tech_office": {
+      "en": "💻 Big Tech major office",
+      "fr": "Bureau Big Tech majeur",
+      "es": "Oficina Big Tech mayor"
+    },
+    "pc_oil_country": {
+      "en": "🛢️ Major oil/gas producer",
+      "fr": "Gros producteur pétrole/gaz",
+      "es": "Gran productor petróleo/gas"
+    },
+    "pc_aerospace_hub": {
+      "en": "🚀 Aerospace manufacturing hub",
+      "fr": "Pôle aérospatial",
+      "es": "Centro aeroespacial"
+    },
+    "pc_top10_airport_passengers": {
+      "en": "✈️ Top 10 busiest US airport",
+      "fr": "Top 10 aéroports américains",
+      "es": "Top 10 aeropuertos US"
+    },
+    "pc_iconic_beach_dest": {
+      "en": "🏖️ Iconic beach destination",
+      "fr": "Plage emblématique",
+      "es": "Playa icónica"
+    },
+    "pc_top_skiing_resort": {
+      "en": "⛷️ Top-tier ski resort",
+      "fr": "Station de ski de premier plan",
+      "es": "Estación de esquí top"
+    },
+    "pc_top_national_park_vis": {
+      "en": "🏞️ Top-15 most-visited National Park",
+      "fr": "Parc national top 15 visite",
+      "es": "Parque nacional top 15 visitas"
+    },
+    "pc_fall_foliage_top": {
+      "en": "🍂 Top fall foliage destination",
+      "fr": "Top feuillage d'automne",
+      "es": "Top follaje otoñal"
+    },
+    "pc_theme_park_major": {
+      "en": "🎢 Has a major theme park",
+      "fr": "Parc d'attractions majeur",
+      "es": "Parque de atracciones mayor"
+    },
+    "pc_six_flags_park": {
+      "en": "🎢 Has a Six Flags",
+      "fr": "A un Six Flags",
+      "es": "Tiene Six Flags"
+    },
+    "pc_film_tax_incentive": {
+      "en": "🎬 Strong film tax incentive",
+      "fr": "Crédit d'impôt cinéma fort",
+      "es": "Crédito fiscal cine fuerte"
+    },
+    "pc_top_filming_location": {
+      "en": "🎬 Top 10 filming state",
+      "fr": "Top 10 États de tournage",
+      "es": "Top 10 estados de rodaje"
+    },
+    "pc_5plus_snl_castmembers": {
+      "en": "🎤 5+ SNL cast members hail from here",
+      "fr": "Naissance de 5+ du cast SNL",
+      "es": "Cuna de 5+ del SNL"
+    },
+    "pc_serial_killer_history": {
+      "en": "🔪 Notorious serial-killer history",
+      "fr": "Histoire de tueurs en série",
+      "es": "Historia de asesinos en serie"
+    },
+    "pc_mafia_history": {
+      "en": "🕴️ Mafia history",
+      "fr": "Histoire mafieuse",
+      "es": "Historia mafiosa"
+    },
+    "pc_famous_cult_history": {
+      "en": "👁️ Famous cult / sect history",
+      "fr": "Histoire de sectes / cultes",
+      "es": "Historia de cultos"
+    },
+    "pc_birthplace_oscar_winners": {
+      "en": "🏆 Birthed 5+ Best Actor/Actress Oscar winners",
+      "fr": "5+ Oscars du meilleur acteur",
+      "es": "5+ Oscar Mejor Actor"
+    },
+    "pc_birthplace_grammy_aoty": {
+      "en": "🏆 Birthed 3+ Grammy Album of the Year winners",
+      "fr": "3+ Grammys Album de l'année",
+      "es": "3+ Grammy Álbum del Año"
+    },
+    "pc_3plus_presidents": {
+      "en": "🇺🇸 Birthplace of 3+ US presidents",
+      "fr": "Naissance de 3+ présidents",
+      "es": "Cuna de 3+ presidentes"
+    },
+    "pc_heisman_winner_origin": {
+      "en": "🏆 Birthed 2+ Heisman Trophy winners",
+      "fr": "2+ Heisman du même État",
+      "es": "2+ ganadores del Heisman"
+    },
+    "pc_nba_hall_of_famer_origin": {
+      "en": "🏀 Birthed 5+ NBA Hall of Famers",
+      "fr": "5+ HoF NBA",
+      "es": "5+ Hall of Fame NBA"
+    },
+    "pc_nfl_hall_of_famer_origin": {
+      "en": "🏈 Birthed 5+ NFL Hall of Famers",
+      "fr": "5+ HoF NFL",
+      "es": "5+ Hall of Fame NFL"
+    },
+    "pc_mlb_hall_of_famer_origin": {
+      "en": "⚾ Birthed 5+ MLB Hall of Famers",
+      "fr": "5+ HoF MLB",
+      "es": "5+ Hall of Fame MLB"
+    },
+    "pc_olympic_gold_5plus": {
+      "en": "🥇 Birthed 5+ Olympic gold medalists",
+      "fr": "5+ médaillés d'or olympiques",
+      "es": "5+ medallistas oro olímpicos"
+    },
+    "pc_qb_super_bowl_mvp": {
+      "en": "🏈 Birthed a Super Bowl MVP QB",
+      "fr": "QB MVP du Super Bowl né ici",
+      "es": "Cuna de QB MVP Super Bowl"
+    },
+    "pc_boxer_world_champ": {
+      "en": "🥊 Birthed a world boxing champion",
+      "fr": "Champion du monde de boxe",
+      "es": "Campeón mundial de boxeo"
+    },
+    "pc_late_night_host_origin": {
+      "en": "🎙️ Birthplace of a major late-night TV host",
+      "fr": "État natal d'un animateur de late-night",
+      "es": "Cuna de presentador late-night"
+    },
+    "pc_pop_star_2010s": {
+      "en": "🎤 Birthed a top 2010s+ pop artist",
+      "fr": "Naissance d'une star pop 2010+",
+      "es": "Cuna de estrella pop 2010+"
+    },
+    "pc_broadway_origins": {
+      "en": "🎭 Birthed a Broadway musical icon",
+      "fr": "Naissance d'une icône de Broadway",
+      "es": "Cuna de icono de Broadway"
+    },
+    "pc_tech_founder_birth": {
+      "en": "💻 Birthplace of a Big Tech founder",
+      "fr": "Naissance d'un fondateur tech",
+      "es": "Cuna de un fundador Big Tech"
+    },
+    "pc_ivy_league_home": {
+      "en": "🎓 Has an Ivy League school",
+      "fr": "Université Ivy League",
+      "es": "Universidad de la Ivy League"
+    },
+    "pc_top_public_uni": {
+      "en": "🎓 Has a top-15 public university",
+      "fr": "Top 15 universités publiques",
+      "es": "Top 15 universidades públicas"
+    },
+    "pc_top_business_school": {
+      "en": "🎓 Has a top-10 business school",
+      "fr": "Top 10 écoles de commerce",
+      "es": "Top 10 escuelas de negocios"
+    },
+    "pc_top_liberal_arts": {
+      "en": "🎓 Has a top-10 liberal arts college",
+      "fr": "Top 10 colleges arts libéraux",
+      "es": "Top 10 universidad de artes liberales"
+    },
+    "pc_top_art_school": {
+      "en": "🎨 Has a top-10 art / design school",
+      "fr": "Top 10 écoles d'art / design",
+      "es": "Top 10 escuelas de arte"
+    },
+    "pc_hbcu_top": {
+      "en": "🎓 Has a top-rated HBCU",
+      "fr": "HBCU de premier plan",
+      "es": "HBCU principal"
+    },
+    "pc_jesuit_university": {
+      "en": "⛪ Has a major Jesuit university",
+      "fr": "Université jésuite majeure",
+      "es": "Universidad jesuita mayor"
+    },
+    "pc_state_uni_powerhouse": {
+      "en": "🎓 Land-grant Power 5 flagship",
+      "fr": "Université d'État de premier plan",
+      "es": "Universidad estatal de élite"
+    },
+    "pc_5plus_rhodes_scholars": {
+      "en": "🎓 5+ Rhodes Scholars come from here",
+      "fr": "5+ boursiers Rhodes",
+      "es": "5+ becarios Rhodes"
+    },
+    "pc_top10_engineering_uni": {
+      "en": "🔧 Top-10 engineering university",
+      "fr": "Top 10 fac d'ingénierie",
+      "es": "Top 10 ingeniería"
+    },
+    "pc_top10_law_school": {
+      "en": "⚖️ Top-10 law school",
+      "fr": "Top 10 fac de droit",
+      "es": "Top 10 derecho"
+    },
+    "pc_top10_med_school": {
+      "en": "🩺 Top-10 medical school",
+      "fr": "Top 10 fac de médecine",
+      "es": "Top 10 medicina"
+    },
+    "pc_nasa_facility": {
+      "en": "🚀 Has a major NASA facility",
+      "fr": "Site NASA majeur",
+      "es": "Sitio NASA mayor"
+    },
+    "pc_apollo_program_state": {
+      "en": "🌙 Played a role in the Apollo program",
+      "fr": "Rôle dans Apollo",
+      "es": "Rol en Apollo"
+    },
+    "pc_national_lab": {
+      "en": "🔬 Major US national research lab",
+      "fr": "Laboratoire national",
+      "es": "Laboratorio nacional"
+    },
+    "pc_observatory_major": {
+      "en": "🔭 World-class astronomical observatory",
+      "fr": "Observatoire astronomique",
+      "es": "Observatorio astronómico"
+    },
+    "pc_dinosaur_fossils": {
+      "en": "🦖 Famous dinosaur fossil sites",
+      "fr": "Sites de fossiles de dinosaures",
+      "es": "Sitios de fósiles dinosaurios"
+    },
+    "pc_large_bald_eagle_pop": {
+      "en": "🦅 Large bald eagle population",
+      "fr": "Grande population de pygargues",
+      "es": "Gran población de águilas calvas"
+    },
+    "pc_wild_bear_range": {
+      "en": "🐻 Native bear range",
+      "fr": "Habitat des ours sauvages",
+      "es": "Hábitat de osos salvajes"
+    },
+    "pc_alligator_native": {
+      "en": "🐊 Native alligator territory",
+      "fr": "Pays des alligators",
+      "es": "Territorio de aligátores"
+    },
+    "pc_moose_native": {
+      "en": "🫎 Native moose territory",
+      "fr": "Pays de l'orignal",
+      "es": "Territorio del alce"
+    },
+    "pc_iconic_state_fair": {
+      "en": "🎡 Iconic state fair (1M+ visitors)",
+      "fr": "Foire d'État emblématique",
+      "es": "Feria estatal icónica"
+    },
+    "pc_mardi_gras_parades": {
+      "en": "🎭 Major Mardi Gras celebrations",
+      "fr": "Mardi Gras majeur",
+      "es": "Carnaval Mardi Gras"
+    },
+    "pc_christmas_market": {
+      "en": "🎄 Major German-style Christmas market",
+      "fr": "Marché de Noël à l'allemande",
+      "es": "Mercado navideño alemán"
+    },
+    "pc_pumpkin_capital": {
+      "en": "🎃 Pumpkin / fall festival capital",
+      "fr": "Capitale citrouilles & automne",
+      "es": "Capital calabazas y otoño"
+    },
+    "pc_haunted_destinations": {
+      "en": "👻 Popular \"haunted\" tourism destination",
+      "fr": "Destination « hantée »",
+      "es": "Destino «embrujado»"
+    },
+    "pc_americana_county_fair": {
+      "en": "🎡 Famous county fair tradition",
+      "fr": "Tradition de foires de comté",
+      "es": "Tradición de ferias de condado"
+    },
+    "pc_iconic_summer_camp": {
+      "en": "🏕️ Iconic American summer camp culture",
+      "fr": "Culture des colos d'été",
+      "es": "Cultura de campamentos de verano"
+    },
+    "pc_huckleberry_finn": {
+      "en": "📖 Huck Finn / Twain Mississippi setting",
+      "fr": "Twain / Huck Finn",
+      "es": "Twain / Huck Finn"
+    },
+    "pc_grapes_of_wrath": {
+      "en": "📖 Grapes of Wrath route",
+      "fr": "Route des Raisins de la colère",
+      "es": "Ruta de Las uvas de la ira"
+    },
+    "pc_poe_lived": {
+      "en": "🦅 Where Edgar Allan Poe lived",
+      "fr": "Où vécut Edgar Allan Poe",
+      "es": "Donde vivió Poe"
+    },
+    "pc_little_house_prairie": {
+      "en": "🏡 Little House on the Prairie territory",
+      "fr": "Petite maison dans la prairie",
+      "es": "La Casa de la Pradera"
+    },
+    "pc_pulitzer_newspaper": {
+      "en": "📰 Pulitzer Prize-winning newspaper",
+      "fr": "Journal Prix Pulitzer",
+      "es": "Diario con Pulitzer"
+    },
+    "pc_presidential_library": {
+      "en": "🏛️ Has a Presidential Library",
+      "fr": "Bibliothèque présidentielle",
+      "es": "Biblioteca presidencial"
+    },
+    "pc_top_hiking_state": {
+      "en": "🥾 Top-tier hiking destination",
+      "fr": "Top destination randonnée",
+      "es": "Destino top de senderismo"
+    },
+    "pc_top_camping": {
+      "en": "⛺ Top camping destination",
+      "fr": "Top destination camping",
+      "es": "Top camping"
+    },
+    "pc_top_fly_fishing": {
+      "en": "🎣 Top fly-fishing destination",
+      "fr": "Top pêche à la mouche",
+      "es": "Top pesca con mosca"
+    },
+    "pc_top_kayak_canoe": {
+      "en": "🛶 Top kayak / canoe destination",
+      "fr": "Top kayak / canoë",
+      "es": "Top kayak / canoa"
+    },
+    "pc_route66_state": {
+      "en": "🛣️ On historic Route 66",
+      "fr": "Sur la Route 66 historique",
+      "es": "En la Ruta 66 histórica"
+    },
+    "pc_appalachian_trail": {
+      "en": "🥾 On the Appalachian Trail",
+      "fr": "Sur le sentier des Appalaches",
+      "es": "En el sendero de los Apalaches"
+    },
+    "pc_iconic_cfb_rivalry": {
+      "en": "🏈 Iconic college football rivalry",
+      "fr": "Rivalité football NCAA iconique",
+      "es": "Rivalidad CFB icónica"
+    },
+    "pc_iconic_nba_franchise": {
+      "en": "🏀 Iconic NBA franchise",
+      "fr": "Franchise NBA emblématique",
+      "es": "Franquicia NBA emblemática"
+    },
+    "pc_sunshine_climate": {
+      "en": "☀️ Mostly sunny / warm",
+      "fr": "Majoritairement ensoleillé",
+      "es": "Mayoritariamente soleado"
+    },
+    "pc_snowy_winter_climate": {
+      "en": "❄️ Snowy winters",
+      "fr": "Hivers neigeux",
+      "es": "Inviernos nevados"
+    },
+    "pc_civil_rights_march": {
+      "en": "✊ Site of a major Civil Rights march",
+      "fr": "Site d'une marche des droits civiques",
+      "es": "Sitio de marcha de derechos civiles"
+    },
+    "pc_prohibition_speakeasy": {
+      "en": "🥃 Famous speakeasy / Prohibition past",
+      "fr": "Histoire de speakeasies",
+      "es": "Historia de speakeasies"
+    },
+    "pc_top_native_reservation": {
+      "en": "🪶 Has a top-10 Native reservation",
+      "fr": "Réserve amérindienne top 10",
+      "es": "Reservación nativa top 10"
+    },
+    "pc_tribal_casino": {
+      "en": "🎰 Major tribal casino industry",
+      "fr": "Casinos tribaux majeurs",
+      "es": "Industria casinos tribales"
+    },
+    "pc_irish_immigrant_heritage": {
+      "en": "☘️ Strong Irish-American heritage",
+      "fr": "Forte présence irlando-américaine",
+      "es": "Fuerte herencia irlandesa"
+    },
+    "pc_italian_immigrant_heritage": {
+      "en": "🍝 Strong Italian-American heritage",
+      "fr": "Forte présence italo-américaine",
+      "es": "Fuerte herencia italiana"
+    },
+    "pc_german_immigrant_heritage": {
+      "en": "🥨 Strong German-American heritage",
+      "fr": "Forte présence germano-américaine",
+      "es": "Fuerte herencia alemana"
+    },
+    "pc_scandinavian_heritage": {
+      "en": "🛶 Strong Scandinavian heritage",
+      "fr": "Forte présence scandinave",
+      "es": "Fuerte herencia escandinava"
+    },
+    "pc_polish_heritage": {
+      "en": "🥟 Strong Polish-American heritage",
+      "fr": "Forte présence polonaise",
+      "es": "Fuerte herencia polaca"
+    },
+    "pc_mormon_concentration": {
+      "en": "⛪ High Mormon (LDS) population",
+      "fr": "Forte présence mormone",
+      "es": "Alta presencia mormona"
+    },
+    "pc_amish_communities": {
+      "en": "🐎 Notable Amish communities",
+      "fr": "Communautés Amish notables",
+      "es": "Comunidades Amish importantes"
+    },
+    "pc_megachurch_top": {
+      "en": "⛪ 5+ \"megachurches\" (2000+ attendees)",
+      "fr": "5+ megachurches",
+      "es": "5+ megaiglesias"
+    },
+    "pc_world_top_roller_coaster": {
+      "en": "🎢 Has a top-50 roller coaster",
+      "fr": "Top 50 montagnes russes",
+      "es": "Top 50 montañas rusas"
+    },
+    "pc_unesco_world_heritage": {
+      "en": "🌍 Has a UNESCO World Heritage Site",
+      "fr": "Site UNESCO",
+      "es": "Sitio UNESCO"
+    },
+    "pc_major_cruise_port": {
+      "en": "🚢 Major cruise port",
+      "fr": "Port de croisière majeur",
+      "es": "Puerto crucero mayor"
+    },
+    "pc_horse_racing_industry": {
+      "en": "🐎 Major horse-racing state",
+      "fr": "Pôle hippique majeur",
+      "es": "Estado hípico mayor"
+    },
+    "pc_nascar_speedway": {
+      "en": "🏁 Has a NASCAR Cup speedway",
+      "fr": "Circuit NASCAR Cup",
+      "es": "Circuito NASCAR Cup"
+    },
+    "pc_cowboy_culture": {
+      "en": "🤠 Cowboy / rodeo culture",
+      "fr": "Culture cowboy / rodéo",
+      "es": "Cultura vaquera y rodeo"
+    },
+    "pc_alien_lore": {
+      "en": "👽 Famous UFO / alien lore",
+      "fr": "Folklore OVNI célèbre",
+      "es": "Folklore OVNI famoso"
+    },
+    "pc_state_trooper_iconic": {
+      "en": "🚓 Iconic state highway patrol",
+      "fr": "Police d'État emblématique",
+      "es": "Patrulla estatal icónica"
+    },
+    "pc_early_covid_hotspot": {
+      "en": "🦠 Early 2020 COVID-19 hotspot",
+      "fr": "Foyer COVID-19 début 2020",
+      "es": "Foco temprano COVID-19"
+    },
+    "pc_theater_district": {
+      "en": "🎭 Famous theater district downtown",
+      "fr": "Quartier théâtral renommé",
+      "es": "Distrito teatral famoso"
+    },
+    "pc_top10_art_museum": {
+      "en": "🖼️ Top-10 US art museum",
+      "fr": "Top 10 musées d'art",
+      "es": "Top 10 museos de arte"
+    },
+    "pc_iconic_comedy_club": {
+      "en": "🎙️ Iconic comedy club city",
+      "fr": "Club de comédie iconique",
+      "es": "Club de comedia icónico"
+    },
+    "pc_podcast_hq": {
+      "en": "🎙️ Major podcast network HQ",
+      "fr": "Siège réseau podcasts",
+      "es": "Sede red de podcasts"
+    },
+    "pc_covered_bridges": {
+      "en": "🌉 Famous for covered bridges",
+      "fr": "Connu pour ses ponts couverts",
+      "es": "Famoso por puentes cubiertos"
+    },
+    "pc_oldest_lighthouses": {
+      "en": "🗼 50+ historic lighthouses",
+      "fr": "50+ phares historiques",
+      "es": "50+ faros históricos"
+    },
+    "pc_state_capitol_dome": {
+      "en": "🏛️ State Capitol with a famous dome",
+      "fr": "Coupole de Capitole célèbre",
+      "es": "Cúpula de Capitolio famosa"
+    },
+    "pc_giant_roadside_statue": {
+      "en": "🗿 Famous giant roadside statue",
+      "fr": "Statue géante célèbre",
+      "es": "Estatua gigante de carretera"
+    },
+    "pc_drive_in_movie": {
+      "en": "🎬 5+ active drive-in theaters",
+      "fr": "5+ drive-ins actifs",
+      "es": "5+ autocines activos"
+    },
+    "pc_game_dev_hub": {
+      "en": "🎮 Major video game dev hub",
+      "fr": "Pôle jeu vidéo majeur",
+      "es": "Centro mayor de videojuegos"
+    },
+    "pc_esports_top": {
+      "en": "🎮 Major esports tournament host",
+      "fr": "Hôte de tournois esports",
+      "es": "Anfitrión de torneos esports"
+    },
+    "pc_unicorn_startup_dense": {
+      "en": "🚀 Top startup ecosystem",
+      "fr": "Top écosystème startup",
+      "es": "Top ecosistema startup"
+    },
+    "pc_silicon_X": {
+      "en": "💻 Self-styled \"Silicon X\" nickname",
+      "fr": "Surnom « Silicon X »",
+      "es": "Apodo «Silicon X»"
+    },
+    "pc_3plus_national_parks": {
+      "en": "🏞️ Has 3+ National Parks",
+      "fr": "3+ parcs nationaux",
+      "es": "3+ parques nacionales"
+    },
+    "pc_pair_with_neighbor": {
+      "en": "🤜🤛 In a famous neighbor-state rivalry",
+      "fr": "Rivalité entre États voisins",
+      "es": "Rivalidad entre estados vecinos"
+    },
+    "pc_iconic_sandwich": {
+      "en": "🥪 Has a signature regional sandwich",
+      "fr": "Sandwich régional signature",
+      "es": "Sándwich regional con firma"
+    },
+    "pc_hot_chicken_culture": {
+      "en": "🔥 Spicy fried chicken tradition",
+      "fr": "Tradition du poulet épicé",
+      "es": "Tradición de pollo picante"
+    },
+    "pc_iconic_pie": {
+      "en": "🥧 Has an iconic regional pie",
+      "fr": "Tarte régionale célèbre",
+      "es": "Tarta regional famosa"
+    },
+    "pc_iconic_cocktail": {
+      "en": "🍹 Has a signature cocktail named after it",
+      "fr": "Cocktail régional",
+      "es": "Cóctel regional con firma"
+    },
+    "pc_oyster_country": {
+      "en": "🦪 Famous oyster region",
+      "fr": "Pays de l'huître",
+      "es": "Tierra de la ostra"
+    },
+    "pc_blueberry_country": {
+      "en": "🫐 Top blueberry producer",
+      "fr": "Pays de la myrtille",
+      "es": "Tierra del arándano"
+    },
+    "pc_cherry_country": {
+      "en": "🍒 Top cherry producer",
+      "fr": "Pays de la cerise",
+      "es": "Tierra de la cereza"
+    },
+    "pc_pecan_country": {
+      "en": "🌰 Top pecan producer",
+      "fr": "Pays de la pacane",
+      "es": "Tierra de la pacana"
+    },
+    "pc_peach_country": {
+      "en": "🍑 Top peach producer",
+      "fr": "Pays de la pêche",
+      "es": "Tierra del melocotón"
+    },
+    "pc_cranberry_country": {
+      "en": "🫘 Top cranberry producer",
+      "fr": "Pays de la canneberge",
+      "es": "Tierra del arándano rojo"
+    },
+    "pc_strawberry_country": {
+      "en": "🍓 Top strawberry producer",
+      "fr": "Pays de la fraise",
+      "es": "Tierra de la fresa"
+    },
+    "pc_bourbon_distillery": {
+      "en": "🥃 Has multiple bourbon distilleries",
+      "fr": "Plusieurs distilleries de bourbon",
+      "es": "Múltiples destilerías de bourbon"
+    },
+    "pc_iconic_brewery": {
+      "en": "🍺 Home to an iconic legacy brewery",
+      "fr": "Brasserie légendaire",
+      "es": "Cervecería legendaria"
+    },
+    "pc_john_hughes_movie": {
+      "en": "🎬 Setting of a John Hughes movie",
+      "fr": "Décor d'un John Hughes",
+      "es": "Escenario de John Hughes"
+    },
+    "pc_christmas_movie": {
+      "en": "🎄 Classic Christmas movie setting",
+      "fr": "Décor d'un film de Noël culte",
+      "es": "Escenario de película navideña"
+    },
+    "pc_teen_movie_classic": {
+      "en": "🎬 Iconic teen movie setting",
+      "fr": "Décor de teen movie culte",
+      "es": "Escenario de teen movie"
+    },
+    "pc_sports_movie": {
+      "en": "🏟️ Iconic sports movie setting",
+      "fr": "Décor de film sportif culte",
+      "es": "Escenario de película deportiva"
+    },
+    "pc_80s_action_movie": {
+      "en": "💥 Classic 80s action movie setting",
+      "fr": "Décor d'action 80's",
+      "es": "Escenario de acción de los 80"
+    },
+    "pc_disaster_movie_set": {
+      "en": "🌋 Disaster movie setting",
+      "fr": "Décor de film catastrophe",
+      "es": "Escenario de película catástrofe"
+    },
+    "pc_noir_film_set": {
+      "en": "🕵️ Classic film noir setting",
+      "fr": "Décor de film noir",
+      "es": "Escenario de film noir"
+    },
+    "pc_coming_of_age": {
+      "en": "🎬 Iconic coming-of-age movie setting",
+      "fr": "Coming-of-age culte",
+      "es": "Película de iniciación icónica"
+    },
+    "pc_political_drama_tv": {
+      "en": "📺 Setting of a major political drama",
+      "fr": "Décor de drama politique",
+      "es": "Escenario de drama político"
+    },
+    "pc_cop_show_setting": {
+      "en": "🚓 Setting of a major cop show",
+      "fr": "Décor de série policière",
+      "es": "Escenario de serie policial"
+    },
+    "pc_medical_drama_set": {
+      "en": "🏥 Setting of a medical TV drama",
+      "fr": "Décor de série médicale",
+      "es": "Escenario de drama médico"
+    },
+    "pc_courtroom_show": {
+      "en": "⚖️ Setting of a major courtroom show",
+      "fr": "Décor de série juridique",
+      "es": "Escenario de serie judicial"
+    },
+    "pc_legal_drama_setting": {
+      "en": "📺 Major legal drama setting",
+      "fr": "Drama juridique majeur",
+      "es": "Drama legal mayor"
+    },
+    "pc_supernatural_tv": {
+      "en": "👻 Iconic supernatural TV setting",
+      "fr": "Série fantastique culte",
+      "es": "Serie sobrenatural icónica"
+    },
+    "pc_cartoon_setting": {
+      "en": "🎨 Iconic animated/cartoon setting",
+      "fr": "Décor d'animation culte",
+      "es": "Escenario de dibujo animado"
+    },
+    "pc_anthology_horror_tv": {
+      "en": "😱 Anthology horror TV setting",
+      "fr": "Anthologie horreur TV",
+      "es": "Antología horror TV"
+    },
+    "pc_western_tv": {
+      "en": "🤠 Setting of a classic Western TV",
+      "fr": "Décor de western TV",
+      "es": "Escenario de western TV"
+    },
+    "pc_birthplace_diva_pop": {
+      "en": "👑 Birthed an iconic pop diva",
+      "fr": "Diva pop née ici",
+      "es": "Cuna de diva pop"
+    },
+    "pc_birthplace_jazz_great": {
+      "en": "🎺 Birthed a jazz legend",
+      "fr": "Légende du jazz née ici",
+      "es": "Leyenda del jazz"
+    },
+    "pc_birthplace_blues_great": {
+      "en": "🎷 Birthed a blues legend",
+      "fr": "Légende du blues née ici",
+      "es": "Leyenda del blues"
+    },
+    "pc_birthplace_metal_band": {
+      "en": "🤘 Birthed a major metal band",
+      "fr": "Groupe métal majeur né ici",
+      "es": "Grupo metal mayor"
+    },
+    "pc_birthplace_emo_band": {
+      "en": "🖤 Birthed an emo / pop-punk band",
+      "fr": "Groupe emo / pop-punk",
+      "es": "Grupo emo / pop-punk"
+    },
+    "pc_birthplace_rb_singer": {
+      "en": "🎤 Birthed an R&B icon",
+      "fr": "Icône R&B née ici",
+      "es": "Ícono R&B"
+    },
+    "pc_americana_artist": {
+      "en": "🪕 Americana / folk artist origin",
+      "fr": "Origine artiste folk / americana",
+      "es": "Origen folk / americana"
+    },
+    "pc_drag_show_scene": {
+      "en": "🌈 Strong drag scene (RuPaul-tour)",
+      "fr": "Scène drag forte",
+      "es": "Escena drag fuerte"
+    },
+    "pc_woodstock_legacy": {
+      "en": "🎵 Hosted a Woodstock-style festival",
+      "fr": "Festival type Woodstock",
+      "es": "Festival tipo Woodstock"
+    },
+    "pc_one_hit_wonder_band": {
+      "en": "🎸 Birthed a famous one-hit-wonder band",
+      "fr": "Tube d'un coup",
+      "es": "One-hit-wonder"
+    },
+    "pc_5plus_super_bowl_apps": {
+      "en": "🏈 5+ Super Bowl appearances",
+      "fr": "5+ apparitions au Super Bowl",
+      "es": "5+ apariciones Super Bowl"
+    },
+    "pc_4plus_world_series": {
+      "en": "⚾ 4+ World Series wins",
+      "fr": "4+ titres MLB",
+      "es": "4+ títulos MLB"
+    },
+    "pc_top_nfl_qb_origin": {
+      "en": "🏈 Top NFL QB hails from here",
+      "fr": "État natal de QB NFL star",
+      "es": "Cuna de QB NFL estrella"
+    },
+    "pc_nba_dynasty_state": {
+      "en": "🏀 Has hosted an NBA dynasty",
+      "fr": "Dynastie NBA",
+      "es": "Dinastía NBA"
+    },
+    "pc_pga_major_host": {
+      "en": "⛳ Has hosted a PGA major",
+      "fr": "A organisé un Major PGA",
+      "es": "Organizó un Major PGA"
+    },
+    "pc_us_open_tennis_host": {
+      "en": "🎾 Has hosted a Grand Slam tennis event",
+      "fr": "A organisé un Grand Slam",
+      "es": "Organizó un Grand Slam"
+    },
+    "pc_major_marathon": {
+      "en": "🏃 Hosts a World Marathon Major",
+      "fr": "Marathon majeur",
+      "es": "Maratón mayor"
+    },
+    "pc_high_school_football": {
+      "en": "🏈 High school football is a religion",
+      "fr": "Football lycée = religion",
+      "es": "Fútbol HS = religión"
+    },
+    "pc_hockey_culture": {
+      "en": "🏒 Strong hockey heritage culture",
+      "fr": "Culture hockey forte",
+      "es": "Cultura hockey fuerte"
+    },
+    "pc_lacrosse_hotbed": {
+      "en": "🥍 Lacrosse hotbed",
+      "fr": "Pôle lacrosse",
+      "es": "Centro de lacrosse"
+    },
+    "pc_rodeo_culture": {
+      "en": "🤠 Major rodeo culture",
+      "fr": "Culture rodéo majeure",
+      "es": "Cultura rodeo mayor"
+    },
+    "pc_iditarod_sled": {
+      "en": "🛷 Sled dog racing culture",
+      "fr": "Culture courses de traîneau",
+      "es": "Cultura trineos"
+    },
+    "pc_surf_culture": {
+      "en": "🏄 Surf culture",
+      "fr": "Culture surf",
+      "es": "Cultura del surf"
+    },
+    "pc_skater_culture": {
+      "en": "🛹 Major skateboarding scene",
+      "fr": "Scène skate majeure",
+      "es": "Escena skate mayor"
+    },
+    "pc_sea_turtle_nesting": {
+      "en": "🐢 Sea turtle nesting beaches",
+      "fr": "Nidification tortues marines",
+      "es": "Anidación tortugas marinas"
+    },
+    "pc_iconic_state_animal": {
+      "en": "🐾 State animal is iconic in pop culture",
+      "fr": "Animal d'État iconique",
+      "es": "Animal estatal icónico"
+    },
+    "pc_hot_springs": {
+      "en": "♨️ Famous natural hot springs",
+      "fr": "Sources chaudes célèbres",
+      "es": "Aguas termales famosas"
+    },
+    "pc_redwood_forest": {
+      "en": "🌲 Has a major redwood/sequoia forest",
+      "fr": "Forêts de séquoias",
+      "es": "Bosques de secuoyas"
+    },
+    "pc_geyser_field": {
+      "en": "💨 Has geysers / volcanic activity",
+      "fr": "Geysers / activité volcanique",
+      "es": "Géiseres / actividad volcánica"
+    },
+    "pc_petrified_forest": {
+      "en": "🪵 Famous petrified forest",
+      "fr": "Forêt pétrifiée",
+      "es": "Bosque petrificado"
+    },
+    "pc_iconic_mountain_peak": {
+      "en": "⛰️ Has a famous named peak",
+      "fr": "Sommet emblématique",
+      "es": "Pico emblemático"
+    },
+    "pc_long_river_state": {
+      "en": "🏞️ Bordered by major US river",
+      "fr": "Frontière fluviale majeure",
+      "es": "Frontera fluvial mayor"
+    },
+    "pc_big_lake": {
+      "en": "🌊 Has a Great Lake OR major freshwater lake",
+      "fr": "Grands Lacs ou grand lac",
+      "es": "Gran lago"
+    },
+    "pc_canyon_country": {
+      "en": "🏜️ Famous canyon landscape",
+      "fr": "Canyons célèbres",
+      "es": "Cañones famosos"
+    },
+    "pc_desert_landscape": {
+      "en": "🌵 Major desert landscape",
+      "fr": "Paysage désertique majeur",
+      "es": "Paisaje desértico mayor"
+    },
+    "pc_first_state_park": {
+      "en": "🌳 Site of an early national park (pre-1900)",
+      "fr": "Premier parc national",
+      "es": "Primer parque nacional"
+    },
+    "pc_first_state_women_vote": {
+      "en": "🗳️ Early to grant women's suffrage",
+      "fr": "Précurseur droit de vote des femmes",
+      "es": "Pionero sufragio femenino"
+    },
+    "pc_first_state_legal_cannabis": {
+      "en": "🌿 Pioneer in cannabis legalization",
+      "fr": "Pionnier cannabis légal",
+      "es": "Pionero cannabis legal"
+    },
+    "pc_revolutionary_battle": {
+      "en": "⚔️ Site of a Revolutionary War battle",
+      "fr": "Site d'une bataille de la Révolution",
+      "es": "Sitio de batalla revolucionaria"
+    },
+    "pc_civil_war_battle_major": {
+      "en": "⚔️ Site of a major Civil War battle",
+      "fr": "Site de bataille majeure",
+      "es": "Sitio de batalla mayor"
+    },
+    "pc_war_of_1812_site": {
+      "en": "⚔️ War of 1812 battlefield",
+      "fr": "Champ de bataille 1812",
+      "es": "Campo de batalla de 1812"
+    },
+    "pc_underground_rr_station": {
+      "en": "🚂 Underground Railroad station",
+      "fr": "Étape du chemin de fer clandestin",
+      "es": "Estación del Underground RR"
+    },
+    "pc_lewis_clark_route": {
+      "en": "🧭 On the Lewis & Clark expedition",
+      "fr": "Sur l'itinéraire Lewis et Clark",
+      "es": "En la ruta Lewis y Clark"
+    },
+    "pc_oregon_trail_route": {
+      "en": "🐂 On the Oregon Trail route",
+      "fr": "Sur la Piste de l'Oregon",
+      "es": "En el Oregon Trail"
+    },
+    "pc_iconic_explorer_route": {
+      "en": "🧭 On a famous explorer's historical route",
+      "fr": "Itinéraire d'explorateur",
+      "es": "Ruta de explorador"
+    },
+    "pc_gold_rush_era": {
+      "en": "⛏️ 19th-century gold rush state",
+      "fr": "Ruée vers l'or au 19e",
+      "es": "Fiebre del oro del siglo 19"
+    },
+    "pc_flw_buildings": {
+      "en": "🏛️ Has a Frank Lloyd Wright building",
+      "fr": "Bâtiment de Frank Lloyd Wright",
+      "es": "Edificio de Frank Lloyd Wright"
+    },
+    "pc_art_deco_district": {
+      "en": "🏙️ Iconic Art Deco district",
+      "fr": "Quartier Art Déco",
+      "es": "Distrito Art Déco"
+    },
+    "pc_spanish_mission_arch": {
+      "en": "⛪ Spanish Mission architecture",
+      "fr": "Architecture missions espagnoles",
+      "es": "Arquitectura misión española"
+    },
+    "pc_skyline_5plus_tall": {
+      "en": "🏙️ Skyline with 5+ skyscrapers ≥250 m",
+      "fr": "Skyline avec 5+ gratte-ciel ≥250m",
+      "es": "Skyline con 5+ rascacielos"
+    },
+    "pc_iconic_bridge": {
+      "en": "🌉 Iconic American bridge",
+      "fr": "Pont américain iconique",
+      "es": "Puente icónico"
+    },
+    "pc_historic_train_ride": {
+      "en": "🚂 Iconic scenic train ride",
+      "fr": "Train touristique mythique",
+      "es": "Tren panorámico icónico"
+    },
+    "pc_underground_subway": {
+      "en": "🚇 Has a subway / metro system",
+      "fr": "A un métro",
+      "es": "Tiene metro"
+    },
+    "pc_amtrak_corridor": {
+      "en": "🚆 On the Northeast Corridor (Amtrak)",
+      "fr": "Sur le Northeast Corridor",
+      "es": "En el Northeast Corridor"
+    },
+    "pc_smithsonian_branch": {
+      "en": "🏛️ Has a Smithsonian museum branch",
+      "fr": "A un musée Smithsonian",
+      "es": "Tiene museo Smithsonian"
+    },
+    "pc_pop_art_legacy": {
+      "en": "🎨 Major pop art / pop culture museum",
+      "fr": "Musée pop art / pop culture",
+      "es": "Museo pop art / cultura pop"
+    },
+    "pc_modern_art_top": {
+      "en": "🖼️ Top-tier modern art museum",
+      "fr": "Musée d'art moderne majeur",
+      "es": "Museo de arte moderno mayor"
+    },
+    "pc_5plus_top100_unis": {
+      "en": "🎓 5+ top-100 universities",
+      "fr": "5+ universités top 100",
+      "es": "5+ universidades top 100"
+    },
+    "pc_top_journalism": {
+      "en": "📰 Top-10 journalism school",
+      "fr": "Top 10 école de journalisme",
+      "es": "Top 10 periodismo"
+    },
+    "pc_top_film_school": {
+      "en": "🎬 Top-10 film school",
+      "fr": "Top 10 école de cinéma",
+      "es": "Top 10 escuela de cine"
+    },
+    "pc_top_music_school": {
+      "en": "🎼 Top-10 music conservatory",
+      "fr": "Top 10 conservatoire",
+      "es": "Top 10 conservatorio"
+    },
+    "pc_top_engineering_2": {
+      "en": "🔧 5+ engineering schools in US News top 50",
+      "fr": "5+ écoles ingé top 50",
+      "es": "5+ ingeniería top 50"
+    },
+    "pc_west_point_alum": {
+      "en": "🎖️ Birthed a famous West Point graduate",
+      "fr": "Diplômé West Point célèbre",
+      "es": "Egresado de West Point famoso"
+    },
+    "pc_meteor_crater_site": {
+      "en": "☄️ Famous meteor crater",
+      "fr": "Cratère de météorite",
+      "es": "Cráter de meteorito"
+    },
+    "pc_strong_storm_chaser": {
+      "en": "🌪️ Strong storm-chaser culture",
+      "fr": "Culture chasseurs de tempête",
+      "es": "Cultura cazadores de tormentas"
+    },
+    "pc_hurricane_threat_high": {
+      "en": "🌀 High annual hurricane threat",
+      "fr": "Risque cyclonique élevé",
+      "es": "Alto riesgo de huracán"
+    },
+    "pc_earthquake_threat": {
+      "en": "🌋 Significant earthquake risk",
+      "fr": "Risque sismique notable",
+      "es": "Riesgo sísmico notable"
+    },
+    "pc_high_altitude_state": {
+      "en": "⛰️ Average elevation > 4,000 ft",
+      "fr": "Altitude moyenne >1200m",
+      "es": "Elevación media >1200m"
+    },
+    "pc_strong_hispanic_pop": {
+      "en": "🌮 Strong Hispanic-American heritage",
+      "fr": "Forte présence hispano-américaine",
+      "es": "Fuerte herencia hispano-americana"
+    },
+    "pc_strong_asian_pop": {
+      "en": "🥢 Strong Asian-American heritage",
+      "fr": "Forte présence asio-américaine",
+      "es": "Fuerte herencia asiático-americana"
+    },
+    "pc_french_canadian": {
+      "en": "⚜️ Strong French-Canadian heritage",
+      "fr": "Forte présence franco-canadienne",
+      "es": "Fuerte herencia franco-canadiense"
+    },
+    "pc_cajun_creole": {
+      "en": "🎵 Cajun / Creole cultural legacy",
+      "fr": "Patrimoine cajun / créole",
+      "es": "Herencia cajún / criolla"
+    },
+    "pc_iconic_chinatown": {
+      "en": "🏮 Has an iconic Chinatown",
+      "fr": "Chinatown emblématique",
+      "es": "Chinatown icónico"
+    },
+    "pc_japanese_internment": {
+      "en": "⛓️ Site of WWII Japanese internment camp",
+      "fr": "Camp d'internement WWII",
+      "es": "Campo de internamiento WWII"
+    },
+    "pc_iconic_state_song": {
+      "en": "🎵 State song is widely known nationally",
+      "fr": "Hymne d'État largement connu",
+      "es": "Himno estatal muy conocido"
+    },
+    "pc_country_artist_5plus": {
+      "en": "🎤 5+ Grand Ole Opry inductees",
+      "fr": "5+ membres du Grand Ole Opry",
+      "es": "5+ del Grand Ole Opry"
+    },
+    "pc_top_classical_orch": {
+      "en": "🎻 Top-tier symphony orchestra",
+      "fr": "Orchestre symphonique de premier plan",
+      "es": "Orquesta sinfónica de élite"
+    },
+    "pc_opera_house_major": {
+      "en": "🎭 Major opera house",
+      "fr": "Opéra majeur",
+      "es": "Ópera mayor"
+    },
+    "pc_nightlife_top": {
+      "en": "🍸 Top nightlife destination",
+      "fr": "Top destination vie nocturne",
+      "es": "Top destino vida nocturna"
+    },
+    "pc_iconic_casino_resort": {
+      "en": "🎰 Iconic mega-casino resort",
+      "fr": "Casino-resort emblématique",
+      "es": "Casino-resort icónico"
+    },
+    "pc_late_night_filmed": {
+      "en": "🎙️ Late-night talk show is filmed here",
+      "fr": "Late-night show tourné ici",
+      "es": "Late-night se filma aquí"
+    },
+    "pc_iconic_radio_dj": {
+      "en": "📻 Birthed a legendary radio DJ",
+      "fr": "Animateur radio légendaire",
+      "es": "DJ de radio legendario"
+    },
+    "pc_iconic_comedy_movie": {
+      "en": "🤣 Setting of a classic comedy movie",
+      "fr": "Décor de comédie culte",
+      "es": "Escenario de comedia clásica"
+    },
+    "pc_top_drag_racing": {
+      "en": "🏁 Top NHRA drag racing track",
+      "fr": "Circuit dragster NHRA majeur",
+      "es": "Pista NHRA"
+    },
+    "pc_motorcycle_culture": {
+      "en": "🏍️ Strong motorcycle culture",
+      "fr": "Culture moto forte",
+      "es": "Fuerte cultura motorista"
+    },
+    "pc_sturgis_biker_rally": {
+      "en": "🏍️ Hosts a major biker rally",
+      "fr": "Grand rassemblement motard",
+      "es": "Rally motero mayor"
+    },
+    "pc_classic_car_show": {
+      "en": "🚙 Major classic car culture",
+      "fr": "Culture voitures anciennes",
+      "es": "Cultura coche clásico"
+    },
+    "pc_renaissance_faire": {
+      "en": "🏰 Hosts a major Renaissance Faire",
+      "fr": "Foire Renaissance majeure",
+      "es": "Feria Renacentista"
+    },
+    "pc_haunted_house_tour": {
+      "en": "🎃 Major haunted-house attraction",
+      "fr": "Maison hantée touristique",
+      "es": "Casa embrujada turística"
+    },
+    "pc_furry_convention": {
+      "en": "🐺 Hosts a major furry convention",
+      "fr": "Conv. furry majeure",
+      "es": "Convención furry mayor"
+    },
+    "pc_anime_convention": {
+      "en": "🎌 Hosts a top-10 anime convention",
+      "fr": "Top conv. anime",
+      "es": "Top convención anime"
+    },
+    "pc_comic_con_major": {
+      "en": "🦸 Hosts a major Comic Con",
+      "fr": "Comic Con majeur",
+      "es": "Comic Con mayor"
+    },
+    "pc_iconic_drinking_age": {
+      "en": "🍻 Iconic college party town",
+      "fr": "Ville campus festive",
+      "es": "Ciudad universitaria fiestera"
+    },
+    "pc_food_truck_culture": {
+      "en": "🚚 Vibrant food truck scene",
+      "fr": "Culture food truck",
+      "es": "Cultura food truck"
+    },
+    "pc_thrift_culture": {
+      "en": "🧥 Famous thrift / vintage scene",
+      "fr": "Scène friperie célèbre",
+      "es": "Escena vintage famosa"
+    },
+    "pc_no_self_serve_gas": {
+      "en": "⛽ Can't pump your own gas (some/all)",
+      "fr": "Plein interdit en self",
+      "es": "Sin auto-servicio gasolina"
+    },
+    "pc_iowa_caucus_state": {
+      "en": "🗳️ Holds an early presidential primary",
+      "fr": "Primaire présidentielle précoce",
+      "es": "Primarias presidenciales tempranas"
+    },
+    "pc_oldest_continuous_legislature": {
+      "en": "🏛️ Oldest continuous legislature",
+      "fr": "Plus vieille assemblée",
+      "es": "Asamblea más antigua"
+    },
+    "pc_unique_county_naming": {
+      "en": "🗺️ County governance is unique (parish/borough)",
+      "fr": "Comtés au nom unique",
+      "es": "Condados con nomenclatura única"
+    },
+    "pc_reality_dating_show": {
+      "en": "💕 Setting of a major dating reality",
+      "fr": "Décor d'une téléréalité dating",
+      "es": "Escenario reality de citas"
+    },
+    "pc_amazing_race_start": {
+      "en": "🌍 Hosted Amazing Race start/finish",
+      "fr": "Étape Amazing Race",
+      "es": "Etapa Amazing Race"
+    },
+    "pc_pawn_stars_setting": {
+      "en": "💰 Setting of Pawn Stars",
+      "fr": "Décor de Pawn Stars",
+      "es": "Escenario de Pawn Stars"
+    },
+    "pc_storage_wars_setting": {
+      "en": "📦 Setting of Storage Wars",
+      "fr": "Décor de Storage Wars",
+      "es": "Escenario de Storage Wars"
+    },
+    "pc_thanksgiving_parade": {
+      "en": "🦃 Hosts an iconic Thanksgiving parade",
+      "fr": "Parade de Thanksgiving",
+      "es": "Desfile de Acción de Gracias"
+    },
+    "pc_iconic_4th_of_july": {
+      "en": "🎆 Iconic 4th of July fireworks city",
+      "fr": "Feu d'artifice 4 juillet",
+      "es": "Fuegos del 4 de Julio"
+    },
+    "pc_iconic_new_year": {
+      "en": "🎉 Iconic New Year's Eve event",
+      "fr": "Réveillon du Nouvel An culte",
+      "es": "Fin de Año icónico"
+    },
+    "pc_oktoberfest_celeb": {
+      "en": "🍻 Major Oktoberfest celebration",
+      "fr": "Oktoberfest majeur",
+      "es": "Oktoberfest mayor"
+    },
+    "pc_st_patricks_parade": {
+      "en": "☘️ Major St. Patrick's Day parade",
+      "fr": "Grande parade Saint-Patrick",
+      "es": "Gran desfile San Patricio"
+    },
+    "pc_friday_lights_culture": {
+      "en": "🏈 Friday Night Lights HS culture",
+      "fr": "Culture football HS",
+      "es": "Cultura fútbol HS"
+    },
+    "pc_top10_us_zoo": {
+      "en": "🦓 Has a top-10 US zoo",
+      "fr": "Top 10 zoos US",
+      "es": "Top 10 zoos US"
+    },
+    "pc_major_aquarium": {
+      "en": "🐠 Major public aquarium",
+      "fr": "Aquarium majeur",
+      "es": "Acuario mayor"
+    },
+    "pc_npr_member_strong": {
+      "en": "📻 Strong NPR member station presence",
+      "fr": "Forte présence NPR",
+      "es": "Fuerte presencia NPR"
+    },
+    "pc_iconic_newspaper": {
+      "en": "📰 Has a nationally iconic newspaper",
+      "fr": "Journal national emblématique",
+      "es": "Diario nacional icónico"
+    },
+    "pc_goth_subculture": {
+      "en": "🖤 Notable goth subculture",
+      "fr": "Sous-culture goth",
+      "es": "Subcultura gótica"
+    },
+    "pc_most_pet_friendly": {
+      "en": "🐶 Most pet-friendly state",
+      "fr": "État pet-friendly",
+      "es": "Estado pet-friendly"
+    },
+    "pc_dog_breed_origin": {
+      "en": "🐕 Origin of a recognized US dog breed",
+      "fr": "Origine de race canine US",
+      "es": "Origen de raza canina US"
+    },
+    "pc_strong_southern_drawl": {
+      "en": "🗣️ Strong Southern drawl heritage",
+      "fr": "Accent sudiste prononcé",
+      "es": "Acento sureño fuerte"
+    },
+    "pc_strong_midwest_accent": {
+      "en": "🗣️ Distinct Midwestern accent",
+      "fr": "Accent midwest distinct",
+      "es": "Acento medioeste distintivo"
+    },
+    "pc_strong_ne_accent": {
+      "en": "🗣️ Strong East-Coast accent",
+      "fr": "Accent Côte Est",
+      "es": "Acento costa este"
+    },
+    "pc_top_wind_power": {
+      "en": "💨 Top wind-power producing state",
+      "fr": "Top éolien",
+      "es": "Top eólica"
+    },
+    "pc_top_solar_power": {
+      "en": "☀️ Top solar-power producing state",
+      "fr": "Top solaire",
+      "es": "Top solar"
+    },
+    "pc_top_hydro_power": {
+      "en": "💧 Top hydroelectric producer",
+      "fr": "Top hydroélectricité",
+      "es": "Top hidroeléctrica"
+    },
+    "pc_top_nuclear_power": {
+      "en": "⚛️ Top nuclear power producer",
+      "fr": "Top nucléaire",
+      "es": "Top nuclear"
+    },
+    "pc_chess_club_strong": {
+      "en": "♟️ Strong chess tournament tradition",
+      "fr": "Tradition d'échecs",
+      "es": "Tradición de ajedrez"
+    },
+    "pc_iconic_spelling_bee": {
+      "en": "🐝 Birthed multiple Scripps Spelling Bee champions",
+      "fr": "Plusieurs champions Spelling Bee",
+      "es": "Múltiples campeones Spelling Bee"
+    },
+    "pc_top_robotics_team": {
+      "en": "🤖 Strong high-school robotics culture",
+      "fr": "Culture robotique scolaire",
+      "es": "Cultura robótica escolar"
+    },
+    "pc_iconic_summer_carnival": {
+      "en": "🎡 Iconic summer carnival/boardwalk",
+      "fr": "Carnaval estival célèbre",
+      "es": "Carnaval/paseo de verano"
+    },
+    "pc_iconic_water_park": {
+      "en": "💦 Iconic water park",
+      "fr": "Parc aquatique célèbre",
+      "es": "Parque acuático icónico"
+    },
+    "pc_classic_hiphop_label": {
+      "en": "🎤 Home of an iconic hip-hop label",
+      "fr": "Label hip-hop iconique",
+      "es": "Sello hip-hop icónico"
+    },
+    "pc_iconic_trap_scene": {
+      "en": "🎤 Birthed the trap-music scene",
+      "fr": "Berceau de la trap",
+      "es": "Cuna del trap"
+    },
+    "pc_tex_mex_culture": {
+      "en": "🌮 Tex-Mex culinary stronghold",
+      "fr": "Bastion Tex-Mex",
+      "es": "Bastión Tex-Mex"
+    },
+    "pc_chinese_takeout": {
+      "en": "🥡 Iconic Chinese-takeout culture",
+      "fr": "Culture de la livraison chinoise",
+      "es": "Cultura comida china a domicilio"
+    },
+    "pc_strong_civil_war_lore": {
+      "en": "⚔️ Strong Civil War heritage tourism",
+      "fr": "Tourisme guerre de Sécession",
+      "es": "Turismo Guerra Civil"
+    },
+    "pc_strong_wwi_wwii_memorial": {
+      "en": "🪖 Major WWI / WWII memorial site",
+      "fr": "Mémorial WWI / WWII majeur",
+      "es": "Memorial WWI / WWII mayor"
+    },
+    "pc_top_birding_dest": {
+      "en": "🦜 Top birding destination",
+      "fr": "Top destination ornithologique",
+      "es": "Top destino ornitológico"
+    },
+    "pc_stargazing_top": {
+      "en": "🌌 Designated International Dark Sky Place",
+      "fr": "Réserve de ciel étoilé",
+      "es": "Reserva de cielo estrellado"
+    },
+    "pc_disney_park_state": {
+      "en": "🏰 Has a Disney park or studio",
+      "fr": "Parc ou studio Disney",
+      "es": "Parque o estudio Disney"
+    },
+    "pc_iconic_lighthouse_state": {
+      "en": "🗼 Famous for its lighthouses",
+      "fr": "Connu pour ses phares",
+      "es": "Famoso por sus faros"
+    },
+    "pc_top_cinco_de_mayo": {
+      "en": "🎉 Major Cinco de Mayo celebration",
+      "fr": "Grande fête de Cinco de Mayo",
+      "es": "Gran celebración Cinco de Mayo"
+    },
+    "pc_iconic_zoo_animal": {
+      "en": "🐼 Has hosted a famous zoo animal (panda, gorilla, etc.)",
+      "fr": "Animal zoo célèbre",
+      "es": "Animal de zoo famoso"
+    },
+    "pc_iconic_train_station": {
+      "en": "🚉 Iconic historic train station",
+      "fr": "Gare historique emblématique",
+      "es": "Estación histórica icónica"
+    },
+    "pc_state_quarter_unique": {
+      "en": "🪙 State quarter design considered iconic",
+      "fr": "Quarter d'État iconique",
+      "es": "Quarter estatal icónico"
+    },
+    "pc_iconic_state_dessert": {
+      "en": "🍰 Iconic state-named dessert",
+      "fr": "Dessert régional iconique",
+      "es": "Postre regional icónico"
+    },
+    "pc_signature_state_song": {
+      "en": "🎶 Has a song that everyone associates with it",
+      "fr": "Chanson signature",
+      "es": "Canción característica"
+    },
+    "pc_iconic_state_smell": {
+      "en": "👃 State has an iconic regional smell (BBQ smoke, bourbon, ocean...)",
+      "fr": "Odeur régionale",
+      "es": "Olor regional"
+    },
+    "pc_iconic_state_color": {
+      "en": "🎨 State has an iconic color association",
+      "fr": "Couleur associée",
+      "es": "Color asociado"
+    },
+    "pc_thrift_store_culture": {
+      "en": "🧥 Thrift store / flea market culture",
+      "fr": "Brocantes / friperies",
+      "es": "Mercadillos / vintage"
+    },
+    "pc_movie_spielberg": {
+      "en": "🎬 Setting of a Spielberg film",
+      "fr": "Décor d'un Spielberg",
+      "es": "Escenario de un Spielberg"
+    },
+    "pc_movie_scorsese": {
+      "en": "🎬 Setting of a Scorsese film",
+      "fr": "Décor d'un Scorsese",
+      "es": "Escenario de Scorsese"
+    },
+    "pc_movie_lynch": {
+      "en": "🎬 Setting of a David Lynch film",
+      "fr": "Décor d'un Lynch",
+      "es": "Escenario de Lynch"
+    },
+    "pc_movie_anderson_wes": {
+      "en": "🎬 Setting of a Wes Anderson film",
+      "fr": "Décor de Wes Anderson",
+      "es": "Escenario de Wes Anderson"
+    },
+    "pc_movie_eastwood": {
+      "en": "🎬 Setting of a Clint Eastwood film",
+      "fr": "Décor d'un Eastwood",
+      "es": "Escenario de Eastwood"
+    },
+    "pc_movie_kubrick_us": {
+      "en": "🎬 US setting of a Kubrick film",
+      "fr": "Décor US de Kubrick",
+      "es": "Escenario US de Kubrick"
+    },
+    "pc_movie_indiana_road": {
+      "en": "🎬 Road movie classic route",
+      "fr": "Route de road movie",
+      "es": "Ruta road movie"
+    },
+    "pc_movie_oscar_dp": {
+      "en": "🎬 Setting of an Oscar Best Picture (last 10y)",
+      "fr": "Décor Best Picture 10 dernières années",
+      "es": "Best Picture 10 años"
+    },
+    "pc_movie_marvel_loc": {
+      "en": "🦸 Filmed at major Marvel studios",
+      "fr": "Tournage Marvel",
+      "es": "Rodaje Marvel"
+    },
+    "pc_movie_dc_setting": {
+      "en": "🦇 Setting of a DC comics film (real loc)",
+      "fr": "Décor de film DC",
+      "es": "Escenario de película DC"
+    },
+    "pc_movie_pixar_inspo": {
+      "en": "🎬 Visual inspiration for a Pixar film",
+      "fr": "Inspiration visuelle Pixar",
+      "es": "Inspiración visual Pixar"
+    },
+    "pc_movie_horror_classic": {
+      "en": "🔪 Setting of a horror classic (Friday/Halloween/Scream)",
+      "fr": "Décor horreur culte",
+      "es": "Escenario horror clásico"
+    },
+    "pc_movie_action_classic": {
+      "en": "💥 Setting of an action classic",
+      "fr": "Décor d'action classique",
+      "es": "Escenario acción clásica"
+    },
+    "pc_movie_animation_loc": {
+      "en": "🎬 Setting of a major animated feature",
+      "fr": "Décor d'un film d'animation",
+      "es": "Escenario animado"
+    },
+    "pc_movie_thriller_loc": {
+      "en": "🔍 Setting of a thriller blockbuster",
+      "fr": "Décor d'un thriller blockbuster",
+      "es": "Escenario thriller mayor"
+    },
+    "pc_tv_lost_setting": {
+      "en": "📺 Setting of LOST flashbacks",
+      "fr": "Flashbacks Lost",
+      "es": "Flashbacks de Lost"
+    },
+    "pc_tv_madmen_era": {
+      "en": "📺 Mad Men flashback locations",
+      "fr": "Flashbacks Mad Men",
+      "es": "Flashbacks Mad Men"
+    },
+    "pc_tv_curb_setting": {
+      "en": "📺 Curb Your Enthusiasm setting",
+      "fr": "Décor Curb",
+      "es": "Escenario Curb"
+    },
+    "pc_tv_grey_anatomy": {
+      "en": "🏥 Grey's Anatomy setting",
+      "fr": "Décor Grey's Anatomy",
+      "es": "Escenario Grey's Anatomy"
+    },
+    "pc_tv_modernfamily": {
+      "en": "📺 Modern Family setting",
+      "fr": "Décor Modern Family",
+      "es": "Escenario Modern Family"
+    },
+    "pc_tv_parks_recreation": {
+      "en": "📺 Parks & Rec setting",
+      "fr": "Décor Parks & Rec",
+      "es": "Escenario Parks & Rec"
+    },
+    "pc_tv_community": {
+      "en": "📺 Community setting",
+      "fr": "Décor Community",
+      "es": "Escenario Community"
+    },
+    "pc_tv_succession_real": {
+      "en": "📺 Succession setting",
+      "fr": "Décor Succession",
+      "es": "Escenario Succession"
+    },
+    "pc_tv_white_lotus": {
+      "en": "🌴 White Lotus seasons",
+      "fr": "Saisons White Lotus",
+      "es": "Temporadas White Lotus"
+    },
+    "pc_tv_severance_filmed": {
+      "en": "📺 Severance setting (Lumon HQ)",
+      "fr": "Lumon HQ Severance",
+      "es": "Sede Lumon Severance"
+    },
+    "pc_tv_andor_us_loc": {
+      "en": "📺 Star Wars Andor US filming",
+      "fr": "Tournages Andor US",
+      "es": "Rodaje Andor US"
+    },
+    "pc_tv_wednesday_filmed": {
+      "en": "🖤 Wednesday Addams setting",
+      "fr": "Décor Wednesday",
+      "es": "Escenario Wednesday"
+    },
+    "pc_tv_dahmer_setting": {
+      "en": "📺 Dahmer (Netflix) setting",
+      "fr": "Décor Dahmer",
+      "es": "Escenario Dahmer"
+    },
+    "pc_tv_squidgame_set": {
+      "en": "📺 Squid Game (US filming)",
+      "fr": "Tournages Squid Game US",
+      "es": "Rodaje Squid Game US"
+    },
+    "pc_tv_west_wing": {
+      "en": "📺 West Wing setting",
+      "fr": "Décor West Wing",
+      "es": "Escenario West Wing"
+    },
+    "pc_tv_handmaids_tale": {
+      "en": "📺 Handmaid's Tale (US setting)",
+      "fr": "Décor Handmaid's Tale",
+      "es": "Escenario Handmaid's Tale"
+    },
+    "pc_tv_ted_lasso_us": {
+      "en": "⚽ Ted Lasso US callbacks",
+      "fr": "Rappels US Ted Lasso",
+      "es": "Referencias US Ted Lasso"
+    },
+    "pc_music_outkast_origin": {
+      "en": "🎤 Birthed OutKast / Atlanta hip-hop",
+      "fr": "OutKast / Atlanta hip-hop",
+      "es": "OutKast / Atlanta hip-hop"
+    },
+    "pc_music_motown_artists": {
+      "en": "🎤 Major Motown artist origin",
+      "fr": "Origine artiste Motown",
+      "es": "Origen artista Motown"
+    },
+    "pc_music_grunge_artists": {
+      "en": "🎸 Major grunge band origin",
+      "fr": "Origine groupe grunge",
+      "es": "Origen grupo grunge"
+    },
+    "pc_music_doomtree": {
+      "en": "🎤 Major underground hip-hop label",
+      "fr": "Label hip-hop underground",
+      "es": "Sello hip-hop underground"
+    },
+    "pc_music_americana_arts": {
+      "en": "🎤 Major Americana artist origin",
+      "fr": "Origine americana",
+      "es": "Origen americana"
+    },
+    "pc_music_taylor_swift": {
+      "en": "🎤 Taylor Swift Eras Tour stops",
+      "fr": "Stops Eras Tour",
+      "es": "Eras Tour stops"
+    },
+    "pc_music_beyonce_tour": {
+      "en": "🎤 Beyoncé Renaissance Tour US stops",
+      "fr": "Stops Renaissance Tour",
+      "es": "Renaissance Tour stops"
+    },
+    "pc_music_rolling_stones": {
+      "en": "🎤 Rolling Stones US tour favorite",
+      "fr": "Tournée US Stones",
+      "es": "Gira US Stones"
+    },
+    "pc_music_dylan_song": {
+      "en": "🎤 Subject of a Bob Dylan song",
+      "fr": "Sujet d'une chanson Dylan",
+      "es": "Sujeto canción Dylan"
+    },
+    "pc_music_springsteen": {
+      "en": "🎤 Subject of a Springsteen song",
+      "fr": "Sujet d'une chanson Springsteen",
+      "es": "Sujeto canción Springsteen"
+    },
+    "pc_music_country_anthem": {
+      "en": "🎤 Has a famous country state-anthem",
+      "fr": "Hymne country régional",
+      "es": "Himno country regional"
+    },
+    "pc_music_beach_boys": {
+      "en": "🎤 Beach Boys song setting",
+      "fr": "Décor de Beach Boys",
+      "es": "Escenario Beach Boys"
+    },
+    "pc_music_eagles_song": {
+      "en": "🎤 Eagles song subject",
+      "fr": "Sujet d'Eagles",
+      "es": "Sujeto canción Eagles"
+    },
+    "pc_born_president_post60": {
+      "en": "🏛️ Birth state of a post-1960 US president",
+      "fr": "Naissance président post-1960",
+      "es": "Cuna presidente post-1960"
+    },
+    "pc_born_vice_president": {
+      "en": "🏛️ Birth state of a Vice President",
+      "fr": "Naissance VP",
+      "es": "Cuna VP"
+    },
+    "pc_born_supreme_court": {
+      "en": "⚖️ Birth state of a Supreme Court Justice",
+      "fr": "Naissance Cour suprême",
+      "es": "Cuna Corte Suprema"
+    },
+    "pc_born_speaker_house": {
+      "en": "🏛️ Birth state of a House Speaker",
+      "fr": "Naissance Speaker",
+      "es": "Cuna Speaker"
+    },
+    "pc_born_first_lady": {
+      "en": "👑 Birth state of a First Lady",
+      "fr": "Naissance First Lady",
+      "es": "Cuna First Lady"
+    },
+    "pc_born_grammy_lifetime": {
+      "en": "🎤 Birth state of a Grammy Lifetime Achievement winner",
+      "fr": "Lifetime Achievement Grammy",
+      "es": "Lifetime Grammy"
+    },
+    "pc_born_rock_hof": {
+      "en": "🎸 Birth state of a Rock & Roll HoF inductee",
+      "fr": "Inductee R&R HoF",
+      "es": "Inductee R&R HoF"
+    },
+    "pc_born_bball_hof": {
+      "en": "🏀 Birth state of a Basketball HoF inductee",
+      "fr": "Naissance Basketball HoF",
+      "es": "Cuna Basketball HoF"
+    },
+    "pc_born_fb_hof_qb": {
+      "en": "🏈 Birth state of a Football HoF QB",
+      "fr": "QB Hall of Fame",
+      "es": "QB Hall of Fame"
+    },
+    "pc_born_mlb_hof_pitcher": {
+      "en": "⚾ Birth state of a MLB HoF pitcher",
+      "fr": "Pitcher MLB HoF",
+      "es": "Pitcher MLB HoF"
+    },
+    "pc_born_olympic_swimmer": {
+      "en": "🏊 Birth state of a US Olympic swimmer",
+      "fr": "Nageur olympique US",
+      "es": "Nadador olímpico US"
+    },
+    "pc_born_olympic_gymnast": {
+      "en": "🤸 Birth state of a US Olympic gymnast",
+      "fr": "Gymnaste olympique US",
+      "es": "Gimnasta olímpica US"
+    },
+    "pc_born_nba_mvp": {
+      "en": "🏀 Birth state of an NBA MVP",
+      "fr": "MVP NBA né ici",
+      "es": "MVP NBA"
+    },
+    "pc_born_nfl_mvp": {
+      "en": "🏈 Birth state of an NFL MVP",
+      "fr": "MVP NFL né ici",
+      "es": "MVP NFL"
+    },
+    "pc_born_mlb_mvp": {
+      "en": "⚾ Birth state of an MLB MVP",
+      "fr": "MVP MLB né ici",
+      "es": "MVP MLB"
+    },
+    "pc_born_nhl_mvp_us": {
+      "en": "🏒 Birth state of a US-born NHL MVP",
+      "fr": "MVP NHL US né ici",
+      "es": "MVP NHL US"
+    },
+    "pc_born_oscar_actor": {
+      "en": "🏆 Birth state of an Oscar Best Actor winner",
+      "fr": "Oscar Meilleur Acteur",
+      "es": "Oscar Mejor Actor"
+    },
+    "pc_born_oscar_actress": {
+      "en": "🏆 Birth state of an Oscar Best Actress winner",
+      "fr": "Oscar Meilleure Actrice",
+      "es": "Oscar Mejor Actriz"
+    },
+    "pc_born_authors_top": {
+      "en": "📚 Birth state of a top American novelist",
+      "fr": "Romancier US top",
+      "es": "Novelista US top"
+    },
+    "pc_born_journalists_top": {
+      "en": "📰 Birth state of a Pulitzer journalist",
+      "fr": "Pulitzer journaliste",
+      "es": "Pulitzer periodista"
+    },
+    "pc_born_chefs_top": {
+      "en": "👨‍🍳 Birth state of a top US chef",
+      "fr": "Chef US top",
+      "es": "Chef US top"
+    },
+    "pc_born_comedians_top": {
+      "en": "🎙️ Birth state of a top stand-up",
+      "fr": "Comique top",
+      "es": "Cómico top"
+    },
+    "pc_born_late_night_hosts": {
+      "en": "🎙️ Birth state of a late-night host",
+      "fr": "Animateur late-night",
+      "es": "Presentador late-night"
+    },
+    "pc_yosemite_state": {
+      "en": "🏞️ Has Yosemite (or major park)",
+      "fr": "Yosemite ou parc majeur",
+      "es": "Yosemite o parque mayor"
+    },
+    "pc_zion_acadia_states": {
+      "en": "🏞️ Has Zion, Bryce, Acadia or similar",
+      "fr": "Zion / Bryce / Acadia",
+      "es": "Zion / Bryce / Acadia"
+    },
+    "pc_redwood_giant_trees": {
+      "en": "🌲 Famous for giant trees",
+      "fr": "Connu pour ses arbres géants",
+      "es": "Famoso por árboles gigantes"
+    },
+    "pc_volcano_active": {
+      "en": "🌋 Has an active volcano",
+      "fr": "Volcan actif",
+      "es": "Volcán activo"
+    },
+    "pc_glacier_park": {
+      "en": "❄️ Famous for glaciers",
+      "fr": "Connu pour ses glaciers",
+      "es": "Famoso por glaciares"
+    },
+    "pc_geyser_active": {
+      "en": "💨 Active geysers",
+      "fr": "Geysers actifs",
+      "es": "Géiseres activos"
+    },
+    "pc_swamp_marsh_iconic": {
+      "en": "🐊 Iconic swamp / wetland",
+      "fr": "Marais iconique",
+      "es": "Pantano icónico"
+    },
+    "pc_great_plains_main": {
+      "en": "🌾 Heart of the Great Plains",
+      "fr": "Cœur des Grandes Plaines",
+      "es": "Corazón Grandes Llanuras"
+    },
+    "pc_appalachian_back": {
+      "en": "⛰️ Appalachian backbone state",
+      "fr": "Colonne vertébrale Appalaches",
+      "es": "Columna Apalaches"
+    },
+    "pc_rockies_state": {
+      "en": "⛰️ In the Rocky Mountains",
+      "fr": "Rocheuses",
+      "es": "Rocosas"
+    },
+    "pc_sierra_nevada": {
+      "en": "⛰️ Sierra Nevada range",
+      "fr": "Sierra Nevada",
+      "es": "Sierra Nevada"
+    },
+    "pc_smoky_blue_ridge": {
+      "en": "⛰️ Smoky / Blue Ridge mountains",
+      "fr": "Smoky / Blue Ridge",
+      "es": "Smoky / Blue Ridge"
+    },
+    "pc_river_largest_us": {
+      "en": "🌊 Bordered by a top-10 US river",
+      "fr": "Top 10 fleuves US",
+      "es": "Top 10 ríos US"
+    },
+    "pc_lake_michigan_etc": {
+      "en": "🌊 Touches a top-5 US lake",
+      "fr": "Top 5 lacs",
+      "es": "Top 5 lagos"
+    },
+    "pc_amusement_park_top": {
+      "en": "🎢 Has a top-10 amusement park",
+      "fr": "Top 10 parc d'attractions",
+      "es": "Top 10 parque diversiones"
+    },
+    "pc_water_park_top": {
+      "en": "💦 Has a top-10 US water park",
+      "fr": "Top 10 parc aquatique",
+      "es": "Top 10 parque acuático"
+    },
+    "pc_resort_destination": {
+      "en": "🏖️ Top all-inclusive resort destination",
+      "fr": "Destination resort all-inclusive",
+      "es": "Destino resort todo incluido"
+    },
+    "pc_casino_mega_resort": {
+      "en": "🎰 Has a mega-resort casino",
+      "fr": "Méga casino-resort",
+      "es": "Mega casino-resort"
+    },
+    "pc_ski_resort_top10": {
+      "en": "⛷️ Has a top-10 ski resort",
+      "fr": "Top 10 station ski",
+      "es": "Top 10 estación esquí"
+    },
+    "pc_uni_oldest_5plus": {
+      "en": "🎓 Has a uni founded before 1800",
+      "fr": "Université pré-1800",
+      "es": "Universidad pre-1800"
+    },
+    "pc_top_50_publics": {
+      "en": "🎓 5+ top-50 public universities",
+      "fr": "5+ top-50 publiques",
+      "es": "5+ top-50 públicas"
+    },
+    "pc_med_school_t10": {
+      "en": "🩺 Has a top-10 medical school",
+      "fr": "Top 10 médecine",
+      "es": "Top 10 medicina"
+    },
+    "pc_top_culinary_school": {
+      "en": "🍽️ Top-5 culinary school",
+      "fr": "Top 5 école culinaire",
+      "es": "Top 5 culinaria"
+    },
+    "pc_top_design_school": {
+      "en": "🎨 Top-10 design school",
+      "fr": "Top 10 design",
+      "es": "Top 10 diseño"
+    },
+    "pc_top_acting_school": {
+      "en": "🎭 Top-10 acting school",
+      "fr": "Top 10 école de théâtre",
+      "es": "Top 10 actuación"
+    },
+    "pc_hist_constitution_1": {
+      "en": "🏛️ First state to ratify Constitution",
+      "fr": "Premier à ratifier",
+      "es": "Primero en ratificar"
+    },
+    "pc_hist_2nd_ratify": {
+      "en": "🏛️ 2nd-5th to ratify Constitution",
+      "fr": "Top 5 ratification",
+      "es": "Top 5 ratificación"
+    },
+    "pc_hist_louisiana_purch": {
+      "en": "🦅 Part of Louisiana Purchase",
+      "fr": "Achat de la Louisiane",
+      "es": "Compra de Luisiana"
+    },
+    "pc_hist_mexican_cession": {
+      "en": "🦅 Part of Mexican Cession (1848)",
+      "fr": "Cession mexicaine",
+      "es": "Cesión Mexicana"
+    },
+    "pc_hist_oregon_country": {
+      "en": "🦅 Oregon Country (1846)",
+      "fr": "Oregon Country",
+      "es": "Oregon Country"
+    },
+    "pc_hist_spanish_colonial": {
+      "en": "🇪🇸 Spanish colonial heritage",
+      "fr": "Héritage colonial espagnol",
+      "es": "Herencia colonial española"
+    },
+    "pc_hist_french_colonial": {
+      "en": "🇫🇷 French colonial heritage",
+      "fr": "Héritage colonial français",
+      "es": "Herencia colonial francesa"
+    },
+    "pc_hist_dutch_colonial": {
+      "en": "🇳🇱 Dutch colonial heritage",
+      "fr": "Héritage colonial néerlandais",
+      "es": "Herencia colonial neerlandesa"
+    },
+    "pc_hist_swedish_colony": {
+      "en": "🇸🇪 Swedish colonial heritage",
+      "fr": "Héritage colonial suédois",
+      "es": "Herencia colonial sueca"
+    },
+    "pc_hist_russian_heritage": {
+      "en": "🇷🇺 Russian colonial heritage",
+      "fr": "Héritage russe",
+      "es": "Herencia rusa"
+    },
+    "pc_unesco_sites_2plus": {
+      "en": "🏛️ Has 2+ UNESCO World Heritage Sites",
+      "fr": "2+ sites UNESCO",
+      "es": "2+ sitios UNESCO"
+    },
+    "pc_consul_offices_dc": {
+      "en": "🏛️ Has 10+ foreign consulates",
+      "fr": "10+ consulats étrangers",
+      "es": "10+ consulados"
+    },
+    "pc_immigrant_states": {
+      "en": "🌍 Top 10 immigrant-receiving",
+      "fr": "Top 10 immigration",
+      "es": "Top 10 inmigración"
+    },
+    "pc_diaspora_irish_top": {
+      "en": "☘️ Top Irish diaspora pop",
+      "fr": "Forte diaspora irlandaise",
+      "es": "Diáspora irlandesa"
+    },
+    "pc_diaspora_mexican_top": {
+      "en": "🇲🇽 Top Mexican-American pop",
+      "fr": "Forte communauté mexicaine",
+      "es": "Comunidad mexicana"
+    },
+    "pc_diaspora_korean": {
+      "en": "🇰🇷 Top Korean-American pop",
+      "fr": "Forte communauté coréenne",
+      "es": "Comunidad coreana"
+    },
+    "pc_diaspora_vietnamese": {
+      "en": "🇻🇳 Top Vietnamese-American pop",
+      "fr": "Forte communauté vietnamienne",
+      "es": "Comunidad vietnamita"
+    },
+    "pc_diaspora_indian": {
+      "en": "🇮🇳 Top Indian-American pop",
+      "fr": "Forte communauté indienne",
+      "es": "Comunidad india"
+    },
+    "pc_eaux_claires_etc": {
+      "en": "🎵 Hosts a major indie music festival",
+      "fr": "Festival indie majeur",
+      "es": "Festival indie mayor"
+    },
+    "pc_country_fest_top": {
+      "en": "🤠 Major country music festival",
+      "fr": "Festival country majeur",
+      "es": "Festival country mayor"
+    },
+    "pc_edm_fest_top": {
+      "en": "🎵 Major EDM festival",
+      "fr": "Festival EDM majeur",
+      "es": "Festival EDM mayor"
+    },
+    "pc_hip_hop_fest_top": {
+      "en": "🎤 Major hip-hop festival",
+      "fr": "Festival hip-hop majeur",
+      "es": "Festival hip-hop mayor"
+    },
+    "pc_punk_fest_top": {
+      "en": "🎸 Major punk / metal festival",
+      "fr": "Festival punk / metal",
+      "es": "Festival punk / metal"
+    },
+    "pc_classical_fest_top": {
+      "en": "🎻 Major classical music festival",
+      "fr": "Festival classique",
+      "es": "Festival clásico"
+    },
+    "pc_indie_film_fest": {
+      "en": "🎬 Major indie film festival",
+      "fr": "Festival cinéma indie",
+      "es": "Festival indie cine"
+    },
+    "pc_pro_team_top5_old": {
+      "en": "🏈 Has a pre-1960 pro franchise",
+      "fr": "Franchise pro pré-1960",
+      "es": "Franquicia pro pre-1960"
+    },
+    "pc_super_bowl_won_5plus": {
+      "en": "🏈 NFL team won Super Bowl 5+ times",
+      "fr": "5+ Super Bowls",
+      "es": "5+ Super Bowls"
+    },
+    "pc_world_series_5plus": {
+      "en": "⚾ MLB team won 5+ World Series",
+      "fr": "5+ World Series",
+      "es": "5+ World Series"
+    },
+    "pc_nba_finals_5plus": {
+      "en": "🏀 NBA team in Finals 5+ times since 2000",
+      "fr": "5+ NBA Finals depuis 2000",
+      "es": "5+ NBA Finals desde 2000"
+    },
+    "pc_stanley_cup_5plus": {
+      "en": "🏒 NHL team won Stanley Cup 5+ times",
+      "fr": "5+ Stanley Cups",
+      "es": "5+ Stanley Cups"
+    },
+    "pc_pro_team_animal": {
+      "en": "🦅 Pro team named after a bird",
+      "fr": "Équipe nommée d'un oiseau",
+      "es": "Equipo con nombre de ave"
+    },
+    "pc_pro_team_state": {
+      "en": "🏟️ Pro team with state name",
+      "fr": "Équipe avec nom d'État",
+      "es": "Equipo con nombre de estado"
+    },
+    "pc_pro_team_old_west": {
+      "en": "🤠 Pro team with cowboy / pioneer name",
+      "fr": "Équipe nom cowboy",
+      "es": "Equipo nombre vaquero"
+    },
+    "pc_minor_league_strong": {
+      "en": "⚾ Top minor-league baseball culture",
+      "fr": "Pôle baseball mineur",
+      "es": "Béisbol menor fuerte"
+    },
+    "pc_college_basketball_top": {
+      "en": "🏀 Top-25 college basketball regular",
+      "fr": "Top 25 basket NCAA régulier",
+      "es": "Top 25 basket NCAA"
+    },
+    "pc_seafood_capital": {
+      "en": "🦀 Famous seafood region",
+      "fr": "Région fruits de mer",
+      "es": "Región de mariscos"
+    },
+    "pc_steakhouse_capital": {
+      "en": "🥩 Famous for steakhouses",
+      "fr": "Capital du steak",
+      "es": "Capital del bistec"
+    },
+    "pc_pizza_capital": {
+      "en": "🍕 Pizza capital state",
+      "fr": "Capital pizza",
+      "es": "Capital pizza"
+    },
+    "pc_burger_origin": {
+      "en": "🍔 Burger origin claim",
+      "fr": "Origine du burger",
+      "es": "Origen del burger"
+    },
+    "pc_donut_origin_state": {
+      "en": "🍩 Famous donut culture",
+      "fr": "Culture beignet",
+      "es": "Cultura donut"
+    },
+    "pc_bagel_capital": {
+      "en": "🥯 Bagel culture (NYC + MTL inspo)",
+      "fr": "Culture du bagel",
+      "es": "Cultura del bagel"
+    },
+    "pc_taco_truck_capital": {
+      "en": "🌮 Taco-truck culture",
+      "fr": "Camions à tacos",
+      "es": "Camiones de tacos"
+    },
+    "pc_ramen_capital": {
+      "en": "🍜 Top US ramen scene",
+      "fr": "Top scène ramen",
+      "es": "Top escena ramen"
+    },
+    "pc_pho_capital": {
+      "en": "🍜 Top US Vietnamese pho scene",
+      "fr": "Top scène phở US",
+      "es": "Top escena phở US"
+    },
+    "pc_michelin_starred": {
+      "en": "⭐ Has Michelin-starred restaurants",
+      "fr": "Restos étoilés Michelin",
+      "es": "Restaurantes Michelin"
+    },
+    "pc_state_drink_iconic": {
+      "en": "🥤 Has an iconic regional beverage",
+      "fr": "Boisson régionale",
+      "es": "Bebida regional"
+    },
+    "pc_state_dessert": {
+      "en": "🍨 Has a signature dessert",
+      "fr": "Dessert régional signature",
+      "es": "Postre regional"
+    },
+    "pc_no_helmet_motorcycle": {
+      "en": "🏍️ No motorcycle helmet law",
+      "fr": "Pas d'obligation casque moto",
+      "es": "Sin obligación casco moto"
+    },
+    "pc_open_carry_legal": {
+      "en": "🔫 Open-carry firearms legal",
+      "fr": "Port apparent légal",
+      "es": "Porte abierto legal"
+    },
+    "pc_helmet_bicycle_law": {
+      "en": "🚲 Mandatory bicycle helmet (under 18)",
+      "fr": "Casque vélo <18 obligatoire",
+      "es": "Casco bici <18 obligatorio"
+    },
+    "pc_legal_psilocybin": {
+      "en": "🍄 Decriminalized psilocybin in some city",
+      "fr": "Psilocybine décriminalisée",
+      "es": "Psilocibina despenalizada"
+    },
+    "pc_homeschool_strong": {
+      "en": "🏠 Strong homeschool culture",
+      "fr": "Culture école à la maison",
+      "es": "Cultura educación en casa"
+    },
+    "pc_unicameral_legis": {
+      "en": "🏛️ Unicameral state legislature",
+      "fr": "Législature unicamérale",
+      "es": "Legislatura unicameral"
+    },
+    "pc_iconic_highway_us101": {
+      "en": "🛣️ On Pacific Coast Highway (US 101)",
+      "fr": "Pacific Coast Highway",
+      "es": "Pacific Coast Highway"
+    },
+    "pc_iconic_highway_us1": {
+      "en": "🛣️ On Atlantic US-1 highway",
+      "fr": "US-1 atlantique",
+      "es": "US-1 atlántica"
+    },
+    "pc_us_highways_5plus": {
+      "en": "🛣️ Major north-south freeway corridor",
+      "fr": "Couloir routier majeur",
+      "es": "Corredor mayor"
+    },
+    "pc_train_atlas_passenger": {
+      "en": "🚂 Amtrak passenger rail station 5+",
+      "fr": "5+ gares Amtrak",
+      "es": "5+ estaciones Amtrak"
+    },
+    "pc_iconic_state_route": {
+      "en": "🛣️ Famous state route",
+      "fr": "Route d'État célèbre",
+      "es": "Ruta estatal famosa"
+    },
+    "pc_high_homeownership": {
+      "en": "🏠 Top homeownership rate",
+      "fr": "Top taux propriétaires",
+      "es": "Top propietarios"
+    },
+    "pc_low_homeownership": {
+      "en": "🏢 Lowest homeownership rate",
+      "fr": "Bas taux propriétaires",
+      "es": "Bajo propietarios"
+    },
+    "pc_cheap_housing": {
+      "en": "💰 Lowest US housing cost",
+      "fr": "Logement bon marché",
+      "es": "Vivienda barata"
+    },
+    "pc_expensive_housing": {
+      "en": "💰 Most expensive housing",
+      "fr": "Logement cher",
+      "es": "Vivienda cara"
+    },
+    "pc_high_cost_living": {
+      "en": "💰 Highest cost of living",
+      "fr": "Coût de la vie élevé",
+      "es": "Costo de vida alto"
+    },
+    "pc_unicorn_companies": {
+      "en": "🦄 Has 10+ tech unicorns",
+      "fr": "10+ licornes tech",
+      "es": "10+ unicornios tech"
+    },
+    "pc_top_vc_funding": {
+      "en": "💰 Top-10 venture capital state",
+      "fr": "Top 10 capital risque",
+      "es": "Top 10 capital riesgo"
+    },
+    "pc_remote_work_friendly": {
+      "en": "💻 Top remote-work-friendly state",
+      "fr": "État remote-work friendly",
+      "es": "Estado remote-work friendly"
+    },
+    "pc_pride_top10": {
+      "en": "🌈 Top-10 Pride parade size",
+      "fr": "Top 10 Pride",
+      "es": "Top 10 Pride"
+    },
+    "pc_jewish_culture": {
+      "en": "✡️ Strong Jewish-American culture",
+      "fr": "Forte présence juive-américaine",
+      "es": "Fuerte presencia judía"
+    },
+    "pc_muslim_culture": {
+      "en": "☪️ Strong Muslim-American culture",
+      "fr": "Forte présence musulmane",
+      "es": "Fuerte presencia musulmana"
+    },
+    "pc_buddhist_culture": {
+      "en": "☸️ Strong Buddhist-American culture",
+      "fr": "Forte présence bouddhiste",
+      "es": "Fuerte presencia budista"
+    },
+    "pc_evangelical_strong": {
+      "en": "⛪ Evangelical Christian stronghold",
+      "fr": "Bastion évangélique",
+      "es": "Bastión evangélico"
+    },
+    "pc_nih_grants_top": {
+      "en": "🩺 Top NIH funding recipient",
+      "fr": "Top financement NIH",
+      "es": "Top financiación NIH"
+    },
+    "pc_nsf_grants_top": {
+      "en": "🔬 Top NSF funding recipient",
+      "fr": "Top financement NSF",
+      "es": "Top financiación NSF"
+    },
+    "pc_nobel_winners_5plus": {
+      "en": "🏅 Birthplace of 5+ Nobel laureates",
+      "fr": "5+ prix Nobel",
+      "es": "5+ premios Nobel"
+    },
+    "pc_macarthur_fellows": {
+      "en": "🧠 Birthplace of 5+ MacArthur fellows",
+      "fr": "5+ bourses MacArthur",
+      "es": "5+ becas MacArthur"
+    },
+    "pc_top_export_state": {
+      "en": "📦 Top US export state",
+      "fr": "Top État exportateur",
+      "es": "Top estado exportador"
+    },
+    "pc_top_import_state": {
+      "en": "📥 Top US import state",
+      "fr": "Top État importateur",
+      "es": "Top estado importador"
+    },
+    "pc_top_agri_export": {
+      "en": "🌾 Top agricultural export",
+      "fr": "Top exportateur agricole",
+      "es": "Top exportador agrícola"
+    },
+    "pc_top_auto_manufact": {
+      "en": "🚗 Top US auto manufacturer",
+      "fr": "Top constructeur auto",
+      "es": "Top fabricante autos"
+    },
+    "pc_top_renewable_energy": {
+      "en": "⚡ Top renewable energy producer",
+      "fr": "Top renouvelables",
+      "es": "Top renovables"
+    },
+    "pc_grizzly_bear_native": {
+      "en": "🐻 Native grizzly bear territory",
+      "fr": "Territoire grizzly",
+      "es": "Territorio grizzly"
+    },
+    "pc_black_bear_huntable": {
+      "en": "🐻 Black bear hunting state",
+      "fr": "Chasse ours noir",
+      "es": "Caza oso negro"
+    },
+    "pc_wild_horses_state": {
+      "en": "🐴 Wild mustang population",
+      "fr": "Mustangs sauvages",
+      "es": "Mustangs salvajes"
+    },
+    "pc_wild_buffalo": {
+      "en": "🦬 Wild buffalo herd",
+      "fr": "Bisons sauvages",
+      "es": "Bisontes salvajes"
+    },
+    "pc_iconic_state_bird": {
+      "en": "🐦 Iconic state bird (≥5 share it)",
+      "fr": "Oiseau d'État iconique",
+      "es": "Ave estatal icónica"
+    },
+    "pc_4_distinct_seasons": {
+      "en": "🌳 4 distinct seasons climate",
+      "fr": "4 saisons distinctes",
+      "es": "4 estaciones distintas"
+    },
+    "pc_subtropical_climate": {
+      "en": "🌴 Subtropical climate",
+      "fr": "Climat subtropical",
+      "es": "Clima subtropical"
+    },
+    "pc_humid_continental": {
+      "en": "❄️ Humid continental climate",
+      "fr": "Climat continental humide",
+      "es": "Clima continental húmedo"
+    },
+    "pc_tropical_climate": {
+      "en": "🌴 Tropical climate",
+      "fr": "Climat tropical",
+      "es": "Clima tropical"
+    },
+    "pc_iconic_drought_zone": {
+      "en": "☀️ Recurring major drought",
+      "fr": "Sécheresses récurrentes",
+      "es": "Sequías recurrentes"
+    },
+    "pc_iconic_blizzard_zone": {
+      "en": "❄️ Major blizzard zone",
+      "fr": "Zone de blizzards",
+      "es": "Zona de ventiscas"
+    },
+    "pc_severe_thunderstorm": {
+      "en": "⛈️ High severe thunderstorm risk",
+      "fr": "Risque orages sévères",
+      "es": "Riesgo tormentas severas"
+    },
+    "pc_iconic_concert_venue": {
+      "en": "🎤 Iconic music venue (Red Rocks / MSG / Bowl / Ryman)",
+      "fr": "Salle iconique",
+      "es": "Recinto icónico"
+    },
+    "pc_iconic_theater_old": {
+      "en": "🎭 Historic Broadway-era theater",
+      "fr": "Théâtre historique",
+      "es": "Teatro histórico"
+    },
+    "pc_iconic_movie_theater": {
+      "en": "🎬 Historic single-screen movie theater",
+      "fr": "Cinéma historique",
+      "es": "Cine histórico"
+    },
+    "pc_grand_ole_opry": {
+      "en": "🤠 Grand Ole Opry venue history",
+      "fr": "Histoire Grand Ole Opry",
+      "es": "Historia Grand Ole Opry"
+    },
+    "pc_game_dev_hub_top": {
+      "en": "🎮 Top game-dev industry hub",
+      "fr": "Pôle jeu vidéo",
+      "es": "Centro videojuego"
+    },
+    "pc_console_origin": {
+      "en": "🎮 Major game studio HQ",
+      "fr": "Siège studio jeu majeur",
+      "es": "Sede estudio juego mayor"
+    },
+    "pc_kentucky_derby_state": {
+      "en": "🐎 Kentucky Derby",
+      "fr": "Kentucky Derby",
+      "es": "Kentucky Derby"
+    },
+    "pc_bonneville_speed": {
+      "en": "🏎️ Bonneville Salt Flats speed trials",
+      "fr": "Bonneville",
+      "es": "Bonneville"
+    },
+    "pc_groundhog_day_state": {
+      "en": "🐀 Groundhog Day tradition",
+      "fr": "Groundhog Day",
+      "es": "Día de la Marmota"
+    },
+    "pc_punxsutawney_etc": {
+      "en": "🐀 Multiple Groundhog Day events",
+      "fr": "Multiples Groundhog Day",
+      "es": "Múltiples Groundhog Day"
+    },
+    "pc_top_publisher_hq": {
+      "en": "📚 Major book publisher HQ",
+      "fr": "Maison d'édition",
+      "es": "Editorial mayor"
+    },
+    "pc_top_writing_program": {
+      "en": "✍️ Top creative writing program",
+      "fr": "Top programme écriture",
+      "es": "Top escritura creativa"
+    },
+    "pc_iconic_independent_bookstore": {
+      "en": "📖 Iconic independent bookstore",
+      "fr": "Librairie indépendante culte",
+      "es": "Librería independiente icónica"
+    },
+    "pc_top_art_museum_2": {
+      "en": "🖼️ Top-20 US art museum",
+      "fr": "Top 20 musée d'art",
+      "es": "Top 20 museo arte"
+    },
+    "pc_top_orchestra_2": {
+      "en": "🎻 Top-20 US symphony orchestra",
+      "fr": "Top 20 orchestre symphonique",
+      "es": "Top 20 orquesta sinfónica"
+    },
+    "pc_top_jazz_club": {
+      "en": "🎷 Iconic jazz club city",
+      "fr": "Club de jazz iconique",
+      "es": "Club jazz icónico"
+    },
+    "pc_top_blues_club": {
+      "en": "🎷 Iconic blues club city",
+      "fr": "Club de blues iconique",
+      "es": "Club blues icónico"
+    },
+    "pc_iconic_dance_school": {
+      "en": "💃 Iconic dance academy",
+      "fr": "Académie de danse",
+      "es": "Academia danza"
+    },
+    "pc_iconic_painters": {
+      "en": "🎨 Birth state of a major US painter",
+      "fr": "Naissance peintre US",
+      "es": "Cuna pintor US"
+    },
+    "pc_iconic_skyline": {
+      "en": "🏙️ Iconic city skyline (≥5 skyscrapers ≥250m)",
+      "fr": "Skyline iconique",
+      "es": "Skyline icónica"
+    },
+    "pc_modernist_houses": {
+      "en": "🏠 Famous mid-century modern architecture",
+      "fr": "Architecture mid-century",
+      "es": "Arquitectura mid-century"
+    },
+    "pc_colonial_architecture": {
+      "en": "🏛️ Famous Colonial-era architecture",
+      "fr": "Architecture coloniale",
+      "es": "Arquitectura colonial"
+    },
+    "pc_iconic_courthouse": {
+      "en": "⚖️ Famous historic courthouse",
+      "fr": "Palais de justice historique",
+      "es": "Tribunal histórico"
+    },
+    "pc_natl_monument_5plus": {
+      "en": "🏛️ 5+ National Monuments",
+      "fr": "5+ monuments nationaux",
+      "es": "5+ monumentos nacionales"
+    },
+    "pc_busy_airport_3plus": {
+      "en": "✈️ 3+ top-50 US airports",
+      "fr": "3+ aéroports top 50",
+      "es": "3+ aeropuertos top 50"
+    },
+    "pc_high_gun_ownership": {
+      "en": "🔫 Top gun-ownership rate",
+      "fr": "Top possession armes",
+      "es": "Top posesión armas"
+    },
+    "pc_concealed_carry_open": {
+      "en": "🔫 Permitless concealed carry",
+      "fr": "Port dissimulé sans permis",
+      "es": "Porte oculto sin permiso"
+    },
+    "pc_oldest_pop_state": {
+      "en": "👴 Top oldest median age",
+      "fr": "Population la plus âgée",
+      "es": "Población más anciana"
+    },
+    "pc_youngest_pop_state": {
+      "en": "👶 Top youngest median age",
+      "fr": "Population la plus jeune",
+      "es": "Población más joven"
+    },
+    "pc_top_birth_rate": {
+      "en": "👶 Highest birth rate",
+      "fr": "Plus haut taux natalité",
+      "es": "Mayor tasa natalidad"
+    },
+    "pc_top_death_rate": {
+      "en": "⚰️ Highest death rate",
+      "fr": "Plus haut taux mortalité",
+      "es": "Mayor tasa mortalidad"
+    },
+    "pc_top_marriage_rate": {
+      "en": "💒 Top marriage rate",
+      "fr": "Top taux mariage",
+      "es": "Top tasa matrimonio"
+    },
+    "pc_top_divorce_rate": {
+      "en": "💔 Top divorce rate",
+      "fr": "Top taux divorce",
+      "es": "Top tasa divorcio"
+    },
+    "pc_greek_life_heavy": {
+      "en": "🏛️ Heavy fraternity / sorority culture",
+      "fr": "Forte vie grecque",
+      "es": "Fuerte vida griega"
+    },
+    "pc_iconic_college_town": {
+      "en": "🎓 Iconic college town culture",
+      "fr": "Ville universitaire culte",
+      "es": "Ciudad universitaria"
+    },
+    "pc_iconic_fishing": {
+      "en": "🎣 Iconic fishing destination",
+      "fr": "Pêche emblématique",
+      "es": "Pesca icónica"
+    },
+    "pc_iconic_hunting": {
+      "en": "🦌 Iconic hunting culture",
+      "fr": "Culture de la chasse",
+      "es": "Cultura de caza"
+    },
+    "pc_iconic_rock_climbing": {
+      "en": "🧗 Iconic rock-climbing destination",
+      "fr": "Escalade emblématique",
+      "es": "Escalada icónica"
+    },
+    "pc_iconic_mountain_bike": {
+      "en": "🚵 Iconic mountain-biking trails",
+      "fr": "Vélo de montagne emblématique",
+      "es": "MTB icónico"
+    },
+    "pc_iconic_off_road": {
+      "en": "🚙 Iconic off-road destination",
+      "fr": "Tout-terrain emblématique",
+      "es": "Off-road icónico"
+    },
+    "pc_top_corn_producer": {
+      "en": "🌽 Top corn producer",
+      "fr": "Top maïs",
+      "es": "Top maíz"
+    },
+    "pc_top_wheat_producer": {
+      "en": "🌾 Top wheat producer",
+      "fr": "Top blé",
+      "es": "Top trigo"
+    },
+    "pc_top_soybean_producer": {
+      "en": "🌱 Top soybean producer",
+      "fr": "Top soja",
+      "es": "Top soja"
+    },
+    "pc_top_dairy_producer": {
+      "en": "🐄 Top dairy producer",
+      "fr": "Top laitier",
+      "es": "Top lácteo"
+    },
+    "pc_top_cotton_producer": {
+      "en": "☁️ Top cotton producer",
+      "fr": "Top coton",
+      "es": "Top algodón"
+    },
+    "pc_top_rice_producer": {
+      "en": "🌾 Top rice producer",
+      "fr": "Top riz",
+      "es": "Top arroz"
+    },
+    "pc_top_fruits_producer": {
+      "en": "🍎 Top fruits producer",
+      "fr": "Top fruits",
+      "es": "Top frutas"
+    },
+    "pc_top_wine_producer": {
+      "en": "🍷 Top wine producer",
+      "fr": "Top vin",
+      "es": "Top vino"
+    },
+    "pc_top_beef_producer": {
+      "en": "🐂 Top beef producer",
+      "fr": "Top bœuf",
+      "es": "Top carne vacuna"
+    },
+    "pc_top_pork_producer": {
+      "en": "🐖 Top pork producer",
+      "fr": "Top porc",
+      "es": "Top cerdo"
+    },
+    "pc_christmas_tree_state": {
+      "en": "🎄 Top Christmas-tree producer",
+      "fr": "Top sapin de Noël",
+      "es": "Top árbol Navidad"
+    },
+    "pc_pumpkin_producer": {
+      "en": "🎃 Top pumpkin producer",
+      "fr": "Top citrouille",
+      "es": "Top calabaza"
+    },
+    "pc_apple_cider_state": {
+      "en": "🍎 Top apple-cider producer",
+      "fr": "Top cidre",
+      "es": "Top sidra"
+    },
+    "pc_top_hospital_us": {
+      "en": "🏥 Top-10 US hospital",
+      "fr": "Top 10 hôpital",
+      "es": "Top 10 hospital"
+    },
+    "pc_mayo_clinic_state": {
+      "en": "🏥 Has Mayo Clinic",
+      "fr": "Mayo Clinic",
+      "es": "Mayo Clinic"
+    },
+    "pc_cleveland_clinic": {
+      "en": "🏥 Has Cleveland Clinic",
+      "fr": "Cleveland Clinic",
+      "es": "Cleveland Clinic"
+    },
+    "pc_top_med_research": {
+      "en": "🩺 Top medical research center",
+      "fr": "Top recherche médicale",
+      "es": "Top investigación médica"
+    },
+    "pc_summer_olympics_host": {
+      "en": "🥇 Hosted Summer Olympics",
+      "fr": "JO d'été",
+      "es": "JJOO de Verano"
+    },
+    "pc_winter_olympics_host": {
+      "en": "🥇 Hosted Winter Olympics",
+      "fr": "JO d'hiver",
+      "es": "JJOO de Invierno"
+    },
+    "pc_first_woman_governor": {
+      "en": "👩‍💼 First woman governor in US",
+      "fr": "Première femme gouverneur",
+      "es": "Primera gobernadora"
+    },
+    "pc_first_black_governor": {
+      "en": "🤝 First Black governor (post-recon)",
+      "fr": "Premier gouverneur noir",
+      "es": "Primer gobernador negro"
+    },
+    "pc_red_state_consistent": {
+      "en": "🔴 Consistently red since 2000",
+      "fr": "Rouge depuis 2000",
+      "es": "Rojo desde 2000"
+    },
+    "pc_blue_state_consistent": {
+      "en": "🔵 Consistently blue since 2000",
+      "fr": "Bleu depuis 2000",
+      "es": "Azul desde 2000"
+    },
+    "pc_overseas_highway": {
+      "en": "🌉 Iconic overseas / coast highway",
+      "fr": "Pont sur l'océan emblématique",
+      "es": "Carretera sobre océano"
+    },
+    "pc_blue_ridge_parkway": {
+      "en": "🛣️ Blue Ridge Parkway",
+      "fr": "Blue Ridge Parkway",
+      "es": "Blue Ridge Parkway"
+    },
+    "pc_going_to_sun_road": {
+      "en": "🛣️ Going-to-the-Sun Road",
+      "fr": "Going-to-the-Sun",
+      "es": "Going-to-the-Sun"
+    },
+    "pc_cabot_trail_us": {
+      "en": "🛣️ Iconic coastal scenic drive",
+      "fr": "Route panoramique côtière",
+      "es": "Carretera escénica costera"
+    },
+    "pc_bigfoot_lore": {
+      "en": "👣 Strong Bigfoot folklore",
+      "fr": "Folklore Bigfoot",
+      "es": "Folclor Bigfoot"
+    },
+    "pc_loch_ness_clones": {
+      "en": "🐍 Famous \"monster\" lake lore",
+      "fr": "Légendes de monstres lacustres",
+      "es": "Leyendas de monstruos lacustres"
+    },
+    "pc_haunted_places": {
+      "en": "👻 5+ famous haunted places",
+      "fr": "5+ lieux hantés",
+      "es": "5+ lugares embrujados"
+    },
+    "pc_witch_trial_lore": {
+      "en": "🔥 Salem-witch-trial-era heritage",
+      "fr": "Procès de sorcellerie",
+      "es": "Juicios de brujas"
+    },
+    "pc_craft_brewery_top": {
+      "en": "🍺 Top craft brewery density",
+      "fr": "Densité brasseries",
+      "es": "Densidad cervecerías"
+    },
+    "pc_rum_distillery": {
+      "en": "🍹 Major rum distillery",
+      "fr": "Distilleries de rhum",
+      "es": "Destilerías ron"
+    },
+    "pc_iconic_brewery_old": {
+      "en": "🍺 Has a pre-Prohibition brewery still active",
+      "fr": "Brasserie pré-Prohibition",
+      "es": "Cervecería pre-Prohibición"
+    },
+    "pc_data_center_hub": {
+      "en": "💾 Major data-center cluster",
+      "fr": "Centre de données",
+      "es": "Centro de datos"
+    },
+    "pc_cable_company_hq": {
+      "en": "📺 Major cable / streaming HQ",
+      "fr": "Siège câble / streaming",
+      "es": "Sede cable / streaming"
+    },
+    "pc_iconic_newsroom": {
+      "en": "📰 Iconic national newsroom",
+      "fr": "Rédaction nationale culte",
+      "es": "Redacción nacional icónica"
+    },
+    "pc_destination_wedding": {
+      "en": "💍 Top destination-wedding state",
+      "fr": "Top mariage destination",
+      "es": "Top boda destino"
+    },
+    "pc_elopement_state": {
+      "en": "💑 Top elopement state",
+      "fr": "Top fugues amoureuses",
+      "es": "Top fugas amorosas"
+    },
+    "pc_first_university": {
+      "en": "🎓 Has one of first US universities",
+      "fr": "Premières universités",
+      "es": "Primeras universidades"
+    },
+    "pc_first_skyscraper": {
+      "en": "🏙️ First-skyscraper era city",
+      "fr": "Premiers gratte-ciel",
+      "es": "Primer rascacielos"
+    },
+    "pc_first_aviation": {
+      "en": "✈️ Aviation firsts",
+      "fr": "Premières en aviation",
+      "es": "Primeras en aviación"
+    },
+    "pc_jordan_peele_movie": {
+      "en": "🎬 Jordan Peele film setting",
+      "fr": "Décor de Peele",
+      "es": "Escenario de Peele"
+    },
+    "pc_christopher_nolan_us": {
+      "en": "🎬 Nolan film US locations",
+      "fr": "Décor US Nolan",
+      "es": "Escenario US Nolan"
+    },
+    "pc_p_t_anderson_us": {
+      "en": "🎬 P.T. Anderson film setting",
+      "fr": "Décor de P.T. Anderson",
+      "es": "Escenario P.T. Anderson"
+    },
+    "pc_netflix_drama": {
+      "en": "📺 Setting of a major Netflix drama",
+      "fr": "Décor drama Netflix",
+      "es": "Escenario drama Netflix"
+    },
+    "pc_hbo_classic_drama": {
+      "en": "📺 Setting of a classic HBO drama",
+      "fr": "Décor HBO classique",
+      "es": "Escenario HBO clásico"
+    },
+    "pc_amazon_studios_show": {
+      "en": "📺 Major Amazon original setting",
+      "fr": "Original Amazon",
+      "es": "Original Amazon"
+    },
+    "pc_disney_plus_show": {
+      "en": "📺 Disney+ Marvel/Star-Wars setting",
+      "fr": "Disney+ Marvel/Star-Wars",
+      "es": "Disney+ Marvel/Star-Wars"
+    },
+    "pc_gta_setting_inspo": {
+      "en": "🎮 GTA game setting inspiration",
+      "fr": "Inspo de décor GTA",
+      "es": "Inspiración GTA"
+    },
+    "pc_fallout_setting": {
+      "en": "🎮 Fallout game setting",
+      "fr": "Décor Fallout",
+      "es": "Escenario Fallout"
+    },
+    "pc_red_dead_setting": {
+      "en": "🎮 Red Dead Redemption setting",
+      "fr": "Décor Red Dead",
+      "es": "Escenario Red Dead"
+    },
+    "pc_top_guitar_brand": {
+      "en": "🎸 Major guitar brand HQ (Martin/Gibson)",
+      "fr": "Marque de guitares",
+      "es": "Marca de guitarras"
+    },
+    "pc_top_piano_brand": {
+      "en": "🎹 Major piano brand HQ",
+      "fr": "Marque de pianos",
+      "es": "Marca de pianos"
+    },
+    "pc_state_flag_unique": {
+      "en": "🚩 Unique state flag (not just seal)",
+      "fr": "Drapeau d'État unique",
+      "es": "Bandera estatal única"
+    },
+    "pc_first_woman_governor_more": {
+      "en": "👩‍💼 Has had ≥3 woman governors",
+      "fr": "≥3 femmes gouverneurs",
+      "es": "≥3 gobernadoras"
+    },
+    "pc_minority_majority": {
+      "en": "🌍 Minority-majority state",
+      "fr": "État à majorité minoritaire",
+      "es": "Estado mayoría minoritaria"
+    },
+    "pc_largest_state_area": {
+      "en": "🗺️ Top 5 largest by area",
+      "fr": "Top 5 superficie",
+      "es": "Top 5 área"
+    },
+    "pc_smallest_state_area": {
+      "en": "🗺️ Top 5 smallest by area",
+      "fr": "Top 5 plus petits",
+      "es": "Top 5 más pequeños"
+    },
+    "pc_top_population_2": {
+      "en": "👥 Top 5 most populous",
+      "fr": "Top 5 plus peuplés",
+      "es": "Top 5 más poblados"
+    },
+    "pc_lowest_population": {
+      "en": "👥 Top 5 least populous",
+      "fr": "Top 5 moins peuplés",
+      "es": "Top 5 menos poblados"
+    },
+    "pc_continental_divide_t": {
+      "en": "🥾 On Continental Divide Trail",
+      "fr": "Continental Divide Trail",
+      "es": "Continental Divide Trail"
+    },
+    "pc_non_contiguous": {
+      "en": "🗺️ Non-contiguous to 48",
+      "fr": "Non contigus aux 48",
+      "es": "No contiguos"
+    },
+    "pc_dual_state_names": {
+      "en": "🤝 Has a North/South sibling",
+      "fr": "A un État jumeau N/S",
+      "es": "Tiene estado gemelo N/S"
+    },
+    "pc_state_capital_small": {
+      "en": "🏛️ State capital is small (<100k pop)",
+      "fr": "Capitale petite (<100k)",
+      "es": "Capital pequeña (<100k)"
+    },
+    "pc_contains_k": {
+      "en": "🔤 Name contains the letter K",
+      "fr": "Nom contient un K",
+      "es": "Nombre contiene K"
+    },
+    "pc_contains_w": {
+      "en": "🔤 Name contains the letter W",
+      "fr": "Nom contient un W",
+      "es": "Nombre contiene W"
+    },
+    "pc_contains_h": {
+      "en": "🔤 Name contains the letter H",
+      "fr": "Nom contient un H",
+      "es": "Nombre contiene H"
+    },
+    "pc_contains_y": {
+      "en": "🔤 Name contains the letter Y",
+      "fr": "Nom contient un Y",
+      "es": "Nombre contiene Y"
+    },
+    "pc_contains_double_s": {
+      "en": "🔤 Name contains \"ss\"",
+      "fr": "Nom contient « ss »",
+      "es": "Nombre contiene «ss»"
+    },
+    "pc_contains_double_n": {
+      "en": "🔤 Name contains \"nn\"",
+      "fr": "Nom contient « nn »",
+      "es": "Nombre contiene «nn»"
+    },
+    "pc_contains_double_a": {
+      "en": "🔤 Three or more A's in name",
+      "fr": "Trois A ou plus",
+      "es": "Tres o más letras A"
+    },
+    "pc_contains_double_e": {
+      "en": "🔤 Two or more E's in name",
+      "fr": "Deux E ou plus",
+      "es": "Dos o más letras E"
+    },
+    "pc_contains_substring_an": {
+      "en": "🔤 Name contains \"an\"",
+      "fr": "Nom contient « an »",
+      "es": "Nombre contiene «an»"
+    },
+    "pc_contains_substring_or": {
+      "en": "🔤 Name contains \"or\"",
+      "fr": "Nom contient « or »",
+      "es": "Nombre contiene «or»"
+    },
+    "pc_contains_substring_in": {
+      "en": "🔤 Name contains \"in\"",
+      "fr": "Nom contient « in »",
+      "es": "Nombre contiene «in»"
+    },
+    "pc_contains_substring_is": {
+      "en": "🔤 Name contains \"is\"",
+      "fr": "Nom contient « is »",
+      "es": "Nombre contiene «is»"
+    },
+    "pc_contains_substring_new": {
+      "en": "🔤 Name starts with \"New\"",
+      "fr": "Commence par « New »",
+      "es": "Empieza con «New»"
+    },
+    "pc_contains_north_south": {
+      "en": "🧭 Name has \"North\" or \"South\"",
+      "fr": "Nom avec « North » ou « South »",
+      "es": "Nombre con «North» o «South»"
+    },
+    "pc_contains_west": {
+      "en": "🧭 Name has \"West\"",
+      "fr": "Nom avec « West »",
+      "es": "Nombre con «West»"
+    },
+    "pc_starts_with_c": {
+      "en": "🔡 Name starts with C",
+      "fr": "Commence par C",
+      "es": "Empieza con C"
+    },
+    "pc_starts_with_o": {
+      "en": "🔡 Name starts with O",
+      "fr": "Commence par O",
+      "es": "Empieza con O"
+    },
+    "pc_starts_with_s": {
+      "en": "🔡 Name starts with S",
+      "fr": "Commence par S",
+      "es": "Empieza con S"
+    },
+    "pc_starts_with_t": {
+      "en": "🔡 Name starts with T",
+      "fr": "Commence par T",
+      "es": "Empieza con T"
+    },
+    "pc_starts_with_k": {
+      "en": "🔡 Name starts with K",
+      "fr": "Commence par K",
+      "es": "Empieza con K"
+    },
+    "pc_starts_with_consonant_h_to_p": {
+      "en": "🔡 Name starts H–P",
+      "fr": "Commence H–P",
+      "es": "Empieza H–P"
+    },
+    "pc_starts_with_a_or_i": {
+      "en": "🔡 Name starts A or I",
+      "fr": "Commence par A ou I",
+      "es": "Empieza con A o I"
+    },
+    "pc_starts_with_m_or_w": {
+      "en": "🔡 Name starts M or W",
+      "fr": "Commence par M ou W",
+      "es": "Empieza con M o W"
+    },
+    "pc_starts_and_ends_a": {
+      "en": "🔡 Starts and ends with A",
+      "fr": "Commence et termine par A",
+      "es": "Empieza y termina con A"
+    },
+    "pc_starts_and_ends_same": {
+      "en": "🔡 Starts and ends with same letter",
+      "fr": "Même lettre début/fin",
+      "es": "Misma letra inicio/fin"
+    },
+    "pc_ends_in_i": {
+      "en": "🔡 Name ends in I",
+      "fr": "Termine par I",
+      "es": "Termina con I"
+    },
+    "pc_ends_in_t": {
+      "en": "🔡 Name ends in T",
+      "fr": "Termine par T",
+      "es": "Termina con T"
+    },
+    "pc_ends_in_d": {
+      "en": "🔡 Name ends in D",
+      "fr": "Termine par D",
+      "es": "Termina con D"
+    },
+    "pc_ends_in_consonant": {
+      "en": "🔡 Name ends in a consonant",
+      "fr": "Termine par consonne",
+      "es": "Termina en consonante"
+    },
+    "pc_ends_in_t_or_d": {
+      "en": "🔡 Name ends in T or D",
+      "fr": "Termine par T ou D",
+      "es": "Termina con T o D"
+    },
+    "pc_letters_4_to_5": {
+      "en": "📏 Name is 4–5 letters",
+      "fr": "Nom de 4–5 lettres",
+      "es": "Nombre 4–5 letras"
+    },
+    "pc_letters_exactly_4": {
+      "en": "📏 Name is exactly 4 letters",
+      "fr": "Nom de 4 lettres",
+      "es": "Nombre de 4 letras"
+    },
+    "pc_letters_exactly_5": {
+      "en": "📏 Name is exactly 5 letters",
+      "fr": "Nom de 5 lettres",
+      "es": "Nombre de 5 letras"
+    },
+    "pc_letters_11_exact": {
+      "en": "📏 Name is exactly 11 letters",
+      "fr": "Nom de 11 lettres",
+      "es": "Nombre 11 letras"
+    },
+    "pc_letters_12_plus": {
+      "en": "📏 Name has 12+ letters",
+      "fr": "Nom de 12+ lettres",
+      "es": "Nombre 12+ letras"
+    },
+    "pc_letters_13_plus": {
+      "en": "📏 Name has 13+ letters",
+      "fr": "Nom de 13+ lettres",
+      "es": "Nombre 13+ letras"
+    },
+    "pc_one_word_long": {
+      "en": "📏 Single word ≥9 letters",
+      "fr": "Un seul mot ≥9 lettres",
+      "es": "Una palabra ≥9 letras"
+    },
+    "pc_one_word_short": {
+      "en": "📏 Single word ≤6 letters",
+      "fr": "Un seul mot ≤6 lettres",
+      "es": "Una palabra ≤6 letras"
+    },
+    "pc_more_vowels_than_cons": {
+      "en": "🔠 More vowels than consonants",
+      "fr": "Plus de voyelles que consonnes",
+      "es": "Más vocales que consonantes"
+    },
+    "pc_starts_vowel_not_a": {
+      "en": "🔠 Starts with vowel (not A)",
+      "fr": "Voyelle au début (pas A)",
+      "es": "Vocal inicial (no A)"
+    },
+    "pc_starts_consonant": {
+      "en": "🔠 Starts with a consonant",
+      "fr": "Consonne au début",
+      "es": "Consonante inicial"
+    },
+    "pc_two_consecutive_vowels": {
+      "en": "🔠 Two consecutive vowels in name",
+      "fr": "Deux voyelles consécutives",
+      "es": "Dos vocales seguidas"
+    },
+    "pc_only_vowel_a_used": {
+      "en": "🔠 Only vowel used is A",
+      "fr": "Seule voyelle utilisée : A",
+      "es": "Única vocal usada: A"
+    },
+    "pc_one_syllable": {
+      "en": "🗣️ Name is one syllable",
+      "fr": "Nom monosyllabique",
+      "es": "Nombre monosílabo"
+    },
+    "pc_two_syllables": {
+      "en": "🗣️ Name is two syllables",
+      "fr": "Nom bisyllabique",
+      "es": "Nombre bisílabo"
+    },
+    "pc_five_plus_syllables": {
+      "en": "🗣️ Five+ syllables",
+      "fr": "5+ syllabes",
+      "es": "5+ sílabas"
+    },
+    "pc_borders_canada": {
+      "en": "🌎 Borders Canada",
+      "fr": "Frontière avec le Canada",
+      "es": "Frontera con Canadá"
+    },
+    "pc_borders_ocean": {
+      "en": "🌊 Borders an ocean",
+      "fr": "Borde un océan",
+      "es": "Linda con un océano"
+    },
+    "pc_great_lakes_2": {
+      "en": "🏞️ Borders a Great Lake",
+      "fr": "Borde un Grand Lac",
+      "es": "Borde un Gran Lago"
+    },
+    "pc_appalachians_in_state": {
+      "en": "⛰️ Appalachian range pass through",
+      "fr": "Appalaches dans l'État",
+      "es": "Montañas Apalaches"
+    },
+    "pc_landlocked": {
+      "en": "🏞️ Landlocked (no coast, no Great Lake)",
+      "fr": "Enclavé",
+      "es": "Sin salida al mar"
+    },
+    "pc_sea_level_low": {
+      "en": "🏖️ Lowest point near/below sea level",
+      "fr": "Point bas près du niveau mer",
+      "es": "Punto bajo cerca del mar"
+    },
+    "pc_thirteen_colonies": {
+      "en": "📜 One of the 13 original colonies",
+      "fr": "13 colonies originelles",
+      "es": "13 colonias originales"
+    },
+    "pc_admitted_before_1800": {
+      "en": "📜 Admitted before 1800",
+      "fr": "Admis avant 1800",
+      "es": "Admitido antes de 1800"
+    },
+    "pc_admitted_1800s": {
+      "en": "📜 Admitted in the 1800s",
+      "fr": "Admis au XIXe siècle",
+      "es": "Admitido en el siglo XIX"
+    },
+    "pc_admitted_after_civil": {
+      "en": "📜 Admitted 1865–1900",
+      "fr": "Admis 1865–1900",
+      "es": "Admitido 1865–1900"
+    },
+    "pc_admitted_20th_century": {
+      "en": "📜 Admitted in the 20th century",
+      "fr": "Admis au XXe siècle",
+      "es": "Admitido en el siglo XX"
+    },
+    "pc_civil_war_union": {
+      "en": "📜 Union state in Civil War",
+      "fr": "Camp de l'Union",
+      "es": "Lado de la Unión"
+    },
+    "pc_pony_express": {
+      "en": "🐎 On the Pony Express route",
+      "fr": "Pony Express",
+      "es": "Pony Express"
+    },
+    "pc_old_west": {
+      "en": "🤠 Classic Old West frontier",
+      "fr": "Far West classique",
+      "es": "Lejano Oeste clásico"
+    },
+    "pc_named_after_person": {
+      "en": "👤 Named after a real person",
+      "fr": "Nommé d'après une personne",
+      "es": "Nombre por una persona"
+    },
+    "pc_named_after_river": {
+      "en": "🏞️ Named after a river",
+      "fr": "Nommé d'après un fleuve",
+      "es": "Nombre por un río"
+    },
+    "pc_named_native_tribe": {
+      "en": "🪶 Named after a Native tribe",
+      "fr": "Nommé d'après une tribu",
+      "es": "Nombre por una tribu"
+    },
+    "pc_named_after_queen_2": {
+      "en": "👑 Named for a queen specifically",
+      "fr": "Nommé d'après une reine",
+      "es": "Nombre por una reina"
+    },
+    "pc_french_origin_name": {
+      "en": "🇫🇷 Name of French origin",
+      "fr": "Nom d'origine française",
+      "es": "Nombre de origen francés"
+    },
+    "pc_capital_same_letter": {
+      "en": "🏛️ Capital starts with same letter as state",
+      "fr": "Capitale même initiale",
+      "es": "Capital con misma inicial"
+    },
+    "pc_capital_is_largest": {
+      "en": "🏛️ Capital is also the largest city",
+      "fr": "Capitale = plus grande ville",
+      "es": "Capital = ciudad más grande"
+    },
+    "pc_capital_two_words": {
+      "en": "🏛️ Capital city has two words",
+      "fr": "Capitale en deux mots",
+      "es": "Capital con dos palabras"
+    },
+    "pc_capital_under_50k": {
+      "en": "🏛️ Capital under 50k population",
+      "fr": "Capitale <50k habitants",
+      "es": "Capital <50k habitantes"
+    },
+    "pc_top_corn": {
+      "en": "🌽 Top corn producer",
+      "fr": "Top maïs",
+      "es": "Top productor de maíz"
+    },
+    "pc_top_wheat": {
+      "en": "🌾 Top wheat producer",
+      "fr": "Top blé",
+      "es": "Top productor de trigo"
+    },
+    "pc_top_soybean": {
+      "en": "🫘 Top soybean producer",
+      "fr": "Top soja",
+      "es": "Top productor de soja"
+    },
+    "pc_top_cotton": {
+      "en": "☁️ Top cotton producer",
+      "fr": "Top coton",
+      "es": "Top productor de algodón"
+    },
+    "pc_top_tobacco": {
+      "en": "🚬 Top tobacco producer",
+      "fr": "Top tabac",
+      "es": "Top productor de tabaco"
+    },
+    "pc_top_apple": {
+      "en": "🍎 Top apple producer",
+      "fr": "Top pommes",
+      "es": "Top productor de manzanas"
+    },
+    "pc_top_potato": {
+      "en": "🥔 Top potato producer",
+      "fr": "Top pommes de terre",
+      "es": "Top productor de papas"
+    },
+    "pc_top_peanut": {
+      "en": "🥜 Top peanut producer",
+      "fr": "Top cacahuètes",
+      "es": "Top productor de cacahuetes"
+    },
+    "pc_jazz_birthplace_2": {
+      "en": "🎷 Jazz birthplace / hub",
+      "fr": "Berceau du jazz",
+      "es": "Cuna del jazz"
+    },
+    "pc_country_music_2": {
+      "en": "🎸 Country music heartland",
+      "fr": "Country",
+      "es": "Country"
+    },
+    "pc_blues_birthplace": {
+      "en": "🎶 Blues birthplace",
+      "fr": "Berceau du blues",
+      "es": "Cuna del blues"
+    },
+    "pc_motown_state": {
+      "en": "🎤 Motown / Detroit sound",
+      "fr": "Motown",
+      "es": "Motown"
+    },
+    "pc_no_pro_team": {
+      "en": "🏟️ No major pro sports team",
+      "fr": "Sans franchise majeure",
+      "es": "Sin equipo profesional mayor"
+    },
+    "pc_pga_major_hosted": {
+      "en": "⛳ PGA major championship hosted",
+      "fr": "Major PGA accueilli",
+      "es": "Major PGA"
+    },
+    "pc_top_coal_producer": {
+      "en": "⛏️ Top coal producer",
+      "fr": "Top charbon",
+      "es": "Top productor de carbón"
+    },
+    "pc_top_natural_gas": {
+      "en": "🔥 Top natural gas producer",
+      "fr": "Top gaz naturel",
+      "es": "Top productor de gas natural"
+    },
+    "pc_iconic_national_park": {
+      "en": "🏞️ Has a top-10 national park",
+      "fr": "Parc national top 10",
+      "es": "Top 10 parque nacional"
+    },
+    "pc_first_national_park": {
+      "en": "🏞️ Yellowstone (1st nat'l park) crosses",
+      "fr": "Yellowstone le traverse",
+      "es": "Yellowstone lo cruza"
+    },
+    "pc_below_freezing_winter": {
+      "en": "❄️ Avg winter below freezing",
+      "fr": "Hiver < 0°C en moyenne",
+      "es": "Invierno bajo 0°C"
+    },
+    "pc_hurricane_landfall_2": {
+      "en": "🌀 Frequent hurricane landfall",
+      "fr": "Ouragans fréquents",
+      "es": "Huracanes frecuentes"
+    },
+    "pc_tornado_alley_3": {
+      "en": "🌪️ Tornado Alley",
+      "fr": "Allée des tornades",
+      "es": "Callejón de tornados"
+    },
+    "pc_drought_prone": {
+      "en": "🏜️ Drought-prone",
+      "fr": "Sujet à la sécheresse",
+      "es": "Propenso a sequía"
+    },
+    "pc_eastern_time": {
+      "en": "🕒 Eastern Time Zone",
+      "fr": "Fuseau Est",
+      "es": "Zona horaria Este"
+    },
+    "pc_central_time": {
+      "en": "🕒 Central Time Zone",
+      "fr": "Fuseau Centre",
+      "es": "Zona horaria Central"
+    },
+    "pc_mountain_time": {
+      "en": "🕒 Mountain Time Zone",
+      "fr": "Fuseau Montagnes",
+      "es": "Zona horaria Montaña"
+    },
+    "pc_multiple_time_zones": {
+      "en": "🕒 Spans multiple time zones",
+      "fr": "Plusieurs fuseaux",
+      "es": "Múltiples zonas horarias"
+    },
+    "pc_state_tree_oak": {
+      "en": "🌳 State tree is an oak",
+      "fr": "Arbre d'État : chêne",
+      "es": "Árbol estatal: roble"
+    },
+    "pc_state_flower_rose": {
+      "en": "🌹 State flower is a rose",
+      "fr": "Fleur d'État : rose",
+      "es": "Flor estatal: rosa"
+    }
+  },
+  "approved": [
+    "pc_publix",
+    "pc_ikea",
+    "pc_in_n_out_present",
+    "pc_super_bowl_host",
+    "pc_pro_team_animal_name",
+    "pc_big12_school",
+    "pc_olympics_host_any",
+    "pc_real_housewives_franchise",
+    "pc_stephen_king_setting",
+    "pc_marvel_mcu_us_setting",
+    "pc_pixar_film_setting",
+    "pc_tarantino_setting",
+    "pc_six_flags_park",
+    "pc_top10_engineering_uni",
+    "pc_top10_law_school",
+    "pc_top10_med_school",
+    "pc_nasa_facility",
+    "pc_major_cruise_port",
+    "pc_ivy_league_home",
+    "pc_top_business_school",
+    "pc_top_liberal_arts",
+    "pc_iconic_cocktail",
+    "pc_disaster_movie_set",
+    "pc_cop_show_setting",
+    "pc_medical_drama_set",
+    "pc_long_river_state",
+    "pc_underground_subway",
+    "pc_movie_spielberg",
+    "pc_movie_scorsese",
+    "pc_movie_anderson_wes",
+    "pc_movie_eastwood",
+    "pc_movie_marvel_loc",
+    "pc_movie_pixar_inspo",
+    "pc_music_taylor_swift",
+    "pc_music_beyonce_tour",
+    "pc_music_dylan_song",
+    "pc_born_president_post60",
+    "pc_born_first_lady",
+    "pc_volcano_active",
+    "pc_amusement_park_top",
+    "pc_hist_spanish_colonial",
+    "pc_hist_french_colonial",
+    "pc_red_state_consistent",
+    "pc_blue_state_consistent",
+    "pc_christopher_nolan_us",
+    "pc_largest_state_area",
+    "pc_smallest_state_area",
+    "pc_top_population_2",
+    "pc_lowest_population",
+    "pc_state_capital_small",
+    "pc_contains_k",
+    "pc_contains_w",
+    "pc_contains_h",
+    "pc_contains_y",
+    "pc_contains_double_a",
+    "pc_contains_substring_an",
+    "pc_contains_substring_or",
+    "pc_contains_substring_in",
+    "pc_contains_substring_is",
+    "pc_letters_12_plus",
+    "pc_two_syllables",
+    "pc_borders_canada",
+    "pc_great_lakes_2",
+    "pc_sea_level_low",
+    "pc_thirteen_colonies",
+    "pc_admitted_before_1800",
+    "pc_admitted_20th_century",
+    "pc_named_after_person",
+    "pc_named_after_river",
+    "pc_named_native_tribe",
+    "pc_french_origin_name",
+    "pc_capital_is_largest",
+    "pc_capital_under_50k",
+    "pc_eastern_time",
+    "pc_central_time",
+    "pc_mountain_time",
+    "pc_multiple_time_zones"
+  ]
+}

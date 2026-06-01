@@ -35,7 +35,23 @@ const I18n = (() => {
   }
 
   function constraint(id) {
-    return t('constraints.' + id);
+    // 1) Try the translations.json catalog (core constraints)
+    const fromCatalog = t('constraints.' + id);
+    if (fromCatalog && fromCatalog !== 'constraints.' + id) return fromCatalog;
+
+    // 2) Fall back to PENDING_CONSTRAINTS where labels are embedded per language.
+    //    Pending candidates carry .en / .fr / .es directly on the object.
+    if (typeof window !== 'undefined' && window.PENDING_MAP && window.PENDING_MAP[id]) {
+      const p = window.PENDING_MAP[id];
+      return p[_lang] || p.en || id;
+    }
+
+    // 3) Last resort: humanize the id so we never show "constraints.pc_xxx" raw.
+    //    e.g. "pc_capital_is_largest" → "Capital is largest"
+    return String(id)
+      .replace(/^pc_/, '')
+      .replace(/_/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
   }
 
   function _apply() {
