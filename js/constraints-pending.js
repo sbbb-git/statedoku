@@ -94,7 +94,7 @@ const PENDING_CONSTRAINTS = (() => {
       'CA CO DC FL GA IL KS MA MN MO NC NY OH OR PA TN TX UT WA');
   add('pc_wnba_team',            '🏀 Has a WNBA team',                    'A une équipe WNBA',             'Tiene equipo WNBA',
       'AZ CA CT IL IN MN NY NV OH WA');
-  add('pc_pro_team_animal_name', '🦅 Pro team named after an animal',     'Équipe pro au nom d\'animal',   'Equipo pro con nombre de animal',
+  add('pc_pro_team_animal_name', '🦅 Pro team animal name',     'Équipe pro au nom d\'animal',   'Equipo pro: nombre animal',
       'AZ NC GA MD PA WA CO IN IL OH FL MI CA TX MN PA');
 
   // ═════════════════════════════════════════════════════════════════════
@@ -124,7 +124,7 @@ const PENDING_CONSTRAINTS = (() => {
   // ═════════════════════════════════════════════════════════════════════
   // 📺 TV — Multi-state franchises
   // ═════════════════════════════════════════════════════════════════════
-  add('pc_real_housewives_franchise','📺 Has a Real Housewives franchise','Une franchise des Real Housewives','Una franquicia de Real Housewives',
+  add('pc_real_housewives_franchise','📺 Real Housewives city','Ville Real Housewives','Ciudad Real Housewives',
       'NY GA NJ CA UT MD FL TX TN');
   add('pc_bravo_show_setting',   '📺 Setting of a Bravo reality show',    'Décor d\'une émission Bravo',   'Escenario de un reality Bravo',
       'NY GA NJ CA UT MD FL TX TN MI');
@@ -132,9 +132,9 @@ const PENDING_CONSTRAINTS = (() => {
   // ═════════════════════════════════════════════════════════════════════
   // 🎥 MOVIES
   // ═════════════════════════════════════════════════════════════════════
-  add('pc_stephen_king_setting', '👻 Setting of a Stephen King novel',    'Décor d\'un Stephen King',      'Escenario de Stephen King',
+  add('pc_stephen_king_setting', '👻 Stephen King novel setting',    'Décor d\'un Stephen King',      'Escenario de Stephen King',
       'ME CO MA NH NV FL NY PA');
-  add('pc_marvel_mcu_us_setting','🦸 MCU film location in the US',        'Lieu MCU aux US',               'Locación MCU en EE.UU.',
+  add('pc_marvel_mcu_us_setting','🦸 MCU US filming location',        'Lieu MCU aux US',               'Locación MCU en EE.UU.',
       'CA NY NM VA NV TN');
   add('pc_pixar_film_setting',   '🎬 Setting of a Pixar film',            'Décor d\'un Pixar',             'Escenario Pixar',
       'CA NY MN CO TX MO');
@@ -142,7 +142,7 @@ const PENDING_CONSTRAINTS = (() => {
       'VA LA TN HI AK MO');
   add('pc_coen_brothers_setting','🎬 Setting of a Coen Brothers film',    'Décor des frères Coen',         'Escenario de los Coen',
       'MN TX CA AZ NY AR');
-  add('pc_tarantino_setting',    '🎬 Setting of a Tarantino film',        'Décor d\'un Tarantino',         'Escenario de Tarantino',
+  add('pc_tarantino_setting',    '🎬 Tarantino film setting',        'Décor d\'un Tarantino',         'Escenario de Tarantino',
       'CA TN TX WY NM');
   add('pc_iconic_road_trip',     '🚗 Iconic American road trip route',    'Itinéraire road trip mythique', 'Ruta road trip icónica',
       'CA OR WA NV UT AZ NM TX OK MO IL KY TN NC VA');
@@ -324,9 +324,9 @@ const PENDING_CONSTRAINTS = (() => {
       'MA NY NJ CT PA NH RI');
   add('pc_top_public_uni',       '🎓 Has a top-15 public university',     'Top 15 universités publiques',  'Top 15 universidades públicas',
       'CA MI VA NC GA WI IL TX FL WA OH');
-  add('pc_top_business_school',  '🎓 Has a top-10 business school',       'Top 10 écoles de commerce',     'Top 10 escuelas de negocios',
+  add('pc_top_business_school',  '🎓 Top-10 business school',       'Top 10 écoles de commerce',     'Top 10 escuelas de negocios',
       'PA MA CA IL NY NC IN MI NH');
-  add('pc_top_liberal_arts',     '🎓 Has a top-10 liberal arts college',  'Top 10 colleges arts libéraux', 'Top 10 universidad de artes liberales',
+  add('pc_top_liberal_arts',     '🎓 Top liberal arts college',  'Top collège arts libéraux', 'Top universidad artes lib.',
       'MA ME VT PA OH IL MN NY CA');
   add('pc_top_art_school',       '🎨 Has a top-10 art / design school',   'Top 10 écoles d\'art / design', 'Top 10 escuelas de arte',
       'NY CA RI IL MA MI');
@@ -338,7 +338,7 @@ const PENDING_CONSTRAINTS = (() => {
       'AL AR CA CO FL GA IL IN IA KS KY LA MA MD MI MN MS MO NC NE NJ NY OH OK OR PA SC TN TX UT VA WA WI WV');
   add('pc_5plus_rhodes_scholars','🎓 5+ Rhodes Scholars come from here',  '5+ boursiers Rhodes',           '5+ becarios Rhodes',
       'CA NY MA TX VA PA IL');
-  add('pc_top10_engineering_uni','🔧 Top-10 engineering university',      'Top 10 fac d\'ingénierie',      'Top 10 ingeniería',
+  add('pc_top10_engineering_uni','🔧 Top engineering university',      'Top 10 fac d\'ingénierie',      'Top 10 ingeniería',
       'MA CA TX IL GA MI');
   add('pc_top10_law_school',     '⚖️ Top-10 law school',                  'Top 10 fac de droit',           'Top 10 derecho',
       'CT MA NY IL CA VA MI PA');
@@ -572,7 +572,7 @@ const PENDING_CONSTRAINTS = (() => {
       'TN GA AL FL TX LA');
   add('pc_iconic_pie',           '🥧 Has an iconic regional pie',         'Tarte régionale célèbre',       'Tarta regional famosa',
       'FL MA IN PA KY MO');
-  add('pc_iconic_cocktail',      '🍹 Has a signature cocktail named after it','Cocktail régional','Cóctel regional con firma',
+  add('pc_iconic_cocktail',      '🍹 Has a signature cocktail','Cocktail régional','Cóctel regional con firma',
       'NY LA NV CA TN KY');
   add('pc_oyster_country',       '🦪 Famous oyster region',               'Pays de l\'huître',             'Tierra de la ostra',
       'LA MD VA WA OR CT MA RI ME');
@@ -604,7 +604,7 @@ const PENDING_CONSTRAINTS = (() => {
       'IN IA TX OK PA NY MA');
   add('pc_80s_action_movie',     '💥 Classic 80s action movie setting',   'Décor d\'action 80\'s',         'Escenario de acción de los 80',
       'CA NY TX WA OR');
-  add('pc_disaster_movie_set',   '🌋 Disaster movie setting',             'Décor de film catastrophe',     'Escenario de película catástrofe',
+  add('pc_disaster_movie_set',   '🌋 Disaster movie setting',             'Décor de film catastrophe',     'Escenario peli catástrofe',
       'CA WA NY FL TX MO');
   add('pc_noir_film_set',        '🕵️ Classic film noir setting',          'Décor de film noir',            'Escenario de film noir',
       'CA NY NV IL LA');
@@ -614,9 +614,9 @@ const PENDING_CONSTRAINTS = (() => {
   // ─── 📺 MORE TV ───
   add('pc_political_drama_tv',   '📺 Setting of a major political drama', 'Décor de drama politique',      'Escenario de drama político',
       'DC MD VA NY CA');
-  add('pc_cop_show_setting',     '🚓 Setting of a major cop show',        'Décor de série policière',      'Escenario de serie policial',
+  add('pc_cop_show_setting',     '🚓 Cop show setting',        'Décor de série policière',      'Escenario de serie policial',
       'NY CA IL HI FL LA TX MD');
-  add('pc_medical_drama_set',    '🏥 Setting of a medical TV drama',      'Décor de série médicale',       'Escenario de drama médico',
+  add('pc_medical_drama_set',    '🏥 Medical drama setting',      'Décor de série médicale',       'Escenario de drama médico',
       'WA IL NY MA CA GA');
   add('pc_courtroom_show',       '⚖️ Setting of a major courtroom show',  'Décor de série juridique',      'Escenario de serie judicial',
       'NY CA TX FL IL');
@@ -698,7 +698,7 @@ const PENDING_CONSTRAINTS = (() => {
       'AZ NM CA NV ND');
   add('pc_iconic_mountain_peak','⛰️ Has a famous named peak',            'Sommet emblématique',           'Pico emblemático',
       'CO WA AK CA WY NH TN NC');
-  add('pc_long_river_state',    '🏞️ Bordered by major US river',         'Frontière fluviale majeure',    'Frontera fluvial mayor',
+  add('pc_long_river_state',    '🏞️ On a major US river',         'Frontière fluviale majeure',    'Frontera fluvial mayor',
       'MN WI IA MO IL TN KY AR MS LA');
   add('pc_big_lake',            '🌊 Has a Great Lake OR major freshwater lake','Grands Lacs ou grand lac','Gran lago',
       'MN WI IL IN MI OH PA NY UT NV CA WA OR');
@@ -744,7 +744,7 @@ const PENDING_CONSTRAINTS = (() => {
       'CA NY MA PA WA MI LA MD');
   add('pc_historic_train_ride', '🚂 Iconic scenic train ride',           'Train touristique mythique',    'Tren panorámico icónico',
       'CO AZ VT VA WV NH NM AK CA');
-  add('pc_underground_subway',  '🚇 Has a subway / metro system',        'A un métro',                    'Tiene metro',
+  add('pc_underground_subway',  '🚇 Has a subway/metro',        'A un métro',                    'Tiene metro',
       'NY IL MA PA GA MD CA OR WA');
   add('pc_amtrak_corridor',     '🚆 On the Northeast Corridor (Amtrak)', 'Sur le Northeast Corridor',     'En el Northeast Corridor',
       'MA RI CT NY NJ PA DE MD DC VA');
@@ -988,17 +988,17 @@ const PENDING_CONSTRAINTS = (() => {
   // ═════════════════════════════════════════════════════════════════════
 
   // ─── 🎬 MOVIES — Specific franchises & directors ───
-  add('pc_movie_spielberg',     '🎬 Setting of a Spielberg film',         'Décor d\'un Spielberg',          'Escenario de un Spielberg',         'CA IN MA WY NJ NY');
-  add('pc_movie_scorsese',      '🎬 Setting of a Scorsese film',          'Décor d\'un Scorsese',           'Escenario de Scorsese',             'NY NJ MA NV IL');
+  add('pc_movie_spielberg',     '🎬 Spielberg film setting',         'Décor d\'un Spielberg',          'Escenario de un Spielberg',         'CA IN MA WY NJ NY');
+  add('pc_movie_scorsese',      '🎬 Scorsese film setting',          'Décor d\'un Scorsese',           'Escenario de Scorsese',             'NY NJ MA NV IL');
   add('pc_movie_lynch',         '🎬 Setting of a David Lynch film',       'Décor d\'un Lynch',              'Escenario de Lynch',                'WA CA NE MT WY');
-  add('pc_movie_anderson_wes',  '🎬 Setting of a Wes Anderson film',      'Décor de Wes Anderson',          'Escenario de Wes Anderson',         'TX RI NY MA NM');
-  add('pc_movie_eastwood',      '🎬 Setting of a Clint Eastwood film',    'Décor d\'un Eastwood',           'Escenario de Eastwood',             'CA WY AZ NM TX MO');
+  add('pc_movie_anderson_wes',  '🎬 Wes Anderson film setting',      'Décor de Wes Anderson',          'Escenario de Wes Anderson',         'TX RI NY MA NM');
+  add('pc_movie_eastwood',      '🎬 Clint Eastwood film setting',    'Décor d\'un Eastwood',           'Escenario de Eastwood',             'CA WY AZ NM TX MO');
   add('pc_movie_kubrick_us',    '🎬 US setting of a Kubrick film',        'Décor US de Kubrick',            'Escenario US de Kubrick',           'NY KY CO FL');
   add('pc_movie_indiana_road',  '🎬 Road movie classic route',            'Route de road movie',            'Ruta road movie',                   'CA NV UT AZ NM TX OK MO');
   add('pc_movie_oscar_dp',      '🎬 Setting of an Oscar Best Picture (last 10y)','Décor Best Picture 10 dernières années','Best Picture 10 años','CA NY NM MA GA LA TX TN');
-  add('pc_movie_marvel_loc',    '🦸 Filmed at major Marvel studios',      'Tournage Marvel',                'Rodaje Marvel',                     'GA CA NY NM MA');
+  add('pc_movie_marvel_loc',    '🦸 Marvel filming location',      'Tournage Marvel',                'Rodaje Marvel',                     'GA CA NY NM MA');
   add('pc_movie_dc_setting',    '🦇 Setting of a DC comics film (real loc)','Décor de film DC','Escenario de película DC',                       'IL PA NY NJ MI');
-  add('pc_movie_pixar_inspo',   '🎬 Visual inspiration for a Pixar film', 'Inspiration visuelle Pixar',     'Inspiración visual Pixar',          'CO NV CA MA NY');
+  add('pc_movie_pixar_inspo',   '🎬 Inspired a Pixar film', 'Inspiration visuelle Pixar',     'Inspiración visual Pixar',          'CO NV CA MA NY');
   add('pc_movie_horror_classic','🔪 Setting of a horror classic (Friday/Halloween/Scream)','Décor horreur culte','Escenario horror clásico','CA IL OH NJ');
   add('pc_movie_action_classic','💥 Setting of an action classic',        'Décor d\'action classique',      'Escenario acción clásica',          'CA NY TX FL NV NM');
   add('pc_movie_animation_loc', '🎬 Setting of a major animated feature', 'Décor d\'un film d\'animation',  'Escenario animado',                 'CA NY LA HI MO');
@@ -1030,16 +1030,16 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_music_doomtree',      '🎤 Major underground hip-hop label',     'Label hip-hop underground',      'Sello hip-hop underground',         'MN GA NY CA');
   add('pc_music_americana_arts','🎤 Major Americana artist origin',       'Origine americana',              'Origen americana',                  'TN TX NC VA OR WA');
   add('pc_music_taylor_swift',  '🎤 Taylor Swift Eras Tour stops',        'Stops Eras Tour',                'Eras Tour stops',                   'CA NV AZ TX MA FL GA IL MI MO MN OH PA WA TN IN LA NJ NY DC');
-  add('pc_music_beyonce_tour',  '🎤 Beyoncé Renaissance Tour US stops',   'Stops Renaissance Tour',         'Renaissance Tour stops',            'PA MA TX MD GA MI MO MN PA IL FL DC NV');
+  add('pc_music_beyonce_tour',  '🎤 Beyoncé Renaissance stop',   'Stops Renaissance Tour',         'Renaissance Tour stops',            'PA MA TX MD GA MI MO MN PA IL FL DC NV');
   add('pc_music_rolling_stones','🎤 Rolling Stones US tour favorite',     'Tournée US Stones',              'Gira US Stones',                    'NY CA TX FL IL MA');
-  add('pc_music_dylan_song',    '🎤 Subject of a Bob Dylan song',         'Sujet d\'une chanson Dylan',     'Sujeto canción Dylan',              'NY MN MS TN IL');
+  add('pc_music_dylan_song',    '🎤 Bob Dylan song subject',         'Sujet d\'une chanson Dylan',     'Sujeto canción Dylan',              'NY MN MS TN IL');
   add('pc_music_springsteen',   '🎤 Subject of a Springsteen song',       'Sujet d\'une chanson Springsteen','Sujeto canción Springsteen',       'NJ NY PA');
   add('pc_music_country_anthem','🎤 Has a famous country state-anthem',   'Hymne country régional',         'Himno country regional',            'AL GA TN TX KY OK VA');
   add('pc_music_beach_boys',    '🎤 Beach Boys song setting',             'Décor de Beach Boys',            'Escenario Beach Boys',              'CA HI');
   add('pc_music_eagles_song',   '🎤 Eagles song subject',                 'Sujet d\'Eagles',                'Sujeto canción Eagles',             'CA AZ NV');
 
   // ─── 🏆 CELEBRITY BIRTHPLACES (broader pools) ───
-  add('pc_born_president_post60','🏛️ Birth state of a post-1960 US president','Naissance président post-1960','Cuna presidente post-1960',     'TX HI MA AR GA NE');
+  add('pc_born_president_post60','🏛️ Born a post-1960 US president','Né: président post-1960','Cuna: presidente post-1960',     'TX HI MA AR GA NE');
   add('pc_born_vice_president', '🏛️ Birth state of a Vice President',     'Naissance VP',                   'Cuna VP',                           'CA TX IN MA WI KY');
   add('pc_born_supreme_court',  '⚖️ Birth state of a Supreme Court Justice','Naissance Cour suprême','Cuna Corte Suprema',                       'CA NY IL OH AL VA TX MA');
   add('pc_born_speaker_house',  '🏛️ Birth state of a House Speaker',      'Naissance Speaker',              'Cuna Speaker',                      'CA TX IL OH MA');
@@ -1387,7 +1387,7 @@ const PENDING_CONSTRAINTS = (() => {
   // ─── 📚 NICHE TRIVIA ───
   add('pc_non_contiguous',      '🗺️ Non-contiguous to 48',                'Non contigus aux 48',            'No contiguos',                      'AK HI');
   add('pc_dual_state_names',    '🤝 Has a North/South sibling',           'A un État jumeau N/S',           'Tiene estado gemelo N/S',           'ND SD NC SC WV VA');
-  add('pc_state_capital_small', '🏛️ State capital is small (<100k pop)',  'Capitale petite (<100k)',        'Capital pequeña (<100k)',           'VT AK MT NH SD');
+  add('pc_state_capital_small', '🏛️ Capital under 100k pop',  'Capitale petite (<100k)',        'Capital pequeña (<100k)',           'VT AK MT NH SD');
 
   // ═══════════════════════════════════════════════════════════════════════
   // BATCH 4 — 100 CLASSIC CANDIDATES (LETTER / SPELLING / CLASSIC THEMES)
@@ -1455,10 +1455,10 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_great_lakes_2',       '🏞️ Borders a Great Lake',                'Borde un Grand Lac',             'Borde un Gran Lago',                'MN WI IL IN MI OH PA NY');
   add('pc_appalachians_in_state','⛰️ Appalachian range pass through',     'Appalaches dans l\'État',        'Montañas Apalaches',                'AL GA NC SC TN VA WV KY OH PA NY VT NH ME MD');
   add('pc_landlocked',          '🏞️ Landlocked (no coast, no Great Lake)','Enclavé',                        'Sin salida al mar',                 'AZ AR CO ID IA KS KY MO MT NE NV NM ND OK SD TN UT VT WV WY');
-  add('pc_sea_level_low',       '🏖️ Lowest point near/below sea level',   'Point bas près du niveau mer',   'Punto bajo cerca del mar',          'CA LA FL DE MD NC VA NJ NY');
+  add('pc_sea_level_low',       '🏖️ Low point near sea level',   'Point bas près du niveau mer',   'Punto bajo cerca del mar',          'CA LA FL DE MD NC VA NJ NY');
 
   // ─── 📜 HISTORY CLASSIC ───
-  add('pc_thirteen_colonies',   '📜 One of the 13 original colonies',     '13 colonies originelles',        '13 colonias originales',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI');
+  add('pc_thirteen_colonies',   '📜 One of the 13 colonies',     '13 colonies originelles',        '13 colonias originales',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI');
   add('pc_admitted_before_1800','📜 Admitted before 1800',                'Admis avant 1800',               'Admitido antes de 1800',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI VT KY TN');
   add('pc_admitted_1800s',      '📜 Admitted in the 1800s',               'Admis au XIXe siècle',           'Admitido en el siglo XIX',          'OH LA IN MS IL AL ME MO AR MI FL TX IA WI CA MN OR KS WV NV NE CO ND SD MT WA ID WY UT');
   add('pc_admitted_after_civil','📜 Admitted 1865–1900',                  'Admis 1865–1900',                'Admitido 1865–1900',                'NE CO ND SD MT WA ID WY UT');
@@ -1476,7 +1476,7 @@ const PENDING_CONSTRAINTS = (() => {
 
   // ─── 🏙️ CAPITALS ───
   add('pc_capital_same_letter', '🏛️ Capital starts with same letter as state','Capitale même initiale','Capital con misma inicial',      'DE HI IN OK');
-  add('pc_capital_is_largest',  '🏛️ Capital is also the largest city',    'Capitale = plus grande ville',   'Capital = ciudad más grande',       'AZ AR CO GA HI HI IN MA MS OK RI SC UT WV WY');
+  add('pc_capital_is_largest',  '🏛️ Capital = largest city',    'Capitale = plus grande ville',   'Capital = ciudad más grande',       'AZ AR CO GA HI HI IN MA MS OK RI SC UT WV WY');
   add('pc_capital_two_words',   '🏛️ Capital city has two words',          'Capitale en deux mots',          'Capital con dos palabras',          'AR IA NM ND OK SD UT');
   add('pc_capital_under_50k',   '🏛️ Capital under 50k population',        'Capitale <50k habitants',        'Capital <50k habitantes',           'VT MT SD KY AK');
 
