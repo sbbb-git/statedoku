@@ -24,8 +24,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const MD_FILE = path.resolve(__dirname, 'outreach-mails-personalized.md');
 const STATE_FILE = path.resolve(__dirname, 'outreach-sent.json');
+
+// --file <path> overrides the default mail file. Default = batch 1.
+let MD_FILE = path.resolve(__dirname, 'outreach-mails-personalized.md');
+const fileIdx = process.argv.indexOf('--file');
+if (fileIdx > -1 && process.argv[fileIdx + 1]) {
+  MD_FILE = path.resolve(process.cwd(), process.argv[fileIdx + 1]);
+}
 
 const FROM = 'Sacha Bitoun <sacha@statedoku.com>';
 const REPLY_TO = 'sacha@statedoku.com';
@@ -93,10 +99,22 @@ function extractTaglineHints(metaBlock) {
   return { da: da?.[1]?.trim(), article: art?.[1]?.trim() };
 }
 
-function parseMail(block) {
+function parseMail(block, sequentialIndex) {
   const headerLine = (block.match(/^## .*/m) || [''])[0];
-  const cue = CUES.find(c => c.re.test(headerLine));
-  if (!cue) return null;
+  // Skip non-mail headers (intro, "🚀 Action", etc.) — a real mail block has a ```code fence
+  if (!block.includes('```')) return null;
+
+  // Try CUES first (batch 1 uses keyword matching), otherwise fall back to
+  // the **Slug:** line (batch 2+) or auto-derive from header.
+  let cue = CUES.find(c => c.re.test(headerLine));
+  if (!cue) {
+    const slugLine = block.match(/\*\*Slug:\*\*\s*([a-z0-9-]+)/i);
+    const slug = slugLine ? slugLine[1] : null;
+    if (!slug) return null;
+    // Strip emoji-digit prefix from header to get a readable label
+    const labelText = headerLine.replace(/^## (?:[\d️⃣🔟]+\s+)?/, '').trim();
+    cue = { num: sequentialIndex, re: null, label: labelText, slug };
+  }
 
   // Meta lines are between header and the first ``` code fence
   const codeFenceIdx = block.indexOf('```');
@@ -141,7 +159,7 @@ function parseMail(block) {
 
 // Split by `## ` headers
 const blocks = md.split(/(?=^## )/m).filter(b => b.trim().startsWith('## '));
-const mails = blocks.map(parseMail).filter(Boolean);
+const mails = blocks.map((b, i) => parseMail(b, i + 1)).filter(Boolean);
 
 console.log(`\n📬 Parsed ${mails.length} mails from ${path.relative(process.cwd(), MD_FILE)}\n`);
 
