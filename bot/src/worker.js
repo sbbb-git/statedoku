@@ -20,7 +20,7 @@ const ANTHROPIC_MODEL = 'claude-haiku-4-5';   // cheap + fast (~$0.0008 / tweet)
 // ⚙️ FLIP THIS WHEN YOU LAUNCH THE PUZZLE
 // "prelaunch" → 2 tweets/day, no statedoku.com link, no #Statedoku hashtag (yet)
 // "launch"    → 1 tweet/day, promoting the daily puzzle with link
-const PHASE = 'prelaunch';
+const PHASE = 'launch';
 
 // Public launch date. Drives the countdown / "imminent" phrasing in prelaunch.
 const LAUNCH_DATE = '2026-06-01';
