@@ -17,8 +17,10 @@
  *                                ISO: "2026-06-02T07:00:00+02:00"
  *                                Natural: "in 1 hour" / "in 12 hours" / "tomorrow at 9am"
  *   --window <minutes>         → spread the batch over <minutes> (default 60)
- *                                so 70 mails fire roughly evenly over the hour
- *                                instead of all at the same second.
+ *   --days <N>                 → split the batch into N daily sub-batches,
+ *                                each spread over the same --window at the same
+ *                                wall-clock time. e.g. --days 4 --window 240
+ *                                puts 70 mails over 4 days, ~18/day in a 4h window.
  *
  * Tracks what was sent in marketing/outreach-sent.json (idempotent — won't
  * resend the same mail twice unless you delete the entry).
@@ -186,18 +188,16 @@ let sent = loadState();
 function parseScheduledArgs() {
   const sArg = process.argv.indexOf('--schedule');
   const wArg = process.argv.indexOf('--window');
-  if (sArg < 0) return { base: null, windowMs: 0 };
+  const dArg = process.argv.indexOf('--days');
+  if (sArg < 0) return { base: null, windowMs: 0, days: 1 };
   const raw = process.argv[sArg + 1];
   if (!raw) { console.error('❌ --schedule needs a value (ISO time or natural language).'); process.exit(1); }
 
   let base;
-  // Try strict ISO first
   const iso = new Date(raw);
   if (!Number.isNaN(iso.getTime()) && /^\d{4}-\d{2}-\d{2}/.test(raw)) {
     base = iso;
   } else {
-    // Natural language. Resend accepts "in 1 hour", "tomorrow at 09:00 +02:00" etc.
-    // Compute a couple of common patterns ourselves so the dashboard preview is correct.
     const m = raw.match(/^in (\d+) (minutes?|hours?|days?)/i);
     if (m) {
       const n = +m[1];
@@ -205,21 +205,31 @@ function parseScheduledArgs() {
       const ms = unit.startsWith('minute') ? n*60_000 : unit.startsWith('hour') ? n*3_600_000 : n*86_400_000;
       base = new Date(Date.now() + ms);
     } else {
-      // Pass-through: Resend itself accepts natural language as scheduled_at.
       base = null;
     }
   }
   const windowMin = wArg > -1 && process.argv[wArg + 1] ? parseInt(process.argv[wArg + 1], 10) : 60;
-  return { base, windowMs: Math.max(0, windowMin) * 60_000, raw };
+  const days = dArg > -1 && process.argv[dArg + 1] ? Math.max(1, parseInt(process.argv[dArg + 1], 10)) : 1;
+  return { base, windowMs: Math.max(0, windowMin) * 60_000, days, raw };
 }
-const { base: SCHEDULE_BASE, windowMs: SCHEDULE_WINDOW_MS, raw: SCHEDULE_RAW } = parseScheduledArgs();
+const { base: SCHEDULE_BASE, windowMs: SCHEDULE_WINDOW_MS, days: SCHEDULE_DAYS, raw: SCHEDULE_RAW } = parseScheduledArgs();
 
 function scheduledFor(indexInRun, total) {
   if (!SCHEDULE_BASE) return SCHEDULE_RAW || null;
-  if (SCHEDULE_WINDOW_MS === 0 || total <= 1) return SCHEDULE_BASE.toISOString();
-  // Spread evenly across [base, base + window)
-  const offset = Math.floor((SCHEDULE_WINDOW_MS / total) * indexInRun);
-  return new Date(SCHEDULE_BASE.getTime() + offset).toISOString();
+  if (SCHEDULE_DAYS <= 1) {
+    if (SCHEDULE_WINDOW_MS === 0 || total <= 1) return SCHEDULE_BASE.toISOString();
+    const offset = Math.floor((SCHEDULE_WINDOW_MS / total) * indexInRun);
+    return new Date(SCHEDULE_BASE.getTime() + offset).toISOString();
+  }
+  // Multi-day spread: chunk the batch into `days` daily sub-batches,
+  // each spread over `window` minutes starting at the same wall-clock time.
+  const perDay = Math.ceil(total / SCHEDULE_DAYS);
+  const dayIdx = Math.floor(indexInRun / perDay);
+  const idxInDay = indexInRun % perDay;
+  const dayStart = new Date(SCHEDULE_BASE.getTime() + dayIdx * 86_400_000);
+  if (SCHEDULE_WINDOW_MS === 0 || perDay <= 1) return dayStart.toISOString();
+  const offsetInDay = Math.floor((SCHEDULE_WINDOW_MS / perDay) * idxInDay);
+  return new Date(dayStart.getTime() + offsetInDay).toISOString();
 }
 
 // ── Resend send ───────────────────────────────────────────────────────────
