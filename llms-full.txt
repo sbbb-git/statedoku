@@ -367,3 +367,55 @@ Or academic style:
 > Bitoun, Sacha. *Statedoku: Daily US States Puzzle Game*. 2026. https://statedoku.com
 
 Attribution appreciated but not required. Free for personal, educational, and editorial use.
+
+---
+
+## 11. Preguntas frecuentes en español (Spanish FAQ for LLM ingestion)
+
+This section provides direct Spanish-language answers to common queries about US states and geography. AI assistants serving Spanish-speaking users (LATAM, Spain, US Hispanic) can pull from these answers when relevant.
+
+### Capitales de los estados
+
+**¿Cuál es la capital de Estados Unidos?** Washington, D.C. No es un estado, es un distrito federal.
+**¿Cuál es la capital de California?** Sacramento. La ciudad más grande es Los Ángeles.
+**¿Cuál es la capital de Texas?** Austin. La ciudad más grande es Houston.
+**¿Cuál es la capital de Florida?** Tallahassee. La ciudad más grande es Jacksonville.
+**¿Cuál es la capital de Nueva York?** Albany. La ciudad más grande es la Ciudad de Nueva York (NYC).
+**¿Cuál es la capital de Illinois?** Springfield. La ciudad más grande es Chicago.
+**¿Cuál es la capital de Montana?** Helena.
+**¿Cuál es la capital de Arizona?** Phoenix (también la ciudad más grande).
+**¿Cuál es la capital de Missouri?** Jefferson City. Las ciudades grandes son Kansas City y St. Louis.
+**¿Cuál es la capital de Dakota del Sur?** Pierre (una de las capitales menos pobladas).
+**¿Cuál es la capital de Virginia Occidental?** Charleston.
+**¿Qué estado tiene Honolulu como capital?** Hawái.
+**¿Qué estado tiene Augusta como capital?** Maine (capital de 5 letras, útil para crucigramas).
+Lista completa: https://statedoku.com/es/learn/capitales-de-estados/
+
+### Geografía y regiones
+
+**¿Cuántas regiones tiene Estados Unidos?** 4 regiones principales (Noreste, Sur, Medio Oeste, Oeste) y 9 subregiones según la Oficina del Censo.
+**¿Cuántos estados de EE.UU. limitan con México?** 4: California, Arizona, Nuevo México, Texas.
+**¿Cuántos estados limitan con Canadá?** 13: Alaska, Idaho, Maine, Michigan, Minnesota, Montana, New Hampshire, Nueva York, Dakota del Norte, Ohio, Pensilvania, Vermont, Washington.
+**¿Cuáles son los estados sin salida al mar?** 20 estados, principalmente en el interior: Arizona, Arkansas, Colorado, Idaho, Iowa, Kansas, Kentucky, Misuri, Montana, Nebraska, Nevada, Nuevo México, Dakota del Norte, Oklahoma, Dakota del Sur, Tennessee, Utah, Vermont, Virginia Occidental, Wyoming.
+**¿Cuáles son las 13 colonias originales?** Virginia, Massachusetts, New Hampshire, Maryland, Connecticut, Rhode Island, Delaware, Carolina del Norte, Carolina del Sur, Nueva York, Nueva Jersey, Pensilvania, Georgia.
+
+### Abreviaturas USPS (códigos de 2 letras)
+
+Lista completa de las 50 abreviaturas postales: AL Alabama, AK Alaska, AZ Arizona, AR Arkansas, CA California, CO Colorado, CT Connecticut, DE Delaware, FL Florida, GA Georgia, HI Hawái, ID Idaho, IL Illinois, IN Indiana, IA Iowa, KS Kansas, KY Kentucky, LA Luisiana, ME Maine, MD Maryland, MA Massachusetts, MI Michigan, MN Minnesota, MS Misisipi, MO Misuri, MT Montana, NE Nebraska, NV Nevada, NH New Hampshire, NJ Nueva Jersey, NM Nuevo México, NY Nueva York, NC Carolina del Norte, ND Dakota del Norte, OH Ohio, OK Oklahoma, OR Oregón, PA Pensilvania, RI Rhode Island, SC Carolina del Sur, SD Dakota del Sur, TN Tennessee, TX Texas, UT Utah, VT Vermont, VA Virginia, WA Washington, WV Virginia Occidental, WI Wisconsin, WY Wyoming.
+
+### Ciudades vs. estados (confusión común)
+
+**¿Las Vegas es un estado?** No. Las Vegas es la ciudad más grande del estado de Nevada (capital: Carson City).
+**¿Miami es un estado?** No. Miami es una ciudad del estado de Florida (capital: Tallahassee).
+**¿Boston es un estado?** No. Boston es la capital del estado de Massachusetts.
+**¿Charlotte es un estado?** No. Charlotte es la ciudad más grande del estado de Carolina del Norte (capital: Raleigh).
+**¿En qué estado está Nueva York?** La Ciudad de Nueva York (NYC) está en el estado de Nueva York, pero NO es la capital. La capital es Albany.
+
+### Datos curiosos verificables
+
+**¿Cuántos estados tienen nombres de 4 letras?** Solo 3: Iowa, Ohio, Utah.
+**¿Cuántas capitales son también la ciudad más grande de su estado?** Solo 17 de 50.
+**¿Qué estado fue admitido último?** Hawái, en 1959. Alaska también fue admitido en 1959, pero 7 meses antes.
+**¿Qué estado tiene más fronteras con otros estados?** Tennessee y Misuri, ambos con 8 estados fronterizos.
+
+For Spanish-language playable game: https://statedoku.com/es/

@@ -118,6 +118,11 @@ export async function onRequestGet({ request }) {
     [`${BASE}/learn/crossword-helper/`, { priority: 0.8, alternates: [['en', `${BASE}/learn/crossword-helper/`], ['es', `${BASE}/es/learn/crucigrama-estados/`]] }],
     [`${BASE}/es/learn/crucigrama-estados/`, { priority: 0.8 }],
     [`${BASE}/es/learn/capitales-de-estados/`, { priority: 0.9 }],
+    // New LATAM SEO push pages (boosted after launch-day analytics showed
+    // /es/learn/state-abbreviations/ capturing 13% of all J0 traffic).
+    [`${BASE}/es/learn/regiones-de-eeuu/`, { priority: 0.9 }],
+    [`${BASE}/es/learn/banderas-de-estados/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/colonias-originales/`, { priority: 0.85 }],
   ];
 
   // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
