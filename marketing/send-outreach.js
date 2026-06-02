@@ -10,7 +10,15 @@
  *   RESEND_API_KEY=re_xxx node marketing/send-outreach.js --send 1,2,3
  *     → send mails #1, #2, #3
  *   RESEND_API_KEY=re_xxx node marketing/send-outreach.js --send all
- *     → send ALL 15 (use with care — better spread over days)
+ *     → send ALL (use with care — better spread over days)
+ *
+ *   --file <path>             → use a different mail file (default = batch 1)
+ *   --schedule "<when>"       → delay delivery via Resend's scheduled_at
+ *                                ISO: "2026-06-02T07:00:00+02:00"
+ *                                Natural: "in 1 hour" / "in 12 hours" / "tomorrow at 9am"
+ *   --window <minutes>         → spread the batch over <minutes> (default 60)
+ *                                so 70 mails fire roughly evenly over the hour
+ *                                instead of all at the same second.
  *
  * Tracks what was sent in marketing/outreach-sent.json (idempotent — won't
  * resend the same mail twice unless you delete the entry).
@@ -171,8 +179,51 @@ function loadState() {
 function saveState(s) { fs.writeFileSync(STATE_FILE, JSON.stringify(s, null, 2)); }
 let sent = loadState();
 
+// ── Scheduled-at parsing ─────────────────────────────────────────────────
+// --schedule "<iso>" or --schedule "in 12 hours" or --schedule "tomorrow 09:00 Europe/Paris"
+// Spreads the batch over a window (e.g. 60 min) so it doesn't look automated.
+//   --window <minutes>   (default 60)
+function parseScheduledArgs() {
+  const sArg = process.argv.indexOf('--schedule');
+  const wArg = process.argv.indexOf('--window');
+  if (sArg < 0) return { base: null, windowMs: 0 };
+  const raw = process.argv[sArg + 1];
+  if (!raw) { console.error('❌ --schedule needs a value (ISO time or natural language).'); process.exit(1); }
+
+  let base;
+  // Try strict ISO first
+  const iso = new Date(raw);
+  if (!Number.isNaN(iso.getTime()) && /^\d{4}-\d{2}-\d{2}/.test(raw)) {
+    base = iso;
+  } else {
+    // Natural language. Resend accepts "in 1 hour", "tomorrow at 09:00 +02:00" etc.
+    // Compute a couple of common patterns ourselves so the dashboard preview is correct.
+    const m = raw.match(/^in (\d+) (minutes?|hours?|days?)/i);
+    if (m) {
+      const n = +m[1];
+      const unit = m[2].toLowerCase();
+      const ms = unit.startsWith('minute') ? n*60_000 : unit.startsWith('hour') ? n*3_600_000 : n*86_400_000;
+      base = new Date(Date.now() + ms);
+    } else {
+      // Pass-through: Resend itself accepts natural language as scheduled_at.
+      base = null;
+    }
+  }
+  const windowMin = wArg > -1 && process.argv[wArg + 1] ? parseInt(process.argv[wArg + 1], 10) : 60;
+  return { base, windowMs: Math.max(0, windowMin) * 60_000, raw };
+}
+const { base: SCHEDULE_BASE, windowMs: SCHEDULE_WINDOW_MS, raw: SCHEDULE_RAW } = parseScheduledArgs();
+
+function scheduledFor(indexInRun, total) {
+  if (!SCHEDULE_BASE) return SCHEDULE_RAW || null;
+  if (SCHEDULE_WINDOW_MS === 0 || total <= 1) return SCHEDULE_BASE.toISOString();
+  // Spread evenly across [base, base + window)
+  const offset = Math.floor((SCHEDULE_WINDOW_MS / total) * indexInRun);
+  return new Date(SCHEDULE_BASE.getTime() + offset).toISOString();
+}
+
 // ── Resend send ───────────────────────────────────────────────────────────
-async function sendOne(mail) {
+async function sendOne(mail, scheduledAt) {
   const payload = {
     from: FROM,
     to: [mail.to],
@@ -182,6 +233,7 @@ async function sendOne(mail) {
     html: mail.html,
     headers: { 'X-Statedoku-Outreach-ID': `outreach-${mail.num}` },
   };
+  if (scheduledAt) payload.scheduled_at = scheduledAt;
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -209,6 +261,9 @@ async function sendOne(mail) {
     console.log(`✉️  SENDING ${toProcess.length} mail(s) via Resend (DKIM signed by statedoku.com)…\n`);
   }
 
+  const sendableCount = toProcess.filter(m => !m.error && !sent[`${m.num}:${m.to}`]).length;
+  let scheduledIdx = 0;
+
   for (const mail of toProcess) {
     if (mail.error) {
       console.log(`#${String(mail.num).padStart(2,' ')}  ❌ ${mail.label}  →  ${mail.error}`);
@@ -224,7 +279,13 @@ async function sendOne(mail) {
     if (mail.da) console.log(`     DA:      ${mail.da}`);
 
     if (isDryRun || !sendTargets) {
-      console.log(`     [dry-run]\n`);
+      if (SCHEDULE_BASE || SCHEDULE_RAW) {
+        const when = scheduledFor(scheduledIdx, Math.max(1, sendableCount));
+        console.log(`     [dry-run]  Would schedule for: ${when}\n`);
+        scheduledIdx++;
+      } else {
+        console.log(`     [dry-run]\n`);
+      }
       continue;
     }
 
@@ -234,14 +295,21 @@ async function sendOne(mail) {
     }
 
     try {
-      const res = await sendOne(mail);
+      const scheduledAt = scheduledFor(scheduledIdx, Math.max(1, sendableCount));
+      scheduledIdx++;
+      const res = await sendOne(mail, scheduledAt);
       sent[sentKey] = {
         sent_at: new Date().toISOString(),
+        scheduled_at: scheduledAt || null,
         id: res.id || null,
         subject: mail.subject,
       };
       saveState(sent);
-      console.log(`     ✅ Sent — resend_id: ${res.id}\n`);
+      if (scheduledAt) {
+        console.log(`     ✅ Scheduled for ${scheduledAt} — resend_id: ${res.id}\n`);
+      } else {
+        console.log(`     ✅ Sent — resend_id: ${res.id}\n`);
+      }
       // Small delay to be polite
       await new Promise(r => setTimeout(r, 1500));
     } catch (e) {
