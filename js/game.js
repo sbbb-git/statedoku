@@ -547,6 +547,28 @@ const Game = (() => {
     _injectResultEmailCTA();
     _fireConfetti();
     if (typeof Ads !== 'undefined' && Ads.refresh) Ads.refresh();
+
+    // Auto-open subscribe modal 2.5s after win (peak-intent moment).
+    // Skipped if user already subscribed/dismissed, or if any other modal is open.
+    // Records prompted-on-date so we never re-prompt the same user twice.
+    try {
+      const KEY_WIN_PROMPT = 'statedoku_win_modal_prompted_v1';
+      const dismissed = !!localStorage.getItem('statedoku_email_cta_dismissed');
+      const subscribed = !!localStorage.getItem('statedoku_email_subscribed');
+      const alreadyPrompted = !!localStorage.getItem(KEY_WIN_PROMPT);
+      if (!dismissed && !subscribed && !alreadyPrompted && typeof EmailReminder !== 'undefined') {
+        setTimeout(() => {
+          const anyModalOpen = document.querySelector('.modal.open');
+          if (!anyModalOpen) {
+            EmailReminder.openModal();
+            localStorage.setItem(KEY_WIN_PROMPT, new Date().toISOString().slice(0, 10));
+            if (typeof window !== 'undefined' && typeof window.cfTrack === 'function') {
+              try { window.cfTrack('win_modal_auto_opened', { lang: document.documentElement.lang || 'en' }); } catch(_){}
+            }
+          }
+        }, 2500);
+      }
+    } catch (_) { /* never block the win banner */ }
   }
 
   // After-solve / after-gameover email CTA — prominent card below share row
@@ -657,11 +679,33 @@ const Game = (() => {
       return;
     }
     if (id === 'more') {
+      // Try Web Share API with image first (more compelling preview on iOS/Android)
+      try {
+        const blob = await getShareImageBlob();
+        if (blob && navigator.canShare) {
+          const file = new File([blob], 'statedoku-result.png', { type: 'image/png' });
+          if (navigator.canShare({ files: [file] })) {
+            try { await navigator.share({ files: [file], text: full, title: 'Statedoku' }); return; } catch(_) {}
+          }
+        }
+      } catch(_) {}
       if (navigator.share) {
         try { await navigator.share({ text: full, url: SITE_URL, title: 'Statedoku' }); } catch(e) {}
       } else {
         _openShareSheet();
       }
+      return;
+    }
+    if (id === 'download_image') {
+      try {
+        const blob = await getShareImageBlob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = `statedoku-${_dateStr}.png`;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        _showToast(I18n.t('image_downloaded') || 'Image saved');
+      } catch(_) { _showToast('Failed to save image'); }
       return;
     }
     let url;
@@ -719,6 +763,115 @@ const Game = (() => {
   }
   // Backwards-compat: full share text (body + URL)
   function getShareText() { return `${getShareBody()}\n${SITE_URL}`; }
+
+  // ── Wordle-style share PNG via Canvas ─────────────────────────────────────
+  // Renders an 800×800 image of the result grid + branding for visual sharing.
+  // Used by the Web Share API (files: [...]) when supported, and as a
+  // "download image" fallback.
+  async function getShareImageBlob() {
+    const W = 800, H = 800;
+    const canvas = document.createElement('canvas');
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    // Background gradient (navy → darker navy)
+    const grad = ctx.createLinearGradient(0, 0, W, H);
+    grad.addColorStop(0, '#0F2147');
+    grad.addColorStop(1, '#081530');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Gold accent bar (left edge)
+    const goldGrad = ctx.createLinearGradient(0, 0, 0, H);
+    goldGrad.addColorStop(0, '#F59E0B');
+    goldGrad.addColorStop(1, '#FCD34D');
+    ctx.fillStyle = goldGrad;
+    ctx.fillRect(0, 0, 10, H);
+
+    // Brand row at top
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 38px Inter, system-ui, sans-serif';
+    ctx.textBaseline = 'top';
+    ctx.fillText('Statedoku', 50, 50);
+    ctx.font = '500 28px Inter, system-ui, sans-serif';
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillText('🇺🇸 Daily US states puzzle', 50, 100);
+
+    // Date + golden chip
+    const d = new Date(_dateStr + 'T00:00:00');
+    const dateStr = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '700 24px Inter, system-ui, sans-serif';
+    ctx.fillText(dateStr, 50, 150);
+
+    // Stats line
+    const stats = _readStats();
+    const elapsed = _solveTime || 0;
+    const time = _fmtTime(elapsed);
+    const streak = stats.streak || 1;
+    const errCount = _errors;
+    const won = _solved;
+
+    ctx.fillStyle = won ? '#22C55E' : '#DC2626';
+    ctx.font = '900 56px Inter, system-ui, sans-serif';
+    ctx.fillText(won ? 'Solved!' : 'Game over', 50, 200);
+
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = '600 22px Inter, system-ui, sans-serif';
+    if (won) {
+      ctx.fillText(`⏱ ${time}   ·   🔥 streak ${streak}   ·   ❌ ${errCount}/3`, 50, 275);
+    } else {
+      ctx.fillText(`Tried for ${time}`, 50, 275);
+    }
+
+    // Result grid 3×3 (centered horizontally)
+    const cellSize = 140, cellGap = 16;
+    const gridSize = cellSize * 3 + cellGap * 2;
+    const gridX = (W - gridSize) / 2;
+    const gridY = 340;
+
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 3; c++) {
+        const s = _grid[r][c];
+        const correct = s && _puzzle.solution[r][c] === s;
+        const x = gridX + c * (cellSize + cellGap);
+        const y = gridY + r * (cellSize + cellGap);
+        ctx.fillStyle = correct ? '#22C55E' : (s ? '#DC2626' : '#1F2937');
+        ctx.beginPath();
+        const radius = 18;
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + cellSize - radius, y);
+        ctx.quadraticCurveTo(x + cellSize, y, x + cellSize, y + radius);
+        ctx.lineTo(x + cellSize, y + cellSize - radius);
+        ctx.quadraticCurveTo(x + cellSize, y + cellSize, x + cellSize - radius, y + cellSize);
+        ctx.lineTo(x + radius, y + cellSize);
+        ctx.quadraticCurveTo(x, y + cellSize, x, y + cellSize - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.fill();
+
+        // State abbreviation
+        if (s) {
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = '900 56px Inter, system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(s, x + cellSize / 2, y + cellSize / 2);
+          ctx.textAlign = 'start';
+          ctx.textBaseline = 'top';
+        }
+      }
+    }
+
+    // Footer URL
+    ctx.fillStyle = '#F59E0B';
+    ctx.font = '900 28px Inter, system-ui, sans-serif';
+    ctx.fillText('statedoku.com', 50, H - 70);
+
+    return await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+  }
+  // expose for share-sheet use
+  window.__statedoku_shareImage = getShareImageBlob;
 
   // ── Share sheet (multi-platform) ──────────────────────────────────────────
   const SHARE_PLATFORMS = [

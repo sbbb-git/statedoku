@@ -136,6 +136,19 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/college-electoral/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/fuseaux-horaires-etats-unis/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/surnoms-des-etats/`, { priority: 0.85 }],
+    // Batch 2 (June 4) — 2 EN + 5 ES + 5 FR
+    [`${BASE}/learn/state-nicknames-complete/`, { priority: 0.85 }],
+    [`${BASE}/learn/us-cultural-belts/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/sistema-federal-eeuu/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/padres-fundadores/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/rios-mas-largos-eeuu/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/montanas-mas-altas-eeuu/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/presidentes-por-estado/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/systeme-federal-americain/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/peres-fondateurs/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/fleuves-des-etats-unis/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/montagnes-des-etats-unis/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/presidents-par-etat/`, { priority: 0.85 }],
   ];
 
   // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
