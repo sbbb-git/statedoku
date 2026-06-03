@@ -118,11 +118,24 @@ export async function onRequestGet({ request }) {
     [`${BASE}/learn/crossword-helper/`, { priority: 0.8, alternates: [['en', `${BASE}/learn/crossword-helper/`], ['es', `${BASE}/es/learn/crucigrama-estados/`]] }],
     [`${BASE}/es/learn/crucigrama-estados/`, { priority: 0.8 }],
     [`${BASE}/es/learn/capitales-de-estados/`, { priority: 0.9 }],
-    // New LATAM SEO push pages (boosted after launch-day analytics showed
+    // LATAM SEO push pages (added after launch-day analytics showed
     // /es/learn/state-abbreviations/ capturing 13% of all J0 traffic).
     [`${BASE}/es/learn/regiones-de-eeuu/`, { priority: 0.9 }],
     [`${BASE}/es/learn/banderas-de-estados/`, { priority: 0.85 }],
     [`${BASE}/es/learn/colonias-originales/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/colegio-electoral/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/estados-bisagra/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/territorios-eeuu/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/zonas-horarias-eeuu/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/apodos-de-estados/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/cinturones-eeuu/`, { priority: 0.8 }],
+    // FR push pages (21% of launch-day traffic; FR cluster was underbuilt).
+    [`${BASE}/fr/learn/capitales-des-etats/`, { priority: 0.9 }],
+    [`${BASE}/fr/learn/regions-des-etats-unis/`, { priority: 0.9 }],
+    [`${BASE}/fr/learn/drapeaux-des-etats/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/college-electoral/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/fuseaux-horaires-etats-unis/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/surnoms-des-etats/`, { priority: 0.85 }],
   ];
 
   // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
