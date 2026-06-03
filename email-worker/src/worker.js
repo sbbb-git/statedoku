@@ -11,6 +11,11 @@ const SITE_URL = 'https://statedoku.com';
 const FROM_EMAIL = 'reminders@statedoku.com';
 const FROM_NAME  = 'Statedoku';
 
+// Click tracking — when a subscriber's email is in this allow-list, the
+// play-button is wrapped with a redirect through /api/track/email-click so we
+// can record opens-and-clicks for them. Privacy-scoped to opted-in test users.
+const CLICK_TRACK_EMAILS = new Set(['eloise0903.deb@gmail.com']);
+
 const SUBJECTS = {
   en: "Today's grid is live 🗺️",
   fr: "La grille du jour est là 🗺️",
@@ -23,21 +28,38 @@ const BTN = {
   es: 'Jugar →',
 };
 
+// base64url-encode for safe URL embedding (no +/=)
+function _b64url(s) {
+  // Workers/Node: btoa works on ASCII; emails are ASCII
+  return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function _playUrl(lang, email) {
+  const langPath = lang === 'fr' ? '/fr/' : lang === 'es' ? '/es/' : '/';
+  const dest = `${SITE_URL}${langPath}?utm_source=email&utm_medium=daily&utm_campaign=reminder`;
+  if (CLICK_TRACK_EMAILS.has(email)) {
+    const u = _b64url(email);
+    const d = _b64url(dest);
+    return `${SITE_URL}/api/track/email-click?u=${u}&d=${d}&l=${lang}`;
+  }
+  return dest;
+}
+
 const BODIES = {
-  en: (dateLong) => `
+  en: (dateLong, href) => `
     <p style="font-size:15px">Today's grid is live.</p>
     <p style="color:#525252">${dateLong}</p>
-    <p><a href="${SITE_URL}" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.en}</a></p>
+    <p><a href="${href}" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.en}</a></p>
   `,
-  fr: (dateLong) => `
+  fr: (dateLong, href) => `
     <p style="font-size:15px">La grille du jour est en ligne.</p>
     <p style="color:#525252">${dateLong}</p>
-    <p><a href="${SITE_URL}/fr/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.fr}</a></p>
+    <p><a href="${href}" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.fr}</a></p>
   `,
-  es: (dateLong) => `
+  es: (dateLong, href) => `
     <p style="font-size:15px">La cuadrícula de hoy está lista.</p>
     <p style="color:#525252">${dateLong}</p>
-    <p><a href="${SITE_URL}/es/" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.es}</a></p>
+    <p><a href="${href}" style="display:inline-block;background:#0F2147;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700">${BTN.es}</a></p>
   `,
 };
 
@@ -58,13 +80,14 @@ function _longDate(lang) {
 
 async function _sendOne(sub, env) {
   const lang = ['en','fr','es'].includes(sub.lang) ? sub.lang : 'en';
+  const playHref = _playUrl(lang, sub.email);
   const html = `
     <div style="font-family:system-ui,-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#0A0A0A;line-height:1.55">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
         <span style="font-size:26px;line-height:1">🇺🇸</span>
         <h1 style="font-size:22px;font-weight:900;color:#0F2147;letter-spacing:-0.02em;margin:0">State<span style="color:#DC2626">doku</span></h1>
       </div>
-      ${BODIES[lang](_longDate(lang))}
+      ${BODIES[lang](_longDate(lang), playHref)}
       ${UNSUB[lang](sub.token)}
     </div>
   `;
