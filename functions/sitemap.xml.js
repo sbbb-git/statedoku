@@ -149,6 +149,12 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/fleuves-des-etats-unis/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/montagnes-des-etats-unis/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/presidents-par-etat/`, { priority: 0.85 }],
+    // Batch 3 (June 4) — National parks + populous states trio
+    [`${BASE}/learn/national-parks-by-state/`, { priority: 0.9 }],
+    [`${BASE}/learn/most-populous-states/`, { priority: 0.9 }],
+    [`${BASE}/es/learn/parques-nacionales-eeuu/`, { priority: 0.9 }],
+    [`${BASE}/es/learn/estados-mas-poblados/`, { priority: 0.9 }],
+    [`${BASE}/fr/learn/parcs-nationaux-americains/`, { priority: 0.9 }],
   ];
 
   // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
