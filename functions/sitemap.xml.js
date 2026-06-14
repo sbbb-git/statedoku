@@ -155,6 +155,38 @@ export async function onRequestGet({ request }) {
     [`${BASE}/es/learn/parques-nacionales-eeuu/`, { priority: 0.9 }],
     [`${BASE}/es/learn/estados-mas-poblados/`, { priority: 0.9 }],
     [`${BASE}/fr/learn/parcs-nationaux-americains/`, { priority: 0.9 }],
+    // World Cup 2026 mega-batch (June 4) — peak search-volume opportunity
+    // Tournament starts June 11, 2026, final July 19 at MetLife Stadium.
+    // Priority 0.95 for hubs (highest in entire sitemap) — these are the
+    // most time-sensitive pages on the site for the next ~50 days.
+    [`${BASE}/learn/world-cup-2026-us-host-cities/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/learn/world-cup-2026-final-stadium/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/learn/world-cup-2026-schedule-by-state/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/learn/world-cup-2026-stadiums-complete/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/atlanta-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/boston-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/dallas-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/houston-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/kansas-city-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/los-angeles-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/miami-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/new-york-new-jersey-world-cup-2026/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/learn/philadelphia-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/san-francisco-bay-area-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/learn/seattle-world-cup-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/mundial-2026-eeuu/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/mundial-2026-final-metlife/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/mundial-2026-estadios/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/mexico-mundial-2026/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/argentina-mundial-2026/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/espana-mundial-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/colombia-mundial-2026/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/es/learn/mundial-2026-boletos-visa/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/fr/learn/coupe-du-monde-2026-villes-usa/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/fr/learn/coupe-du-monde-2026-finale/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/fr/learn/france-coupe-du-monde-2026/`, { priority: 0.95, changefreq: 'weekly' }],
+    [`${BASE}/fr/learn/coupe-du-monde-2026-stades/`, { priority: 0.9, changefreq: 'weekly' }],
+    [`${BASE}/fr/learn/coupe-du-monde-2026-voyage-usa/`, { priority: 0.9, changefreq: 'weekly' }],
   ];
 
   // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
