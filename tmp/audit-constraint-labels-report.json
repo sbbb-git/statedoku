@@ -2,220 +2,40 @@
   "broken": [],
   "tooLong": [
     {
-      "id": "has_million_city",
-      "lang": "fr",
-      "source": "core",
-      "label": "Ville d'un million d'habitants"
-    },
-    {
       "id": "capital_named_after_president",
       "lang": "en",
       "source": "core",
-      "label": "Capital named after a president"
+      "label": "Capital named for a president"
     },
     {
       "id": "capital_named_after_president",
       "lang": "fr",
       "source": "core",
-      "label": "Capitale au nom d'un président"
+      "label": "Capitale du nom d'un président"
     },
     {
       "id": "capital_named_after_president",
       "lang": "es",
       "source": "core",
-      "label": "Capital con nombre de presidente"
-    },
-    {
-      "id": "name_native_origin",
-      "lang": "en",
-      "source": "core",
-      "label": "Named from a Native American language"
-    },
-    {
-      "id": "name_native_origin",
-      "lang": "es",
-      "source": "core",
-      "label": "Nombre de origen nativo americano"
-    },
-    {
-      "id": "name_royalty_origin",
-      "lang": "en",
-      "source": "core",
-      "label": "Named after a king, queen or noble"
-    },
-    {
-      "id": "name_royalty_origin",
-      "lang": "fr",
-      "source": "core",
-      "label": "Nommé d'après un roi, une reine ou un noble"
-    },
-    {
-      "id": "name_royalty_origin",
-      "lang": "es",
-      "source": "core",
-      "label": "Nombrado por un rey, reina o noble"
-    },
-    {
-      "id": "starts_and_ends_vowel",
-      "lang": "fr",
-      "source": "core",
-      "label": "Commence et finit par voyelle"
-    },
-    {
-      "id": "two_word_starts_n",
-      "lang": "en",
-      "source": "core",
-      "label": "Two-word name starting with N"
-    },
-    {
-      "id": "pc_pro_team_animal_name",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🦅 Pro team named after an animal"
-    },
-    {
-      "id": "pc_pro_team_animal_name",
-      "lang": "es",
-      "source": "approved-pending",
-      "label": "Equipo pro con nombre de animal"
-    },
-    {
-      "id": "pc_real_housewives_franchise",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "📺 Has a Real Housewives franchise"
-    },
-    {
-      "id": "pc_real_housewives_franchise",
-      "lang": "fr",
-      "source": "approved-pending",
-      "label": "Une franchise des Real Housewives"
-    },
-    {
-      "id": "pc_real_housewives_franchise",
-      "lang": "es",
-      "source": "approved-pending",
-      "label": "Una franquicia de Real Housewives"
+      "label": "Capital con nombre presidencial"
     },
     {
       "id": "pc_stephen_king_setting",
       "lang": "en",
       "source": "approved-pending",
-      "label": "👻 Setting of a Stephen King novel"
-    },
-    {
-      "id": "pc_marvel_mcu_us_setting",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🦸 MCU film location in the US"
-    },
-    {
-      "id": "pc_tarantino_setting",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎬 Setting of a Tarantino film"
+      "label": "👻 Stephen King novel setting"
     },
     {
       "id": "pc_top10_engineering_uni",
       "lang": "en",
       "source": "approved-pending",
-      "label": "🔧 Top-10 engineering university"
-    },
-    {
-      "id": "pc_top_business_school",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎓 Has a top-10 business school"
-    },
-    {
-      "id": "pc_top_liberal_arts",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎓 Has a top-10 liberal arts college"
-    },
-    {
-      "id": "pc_top_liberal_arts",
-      "lang": "fr",
-      "source": "approved-pending",
-      "label": "Top 10 colleges arts libéraux"
-    },
-    {
-      "id": "pc_top_liberal_arts",
-      "lang": "es",
-      "source": "approved-pending",
-      "label": "Top 10 universidad de artes liberales"
-    },
-    {
-      "id": "pc_iconic_cocktail",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🍹 Has a signature cocktail named after it"
-    },
-    {
-      "id": "pc_disaster_movie_set",
-      "lang": "es",
-      "source": "approved-pending",
-      "label": "Escenario de película catástrofe"
-    },
-    {
-      "id": "pc_cop_show_setting",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🚓 Setting of a major cop show"
-    },
-    {
-      "id": "pc_medical_drama_set",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🏥 Setting of a medical TV drama"
-    },
-    {
-      "id": "pc_long_river_state",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🏞️ Bordered by major US river"
-    },
-    {
-      "id": "pc_underground_subway",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🚇 Has a subway / metro system"
-    },
-    {
-      "id": "pc_movie_spielberg",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎬 Setting of a Spielberg film"
-    },
-    {
-      "id": "pc_movie_scorsese",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎬 Setting of a Scorsese film"
-    },
-    {
-      "id": "pc_movie_anderson_wes",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎬 Setting of a Wes Anderson film"
+      "label": "🔧 Top engineering university"
     },
     {
       "id": "pc_movie_eastwood",
       "lang": "en",
       "source": "approved-pending",
-      "label": "🎬 Setting of a Clint Eastwood film"
-    },
-    {
-      "id": "pc_movie_marvel_loc",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🦸 Filmed at major Marvel studios"
-    },
-    {
-      "id": "pc_movie_pixar_inspo",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎬 Visual inspiration for a Pixar film"
+      "label": "🎬 Clint Eastwood film setting"
     },
     {
       "id": "pc_music_taylor_swift",
@@ -224,28 +44,10 @@
       "label": "🎤 Taylor Swift Eras Tour stops"
     },
     {
-      "id": "pc_music_beyonce_tour",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎤 Beyoncé Renaissance Tour US stops"
-    },
-    {
-      "id": "pc_music_dylan_song",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🎤 Subject of a Bob Dylan song"
-    },
-    {
       "id": "pc_born_president_post60",
       "lang": "en",
       "source": "approved-pending",
-      "label": "🏛️ Birth state of a post-1960 US president"
-    },
-    {
-      "id": "pc_born_president_post60",
-      "lang": "fr",
-      "source": "approved-pending",
-      "label": "Naissance président post-1960"
+      "label": "🏛️ Born a post-1960 US president"
     },
     {
       "id": "pc_born_first_lady",
@@ -284,12 +86,6 @@
       "label": "🔵 Consistently blue since 2000"
     },
     {
-      "id": "pc_state_capital_small",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🏛️ State capital is small (<100k pop)"
-    },
-    {
       "id": "pc_contains_k",
       "lang": "en",
       "source": "approved-pending",
@@ -314,18 +110,6 @@
       "label": "🔤 Name contains the letter Y"
     },
     {
-      "id": "pc_sea_level_low",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🏖️ Lowest point near/below sea level"
-    },
-    {
-      "id": "pc_thirteen_colonies",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "📜 One of the 13 original colonies"
-    },
-    {
       "id": "pc_admitted_20th_century",
       "lang": "en",
       "source": "approved-pending",
@@ -336,12 +120,6 @@
       "lang": "en",
       "source": "approved-pending",
       "label": "🪶 Named after a Native tribe"
-    },
-    {
-      "id": "pc_capital_is_largest",
-      "lang": "en",
-      "source": "approved-pending",
-      "label": "🏛️ Capital is also the largest city"
     },
     {
       "id": "pc_capital_under_50k",
@@ -533,9 +311,9 @@
       "es": "Tiene equipo WNBA"
     },
     "pc_pro_team_animal_name": {
-      "en": "🦅 Pro team named after an animal",
+      "en": "🦅 Pro team animal name",
       "fr": "Équipe pro au nom d'animal",
-      "es": "Equipo pro con nombre de animal"
+      "es": "Equipo pro: nombre animal"
     },
     "pc_ncaa_basketball_blueblood": {
       "en": "🏀 NCAA basketball blue blood",
@@ -578,9 +356,9 @@
       "es": "Organizó los JJOO"
     },
     "pc_real_housewives_franchise": {
-      "en": "📺 Has a Real Housewives franchise",
-      "fr": "Une franchise des Real Housewives",
-      "es": "Una franquicia de Real Housewives"
+      "en": "📺 Real Housewives city",
+      "fr": "Ville Real Housewives",
+      "es": "Ciudad Real Housewives"
     },
     "pc_bravo_show_setting": {
       "en": "📺 Setting of a Bravo reality show",
@@ -588,12 +366,12 @@
       "es": "Escenario de un reality Bravo"
     },
     "pc_stephen_king_setting": {
-      "en": "👻 Setting of a Stephen King novel",
+      "en": "👻 Stephen King novel setting",
       "fr": "Décor d'un Stephen King",
       "es": "Escenario de Stephen King"
     },
     "pc_marvel_mcu_us_setting": {
-      "en": "🦸 MCU film location in the US",
+      "en": "🦸 MCU US filming location",
       "fr": "Lieu MCU aux US",
       "es": "Locación MCU en EE.UU."
     },
@@ -613,7 +391,7 @@
       "es": "Escenario de los Coen"
     },
     "pc_tarantino_setting": {
-      "en": "🎬 Setting of a Tarantino film",
+      "en": "🎬 Tarantino film setting",
       "fr": "Décor d'un Tarantino",
       "es": "Escenario de Tarantino"
     },
@@ -968,14 +746,14 @@
       "es": "Top 15 universidades públicas"
     },
     "pc_top_business_school": {
-      "en": "🎓 Has a top-10 business school",
+      "en": "🎓 Top-10 business school",
       "fr": "Top 10 écoles de commerce",
       "es": "Top 10 escuelas de negocios"
     },
     "pc_top_liberal_arts": {
-      "en": "🎓 Has a top-10 liberal arts college",
-      "fr": "Top 10 colleges arts libéraux",
-      "es": "Top 10 universidad de artes liberales"
+      "en": "🎓 Top liberal arts college",
+      "fr": "Top collège arts libéraux",
+      "es": "Top universidad artes lib."
     },
     "pc_top_art_school": {
       "en": "🎨 Has a top-10 art / design school",
@@ -1003,7 +781,7 @@
       "es": "5+ becarios Rhodes"
     },
     "pc_top10_engineering_uni": {
-      "en": "🔧 Top-10 engineering university",
+      "en": "🔧 Top engineering university",
       "fr": "Top 10 fac d'ingénierie",
       "es": "Top 10 ingeniería"
     },
@@ -1373,7 +1151,7 @@
       "es": "Tarta regional famosa"
     },
     "pc_iconic_cocktail": {
-      "en": "🍹 Has a signature cocktail named after it",
+      "en": "🍹 Has a signature cocktail",
       "fr": "Cocktail régional",
       "es": "Cóctel regional con firma"
     },
@@ -1450,7 +1228,7 @@
     "pc_disaster_movie_set": {
       "en": "🌋 Disaster movie setting",
       "fr": "Décor de film catastrophe",
-      "es": "Escenario de película catástrofe"
+      "es": "Escenario peli catástrofe"
     },
     "pc_noir_film_set": {
       "en": "🕵️ Classic film noir setting",
@@ -1468,12 +1246,12 @@
       "es": "Escenario de drama político"
     },
     "pc_cop_show_setting": {
-      "en": "🚓 Setting of a major cop show",
+      "en": "🚓 Cop show setting",
       "fr": "Décor de série policière",
       "es": "Escenario de serie policial"
     },
     "pc_medical_drama_set": {
-      "en": "🏥 Setting of a medical TV drama",
+      "en": "🏥 Medical drama setting",
       "fr": "Décor de série médicale",
       "es": "Escenario de drama médico"
     },
@@ -1663,7 +1441,7 @@
       "es": "Pico emblemático"
     },
     "pc_long_river_state": {
-      "en": "🏞️ Bordered by major US river",
+      "en": "🏞️ On a major US river",
       "fr": "Frontière fluviale majeure",
       "es": "Frontera fluvial mayor"
     },
@@ -1768,7 +1546,7 @@
       "es": "Tren panorámico icónico"
     },
     "pc_underground_subway": {
-      "en": "🚇 Has a subway / metro system",
+      "en": "🚇 Has a subway/metro",
       "fr": "A un métro",
       "es": "Tiene metro"
     },
@@ -2243,12 +2021,12 @@
       "es": "Mercadillos / vintage"
     },
     "pc_movie_spielberg": {
-      "en": "🎬 Setting of a Spielberg film",
+      "en": "🎬 Spielberg film setting",
       "fr": "Décor d'un Spielberg",
       "es": "Escenario de un Spielberg"
     },
     "pc_movie_scorsese": {
-      "en": "🎬 Setting of a Scorsese film",
+      "en": "🎬 Scorsese film setting",
       "fr": "Décor d'un Scorsese",
       "es": "Escenario de Scorsese"
     },
@@ -2258,12 +2036,12 @@
       "es": "Escenario de Lynch"
     },
     "pc_movie_anderson_wes": {
-      "en": "🎬 Setting of a Wes Anderson film",
+      "en": "🎬 Wes Anderson film setting",
       "fr": "Décor de Wes Anderson",
       "es": "Escenario de Wes Anderson"
     },
     "pc_movie_eastwood": {
-      "en": "🎬 Setting of a Clint Eastwood film",
+      "en": "🎬 Clint Eastwood film setting",
       "fr": "Décor d'un Eastwood",
       "es": "Escenario de Eastwood"
     },
@@ -2283,7 +2061,7 @@
       "es": "Best Picture 10 años"
     },
     "pc_movie_marvel_loc": {
-      "en": "🦸 Filmed at major Marvel studios",
+      "en": "🦸 Marvel filming location",
       "fr": "Tournage Marvel",
       "es": "Rodaje Marvel"
     },
@@ -2293,7 +2071,7 @@
       "es": "Escenario de película DC"
     },
     "pc_movie_pixar_inspo": {
-      "en": "🎬 Visual inspiration for a Pixar film",
+      "en": "🎬 Inspired a Pixar film",
       "fr": "Inspiration visuelle Pixar",
       "es": "Inspiración visual Pixar"
     },
@@ -2433,7 +2211,7 @@
       "es": "Eras Tour stops"
     },
     "pc_music_beyonce_tour": {
-      "en": "🎤 Beyoncé Renaissance Tour US stops",
+      "en": "🎤 Beyoncé Renaissance stop",
       "fr": "Stops Renaissance Tour",
       "es": "Renaissance Tour stops"
     },
@@ -2443,7 +2221,7 @@
       "es": "Gira US Stones"
     },
     "pc_music_dylan_song": {
-      "en": "🎤 Subject of a Bob Dylan song",
+      "en": "🎤 Bob Dylan song subject",
       "fr": "Sujet d'une chanson Dylan",
       "es": "Sujeto canción Dylan"
     },
@@ -2468,9 +2246,9 @@
       "es": "Sujeto canción Eagles"
     },
     "pc_born_president_post60": {
-      "en": "🏛️ Birth state of a post-1960 US president",
-      "fr": "Naissance président post-1960",
-      "es": "Cuna presidente post-1960"
+      "en": "🏛️ Born a post-1960 US president",
+      "fr": "Né: président post-1960",
+      "es": "Cuna: presidente post-1960"
     },
     "pc_born_vice_president": {
       "en": "🏛️ Birth state of a Vice President",
@@ -3688,7 +3466,7 @@
       "es": "Tiene estado gemelo N/S"
     },
     "pc_state_capital_small": {
-      "en": "🏛️ State capital is small (<100k pop)",
+      "en": "🏛️ Capital under 100k pop",
       "fr": "Capitale petite (<100k)",
       "es": "Capital pequeña (<100k)"
     },
@@ -3948,12 +3726,12 @@
       "es": "Sin salida al mar"
     },
     "pc_sea_level_low": {
-      "en": "🏖️ Lowest point near/below sea level",
+      "en": "🏖️ Low point near sea level",
       "fr": "Point bas près du niveau mer",
       "es": "Punto bajo cerca del mar"
     },
     "pc_thirteen_colonies": {
-      "en": "📜 One of the 13 original colonies",
+      "en": "📜 One of the 13 colonies",
       "fr": "13 colonies originelles",
       "es": "13 colonias originales"
     },
@@ -4023,7 +3801,7 @@
       "es": "Capital con misma inicial"
     },
     "pc_capital_is_largest": {
-      "en": "🏛️ Capital is also the largest city",
+      "en": "🏛️ Capital = largest city",
       "fr": "Capitale = plus grande ville",
       "es": "Capital = ciudad más grande"
     },
