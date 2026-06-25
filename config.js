@@ -3,7 +3,7 @@ const CONFIG = {
   ADS_ENABLED: false,                // false → no ads, no consent banner. Toggle from superadmin.
   ADSENSE_PUBLISHER_ID: 'ca-pub-XXXXXXXXXXXXXXXX',
 
-  // Cloudflare Web Analytics token (privacy-friendly, no cookies, no IPs stored)
+  // Cloudflare Web Analytics token (server-side, complements GA4)
   // Get it at https://dash.cloudflare.com/?to=/:account/web-analytics
   // Paste the token from data-cf-beacon='{"token":"XXX"}' here, then commit + push.
   CF_ANALYTICS_TOKEN: '9aaf696fd1464b2191238f4787ceca5c',
@@ -33,7 +33,7 @@ const CONFIG = {
 
 // ─────────────────────────────────────────────────────────────────────────
 // Cloudflare Web Analytics auto-loader.
-// Injects the beacon only if a valid token is set. Privacy-safe.
+// Injects the beacon only if a valid token is set.
 // Skips /admin/* paths (internal dashboard pollutes stats) and localhost dev.
 // ─────────────────────────────────────────────────────────────────────────
 (function() {
