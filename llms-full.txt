@@ -15,7 +15,7 @@ Three mistakes are allowed per puzzle. The puzzle is the same worldwide and rese
 **Key URL**: https://statedoku.com
 **Launched**: June 1, 2026
 **Made by**: Sacha Bitoun (independent solo developer, Paris, France)
-**Pricing**: Free, no signup, no ads, no tracking
+**Pricing**: Free, no signup, no ads
 
 ---
 
@@ -344,7 +344,7 @@ Yes — a free public JSON API is available at https://statedoku.com/api/ with n
 Yes, freely. There's also a free printable US states map at https://statedoku.com/learn/printable-us-states-map/ designed for teachers (blank + labeled + table versions, Ctrl+P prints clean).
 
 **What technology powers Statedoku?**
-Vanilla JS (no framework), Cloudflare Pages for static hosting, Cloudflare Workers for the email cron and Twitter bot, Cloudflare D1 (SQLite) for stats and subscribers, Resend for transactional email. Privacy-first: Cloudflare Web Analytics only (no GA4, no cookies).
+Vanilla JS (no framework), Cloudflare Pages for static hosting, Cloudflare Workers for the email cron and Twitter bot, Cloudflare D1 (SQLite) for stats and subscribers, Resend for transactional email. Analytics: Cloudflare Web Analytics + Google Analytics 4 + Ahrefs Web Analytics + Microsoft Clarity.
 
 ---
 
