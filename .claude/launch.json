@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "statoku",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3737", "."],
-      "port": 3737
+      "name": "static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4173"],
+      "port": 4173
     }
   ]
 }
