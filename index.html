@@ -82,7 +82,7 @@
   <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
 
   <!-- ─── Styles ─── -->
-  <link rel="stylesheet" href="/css/style.css?v=18">
+  <link rel="stylesheet" href="/css/style.css?v=19">
 
   <!-- ─── Structured Data (JSON-LD) ─── -->
   <script type="application/ld+json">
@@ -196,6 +196,9 @@
       <div class="result-emoji" id="result-emoji-solved"></div>
       <div class="result-stats" id="result-stats-solved"></div>
       <div class="share-row" data-banner="solved"></div>
+      <!-- Ad slot: post-solve banner. Set data-ad-slot to the AdSense slot ID once approved.
+           When CONFIG.ADS_ENABLED=false, ads.js hides this element entirely. -->
+      <div class="ad-slot" data-ad-slot="PLACEHOLDER_HOME_SOLVED" data-ad-format="auto"></div>
     </div>
 
     <div id="gameover-banner">
@@ -206,6 +209,7 @@
       <div id="gameover-solution"></div>
       <div class="share-row" data-banner="gameover"></div>
       <p class="banner-sub" data-i18n="come_back">New one drops at midnight.</p>
+      <div class="ad-slot" data-ad-slot="PLACEHOLDER_HOME_GAMEOVER" data-ad-format="auto"></div>
     </div>
   </div>
 
@@ -353,6 +357,7 @@
 
 <script src="/config.js?v=2"></script>
 <script src="/js/admin.js?v=2"></script>
+<script src="/js/ads.js?v=1"></script>
 <script src="/js/analytics.js?v=2"></script>
 <script src="/js/reminders.js?v=2"></script>
 <script src="js/email.js?v=4"></script>
