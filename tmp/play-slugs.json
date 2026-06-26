@@ -24,6 +24,25 @@
   ],
   "playable": [
     "place-the-state",
-    "state-abbreviations"
+    "state-abbreviations",
+    "state-capitals-match",
+    "state-silhouettes",
+    "states-connections",
+    "state-capitals-typing",
+    "biggest-cities",
+    "state-flags",
+    "thirteen-colonies",
+    "state-admission-order",
+    "confederate-states",
+    "president-birth-states",
+    "state-nicknames",
+    "state-mottos",
+    "state-symbols",
+    "time-zones",
+    "border-states",
+    "rivers-mountains",
+    "electoral-college",
+    "swing-states",
+    "no-income-tax-states"
   ]
 }
