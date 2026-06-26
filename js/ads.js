@@ -46,6 +46,12 @@
 
   function loadAdSenseScript() {
     if (window[SCRIPT_LOADED_FLAG]) return Promise.resolve();
+    // Detect existing AdSense script (e.g. site-verification tag in <head> of the
+    // homepages). Avoids double-loading adsbygoogle.js once ADS_ENABLED is flipped on.
+    if (document.querySelector('script[src*="adsbygoogle.js"]')) {
+      window[SCRIPT_LOADED_FLAG] = true;
+      return Promise.resolve();
+    }
     window[SCRIPT_LOADED_FLAG] = true;
     return new Promise((resolve, reject) => {
       const s = document.createElement('script');
