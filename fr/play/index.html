@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P7ZBQNYLS4');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#0F2147">
+  <title>Jouer & Apprendre les 50 États américains — 21 jeux quotidiens | Statedoku</title>
+  <meta name="description" content="21 jeux quotidiens gratuits pour apprendre les 50 États américains: placer sur carte, capitales, abréviations, drapeaux, histoire, collège électoral, fuseaux horaires...">
+  <meta name="keywords" content="jeux etats americains, apprendre 50 etats, quiz geographie usa">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/play/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/play/">
+  <link rel="alternate" hreflang="en-US" href="https://statedoku.com/play/">
+  <link rel="alternate" hreflang="en-GB" href="https://statedoku.com/play/">
+  <link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/play/">
+  <link rel="alternate" hreflang="fr-FR" href="https://statedoku.com/fr/play/">
+  <link rel="alternate" hreflang="es" href="https://statedoku.com/es/play/">
+  <link rel="alternate" hreflang="es-ES" href="https://statedoku.com/es/play/">
+  <link rel="alternate" hreflang="es-MX" href="https://statedoku.com/es/play/">
+  <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=18">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jouer & Apprendre les 50 États américains">
+  <meta property="og:description" content="21 jeux quotidiens gratuits pour apprendre les 50 États américains: placer sur carte, capitales, abréviations, drapeaux, histoire, collège électoral, fuseaux ho">
+  <meta property="og:url" content="https://statedoku.com/fr/play/">
+  <meta property="og:image" content="https://statedoku.com/og/og-learn-state-capitals.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jouer & Apprendre les 50 États américains">
+  <meta name="twitter:description" content="21 jeux quotidiens gratuits pour apprendre les 50 États américains: placer sur carte, capitales, abréviations, drapeaux, histoire, collège électoral, fuseaux ho">
+  <meta name="twitter:image" content="https://statedoku.com/og/og-learn-state-capitals.png">
+  <style>
+    .hub-hero{max-width:880px;margin:24px auto 14px;padding:0 18px;text-align:center}
+    .hub-hero h1{font-size:clamp(2rem,5.5vw,2.8rem);font-weight:900;letter-spacing:-.025em;margin:0 0 10px;line-height:1.12}
+    .hub-hero .sub{color:var(--text-2);font-size:1rem;line-height:1.55;max-width:640px;margin:0 auto}
+    .hub-chip{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--gold);color:var(--navy);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+    .hub-stats{display:flex;gap:18px;justify-content:center;margin:14px 0 18px;flex-wrap:wrap;font-size:.85rem;color:var(--text-2)}
+    .hub-stats b{color:var(--navy)}
+    .hub-section{max-width:880px;margin:24px auto;padding:0 18px}
+    .hub-section h2{font-size:1.2rem;font-weight:800;letter-spacing:-.015em;margin:24px 0 12px;color:var(--navy)}
+    .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:8px 0 18px}
+    .game-card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--border);border-left:4px solid var(--region-color,#0F2147);border-radius:12px;padding:14px 16px;transition:transform 120ms,box-shadow 120ms,border-color 120ms;position:relative}
+    .game-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,33,71,0.08);border-color:var(--region-color,#0F2147)}
+    .game-card[data-group="interactive"]{--region-color:#1E40AF}
+    .game-card[data-group="classic"]{--region-color:#B45309}
+    .game-card[data-group="history"]{--region-color:#B91C1C}
+    .game-card[data-group="symbols"]{--region-color:#047857}
+    .game-card[data-group="geography"]{--region-color:#0E7490}
+    .game-card[data-group="politics"]{--region-color:#7C3AED}
+    .gc-chip{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.04em;color:var(--region-color);background:rgba(15,33,71,.04);padding:3px 7px;border-radius:4px;margin-bottom:6px}
+    .gc-title{font-weight:800;font-size:1.02rem;color:var(--text);margin-bottom:4px;line-height:1.22}
+    .gc-desc{font-size:.84rem;color:var(--text-2);line-height:1.45}
+    .gc-tag{position:absolute;top:14px;right:14px;font-size:.65rem;font-weight:800;letter-spacing:.05em;padding:2px 8px;border-radius:999px}
+    .gc-tag.live{background:#16A34A;color:#fff}
+    .gc-tag.soon{background:#94A3B8;color:#fff}
+    .game-frame{max-width:880px;margin:0 auto;padding:18px;line-height:1.55;color:var(--text)}
+    .game-frame h2{margin-top:28px;margin-bottom:10px;font-size:1.2rem;font-weight:800;letter-spacing:-.01em}
+    .game-frame p{margin-bottom:10px}
+    .game-frame details{margin:8px 0;padding:10px 14px;background:#F8FAFC;border-radius:8px}
+    .game-frame summary{font-weight:700;color:var(--navy);cursor:pointer}
+    .stars{font-size:1.4rem;letter-spacing:6px;color:#F59E0B}
+    .stars .off{color:#E5E7EB}</style>
+</head>
+<body class="legal-body">
+<header>
+  <a href="/fr/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/fr/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem">← Accueil</a></nav>
+</header>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://statedoku.com/fr/"},{"@type":"ListItem","position":2,"name":"Jouer & Apprendre","item":"https://statedoku.com/fr/play/"}]}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Jouer & Apprendre les 50 États américains","numberOfItems":21,"itemListElement":[{"@type":"ListItem","position":1,"name":"Placer l’État","url":"https://statedoku.com/fr/play/place-the-state/"},{"@type":"ListItem","position":2,"name":"Quiz Abréviations USPS","url":"https://statedoku.com/fr/play/state-abbreviations/"},{"@type":"ListItem","position":3,"name":"Mémo Capitales d’États","url":"https://statedoku.com/fr/play/state-capitals-match/"},{"@type":"ListItem","position":4,"name":"Silhouettes d’États","url":"https://statedoku.com/fr/play/state-silhouettes/"},{"@type":"ListItem","position":5,"name":"Connexions d’États","url":"https://statedoku.com/fr/play/states-connections/"},{"@type":"ListItem","position":6,"name":"Quiz Capitales","url":"https://statedoku.com/fr/play/state-capitals-typing/"},{"@type":"ListItem","position":7,"name":"Quiz Plus Grande Ville","url":"https://statedoku.com/fr/play/biggest-cities/"},{"@type":"ListItem","position":8,"name":"Quiz Drapeaux d’États","url":"https://statedoku.com/fr/play/state-flags/"},{"@type":"ListItem","position":9,"name":"13 Colonies originelles","url":"https://statedoku.com/fr/play/thirteen-colonies/"},{"@type":"ListItem","position":10,"name":"Ordre d’admission à l’Union","url":"https://statedoku.com/fr/play/state-admission-order/"},{"@type":"ListItem","position":11,"name":"Quiz États Confédérés","url":"https://statedoku.com/fr/play/confederate-states/"},{"@type":"ListItem","position":12,"name":"Présidents par État natal","url":"https://statedoku.com/fr/play/president-birth-states/"},{"@type":"ListItem","position":13,"name":"Quiz Surnoms d’États","url":"https://statedoku.com/fr/play/state-nicknames/"},{"@type":"ListItem","position":14,"name":"Quiz Devises d’États","url":"https://statedoku.com/fr/play/state-mottos/"},{"@type":"ListItem","position":15,"name":"Quiz Symboles d’États","url":"https://statedoku.com/fr/play/state-symbols/"},{"@type":"ListItem","position":16,"name":"Quiz Fuseaux Horaires","url":"https://statedoku.com/fr/play/time-zones/"},{"@type":"ListItem","position":17,"name":"Quiz États Frontaliers","url":"https://statedoku.com/fr/play/border-states/"},{"@type":"ListItem","position":18,"name":"Fleuves et Montagnes","url":"https://statedoku.com/fr/play/rivers-mountains/"},{"@type":"ListItem","position":19,"name":"Quiz Collège Électoral","url":"https://statedoku.com/fr/play/electoral-college/"},{"@type":"ListItem","position":20,"name":"Quiz États Bisagra","url":"https://statedoku.com/fr/play/swing-states/"},{"@type":"ListItem","position":21,"name":"Quiz Sans Impôt sur le Revenu","url":"https://statedoku.com/fr/play/no-income-tax-states/"}]}</script>
+<main>
+  <section class="hub-hero">
+    <span class="hub-chip">🎮 21 JEUX · 50 ÉTATS · 3 LANGUES</span>
+    <h1>Jouer & Apprendre les 50 États américains</h1>
+    <p class="sub">21 jeux gratuits quotidiens pour maîtriser la géographie américaine: placement, capitales, drapeaux, histoire, collège électoral. Nouveaux puzzles chaque jour.</p>
+    <div class="hub-stats"><b>21</b> jeux <span>·</span> <b>50</b> États <span>·</span> <b>3</b> langues <span>·</span> <b>Nouveau</b> chaque jour</div>
+  </section>
+    <section class="hub-section">
+      <h2>Jeux interactifs sur carte</h2>
+      <div class="game-grid">
+      <a class="game-card" data-group="interactive" href="/fr/play/place-the-state/">
+        <span class="gc-tag live">JOUER</span>
+        <span class="gc-chip">📍 MAP CHALLENGE</span>
+        <div class="gc-title">Placer l’État</div>
+        <div class="gc-desc">Clique sur l’État américain quand on te le demande. 10 manches, 3 vies. Quiz gratuit.</div>
+      </a>
+      <a class="game-card" data-group="interactive" href="/fr/play/state-silhouettes/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🔳 SILHOUETTES</span>
+        <div class="gc-title">Silhouettes d’États</div>
+        <div class="gc-desc">Devine l’État à partir de sa silhouette.</div>
+      </a>
+      <a class="game-card" data-group="interactive" href="/fr/play/states-connections/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🎯 CONNECTIONS</span>
+        <div class="gc-title">Connexions d’États</div>
+        <div class="gc-desc">Style Connections NYT : regroupe 16 États en 4 catégories cachées.</div>
+      </a>
+      </div>
+    </section>
+    <section class="hub-section">
+      <h2>Quiz classiques</h2>
+      <div class="game-grid">
+      <a class="game-card" data-group="classic" href="/fr/play/state-abbreviations/">
+        <span class="gc-tag live">JOUER</span>
+        <span class="gc-chip">✉️ USPS CODES</span>
+        <div class="gc-title">Quiz Abréviations USPS</div>
+        <div class="gc-desc">Trouve l’abréviation USPS à 2 lettres pour chaque État. 20 manches, QCM + saisie.</div>
+      </a>
+      <a class="game-card" data-group="classic" href="/fr/play/state-capitals-match/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🏛️ CAPITALS</span>
+        <div class="gc-title">Mémo Capitales d’États</div>
+        <div class="gc-desc">Associe les 10 États avec leurs capitales.</div>
+      </a>
+      <a class="game-card" data-group="classic" href="/fr/play/state-capitals-typing/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🏛️ TYPE CAPITALS</span>
+        <div class="gc-title">Quiz Capitales</div>
+        <div class="gc-desc">Tape la capitale de chaque État. 50 manches.</div>
+      </a>
+      <a class="game-card" data-group="classic" href="/fr/play/biggest-cities/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🏙️ BIG CITIES</span>
+        <div class="gc-title">Quiz Plus Grande Ville</div>
+        <div class="gc-desc">Identifie la plus grande ville de chaque État.</div>
+      </a>
+      <a class="game-card" data-group="classic" href="/fr/play/state-flags/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🏳️ FLAGS</span>
+        <div class="gc-title">Quiz Drapeaux d’États</div>
+        <div class="gc-desc">Identifie l’État à partir de son drapeau.</div>
+      </a>
+      </div>
+    </section>
+    <section class="hub-section">
+      <h2>Quiz histoire</h2>
+      <div class="game-grid">
+      <a class="game-card" data-group="history" href="/fr/play/thirteen-colonies/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🌲 13 COLONIES</span>
+        <div class="gc-title">13 Colonies originelles</div>
+        <div class="gc-desc">Identifie les 13 colonies originelles parmi les 50 États.</div>
+      </a>
+      <a class="game-card" data-group="history" href="/fr/play/state-admission-order/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">⏳ STATEHOOD</span>
+        <div class="gc-title">Ordre d’admission à l’Union</div>
+        <div class="gc-desc">Classe les États par année d’admission à l’Union.</div>
+      </a>
+      <a class="game-card" data-group="history" href="/fr/play/confederate-states/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">⚔️ CONFEDERATION</span>
+        <div class="gc-title">Quiz États Confédérés</div>
+        <div class="gc-desc">Identifie les 11 États confédérés de la guerre civile.</div>
+      </a>
+      <a class="game-card" data-group="history" href="/fr/play/president-birth-states/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🏛️ PRESIDENTS</span>
+        <div class="gc-title">Présidents par État natal</div>
+        <div class="gc-desc">Associe chaque président américain à son État natal.</div>
+      </a>
+      </div>
+    </section>
+    <section class="hub-section">
+      <h2>Symboles d’États</h2>
+      <div class="game-grid">
+      <a class="game-card" data-group="symbols" href="/fr/play/state-nicknames/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">✨ NICKNAMES</span>
+        <div class="gc-title">Quiz Surnoms d’États</div>
+        <div class="gc-desc">Associe les surnoms ("Lone Star State"...) aux États.</div>
+      </a>
+      <a class="game-card" data-group="symbols" href="/fr/play/state-mottos/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">📜 MOTTOS</span>
+        <div class="gc-title">Quiz Devises d’États</div>
+        <div class="gc-desc">Associe chaque État à sa devise officielle.</div>
+      </a>
+      <a class="game-card" data-group="symbols" href="/fr/play/state-symbols/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🌼 SYMBOLS</span>
+        <div class="gc-title">Quiz Symboles d’États</div>
+        <div class="gc-desc">Associe oiseaux, fleurs et arbres officiels à leur État.</div>
+      </a>
+      </div>
+    </section>
+    <section class="hub-section">
+      <h2>Géographie avancée</h2>
+      <div class="game-grid">
+      <a class="game-card" data-group="geography" href="/fr/play/time-zones/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">⏰ TIME ZONES</span>
+        <div class="gc-title">Quiz Fuseaux Horaires</div>
+        <div class="gc-desc">Identifie le fuseau horaire de chaque État.</div>
+      </a>
+      <a class="game-card" data-group="geography" href="/fr/play/border-states/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🌎 BORDERS</span>
+        <div class="gc-title">Quiz États Frontaliers</div>
+        <div class="gc-desc">Identifie les États frontaliers du Canada et du Mexique.</div>
+      </a>
+      <a class="game-card" data-group="geography" href="/fr/play/rivers-mountains/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">⛰️ GEO ADV</span>
+        <div class="gc-title">Fleuves et Montagnes</div>
+        <div class="gc-desc">Associe fleuves et chaînes de montagnes aux États.</div>
+      </a>
+      </div>
+    </section>
+    <section class="hub-section">
+      <h2>Politique</h2>
+      <div class="game-grid">
+      <a class="game-card" data-group="politics" href="/fr/play/electoral-college/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">🗳️ ELECTORAL</span>
+        <div class="gc-title">Quiz Collège Électoral</div>
+        <div class="gc-desc">Teste combien de grands électeurs chaque État possède.</div>
+      </a>
+      <a class="game-card" data-group="politics" href="/fr/play/swing-states/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">⚖️ SWING</span>
+        <div class="gc-title">Quiz États Bisagra</div>
+        <div class="gc-desc">Identifie les 7 États-pivots de 2024.</div>
+      </a>
+      <a class="game-card" data-group="politics" href="/fr/play/no-income-tax-states/">
+        <span class="gc-tag soon">BIENTÔT</span>
+        <span class="gc-chip">💰 NO TAX</span>
+        <div class="gc-title">Quiz Sans Impôt sur le Revenu</div>
+        <div class="gc-desc">Trouve les 9 États sans impôt sur le revenu.</div>
+      </a>
+      </div>
+    </section>
+
+  <section class="hub-section">
+    <h2>À propos de ce hub</h2>
+    <p style="font-size:.92rem;line-height:1.65;color:var(--text-2)">21 mini-jeux gratuits pour maîtriser la géographie des 50 États américains. Chaque jeu offre 3 niveaux de difficulté (Facile, Normal, Difficile), un score à base d’étoiles (1–3 étoiles), un classement quotidien et la possibilité de partager le résultat (Wordle-style). EN/FR/ES.</p>
+  </section>
+</main>
+<footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
+</body>
+</html>
