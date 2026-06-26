@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="theme-color" content="#0F2147">
-  <title>State Symbols Quiz — Coming Soon | Statedoku</title>
+  <title>State Symbols Quiz — Quiz | Statedoku</title>
   <meta name="description" content="Match state birds, flowers, and trees to their US state.">
   <meta name="keywords" content="state birds flowers trees quiz">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -44,32 +44,75 @@
     .hub-hero h1{font-size:clamp(2rem,5.5vw,2.8rem);font-weight:900;letter-spacing:-.025em;margin:0 0 10px;line-height:1.12}
     .hub-hero .sub{color:var(--text-2);font-size:1rem;line-height:1.55;max-width:640px;margin:0 auto}
     .hub-chip{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--gold);color:var(--navy);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
-    .hub-stats{display:flex;gap:18px;justify-content:center;margin:14px 0 18px;flex-wrap:wrap;font-size:.85rem;color:var(--text-2)}
-    .hub-stats b{color:var(--navy)}
-    .hub-section{max-width:880px;margin:24px auto;padding:0 18px}
-    .hub-section h2{font-size:1.2rem;font-weight:800;letter-spacing:-.015em;margin:24px 0 12px;color:var(--navy)}
-    .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:8px 0 18px}
-    .game-card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--border);border-left:4px solid var(--region-color,#0F2147);border-radius:12px;padding:14px 16px;transition:transform 120ms,box-shadow 120ms,border-color 120ms;position:relative}
-    .game-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,33,71,0.08);border-color:var(--region-color,#0F2147)}
-    .game-card[data-group="interactive"]{--region-color:#1E40AF}
-    .game-card[data-group="classic"]{--region-color:#B45309}
-    .game-card[data-group="history"]{--region-color:#B91C1C}
-    .game-card[data-group="symbols"]{--region-color:#047857}
-    .game-card[data-group="geography"]{--region-color:#0E7490}
-    .game-card[data-group="politics"]{--region-color:#7C3AED}
-    .gc-chip{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.04em;color:var(--region-color);background:rgba(15,33,71,.04);padding:3px 7px;border-radius:4px;margin-bottom:6px}
-    .gc-title{font-weight:800;font-size:1.02rem;color:var(--text);margin-bottom:4px;line-height:1.22}
-    .gc-desc{font-size:.84rem;color:var(--text-2);line-height:1.45}
-    .gc-tag{position:absolute;top:14px;right:14px;font-size:.65rem;font-weight:800;letter-spacing:.05em;padding:2px 8px;border-radius:999px}
-    .gc-tag.live{background:#16A34A;color:#fff}
-    .gc-tag.soon{background:#94A3B8;color:#fff}
-    .game-frame{max-width:880px;margin:0 auto;padding:18px;line-height:1.55;color:var(--text)}
-    .game-frame h2{margin-top:28px;margin-bottom:10px;font-size:1.2rem;font-weight:800;letter-spacing:-.01em}
-    .game-frame p{margin-bottom:10px}
-    .game-frame details{margin:8px 0;padding:10px 14px;background:#F8FAFC;border-radius:8px}
-    .game-frame summary{font-weight:700;color:var(--navy);cursor:pointer}
+    .game-wrap{max-width:760px;margin:0 auto;padding:14px 14px 60px}
+    .game-panel{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#F8FAFC;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:10px 0 14px;font-size:.88rem}
+    .game-panel .lbl{color:var(--text-3);font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-right:4px}
+    .game-panel .val{font-weight:900;font-size:1.08rem;color:var(--navy)}
+    .game-card-hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;border-radius:14px;padding:22px 18px;text-align:center;margin:6px 0 14px}
+    .game-card-hero .qlbl{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;opacity:.78;margin-bottom:6px}
+    .game-card-hero .qval{font-size:1.7rem;font-weight:900;letter-spacing:-.025em;line-height:1.18}
+    .game-card-hero .qval.small{font-size:1.2rem;font-weight:700}
+    .game-card-hero .qval.tiny{font-size:1rem;font-weight:600;font-style:italic}
+    .game-card-hero .qcode{font-size:4rem;font-weight:900;letter-spacing:.06em;line-height:1;margin-top:4px}
+    .ab-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .ab-choice{padding:14px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.95rem;text-align:left;transition:background 80ms,border-color 80ms}
+    .ab-choice:hover{background:#F8FAFC}
+    .ab-choice.correct{background:#16A34A;color:#fff;border-color:#16A34A}
+    .ab-choice.wrong{background:#DC2626;color:#fff;border-color:#DC2626}
+    .feedback{min-height:1.6em;text-align:center;font-weight:700;font-size:.92rem;margin:6px 0}
+    .feedback.ok{color:#16A34A}
+    .feedback.no{color:#DC2626}
+    .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+    .gbtn{padding:10px 18px;border-radius:999px;border:none;background:var(--navy);color:#fff;font-weight:800;cursor:pointer;font-size:.92rem}
+    .gbtn:disabled{opacity:.45;cursor:default}
+    .gbtn.gold{background:var(--gold);color:var(--navy)}
+    .difficulty{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0 14px}
+    .diff{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);font-weight:700;cursor:pointer;font-size:.84rem}
+    .diff.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .result-card{background:#FFF7ED;border:1px solid var(--gold);border-radius:14px;padding:18px;text-align:center;margin:14px 0}
+    .result-card h2{margin:0 0 10px;font-size:1.3rem;color:var(--navy)}
     .stars{font-size:1.4rem;letter-spacing:6px;color:#F59E0B}
-    .stars .off{color:#E5E7EB}</style>
+    .stars .off{color:#E5E7EB}
+    .text-input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:1.05rem;font-weight:700;color:var(--navy);text-align:center;text-transform:capitalize}
+    .text-input:focus{outline:none;border-color:var(--navy)}
+    .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}
+    .match-col{display:flex;flex-direction:column;gap:6px}
+    .match-item{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.92rem;text-align:left;transition:background 80ms,border-color 80ms}
+    .match-item.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .match-item.paired{background:#16A34A;color:#fff;border-color:#16A34A;cursor:default;opacity:.85}
+    .match-item.error{background:#DC2626;color:#fff;border-color:#DC2626}
+    .connections-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0}
+    .conn-cell{padding:10px 8px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:800;color:var(--navy);font-size:.84rem;text-align:center;line-height:1.2;transition:background 80ms,border-color 80ms,color 80ms}
+    .conn-cell.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .conn-cell.solved-1{background:#FBBF24;color:#0F2147;border-color:#FBBF24}
+    .conn-cell.solved-2{background:#34D399;color:#fff;border-color:#34D399}
+    .conn-cell.solved-3{background:#60A5FA;color:#fff;border-color:#60A5FA}
+    .conn-cell.solved-4{background:#A78BFA;color:#fff;border-color:#A78BFA}
+    .conn-cat{padding:10px 14px;border-radius:10px;margin:6px 0;font-weight:800;color:#0F2147;text-align:center;font-size:.92rem}
+    .conn-cat.cat-1{background:#FBBF24}
+    .conn-cat.cat-2{background:#34D399;color:#fff}
+    .conn-cat.cat-3{background:#60A5FA;color:#fff}
+    .conn-cat.cat-4{background:#A78BFA;color:#fff}
+    .order-list{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+    .order-item{padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:#fff;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+    .order-item .order-num{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;text-align:center;line-height:26px;font-weight:900;font-size:.82rem;flex-shrink:0}
+    .order-controls{display:flex;gap:4px}
+    .order-controls button{padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.82rem}
+    .pts-map-wrap{background:#fff;border:1px solid var(--border);border-radius:14px;padding:8px;margin:8px 0 12px}
+    .pts-map-wrap svg{width:100%;height:auto;display:block;max-height:520px}
+    .pts-map-wrap svg path.state{fill:#E2E8F0!important;stroke:#fff!important;stroke-width:.8!important;cursor:pointer;transition:fill 120ms}
+    .pts-map-wrap svg path.state:hover{fill:#CBD5E1!important}
+    .pts-map-wrap svg path.state.correct{fill:#16A34A!important;cursor:default}
+    .pts-map-wrap svg path.state.wrong{fill:#DC2626!important;cursor:default}
+    .pts-map-wrap svg path.state.target-reveal{fill:#F59E0B!important;stroke:#0F2147!important;stroke-width:1.4!important}
+    .pts-map-wrap svg path.state.selected{fill:#3B82F6!important;cursor:pointer}
+    .silhouette-wrap{display:flex;justify-content:center;align-items:center;padding:24px;background:#F8FAFC;border-radius:14px;margin:8px 0;min-height:280px}
+    .silhouette-wrap svg{max-width:80%;max-height:280px}
+    .silhouette-wrap svg path{fill:#0F2147!important;stroke:none!important}
+    .autocomplete-list{max-height:160px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;margin-top:4px;background:#fff;display:none}
+    .autocomplete-list.show{display:block}
+    .autocomplete-item{padding:8px 12px;cursor:pointer;font-weight:600;color:var(--text)}
+    .autocomplete-item:hover,.autocomplete-item.active{background:#F8FAFC;color:var(--navy)}</style>
 </head>
 <body class="legal-body">
 <header>
@@ -80,6 +123,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"State Symbols Quiz","item":"https://statedoku.com/play/state-symbols/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"State Symbols Quiz","description":"Match state birds, flowers, and trees to their US state.","url":"https://statedoku.com/play/state-symbols/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Symbols Quiz?","acceptedAnswer":{"@type":"Answer","text":"Match state birds, flowers, and trees to their US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🌼 SYMBOLS</span>
@@ -87,50 +131,97 @@
     <p class="sub">Match state birds, flowers, and trees to their US state.</p>
   </section>
 
-  <div class="game-frame">
-    <div style="background:#FFF7ED;border:1px solid var(--gold);border-radius:14px;padding:22px;text-align:center;margin:14px 0">
-      <h2 style="margin:0 0 6px;color:var(--navy);font-size:1.2rem">Coming Soon</h2>
-      <p style="margin:0;font-size:.92rem;color:var(--text-2)">This game is in production. In the meantime, try our live games and complete guides.</p>
+  <div class="game-wrap">
+    <div class="game-panel">
+      <span class="lbl">Round</span><span class="val" id="g-round">1/15</span>
+      <span class="lbl" style="margin-left:14px">Score</span><span class="val" id="g-score">0</span>
+      <span class="lbl" style="margin-left:14px">Lives</span><span class="val" id="g-lives">❤️❤️❤️</span>
     </div>
 
-    <h2>Available now</h2>
-    <div class="game-grid">
-      <a class="game-card" data-group="interactive" href="/play/place-the-state/">
-        <span class="gc-tag live">PLAY</span>
-        <span class="gc-chip">📍 MAP CHALLENGE</span>
-        <div class="gc-title">Place the State</div>
-        <div class="gc-desc">Click the right state on the US map when prompted. 10 rounds, 3 lives. Free quiz.</div>
-      </a>
-      <a class="game-card" data-group="classic" href="/play/state-abbreviations/">
-        <span class="gc-tag live">PLAY</span>
-        <span class="gc-chip">✉️ USPS CODES</span>
-        <div class="gc-title">USPS Abbreviations Quiz</div>
-        <div class="gc-desc">Match the 2-letter postal code to its US state. 20 rounds, multiple choice + typing modes.</div>
-      </a>
+    <div class="game-card-hero">
+      <div class="qlbl">Which state has this symbol?</div>
+      <div class="qval small" id="g-prompt">—</div>
     </div>
 
-    <h2>Similar games (coming soon)</h2>
-    <div class="game-grid">
-      <a class="game-card" data-group="symbols" href="/play/state-nicknames/">
-        <span class="gc-tag soon">SOON</span>
-        <span class="gc-chip">✨ NICKNAMES</span>
-        <div class="gc-title">State Nicknames Quiz</div>
-        <div class="gc-desc">Match nicknames like "Lone Star State" to their US state.</div>
-      </a>
-      <a class="game-card" data-group="symbols" href="/play/state-mottos/">
-        <span class="gc-tag soon">SOON</span>
-        <span class="gc-chip">📜 MOTTOS</span>
-        <div class="gc-title">State Mottos Quiz</div>
-        <div class="gc-desc">Match each state to its official motto.</div>
-      </a>
+    <div class="feedback" id="g-feedback">&nbsp;</div>
+    <div class="ab-choices" id="g-choices"></div>
+
+    <div class="controls">
+      <button class="gbtn gold" id="g-start">Start</button>
     </div>
-
-    <h2>In the meantime</h2>
-    <p>You can already explore our <a href="/learn/" style="color:var(--navy);font-weight:700">complete 50-states guide</a> which covers everything that the upcoming quizzes will test: <a href="/learn/state-capitals/" style="color:var(--navy);font-weight:700">capitals</a>, <a href="/learn/state-nicknames-complete/" style="color:var(--navy);font-weight:700">nicknames</a>, <a href="/learn/electoral-college/" style="color:var(--navy);font-weight:700">electoral college</a>, <a href="/learn/13-colonies/" style="color:var(--navy);font-weight:700">13 colonies</a>, and many more.</p>
-
-    <h2>Notify me</h2>
-    <p>Get the daily Statedoku puzzle by email. We’ll also drop you a note when this game goes live. <a href="/" style="color:var(--navy);font-weight:700">Subscribe →</a></p>
+    <div class="result-card" id="g-result" style="display:none"></div>
   </div>
+
+  <script>
+  (function(){
+    
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
+function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const today=new Date().toISOString().slice(0,10);const prev=JSON.parse(localStorage.getItem(k)||'{}');const y=new Date(Date.now()-86400000).toISOString().slice(0,10);const streak=(prev.lastPlayed===today)?(prev.streak||0):(prev.lastPlayed===y)?((prev.streak||0)+1):1;localStorage.setItem(k,JSON.stringify({lastPlayed:today,streak:streak,best:Math.max(prev.best||0,score)}));if(window.gtag)window.gtag('event','play_complete',{game:slug,score:score,total:total,stars:st});}catch(e){}}
+async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copied");}catch(e){alert(txt);}}
+function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
+
+    const ITEMS = [{"prompt":"State bird: Yellowhammer","answer":"AL"},{"prompt":"State flower: Camellia","answer":"AL"},{"prompt":"State tree: Southern Longleaf Pine","answer":"AL"},{"prompt":"State bird: Willow Ptarmigan","answer":"AK"},{"prompt":"State flower: Forget-me-not","answer":"AK"},{"prompt":"State tree: Sitka Spruce","answer":"AK"},{"prompt":"State bird: Cactus Wren","answer":"AZ"},{"prompt":"State flower: Saguaro Cactus Blossom","answer":"AZ"},{"prompt":"State tree: Palo Verde","answer":"AZ"},{"prompt":"State bird: Mockingbird","answer":"AR"},{"prompt":"State flower: Apple Blossom","answer":"AR"},{"prompt":"State tree: Pine","answer":"AR"},{"prompt":"State bird: California Quail","answer":"CA"},{"prompt":"State flower: California Poppy","answer":"CA"},{"prompt":"State tree: Redwood","answer":"CA"},{"prompt":"State bird: Lark Bunting","answer":"CO"},{"prompt":"State flower: Rocky Mountain Columbine","answer":"CO"},{"prompt":"State tree: Colorado Blue Spruce","answer":"CO"},{"prompt":"State bird: American Robin","answer":"CT"},{"prompt":"State flower: Mountain Laurel","answer":"CT"},{"prompt":"State tree: White Oak","answer":"CT"},{"prompt":"State bird: Blue Hen Chicken","answer":"DE"},{"prompt":"State flower: Peach Blossom","answer":"DE"},{"prompt":"State tree: American Holly","answer":"DE"},{"prompt":"State bird: Mockingbird","answer":"FL"},{"prompt":"State flower: Orange Blossom","answer":"FL"},{"prompt":"State tree: Sabal Palm","answer":"FL"},{"prompt":"State bird: Brown Thrasher","answer":"GA"},{"prompt":"State flower: Cherokee Rose","answer":"GA"},{"prompt":"State tree: Live Oak","answer":"GA"},{"prompt":"State bird: Nene","answer":"HI"},{"prompt":"State flower: Yellow Hibiscus","answer":"HI"},{"prompt":"State tree: Kukui","answer":"HI"},{"prompt":"State bird: Mountain Bluebird","answer":"ID"},{"prompt":"State flower: Syringa","answer":"ID"},{"prompt":"State tree: Western White Pine","answer":"ID"},{"prompt":"State bird: Northern Cardinal","answer":"IL"},{"prompt":"State flower: Violet","answer":"IL"},{"prompt":"State tree: White Oak","answer":"IL"},{"prompt":"State bird: Northern Cardinal","answer":"IN"},{"prompt":"State flower: Peony","answer":"IN"},{"prompt":"State tree: Tulip Tree","answer":"IN"},{"prompt":"State bird: American Goldfinch","answer":"IA"},{"prompt":"State flower: Wild Prairie Rose","answer":"IA"},{"prompt":"State tree: Oak","answer":"IA"},{"prompt":"State bird: Western Meadowlark","answer":"KS"},{"prompt":"State flower: Sunflower","answer":"KS"},{"prompt":"State tree: Eastern Cottonwood","answer":"KS"},{"prompt":"State bird: Northern Cardinal","answer":"KY"},{"prompt":"State flower: Goldenrod","answer":"KY"},{"prompt":"State tree: Tulip Poplar","answer":"KY"},{"prompt":"State bird: Brown Pelican","answer":"LA"},{"prompt":"State flower: Magnolia","answer":"LA"},{"prompt":"State tree: Bald Cypress","answer":"LA"},{"prompt":"State bird: Black-capped Chickadee","answer":"ME"},{"prompt":"State flower: White Pine Cone and Tassel","answer":"ME"},{"prompt":"State tree: Eastern White Pine","answer":"ME"},{"prompt":"State bird: Baltimore Oriole","answer":"MD"},{"prompt":"State flower: Black-eyed Susan","answer":"MD"},{"prompt":"State tree: White Oak","answer":"MD"},{"prompt":"State bird: Black-capped Chickadee","answer":"MA"},{"prompt":"State flower: Mayflower","answer":"MA"},{"prompt":"State tree: American Elm","answer":"MA"},{"prompt":"State bird: American Robin","answer":"MI"},{"prompt":"State flower: Apple Blossom","answer":"MI"},{"prompt":"State tree: Eastern White Pine","answer":"MI"},{"prompt":"State bird: Common Loon","answer":"MN"},{"prompt":"State flower: Pink and White Lady's Slipper","answer":"MN"},{"prompt":"State tree: Red Pine","answer":"MN"},{"prompt":"State bird: Mockingbird","answer":"MS"},{"prompt":"State flower: Magnolia","answer":"MS"},{"prompt":"State tree: Magnolia","answer":"MS"},{"prompt":"State bird: Eastern Bluebird","answer":"MO"},{"prompt":"State flower: Hawthorn","answer":"MO"},{"prompt":"State tree: Flowering Dogwood","answer":"MO"},{"prompt":"State bird: Western Meadowlark","answer":"MT"},{"prompt":"State flower: Bitterroot","answer":"MT"},{"prompt":"State tree: Ponderosa Pine","answer":"MT"},{"prompt":"State bird: Western Meadowlark","answer":"NE"},{"prompt":"State flower: Goldenrod","answer":"NE"},{"prompt":"State tree: Eastern Cottonwood","answer":"NE"},{"prompt":"State bird: Mountain Bluebird","answer":"NV"},{"prompt":"State flower: Sagebrush","answer":"NV"},{"prompt":"State tree: Single-leaf Pinon","answer":"NV"},{"prompt":"State bird: Purple Finch","answer":"NH"},{"prompt":"State flower: Purple Lilac","answer":"NH"},{"prompt":"State tree: White Birch","answer":"NH"},{"prompt":"State bird: American Goldfinch","answer":"NJ"},{"prompt":"State flower: Violet","answer":"NJ"},{"prompt":"State tree: Red Oak","answer":"NJ"},{"prompt":"State bird: Greater Roadrunner","answer":"NM"},{"prompt":"State flower: Yucca","answer":"NM"},{"prompt":"State tree: Pinyon Pine","answer":"NM"},{"prompt":"State bird: Eastern Bluebird","answer":"NY"},{"prompt":"State flower: Rose","answer":"NY"},{"prompt":"State tree: Sugar Maple","answer":"NY"},{"prompt":"State bird: Northern Cardinal","answer":"NC"},{"prompt":"State flower: Dogwood","answer":"NC"},{"prompt":"State tree: Pine","answer":"NC"},{"prompt":"State bird: Western Meadowlark","answer":"ND"},{"prompt":"State flower: Wild Prairie Rose","answer":"ND"},{"prompt":"State tree: American Elm","answer":"ND"},{"prompt":"State bird: Northern Cardinal","answer":"OH"},{"prompt":"State flower: Scarlet Carnation","answer":"OH"},{"prompt":"State tree: Ohio Buckeye","answer":"OH"},{"prompt":"State bird: Scissor-tailed Flycatcher","answer":"OK"},{"prompt":"State flower: Oklahoma Rose","answer":"OK"},{"prompt":"State tree: Redbud","answer":"OK"},{"prompt":"State bird: Western Meadowlark","answer":"OR"},{"prompt":"State flower: Oregon Grape","answer":"OR"},{"prompt":"State tree: Douglas Fir","answer":"OR"},{"prompt":"State bird: Ruffed Grouse","answer":"PA"},{"prompt":"State flower: Mountain Laurel","answer":"PA"},{"prompt":"State tree: Eastern Hemlock","answer":"PA"},{"prompt":"State bird: Rhode Island Red","answer":"RI"},{"prompt":"State flower: Violet","answer":"RI"},{"prompt":"State tree: Red Maple","answer":"RI"},{"prompt":"State bird: Carolina Wren","answer":"SC"},{"prompt":"State flower: Yellow Jessamine","answer":"SC"},{"prompt":"State tree: Sabal Palmetto","answer":"SC"},{"prompt":"State bird: Ring-necked Pheasant","answer":"SD"},{"prompt":"State flower: Pasque Flower","answer":"SD"},{"prompt":"State tree: Black Hills Spruce","answer":"SD"},{"prompt":"State bird: Mockingbird","answer":"TN"},{"prompt":"State flower: Iris","answer":"TN"},{"prompt":"State tree: Tulip Poplar","answer":"TN"},{"prompt":"State bird: Mockingbird","answer":"TX"},{"prompt":"State flower: Bluebonnet","answer":"TX"},{"prompt":"State tree: Pecan","answer":"TX"},{"prompt":"State bird: California Gull","answer":"UT"},{"prompt":"State flower: Sego Lily","answer":"UT"},{"prompt":"State tree: Quaking Aspen","answer":"UT"},{"prompt":"State bird: Hermit Thrush","answer":"VT"},{"prompt":"State flower: Red Clover","answer":"VT"},{"prompt":"State tree: Sugar Maple","answer":"VT"},{"prompt":"State bird: Northern Cardinal","answer":"VA"},{"prompt":"State flower: American Dogwood","answer":"VA"},{"prompt":"State tree: American Dogwood","answer":"VA"},{"prompt":"State bird: American Goldfinch","answer":"WA"},{"prompt":"State flower: Coast Rhododendron","answer":"WA"},{"prompt":"State tree: Western Hemlock","answer":"WA"},{"prompt":"State bird: Northern Cardinal","answer":"WV"},{"prompt":"State flower: Rhododendron","answer":"WV"},{"prompt":"State tree: Sugar Maple","answer":"WV"},{"prompt":"State bird: American Robin","answer":"WI"},{"prompt":"State flower: Wood Violet","answer":"WI"},{"prompt":"State tree: Sugar Maple","answer":"WI"},{"prompt":"State bird: Western Meadowlark","answer":"WY"},{"prompt":"State flower: Indian Paintbrush","answer":"WY"},{"prompt":"State tree: Plains Cottonwood","answer":"WY"}];
+    const NAMES = {"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
+    const SHARE_PREFIX = "🌼";
+    const T_ = {"round":"Round","score":"Score","lives":"Lives","start":"Start","tryAgain":"Play again","share":"Share result","wellDone":"Well done!","gameOver":"Game over","easy":"Easy","normal":"Normal","hard":"Hard","submit":"Submit","skip":"Skip","categories":"Categories","solved":"Solved","mistakes":"Mistakes","pick4":"Pick 4 states that share a category","placeholder":"Type a state name…"};
+    const TOTAL = 15;
+    let queue=[],round=0,score=0,lives=3,answered=false;
+    const $ = id => document.getElementById(id);
+
+    function pickQueue(){return shuffle(ITEMS).slice(0,TOTAL);}
+
+    function nextRound(){
+      answered=false;
+      if(round>=TOTAL||queue.length===0)return finish();
+      round++;
+      const it = queue.shift();
+      $('g-round').textContent = round+'/'+TOTAL;
+      $('g-prompt').innerHTML = it.prompt;
+      // Build 4 choices: correct + 3 random distractors
+      const correct = it.answer;
+      let pool = it.distractors && it.distractors.length>0 ? it.distractors : Object.keys(NAMES).filter(k=>k!==correct);
+      const distractors = shuffle(pool).slice(0,3);
+      const choiceIds = shuffle([correct,...distractors]);
+      const ch = $('g-choices'); ch.innerHTML='';
+      choiceIds.forEach(id => {
+        const b = document.createElement('button');
+        b.className='ab-choice'; b.textContent=NAMES[id]||id; b.dataset.id=id;
+        b.addEventListener('click',()=>answer(b,correct));
+        ch.appendChild(b);
+      });
+      $('g-feedback').innerHTML='&nbsp;';
+    }
+    function answer(btn,correctId){
+      if(answered)return;
+      answered=true;
+      const correctBtn = Array.from(document.querySelectorAll('.ab-choice')).find(b=>b.dataset.id===correctId);
+      if(btn.dataset.id===correctId){
+        score++; btn.classList.add('correct');
+        $('g-feedback').textContent='✅ '+T_.wellDone;
+        $('g-feedback').className='feedback ok';
+      } else {
+        btn.classList.add('wrong');
+        if(correctBtn)correctBtn.classList.add('correct');
+        lives--;
+        $('g-feedback').textContent='❌ → '+(NAMES[correctId]||correctId);
+        $('g-feedback').className='feedback no';
+        $('g-lives').textContent='❤️'.repeat(lives)+'\u{1F90D}'.repeat(3-lives);
+        if(lives<=0){setTimeout(finish,800);return;}
+      }
+      $('g-score').textContent=score;
+      setTimeout(nextRound,800);
+    }
+    function finish(){renderResult($('g-result'),score,TOTAL,T_,"state-symbols",SHARE_PREFIX);}
+    $('g-start').addEventListener('click',()=>{
+      queue=pickQueue(); round=0; score=0; lives=3;
+      $('g-lives').textContent='❤️❤️❤️';
+      $('g-score').textContent='0'; $('g-result').style.display='none'; $('g-start').style.display='none';
+      nextRound();
+    });
+  })();
+  </script>
+
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 </body>
