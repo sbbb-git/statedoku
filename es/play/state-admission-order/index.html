@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="theme-color" content="#0F2147">
-  <title>Orden de admisión a la Unión — Próximamente | Statedoku</title>
-  <meta name="description" content="Ordena los estados por año de admisión a la Unión.">
+  <title>Orden de admisión a la Unión — Quiz | Statedoku</title>
+  <meta name="description" content="Ordena 8 estados por año de admisión a la Unión.">
   <meta name="keywords" content="orden admision estados union">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
@@ -31,45 +31,88 @@
   <link rel="stylesheet" href="/css/style.css?v=18">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Orden de admisión a la Unión">
-  <meta property="og:description" content="Ordena los estados por año de admisión a la Unión.">
+  <meta property="og:description" content="Ordena 8 estados por año de admisión a la Unión.">
   <meta property="og:url" content="https://statedoku.com/es/play/state-admission-order/">
   <meta property="og:image" content="https://statedoku.com/og/og-learn-state-capitals.png">
   <meta property="og:locale" content="es_ES">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Orden de admisión a la Unión">
-  <meta name="twitter:description" content="Ordena los estados por año de admisión a la Unión.">
+  <meta name="twitter:description" content="Ordena 8 estados por año de admisión a la Unión.">
   <meta name="twitter:image" content="https://statedoku.com/og/og-learn-state-capitals.png">
   <style>
     .hub-hero{max-width:880px;margin:24px auto 14px;padding:0 18px;text-align:center}
     .hub-hero h1{font-size:clamp(2rem,5.5vw,2.8rem);font-weight:900;letter-spacing:-.025em;margin:0 0 10px;line-height:1.12}
     .hub-hero .sub{color:var(--text-2);font-size:1rem;line-height:1.55;max-width:640px;margin:0 auto}
     .hub-chip{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--gold);color:var(--navy);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
-    .hub-stats{display:flex;gap:18px;justify-content:center;margin:14px 0 18px;flex-wrap:wrap;font-size:.85rem;color:var(--text-2)}
-    .hub-stats b{color:var(--navy)}
-    .hub-section{max-width:880px;margin:24px auto;padding:0 18px}
-    .hub-section h2{font-size:1.2rem;font-weight:800;letter-spacing:-.015em;margin:24px 0 12px;color:var(--navy)}
-    .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:8px 0 18px}
-    .game-card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--border);border-left:4px solid var(--region-color,#0F2147);border-radius:12px;padding:14px 16px;transition:transform 120ms,box-shadow 120ms,border-color 120ms;position:relative}
-    .game-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,33,71,0.08);border-color:var(--region-color,#0F2147)}
-    .game-card[data-group="interactive"]{--region-color:#1E40AF}
-    .game-card[data-group="classic"]{--region-color:#B45309}
-    .game-card[data-group="history"]{--region-color:#B91C1C}
-    .game-card[data-group="symbols"]{--region-color:#047857}
-    .game-card[data-group="geography"]{--region-color:#0E7490}
-    .game-card[data-group="politics"]{--region-color:#7C3AED}
-    .gc-chip{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.04em;color:var(--region-color);background:rgba(15,33,71,.04);padding:3px 7px;border-radius:4px;margin-bottom:6px}
-    .gc-title{font-weight:800;font-size:1.02rem;color:var(--text);margin-bottom:4px;line-height:1.22}
-    .gc-desc{font-size:.84rem;color:var(--text-2);line-height:1.45}
-    .gc-tag{position:absolute;top:14px;right:14px;font-size:.65rem;font-weight:800;letter-spacing:.05em;padding:2px 8px;border-radius:999px}
-    .gc-tag.live{background:#16A34A;color:#fff}
-    .gc-tag.soon{background:#94A3B8;color:#fff}
-    .game-frame{max-width:880px;margin:0 auto;padding:18px;line-height:1.55;color:var(--text)}
-    .game-frame h2{margin-top:28px;margin-bottom:10px;font-size:1.2rem;font-weight:800;letter-spacing:-.01em}
-    .game-frame p{margin-bottom:10px}
-    .game-frame details{margin:8px 0;padding:10px 14px;background:#F8FAFC;border-radius:8px}
-    .game-frame summary{font-weight:700;color:var(--navy);cursor:pointer}
+    .game-wrap{max-width:760px;margin:0 auto;padding:14px 14px 60px}
+    .game-panel{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#F8FAFC;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:10px 0 14px;font-size:.88rem}
+    .game-panel .lbl{color:var(--text-3);font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-right:4px}
+    .game-panel .val{font-weight:900;font-size:1.08rem;color:var(--navy)}
+    .game-card-hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;border-radius:14px;padding:22px 18px;text-align:center;margin:6px 0 14px}
+    .game-card-hero .qlbl{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;opacity:.78;margin-bottom:6px}
+    .game-card-hero .qval{font-size:1.7rem;font-weight:900;letter-spacing:-.025em;line-height:1.18}
+    .game-card-hero .qval.small{font-size:1.2rem;font-weight:700}
+    .game-card-hero .qval.tiny{font-size:1rem;font-weight:600;font-style:italic}
+    .game-card-hero .qcode{font-size:4rem;font-weight:900;letter-spacing:.06em;line-height:1;margin-top:4px}
+    .ab-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .ab-choice{padding:14px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.95rem;text-align:left;transition:background 80ms,border-color 80ms}
+    .ab-choice:hover{background:#F8FAFC}
+    .ab-choice.correct{background:#16A34A;color:#fff;border-color:#16A34A}
+    .ab-choice.wrong{background:#DC2626;color:#fff;border-color:#DC2626}
+    .feedback{min-height:1.6em;text-align:center;font-weight:700;font-size:.92rem;margin:6px 0}
+    .feedback.ok{color:#16A34A}
+    .feedback.no{color:#DC2626}
+    .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+    .gbtn{padding:10px 18px;border-radius:999px;border:none;background:var(--navy);color:#fff;font-weight:800;cursor:pointer;font-size:.92rem}
+    .gbtn:disabled{opacity:.45;cursor:default}
+    .gbtn.gold{background:var(--gold);color:var(--navy)}
+    .difficulty{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0 14px}
+    .diff{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);font-weight:700;cursor:pointer;font-size:.84rem}
+    .diff.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .result-card{background:#FFF7ED;border:1px solid var(--gold);border-radius:14px;padding:18px;text-align:center;margin:14px 0}
+    .result-card h2{margin:0 0 10px;font-size:1.3rem;color:var(--navy)}
     .stars{font-size:1.4rem;letter-spacing:6px;color:#F59E0B}
-    .stars .off{color:#E5E7EB}</style>
+    .stars .off{color:#E5E7EB}
+    .text-input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:1.05rem;font-weight:700;color:var(--navy);text-align:center;text-transform:capitalize}
+    .text-input:focus{outline:none;border-color:var(--navy)}
+    .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}
+    .match-col{display:flex;flex-direction:column;gap:6px}
+    .match-item{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.92rem;text-align:left;transition:background 80ms,border-color 80ms}
+    .match-item.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .match-item.paired{background:#16A34A;color:#fff;border-color:#16A34A;cursor:default;opacity:.85}
+    .match-item.error{background:#DC2626;color:#fff;border-color:#DC2626}
+    .connections-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0}
+    .conn-cell{padding:10px 8px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:800;color:var(--navy);font-size:.84rem;text-align:center;line-height:1.2;transition:background 80ms,border-color 80ms,color 80ms}
+    .conn-cell.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .conn-cell.solved-1{background:#FBBF24;color:#0F2147;border-color:#FBBF24}
+    .conn-cell.solved-2{background:#34D399;color:#fff;border-color:#34D399}
+    .conn-cell.solved-3{background:#60A5FA;color:#fff;border-color:#60A5FA}
+    .conn-cell.solved-4{background:#A78BFA;color:#fff;border-color:#A78BFA}
+    .conn-cat{padding:10px 14px;border-radius:10px;margin:6px 0;font-weight:800;color:#0F2147;text-align:center;font-size:.92rem}
+    .conn-cat.cat-1{background:#FBBF24}
+    .conn-cat.cat-2{background:#34D399;color:#fff}
+    .conn-cat.cat-3{background:#60A5FA;color:#fff}
+    .conn-cat.cat-4{background:#A78BFA;color:#fff}
+    .order-list{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+    .order-item{padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:#fff;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+    .order-item .order-num{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;text-align:center;line-height:26px;font-weight:900;font-size:.82rem;flex-shrink:0}
+    .order-controls{display:flex;gap:4px}
+    .order-controls button{padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.82rem}
+    .pts-map-wrap{background:#fff;border:1px solid var(--border);border-radius:14px;padding:8px;margin:8px 0 12px}
+    .pts-map-wrap svg{width:100%;height:auto;display:block;max-height:520px}
+    .pts-map-wrap svg path.state{fill:#E2E8F0!important;stroke:#fff!important;stroke-width:.8!important;cursor:pointer;transition:fill 120ms}
+    .pts-map-wrap svg path.state:hover{fill:#CBD5E1!important}
+    .pts-map-wrap svg path.state.correct{fill:#16A34A!important;cursor:default}
+    .pts-map-wrap svg path.state.wrong{fill:#DC2626!important;cursor:default}
+    .pts-map-wrap svg path.state.target-reveal{fill:#F59E0B!important;stroke:#0F2147!important;stroke-width:1.4!important}
+    .pts-map-wrap svg path.state.selected{fill:#3B82F6!important;cursor:pointer}
+    .silhouette-wrap{display:flex;justify-content:center;align-items:center;padding:24px;background:#F8FAFC;border-radius:14px;margin:8px 0;min-height:280px}
+    .silhouette-wrap svg{max-width:80%;max-height:280px}
+    .silhouette-wrap svg path{fill:#0F2147!important;stroke:none!important}
+    .autocomplete-list{max-height:160px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;margin-top:4px;background:#fff;display:none}
+    .autocomplete-list.show{display:block}
+    .autocomplete-item{padding:8px 12px;cursor:pointer;font-weight:600;color:var(--text)}
+    .autocomplete-item:hover,.autocomplete-item.active{background:#F8FAFC;color:var(--navy)}</style>
 </head>
 <body class="legal-body">
 <header>
@@ -79,64 +122,91 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://statedoku.com/es/"},{"@type":"ListItem","position":2,"name":"Jugar y Aprender","item":"https://statedoku.com/es/play/"},{"@type":"ListItem","position":3,"name":"Orden de admisión a la Unión","item":"https://statedoku.com/es/play/state-admission-order/"}]}
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Orden de admisión a la Unión","description":"Ordena los estados por año de admisión a la Unión.","url":"https://statedoku.com/es/play/state-admission-order/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"es","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Orden de admisión a la Unión","description":"Ordena 8 estados por año de admisión a la Unión.","url":"https://statedoku.com/es/play/state-admission-order/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"es","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cómo se juega Orden de admisión a la Unión?","acceptedAnswer":{"@type":"Answer","text":"Ordena 8 estados por año de admisión a la Unión. Puntuaciones guardadas localmente; racha conservada entre días."}},{"@type":"Question","name":"¿Es gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí — 100% gratis, sin registro, sin anuncios."}},{"@type":"Question","name":"¿Funciona en móvil?","acceptedAnswer":{"@type":"Answer","text":"Sí — totalmente adaptado a teléfono, tableta y escritorio."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">⏳ STATEHOOD</span>
     <h1>Orden de admisión a la Unión</h1>
-    <p class="sub">Ordena los estados por año de admisión a la Unión.</p>
+    <p class="sub">Ordena 8 estados por año de admisión a la Unión.</p>
   </section>
 
-  <div class="game-frame">
-    <div style="background:#FFF7ED;border:1px solid var(--gold);border-radius:14px;padding:22px;text-align:center;margin:14px 0">
-      <h2 style="margin:0 0 6px;color:var(--navy);font-size:1.2rem">Próximamente</h2>
-      <p style="margin:0;font-size:.92rem;color:var(--text-2)">Este juego está en preparación. Mientras tanto, explora nuestros juegos disponibles y nuestra guía completa.</p>
+  <div class="game-wrap">
+    <div class="game-panel">
+      <span class="lbl">Puntuación</span><span class="val" id="g-score">—</span>
     </div>
 
-    <h2>Disponibles ahora</h2>
-    <div class="game-grid">
-      <a class="game-card" data-group="interactive" href="/es/play/place-the-state/">
-        <span class="gc-tag live">JUGAR</span>
-        <span class="gc-chip">📍 MAP CHALLENGE</span>
-        <div class="gc-title">Coloca el Estado</div>
-        <div class="gc-desc">Haz clic en el estado correcto del mapa EE.UU. cuando te lo pidan. 10 rondas, 3 vidas.</div>
-      </a>
-      <a class="game-card" data-group="classic" href="/es/play/state-abbreviations/">
-        <span class="gc-tag live">JUGAR</span>
-        <span class="gc-chip">✉️ USPS CODES</span>
-        <div class="gc-title">Quiz Abreviaturas USPS</div>
-        <div class="gc-desc">Empareja el código postal de 2 letras con su estado. 20 rondas, opción múltiple + escritura.</div>
-      </a>
+    <div class="game-card-hero">
+      <div class="qlbl">Ordena 8 estados por año de admisión (el más antiguo primero)</div>
+      <div class="qval small">Usa las flechas para reordenar</div>
     </div>
 
-    <h2>Juegos similares (pronto)</h2>
-    <div class="game-grid">
-      <a class="game-card" data-group="history" href="/es/play/thirteen-colonies/">
-        <span class="gc-tag soon">PRONTO</span>
-        <span class="gc-chip">🌲 13 COLONIES</span>
-        <div class="gc-title">13 Colonias originales</div>
-        <div class="gc-desc">Identifica las 13 colonias originales entre los 50 estados.</div>
-      </a>
-      <a class="game-card" data-group="history" href="/es/play/confederate-states/">
-        <span class="gc-tag soon">PRONTO</span>
-        <span class="gc-chip">⚔️ CONFEDERATION</span>
-        <div class="gc-title">Quiz Estados Confederados</div>
-        <div class="gc-desc">Identifica los 11 estados confederados.</div>
-      </a>
-      <a class="game-card" data-group="history" href="/es/play/president-birth-states/">
-        <span class="gc-tag soon">PRONTO</span>
-        <span class="gc-chip">🏛️ PRESIDENTS</span>
-        <div class="gc-title">Presidentes por Estado natal</div>
-        <div class="gc-desc">Asocia cada presidente con su estado natal.</div>
-      </a>
+    <div class="order-list" id="g-list"></div>
+
+    <div class="feedback" id="g-feedback">&nbsp;</div>
+
+    <div class="controls">
+      <button class="gbtn gold" id="g-start">Empezar</button>
+      <button class="gbtn" id="g-submit" style="display:none">Enviar</button>
     </div>
-
-    <h2>Mientras tanto</h2>
-    <p>Mientras tanto, explora nuestra <a href="/es/learn/" style="color:var(--navy);font-weight:700">guía completa de los 50 estados</a> que cubre todas las preguntas de los próximos quizzes: <a href="/es/learn/capitales-de-estados/" style="color:var(--navy);font-weight:700">capitales</a>, <a href="/es/learn/apodos-de-estados/" style="color:var(--navy);font-weight:700">apodos</a>, <a href="/es/learn/colegio-electoral/" style="color:var(--navy);font-weight:700">colegio electoral</a> y más.</p>
-
-    <h2>Avísame</h2>
-    <p>Recibe el puzzle diario Statedoku por correo. También te avisaremos cuando este juego esté disponible. <a href="/es/" style="color:var(--navy);font-weight:700">Suscribirse →</a></p>
+    <div class="result-card" id="g-result" style="display:none"></div>
   </div>
+
+  <script>
+  (function(){
+    
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
+function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const today=new Date().toISOString().slice(0,10);const prev=JSON.parse(localStorage.getItem(k)||'{}');const y=new Date(Date.now()-86400000).toISOString().slice(0,10);const streak=(prev.lastPlayed===today)?(prev.streak||0):(prev.lastPlayed===y)?((prev.streak||0)+1):1;localStorage.setItem(k,JSON.stringify({lastPlayed:today,streak:streak,best:Math.max(prev.best||0,score)}));if(window.gtag)window.gtag('event','play_complete',{game:slug,score:score,total:total,stars:st});}catch(e){}}
+async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copiado");}catch(e){alert(txt);}}
+function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
+
+    const ITEMS_BANK = [{"id":"AL","value":1819},{"id":"AK","value":1959},{"id":"AZ","value":1912},{"id":"AR","value":1836},{"id":"CA","value":1850},{"id":"CO","value":1876},{"id":"CT","value":1788},{"id":"DE","value":1787},{"id":"FL","value":1845},{"id":"GA","value":1788},{"id":"HI","value":1959},{"id":"ID","value":1890},{"id":"IL","value":1818},{"id":"IN","value":1816},{"id":"IA","value":1846},{"id":"KS","value":1861},{"id":"KY","value":1792},{"id":"LA","value":1812},{"id":"ME","value":1820},{"id":"MD","value":1788},{"id":"MA","value":1788},{"id":"MI","value":1837},{"id":"MN","value":1858},{"id":"MS","value":1817},{"id":"MO","value":1821},{"id":"MT","value":1889},{"id":"NE","value":1867},{"id":"NV","value":1864},{"id":"NH","value":1788},{"id":"NJ","value":1787},{"id":"NM","value":1912},{"id":"NY","value":1788},{"id":"NC","value":1789},{"id":"ND","value":1889},{"id":"OH","value":1803},{"id":"OK","value":1907},{"id":"OR","value":1859},{"id":"PA","value":1787},{"id":"RI","value":1790},{"id":"SC","value":1788},{"id":"SD","value":1889},{"id":"TN","value":1796},{"id":"TX","value":1845},{"id":"UT","value":1896},{"id":"VT","value":1791},{"id":"VA","value":1788},{"id":"WA","value":1889},{"id":"WV","value":1863},{"id":"WI","value":1848},{"id":"WY","value":1890}];
+    const NAMES = {"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawái","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Luisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Misisipi","MO":"Misuri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"Nuevo Hampshire","NJ":"Nueva Jersey","NM":"Nuevo México","NY":"Nueva York","NC":"Carolina del Norte","ND":"Dakota del Norte","OH":"Ohio","OK":"Oklahoma","OR":"Oregón","PA":"Pensilvania","RI":"Rhode Island","SC":"Carolina del Sur","SD":"Dakota del Sur","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"Virginia Occidental","WI":"Wisconsin","WY":"Wyoming"};
+    const SHARE_PREFIX = "⏳";
+    const T_ = {"round":"Ronda","score":"Puntuación","lives":"Vidas","start":"Empezar","tryAgain":"Volver a jugar","share":"Compartir","wellDone":"¡Bien!","gameOver":"Juego terminado","easy":"Fácil","normal":"Normal","hard":"Difícil","submit":"Enviar","skip":"Pasar","categories":"Categorías","solved":"Resuelto","mistakes":"Errores","pick4":"Elige 4 estados que compartan una categoría","placeholder":"Escribe un nombre de estado…"};
+    const N = 8;
+    let order=[];
+    const $ = id => document.getElementById(id);
+
+    function pickList(){
+      const sample = shuffle(ITEMS_BANK).slice(0,N);
+      order = shuffle(sample.map(s=>s.id));
+      return { sample: sample, order: order };
+    }
+    function render(){
+      const list = $('g-list'); list.innerHTML='';
+      order.forEach((id,i)=>{
+        const row = document.createElement('div');
+        row.className='order-item';
+        row.innerHTML = '<span class="order-num">'+(i+1)+'</span><span style="flex:1">'+NAMES[id]+'</span><span class="order-controls"><button data-act="up">▲</button><button data-act="down">▼</button></span>';
+        row.querySelector('button[data-act="up"]').addEventListener('click',()=>move(i,-1));
+        row.querySelector('button[data-act="down"]').addEventListener('click',()=>move(i,1));
+        list.appendChild(row);
+      });
+    }
+    function move(i,d){const ni=i+d;if(ni<0||ni>=order.length)return;[order[i],order[ni]]=[order[ni],order[i]];render();}
+    function submit(){
+      // Correct order = sample sorted by value ascending
+      const sample = ITEMS_BANK.filter(s=>order.includes(s.id));
+      const correctOrder = sample.slice().sort((a,b)=>a.value-b.value).map(s=>s.id);
+      let score = 0;
+      order.forEach((id,i)=>{if(correctOrder[i]===id)score++;});
+      $('g-feedback').textContent = score===N ? '✅ Perfect' : '❌ '+score+'/'+N+' correct';
+      $('g-feedback').className = score===N?'feedback ok':'feedback no';
+      setTimeout(()=>{
+        renderResult($('g-result'),score,N,T_,"state-admission-order",SHARE_PREFIX);
+      }, 800);
+    }
+    $('g-start').addEventListener('click',()=>{
+      pickList();
+      $('g-result').style.display='none'; $('g-start').style.display='none'; $('g-submit').style.display='inline-block';
+      render();
+    });
+    $('g-submit').addEventListener('click',submit);
+  })();
+  </script>
+
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/es/play/">Jugar y Aprender</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a></p></footer>
 </body>

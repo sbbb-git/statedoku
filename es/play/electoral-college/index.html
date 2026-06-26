@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="theme-color" content="#0F2147">
-  <title>Quiz Colegio Electoral — Próximamente | Statedoku</title>
+  <title>Quiz Colegio Electoral — Quiz | Statedoku</title>
   <meta name="description" content="Pon a prueba cuántos votos electorales tiene cada estado.">
   <meta name="keywords" content="quiz colegio electoral eeuu">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -44,32 +44,75 @@
     .hub-hero h1{font-size:clamp(2rem,5.5vw,2.8rem);font-weight:900;letter-spacing:-.025em;margin:0 0 10px;line-height:1.12}
     .hub-hero .sub{color:var(--text-2);font-size:1rem;line-height:1.55;max-width:640px;margin:0 auto}
     .hub-chip{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--gold);color:var(--navy);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
-    .hub-stats{display:flex;gap:18px;justify-content:center;margin:14px 0 18px;flex-wrap:wrap;font-size:.85rem;color:var(--text-2)}
-    .hub-stats b{color:var(--navy)}
-    .hub-section{max-width:880px;margin:24px auto;padding:0 18px}
-    .hub-section h2{font-size:1.2rem;font-weight:800;letter-spacing:-.015em;margin:24px 0 12px;color:var(--navy)}
-    .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:8px 0 18px}
-    .game-card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--border);border-left:4px solid var(--region-color,#0F2147);border-radius:12px;padding:14px 16px;transition:transform 120ms,box-shadow 120ms,border-color 120ms;position:relative}
-    .game-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,33,71,0.08);border-color:var(--region-color,#0F2147)}
-    .game-card[data-group="interactive"]{--region-color:#1E40AF}
-    .game-card[data-group="classic"]{--region-color:#B45309}
-    .game-card[data-group="history"]{--region-color:#B91C1C}
-    .game-card[data-group="symbols"]{--region-color:#047857}
-    .game-card[data-group="geography"]{--region-color:#0E7490}
-    .game-card[data-group="politics"]{--region-color:#7C3AED}
-    .gc-chip{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.04em;color:var(--region-color);background:rgba(15,33,71,.04);padding:3px 7px;border-radius:4px;margin-bottom:6px}
-    .gc-title{font-weight:800;font-size:1.02rem;color:var(--text);margin-bottom:4px;line-height:1.22}
-    .gc-desc{font-size:.84rem;color:var(--text-2);line-height:1.45}
-    .gc-tag{position:absolute;top:14px;right:14px;font-size:.65rem;font-weight:800;letter-spacing:.05em;padding:2px 8px;border-radius:999px}
-    .gc-tag.live{background:#16A34A;color:#fff}
-    .gc-tag.soon{background:#94A3B8;color:#fff}
-    .game-frame{max-width:880px;margin:0 auto;padding:18px;line-height:1.55;color:var(--text)}
-    .game-frame h2{margin-top:28px;margin-bottom:10px;font-size:1.2rem;font-weight:800;letter-spacing:-.01em}
-    .game-frame p{margin-bottom:10px}
-    .game-frame details{margin:8px 0;padding:10px 14px;background:#F8FAFC;border-radius:8px}
-    .game-frame summary{font-weight:700;color:var(--navy);cursor:pointer}
+    .game-wrap{max-width:760px;margin:0 auto;padding:14px 14px 60px}
+    .game-panel{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#F8FAFC;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:10px 0 14px;font-size:.88rem}
+    .game-panel .lbl{color:var(--text-3);font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-right:4px}
+    .game-panel .val{font-weight:900;font-size:1.08rem;color:var(--navy)}
+    .game-card-hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;border-radius:14px;padding:22px 18px;text-align:center;margin:6px 0 14px}
+    .game-card-hero .qlbl{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;opacity:.78;margin-bottom:6px}
+    .game-card-hero .qval{font-size:1.7rem;font-weight:900;letter-spacing:-.025em;line-height:1.18}
+    .game-card-hero .qval.small{font-size:1.2rem;font-weight:700}
+    .game-card-hero .qval.tiny{font-size:1rem;font-weight:600;font-style:italic}
+    .game-card-hero .qcode{font-size:4rem;font-weight:900;letter-spacing:.06em;line-height:1;margin-top:4px}
+    .ab-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .ab-choice{padding:14px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.95rem;text-align:left;transition:background 80ms,border-color 80ms}
+    .ab-choice:hover{background:#F8FAFC}
+    .ab-choice.correct{background:#16A34A;color:#fff;border-color:#16A34A}
+    .ab-choice.wrong{background:#DC2626;color:#fff;border-color:#DC2626}
+    .feedback{min-height:1.6em;text-align:center;font-weight:700;font-size:.92rem;margin:6px 0}
+    .feedback.ok{color:#16A34A}
+    .feedback.no{color:#DC2626}
+    .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+    .gbtn{padding:10px 18px;border-radius:999px;border:none;background:var(--navy);color:#fff;font-weight:800;cursor:pointer;font-size:.92rem}
+    .gbtn:disabled{opacity:.45;cursor:default}
+    .gbtn.gold{background:var(--gold);color:var(--navy)}
+    .difficulty{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0 14px}
+    .diff{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);font-weight:700;cursor:pointer;font-size:.84rem}
+    .diff.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .result-card{background:#FFF7ED;border:1px solid var(--gold);border-radius:14px;padding:18px;text-align:center;margin:14px 0}
+    .result-card h2{margin:0 0 10px;font-size:1.3rem;color:var(--navy)}
     .stars{font-size:1.4rem;letter-spacing:6px;color:#F59E0B}
-    .stars .off{color:#E5E7EB}</style>
+    .stars .off{color:#E5E7EB}
+    .text-input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:1.05rem;font-weight:700;color:var(--navy);text-align:center;text-transform:capitalize}
+    .text-input:focus{outline:none;border-color:var(--navy)}
+    .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}
+    .match-col{display:flex;flex-direction:column;gap:6px}
+    .match-item{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.92rem;text-align:left;transition:background 80ms,border-color 80ms}
+    .match-item.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .match-item.paired{background:#16A34A;color:#fff;border-color:#16A34A;cursor:default;opacity:.85}
+    .match-item.error{background:#DC2626;color:#fff;border-color:#DC2626}
+    .connections-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0}
+    .conn-cell{padding:10px 8px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:800;color:var(--navy);font-size:.84rem;text-align:center;line-height:1.2;transition:background 80ms,border-color 80ms,color 80ms}
+    .conn-cell.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .conn-cell.solved-1{background:#FBBF24;color:#0F2147;border-color:#FBBF24}
+    .conn-cell.solved-2{background:#34D399;color:#fff;border-color:#34D399}
+    .conn-cell.solved-3{background:#60A5FA;color:#fff;border-color:#60A5FA}
+    .conn-cell.solved-4{background:#A78BFA;color:#fff;border-color:#A78BFA}
+    .conn-cat{padding:10px 14px;border-radius:10px;margin:6px 0;font-weight:800;color:#0F2147;text-align:center;font-size:.92rem}
+    .conn-cat.cat-1{background:#FBBF24}
+    .conn-cat.cat-2{background:#34D399;color:#fff}
+    .conn-cat.cat-3{background:#60A5FA;color:#fff}
+    .conn-cat.cat-4{background:#A78BFA;color:#fff}
+    .order-list{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+    .order-item{padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:#fff;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+    .order-item .order-num{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;text-align:center;line-height:26px;font-weight:900;font-size:.82rem;flex-shrink:0}
+    .order-controls{display:flex;gap:4px}
+    .order-controls button{padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:700;color:var(--navy);font-size:.82rem}
+    .pts-map-wrap{background:#fff;border:1px solid var(--border);border-radius:14px;padding:8px;margin:8px 0 12px}
+    .pts-map-wrap svg{width:100%;height:auto;display:block;max-height:520px}
+    .pts-map-wrap svg path.state{fill:#E2E8F0!important;stroke:#fff!important;stroke-width:.8!important;cursor:pointer;transition:fill 120ms}
+    .pts-map-wrap svg path.state:hover{fill:#CBD5E1!important}
+    .pts-map-wrap svg path.state.correct{fill:#16A34A!important;cursor:default}
+    .pts-map-wrap svg path.state.wrong{fill:#DC2626!important;cursor:default}
+    .pts-map-wrap svg path.state.target-reveal{fill:#F59E0B!important;stroke:#0F2147!important;stroke-width:1.4!important}
+    .pts-map-wrap svg path.state.selected{fill:#3B82F6!important;cursor:pointer}
+    .silhouette-wrap{display:flex;justify-content:center;align-items:center;padding:24px;background:#F8FAFC;border-radius:14px;margin:8px 0;min-height:280px}
+    .silhouette-wrap svg{max-width:80%;max-height:280px}
+    .silhouette-wrap svg path{fill:#0F2147!important;stroke:none!important}
+    .autocomplete-list{max-height:160px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;margin-top:4px;background:#fff;display:none}
+    .autocomplete-list.show{display:block}
+    .autocomplete-item{padding:8px 12px;cursor:pointer;font-weight:600;color:var(--text)}
+    .autocomplete-item:hover,.autocomplete-item.active{background:#F8FAFC;color:var(--navy)}</style>
 </head>
 <body class="legal-body">
 <header>
@@ -80,6 +123,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://statedoku.com/es/"},{"@type":"ListItem","position":2,"name":"Jugar y Aprender","item":"https://statedoku.com/es/play/"},{"@type":"ListItem","position":3,"name":"Quiz Colegio Electoral","item":"https://statedoku.com/es/play/electoral-college/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Quiz Colegio Electoral","description":"Pon a prueba cuántos votos electorales tiene cada estado.","url":"https://statedoku.com/es/play/electoral-college/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"es","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cómo se juega Quiz Colegio Electoral?","acceptedAnswer":{"@type":"Answer","text":"Pon a prueba cuántos votos electorales tiene cada estado. Puntuaciones guardadas localmente; racha conservada entre días."}},{"@type":"Question","name":"¿Es gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí — 100% gratis, sin registro, sin anuncios."}},{"@type":"Question","name":"¿Funciona en móvil?","acceptedAnswer":{"@type":"Answer","text":"Sí — totalmente adaptado a teléfono, tableta y escritorio."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🗳️ ELECTORAL</span>
@@ -87,50 +131,93 @@
     <p class="sub">Pon a prueba cuántos votos electorales tiene cada estado.</p>
   </section>
 
-  <div class="game-frame">
-    <div style="background:#FFF7ED;border:1px solid var(--gold);border-radius:14px;padding:22px;text-align:center;margin:14px 0">
-      <h2 style="margin:0 0 6px;color:var(--navy);font-size:1.2rem">Próximamente</h2>
-      <p style="margin:0;font-size:.92rem;color:var(--text-2)">Este juego está en preparación. Mientras tanto, explora nuestros juegos disponibles y nuestra guía completa.</p>
+  <div class="game-wrap">
+    <div class="game-panel">
+      <span class="lbl">Ronda</span><span class="val" id="g-round">1/15</span>
+      <span class="lbl" style="margin-left:14px">Puntuación</span><span class="val" id="g-score">0</span>
+      <span class="lbl" style="margin-left:14px">Vidas</span><span class="val" id="g-lives">❤️❤️❤️</span>
     </div>
 
-    <h2>Disponibles ahora</h2>
-    <div class="game-grid">
-      <a class="game-card" data-group="interactive" href="/es/play/place-the-state/">
-        <span class="gc-tag live">JUGAR</span>
-        <span class="gc-chip">📍 MAP CHALLENGE</span>
-        <div class="gc-title">Coloca el Estado</div>
-        <div class="gc-desc">Haz clic en el estado correcto del mapa EE.UU. cuando te lo pidan. 10 rondas, 3 vidas.</div>
-      </a>
-      <a class="game-card" data-group="classic" href="/es/play/state-abbreviations/">
-        <span class="gc-tag live">JUGAR</span>
-        <span class="gc-chip">✉️ USPS CODES</span>
-        <div class="gc-title">Quiz Abreviaturas USPS</div>
-        <div class="gc-desc">Empareja el código postal de 2 letras con su estado. 20 rondas, opción múltiple + escritura.</div>
-      </a>
+    <div class="game-card-hero">
+      <div class="qlbl">Votos electorales de:</div>
+      <div class="qval" id="g-prompt">—</div>
     </div>
 
-    <h2>Juegos similares (pronto)</h2>
-    <div class="game-grid">
-      <a class="game-card" data-group="politics" href="/es/play/swing-states/">
-        <span class="gc-tag soon">PRONTO</span>
-        <span class="gc-chip">⚖️ SWING</span>
-        <div class="gc-title">Quiz Estados Bisagra</div>
-        <div class="gc-desc">Identifica los 7 estados bisagra de 2024.</div>
-      </a>
-      <a class="game-card" data-group="politics" href="/es/play/no-income-tax-states/">
-        <span class="gc-tag soon">PRONTO</span>
-        <span class="gc-chip">💰 NO TAX</span>
-        <div class="gc-title">Quiz Sin Impuesto sobre la Renta</div>
-        <div class="gc-desc">Encuentra los 9 estados sin impuesto sobre la renta.</div>
-      </a>
+    <div class="feedback" id="g-feedback">&nbsp;</div>
+
+    <input type="text" class="text-input" id="g-input" placeholder="Escribe un nombre de estado…" autocomplete="off" />
+
+    <div class="controls">
+      <button class="gbtn gold" id="g-start">Empezar</button>
+      <button class="gbtn" id="g-submit" style="display:none">Enviar</button>
+      <button class="gbtn" id="g-skip" style="display:none">Pasar</button>
     </div>
-
-    <h2>Mientras tanto</h2>
-    <p>Mientras tanto, explora nuestra <a href="/es/learn/" style="color:var(--navy);font-weight:700">guía completa de los 50 estados</a> que cubre todas las preguntas de los próximos quizzes: <a href="/es/learn/capitales-de-estados/" style="color:var(--navy);font-weight:700">capitales</a>, <a href="/es/learn/apodos-de-estados/" style="color:var(--navy);font-weight:700">apodos</a>, <a href="/es/learn/colegio-electoral/" style="color:var(--navy);font-weight:700">colegio electoral</a> y más.</p>
-
-    <h2>Avísame</h2>
-    <p>Recibe el puzzle diario Statedoku por correo. También te avisaremos cuando este juego esté disponible. <a href="/es/" style="color:var(--navy);font-weight:700">Suscribirse →</a></p>
+    <div class="result-card" id="g-result" style="display:none"></div>
   </div>
+
+  <script>
+  (function(){
+    
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
+function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const today=new Date().toISOString().slice(0,10);const prev=JSON.parse(localStorage.getItem(k)||'{}');const y=new Date(Date.now()-86400000).toISOString().slice(0,10);const streak=(prev.lastPlayed===today)?(prev.streak||0):(prev.lastPlayed===y)?((prev.streak||0)+1):1;localStorage.setItem(k,JSON.stringify({lastPlayed:today,streak:streak,best:Math.max(prev.best||0,score)}));if(window.gtag)window.gtag('event','play_complete',{game:slug,score:score,total:total,stars:st});}catch(e){}}
+async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copiado");}catch(e){alert(txt);}}
+function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
+
+    const ITEMS = [{"prompt":"Alabama","answer":"9","alt":[]},{"prompt":"Alaska","answer":"3","alt":[]},{"prompt":"Arizona","answer":"11","alt":[]},{"prompt":"Arkansas","answer":"6","alt":[]},{"prompt":"California","answer":"54","alt":[]},{"prompt":"Colorado","answer":"10","alt":[]},{"prompt":"Connecticut","answer":"7","alt":[]},{"prompt":"Delaware","answer":"3","alt":[]},{"prompt":"Florida","answer":"30","alt":[]},{"prompt":"Georgia","answer":"16","alt":[]},{"prompt":"Hawái","answer":"4","alt":[]},{"prompt":"Idaho","answer":"4","alt":[]},{"prompt":"Illinois","answer":"19","alt":[]},{"prompt":"Indiana","answer":"11","alt":[]},{"prompt":"Iowa","answer":"6","alt":[]},{"prompt":"Kansas","answer":"6","alt":[]},{"prompt":"Kentucky","answer":"8","alt":[]},{"prompt":"Luisiana","answer":"8","alt":[]},{"prompt":"Maine","answer":"4","alt":[]},{"prompt":"Maryland","answer":"10","alt":[]},{"prompt":"Massachusetts","answer":"11","alt":[]},{"prompt":"Michigan","answer":"15","alt":[]},{"prompt":"Minnesota","answer":"10","alt":[]},{"prompt":"Misisipi","answer":"6","alt":[]},{"prompt":"Misuri","answer":"10","alt":[]},{"prompt":"Montana","answer":"4","alt":[]},{"prompt":"Nebraska","answer":"5","alt":[]},{"prompt":"Nevada","answer":"6","alt":[]},{"prompt":"Nuevo Hampshire","answer":"4","alt":[]},{"prompt":"Nueva Jersey","answer":"14","alt":[]},{"prompt":"Nuevo México","answer":"5","alt":[]},{"prompt":"Nueva York","answer":"28","alt":[]},{"prompt":"Carolina del Norte","answer":"16","alt":[]},{"prompt":"Dakota del Norte","answer":"3","alt":[]},{"prompt":"Ohio","answer":"17","alt":[]},{"prompt":"Oklahoma","answer":"7","alt":[]},{"prompt":"Oregón","answer":"8","alt":[]},{"prompt":"Pensilvania","answer":"19","alt":[]},{"prompt":"Rhode Island","answer":"4","alt":[]},{"prompt":"Carolina del Sur","answer":"9","alt":[]},{"prompt":"Dakota del Sur","answer":"3","alt":[]},{"prompt":"Tennessee","answer":"11","alt":[]},{"prompt":"Texas","answer":"40","alt":[]},{"prompt":"Utah","answer":"6","alt":[]},{"prompt":"Vermont","answer":"3","alt":[]},{"prompt":"Virginia","answer":"13","alt":[]},{"prompt":"Washington","answer":"12","alt":[]},{"prompt":"Virginia Occidental","answer":"4","alt":[]},{"prompt":"Wisconsin","answer":"10","alt":[]},{"prompt":"Wyoming","answer":"3","alt":[]}];
+    const SHARE_PREFIX = "🗳️";
+    const T_ = {"round":"Ronda","score":"Puntuación","lives":"Vidas","start":"Empezar","tryAgain":"Volver a jugar","share":"Compartir","wellDone":"¡Bien!","gameOver":"Juego terminado","easy":"Fácil","normal":"Normal","hard":"Difícil","submit":"Enviar","skip":"Pasar","categories":"Categorías","solved":"Resuelto","mistakes":"Errores","pick4":"Elige 4 estados que compartan una categoría","placeholder":"Escribe un nombre de estado…"};
+    const TOTAL = 15;
+    let queue=[],round=0,score=0,lives=3;
+    const $ = id => document.getElementById(id);
+
+    function normalize(s){return (s||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,'').trim();}
+    function pickQueue(){return shuffle(ITEMS).slice(0,TOTAL);}
+
+    function nextRound(){
+      if(round>=TOTAL||queue.length===0)return finish();
+      round++;
+      const it = queue.shift();
+      $('g-round').textContent = round+'/'+TOTAL;
+      $('g-prompt').textContent = it.prompt;
+      $('g-prompt').dataset.answer = it.answer;
+      $('g-prompt').dataset.altAnswers = JSON.stringify(it.alt||[]);
+      $('g-input').value = ''; $('g-input').focus();
+      $('g-feedback').innerHTML='&nbsp;';
+    }
+    function submit(){
+      const v = $('g-input').value.trim();
+      if(!v)return;
+      const correct = $('g-prompt').dataset.answer;
+      const alts = JSON.parse($('g-prompt').dataset.altAnswers||'[]');
+      const ok = normalize(v) === normalize(correct) || alts.some(a => normalize(v) === normalize(a));
+      if(ok){
+        score++; $('g-feedback').textContent='✅ '+correct; $('g-feedback').className='feedback ok';
+      } else {
+        lives--;
+        $('g-feedback').textContent='❌ → '+correct;
+        $('g-feedback').className='feedback no';
+        $('g-lives').textContent='❤️'.repeat(lives)+'\u{1F90D}'.repeat(3-lives);
+        if(lives<=0){setTimeout(finish,800);return;}
+      }
+      $('g-score').textContent=score;
+      setTimeout(nextRound,700);
+    }
+    function skip(){lives--;$('g-feedback').textContent='⏭ → '+$('g-prompt').dataset.answer;$('g-feedback').className='feedback no';$('g-lives').textContent='❤️'.repeat(lives)+'\u{1F90D}'.repeat(3-lives);if(lives<=0){setTimeout(finish,800);return;}setTimeout(nextRound,700);}
+    function finish(){renderResult($('g-result'),score,TOTAL,T_,"electoral-college",SHARE_PREFIX);}
+    $('g-start').addEventListener('click',()=>{
+      queue=pickQueue(); round=0; score=0; lives=3;
+      $('g-lives').textContent='❤️❤️❤️';
+      $('g-score').textContent='0'; $('g-result').style.display='none';
+      $('g-start').style.display='none'; $('g-submit').style.display='inline-block'; $('g-skip').style.display='inline-block';
+      nextRound();
+    });
+    $('g-submit').addEventListener('click',submit);
+    $('g-skip').addEventListener('click',skip);
+    $('g-input').addEventListener('keypress',e=>{if(e.key==='Enter')submit();});
+  })();
+  </script>
+
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/es/play/">Jugar y Aprender</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a></p></footer>
 </body>
