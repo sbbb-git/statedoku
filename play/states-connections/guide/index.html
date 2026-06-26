@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P7ZBQNYLS4');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+  <title>How to ace States Connections — grouping logic + traps (2026) | Statedoku</title>
+  <meta name="description" content="The complete strategy guide for States Connections. How NYT-style groupings work, state-attribute clusters, and how to avoid the trap categories.">
+  <meta name="keywords" content="states connections guide, nyt connections strategy, state grouping puzzle, connections game tips, state attributes">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://statedoku.com/play/states-connections/guide/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/play/states-connections/guide/">
+  <link rel="alternate" hreflang="en-US" href="https://statedoku.com/play/states-connections/guide/">
+  <link rel="alternate" hreflang="en-GB" href="https://statedoku.com/play/states-connections/guide/">
+  <link rel="alternate" hreflang="en-CA" href="https://statedoku.com/play/states-connections/guide/">
+  <link rel="alternate" hreflang="en-AU" href="https://statedoku.com/play/states-connections/guide/">
+  <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/states-connections/guide/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=18">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to ace States Connections">
+  <meta property="og:description" content="How NYT-style groupings work, state-attribute clusters, and how to avoid the trap categories.">
+  <meta property="og:url" content="https://statedoku.com/play/states-connections/guide/">
+  <meta property="og:image" content="https://statedoku.com/og/og-learn-state-capitals.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to ace States Connections">
+  <meta name="twitter:description" content="How NYT-style groupings work, state-attribute clusters, and how to avoid the trap categories.">
+  <meta name="twitter:image" content="https://statedoku.com/og/og-learn-state-capitals.png">
+  <style>
+    .lt-hero { max-width: 720px; margin: 32px auto 12px; padding: 0 18px; text-align: center; }
+    .lt-hero h1 { font-size: clamp(1.9rem, 5.5vw, 2.6rem); font-weight: 900; letter-spacing: -0.025em; margin: 0 0 10px; line-height: 1.15; }
+    .lt-hero .sub { color: var(--text-2); font-size: 1rem; line-height: 1.55; }
+    .lt-main { max-width: 720px; margin: 0 auto; padding: 18px 18px 60px; line-height: 1.65; color: var(--text); }
+    .lt-main h2 { margin-top: 36px; margin-bottom: 12px; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.015em; }
+    .lt-main h3 { margin-top: 20px; margin-bottom: 8px; font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+    .lt-main p, .lt-main li { line-height: 1.65; }
+    .lt-main ul, .lt-main ol { padding-left: 22px; margin-bottom: 14px; }
+    .lt-main li { margin-bottom: 6px; }
+    table.lt { width: 100%; border-collapse: collapse; margin: 14px 0 22px; font-size: .92rem; }
+    table.lt th, table.lt td { padding: 9px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+    table.lt th { background: #F8FAFC; font-weight: 700; color: var(--navy); font-size: .82rem; text-transform: uppercase; letter-spacing: .03em; }
+    table.lt tr:hover { background: #FAFBFC; }
+    table.lt a { color: var(--navy); font-weight: 700; text-decoration: none; }
+    .cta-card { background: linear-gradient(135deg, var(--navy), var(--navy-soft)); color: #fff; padding: 22px; border-radius: 14px; margin: 28px 0; text-align: center; }
+    .cta-card h3 { color: #fff; margin: 0 0 8px; }
+    .cta-card p { margin: 0 0 12px; color: rgba(255,255,255,0.85); }
+    .cta-card a { display: inline-block; background: var(--gold); color: var(--navy); padding: 10px 22px; border-radius: 999px; font-weight: 800; text-decoration: none; font-size: .92rem; }
+    .cta-card.big { padding: 32px 22px; }
+    .cta-card.big h3 { font-size: 1.5rem; }
+    .cta-card.big a { padding: 14px 32px; font-size: 1.05rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin: 14px 0; }
+    .related-grid a { display: block; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--navy); text-decoration: none; font-weight: 600; font-size: .9rem; }
+    .related-grid a:hover { background: #F8FAFC; border-color: var(--navy); }
+    details { margin: 8px 0; padding: 10px 14px; background: #F8FAFC; border-radius: 8px; }
+    summary { font-weight: 700; color: var(--navy); cursor: pointer; }
+    details p { margin: 8px 0 0; color: var(--text-2); }</style>
+</head>
+<body class="legal-body">
+<header>
+  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/play/states-connections/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← States Connections</a></nav>
+</header>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"States Connections","item":"https://statedoku.com/play/states-connections/"},{"@type":"ListItem","position":4,"name":"Strategy guide","item":"https://statedoku.com/play/states-connections/guide/"}]}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does States Connections work?","acceptedAnswer":{"@type":"Answer","text":"States Connections shows you 16 US states arranged in a 4x4 grid. You must sort them into 4 groups of 4 by a shared attribute — region, nickname theme, admission order, geographic feature, or political category. Each guess of 4 is right or wrong."}},{"@type":"Question","name":"What's the best opening strategy?","acceptedAnswer":{"@type":"Answer","text":"Look for the rarest attribute first. If you see Hawaii, Alaska, Texas, and California, that's almost certainly 'largest states by area'. Lock in the obvious group before tackling the ambiguous middle."}},{"@type":"Question","name":"How do you avoid the trap categories?",
+"acceptedAnswer":{"@type":"Answer","text":"Most overlaps come from cultural-belt states (Bible Belt, Rust Belt) and confederate states. Don't commit on a category if even one state could plausibly belong to two groups — pin down the unambiguous categories first."}},{"@type":"Question","name":"What are common grouping themes?","acceptedAnswer":{"@type":"Answer","text":"Common themes include the 4 census regions, the 13 original colonies, no income tax states, swing states, landlocked states, states bordering Mexico or Canada, states with 4-letter names, and states admitted in the same decade."}}]}</script>
+<main>
+  <section class="lt-hero">
+    <h1>How to ace States Connections</h1>
+    <p class="sub">How NYT Connections-style groupings work, state-attribute clusters, and the traps that cost you a strike.</p>
+  </section>
+  <article class="lt-main">
+    <p><strong>States Connections</strong> drops 16 US states into a 4x4 grid. Your job: sort them into 4 groups of 4 by some shared attribute. Sounds simple — except every puzzle is designed with overlap. Many states fit multiple categories. The skill isn't knowing facts; it's knowing which category to lock in <em>first</em>. This guide breaks down the grouping themes, the trap categories, and the order to play.</p>
+
+    <h2>How the puzzle is built</h2>
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
+    <p>Each puzzle has four categories ranked by difficulty (yellow → green → blue → purple, NYT-style). Yellow is the most obvious, purple is the trickiest wordplay or oblique link. The puzzle designer picks 16 states where:</p>
+    <ul>
+      <li>Each category has exactly 4 valid states.</li>
+      <li>At least 2 states fit a second category (the overlap trap).</li>
+      <li>The purple category often involves wordplay (states starting with the same letter, states with 4-letter names, states that contain a body part name like Arkansas's "ark", etc.).</li>
+    </ul>
+    <p>Knowing this structure changes how you play: <strong>never commit on a category if any of its 4 states is more strongly tied to another category</strong>.</p>
+
+    <h2>The 8 most common grouping themes</h2>
+    <table class="lt">
+      <thead><tr><th>Theme</th><th>Example states</th></tr></thead>
+      <tbody>
+        <tr><td>Census regions</td><td>Northeast (ME, VT, NH, MA), Midwest (OH, IN, IL, MI), South (TX, FL, GA, LA), West (CA, OR, WA, AZ)</td></tr>
+        <tr><td>13 original colonies</td><td>MA, VA, NY, PA, NJ, CT, MD, NC, SC, GA, NH, DE, RI</td></tr>
+        <tr><td>No income tax states</td><td>FL, TX, NV, WA, SD, WY, AK, TN, NH (NH has narrow tax)</td></tr>
+        <tr><td>Swing states</td><td>Recent: PA, MI, WI, AZ, GA, NV, NC</td></tr>
+        <tr><td>Landlocked states</td><td>NE, KS, OK, IA, MO, IL, KY, TN, WV, NV, UT, CO, WY, MT, ID, ND, SD, AR, NM, AZ</td></tr>
+        <tr><td>Border Mexico</td><td>CA, AZ, NM, TX</td></tr>
+        <tr><td>Border Canada</td><td>WA, ID, MT, ND, MN, MI, OH, PA, NY, VT, NH, ME, AK</td></tr>
+        <tr><td>Confederate states (Civil War)</td><td>SC, MS, FL, AL, GA, LA, TX, VA, AR, NC, TN</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The "purple" wordplay categories</h2>
+    <p>The hardest category usually involves wordplay or hidden patterns. Watch for these:</p>
+    <ul>
+      <li><strong>4-letter state names:</strong> Iowa, Ohio, Utah (only 3 — not a Connections set unless mixed with shape).</li>
+      <li><strong>States containing a body part:</strong> Arkansas (ARK), Kansas (no), Oregon (no)... actually the hidden words category usually picks names like Maine (MAIN), Oregon (OR), Idaho (DAH? — usually wordplay is looser).</li>
+      <li><strong>States starting with M:</strong> Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana (8 — too many for a single category, so puzzles usually pick 4 of them with a sub-theme).</li>
+      <li><strong>States named after British royals:</strong> Virginia (Virgin Queen Elizabeth I), Maryland (Queen Henrietta Maria), Georgia (King George II), Carolina (King Charles I).</li>
+      <li><strong>States with "New" in the name:</strong> New Hampshire, New Jersey, New Mexico, New York — exactly 4.</li>
+      <li><strong>States named after Native American words:</strong> Many states (Massachusetts, Connecticut, Mississippi, etc.) — puzzles usually pick a tight subset.</li>
+    </ul>
+
+    <h2>Trap categories and how to spot them</h2>
+    <h3>Trap #1: Bible Belt vs Confederate</h3>
+    <p>The Bible Belt and the Confederate states overlap heavily. If you see Alabama, Mississippi, Georgia, Tennessee, your gut says "Bible Belt" — but the puzzle might want "Confederate states". Check the other 12 states for tells: if you see Virginia and South Carolina, it's more likely Confederate (they were the 1st and 11th to secede).</p>
+
+    <h3>Trap #2: Pacific vs West Coast</h3>
+    <p>"Pacific states" (CA, OR, WA, plus AK and HI) and "West Coast states" (CA, OR, WA) are different. If you see Alaska and Hawaii in the grid, that's a clue for Pacific.</p>
+
+    <h3>Trap #3: New England vs Northeast</h3>
+    <p>New England = 6 states (ME, NH, VT, MA, RI, CT). Northeast = 9 states (New England + NY, NJ, PA). If you see New York or New Jersey alongside Massachusetts and Connecticut, it's "Northeast", not "New England".</p>
+
+    <h3>Trap #4: Rust Belt vs Midwest</h3>
+    <p>Rust Belt is a cultural region (PA, OH, MI, IN, IL, WI, parts of NY). Midwest is the census region (12 states). Connections puzzles love this because PA is Northeast (census) but Rust Belt (culture). If you see Pennsylvania grouped with Ohio and Michigan, think Rust Belt, not Midwest.</p>
+
+    <h2>The optimal play order</h2>
+    <ol>
+      <li><strong>Scan for the unambiguous category.</strong> Look for an outlier set: Hawaii + Alaska + Texas + California = largest by area. Lock it in.</li>
+      <li><strong>Find the wordplay (purple) category.</strong> If you see 4 states starting with "New" or 4 with very short names, those are usually locked groups.</li>
+      <li><strong>Save the two ambiguous categories for last.</strong> If you have 8 states left and 2 categories, you've removed 8 distractors and the answers usually clarify themselves.</li>
+      <li><strong>If you're stuck, don't guess.</strong> Most versions give you 4 strikes max. A wasted guess on an ambiguous category leaves you no margin.</li>
+    </ol>
+
+    <h2>Quick reference: tight 4-state groupings</h2>
+    <p>These groupings have <em>exactly</em> 4 states, making them prime puzzle answers:</p>
+    <ul>
+      <li><strong>States bordering Mexico:</strong> CA, AZ, NM, TX</li>
+      <li><strong>States starting with "New":</strong> NH, NJ, NM, NY</li>
+      <li><strong>States starting with "North" or "South":</strong> NC, ND, SC, SD</li>
+      <li><strong>States with 4-letter names:</strong> Iowa, Ohio, Utah... only 3, so puzzles often add a wildcard.</li>
+      <li><strong>Four Corners states:</strong> AZ, CO, NM, UT</li>
+      <li><strong>Pacific states (non-contiguous):</strong> AK, CA, HI, OR, WA — too many; usually narrowed to AK + HI + WA + OR.</li>
+      <li><strong>Mid-Atlantic:</strong> NJ, NY, PA, DE (sometimes MD)</li>
+    </ul>
+
+    <div class="cta-card">
+      <h3>New puzzle every day</h3>
+      <p>States Connections rotates fresh 16-state grids. The categories change daily — your pattern recognition gets faster every round.</p>
+      <a href="/play/states-connections/">Play States Connections →</a>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    <details><summary><strong>Is States Connections related to the NYT Connections game?</strong></summary><p>No — States Connections uses the same grid format that the New York Times Connections popularized (16 items, 4 groups of 4), but it's an independent game focused entirely on US state attributes.</p></details>
+    <details><summary><strong>How many strikes do you get?</strong></summary><p>Most versions give you 4 wrong guesses before the puzzle ends. Some daily-puzzle variants only give 3. Always check the rules on the first round.</p></details>
+    <details><summary><strong>What's the trickiest category type?</strong></summary><p>Wordplay categories where the connecting word is hidden inside the state name (e.g., "states containing a tool" or "states containing a body part"). They look random until you see the pattern, then they're obvious.</p></details>
+    <details><summary><strong>Should I solve from easiest to hardest?</strong></summary><p>Yes — but more importantly, solve the most <em>unambiguous</em> category first, regardless of difficulty color. Locking in an unambiguous category removes 4 distractors from every other group.</p></details>
+
+    <h2>Related guides</h2>
+    <div class="related-grid">
+      <a href="/learn/">→ Learn the 50 states</a>
+      <a href="/learn/us-regions/">→ The 4 US regions</a>
+      <a href="/learn/us-cultural-belts/">→ US cultural belts</a>
+      <a href="/learn/13-colonies/">→ The 13 original colonies</a>
+      <a href="/learn/swing-states/">→ Swing states</a>
+      <a href="/learn/no-income-tax/">→ No income tax states</a>
+      <a href="/learn/landlocked-states/">→ Landlocked states</a>
+      <a href="/learn/largest-states/">→ Largest states</a>
+      <a href="/learn/electoral-college/">→ Electoral college</a>
+      <a href="/play/">→ All games</a>
+    </div>
+
+    <div class="cta-card big">
+      <h3>Ready to play?</h3>
+      <p>Today's grid is waiting. Find the 4 groups before your strikes run out.</p>
+      <a href="/play/states-connections/">Now play States Connections →</a>
+    </div>
+  </article>
+    <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
+</main>
+<footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">All states</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p>
+</footer>
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+<script src="/js/ads.js?v=1"></script>
+</body>
+</html>

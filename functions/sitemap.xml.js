@@ -426,7 +426,44 @@ export async function onRequestGet({ request }) {
   extras.push([`${BASE}/es/privacy/`, { priority: 0.3 }]);
   extras.push([`${BASE}/es/terms/`, { priority: 0.3 }]);
 
-  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled];
+  // Shabbat push articles + game guides (June 26)
+  const SHABBAT_EN = ['states-by-gdp-ranking','longest-rivers-in-each-state','highest-mountain-in-each-state','safest-states-to-live','states-with-most-immigrants','states-most-natural-disasters'];
+  const SHABBAT_ES = ['estados-por-pib','rios-mas-importantes-por-estado','montana-mas-alta-por-estado','estados-mas-seguros','estados-con-mas-inmigrantes'];
+  const SHABBAT_FR = ['etats-par-pib','fleuves-par-etat-americain','montagne-plus-haute-par-etat','etats-les-plus-surs','etats-plus-d-immigrants'];
+  for (const s of SHABBAT_EN) extras.push([`${BASE}/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
+  for (const s of SHABBAT_ES) extras.push([`${BASE}/es/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
+  for (const s of SHABBAT_FR) extras.push([`${BASE}/fr/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
+  const SHABBAT_GUIDES = ['place-the-state','state-capitals-typing','state-abbreviations','states-connections','state-silhouettes'];
+  for (const g of SHABBAT_GUIDES) extras.push([`${BASE}/play/${g}/guide/`, { priority: 0.75, changefreq: 'monthly' }]);
+
+  // Per-state launcher pages (Shabbat push) — 5 games × 50 states × 3 langs = 750
+  const LAUNCHER_GAMES = ['place-the-state','state-capitals-typing','state-abbreviations','state-flags','state-nicknames'];
+  const LAUNCHER_LANGS = [['', 'en'], ['fr/', 'fr'], ['es/', 'es']];
+  const launcherEntries = [];
+  for (const game of LAUNCHER_GAMES) {
+    for (const slug of stateSlugs) {
+      for (const [pfx] of LAUNCHER_LANGS) {
+        launcherEntries.push([`${BASE}/${pfx}play/${game}/state/${slug}/`, { priority: 0.7, changefreq: 'weekly' }]);
+      }
+    }
+  }
+
+  // Printable worksheet pages (Shabbat push) — 21 games × 3 langs = 63
+  const PRINTABLE_GAMES = [
+    'place-the-state','state-capitals-typing','state-capitals-match','state-abbreviations',
+    'state-flags','state-nicknames','state-mottos','state-symbols','thirteen-colonies',
+    'state-admission-order','confederate-states','president-birth-states','time-zones',
+    'border-states','rivers-mountains','electoral-college','swing-states',
+    'no-income-tax-states','state-silhouettes','states-connections','biggest-cities'
+  ];
+  const printableEntries = [];
+  for (const game of PRINTABLE_GAMES) {
+    for (const [pfx] of LAUNCHER_LANGS) {
+      printableEntries.push([`${BASE}/${pfx}play/${game}/printable/`, { priority: 0.75, changefreq: 'monthly' }]);
+    }
+  }
+
+  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled, ...launcherEntries, ...printableEntries];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
