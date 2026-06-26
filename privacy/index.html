@@ -9,12 +9,11 @@
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
   </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0F2147">
   <title>Privacy Policy — Statedoku</title>
-  <meta name="description" content="Statedoku privacy policy: what data we store locally, our use of cookies, third-party services, and your rights under GDPR.">
+  <meta name="description" content="Statedoku privacy policy: what data is collected, cookies used (GA4, AdSense, Clarity), third-party services, your GDPR + CCPA rights.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://statedoku.com/privacy/">
   <link rel="alternate" hreflang="en" href="https://statedoku.com/privacy/">
@@ -22,17 +21,16 @@
   <link rel="alternate" hreflang="es" href="https://statedoku.com/es/privacy/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/privacy/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?v=19">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Privacy Policy — Statedoku">
-  <meta property="og:description" content="Statedoku privacy policy: what data we store locally, our use of cookies, third-party services, and your rights under GDPR.">
+  <meta property="og:description" content="Statedoku privacy policy: what data is collected, cookies used (GA4, AdSense, Clarity), third-party services, your GDPR + CCPA rights.">
   <meta property="og:url" content="https://statedoku.com/privacy/">
   <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy — Statedoku">
-  <meta name="twitter:description" content="Statedoku privacy policy: what data we store locally, our use of cookies, third-party services, and your rights under GDPR.">
+  <meta name="twitter:description" content="Statedoku privacy policy: what data is collected, cookies used (GA4, AdSense, Clarity), third-party services, your GDPR + CCPA rights.">
   <meta name="twitter:image" content="https://statedoku.com/og-image.png?v=2">
-
 </head>
 <body class="legal-body">
 
@@ -49,63 +47,103 @@
 
 <main class="legal-main">
   <article class="legal-page">
+
     <h1>Privacy Policy</h1>
-    <p class="legal-meta">Last updated: May 13, 2026</p>
+    <p class="legal-meta">Last updated: June 19, 2026</p>
 
-    <p>This Privacy Policy explains how <strong>Statedoku</strong> ("we", "us", "the site") handles information when you visit <a href="https://statedoku.com/">statedoku.com</a>. We've built this game to be as privacy-respecting as possible — you don't need to sign up, and most of what we store stays on your device.</p>
+    <p>This Privacy Policy explains how <strong>Statedoku</strong> ("we", "us", "the site") handles information when you visit <a href="https://statedoku.com/">statedoku.com</a>. Statedoku is operated by Sacha Bitoun, an independent solo developer based in Paris, France. The site is a free daily browser puzzle for US geography — you do not need to create an account to play.</p>
 
-    <h2>1. Information we collect</h2>
-    <h3>1.1 Stored locally on your device</h3>
-    <p>The game uses your browser's <strong>localStorage</strong> to remember:</p>
+    <h2>1. What we collect</h2>
+
+    <h3>1.1 Stored on your device (localStorage)</h3>
+    <p>The game uses your browser's <strong>localStorage</strong> — a small key/value store similar to cookies but local to your browser — to remember:</p>
     <ul>
-      <li>Your current puzzle progress (cells filled, mistakes made, completion time)</li>
-      <li>Your historical statistics (puzzles played, win rate, streak, best time)</li>
+      <li>Your current puzzle progress (cells filled, mistakes, completion time)</li>
+      <li>Your statistics (puzzles played, win rate, streak, best time)</li>
+      <li>Per-game stats for the <code>/play/</code> mini-games (streak, best score)</li>
       <li>Your language preference (EN, FR, ES)</li>
-      <li>Your consent decision (if ads are enabled)</li>
-      <li>An admin session token (only if you authenticated as administrator)</li>
+      <li>UI dismissal choices (e.g. whether you dismissed the email signup banner)</li>
     </ul>
-    <p>This data <strong>never leaves your device</strong>. We don't have a database. You can wipe it any time via your browser settings or by clearing the site's local data.</p>
+    <p>localStorage <strong>never leaves your device</strong>. You can clear it any time via your browser settings or by clearing site data for statedoku.com.</p>
 
-    <h3>1.2 Information collected automatically</h3>
-    <p>Our hosting provider (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare</a>) logs standard request information (IP address, user agent, timestamp, URL requested) for security and DDoS protection. This data is processed under Cloudflare's privacy terms and is not shared with us in personally identifiable form.</p>
+    <h3>1.2 Cookies and similar technologies (set by third parties)</h3>
+    <p>Once a page loads, third-party services we use may set cookies on your browser. The cookies, their purpose, and how long they last:</p>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem">
+      <thead><tr style="background:#F8FAFC"><th style="text-align:left;padding:8px;border-bottom:1px solid #E2E8F0">Provider</th><th style="text-align:left;padding:8px;border-bottom:1px solid #E2E8F0">Cookies</th><th style="text-align:left;padding:8px;border-bottom:1px solid #E2E8F0">Purpose</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Google Analytics 4</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0"><code>_ga</code>, <code>_ga_*</code></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Audience analytics — visit counts, paths, devices, countries. 2 years.</td></tr>
+        <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Google AdSense</strong> (when ads enabled)</td><td style="padding:8px;border-bottom:1px solid #E2E8F0"><code>NID</code>, <code>IDE</code>, <code>__gads</code>, <code>__gpi</code></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Ad serving, frequency capping, click measurement, and (if you accept personalization) ad targeting based on prior browsing. 13 months.</td></tr>
+        <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Microsoft Clarity</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0"><code>_clck</code>, <code>_clsk</code></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Aggregate UX heatmaps and (sampled) session recordings to find usability bugs. 1 year / session.</td></tr>
+        <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Cloudflare Web Analytics</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">None</td><td style="padding:8px">Server-side request counts. Cookieless by design.</td></tr>
+      </tbody>
+    </table>
 
-    <h3>1.3 Information you provide</h3>
-    <p>None. We don't have accounts, no contact forms, no newsletter. You play and leave.</p>
+    <h3>1.3 Server-side request logs</h3>
+    <p>Our hosting provider <strong>Cloudflare</strong> logs standard request information (IP address, user agent, timestamp, URL) for routing, security, and DDoS protection. We do not receive these logs in personally identifiable form. Read <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's privacy policy</a>.</p>
 
-    <h2>2. Cookies</h2>
-    <p>We do <strong>not</strong> use cookies directly. We use <em>localStorage</em>, which is similar but cannot be sent automatically to servers like cookies are.</p>
-    <p>If we enable advertising in the future (see §3), the ad provider may set its own cookies <strong>only after</strong> you accept ads via our consent banner.</p>
+    <h3>1.4 Information you choose to provide</h3>
+    <p>Email subscribers — and only them — give us their email address to receive the daily puzzle reminder. We store the email address, your preferred sending hour (UTC), your language, and a country code derived from your IP at subscription time. Subscriptions are <strong>opt-in</strong>. Every email contains an unsubscribe link.</p>
+    <p>If you click the daily reminder email, we may store the click event (timestamp, country, browser, destination URL) in our analytics database to measure email performance.</p>
+    <p>We do not sell, rent, or share email addresses with third parties. Emails are sent via <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a>.</p>
 
-    <h2>3. Third-party services</h2>
-
-    <h3>3.1 Cloudflare (hosting & CDN)</h3>
-    <p>Statedoku is hosted on <strong>Cloudflare Pages</strong>. Cloudflare processes your IP address for routing and security. See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's privacy policy</a>.</p>
-
-    <h3>3.2 Google Fonts</h3>
-    <p>The font "Inter" is loaded from <strong>Google Fonts</strong>. Google may log your IP address. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</p>
-
-    <h3>3.3 Google AdSense (only if you opt-in)</h3>
-    <p>Advertising is currently <strong>disabled</strong>. If we enable it, ads will only be served by Google AdSense <strong>after you accept</strong> via our consent banner. Google may then use cookies to serve personalised ads based on your prior visits. You can opt-out at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google's ad settings</a> or by clicking "Reject ads" on our banner.</p>
-
-    <h2>4. Your rights (GDPR & ePrivacy)</h2>
-    <p>If you are in the European Economic Area, you have the right to:</p>
+    <h2>2. Third-party services we use</h2>
+    <p>Each of these services has its own privacy policy that governs the data they receive:</p>
     <ul>
-      <li><strong>Access</strong> the data we hold about you — there's effectively none, since everything stays in your browser</li>
-      <li><strong>Delete</strong> all stored data — clear your browser's site data for statedoku.com</li>
-      <li><strong>Object</strong> to ad personalisation — click "Reject ads" on the consent banner</li>
-      <li><strong>Lodge a complaint</strong> with your local data protection authority</li>
+      <li><strong>Cloudflare</strong> (hosting, CDN, DDoS protection) — <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy</a></li>
+      <li><strong>Google Analytics 4</strong> (audience analytics) — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy</a> · <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Opt-out add-on</a></li>
+      <li><strong>Google AdSense</strong> (advertising — coverage starts only when ads are turned on) — <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">How Google uses information</a> · <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Personalization controls</a></li>
+      <li><strong>Microsoft Clarity</strong> (UX heatmaps, session recordings) — <a href="https://clarity.microsoft.com/terms" target="_blank" rel="noopener">Privacy</a></li>
+      <li><strong>Ahrefs Web Analytics</strong> (search-referrer attribution) — <a href="https://help.ahrefs.com/en/articles/9314929-ahrefs-web-analytics-privacy-policy" target="_blank" rel="noopener">Privacy</a></li>
+      <li><strong>Google Fonts</strong> (the "Inter" typeface) — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy</a></li>
+      <li><strong>Resend</strong> (transactional email — reminders to subscribers) — <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy</a></li>
     </ul>
+
+    <h2>3. Advertising disclosure (required by Google AdSense)</h2>
+    <p>Statedoku displays advertising provided by <strong>Google AdSense</strong>.</p>
+    <ul>
+      <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this site and other sites on the Internet.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visits to this site and/or other sites on the Internet.</li>
+      <li>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/" target="_blank" rel="noopener">aboutads.info</a> (US) or <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener">youronlinechoices.eu</a> (EU).</li>
+      <li>For visitors from the European Economic Area, United Kingdom, or Switzerland, Google's EU consent message will appear on first visit and allow you to grant or refuse personalization. Refusing personalization does not remove ads — only their tailoring.</li>
+    </ul>
+
+    <h2>4. Your rights</h2>
+    <p>Under the EU GDPR, UK GDPR, California's CCPA, and equivalent regimes, you have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> the personal data we hold about you</li>
+      <li><strong>Rectify</strong> data that is inaccurate</li>
+      <li><strong>Erase</strong> data we hold (for email subscribers: click any "unsubscribe" link; for localStorage: clear your browser data for statedoku.com)</li>
+      <li><strong>Object</strong> to processing, including ad personalization (see §3)</li>
+      <li><strong>Withdraw consent</strong> at any time</li>
+      <li><strong>Lodge a complaint</strong> with your local data protection authority. In France: <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</li>
+      <li><strong>Data portability</strong>: request a copy of the data we hold about you (email subscribers can request this by writing to the address below)</li>
+    </ul>
+    <p>For California residents specifically: we do not "sell" personal information as defined by the CCPA. We share data with advertising partners (Google) for serving ads, which may be considered "sharing" under recent CCPA amendments — opt out via Google Ads Settings.</p>
 
     <h2>5. Children's privacy</h2>
-    <p>Statedoku is suitable for all ages but is not specifically directed at children under 13. We do not knowingly collect data from children. If you are a parent and have concerns, contact us at the email below.</p>
+    <p>Statedoku is suitable for all ages but is not specifically directed at children under 13 (US) or under 16 (EU). We do not knowingly collect personal data from children. If you are a parent or guardian and believe your child has provided us with information, contact us and we will remove it.</p>
 
-    <h2>6. Changes to this policy</h2>
-    <p>We may update this policy. The "Last updated" date at the top will reflect the latest revision. Material changes will be highlighted on the homepage for at least 7 days.</p>
+    <h2>6. Data retention</h2>
+    <ul>
+      <li><strong>Email subscriptions:</strong> kept until you unsubscribe.</li>
+      <li><strong>Email click events:</strong> kept indefinitely for analytics but contain no personal identifier beyond the email itself.</li>
+      <li><strong>Cookies:</strong> see the durations in the table above.</li>
+      <li><strong>localStorage:</strong> persists until you clear it.</li>
+      <li><strong>Cloudflare access logs:</strong> retained per Cloudflare's policy (~30 days).</li>
+    </ul>
 
-    <h2>7. Contact</h2>
-    <p>For questions about this privacy policy, write to <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>.</p>
+    <h2>7. International data transfers</h2>
+    <p>Some of our third-party providers (Google, Cloudflare, Microsoft, Resend) are headquartered in the United States and may process data there. Each provider has its own safeguards (Standard Contractual Clauses, Data Privacy Framework certifications) that we rely on to meet GDPR adequacy requirements.</p>
+
+    <h2>8. Changes to this policy</h2>
+    <p>We may update this policy when we add or remove a service, change retention periods, or to clarify wording. The "Last updated" date at the top reflects the latest revision. Material changes will be flagged on the homepage for at least 7 days.</p>
+
+    <h2>9. Contact</h2>
+    <p>For any question about this privacy policy or to exercise any of the rights described above, write to <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>.</p>
+    <p>Data controller: Sacha Bitoun, Paris, France.</p>
 
     <p class="legal-back"><a href="/">← Back to the puzzle</a></p>
+
   </article>
 </main>
 
