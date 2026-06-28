@@ -126,15 +126,41 @@ const PRELAUNCH_COUNTDOWN = (daysLeft) => [
   `an "almost here" tweet ${daysLeft === 1 ? 'with the launch day TOMORROW' : 'with the launch in ' + daysLeft + ' days'}. Build excitement, mention June 1 specifically.`,
 ];
 
+// Voice variety pool. Picked pseudo-randomly per slot. NEVER pick the same
+// style two consecutive days (handled by `_pickStyleAvoidingRecent`).
 const LAUNCH_STYLES = [
-  'a punchy daily reminder that today\'s puzzle is live',
-  'a "did you know" geography fact about a US state, that ties to the game',
-  'an engagement question / poll for state-heads to reply to',
-  'a single-state spotlight with 3-4 surprising facts and a CTA to play',
-  'a Wordle/Connections-style comparison post explaining why Statedoku is different',
-  'a meme-y / playful post about US geography knowledge',
-  'a brag-about-streak post inviting others to share their results',
+  'a single sharp question to your followers about a specific state. one sentence, no setup. e.g. "name 5 states with no ocean coast. go."',
+  'a self-deprecating one-liner: confess one US-geography blank spot you (the bot persona) had this week, casually.',
+  'a tiny scene from today\'s puzzle: one constraint pair and the state that fits. concrete, not abstract. no comparisons to other games.',
+  'a "this state has more X than entire Y" surprising-stat one-liner, with the actual number.',
+  'a weather/season tie-in for today\'s date. mention one state where the weather is doing something notable right now.',
+  'a one-line geography hot take. opinionated, mildly contrarian, friendly. no rage bait.',
+  'a tiny "today i learned" with one real surprising fact about a state\'s capital, river, or border. no "did you know".',
+  'a single line of geography wordplay or pun about a state name or capital. funny without trying too hard.',
+  'a friendly nudge to people stuck on today\'s puzzle: hint at the kind of thinking that helps, without spoiling.',
+  'a one-state spotlight: 2 short lines, weird unique fact + CTA.',
+  'a personal-sounding line about why daily puzzles are good for your brain. no clichés about "neurons".',
+  'a snippet of school-trivia nostalgia: "remember when you had to memorize state capitals in 5th grade? today\'s puzzle would have helped."',
+  'a one-line "what state am i?" tease using 2-3 quirky clues. answer is hidden in the puzzle of the day.',
+  'a one-line riff on a current-month theme (summer roadtrip / fall foliage / spring storms / winter pass closures) that ties to a specific state.',
+  'a short tweet calling out a famous state-border quirk (e.g. the Four Corners, Bristol TN/VA, North Carolina–South Carolina island swap).',
+  'a one-line callout of a tiny, often-overlooked state with one genuine reason it punches above its weight.',
+  'a "people forget that" reminder of a real but counterintuitive geography fact, in a chill tone.',
+  'a one-line streak brag. talk about your own (the bot\'s) streak, invite people to share theirs.',
+  'a tiny puzzle teaser: one of today\'s constraints + an invitation to try.',
+  'a wholesome line about a US state most people underrate. no superlatives, just a specific reason.',
+  'a one-line invitation framed around a coffee/lunch break (e.g. "between meetings? 90 seconds of geography").',
+  'a quick "spot the lie" with two true state facts and one false, ask people to guess.',
 ];
+
+// Pick a style index. Day-of-year + slot give a stable rotation across
+// daily cron firings, but each manual/dry-run call adds a small random
+// offset so we don't keep replaying the same template when testing.
+function _pickStyleAvoidingRecent(doy, slotIdx, listLen) {
+  const base = ((doy * 31) + slotIdx * 7) % listLen;
+  const jitter = Math.floor(Math.random() * 5);
+  return (base + jitter) % listLen;
+}
 
 function _todayDateStr() { return new Date().toISOString().slice(0, 10); }
 function _dayOfYear(d) { return Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 86400000); }
@@ -155,18 +181,29 @@ async function pickRandomFunFact() {
 
 // Build a fun-fact tweet prompt. Used in prelaunch (evening slot) + launch (every other day).
 function buildFunFactPrompt(fact, isPrelaunch, dateLong, daysLeft = 0) {
-  const personaCore = `You run the @Statedoku Twitter account. Your job is to share a US states / geography fun fact in a fun, conversational way.
+  const personaCore = `You run the @Statedoku Twitter account. Drop one US geography fact in a way that feels human, not LinkedIn-influencer.
 
-Voice: casual, witty, slightly nerdy. Like a friend who can't help themselves when a cool fact crosses their mind. NEVER corporate. NEVER use em-dashes.
+VOICE:
+- One thought, one tweet. Don't pack three.
+- Short sentences. Fragments are good. Vary length wildly.
+- Lowercase or sentence-case starts are both fine.
+- Real contractions (it's, don't, you're).
+- Specific names, numbers, places. Never abstract.
 
-Hard rules (every tweet):
-- Under 270 characters total.
-- MUST include exactly one US flag emoji 🇺🇸 somewhere.
-- 1-2 emojis MAX TOTAL (so 🇺🇸 + at most one other).
-- Don't say "fun fact" or "did you know" — show, don't announce.
-- Use the fact as inspiration; reword it in your own punchy way.
-- Do NOT wrap the tweet in quotes.
-- Output ONLY the tweet text, no explanations, no preamble.`;
+HARD BANS (these scream bot, never use):
+- NO em-dashes (no "—"), no en-dashes (no "–"), no spaced-hyphen pauses (no " - "). Use commas, periods, or line breaks.
+- NO triadic mirror sentences like "X is A. Y is B. Z is C."
+- NO ALL-CAPS WORDS for emphasis.
+- NO "🧩", "✨", "🎯", "🚀", "💡". Only 🇺🇸 plus maybe one of 🗺️ 🏔️ 🌊 🌽 🦅 🪐 🛣️.
+- NO "Fun fact", "Did you know", "Plot twist:", "Honestly,", "Yeah, basically", "Picture this:", "Let's be honest,".
+- NO marketing-speak.
+
+REQUIREMENTS:
+- Under 250 characters total.
+- Exactly one 🇺🇸 somewhere.
+- At most one extra emoji from the allowed list.
+- Do NOT wrap in quotes.
+- Output ONLY the tweet text, no preamble.`;
 
   const ctx = isPrelaunch
     ? `Today is ${dateLong}. The Statedoku puzzle launches in ${daysLeft} day${daysLeft === 1 ? '' : 's'} (June 1). Do NOT include any link or hashtag yet. You can hint that something is coming (one short line), but the fact is the star.`
@@ -224,22 +261,40 @@ Write ONE tweet for ${isMorningSlot ? 'this morning' : 'this evening'} in this s
     const fact = await pickRandomFunFact();
     if (fact) return buildFunFactPrompt(fact, false, dateLong);
   }
-  const style = LAUNCH_STYLES[doy % LAUNCH_STYLES.length];
-  return `You write the daily tweet for @Statedoku — a free daily puzzle game (${SITE_URL}) that mixes Sudoku grid logic with US geography. Players fill a 3×3 grid with US states matching row + column constraints, like "Pacific coast × Borders Mexico = California". 3 mistakes allowed.
+  const slotIdx = utcHour < 15 ? 0 : 1;
+  const style = LAUNCH_STYLES[_pickStyleAvoidingRecent(doy, slotIdx, LAUNCH_STYLES.length)];
+  return `You write the daily tweet for @Statedoku, a free daily US-states puzzle (${SITE_URL}). Players fill a 3x3 grid with states satisfying row+column constraints like "Pacific coast x Borders Mexico = California". 3 mistakes allowed. The site is live.
 
 Today is ${dateLong}.
 
-Write ONE tweet for today in this style: ${style}.
+STYLE FOR THIS TWEET: ${style}
 
-Requirements:
-- Under 270 characters total (leave room for the URL).
-- Include 1-2 emojis (no emoji spam).
-- Include #Statedoku hashtag.
-- Include the URL: ${SITE_URL}
-- Sound human, casual, slightly witty. Avoid corporate marketing speak.
-- Do NOT use em-dashes or fancy unicode dashes.
-- Do NOT wrap in quotes.
-- Output ONLY the tweet, no explanations.`;
+VOICE (must feel like a real person):
+- Lowercase or sentence-case starts are fine. Real humans don't always capitalize.
+- Short sentences. Fragments are good. Vary sentence length wildly.
+- Use contractions (it's, don't, you're).
+- Be specific, not abstract. Name actual states, capitals, numbers.
+- One thought per tweet. Don't pack three.
+
+HARD BANS (these are AI-tells, never use them):
+- NO em-dashes (no "—"), no en-dashes (no "–"), no spaced-hyphen pauses (no " - ").
+  Use commas, periods, or new lines instead.
+- NO triadic mirror structures like "X does A. Y does B. Z does C." That pattern screams bot.
+- NO ALL-CAPS WORDS for emphasis (no AND, OR, NOT, BUT, just AND, etc.).
+- NO "🧩", "✨", "🎯", "🚀", "💡", or other puzzle/app cliché emojis. ONLY 🇺🇸 plus maybe one geographic emoji (🗺️, 🏔️, 🌊, 🌽).
+- NO opener phrases: "Let's be honest,", "Yeah, basically", "Honestly,", "Plot twist:", "Fun fact:", "Did you know", "Picture this:", "Imagine if".
+- NO "make you think", "makes you feel", "where X meets Y".
+- NO comparisons to Wordle/Connections/NYT every tweet. Allowed maybe once a week, not more.
+- NO marketing speak: no "the daily puzzle that...", "perfect for...", "designed to...", "join thousands of".
+
+REQUIREMENTS:
+- Under 250 characters total (leave room for URL + hashtag).
+- Include exactly one 🇺🇸 somewhere (anywhere).
+- At most ONE additional emoji, and only from this list: 🗺️ 🏔️ 🌊 🌽 🦅 🪐 🛣️
+- Include the hashtag #Statedoku once (lowercase #statedoku also fine).
+- Include the URL once: ${SITE_URL}
+- Do NOT wrap the tweet in quotes.
+- Output ONLY the tweet text, no explanations or preamble.`;
 }
 
 async function generateTweetText(env) {
@@ -267,8 +322,54 @@ async function generateTweetText(env) {
   if ((text.startsWith('"') && text.endsWith('"')) || (text.startsWith('"') && text.endsWith('"'))) {
     text = text.slice(1, -1).trim();
   }
+  text = humanize(text);
   if (text.length > 280) text = text.slice(0, 277) + '…';
   return text;
+}
+
+// Deterministic post-processor: even when Claude slips, strip the
+// dead-giveaway AI tells. Prompt + post-processing is more reliable
+// than prompt alone.
+function humanize(text) {
+  let t = text;
+
+  // Em-dash, en-dash, spaced-hyphen pauses → comma. Handles all common
+  // unicode dash codepoints (U+2014, U+2013, U+2012, U+2015, U+2212, ...).
+  t = t.replace(/[‒–—―−]/g, ',');
+  t = t.replace(/ - /g, ', ');
+  t = t.replace(/—/g, ',').replace(/–/g, ',');
+
+  // Cleanup: double commas, comma-before-punct, leading comma.
+  t = t.replace(/, *,/g, ',').replace(/,([.!?])/g, '$1').replace(/^,\s*/, '');
+
+  // ALL-CAPS single words used for emphasis (3+ letters, AND/BUT/OR/NOT/etc.).
+  // Down-case them. We keep proper acronyms like USA, NYC by skipping 2-letter
+  // and known acronym tokens.
+  const KEEP_CAPS = new Set(['USA','US','NYC','LA','DC','SF','UK','EU','AI','TV','NFL','NBA','MLB','NHL','NYT','MIT','UCLA','USC','NASA','FBI','CIA','LSU','OK']);
+  t = t.replace(/\b([A-Z]{3,})\b/g, (m) => KEEP_CAPS.has(m) ? m : m.toLowerCase());
+  // 2-letter common emphasis words (not real acronyms) downcased.
+  t = t.replace(/\b(OR|IF|NO|SO|UP)\b/g, (m) => m.toLowerCase());
+
+  // Banned opener phrases: drop them if they lead the tweet.
+  const BAD_OPENERS = [
+    /^let's be honest,?\s*/i,
+    /^honestly,?\s*/i,
+    /^yeah,?\s*basically,?\s*/i,
+    /^plot twist:?\s*/i,
+    /^fun fact:?\s*/i,
+    /^did you know:?\s*/i,
+    /^picture this:?\s*/i,
+    /^imagine if\s+/i,
+  ];
+  for (const re of BAD_OPENERS) t = t.replace(re, '');
+
+  // Cliché / app emojis → strip.
+  t = t.replace(/[\u{1F9E9}\u{2728}\u{1F3AF}\u{1F680}\u{1F4A1}\u{1F4AF}\u{1F525}]/gu, '');
+
+  // Collapse extra spaces and trim.
+  t = t.replace(/\s+/g, ' ').replace(/\s+([.!?,])/g, '$1').trim();
+
+  return t;
 }
 
 // Fallback if Claude API is unavailable
