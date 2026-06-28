@@ -1,11 +1,17 @@
 # Cloudflare Pages: custom response headers
 # Docs: https://developers.cloudflare.com/pages/configuration/headers/
 #
-# More-specific paths come FIRST. CF Pages merges all matching rules,
-# and same-named headers from later rules don't reliably override.
-# /play/* allows third-party framing (for embeddable widgets); the
-# global /* rule below restricts everything else to same-origin via
-# CSP frame-ancestors 'self'.
+# CF Pages applies LAST matching rule per header name. So put the
+# global rule FIRST, then specific overrides AFTER. The /play/* rules
+# below replace the global CSP with one that allows third-party
+# framing (frame-ancestors *) — that powers the embeddable widgets.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
 
 /play/*
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors *; base-uri 'self'; form-action 'self'
@@ -13,17 +19,6 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors *; base-uri 'self'; form-action 'self'
 /es/play/*
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors *; base-uri 'self'; form-action 'self'
-
-# Global rule for everything else. X-Frame-Options is intentionally
-# omitted — modern browsers honor CSP frame-ancestors instead, and
-# X-Frame-Options can't be cleared per-path on CF Pages. The IE11
-# compat loss is acceptable (worldwide IE11 share ≈ 0%).
-/*
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
 
 # ─────────────────────────────────────────────────────────────
 # Caching strategy:
