@@ -427,9 +427,9 @@ export async function onRequestGet({ request }) {
   extras.push([`${BASE}/es/terms/`, { priority: 0.3 }]);
 
   // Shabbat push articles + game guides (June 26)
-  const SHABBAT_EN = ['states-by-gdp-ranking','longest-rivers-in-each-state','highest-mountain-in-each-state','safest-states-to-live','states-with-most-immigrants','states-most-natural-disasters'];
-  const SHABBAT_ES = ['estados-por-pib','rios-mas-importantes-por-estado','montana-mas-alta-por-estado','estados-mas-seguros','estados-con-mas-inmigrantes'];
-  const SHABBAT_FR = ['etats-par-pib','fleuves-par-etat-americain','montagne-plus-haute-par-etat','etats-les-plus-surs','etats-plus-d-immigrants'];
+  const SHABBAT_EN = ['states-by-gdp-ranking','longest-rivers-in-each-state','highest-mountain-in-each-state','safest-states-to-live','states-with-most-immigrants','states-most-natural-disasters','states-by-college-attainment'];
+  const SHABBAT_ES = ['estados-por-pib','rios-mas-importantes-por-estado','montana-mas-alta-por-estado','estados-mas-seguros','estados-con-mas-inmigrantes','estados-mas-baratos-vivir'];
+  const SHABBAT_FR = ['etats-par-pib','fleuves-par-etat-americain','montagne-plus-haute-par-etat','etats-les-plus-surs','etats-plus-d-immigrants','etats-moins-chers-vivre'];
   for (const s of SHABBAT_EN) extras.push([`${BASE}/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
   for (const s of SHABBAT_ES) extras.push([`${BASE}/es/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
   for (const s of SHABBAT_FR) extras.push([`${BASE}/fr/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
