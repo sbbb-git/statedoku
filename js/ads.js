@@ -1,4 +1,52 @@
 // ─────────────────────────────────────────────────────────────────────────
+// Statedoku — Embed mode (third-party iframe context)
+// When loaded with ?embed=1, hide the page chrome (header, footer, ads),
+// and show a small "Powered by Statedoku.com" banner that links back to
+// the standalone game. Every embed = a backlink.
+// ─────────────────────────────────────────────────────────────────────────
+(function() {
+  try {
+    var params = new URLSearchParams(location.search);
+    if (params.get('embed') !== '1') return;
+
+    var inIframe;
+    try { inIframe = window.self !== window.top; } catch (e) { inIframe = true; }
+
+    var cssId = 'statedoku-embed-css';
+    if (!document.getElementById(cssId)) {
+      var style = document.createElement('style');
+      style.id = cssId;
+      style.textContent = ''
+        + 'html.embed-mode body{margin:0!important;padding:0!important;background:#F7F8FB!important}'
+        + 'html.embed-mode header,html.embed-mode footer,html.embed-mode nav,html.embed-mode .top-bar,html.embed-mode .bottom-band,html.embed-mode .bottom-ad-band,html.embed-mode .lang-switch,html.embed-mode [data-ad-slot],html.embed-mode .ad-slot,html.embed-mode .related-grid,html.embed-mode .play-cta,html.embed-mode .breadcrumb,html.embed-mode #subscribe-modal,html.embed-mode .post-win-modal{display:none!important}'
+        + 'html.embed-mode main{padding:6px 8px 44px!important;max-width:none!important;margin:0!important}'
+        + 'html.embed-mode .lt-hero{padding:6px 0 4px!important}'
+        + 'html.embed-mode .lt-hero h1{font-size:1.05rem!important;margin:0 0 4px!important}'
+        + 'html.embed-mode .lt-hero .sub{display:none!important}'
+        + '.statedoku-embed-byline{position:fixed;left:0;right:0;bottom:0;height:32px;display:flex;align-items:center;justify-content:center;background:#0F2147;color:#fff;font-family:Inter,system-ui,sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.01em;z-index:9999;box-shadow:0 -1px 0 rgba(0,0,0,.08)}'
+        + '.statedoku-embed-byline a{color:#F59E0B;text-decoration:none;margin-left:6px}'
+        + '.statedoku-embed-byline a:hover{text-decoration:underline}';
+      (document.head || document.documentElement).appendChild(style);
+    }
+
+    document.documentElement.classList.add('embed-mode');
+
+    function injectByline() {
+      if (document.querySelector('.statedoku-embed-byline')) return;
+      var bar = document.createElement('div');
+      bar.className = 'statedoku-embed-byline';
+      var canonical = location.origin + location.pathname;
+      bar.innerHTML = 'Powered by <a href="' + canonical + '" target="_blank" rel="noopener">Statedoku.com 🇺🇸</a>';
+      document.body.appendChild(bar);
+    }
+    if (document.body) injectByline();
+    else document.addEventListener('DOMContentLoaded', injectByline);
+  } catch (e) {
+    // Embed-mode CSS injection failed — silently fall back to full chrome.
+  }
+})();
+
+// ─────────────────────────────────────────────────────────────────────────
 // Statedoku — Ads module
 //
 // Two-mode loader for ad slots:

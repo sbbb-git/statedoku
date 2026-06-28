@@ -426,6 +426,11 @@ export async function onRequestGet({ request }) {
   extras.push([`${BASE}/es/privacy/`, { priority: 0.3 }]);
   extras.push([`${BASE}/es/terms/`, { priority: 0.3 }]);
 
+  // Embeddable widgets hub (backlink-attracting iframes for teachers)
+  extras.push([`${BASE}/widgets/`,    { priority: 0.85, changefreq: 'monthly', alternates: [['en', `${BASE}/widgets/`], ['fr', `${BASE}/fr/widgets/`], ['es', `${BASE}/es/widgets/`], ['x-default', `${BASE}/widgets/`]] }]);
+  extras.push([`${BASE}/fr/widgets/`, { priority: 0.8,  changefreq: 'monthly' }]);
+  extras.push([`${BASE}/es/widgets/`, { priority: 0.8,  changefreq: 'monthly' }]);
+
   // Shabbat push articles + game guides (June 26)
   const SHABBAT_EN = ['states-by-gdp-ranking','longest-rivers-in-each-state','highest-mountain-in-each-state','safest-states-to-live','states-with-most-immigrants','states-most-natural-disasters','states-by-college-attainment','states-by-cost-of-living'];
   const SHABBAT_ES = ['estados-por-pib','rios-mas-importantes-por-estado','montana-mas-alta-por-estado','estados-mas-seguros','estados-con-mas-inmigrantes','estados-mas-baratos-vivir','estados-con-mas-desastres-naturales','estados-mas-educados'];
