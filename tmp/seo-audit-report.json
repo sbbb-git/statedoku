@@ -1,0 +1,807 @@
+{
+  "total_scanned": 2047,
+  "issue_counts": {
+    "no_jsonld": 514,
+    "title_too_long": 193,
+    "description_too_short": 110,
+    "duplicate_title": 64,
+    "thin_content": 51,
+    "description_too_long": 34,
+    "missing_description": 1,
+    "missing_canonical": 1,
+    "incomplete_og": 1
+  },
+  "duplicate_title_examples": [
+    [
+      "Quiz Capitales \u2014 Quiz | Statedoku",
+      2
+    ],
+    [
+      "Alaska \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Illinois \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Washington \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Vermont \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Connecticut \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Alabama \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Oklahoma \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Colorado \u2014 Quiz Capitales | Statedoku",
+      2
+    ],
+    [
+      "Ohio \u2014 Quiz Capitales | Statedoku",
+      2
+    ]
+  ],
+  "duplicate_desc_examples": [],
+  "top_offenders": [
+    {
+      "path": "logos/index.html",
+      "issues": [
+        [
+          "missing_description",
+          ""
+        ],
+        [
+          "missing_canonical",
+          ""
+        ],
+        [
+          "incomplete_og",
+          "og:title,og:description,og:url"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Logo proposals \u2014 Statedoku",
+      "wc": 203
+    },
+    {
+      "path": "learn/states-by-statehood-year/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "76 chars"
+        ],
+        [
+          "thin_content",
+          "134 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "From Delaware to Hawaii \u2014 172 Years of Statehood in Order (2026) | Statedoku",
+      "wc": 134
+    },
+    {
+      "path": "learn/state-mottos/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "74 chars"
+        ],
+        [
+          "thin_content",
+          "126 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "What Every State Motto Really Means \u2014 All 50 Translated (2026) | Statedoku",
+      "wc": 126
+    },
+    {
+      "path": "learn/state-flags/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "74 chars"
+        ],
+        [
+          "thin_content",
+          "133 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Every State Flag Ranked Best to Worst by Vexillologists (2026) | Statedoku",
+      "wc": 133
+    },
+    {
+      "path": "learn/states-with-oceans/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "76 chars"
+        ],
+        [
+          "thin_content",
+          "110 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Only One State Touches Two Oceans \u2014 Coastal States Mapped (2026) | Statedoku",
+      "wc": 110
+    },
+    {
+      "path": "learn/states-with-great-lakes/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "75 chars"
+        ],
+        [
+          "thin_content",
+          "114 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Which 8 States Touch the Great Lakes? \u2014 Full Map & Guide (2026) | Statedoku",
+      "wc": 114
+    },
+    {
+      "path": "learn/state-license-plates/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "79 chars"
+        ],
+        [
+          "thin_content",
+          "129 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "\"Live Free or Die\" and 49 Other License Plate Slogans Ranked (2026) | Statedoku",
+      "wc": 129
+    },
+    {
+      "path": "learn/state-songs/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "78 chars"
+        ],
+        [
+          "thin_content",
+          "124 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "From \"Georgia on My Mind\" to \"Rocky Top\" \u2014 Every State Song (2026) | Statedoku",
+      "wc": 124
+    },
+    {
+      "path": "learn/cheapest-states-to-live/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "88 chars"
+        ],
+        [
+          "thin_content",
+          "120 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "10 Cheapest States to Live in Right Now \u2014 Full Cost-of-Living Ranking (2026) | S",
+      "wc": 120
+    },
+    {
+      "path": "learn/states-by-region-list/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "81 chars"
+        ],
+        [
+          "thin_content",
+          "119 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Northeast, South, Midwest, West \u2014 Every State Mapped by Region (2026) | Statedok",
+      "wc": 119
+    },
+    {
+      "path": "learn/best-states-for-retirees/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "82 chars"
+        ],
+        [
+          "thin_content",
+          "117 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "The 10 Best States to Retire in 2026 \u2014 Tax, Climate, Healthcare Ranked | Statedo",
+      "wc": 117
+    },
+    {
+      "path": "learn/state-sport/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "74 chars"
+        ],
+        [
+          "thin_content",
+          "113 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Maryland Picked Jousting \u2014 Every State's Official Sport (2026) | Statedoku",
+      "wc": 113
+    },
+    {
+      "path": "learn/states-with-national-parks/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "71 chars"
+        ],
+        [
+          "thin_content",
+          "118 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Alaska Has 8 National Parks \u2014 All 63 by State Ranked (2026) | Statedoku",
+      "wc": 118
+    },
+    {
+      "path": "learn/us-territories/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "81 chars"
+        ],
+        [
+          "thin_content",
+          "116 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "3.6M Americans Can't Vote for President \u2014 All 5 US Territories (2026) | Statedok",
+      "wc": 116
+    },
+    {
+      "path": "learn/state-quarters/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "78 chars"
+        ],
+        [
+          "thin_content",
+          "128 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Which State Quarter Is Worth $100+? \u2014 All 50 Designs Ranked (2026) | Statedoku",
+      "wc": 128
+    },
+    {
+      "path": "learn/states-with-mountains/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "78 chars"
+        ],
+        [
+          "thin_content",
+          "108 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Rockies, Appalachians, Sierra \u2014 Every Mountain State Mapped (2026) | Statedoku",
+      "wc": 108
+    },
+    {
+      "path": "learn/most-expensive-states/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "82 chars"
+        ],
+        [
+          "thin_content",
+          "117 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Hawaii Costs 88% More Than Mississippi \u2014 Top 10 Priciest States (2026) | Statedo",
+      "wc": 117
+    },
+    {
+      "path": "learn/states-without-capital-largest/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "76 chars"
+        ],
+        [
+          "thin_content",
+          "127 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Why 33 State Capitals Aren't the Biggest City \u2014 Full List (2026) | Statedoku",
+      "wc": 127
+    },
+    {
+      "path": "learn/states-by-time-zone/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "74 chars"
+        ],
+        [
+          "thin_content",
+          "130 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "13 States Span Two Time Zones \u2014 Full US Time Zone Guide (2026) | Statedoku",
+      "wc": 130
+    },
+    {
+      "path": "learn/swing-states/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "80 chars"
+        ],
+        [
+          "thin_content",
+          "131 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "The 7 States That Pick the Next President \u2014 Swing State Guide (2026) | Statedoku",
+      "wc": 131
+    },
+    {
+      "path": "learn/states-by-population/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "77 chars"
+        ],
+        [
+          "thin_content",
+          "119 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "California Has 67x More People Than Wyoming \u2014 Full Ranking (2026) | Statedoku",
+      "wc": 119
+    },
+    {
+      "path": "learn/state-birds/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "77 chars"
+        ],
+        [
+          "thin_content",
+          "131 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Why 7 States Share One Bird \u2014 All 50 State Birds Explained (2026) | Statedoku",
+      "wc": 131
+    },
+    {
+      "path": "fr/learn/bellingham-coupe-du-monde-2026/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "74 chars"
+        ],
+        [
+          "description_too_short",
+          "87 chars"
+        ],
+        [
+          "thin_content",
+          "180 words"
+        ]
+      ],
+      "title": "Jude Bellingham \u00e0 la Coupe du Monde 2026 \u2014 \u00e2ge, club, palmar\u00e8s | Statedoku",
+      "wc": 180
+    },
+    {
+      "path": "es/learn/capital-de-oregon-5-letras/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "72 chars"
+        ],
+        [
+          "description_too_long",
+          "184 chars"
+        ],
+        [
+          "thin_content",
+          "178 words"
+        ]
+      ],
+      "title": "\u00bfCapital del estado de Oreg\u00f3n (5 letras)? \u2014 Respuesta: SALEM | Statedoku",
+      "wc": 178
+    },
+    {
+      "path": "es/learn/estado-cuya-capital-es-augusta-5-letras/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "84 chars"
+        ],
+        [
+          "description_too_long",
+          "196 chars"
+        ],
+        [
+          "thin_content",
+          "186 words"
+        ]
+      ],
+      "title": "\u00bfEstado de EE.UU. cuya capital es Augusta (5 letras)? \u2014 Respuesta: MAINE | State",
+      "wc": 186
+    },
+    {
+      "path": "es/learn/estado-eeuu-abreviatura-md/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "80 chars"
+        ],
+        [
+          "description_too_long",
+          "192 chars"
+        ],
+        [
+          "thin_content",
+          "147 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MD? \u2014 Respuesta: MARYLAND | Statedoku",
+      "wc": 147
+    },
+    {
+      "path": "es/learn/estado-eeuu-abreviatura-hi/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "77 chars"
+        ],
+        [
+          "description_too_long",
+          "189 chars"
+        ],
+        [
+          "thin_content",
+          "151 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura HI? \u2014 Respuesta: HAWAI | Statedoku",
+      "wc": 151
+    },
+    {
+      "path": "es/learn/estado-capital-austin/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "71 chars"
+        ],
+        [
+          "description_too_long",
+          "183 chars"
+        ],
+        [
+          "thin_content",
+          "149 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado tiene a Austin como capital? \u2014 Respuesta: TEXAS | Statedoku",
+      "wc": 149
+    },
+    {
+      "path": "es/learn/estado-eeuu-2-letras-nc/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "90 chars"
+        ],
+        [
+          "description_too_long",
+          "200 chars"
+        ],
+        [
+          "thin_content",
+          "147 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura NC? \u2014 Respuesta: CAROLINA DEL NORTE |",
+      "wc": 147
+    },
+    {
+      "path": "es/learn/ciudad-de-arizona-6-letras/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "77 chars"
+        ],
+        [
+          "description_too_long",
+          "189 chars"
+        ],
+        [
+          "thin_content",
+          "195 words"
+        ]
+      ],
+      "title": "\u00bfCiudad de Arizona, en los EE.UU. (6 letras)? \u2014 Respuesta: TUCSON | Statedoku",
+      "wc": 195
+    },
+    {
+      "path": "es/learn/estado-capital-sacramento/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "80 chars"
+        ],
+        [
+          "description_too_long",
+          "192 chars"
+        ],
+        [
+          "thin_content",
+          "153 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado tiene a Sacramento como capital? \u2014 Respuesta: CALIFORNIA | Statedoku",
+      "wc": 153
+    },
+    {
+      "path": "es/learn/estado-eeuu-abreviatura-ma/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "85 chars"
+        ],
+        [
+          "description_too_long",
+          "188 chars"
+        ],
+        [
+          "thin_content",
+          "139 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MA? \u2014 Respuesta: MASSACHUSETTS | Stat",
+      "wc": 139
+    },
+    {
+      "path": "es/learn/estado-eeuu-abreviatura-mn/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "81 chars"
+        ],
+        [
+          "description_too_long",
+          "185 chars"
+        ],
+        [
+          "thin_content",
+          "147 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MN? \u2014 Respuesta: MINNESOTA | Statedok",
+      "wc": 147
+    },
+    {
+      "path": "es/learn/estado-eeuu-abreviatura-mi/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "80 chars"
+        ],
+        [
+          "description_too_long",
+          "191 chars"
+        ],
+        [
+          "thin_content",
+          "143 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MI? \u2014 Respuesta: MICHIGAN | Statedoku",
+      "wc": 143
+    },
+    {
+      "path": "es/learn/estado-eeuu-2-letras-sc/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "88 chars"
+        ],
+        [
+          "description_too_long",
+          "198 chars"
+        ],
+        [
+          "thin_content",
+          "147 words"
+        ]
+      ],
+      "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura SC? \u2014 Respuesta: CAROLINA DEL SUR | S",
+      "wc": 147
+    },
+    {
+      "path": "es/learn/ciudad-arizona-cabecera-condado-pima/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "81 chars"
+        ],
+        [
+          "description_too_long",
+          "193 chars"
+        ],
+        [
+          "thin_content",
+          "159 words"
+        ]
+      ],
+      "title": "\u00bfCiudad de Arizona, cabecera del condado de Pima? \u2014 Respuesta: TUCSON | Statedok",
+      "wc": 159
+    },
+    {
+      "path": "regions/west-south-central/index.html",
+      "issues": [
+        [
+          "description_too_short",
+          "48 chars"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "The West South Central Region \u2014 US States, Map, Facts",
+      "wc": 101
+    },
+    {
+      "path": "learn/states-largest-cities/index.html",
+      "issues": [
+        [
+          "thin_content",
+          "121 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "Largest City in Every US State | Statedoku",
+      "wc": 121
+    },
+    {
+      "path": "learn/state-trees/index.html",
+      "issues": [
+        [
+          "thin_content",
+          "119 words"
+        ],
+        [
+          "no_jsonld",
+          ""
+        ]
+      ],
+      "title": "From Live Oaks to Sequoias \u2014 All 50 State Trees (2026) | Statedoku",
+      "wc": 119
+    },
+    {
+      "path": "learn/states-with-most-immigrants/index.html",
+      "issues": [
+        [
+          "title_too_long",
+          "74 chars"
+        ],
+        [
+          "description_too_long",
+          "178 chars"
+        ]
+      ],
+      "title": "US states with the most immigrants \u2014 Foreign-born share (2026) | Statedoku",
+      "wc": 791
+    }
+  ]
+}
