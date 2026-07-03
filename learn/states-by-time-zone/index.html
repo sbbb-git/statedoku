@@ -66,8 +66,12 @@
     table.tbl th { background: #F8FAFC; font-weight:700; color: var(--navy); font-size:.82rem; text-transform: uppercase; letter-spacing:.03em; }
     table.tbl a { color: var(--navy); font-weight: 700; text-decoration: none; }
     table.tbl a:hover { text-decoration: underline; }
+    details { margin: 8px 0; padding: 10px 14px; background: #F8FAFC; border-radius: 8px; }
+    summary { font-weight: 700; color: var(--navy); cursor: pointer; }
+    details p { margin: 8px 0 0; color: var(--text-2); }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Learn","item":"https://statedoku.com/learn/"},{"@type":"ListItem","position":3,"name":"States By Time Zone","item":"https://statedoku.com/learn/states-by-time-zone/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many time zones does the United States have?","acceptedAnswer":{"@type":"Answer","text":"Nine when you include territories. The 50 states use six: Eastern, Central, Mountain, Pacific, Alaska and Hawaii-Aleutian. Puerto Rico uses Atlantic, Guam and the Northern Mariana Islands use Chamorro, and American Samoa uses Samoa time."}},{"@type":"Question","name":"How many US states span two time zones?","acceptedAnswer":{"@type":"Answer","text":"13 states are split. Kentucky, Tennessee, Indiana, Michigan, Florida and 5 others straddle the Eastern-Central line. Kansas, Nebraska, North Dakota, South Dakota and Texas straddle Central-Mountain. Idaho and Oregon straddle Mountain-Pacific. Alaska has parts on Alaska time and one small area on Hawaii-Aleutian time."}},{"@type":"Question","name":"Which states do not observe daylight saving time?","acceptedAnswer":{"@type":"Answer","text":"Two: Hawaii and most of Arizona. The Navajo Nation in Arizona does observe DST because it extends into Utah and New Mexico. American Samoa, Guam, Puerto Rico, the US Virgin Islands and the Northern Mariana Islands also skip it."}},{"@type":"Question","name":"Why is Indiana partly on Eastern and partly on Central time?","acceptedAnswer":{"@type":"Answer","text":"Indiana was on a mix of standard time for decades. In 2006 the state consolidated: 80 counties moved to Eastern time and 12 counties in the northwest (near Chicago) and southwest (near Evansville) stayed on Central time. The split roughly follows commuter ties to Chicago."}},{"@type":"Question","name":"Which state is furthest west and what time zone is it in?","acceptedAnswer":{"@type":"Answer","text":"Alaska. Its westernmost islands (the Aleutians) cross into the Hawaii-Aleutian zone (UTC-10). If you count longitude alone, the far end of the Aleutian chain sits west of Hawaii and past the 180th meridian."}},{"@type":"Question","name":"What is the biggest US city on Mountain time?","acceptedAnswer":{"@type":"Answer","text":"Denver, Colorado, with about 715,000 residents. Phoenix is larger but Arizona uses Mountain Standard Time year-round without DST, so it lines up with Pacific time from March to November."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -77,15 +81,98 @@
 </header><main>
   <section class="hp-hero">
     <p class="crumb"><a href="/">Home</a> · <a href="/learn/">Learn</a> · US States by Time Zone (Eastern, Central, Mountain, Pacific)</p>
-    <h1>US States by Time Zone (Eastern, Central, Mountain, Pacific)</h1>
-    <p class="meta">A quick reference guide.</p>
+    <h1>US states by time zone (13 states span two zones)</h1>
+    <p class="meta">Eastern, Central, Mountain, Pacific, Alaska, Hawaii, plus the messy borderlands.</p>
   </section>
   <div class="hp-main">
-    <h2>About this guide</h2>
-    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
-    <p>Which states are in which time zone, including states that span multiple zones.</p>
+    <p>The lower 48 states cover four hours from coast to coast, split into four zones: Eastern, Central, Mountain and Pacific. Add Alaska and Hawaii and you get six standard time zones for the 50 states. The tidy map falls apart at 13 state borders where the zone line runs through the state itself. Some states also refuse to move their clocks in March and November. Here is the full breakdown, plus which counties break the pattern and why.</p>
 
-    <p>This is a placeholder page. Full content is being added over time. Meanwhile, explore our other state reference content:</p>
+    <h2>The six US time zones at a glance</h2>
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
+    <p>The standard offsets from Coordinated Universal Time (UTC) are:</p>
+    <ul>
+      <li><strong>Eastern (ET):</strong> UTC-5 in winter, UTC-4 in summer.</li>
+      <li><strong>Central (CT):</strong> UTC-6 in winter, UTC-5 in summer.</li>
+      <li><strong>Mountain (MT):</strong> UTC-7 in winter, UTC-6 in summer. Arizona stays on UTC-7 all year.</li>
+      <li><strong>Pacific (PT):</strong> UTC-8 in winter, UTC-7 in summer.</li>
+      <li><strong>Alaska (AKT):</strong> UTC-9 in winter, UTC-8 in summer.</li>
+      <li><strong>Hawaii-Aleutian (HST/HAST):</strong> UTC-10 all year in Hawaii, with DST in the far Aleutians.</li>
+    </ul>
+
+    <h2>States entirely on Eastern time (17)</h2>
+    <p>The whole East Coast plus Vermont, Georgia, South Carolina, North Carolina and Ohio all run on Eastern time. Puerto Rico is a special case: it uses Atlantic time (UTC-4) and does not switch for daylight saving.</p>
+    <ul>
+      <li>Connecticut, Delaware, Georgia, Maine, Maryland, Massachusetts, New Hampshire</li>
+      <li>New Jersey, New York, North Carolina, Ohio, Pennsylvania, Rhode Island</li>
+      <li>South Carolina, Vermont, Virginia, West Virginia</li>
+    </ul>
+
+    <h2>States entirely on Central time (9)</h2>
+    <p>The Midwest heartland and most of the Deep South run on Central time.</p>
+    <ul>
+      <li>Alabama, Arkansas, Illinois, Iowa, Louisiana, Minnesota, Mississippi, Missouri, Wisconsin, Oklahoma</li>
+    </ul>
+    <p>Oklahoma sits fully on Central time even though it is well west of the Mississippi. It shares the zone with Chicago and Dallas.</p>
+
+    <h2>States entirely on Mountain time (5)</h2>
+    <p>The Rocky Mountain states all run on Mountain time. Arizona is the odd one out because it refuses to spring forward.</p>
+    <ul>
+      <li>Colorado, Montana, New Mexico, Utah, Wyoming</li>
+      <li>Arizona (Mountain Standard Time year-round, no DST, except the Navajo Nation which does observe DST)</li>
+    </ul>
+
+    <h2>States entirely on Pacific time (3)</h2>
+    <p>Only California, Nevada and Washington are fully on Pacific time. Oregon has a small eastern sliver on Mountain time. Idaho splits down the middle.</p>
+    <ul>
+      <li>California, Nevada, Washington</li>
+    </ul>
+
+    <h2>Alaska and Hawaii</h2>
+    <p>Alaska is a zone of its own (UTC-9). One small piece, the Aleutian Islands west of 169.5° W, is on Hawaii-Aleutian time (UTC-10). Hawaii uses Hawaii-Aleutian Standard Time year-round without daylight saving. That means Hawaii is two hours behind California in winter and three hours behind in summer.</p>
+
+    <h2>The 13 states that span two time zones</h2>
+    <p>These states are split. In each case the smaller portion has strong economic ties to a neighboring state, which is usually why the line was drawn there.</p>
+    <table class="tbl">
+      <thead><tr><th>State</th><th>Zones</th><th>What splits</th></tr></thead>
+      <tbody>
+        <tr><td>Alaska</td><td>Alaska + Hawaii-Aleutian</td><td>Far western Aleutians on HAST</td></tr>
+        <tr><td>Florida</td><td>Eastern + Central</td><td>Western Panhandle (Pensacola area) on Central</td></tr>
+        <tr><td>Idaho</td><td>Mountain + Pacific</td><td>Northern panhandle on Pacific, tied to Spokane</td></tr>
+        <tr><td>Indiana</td><td>Eastern + Central</td><td>12 counties near Chicago and Evansville on Central</td></tr>
+        <tr><td>Kansas</td><td>Central + Mountain</td><td>4 counties in the far west on Mountain</td></tr>
+        <tr><td>Kentucky</td><td>Eastern + Central</td><td>Roughly the western third (Louisville is on Eastern, but Bowling Green and Paducah are on Central)</td></tr>
+        <tr><td>Michigan</td><td>Eastern + Central</td><td>4 Upper Peninsula counties near Wisconsin on Central</td></tr>
+        <tr><td>Nebraska</td><td>Central + Mountain</td><td>Western panhandle on Mountain</td></tr>
+        <tr><td>North Dakota</td><td>Central + Mountain</td><td>Southwest counties on Mountain</td></tr>
+        <tr><td>Oregon</td><td>Pacific + Mountain</td><td>Malheur County in the east on Mountain</td></tr>
+        <tr><td>South Dakota</td><td>Central + Mountain</td><td>Western half (Rapid City, Black Hills) on Mountain</td></tr>
+        <tr><td>Tennessee</td><td>Eastern + Central</td><td>East Tennessee (Knoxville, Chattanooga) on Eastern, Nashville and west on Central</td></tr>
+        <tr><td>Texas</td><td>Central + Mountain</td><td>El Paso and Hudspeth County on Mountain</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Daylight saving time exceptions</h2>
+    <p>Two US states do not observe daylight saving time. Federal law lets any state opt out, but not opt in to permanent DST without an act of Congress.</p>
+    <ul>
+      <li><strong>Hawaii:</strong> stays on Hawaii-Aleutian Standard Time all year. At its latitude the payoff from moving clocks is minimal.</li>
+      <li><strong>Arizona:</strong> stays on Mountain Standard Time all year. The state opted out in 1968 to avoid an extra hour of desert heat. The Navajo Nation, which extends into Utah and New Mexico, does observe DST for consistency across its own land.</li>
+    </ul>
+    <p>Several states have passed laws to move to permanent DST. Florida, California, Washington, Oregon and 18 others have all passed such bills, but none can take effect without Congress changing the Uniform Time Act.</p>
+
+    <h2>How the zones were set</h2>
+    <p>US time zones date from November 18, 1883, when the country's railroads adopted them at noon on what became known as "The Day of Two Noons." Before that, most towns kept their own local solar time. Chicago and Louisville differed by roughly 18 minutes. Congress made the zones legal in the Standard Time Act of 1918. The zone boundaries have been redrawn many times since. The most recent change was 2007, when Indiana finished its consolidation and DST was extended by four weeks nationwide.</p>
+
+    <div class="cta-card">
+      <h3>Test your zones with the daily puzzle</h3>
+      <p>Statedoku uses time zone as a puzzle constraint. See how fast you can map states to zones.</p>
+      <a href="/play/time-zones/">Play the Time Zones quiz →</a>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    <details><summary><strong>Which is bigger by land area, Eastern or Central?</strong></summary><p>Central is larger by area but Eastern has more population. Eastern includes roughly 47 percent of the US population, Central about 30 percent, Mountain 5 percent and Pacific 16 percent.</p></details>
+    <details><summary><strong>Does Texas cross more than one time zone?</strong></summary><p>Yes. Most of Texas is on Central time. Two counties in the far west (El Paso and Hudspeth) are on Mountain time, so El Paso lines up with New Mexico rather than Dallas.</p></details>
+    <details><summary><strong>What time is it in Alaska relative to New York?</strong></summary><p>Alaska is 4 hours behind New York for most of the year. When New York is at noon Eastern, Anchorage is at 8 a.m. Alaska time.</p></details>
+    <details><summary><strong>Are Puerto Rico and the US Virgin Islands on Eastern time?</strong></summary><p>No. Both use Atlantic Standard Time (UTC-4) and do not observe DST. In summer they are on the same clock as Eastern time; in winter they are one hour ahead.</p></details>
 
     <h2>Related guides</h2>
     <div class="related-grid">
@@ -94,14 +181,9 @@
       <a href="/learn/state-abbreviations/">→ State abbreviations</a>
       <a href="/learn/us-regions/">→ The 4 US regions</a>
       <a href="/learn/13-colonies/">→ The 13 original colonies</a>
-      <a href="/learn/states-and-capitals/">→ States & capitals list</a>
+      <a href="/learn/states-by-population/">→ States by population</a>
+      <a href="/learn/swing-states/">→ Swing states</a>
       <a href="/states/">→ All 50 state pages</a>
-      <a href="/quiz/">→ Quick states quiz</a>
-    </div>
-
-    <div class="cta-card">
-      <h3>Play the daily geography puzzle</h3>
-      <a href="/">Today's puzzle →</a>
     </div>
   </div>
     <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>

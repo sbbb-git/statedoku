@@ -1,0 +1,605 @@
+{
+  "total_scanned": 2047,
+  "counts": {
+    "title_too_long": 19,
+    "title_too_short": 0,
+    "description_too_short": 28,
+    "description_too_long": 31,
+    "no_jsonld": 0,
+    "thin_content": 36,
+    "duplicate_title": 0,
+    "multiple_h1s": 0,
+    "missing_h1": 0,
+    "img_missing_alt": 0,
+    "missing_ga4": 0,
+    "missing_adsense": 0
+  },
+  "buckets": {
+    "title_too_long": [
+      {
+        "path": "fr/play/place-the-state/index.html",
+        "v": "477 chars",
+        "title": "Placer l\u2019\u00c9tat sur la Carte \u2014 Quiz Carte USA | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaInd"
+      },
+      {
+        "path": "fr/play/confederate-states/index.html",
+        "v": "462 chars",
+        "title": "Quiz \u00c9tats Conf\u00e9d\u00e9r\u00e9s \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMaine"
+      },
+      {
+        "path": "fr/play/thirteen-colonies/index.html",
+        "v": "464 chars",
+        "title": "13 Colonies originelles \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMai"
+      },
+      {
+        "path": "fr/play/no-income-tax-states/index.html",
+        "v": "470 chars",
+        "title": "Quiz Sans Imp\u00f4t sur le Revenu \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKan"
+      },
+      {
+        "path": "fr/play/border-states/index.html",
+        "v": "463 chars",
+        "title": "Quiz \u00c9tats Frontaliers \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMain"
+      },
+      {
+        "path": "fr/play/swing-states/index.html",
+        "v": "459 chars",
+        "title": "Quiz \u00c9tats Bisagra \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMaineMas"
+      },
+      {
+        "path": "es/learn/states-and-capitals/index.html",
+        "v": "8851 chars",
+        "title": "Los 50 estados de EE.UU. y sus \n  \n  \n\n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n\n  \n  \n  \n  \n  \n  \n"
+      },
+      {
+        "path": "es/play/place-the-state/index.html",
+        "v": "480 chars",
+        "title": "Coloca el Estado en el Mapa \u2014 Quiz Mapa EE.UU. | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgia"
+      },
+      {
+        "path": "es/play/confederate-states/index.html",
+        "v": "466 chars",
+        "title": "Quiz Estados Confederados \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasM"
+      },
+      {
+        "path": "es/play/thirteen-colonies/index.html",
+        "v": "463 chars",
+        "title": "13 Colonias originales \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMain"
+      },
+      {
+        "path": "es/play/no-income-tax-states/index.html",
+        "v": "473 chars",
+        "title": "Quiz Sin Impuesto sobre la Renta \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndiana"
+      },
+      {
+        "path": "es/play/border-states/index.html",
+        "v": "465 chars",
+        "title": "Quiz Estados Fronterizos \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMa"
+      },
+      {
+        "path": "es/play/swing-states/index.html",
+        "v": "461 chars",
+        "title": "Quiz Estados Bisagra \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMaineM"
+      },
+      {
+        "path": "play/place-the-state/index.html",
+        "v": "472 chars",
+        "title": "Place the State \u2014 Click on US Map Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaK"
+      },
+      {
+        "path": "play/confederate-states/index.html",
+        "v": "464 chars",
+        "title": "Confederate States Quiz \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMai"
+      },
+      {
+        "path": "play/thirteen-colonies/index.html",
+        "v": "461 chars",
+        "title": "13 Original Colonies \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMaineM"
+      },
+      {
+        "path": "play/no-income-tax-states/index.html",
+        "v": "459 chars",
+        "title": "No Income Tax Quiz \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMaineMas"
+      },
+      {
+        "path": "play/border-states/index.html",
+        "v": "459 chars",
+        "title": "Border States Quiz \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMaineMas"
+      },
+      {
+        "path": "play/swing-states/index.html",
+        "v": "458 chars",
+        "title": "Swing States Quiz \u2014 Quiz | StatedokuAlabamaAlaskaArizonaColoradoFloridaGeorgiaIndianaKansasMaineMass"
+      }
+    ],
+    "title_too_short": [],
+    "description_too_short": [
+      {
+        "path": "es/learn/estados-con-mas-inmigrantes/index.html",
+        "v": "95 chars",
+        "title": "Estados de EE.UU. con m\u00e1s inmigrantes | Statedoku"
+      },
+      {
+        "path": "es/play/place-the-state/printable/index.html",
+        "v": "96 chars",
+        "title": "Hoja imprimable Coloca el Estado (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/state-mottos/printable/index.html",
+        "v": "95 chars",
+        "title": "Hoja imprimable Lemas Estatales (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/state-flags/state/ohio/index.html",
+        "v": "98 chars",
+        "title": "Ohio \u2014 Quiz Bandera | Statedoku"
+      },
+      {
+        "path": "es/play/state-flags/state/utah/index.html",
+        "v": "98 chars",
+        "title": "Utah \u2014 Quiz Bandera | Statedoku"
+      },
+      {
+        "path": "es/play/state-flags/state/iowa/index.html",
+        "v": "98 chars",
+        "title": "Iowa \u2014 Quiz Bandera | Statedoku"
+      },
+      {
+        "path": "es/play/rivers-mountains/printable/index.html",
+        "v": "95 chars",
+        "title": "Hoja imprimable R\u00edos y Monta\u00f1as (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/biggest-cities/printable/index.html",
+        "v": "97 chars",
+        "title": "Hoja imprimable Ciudad M\u00e1s Grande (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/time-zones/printable/index.html",
+        "v": "94 chars",
+        "title": "Hoja imprimable Zonas Horarias (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/state-capitals-match/printable/index.html",
+        "v": "99 chars",
+        "title": "Hoja imprimable Estados \u2194 Capitales (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/electoral-college/printable/index.html",
+        "v": "97 chars",
+        "title": "Hoja imprimable Votos Electorales (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/state-capitals-typing/state/ohio/index.html",
+        "v": "98 chars",
+        "title": "Ohio \u2014 Quiz Capitales | Statedoku"
+      },
+      {
+        "path": "es/play/state-capitals-typing/state/utah/index.html",
+        "v": "98 chars",
+        "title": "Utah \u2014 Quiz Capitales | Statedoku"
+      },
+      {
+        "path": "es/play/state-capitals-typing/state/iowa/index.html",
+        "v": "98 chars",
+        "title": "Iowa \u2014 Quiz Capitales | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/state/ohio/index.html",
+        "v": "96 chars",
+        "title": "Ohio \u2014 Quiz Apodo | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/state/maine/index.html",
+        "v": "98 chars",
+        "title": "Maine \u2014 Quiz Apodo | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/state/utah/index.html",
+        "v": "96 chars",
+        "title": "Utah \u2014 Quiz Apodo | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/state/iowa/index.html",
+        "v": "96 chars",
+        "title": "Iowa \u2014 Quiz Apodo | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/state/texas/index.html",
+        "v": "98 chars",
+        "title": "Texas \u2014 Quiz Apodo | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/state/hawaii/index.html",
+        "v": "98 chars",
+        "title": "Haw\u00e1i \u2014 Quiz Apodo | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/state/idaho/index.html",
+        "v": "98 chars",
+        "title": "Idaho \u2014 Quiz Apodo | Statedoku"
+      },
+      {
+        "path": "es/play/state-nicknames/printable/index.html",
+        "v": "96 chars",
+        "title": "Hoja imprimable Apodos Estatales (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/state-abbreviations/index.html",
+        "v": "92 chars",
+        "title": "Quiz Abreviaturas USPS \u2014 Quiz | Statedoku"
+      },
+      {
+        "path": "es/play/state-abbreviations/printable/index.html",
+        "v": "97 chars",
+        "title": "Hoja imprimable Abreviaturas USPS (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/border-states/printable/index.html",
+        "v": "99 chars",
+        "title": "Hoja imprimable Estados Fronterizos (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/swing-states/printable/index.html",
+        "v": "95 chars",
+        "title": "Hoja imprimable Estados Bisagra (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "es/play/state-admission-order/printable/index.html",
+        "v": "97 chars",
+        "title": "Hoja imprimable Orden de Admisi\u00f3n (gratis, 2026) | Statedoku"
+      },
+      {
+        "path": "play/state-nicknames/index.html",
+        "v": "97 chars",
+        "title": "State Nicknames Quiz \u2014 Quiz | Statedoku"
+      }
+    ],
+    "description_too_long": [
+      {
+        "path": "regions/midwest/index.html",
+        "v": "206 chars",
+        "title": "The Midwest Region \u2014 US States, Map, Facts | Statedoku"
+      },
+      {
+        "path": "learn/state-trees/index.html",
+        "v": "219 chars",
+        "title": "From Live Oaks to Sequoias \u2014 All 50 State Trees (2026 | Statedoku"
+      },
+      {
+        "path": "learn/state-license-plates/index.html",
+        "v": "178 chars",
+        "title": "\"Live Free or Die\" and 49 Other License Plate Slogans | Statedoku"
+      },
+      {
+        "path": "learn/states-by-region-list/index.html",
+        "v": "217 chars",
+        "title": "Northeast, South, Midwest, West | Statedoku"
+      },
+      {
+        "path": "learn/california-world-cup-2026/index.html",
+        "v": "218 chars",
+        "title": "California at the 2026 World Cup | Statedoku"
+      },
+      {
+        "path": "learn/state-abbreviations/index.html",
+        "v": "219 chars",
+        "title": "The 6 State Abbreviations Everyone Confuses | Statedoku"
+      },
+      {
+        "path": "learn/states-without-capital-largest/index.html",
+        "v": "217 chars",
+        "title": "Why 33 State Capitals Aren't the Biggest City | Statedoku"
+      },
+      {
+        "path": "learn/san-francisco-bay-area-world-cup-2026/index.html",
+        "v": "203 chars",
+        "title": "San Francisco Bay Area 2026 World Cup | Statedoku"
+      },
+      {
+        "path": "learn/states-by-college-attainment/index.html",
+        "v": "215 chars",
+        "title": "US states by college attainment | Statedoku"
+      },
+      {
+        "path": "states/vermont/food/index.html",
+        "v": "220 chars",
+        "title": "Vermont Food \u2014 Famous Dishes | Statedoku"
+      },
+      {
+        "path": "fr/index.html",
+        "v": "217 chars",
+        "title": "Statedoku \u2014 Puzzle quotidien des \u00c9tats am\u00e9ricains"
+      },
+      {
+        "path": "fr/learn/index.html",
+        "v": "224 chars",
+        "title": "Apprendre les 50 \u00c9tats am\u00e9ricains rapidement | Statedoku"
+      },
+      {
+        "path": "fr/learn/ceremonie-ouverture-mondial-2026/index.html",
+        "v": "227 chars",
+        "title": "C\u00e9r\u00e9monie d'ouverture du Mondial 2026 | Statedoku"
+      },
+      {
+        "path": "fr/learn/camps-de-base-mondial-2026/index.html",
+        "v": "220 chars",
+        "title": "Camps de base de la Coupe du Monde 2026 | Statedoku"
+      },
+      {
+        "path": "fr/learn/france-coupe-du-monde-2026/index.html",
+        "v": "232 chars",
+        "title": "La France \u00e0 la Coupe du Monde 2026 | Statedoku"
+      },
+      {
+        "path": "fr/learn/states-and-capitals/index.html",
+        "v": "224 chars",
+        "title": "Les 50 \u00c9tats am\u00e9ricains et leurs capitales"
+      },
+      {
+        "path": "fr/learn/states-bordering-canada/index.html",
+        "v": "220 chars",
+        "title": "Les 13 \u00c9tats am\u00e9ricains qui bordent le Canada"
+      },
+      {
+        "path": "fr/learn/no-income-tax/index.html",
+        "v": "221 chars",
+        "title": "Les 9 \u00c9tats am\u00e9ricains sans imp\u00f4t sur le revenu"
+      },
+      {
+        "path": "fr/learn/etats-plus-d-immigrants/index.html",
+        "v": "221 chars",
+        "title": "\u00c9tats am\u00e9ricains avec le plus d'immigrants | Statedoku"
+      },
+      {
+        "path": "fr/learn/largest-states/index.html",
+        "v": "223 chars",
+        "title": "\u00c9tats am\u00e9ricains les plus grands et plus petits"
+      },
+      {
+        "path": "fr/learn/etats-niveau-etudes/index.html",
+        "v": "230 chars",
+        "title": "Les Etats Americains avec le Meilleur Niveau d'Etudes | Statedoku"
+      },
+      {
+        "path": "fr/learn/parcs-nationaux-americains/index.html",
+        "v": "241 chars",
+        "title": "Les 63 Parcs Nationaux am\u00e9ricains par \u00c9tat (2026) | Statedoku"
+      },
+      {
+        "path": "fr/archive/index.html",
+        "v": "228 chars",
+        "title": "Archives Statedoku \u2014 Rejouer les puzzles pass\u00e9s"
+      },
+      {
+        "path": "fr/terms/index.html",
+        "v": "179 chars",
+        "title": "Conditions d'utilisation \u2014 Statedoku"
+      },
+      {
+        "path": "fr/about/index.html",
+        "v": "222 chars",
+        "title": "\u00c0 propos de Statedoku \u2014 Le puzzle quotidien des \u00c9tats am\u00e9ricains"
+      },
+      {
+        "path": "fr/play/place-the-state/printable/index.html",
+        "v": "198 chars",
+        "title": "Fiche imprimable Placer l'\u00c9tat (gratuit, 2026) | Statedoku"
+      },
+      {
+        "path": "fr/play/state-mottos/printable/index.html",
+        "v": "200 chars",
+        "title": "Fiche imprimable Devises d'\u00c9tats (gratuit, 2026) | Statedoku"
+      },
+      {
+        "path": "fr/play/state-nicknames/printable/index.html",
+        "v": "200 chars",
+        "title": "Fiche imprimable Surnoms d'\u00c9tats (gratuit, 2026) | Statedoku"
+      },
+      {
+        "path": "fr/play/states-connections/printable/index.html",
+        "v": "203 chars",
+        "title": "Fiche imprimable Cat\u00e9gories d'\u00c9tats (gratuit, 2026) | Statedoku"
+      },
+      {
+        "path": "fr/play/state-admission-order/printable/index.html",
+        "v": "202 chars",
+        "title": "Fiche imprimable Ordre d'Admission (gratuit, 2026) | Statedoku"
+      },
+      {
+        "path": "fr/widgets/index.html",
+        "v": "209 chars",
+        "title": "Quiz \u00c9tats-Unis \u00e0 Int\u00e9grer (Iframes Gratuits pour Ens | Statedoku"
+      }
+    ],
+    "no_jsonld": [],
+    "thin_content": [
+      {
+        "path": "learn/state-trees/index.html",
+        "v": "119 words",
+        "title": "From Live Oaks to Sequoias \u2014 All 50 State Trees (2026 | Statedoku"
+      },
+      {
+        "path": "learn/state-flags/index.html",
+        "v": "132 words",
+        "title": "Every State Flag Ranked Best to Worst by Vexillologis | Statedoku"
+      },
+      {
+        "path": "learn/states-with-oceans/index.html",
+        "v": "106 words",
+        "title": "Only One State Touches Two Oceans | Statedoku"
+      },
+      {
+        "path": "learn/state-songs/index.html",
+        "v": "120 words",
+        "title": "From \"Georgia on My Mind\" to \"Rocky Top\" | Statedoku"
+      },
+      {
+        "path": "learn/cheapest-states-to-live/index.html",
+        "v": "116 words",
+        "title": "10 Cheapest States to Live in Right Now | Statedoku"
+      },
+      {
+        "path": "learn/states-by-region-list/index.html",
+        "v": "113 words",
+        "title": "Northeast, South, Midwest, West | Statedoku"
+      },
+      {
+        "path": "learn/states-with-national-parks/index.html",
+        "v": "112 words",
+        "title": "Alaska Has 8 National Parks | Statedoku"
+      },
+      {
+        "path": "learn/states-presidents-born/index.html",
+        "v": "127 words",
+        "title": "US Presidents and the States Where They Were Born"
+      },
+      {
+        "path": "learn/state-capitals-pronunciation/index.html",
+        "v": "128 words",
+        "title": "How to Pronounce All 50 US State Capitals | Statedoku"
+      },
+      {
+        "path": "learn/states-with-mountains/index.html",
+        "v": "103 words",
+        "title": "Rockies, Appalachians, Sierra | Statedoku"
+      },
+      {
+        "path": "learn/states-with-deserts/index.html",
+        "v": "111 words",
+        "title": "Mojave to Sonoran \u2014 The 7 US Desert States Mapped (20 | Statedoku"
+      },
+      {
+        "path": "learn/most-expensive-states/index.html",
+        "v": "112 words",
+        "title": "Hawaii Costs 88% More Than Mississippi | Statedoku"
+      },
+      {
+        "path": "learn/swing-states/index.html",
+        "v": "127 words",
+        "title": "The 7 States That Pick the Next President | Statedoku"
+      },
+      {
+        "path": "learn/states-by-population/index.html",
+        "v": "116 words",
+        "title": "California Has 67x More People Than Wyoming | Statedoku"
+      },
+      {
+        "path": "learn/state-birds/index.html",
+        "v": "125 words",
+        "title": "Why 7 States Share One Bird | Statedoku"
+      },
+      {
+        "path": "fr/learn/bellingham-coupe-du-monde-2026/index.html",
+        "v": "177 words",
+        "title": "Jude Bellingham \u00e0 la Coupe du Monde 2026 | Statedoku"
+      },
+      {
+        "path": "fr/learn/foden-coupe-du-monde-2026/index.html",
+        "v": "177 words",
+        "title": "Phil Foden \u00e0 la Coupe du Monde 2026 | Statedoku"
+      },
+      {
+        "path": "fr/learn/modric-coupe-du-monde-2026/index.html",
+        "v": "186 words",
+        "title": "Luka Modri\u0107 \u00e0 la Coupe du Monde 2026 | Statedoku"
+      },
+      {
+        "path": "es/learn/capital-massachusetts-6-letras/index.html",
+        "v": "146 words",
+        "title": "\u00bfCapital de Massachusetts (6 letras)? | Statedoku"
+      },
+      {
+        "path": "es/learn/capital-de-oregon-5-letras/index.html",
+        "v": "176 words",
+        "title": "\u00bfCapital del estado de Oreg\u00f3n (5 letras)? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-cuya-capital-es-augusta-5-letras/index.html",
+        "v": "184 words",
+        "title": "\u00bfEstado de EE.UU. cuya capital es Augusta (5 letras)? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-eeuu-abreviatura-md/index.html",
+        "v": "145 words",
+        "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MD? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-eeuu-abreviatura-hi/index.html",
+        "v": "149 words",
+        "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura HI? | Statedoku"
+      },
+      {
+        "path": "es/learn/pedri-mundial-2026/index.html",
+        "v": "159 words",
+        "title": "Pedri en el Mundial 2026 \u2014 edad, club, historia | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-capital-honolulu/index.html",
+        "v": "129 words",
+        "title": "\u00bfQu\u00e9 estado tiene a Honolulu como capital? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-capital-austin/index.html",
+        "v": "147 words",
+        "title": "\u00bfQu\u00e9 estado tiene a Austin como capital? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-eeuu-2-letras-nc/index.html",
+        "v": "143 words",
+        "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura NC? | Statedoku"
+      },
+      {
+        "path": "es/learn/ciudad-de-arizona-6-letras/index.html",
+        "v": "193 words",
+        "title": "\u00bfCiudad de Arizona, en los EE.UU. (6 letras)? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-capital-sacramento/index.html",
+        "v": "151 words",
+        "title": "\u00bfQu\u00e9 estado tiene a Sacramento como capital? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-eeuu-abreviatura-ma/index.html",
+        "v": "137 words",
+        "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MA? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-eeuu-abreviatura-mn/index.html",
+        "v": "145 words",
+        "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MN? | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-eeuu-abreviatura-mi/index.html",
+        "v": "141 words",
+        "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura MI? | Statedoku"
+      },
+      {
+        "path": "es/learn/rodrygo-mundial-2026/index.html",
+        "v": "155 words",
+        "title": "Rodrygo en el Mundial 2026 \u2014 edad, club, historia | Statedoku"
+      },
+      {
+        "path": "es/learn/lautaro-martinez-mundial-2026/index.html",
+        "v": "165 words",
+        "title": "Lautaro Mart\u00ednez en el Mundial 2026 | Statedoku"
+      },
+      {
+        "path": "es/learn/estado-eeuu-2-letras-sc/index.html",
+        "v": "143 words",
+        "title": "\u00bfQu\u00e9 estado de EE.UU. tiene la abreviatura SC? | Statedoku"
+      },
+      {
+        "path": "es/learn/ciudad-arizona-cabecera-condado-pima/index.html",
+        "v": "157 words",
+        "title": "\u00bfCiudad de Arizona, cabecera del condado de Pima? | Statedoku"
+      }
+    ],
+    "duplicate_title": [],
+    "multiple_h1s": [],
+    "missing_h1": [],
+    "img_missing_alt": [],
+    "missing_ga4": [],
+    "missing_adsense": []
+  }
+}
