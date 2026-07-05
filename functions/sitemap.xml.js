@@ -441,34 +441,14 @@ export async function onRequestGet({ request }) {
   const SHABBAT_GUIDES = ['place-the-state','state-capitals-typing','state-abbreviations','states-connections','state-silhouettes'];
   for (const g of SHABBAT_GUIDES) extras.push([`${BASE}/play/${g}/guide/`, { priority: 0.75, changefreq: 'monthly' }]);
 
-  // Per-state launcher pages (Shabbat push) — 5 games × 50 states × 3 langs = 750
-  const LAUNCHER_GAMES = ['place-the-state','state-capitals-typing','state-abbreviations','state-flags','state-nicknames'];
-  const LAUNCHER_LANGS = [['', 'en'], ['fr/', 'fr'], ['es/', 'es']];
-  const launcherEntries = [];
-  for (const game of LAUNCHER_GAMES) {
-    for (const slug of stateSlugs) {
-      for (const [pfx] of LAUNCHER_LANGS) {
-        launcherEntries.push([`${BASE}/${pfx}play/${game}/state/${slug}/`, { priority: 0.7, changefreq: 'weekly' }]);
-      }
-    }
-  }
+  // NOTE: per-state launcher pages (/play/<game>/state/<slug>/) and printable
+  // worksheet pages (/play/<game>/printable/) are intentionally EXCLUDED from
+  // the sitemap. They are noindex,follow — internal utility pages, not
+  // content pages. AdSense flagged the original launcher set as 'low-value
+  // content' because 750 template-generated pages tripped Google's doorway
+  // detection. Kept accessible via internal navigation for user UX.
 
-  // Printable worksheet pages (Shabbat push) — 21 games × 3 langs = 63
-  const PRINTABLE_GAMES = [
-    'place-the-state','state-capitals-typing','state-capitals-match','state-abbreviations',
-    'state-flags','state-nicknames','state-mottos','state-symbols','thirteen-colonies',
-    'state-admission-order','confederate-states','president-birth-states','time-zones',
-    'border-states','rivers-mountains','electoral-college','swing-states',
-    'no-income-tax-states','state-silhouettes','states-connections','biggest-cities'
-  ];
-  const printableEntries = [];
-  for (const game of PRINTABLE_GAMES) {
-    for (const [pfx] of LAUNCHER_LANGS) {
-      printableEntries.push([`${BASE}/${pfx}play/${game}/printable/`, { priority: 0.75, changefreq: 'monthly' }]);
-    }
-  }
-
-  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled, ...launcherEntries, ...printableEntries];
+  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
