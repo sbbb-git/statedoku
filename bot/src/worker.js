@@ -389,15 +389,20 @@ function fallbackTweet() {
 }
 
 // ───── Worker entry points ──────────────────────────────────────────────
-async function _runOnce(env, { dryRun = false } = {}) {
+async function _runOnce(env, { dryRun = false, customText = null } = {}) {
   let tweet;
   let source = 'claude';
-  try {
-    tweet = await generateTweetText(env);
-  } catch (e) {
-    console.error('[Statedoku Bot] Claude failed, using fallback:', e.message);
-    tweet = fallbackTweet();
-    source = 'fallback';
+  if (customText) {
+    tweet = humanize(customText);
+    source = 'custom';
+  } else {
+    try {
+      tweet = await generateTweetText(env);
+    } catch (e) {
+      console.error('[Statedoku Bot] Claude failed, using fallback:', e.message);
+      tweet = fallbackTweet();
+      source = 'fallback';
+    }
   }
 
   if (dryRun) return { dry_run: true, phase: PHASE, source, tweet };
@@ -419,7 +424,8 @@ export default {
     }
   },
 
-  // Manual trigger / preview
+  // Manual trigger / preview. Supports optional ?text= for custom-content
+  // announcements (still gated by MANUAL_TRIGGER_KEY + humanize()'s scrub).
   async fetch(request, env) {
     const url = new URL(request.url);
     const key = url.searchParams.get('key');
@@ -429,7 +435,8 @@ export default {
     }
 
     const dryRun = url.searchParams.get('dry') === '1';
-    const result = await _runOnce(env, { dryRun });
+    const customText = url.searchParams.get('text') || null;
+    const result = await _runOnce(env, { dryRun, customText });
 
     return new Response(JSON.stringify(result, null, 2), {
       headers: { 'content-type': 'application/json' }
