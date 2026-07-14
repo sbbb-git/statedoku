@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+  <title>Statedoku — Daily US States Puzzle</title>
+  <meta name="description" content="A daily 3x3 grid puzzle where Sudoku meets US geography.">
+  <link rel="icon" type="image/png" href="cover.png">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;height:100%;background:#0F2147;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;overflow:hidden}
+    body{display:flex;flex-direction:column}
+    header{padding:10px 16px;background:#0F2147;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+    header .brand{font-weight:900;font-size:1.05rem;letter-spacing:-0.01em}
+    header .brand em{color:#DC2626;font-style:normal}
+    header .menu{display:flex;gap:6px;align-items:center;font-size:.78rem}
+    header .menu a{color:#F59E0B;text-decoration:none;font-weight:700;padding:5px 9px;border-radius:8px;background:rgba(255,255,255,.08)}
+    header .menu a:hover{background:rgba(255,255,255,.18)}
+    main{flex:1;position:relative;background:#F7F8FB;overflow:hidden}
+    iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:#F7F8FB}
+    .switcher{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:rgba(15,33,71,.95);padding:5px 8px;border-radius:999px;display:flex;gap:4px;z-index:5;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+    .switcher button{background:transparent;color:#fff;border:none;font-weight:700;font-size:.74rem;padding:5px 10px;border-radius:999px;cursor:pointer;font-family:inherit}
+    .switcher button:hover{background:rgba(255,255,255,.12)}
+    .switcher button.active{background:#F59E0B;color:#0F2147}
+    footer{padding:7px 14px;background:#0F2147;font-size:.72rem;color:rgba(255,255,255,.7);text-align:center;flex-shrink:0;border-top:1px solid rgba(255,255,255,.08)}
+    footer a{color:#F59E0B;text-decoration:none;font-weight:700}
+  </style>
+</head>
+<body>
+<header>
+  <span class="brand">State<em>doku</em> 🇺🇸</span>
+  <nav class="menu">
+    <a href="https://statedoku.com/" target="_blank" rel="noopener">Full site ↗</a>
+  </nav>
+</header>
+<main>
+  <div class="switcher" role="tablist" aria-label="Game selector">
+    <button data-src="https://statedoku.com/?embed=1" class="active">Daily puzzle</button>
+    <button data-src="https://statedoku.com/play/place-the-state/?embed=1">Place state</button>
+    <button data-src="https://statedoku.com/play/state-capitals-typing/?embed=1">Capitals</button>
+    <button data-src="https://statedoku.com/play/state-flags/?embed=1">Flags</button>
+    <button data-src="https://statedoku.com/play/state-silhouettes/?embed=1">Silhouettes</button>
+  </div>
+  <iframe id="frame" src="https://statedoku.com/?embed=1" title="Statedoku game" allow="autoplay"></iframe>
+</main>
+<footer>
+  21 mini-games · 50 states · 3 languages · Play full site at <a href="https://statedoku.com/" target="_blank" rel="noopener">statedoku.com</a>
+</footer>
+<script>
+  document.querySelectorAll('.switcher button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.switcher button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('frame').src = btn.dataset.src;
+    });
+  });
+</script>
+</body>
+</html>
