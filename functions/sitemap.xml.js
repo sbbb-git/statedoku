@@ -84,14 +84,12 @@ export async function onRequestGet({ request }) {
   const esStateEntries = [[`${BASE}/es/states/`, { priority: 0.8 }]];
   for (const slug of stateSlugs) esStateEntries.push([`${BASE}/es/states/${slug}/`, { priority: 0.65 }]);
 
-  // 12 subpages per state
-  const SUBTOPICS = ['map','history','geography','people','sports','elections','travel','weather','symbols','fun-facts','economy','food'];
+  // 12 subpages per state — INTENTIONALLY EXCLUDED from sitemap since
+  // AdSense flagged them as programmatic/thin (37-64% shared 5-grams
+  // across states). All 600 pages now carry noindex,follow. Kept
+  // reachable via internal nav from /states/<state>/ hub for UX.
   const stateSubpageEntries = [];
-  for (const slug of stateSlugs) {
-    for (const t of SUBTOPICS) {
-      stateSubpageEntries.push([`${BASE}/states/${slug}/${t}/`, { priority: 0.6 }]);
-    }
-  }
+  const cityEntries_hub_only = []; // placeholder — kept var name for below
 
   // 100 top US city pages
   const CITIES = ['new-york','los-angeles','chicago','houston','phoenix','philadelphia','san-antonio','san-diego','dallas','san-jose','austin','jacksonville','fort-worth','columbus','charlotte','san-francisco','indianapolis','seattle','denver','washington','boston','el-paso','nashville','detroit','oklahoma-city','portland','las-vegas','memphis','louisville','baltimore','milwaukee','albuquerque','tucson','fresno','sacramento','mesa','kansas-city','atlanta','omaha','colorado-springs','raleigh','miami','long-beach','virginia-beach','oakland','minneapolis','tulsa','arlington','new-orleans','wichita','cleveland','tampa','bakersfield','aurora','honolulu','anaheim','santa-ana','corpus-christi','riverside','lexington','stockton','henderson','saint-paul','st-louis','cincinnati','pittsburgh','greensboro','anchorage','plano','lincoln','orlando','irvine','newark','durham','chula-vista','toledo','fort-wayne','st-petersburg','laredo','jersey-city','chandler','madison','lubbock','scottsdale','reno','buffalo','gilbert','glendale','north-las-vegas','winston-salem','chesapeake','norfolk','fremont','garland','irving','hialeah','richmond','boise','spokane','baton-rouge','tacoma'];
