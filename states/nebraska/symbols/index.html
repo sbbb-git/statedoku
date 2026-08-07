@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .sym-table-wrap { overflow-x: auto; margin: 14px 0; -webkit-overflow-scrolling: touch; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F1F5F9; color: var(--navy); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+    .sym-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .sym-table td:last-child { white-space: nowrap; color: var(--text-2); }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"Nebraska","item":"https://statedoku.com/states/nebraska/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/nebraska/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the state bird of Nebraska?","acceptedAnswer":{"@type":"Answer","text":"The western meadowlark, adopted in 1929. It is also the state bird of Kansas, Montana, North Dakota, Oregon and Wyoming."}},{"@type":"Question","name":"What is on the Nebraska state flag?","acceptedAnswer":{"@type":"Answer","text":"The Nebraska state seal in gold and silver on a field of national blue. The seal shows a blacksmith at an anvil, a settler's cabin, wheat and corn, a steamboat on the Missouri River and a train heading west, with the motto Equality before the law arched above."}},{"@type":"Question","name":"What is the Nebraska state motto?","acceptedAnswer":{"@type":"Answer","text":"Equality before the law, adopted with the state seal in 1867."}},{"@type":"Question","name":"What is the state tree of Nebraska?","acceptedAnswer":{"@type":"Answer","text":"The eastern cottonwood, adopted in 1972. It replaced the American elm, which had been the state tree since 1937 until Dutch elm disease wiped out Nebraska's elms."}},{"@type":"Question","name":"Why is Nebraska called the Cornhusker State?","acceptedAnswer":{"@type":"Answer","text":"The legislature adopted the nickname in 1945, taking it from the University of Nebraska athletic teams. Before that, Nebraska was officially the Tree Planters' State, a nickname adopted in 1895 for the Arbor Day movement founded at Nebraska City in 1872."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,32 +106,60 @@
     <p class="meta">Capital: Lincoln · Midwest · Admitted 1867</p>
   </section>
   <div class="ss-main">
-    <h2>Nebraska's official symbols</h2>
+    <p>Nebraska was the Tree Planters' State for fifty years before it was the Cornhusker State. The legislature adopted the first nickname in 1895, honouring J. Sterling Morton, who launched Arbor Day at Nebraska City in 1872 and turned tree planting into a civic duty on a treeless prairie. In 1945 lawmakers swapped it for Cornhusker State, borrowing the University of Nebraska athletic nickname that had itself come from the hand labour of stripping husks from corn.</p>
 
-    <div class="symbol-grid">
-      <div class="card"><div class="label">Nickname</div><div class="value">The Cornhusker State</div></div>
-      <div class="card"><div class="label">State bird</div><div class="value">Western Meadowlark</div></div>
-      <div class="card"><div class="label">State flower</div><div class="value">Goldenrod</div></div>
-      <div class="card"><div class="label">State tree</div><div class="value">Cottonwood</div></div>
-      <div class="card"><div class="label">State motto</div><div class="value">Equality before the law</div></div>
-      <div class="card"><div class="label">State song</div><div class="value">Beautiful Nebraska</div></div>
-      <div class="card"><div class="label">Capital</div><div class="value">Lincoln</div></div>
-      <div class="card"><div class="label">Statehood year</div><div class="value">1867</div></div>
-    </div>
+    <h2>Official state symbols</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+    <div class="sym-table-wrap">
+      <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+      <tr><td>Nickname</td><td>Cornhusker State</td><td>1945</td></tr>
+      <tr><td>Motto</td><td>Equality before the law</td><td>1867</td></tr>
+      <tr><td>Bird</td><td>Western meadowlark</td><td>1929</td></tr>
+      <tr><td>Flower</td><td>Goldenrod</td><td>1895</td></tr>
+      <tr><td>Tree</td><td>Eastern cottonwood</td><td>1972</td></tr>
+      <tr><td>Grass</td><td>Little bluestem</td><td>1969</td></tr>
+      <tr><td>Gemstone</td><td>Blue agate</td><td>1967</td></tr>
+      <tr><td>Rock</td><td>Prairie agate</td><td>1967</td></tr>
+      <tr><td>Fossil</td><td>Mammoth</td><td>1967</td></tr>
+      <tr><td>Insect</td><td>Honeybee</td><td>1975</td></tr>
+      <tr><td>Mammal</td><td>White-tailed deer</td><td>1981</td></tr>
+      <tr><td>Fish</td><td>Channel catfish</td><td>1997</td></tr>
+      <tr><td>Soft drink</td><td>Kool-Aid</td><td>1998</td></tr>
+      <tr><td>Song</td><td>"Beautiful Nebraska"</td><td>1967</td></tr>
+      <tr><td>Flag</td><td>State seal in gold and silver on blue</td><td>1925</td></tr>
+      </tbody></table></div>
 
-    <h2>About state symbols</h2>
-    <p>Every US state has officially designated symbols — usually a bird, flower, tree, motto, and song — chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <h2>What is on the Nebraska state flag</h2>
+    <p>The flag is the state seal rendered in gold and silver on a field of national blue. Nebraska adopted it in 1925 as the state banner and only redesignated it the state flag in 1963, which made it one of the last states to formally have one. Because the design is a seal on blue with no distinguishing shape or colour, it is close to unreadable at flag distance. In 2017 the flag flew upside down over the State Capitol in Lincoln for days before anyone in the building noticed, which vexillologists have quoted ever since as the strongest available argument for redesign.</p>
 
-    <h2>How Nebraska got its nickname</h2><p>Nebraska is best known as "The Cornhusker State." The nickname reflects the state's signature feature.</p>
+    <h2>The seal: a state describing its own future</h2>
+    <p>The seal was adopted in 1867, the year Nebraska entered the Union. A blacksmith stands at an anvil with a raised hammer, representing the mechanic arts. Behind him are a settler's cabin, sheaves of cut wheat and stalks of growing corn. A steamboat climbs the Missouri River on one side, and a train runs west toward the Rocky Mountains on the other. The motto <strong>Equality before the law</strong> arches across the top on a banner.</p>
+    <p>Almost all of it was aspiration rather than record. The Union Pacific had begun laying track west from Omaha only in 1865, and the transcontinental line would not be joined until 1869, so the train on the seal was a promise. The motto is unusual among state mottoes for stating a legal principle rather than a virtue or a boast, and Nebraska put it in place while the Fourteenth Amendment was still being ratified.</p>
 
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>Kool-Aid is the official state soft drink.</strong> Adopted in 1998, it honours Edwin Perkins, who invented the powdered drink in Hastings in 1927 by removing the liquid from a fruit syrup so it could be mailed cheaply.</li>
+      <li><strong>The state tree was replaced.</strong> The American elm held the title from 1937 until Dutch elm disease destroyed Nebraska's elms; the eastern cottonwood took over in 1972.</li>
+      <li><strong>The state fossil is a mammoth.</strong> Named in 1967, it points to Archie, the enormous Columbian mammoth mounted at the University of Nebraska State Museum in Lincoln.</li>
+      <li><strong>An official grass and an official soil.</strong> Little bluestem became the state grass in 1969, and Holdrege silt loam was designated the state soil in 1979.</li>
+      <li><strong>Two agates, two categories.</strong> Blue agate is the state gemstone and prairie agate is the state rock, both adopted in 1967.</li>
+      <li><strong>The state song was written by an immigrant.</strong> "Beautiful Nebraska" was composed by Jim Fras, a Russian-born musician who settled in Lincoln, with lyrics by Fras and Guy Miller. The legislature adopted it in 1967, Nebraska's centennial year, alongside the gemstone, rock and fossil.</li>
+    </ul>
+
+    
     <div class="cta-card">
       <h3>Symbols and nicknames in the daily puzzle</h3>
-      <p>Statedoku features state nicknames as recurring constraints — learn them all in a few weeks.</p>
+      <p>Statedoku features state nicknames as recurring constraints. Learn them all in a few weeks.</p>
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Bordering states</h2><div class="related-grid"><a href="/states/south-dakota/">→ South Dakota</a><a href="/states/iowa/">→ Iowa</a><a href="/states/missouri/">→ Missouri</a><a href="/states/kansas/">→ Kansas</a><a href="/states/colorado/">→ Colorado</a><a href="/states/wyoming/">→ Wyoming</a></div>
-    <h2>Explore further</h2><div class="related-grid"><a href="/states/nebraska/">→ Overview</a><a href="/states/nebraska/map/">→ Map</a><a href="/states/nebraska/history/">→ History</a><a href="/states/nebraska/geography/">→ Geography</a><a href="/states/nebraska/people/">→ People</a><a href="/states/nebraska/sports/">→ Sports</a></div>
+    <h2>Nearby state symbols</h2>
+    <div class="related-grid"><a href="/states/iowa/symbols/">→ Iowa symbols</a><a href="/states/kansas/symbols/">→ Kansas symbols</a><a href="/states/missouri/symbols/">→ Missouri symbols</a><a href="/states/colorado/symbols/">→ Colorado symbols</a><a href="/states/south-dakota/symbols/">→ South Dakota symbols</a><a href="/states/wyoming/symbols/">→ Wyoming symbols</a></div>
+    <h2>More about Nebraska</h2>
+    <div class="related-grid"><a href="/states/nebraska/">→ Nebraska overview</a><a href="/states/nebraska/map/">→ Nebraska map</a><a href="/states/nebraska/history/">→ Nebraska history</a><a href="/states/nebraska/geography/">→ Nebraska geography</a><a href="/states/nebraska/fun-facts/">→ Nebraska fun facts</a><a href="/states/nebraska/people/">→ Famous Nebraskans</a></div>
+    <!-- PLACEHOLDER_LEARN_BOTTOM -->
   </div>
 </main>
 <footer>

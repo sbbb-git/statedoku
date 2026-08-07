@@ -1,0 +1,107 @@
+Deep SEO pass on Aug 7 data: rewrite 250 subtopic pages, 38 new pages, fix the uniqueness problem properly
+
+Covers everything since af5a6f0e. The earlier Aug 7 commit never landed, git
+add stalled on 1,300 files while agents were writing concurrently, so this
+one carries that work too.
+
+THE ACTUAL PROBLEM, AND HOW IT WAS DIAGNOSED WRONG TWICE
+
+AdSense flagged the site for low-value content. The first response was to
+noindex 813 doorway launchers, which was right. The second was to noindex all
+600 /states/<state>/<subtopic>/ pages, which was too broad. The third was to
+restore 250 of them because they were long, which was wrong for a different
+reason: length is not the test.
+
+Measuring median pairwise 5-gram overlap across all 50 states per subtopic
+shows what was actually happening:
+
+    history    1063 words   61.7% overlap
+    geography   842 words   59.1%
+    people      880 words   62.5%
+
+Long pages, generated from a template with the state name swapped in. That is
+the pattern Google penalises, and no amount of word count fixes it.
+
+WHAT CHANGED
+
+All five subtopics with demand were rewritten so each page is genuinely about
+its own state. Measured after:
+
+    geography  59.1% -> 4.0%     symbols   59% -> 7.9%
+    people     62.5% -> 3.9%     fun-facts ~55% -> 7.5%
+    history    61.7% -> 3.6%
+
+Minnesota geography, the single most-cited page on the site at 987 AI
+citations plus 797 impressions at position 6.6, now opens on the Northwest
+Angle: 123 square miles unreachable without crossing into Manitoba, the
+northernmost land in the contiguous 48, a border post that is a shed with a
+videophone, all of it caused by an error in the 1783 Treaty of Paris traced
+back to John Mitchell's 1755 map. That is what these pages should have been.
+
+map and sports stay noindexed permanently. No citation evidence, and the
+state hub already serves the intent. economy, food, weather, travel and
+elections stay out too, 138-237 words with no demand worth the rewrite.
+
+NEW PAGES, ALL EVIDENCE-BACKED
+
+38 pages, each justified by a query in the Aug 7 exports rather than by
+completing a set. Generating all 50 abbreviation codes per language would
+have repeated the doorway mistake, so only codes with individual demand got
+a page:
+
+  18 EN /learn/what-state-is-<code>/     "what state is mo" 405 impressions
+                                         at position 5.3, "is pa pennsylvania
+                                         or philadelphia" 277 AI citations
+                                         at 44.5% share
+  12 ES /es/learn/estado-eeuu-abreviatura-<code>/
+   6 ES /es/learn/<city>-es-un-estado/   "is miami a state" 141 citations
+   1 FR /fr/learn/liste-des-50-etats/    100% AI citation share, no page
+   1 ES /es/learn/lista-de-los-50-estados/   82.3% share, no page
+
+Each abbreviation page is built on its own code's collision history rather
+than a template. MD lost MA to Massachusetts inside the eight-state M block
+and fell back to the Md. dateline form. TX is first-and-last because
+Tennessee took TE. NV lost NE to Nebraska. Measured overlap between siblings
+is 0.4 to 4.5 percent.
+
+STATEHOOD ANSWERS AND THE 44K QUERY
+
+"estadidad de wyoming" is the largest single query on the site: 44,449
+impressions at position 3.6 with 16 clicks, a 0.04% CTR, and separately the
+top AI grounding query at 1,631 citations. The page ranked and never answered
+the question. All 50 Spanish state pages now carry a direct-answer statehood
+block with the exact admission date, statehood number and prior territorial
+status, plus a matching FAQPage entry. Wyoming's title and description were
+rewritten around statehood, the other 49 keep theirs since the data does not
+show statehood as their dominant intent.
+
+REFERENCE CLUSTER
+
+/learn/states-and-capitals/ 944 -> 1,649 words with ItemList JSON-LD over all
+50 states, a statehood-order table and an abbreviation grid.
+/learn/13-colonies/ 687 -> 960 words with ItemList and a section answering
+"which states were NOT among the 13", a query the page never served.
+
+Both already hold 91-100% AI citation share on their query cluster while
+ranking 5-9 in search. The gap was structure, not authority.
+
+HOUSEKEEPING
+
+- Sitemap 634 -> 920 URLs, now deduped at source. Eight duplicate <loc>
+  entries existed, two of them predating this work.
+- /launch/ 301s to the homepage. It was the pre-launch teaser, still indexed
+  two months after launch, 92 words, titled "Launches Monday June 1".
+- states/oklahoma/elections/ and states/alaska/weather/ had escaped the
+  noindex sweep. Caught by a new filesystem-to-sitemap reconciliation script.
+- 3,155 em-dashes stripped across 637 files. Agents do not hold that rule
+  reliably, so it is enforced by a deterministic pass instead.
+
+TOOLING ADDED
+
+tmp/reindex-expanded.py now gates on two conditions, not one: a page needs
+600+ words AND its topic must measure under 25% median overlap. The topic
+gate is what would have prevented the wrong call earlier, since it rejects a
+whole subtopic on similarity even when every page is long enough.
+
+tmp/sitemap-audit.py reconciles the filesystem against the served sitemap in
+both directions and exits non-zero on any discrepancy.

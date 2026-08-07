@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .sym-table-wrap { overflow-x: auto; margin: 14px 0; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F8FAFC; color: var(--navy); font-weight: 700; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+    .sym-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .sym-table td:last-child { white-space: nowrap; color: var(--text-2); }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"Georgia","item":"https://statedoku.com/states/georgia/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/georgia/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the state bird of Georgia?", "acceptedAnswer": {"@type": "Answer", "text": "The brown thrasher, named by governor's proclamation in 1935 and confirmed by the legislature in 1970. The bobwhite quail is the separate official state game bird."}}, {"@type": "Question", "name": "What is on the Georgia state flag?", "acceptedAnswer": {"@type": "Answer", "text": "Three horizontal bars, red over white over red, with a blue canton carrying the state coat of arms in gold, thirteen white stars for the original colonies, and the words In God We Trust. It was adopted in 2003 and confirmed by referendum in 2004."}}, {"@type": "Question", "name": "What is the Georgia state motto?", "acceptedAnswer": {"@type": "Answer", "text": "Wisdom, Justice, Moderation. The three words appear one on each pillar of the arch on the state seal, adopted in 1799, standing for the three branches of government."}}, {"@type": "Question", "name": "What is the state flower of Georgia?", "acceptedAnswer": {"@type": "Answer", "text": "The Cherokee rose, adopted in 1916. The state tree is the live oak, adopted in 1937, and the state wildflower is the native azalea."}}, {"@type": "Question", "name": "What is the Georgia state food?", "acceptedAnswer": {"@type": "Answer", "text": "Georgia names several. The peach is the state fruit, the Vidalia sweet onion the state vegetable, the peanut the state crop, and grits the official state prepared food."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,23 +106,55 @@
     <p class="meta">Capital: Atlanta · South · Admitted 1788</p>
   </section>
   <div class="ss-main">
-    <h2>Georgia's official symbols</h2>
+    <p>Georgia is the Peach State, and the peach is not just a nickname: the legislature made it the official state fruit in 1995, the same stretch of years it named the peanut the state crop and the Vidalia sweet onion the state vegetable. Georgia's food symbols are unusually specific because the crops are unusually specific. The symbol Georgians fought over hardest, though, was the flag, which changed three times between 2001 and 2003.</p>
 
-    <div class="symbol-grid">
-      <div class="card"><div class="label">Nickname</div><div class="value">The Peach State / Empire State of the South</div></div>
-      <div class="card"><div class="label">State bird</div><div class="value">Brown Thrasher</div></div>
-      <div class="card"><div class="label">State flower</div><div class="value">Cherokee Rose</div></div>
-      <div class="card"><div class="label">State tree</div><div class="value">Live Oak</div></div>
-      <div class="card"><div class="label">State motto</div><div class="value">Wisdom, Justice, Moderation</div></div>
-      <div class="card"><div class="label">State song</div><div class="value">Georgia on My Mind</div></div>
-      <div class="card"><div class="label">Capital</div><div class="value">Atlanta</div></div>
-      <div class="card"><div class="label">Statehood year</div><div class="value">1788</div></div>
-    </div>
+    <h2>Official state symbols</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+      <div class="sym-table-wrap">
+      <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+      <tr><td>Nickname</td><td>Peach State</td><td></td></tr>
+      <tr><td>Motto</td><td>Wisdom, Justice, Moderation</td><td>1799</td></tr>
+      <tr><td>Bird</td><td>Brown thrasher</td><td>1970</td></tr>
+      <tr><td>Flower</td><td>Cherokee rose</td><td>1916</td></tr>
+      <tr><td>Tree</td><td>Live oak</td><td>1937</td></tr>
+      <tr><td>Flag</td><td>Red and white bars, blue canton with coat of arms</td><td>2003</td></tr>
+      <tr><td>Seal</td><td>Arch on three pillars with soldier</td><td>1799</td></tr>
+      <tr><td>Song</td><td>Georgia on My Mind</td><td>1979</td></tr>
+      <tr><td>Fruit</td><td>Peach</td><td>1995</td></tr>
+      <tr><td>Vegetable</td><td>Vidalia sweet onion</td><td>1990</td></tr>
+      <tr><td>Crop</td><td>Peanut</td><td>1995</td></tr>
+      <tr><td>Prepared food</td><td>Grits</td><td>2002</td></tr>
+      <tr><td>Game bird</td><td>Bobwhite quail</td><td>1970</td></tr>
+      <tr><td>Fish</td><td>Largemouth bass</td><td>1970</td></tr>
+      <tr><td>Insect</td><td>Honeybee</td><td>1975</td></tr>
+      <tr><td>Butterfly</td><td>Tiger swallowtail</td><td>1988</td></tr>
+      <tr><td>Reptile</td><td>Gopher tortoise</td><td>1989</td></tr>
+      <tr><td>Fossil</td><td>Shark tooth</td><td>1976</td></tr>
+      <tr><td>Gem</td><td>Quartz</td><td>1976</td></tr>
+      <tr><td>Mineral</td><td>Staurolite</td><td>1976</td></tr>
+      <tr><td>Wildflower</td><td>Azalea</td><td>1979</td></tr>
+      </tbody>
+      </table>
+      </div>
 
-    <h2>About state symbols</h2>
-    <p>Every US state has officially designated symbols, usually a bird, flower, tree, motto, and song, chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <h2>What is on the Georgia state flag</h2>
+    <p>The current flag was adopted in 2003 and confirmed by a statewide referendum in March 2004. It has three horizontal bars, red over white over red, and a blue canton in the upper hoist. Inside the canton, in gold, is the state coat of arms, encircled by thirteen white stars for Georgia and the twelve other original colonies, with the words IN GOD WE TRUST beneath the arch. The bar-and-canton layout is drawn from the first national flag of the Confederacy, which is part of why the 2003 design was itself argued over. What it dropped was the Confederate battle emblem that had filled two thirds of the flag adopted in 1956. The stopgap design used from 2001 to 2003, a blue field with a row of small historical flags across it, is widely remembered as one of the worst-rated flags ever surveyed.</p>
 
-    <h2>How Georgia got its nickname</h2><p>Georgia is best known as "The Peach State." The nickname reflects the state's signature feature, and Georgia has multiple official and unofficial nicknames.</p>
+    <h2>Inside the Georgia state seal</h2>
+    <p>The seal dates to 1799 and puts civics on the front. An arch rests on three pillars, one for each branch of government, with a banner reading CONSTITUTION wrapped around the arch. A soldier with a drawn sword stands beside them, in place to defend the constitution, and the words Wisdom, Justice, Moderation are spread one to a pillar, which is where the state motto comes from. The reverse shows the export economy: a ship under full sail on a river, a small boat carrying cotton and tobacco, and a man plowing a field with sheep nearby. The date on the seal was changed from 1799 to 1776 in 1914.</p>
+
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>Grits</strong> is the official state prepared food, designated in 2002.</li>
+      <li>The <strong>Vidalia sweet onion</strong>, state vegetable since 1990, can only be sold under that name if it was grown inside a production area defined by Georgia law, roughly 20 counties around Vidalia.</li>
+      <li>The state mineral, <strong>staurolite</strong>, grows in natural cross shapes. The crystals are collected in the north Georgia mountains and sold as fairy crosses.</li>
+      <li>The <strong>Springer Opera House</strong> in Columbus, built in 1871, was named the official state theatre in 1971.</li>
+      <li><strong>"Georgia on My Mind"</strong> became the state song in 1979 after Ray Charles performed it for the General Assembly.</li>
+      <li>The <strong>state fossil is a shark tooth</strong>, adopted in 1976, dug from the coastal plain that was ocean floor for much of the state's geologic history.</li>
+    </ul>
+
 
     <div class="cta-card">
       <h3>Symbols and nicknames in the daily puzzle</h3>
@@ -123,8 +162,11 @@
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Bordering states</h2><div class="related-grid"><a href="/states/florida/">→ Florida</a><a href="/states/alabama/">→ Alabama</a><a href="/states/tennessee/">→ Tennessee</a><a href="/states/north-carolina/">→ North Carolina</a><a href="/states/south-carolina/">→ South Carolina</a></div>
-    <h2>Explore further</h2><div class="related-grid"><a href="/states/georgia/">→ Overview</a><a href="/states/georgia/map/">→ Map</a><a href="/states/georgia/history/">→ History</a><a href="/states/georgia/geography/">→ Geography</a><a href="/states/georgia/people/">→ People</a><a href="/states/georgia/sports/">→ Sports</a></div>
+    <h2>Neighboring states' symbols</h2>
+    <div class="related-grid"><a href="/states/florida/symbols/">→ Florida symbols</a><a href="/states/alabama/symbols/">→ Alabama symbols</a><a href="/states/tennessee/symbols/">→ Tennessee symbols</a><a href="/states/north-carolina/symbols/">→ North Carolina symbols</a><a href="/states/south-carolina/symbols/">→ South Carolina symbols</a></div>
+    <h2>More on Georgia</h2>
+    <div class="related-grid"><a href="/states/georgia/">→ Georgia overview</a><a href="/states/georgia/map/">→ Georgia map</a><a href="/states/georgia/history/">→ Georgia history</a><a href="/states/georgia/geography/">→ Georgia geography</a><a href="/states/georgia/fun-facts/">→ Georgia fun facts</a><a href="/states/georgia/food/">→ Georgia food</a></div>
+    <!-- PLACEHOLDER_LEARN_BOTTOM -->
   </div>
 </main>
 <footer>

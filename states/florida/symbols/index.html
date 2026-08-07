@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .sym-table-wrap { overflow-x: auto; margin: 14px 0; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F8FAFC; color: var(--navy); font-weight: 700; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+    .sym-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .sym-table td:last-child { white-space: nowrap; color: var(--text-2); }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"Florida","item":"https://statedoku.com/states/florida/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/florida/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the state bird of Florida?", "acceptedAnswer": {"@type": "Answer", "text": "The northern mockingbird, adopted in 1927. It is also the state bird of Texas, Tennessee, Arkansas and Mississippi, and there have been repeated proposals to swap Florida's to the Florida scrub-jay, which lives nowhere else."}}, {"@type": "Question", "name": "What is on the Florida state flag?", "acceptedAnswer": {"@type": "Answer", "text": "A white field with a red diagonal cross, or saltire, running corner to corner, and the state seal in the center. The saltire was added by referendum in 1900 so the flag would not read as a white flag of truce."}}, {"@type": "Question", "name": "What is the Florida state motto?", "acceptedAnswer": {"@type": "Answer", "text": "In God We Trust. It has appeared on the state seal since 1868 and was made the official state motto by the legislature in 2006."}}, {"@type": "Question", "name": "What is the state flower of Florida?", "acceptedAnswer": {"@type": "Answer", "text": "The orange blossom, adopted in 1909. The state tree is the sabal palm, adopted in 1953."}}, {"@type": "Question", "name": "What animals are official Florida state symbols?", "acceptedAnswer": {"@type": "Answer", "text": "The Florida panther is the state animal, the manatee the state marine mammal, the American alligator the state reptile, the zebra longwing the state butterfly, and the Atlantic sailfish and largemouth bass the saltwater and freshwater state fish."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,32 +106,67 @@
     <p class="meta">Capital: Tallahassee · South · Admitted 1845</p>
   </section>
   <div class="ss-main">
-    <h2>Florida's official symbols</h2>
+    <p>The orange blossom is Florida's signature symbol, adopted in 1909 when citrus was becoming the state's whole identity. The more interesting thread running through Florida's list, though, is correction. The flag gained a red cross in 1900 so it would stop reading as a flag of surrender, and the seal has been redrawn more than once to remove a mountain range, a coconut palm and a headdress that never belonged here.</p>
 
-    <div class="symbol-grid">
-      <div class="card"><div class="label">Nickname</div><div class="value">The Sunshine State</div></div>
-      <div class="card"><div class="label">State bird</div><div class="value">Northern Mockingbird</div></div>
-      <div class="card"><div class="label">State flower</div><div class="value">Orange Blossom</div></div>
-      <div class="card"><div class="label">State tree</div><div class="value">Sabal Palm</div></div>
-      <div class="card"><div class="label">State motto</div><div class="value">In God We Trust</div></div>
-      <div class="card"><div class="label">State song</div><div class="value">Old Folks at Home (Swanee River)</div></div>
-      <div class="card"><div class="label">Capital</div><div class="value">Tallahassee</div></div>
-      <div class="card"><div class="label">Statehood year</div><div class="value">1845</div></div>
-    </div>
+    <h2>Official state symbols</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+      <div class="sym-table-wrap">
+      <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+      <tr><td>Nickname</td><td>Sunshine State</td><td>1970</td></tr>
+      <tr><td>Motto</td><td>In God We Trust</td><td>2006</td></tr>
+      <tr><td>Bird</td><td>Northern mockingbird</td><td>1927</td></tr>
+      <tr><td>Flower</td><td>Orange blossom</td><td>1909</td></tr>
+      <tr><td>Tree</td><td>Sabal palm</td><td>1953</td></tr>
+      <tr><td>Flag</td><td>White field, red saltire, state seal</td><td>1900</td></tr>
+      <tr><td>Seal</td><td>Seminole woman, sabal palm, steamboat, sun</td><td>1868</td></tr>
+      <tr><td>Song</td><td>Old Folks at Home</td><td>1935</td></tr>
+      <tr><td>Anthem</td><td>Florida (Where the Sawgrass Meets the Sky)</td><td>2008</td></tr>
+      <tr><td>Animal</td><td>Florida panther</td><td>1982</td></tr>
+      <tr><td>Marine mammal</td><td>Manatee</td><td>1975</td></tr>
+      <tr><td>Reptile</td><td>American alligator</td><td>1987</td></tr>
+      <tr><td>Saltwater fish</td><td>Atlantic sailfish</td><td>1975</td></tr>
+      <tr><td>Freshwater fish</td><td>Largemouth bass</td><td>1975</td></tr>
+      <tr><td>Butterfly</td><td>Zebra longwing</td><td>1996</td></tr>
+      <tr><td>Shell</td><td>Horse conch</td><td>1969</td></tr>
+      <tr><td>Gem</td><td>Moonstone</td><td>1970</td></tr>
+      <tr><td>Stone</td><td>Agatized coral</td><td>1979</td></tr>
+      <tr><td>Beverage</td><td>Orange juice</td><td>1967</td></tr>
+      <tr><td>Pie</td><td>Key lime pie</td><td>2006</td></tr>
+      </tbody>
+      </table>
+      </div>
 
-    <h2>About state symbols</h2>
-    <p>Every US state has officially designated symbols — usually a bird, flower, tree, motto, and song — chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <h2>What is on the Florida state flag</h2>
+    <p>Florida flew a plain white flag with the state seal in the middle until 1900. Governor Francis P. Fleming argued that hanging limp on a still day it looked like a white flag of truce. Voters approved the change at the general election in November 1900, adding a red saltire, a diagonal cross running corner to corner, behind the seal. The cross is often linked to the Cross of Burgundy carried by Spanish forces in colonial Florida, though the 1900 argument leaned on the surrender problem rather than heraldry. The seal sits at the center of the cross, sized at half the flag's hoist, and the proportions were written into statute in 1985 when the seal itself was redrawn.</p>
 
-    <h2>How Florida got its nickname</h2><p>Florida is best known as "The Sunshine State." The nickname reflects the state's signature feature.</p>
+    <h2>The state seal and its corrections</h2>
+    <p>Florida adopted a seal in 1868, and the version in use since 1985 shows a Seminole woman scattering flowers on a shoreline, the sun rising in a circle of rays over the water, a sabal palm, and a steamboat under way. The original had problems. It showed mountains, which Florida does not have. The palm was a coconut palm rather than the state tree. The woman wore a Plains-style feathered headdress instead of Seminole clothing. Later revisions removed the mountains, and the 1985 redesign swapped in the sabal palm and corrected the dress. The legend around the rim reads Great Seal of the State of Florida, In God We Trust, which is also the motto the legislature made official in 2006.</p>
+
+    <p>The Sunshine State nickname ran in tourism advertising for decades before the legislature adopted it officially in 1970, and it has been stamped across Florida license plates ever since. The northern mockingbird, state bird since 1927, is shared with Texas, Tennessee, Arkansas and Mississippi, which is why proposals to switch Florida to the scrub-jay, a bird that lives nowhere else on earth, come back to Tallahassee every few years.</p>
+
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>Moonstone</strong> is the state gem, adopted in 1970 to mark the Apollo landings launched from Cape Canaveral. Moonstone is not found in Florida, and none was brought back from the moon either.</li>
+      <li><strong>Key lime pie</strong> was named the official state pie in 2006.</li>
+      <li>Florida names <strong>two official state fish</strong>, one for each kind of water: the Atlantic sailfish for saltwater and the largemouth bass for fresh, both in 1975.</li>
+      <li><strong>Cross and Sword</strong>, an outdoor drama about the founding of St. Augustine, was designated the state play in 1973.</li>
+      <li>The <strong>horse conch</strong>, the state shell since 1969, grows up to two feet long and is one of the largest snails in American waters.</li>
+    </ul>
+
 
     <div class="cta-card">
       <h3>Symbols and nicknames in the daily puzzle</h3>
-      <p>Statedoku features state nicknames as recurring constraints — learn them all in a few weeks.</p>
+      <p>Statedoku features state nicknames as recurring constraints, learn them all in a few weeks.</p>
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Bordering states</h2><div class="related-grid"><a href="/states/georgia/">→ Georgia</a><a href="/states/alabama/">→ Alabama</a></div>
-    <h2>Explore further</h2><div class="related-grid"><a href="/states/florida/">→ Overview</a><a href="/states/florida/map/">→ Map</a><a href="/states/florida/history/">→ History</a><a href="/states/florida/geography/">→ Geography</a><a href="/states/florida/people/">→ People</a><a href="/states/florida/sports/">→ Sports</a></div>
+    <h2>Neighboring states' symbols</h2>
+    <div class="related-grid"><a href="/states/georgia/symbols/">→ Georgia symbols</a><a href="/states/alabama/symbols/">→ Alabama symbols</a><a href="/states/south-carolina/symbols/">→ South Carolina symbols</a><a href="/states/louisiana/symbols/">→ Louisiana symbols</a></div>
+    <h2>More on Florida</h2>
+    <div class="related-grid"><a href="/states/florida/">→ Florida overview</a><a href="/states/florida/map/">→ Florida map</a><a href="/states/florida/history/">→ Florida history</a><a href="/states/florida/geography/">→ Florida geography</a><a href="/states/florida/fun-facts/">→ Florida fun facts</a><a href="/states/florida/travel/">→ Florida travel</a></div>
+    <!-- PLACEHOLDER_LEARN_BOTTOM -->
   </div>
 </main>
 <footer>
