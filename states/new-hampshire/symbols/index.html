@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .sym-table-wrap { overflow-x: auto; margin: 14px 0; -webkit-overflow-scrolling: touch; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F1F5F9; color: var(--navy); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+    .sym-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .sym-table td:last-child { white-space: nowrap; color: var(--text-2); }
   </style>
  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"New Hampshire","item":"https://statedoku.com/states/new-hampshire/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/new-hampshire/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the state bird of New Hampshire?","acceptedAnswer":{"@type":"Answer","text":"The purple finch, adopted in 1957."}},{"@type":"Question","name":"What is on the New Hampshire state flag?","acceptedAnswer":{"@type":"Answer","text":"A blue field with the state seal at the centre, surrounded by a laurel wreath with nine stars. The seal shows the frigate Raleigh, built at Portsmouth in 1776, with a granite boulder in the foreground. The nine stars mark New Hampshire as the ninth state to ratify the Constitution."}},{"@type":"Question","name":"What is the New Hampshire state motto?","acceptedAnswer":{"@type":"Answer","text":"Live free or die. It comes from a toast written by General John Stark in 1809 and was adopted as the state motto in 1945."}},{"@type":"Question","name":"What is the state flower of New Hampshire?","acceptedAnswer":{"@type":"Answer","text":"The purple lilac, adopted in 1919. The pink lady's slipper is the separate state wildflower, adopted in 1991."}},{"@type":"Question","name":"What is the state dog of New Hampshire?","acceptedAnswer":{"@type":"Answer","text":"The Chinook, a sled dog breed developed at Wonalancet by Arthur Walden. It was adopted in 2009 after a campaign by middle school students."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,33 +106,65 @@
  <p class="meta">Capital: Concord · Northeast · Admitted 1788</p>
  </section>
  <div class="ss-main">
- <h2>New Hampshire's official symbols</h2>
+    <p><strong>Live free or die</strong> is the shortest and bluntest motto any state uses, and it was not written for a government. General John Stark, the New Hampshire commander who beat a British detachment at Bennington in 1777, was too ill to attend a veterans' reunion in 1809 and sent a written toast instead: "Live free or die; death is not the worst of evils." The legislature adopted the first four words as the state motto in 1945, and in 1971 put them on every licence plate.</p>
 
- <div class="symbol-grid">
- <div class="card"><div class="label">Nickname</div><div class="value">The Granite State</div></div>
- <div class="card"><div class="label">State bird</div><div class="value">Purple Finch</div></div>
- <div class="card"><div class="label">State flower</div><div class="value">Purple Lilac</div></div>
- <div class="card"><div class="label">State tree</div><div class="value">White Birch</div></div>
- <div class="card"><div class="label">State motto</div><div class="value">Live free or die</div></div>
- <div class="card"><div class="label">State song</div><div class="value">Old New Hampshire</div></div>
- <div class="card"><div class="label">Capital</div><div class="value">Concord</div></div>
- <div class="card"><div class="label">Statehood year</div><div class="value">1788</div></div>
- </div>
+    <h2>Official state symbols</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+    <div class="sym-table-wrap">
+      <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+      <tr><td>Nickname</td><td>Granite State</td><td></td></tr>
+      <tr><td>Motto</td><td>Live free or die</td><td>1945</td></tr>
+      <tr><td>Emblem</td><td>Old Man of the Mountain</td><td>1945</td></tr>
+      <tr><td>Bird</td><td>Purple finch</td><td>1957</td></tr>
+      <tr><td>Flower</td><td>Purple lilac</td><td>1919</td></tr>
+      <tr><td>Tree</td><td>White birch</td><td>1947</td></tr>
+      <tr><td>Wildflower</td><td>Pink lady's slipper</td><td>1991</td></tr>
+      <tr><td>Animal</td><td>White-tailed deer</td><td>1983</td></tr>
+      <tr><td>Dog</td><td>Chinook</td><td>2009</td></tr>
+      <tr><td>Insect</td><td>Ladybug</td><td>1977</td></tr>
+      <tr><td>Butterfly</td><td>Karner blue</td><td>1992</td></tr>
+      <tr><td>Amphibian</td><td>Red-spotted newt</td><td>1985</td></tr>
+      <tr><td>Sport</td><td>Skiing</td><td>1998</td></tr>
+      <tr><td>Rock</td><td>Granite</td><td>1985</td></tr>
+      <tr><td>Gem</td><td>Smoky quartz</td><td>1985</td></tr>
+      <tr><td>Mineral</td><td>Beryl</td><td>1985</td></tr>
+      <tr><td>Fruit</td><td>Pumpkin</td><td>2006</td></tr>
+      <tr><td>Song</td><td>"Old New Hampshire"</td><td>1949</td></tr>
+      <tr><td>Flag</td><td>State seal on blue, ringed by nine stars</td><td>1909</td></tr>
+      </tbody></table></div>
 
- <h2>About state symbols</h2>
- <p>Every US state has officially designated symbols, usually a bird, flower, tree, motto, and song, chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <h2>What is on the New Hampshire state flag</h2>
+    <p>A deep blue field carries the state seal at its centre, and the seal is encircled by a wreath of laurel leaves with nine stars set among them. The stars are a specific claim, not decoration: New Hampshire was the ninth state to ratify the United States Constitution, on 21 June 1788, and the ninth ratification was the one that brought the Constitution into force. The flag was adopted in 1909 and adjusted in 1931 when the seal itself was standardised.</p>
 
- <h2>How New Hampshire got its nickname</h2><p>New Hampshire is best known as "The Granite State." The nickname reflects the state's signature feature.</p>
+    <h2>The seal and the frigate Raleigh</h2>
+    <p>The ship on the New Hampshire seal is a real vessel. The <em>Raleigh</em> was one of the first thirteen warships authorised for the Continental Navy in 1775 and was built at Portsmouth, launched in 1776. The seal shows her on the stocks with a granite boulder in the foreground and a rising sun behind, and the date 1776 below.</p>
+    <p>For most of the nineteenth century engravers varied the design freely, adding or removing figures on the shore. The 1931 legislature ended that by writing the seal into statute: the ship is the <em>Raleigh</em>, the boulder is granite for the Granite State, and no other elements are permitted. New Hampshire also names granite three separate times in its symbol list, as the state rock, in the nickname, and on the seal.</p>
 
- <div class="cta-card">
- <h3>Symbols and nicknames in the daily puzzle</h3>
- <p>Statedoku features state nicknames as recurring constraints, learn them all in a few weeks.</p>
- <a href="/">Play today's puzzle →</a>
- </div>
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>The state emblem no longer exists.</strong> The Old Man of the Mountain, a granite profile on Cannon Mountain in Franconia Notch, became the official state emblem in 1945 and collapsed on 3 May 2003. It still appears on the New Hampshire state quarter, on highway signs and on licence plates.</li>
+      <li><strong>The state dog is a sled dog bred in New Hampshire.</strong> The Chinook was developed at Wonalancet by Arthur Walden for polar work. It became the state dog in 2009 after a campaign by middle school students, and it is the only breed created in the state.</li>
+      <li><strong>The state sport is skiing.</strong> Adopted in 1998, it reflects a ski industry that dates to the 1930s in the White Mountains.</li>
+      <li><strong>The state fruit is the pumpkin.</strong> Named in 2006, largely on the strength of Keene's pumpkin festival.</li>
+      <li><strong>Three rock and mineral symbols.</strong> In 1985 the legislature named granite the state rock, smoky quartz the state gem and beryl the state mineral, all in the same year.</li>
+      <li><strong>One official song and a stack of honorary ones.</strong> "Old New Hampshire" has been the state song since 1949, but the legislature has since designated several additional honorary state songs rather than choosing between them.</li>
+    </ul>
 
- <h2>Bordering states</h2><div class="related-grid"><a href="/states/vermont/">→ Vermont</a><a href="/states/massachusetts/">→ Massachusetts</a><a href="/states/maine/">→ Maine</a></div>
- <h2>Explore further</h2><div class="related-grid"><a href="/states/new-hampshire/">→ Overview</a><a href="/states/new-hampshire/map/">→ Map</a><a href="/states/new-hampshire/history/">→ History</a><a href="/states/new-hampshire/geography/">→ Geography</a><a href="/states/new-hampshire/people/">→ People</a><a href="/states/new-hampshire/sports/">→ Sports</a></div>
- </div>
+    
+    <div class="cta-card">
+      <h3>Symbols and nicknames in the daily puzzle</h3>
+      <p>Statedoku features state nicknames as recurring constraints. Learn them all in a few weeks.</p>
+      <a href="/">Play today's puzzle →</a>
+    </div>
+
+    <h2>Nearby state symbols</h2>
+    <div class="related-grid"><a href="/states/vermont/symbols/">→ Vermont symbols</a><a href="/states/maine/symbols/">→ Maine symbols</a><a href="/states/massachusetts/symbols/">→ Massachusetts symbols</a><a href="/states/connecticut/symbols/">→ Connecticut symbols</a><a href="/states/rhode-island/symbols/">→ Rhode Island symbols</a></div>
+    <h2>More about New Hampshire</h2>
+    <div class="related-grid"><a href="/states/new-hampshire/">→ New Hampshire overview</a><a href="/states/new-hampshire/map/">→ New Hampshire map</a><a href="/states/new-hampshire/history/">→ New Hampshire history</a><a href="/states/new-hampshire/geography/">→ New Hampshire geography</a><a href="/states/new-hampshire/fun-facts/">→ New Hampshire fun facts</a><a href="/states/new-hampshire/elections/">→ New Hampshire elections</a></div>
+    <!-- PLACEHOLDER_LEARN_BOTTOM -->
+  </div>
 </main>
 <footer>
  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a></p>

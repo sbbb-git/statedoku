@@ -84,12 +84,50 @@ export async function onRequestGet({ request }) {
   const esStateEntries = [[`${BASE}/es/states/`, { priority: 0.8 }]];
   for (const slug of stateSlugs) esStateEntries.push([`${BASE}/es/states/${slug}/`, { priority: 0.65 }]);
 
-  // 12 subpages per state — INTENTIONALLY EXCLUDED from sitemap since
-  // AdSense flagged them as programmatic/thin (37-64% shared 5-grams
-  // across states). All 600 pages now carry noindex,follow. Kept
-  // reachable via internal nav from /states/<state>/ hub for UX.
+  // Per-state subtopics. A topic is listed here only after it clears the
+  // uniqueness gate in tmp/reindex-expanded.py, which measures the median
+  // pairwise 5-gram overlap across all 50 states for that topic.
+  //
+  // Word count alone is not the test and was what misled an earlier pass:
+  // /history/ averaged 1,063 words and still shared 61% of its 5-grams
+  // across states, which is the template pattern that triggered the AdSense
+  // low-value-content flag. Rewritten /symbols/ measures 7.9% and
+  // /fun-facts/ 7.5%, so those two are in.
+  //
+  // Measured overlap after the Aug rewrite, was 55-62% before:
+  //   geography 4.0%   people 3.9%   history 3.6%
+  //   symbols   7.9%   fun-facts 7.5%
+  // Geography is the highest-value of these: "minnesota geography" alone is
+  // 987 AI citations plus 797 impressions at position 6.6.
+  //
+  // Permanently out: map and sports (no citation evidence, the state hub
+  // covers the intent), plus economy, food, weather, travel and elections
+  // (138-237 words, no demand worth the rewrite).
+  const INDEXED_SUBTOPICS = ['symbols', 'fun-facts', 'geography', 'people', 'history'];
   const stateSubpageEntries = [];
-  const cityEntries_hub_only = []; // placeholder — kept var name for below
+  for (const slug of stateSlugs) {
+    for (const t of INDEXED_SUBTOPICS) {
+      stateSubpageEntries.push([`${BASE}/states/${slug}/${t}/`, { priority: 0.6 }]);
+    }
+  }
+
+  // Abbreviation and disambiguation pages created from the Aug 7 query data.
+  // Only codes with individual query evidence get a page, rather than all 50,
+  // since blanket generation is what produced the doorway problem.
+  const EN_ABBREV = ['pa','hi','md','mo','nj','ga','mi','nm','ma','sc','va','nc','az','tx','nv','il','nh','fl'];
+  const ES_ABBREV = ['pa','nj','ga','nm','mo','va','az','tx','nv','il','nh','fl','hi','ma','md','mi','mn'];
+  const ES_CITY = ['boston','atlanta','nueva-jersey','miami','las-vegas','filadelfia'];
+  const gapEntries = [];
+  for (const c of EN_ABBREV) gapEntries.push([`${BASE}/learn/what-state-is-${c}/`, { priority: 0.7 }]);
+  for (const c of ES_ABBREV) gapEntries.push([`${BASE}/es/learn/estado-eeuu-abreviatura-${c}/`, { priority: 0.7 }]);
+  for (const c of ES_CITY) gapEntries.push([`${BASE}/es/learn/${c}-es-un-estado/`, { priority: 0.7 }]);
+
+  // Reference lists. "liste des 50 etats des Etats-Unis" already returns
+  // Statedoku in 100% of AI answers it appears in, and the Spanish variant
+  // in 82%, so both now have a dedicated page instead of leaning on the
+  // capitals hub.
+  gapEntries.push([`${BASE}/fr/learn/liste-des-50-etats/`, { priority: 0.9, changefreq: 'weekly' }]);
+  gapEntries.push([`${BASE}/es/learn/lista-de-los-50-estados/`, { priority: 0.9, changefreq: 'weekly' }]);
 
   // 100 top US city pages
   const CITIES = ['new-york','los-angeles','chicago','houston','phoenix','philadelphia','san-antonio','san-diego','dallas','san-jose','austin','jacksonville','fort-worth','columbus','charlotte','san-francisco','indianapolis','seattle','denver','washington','boston','el-paso','nashville','detroit','oklahoma-city','portland','las-vegas','memphis','louisville','baltimore','milwaukee','albuquerque','tucson','fresno','sacramento','mesa','kansas-city','atlanta','omaha','colorado-springs','raleigh','miami','long-beach','virginia-beach','oakland','minneapolis','tulsa','arlington','new-orleans','wichita','cleveland','tampa','bakersfield','aurora','honolulu','anaheim','santa-ana','corpus-christi','riverside','lexington','stockton','henderson','saint-paul','st-louis','cincinnati','pittsburgh','greensboro','anchorage','plano','lincoln','orlando','irvine','newark','durham','chula-vista','toledo','fort-wayne','st-petersburg','laredo','jersey-city','chandler','madison','lubbock','scottsdale','reno','buffalo','gilbert','glendale','north-las-vegas','winston-salem','chesapeake','norfolk','fremont','garland','irving','hialeah','richmond','boise','spokane','baton-rouge','tacoma'];
@@ -128,6 +166,7 @@ export async function onRequestGet({ request }) {
     [`${BASE}/es/learn/apodos-de-estados/`, { priority: 0.85 }],
     [`${BASE}/es/learn/cinturones-eeuu/`, { priority: 0.8 }],
     // FR push pages (21% of launch-day traffic; FR cluster was underbuilt).
+    [`${BASE}/fr/learn/liste-des-50-etats/`, { priority: 0.95 }],
     [`${BASE}/fr/learn/capitales-des-etats/`, { priority: 0.9 }],
     [`${BASE}/fr/learn/regions-des-etats-unis/`, { priority: 0.9 }],
     [`${BASE}/fr/learn/drapeaux-des-etats/`, { priority: 0.85 }],
@@ -446,11 +485,23 @@ export async function onRequestGet({ request }) {
   // content' because 750 template-generated pages tripped Google's doorway
   // detection. Kept accessible via internal navigation for user UX.
 
-  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled];
+  const all = [...evergreen, ...stateEntries, ...esStateEntries, ...stateSubpageEntries, ...cityEntries, ...learnNewEntries, ...REGION_HUB, ...extras, ...scheduled, ...gapEntries];
+
+  // Dedupe by URL. Several lists above overlap by design (a page can be both
+  // an ES learn page and part of an evidence-backed gap batch), and a
+  // duplicated <loc> is a validation error in the sitemap spec. Keep the
+  // first occurrence, which is the one carrying hreflang alternates when
+  // there is one.
+  const seen = new Set();
+  const deduped = all.filter(([loc]) => {
+    if (seen.has(loc)) return false;
+    seen.add(loc);
+    return true;
+  });
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${all.map(([loc, opts]) => buildEntry(loc, opts)).join('\n')}
+${deduped.map(([loc, opts]) => buildEntry(loc, opts)).join('\n')}
 </urlset>
 `;
 

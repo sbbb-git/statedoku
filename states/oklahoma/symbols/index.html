@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .table-wrap { overflow-x: auto; margin: 14px 0; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F1F5F9; color: var(--navy); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+    .sym-table td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .sym-table tr:last-child td { border-bottom: none; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"Oklahoma","item":"https://statedoku.com/states/oklahoma/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/oklahoma/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the state bird of Oklahoma?","acceptedAnswer":{"@type":"Answer","text":"The scissor-tailed flycatcher, adopted in 1951. It is named for its long forked tail and nests across Oklahoma every summer."}},{"@type":"Question","name":"What is on the Oklahoma state flag?","acceptedAnswer":{"@type":"Answer","text":"A sky blue field carrying an Osage buffalo-hide war shield hung with seven eagle feathers. A calumet peace pipe and an olive branch lie across the shield, and six golden-brown crosses on its face represent stars. The word OKLAHOMA was added below the shield in 1941."}},{"@type":"Question","name":"What is the Oklahoma state motto?","acceptedAnswer":{"@type":"Answer","text":"Labor omnia vincit, Latin for “Labor conquers all things”. It has been on the state seal since statehood in 1907."}},{"@type":"Question","name":"What is the state flower of Oklahoma?","acceptedAnswer":{"@type":"Answer","text":"The Oklahoma rose, adopted in 2004. Mistletoe remains the state floral emblem, adopted in 1893 while Oklahoma was still a territory, and the Indian blanket is the state wildflower."}},{"@type":"Question","name":"Why is Oklahoma called the Sooner State?","acceptedAnswer":{"@type":"Answer","text":"Sooners were settlers who slipped into the unassigned lands and staked claims before the official start of the 1889 land run. The nickname stuck to the state and to the University of Oklahoma teams."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,23 +106,52 @@
     <p class="meta">Capital: Oklahoma City · South · Admitted 1907</p>
   </section>
   <div class="ss-main">
-    <h2>Oklahoma's official symbols</h2>
+    <p>Oklahoma's most recognisable symbol is the scissor-tailed flycatcher, the pale grey bird with the long forked tail that the legislature named state bird in 1951. Garden clubs and Audubon chapters pushed for it because the bird nests across Oklahoma every summer and eats grasshoppers, crickets and beetles in enormous quantity, which made it a practical choice for a farming state as much as a decorative one. Nearly every other Oklahoma emblem traces back to one of two histories: the land runs that opened the territory to settlers after 1889, and the tribal nations who were removed to this land before them.</p>
 
-    <div class="symbol-grid">
-      <div class="card"><div class="label">Nickname</div><div class="value">The Sooner State</div></div>
-      <div class="card"><div class="label">State bird</div><div class="value">Scissor-tailed Flycatcher</div></div>
-      <div class="card"><div class="label">State flower</div><div class="value">Mistletoe / Oklahoma Rose</div></div>
-      <div class="card"><div class="label">State tree</div><div class="value">Eastern Redbud</div></div>
-      <div class="card"><div class="label">State motto</div><div class="value">Labor omnia vincit ("Labor conquers all things")</div></div>
-      <div class="card"><div class="label">State song</div><div class="value">Oklahoma!</div></div>
-      <div class="card"><div class="label">Capital</div><div class="value">Oklahoma City</div></div>
-      <div class="card"><div class="label">Statehood year</div><div class="value">1907</div></div>
+    <h2>Official state symbols</h2>
+    <div class="table-wrap">
+    <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+        <tr><td>Nickname</td><td>The Sooner State</td><td></td></tr>
+        <tr><td>Motto</td><td>Labor omnia vincit ("Labor conquers all things")</td><td>1907</td></tr>
+        <tr><td>Bird</td><td>Scissor-tailed flycatcher</td><td>1951</td></tr>
+        <tr><td>Floral emblem</td><td>Mistletoe</td><td>1893</td></tr>
+        <tr><td>Flower</td><td>Oklahoma rose</td><td>2004</td></tr>
+        <tr><td>Wildflower</td><td>Indian blanket (Gaillardia pulchella)</td><td>1986</td></tr>
+        <tr><td>Tree</td><td>Eastern redbud</td><td>1937</td></tr>
+        <tr><td>Flag</td><td>Osage shield on sky blue</td><td>1925</td></tr>
+        <tr><td>Seal</td><td>Five-pointed star of the Five Tribes</td><td>1907</td></tr>
+        <tr><td>Song</td><td>"Oklahoma!"</td><td>1953</td></tr>
+        <tr><td>Animal</td><td>American buffalo</td><td>1972</td></tr>
+        <tr><td>Reptile</td><td>Collared lizard ("mountain boomer")</td><td>1969</td></tr>
+        <tr><td>Rock</td><td>Rose rock (barite rose)</td><td>1968</td></tr>
+        <tr><td>Fossil</td><td>Saurophaganax maximus</td><td>2000</td></tr>
+        <tr><td>Insect</td><td>Honeybee</td><td>1992</td></tr>
+        <tr><td>Grass</td><td>Indiangrass</td><td>1972</td></tr>
+      </tbody>
+    </table>
     </div>
 
-    <h2>About state symbols</h2>
-    <p>Every US state has officially designated symbols, usually a bird, flower, tree, motto, and song, chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <!-- PLACEHOLDER_LEARN_MID -->
 
-    <h2>How Oklahoma got its nickname</h2><p>Oklahoma is best known as "The Sooner State." The nickname reflects the state's signature feature.</p>
+    <h2>What is on the Oklahoma state flag</h2>
+    <p>Oklahoma flies a sky blue banner carrying an Osage buffalo-hide war shield. Seven eagle feathers hang from the lower edge of the shield, and six golden-brown crosses are painted across its face, a Plains drawing convention for stars. Two objects lie across the shield: a calumet, the ceremonial pipe used in peace councils, and an olive branch, the European emblem for the same idea. The blue of the field was taken from a banner carried by Choctaw soldiers during the Civil War.</p>
+    <p>The design came from Louise Funk Fluke, an artist who won a competition organised by the Daughters of the American Revolution, and the legislature adopted it on 2 April 1925. It replaced a 1911 flag that was solid red with a white star bearing the number 46, Oklahoma's rank in the order of admission. That earlier flag was dropped in part because a red banner read as a socialist emblem to legislators during the postwar Red Scare. The word OKLAHOMA was added beneath the shield in 1941 so the flag could be identified at a distance.</p>
+
+    <h2>The state seal and its five points</h2>
+    <p>The Oklahoma seal was fixed at statehood in 1907 and is built as a large five-pointed star. At the centre sits the older seal of Oklahoma Territory: the figure of Columbia standing between a Native man and a white frontiersman who are shaking hands above a plough, with the motto Labor omnia vincit above them.</p>
+    <p>Each of the five arms carries the emblem of one of the Five Tribes forced into Indian Territory in the 1830s. The Chickasaw arm shows a warrior with shield and arrows. The Choctaw arm shows a tomahawk, a bow and three crossed arrows. The Cherokee arm shows a seven-pointed star inside a wreath of oak leaves. The Muscogee (Creek) arm shows a sheaf of wheat and a plough. The Seminole arm shows a village beside a lake with a man paddling a canoe. Forty-five small stars fill the background, one for every state admitted before Oklahoma became the forty-sixth.</p>
+
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>An official state meal.</strong> In 1988 the legislature adopted an entire menu: chicken fried steak, barbecue pork, sausage and gravy, biscuits, cornbread, fried okra, squash, grits, corn, black-eyed peas, strawberries and pecan pie.</li>
+      <li><strong>Watermelon is the state vegetable.</strong> Adopted in 2007 over loud objections that it is a fruit. Supporters argued it belongs to the gourd family, and the bill passed anyway.</li>
+      <li><strong>A state cartoon character.</strong> Gusty, the wind-blown weather mascot drawn for an Oklahoma City television station, was made an official state symbol in 2005.</li>
+      <li><strong>Two official instruments.</strong> The fiddle became the state musical instrument in 1984, and the drum was added in 1993 as the state percussive musical instrument.</li>
+      <li><strong>A state flying mammal.</strong> The Mexican free-tailed bat, named in 2006, roosts by the million at the Selman Bat Cave in Woodward County.</li>
+      <li><strong>Rose rocks.</strong> The state rock is a barite crystal cluster that grows in the red clay around Noble and looks like a carved rose.</li>
+    </ul>
 
     <div class="cta-card">
       <h3>Symbols and nicknames in the daily puzzle</h3>
@@ -123,9 +159,10 @@
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Bordering states</h2><div class="related-grid"><a href="/states/colorado/">→ Colorado</a><a href="/states/kansas/">→ Kansas</a><a href="/states/missouri/">→ Missouri</a><a href="/states/arkansas/">→ Arkansas</a><a href="/states/texas/">→ Texas</a><a href="/states/new-mexico/">→ New Mexico</a></div>
-    <h2>Explore further</h2><div class="related-grid"><a href="/states/oklahoma/">→ Overview</a><a href="/states/oklahoma/map/">→ Map</a><a href="/states/oklahoma/history/">→ History</a><a href="/states/oklahoma/geography/">→ Geography</a><a href="/states/oklahoma/people/">→ People</a><a href="/states/oklahoma/sports/">→ Sports</a></div>
+    <h2>Symbols of bordering states</h2><div class="related-grid"><a href="/states/kansas/symbols/">→ Kansas symbols</a><a href="/states/missouri/symbols/">→ Missouri symbols</a><a href="/states/arkansas/symbols/">→ Arkansas symbols</a><a href="/states/texas/symbols/">→ Texas symbols</a><a href="/states/colorado/symbols/">→ Colorado symbols</a><a href="/states/new-mexico/symbols/">→ New Mexico symbols</a></div>
+    <h2>More about Oklahoma</h2><div class="related-grid"><a href="/states/oklahoma/">→ Overview</a><a href="/states/oklahoma/map/">→ Map</a><a href="/states/oklahoma/history/">→ History</a><a href="/states/oklahoma/geography/">→ Geography</a><a href="/states/oklahoma/people/">→ People</a><a href="/states/oklahoma/sports/">→ Sports</a><a href="/states/oklahoma/fun-facts/">→ Fun facts</a><a href="/states/oklahoma/food/">→ Food</a></div>
   </div>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a></p>

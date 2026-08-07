@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .sym-table-wrap { overflow-x: auto; margin: 14px 0; -webkit-overflow-scrolling: touch; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F1F5F9; color: var(--navy); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+    .sym-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .sym-table td:last-child { white-space: nowrap; color: var(--text-2); }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"New Jersey","item":"https://statedoku.com/states/new-jersey/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/new-jersey/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the state bird of New Jersey?","acceptedAnswer":{"@type":"Answer","text":"The eastern goldfinch, also called the American goldfinch, adopted in 1935."}},{"@type":"Question","name":"What is on the New Jersey state flag?","acceptedAnswer":{"@type":"Answer","text":"A buff field with the state coat of arms: a shield with three plows, a horse's head crest above it, and the figures of Liberty and Ceres on either side, over a scroll reading Liberty and Prosperity with the year 1776. The buff colour comes from the facings George Washington ordered for New Jersey's Continental regiments in 1779."}},{"@type":"Question","name":"What is the New Jersey state motto?","acceptedAnswer":{"@type":"Answer","text":"Liberty and prosperity. It appears on the scroll beneath the state coat of arms, which was adopted in 1777."}},{"@type":"Question","name":"What is the state flower of New Jersey?","acceptedAnswer":{"@type":"Answer","text":"The common meadow violet, formally adopted in 1971."}},{"@type":"Question","name":"Does New Jersey have a state song?","acceptedAnswer":{"@type":"Answer","text":"No. New Jersey has never adopted an official state song, despite repeated legislative attempts. It does have an official state dance, the square dance, adopted in 1983."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,32 +106,61 @@
     <p class="meta">Capital: Trenton · Northeast · Admitted 1787</p>
   </section>
   <div class="ss-main">
-    <h2>New Jersey's official symbols</h2>
+    <p>The Garden State nickname traces to a single speech. Abraham Browning of Camden, addressing New Jersey Day at the 1876 Centennial Exhibition in Philadelphia, described the state as an immense barrel filled with good things to eat and open at both ends, with Pennsylvanians grabbing from one end and New Yorkers from the other. It stuck as folklore for seventy-eight years before it became official. When a 1954 bill put "Garden State" on licence plates, Governor Robert Meyner vetoed it, arguing the phrase had no official standing. The legislature overrode him.</p>
 
-    <div class="symbol-grid">
-      <div class="card"><div class="label">Nickname</div><div class="value">The Garden State</div></div>
-      <div class="card"><div class="label">State bird</div><div class="value">Eastern Goldfinch</div></div>
-      <div class="card"><div class="label">State flower</div><div class="value">Common Meadow Violet</div></div>
-      <div class="card"><div class="label">State tree</div><div class="value">Northern Red Oak</div></div>
-      <div class="card"><div class="label">State motto</div><div class="value">Liberty and prosperity</div></div>
-      <div class="card"><div class="label">State song</div><div class="value">(no official state song)</div></div>
-      <div class="card"><div class="label">Capital</div><div class="value">Trenton</div></div>
-      <div class="card"><div class="label">Statehood year</div><div class="value">1787</div></div>
-    </div>
+    <h2>Official state symbols</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+    <div class="sym-table-wrap">
+      <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+      <tr><td>Nickname</td><td>Garden State</td><td>1954</td></tr>
+      <tr><td>Motto</td><td>Liberty and prosperity</td><td></td></tr>
+      <tr><td>Bird</td><td>Eastern goldfinch</td><td>1935</td></tr>
+      <tr><td>Flower</td><td>Common meadow violet</td><td>1971</td></tr>
+      <tr><td>Tree</td><td>Northern red oak</td><td>1950</td></tr>
+      <tr><td>Animal</td><td>Horse</td><td>1977</td></tr>
+      <tr><td>Insect</td><td>Honeybee</td><td>1974</td></tr>
+      <tr><td>Fish</td><td>Brook trout</td><td>1991</td></tr>
+      <tr><td>Shell</td><td>Knobbed whelk</td><td>1995</td></tr>
+      <tr><td>Dinosaur</td><td><em>Hadrosaurus foulkii</em></td><td>1991</td></tr>
+      <tr><td>Fruit</td><td>Northern highbush blueberry</td><td>2004</td></tr>
+      <tr><td>Dance</td><td>Square dance</td><td>1983</td></tr>
+      <tr><td>Ship</td><td>A. J. Meerwald</td><td>1998</td></tr>
+      <tr><td>Microbe</td><td><em>Streptomyces griseus</em></td><td>2019</td></tr>
+      <tr><td>Colors</td><td>Buff and Jersey blue</td><td></td></tr>
+      <tr><td>Song</td><td>None adopted</td><td></td></tr>
+      <tr><td>Flag</td><td>Buff field with the state coat of arms</td><td>1896</td></tr>
+      </tbody></table></div>
 
-    <h2>About state symbols</h2>
-    <p>Every US state has officially designated symbols — usually a bird, flower, tree, motto, and song — chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <h2>What is on the New Jersey state flag</h2>
+    <p>The field is buff, a pale yellowish tan, with the state coat of arms in the centre. The colour is a direct quotation from the Continental Army. In 1779 George Washington ordered New Jersey's regiments to wear dark blue coats faced with buff, and the state took those two colours as its own. Buff and Jersey blue were later designated the official state colours. The flag itself was adopted in 1896.</p>
+    <p>The coat of arms carries a shield bearing three plows for agriculture. Above it a helmet is topped by a horse's head, which is also the source of the state animal. Two female figures support the shield: Liberty on the left, holding a staff topped with a liberty cap, and Ceres, the Roman goddess of agriculture, on the right, holding an overflowing cornucopia. A scroll below reads <strong>Liberty and Prosperity</strong> with the year 1776.</p>
 
-    <h2>How New Jersey got its nickname</h2><p>New Jersey is best known as "The Garden State." The nickname reflects the state's signature feature.</p>
+    <h2>The seal, drawn in 1777</h2>
+    <p>New Jersey's great seal was designed by Pierre Eugene du Simitiere, a Swiss-born artist in Philadelphia who also worked on early designs for the Great Seal of the United States, and the legislature adopted it in 1777, while the state was still a battleground. The design has stayed remarkably stable. New Jersey is one of the few states whose flag simply reproduces its arms rather than adding a name, a star or a date, which is why the buff background does most of the identifying work.</p>
 
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>New Jersey has an official state microbe.</strong> <em>Streptomyces griseus</em>, a soil bacterium, was adopted in 2019. Selman Waksman's laboratory at Rutgers isolated streptomycin from it in 1943, producing the first effective treatment for tuberculosis.</li>
+      <li><strong>The state dinosaur was the world's first good skeleton.</strong> <em>Hadrosaurus foulkii</em>, dug from a marl pit in Haddonfield in 1858, was the most complete dinosaur skeleton found anywhere at the time and the first mounted for public display. It became the state dinosaur in 1991.</li>
+      <li><strong>There is no state song.</strong> Repeated bills have failed, so New Jersey remains one of the very few states with no official song.</li>
+      <li><strong>The official state ship is an oyster schooner.</strong> The A. J. Meerwald, built in 1928 at Dorchester and restored as a sailing museum, was designated in 1998 for the Delaware Bay oyster fleet.</li>
+      <li><strong>The state dance is the square dance.</strong> Adopted in 1983, in the most densely populated state in the country.</li>
+    </ul>
+
+    
     <div class="cta-card">
       <h3>Symbols and nicknames in the daily puzzle</h3>
-      <p>Statedoku features state nicknames as recurring constraints — learn them all in a few weeks.</p>
+      <p>Statedoku features state nicknames as recurring constraints. Learn them all in a few weeks.</p>
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Bordering states</h2><div class="related-grid"><a href="/states/new-york/">→ New York</a><a href="/states/pennsylvania/">→ Pennsylvania</a><a href="/states/delaware/">→ Delaware</a></div>
-    <h2>Explore further</h2><div class="related-grid"><a href="/states/new-jersey/">→ Overview</a><a href="/states/new-jersey/map/">→ Map</a><a href="/states/new-jersey/history/">→ History</a><a href="/states/new-jersey/geography/">→ Geography</a><a href="/states/new-jersey/people/">→ People</a><a href="/states/new-jersey/sports/">→ Sports</a></div>
+    <h2>Nearby state symbols</h2>
+    <div class="related-grid"><a href="/states/new-york/symbols/">→ New York symbols</a><a href="/states/pennsylvania/symbols/">→ Pennsylvania symbols</a><a href="/states/delaware/symbols/">→ Delaware symbols</a><a href="/states/maryland/symbols/">→ Maryland symbols</a><a href="/states/connecticut/symbols/">→ Connecticut symbols</a></div>
+    <h2>More about New Jersey</h2>
+    <div class="related-grid"><a href="/states/new-jersey/">→ New Jersey overview</a><a href="/states/new-jersey/map/">→ New Jersey map</a><a href="/states/new-jersey/history/">→ New Jersey history</a><a href="/states/new-jersey/geography/">→ New Jersey geography</a><a href="/states/new-jersey/fun-facts/">→ New Jersey fun facts</a><a href="/states/new-jersey/people/">→ Famous New Jerseyans</a></div>
+    <!-- PLACEHOLDER_LEARN_BOTTOM -->
   </div>
 </main>
 <footer>

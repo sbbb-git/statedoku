@@ -3,3 +3,10 @@
 
 # Force HTTPS + www → apex (or apex → www, your choice)
 # https://www.statedoku.com/* https://statedoku.com/:splat 301
+
+# /launch/ was the pre-launch teaser ("Launches Monday June 1"). The site
+# went live June 1 2026, so the page is a dead 92-word stub that an AdSense
+# quality review would count against the site. 301 to the homepage so any
+# link equity it picked up is preserved.
+/launch/ / 301
+/launch / 301

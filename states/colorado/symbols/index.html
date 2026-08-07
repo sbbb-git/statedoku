@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .sym-table-wrap { overflow-x: auto; margin: 14px 0; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F8FAFC; color: var(--navy); font-weight: 700; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+    .sym-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .sym-table td:last-child { white-space: nowrap; color: var(--text-2); }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"Colorado","item":"https://statedoku.com/states/colorado/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/colorado/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the state bird of Colorado?", "acceptedAnswer": {"@type": "Answer", "text": "The lark bunting, adopted in 1931. The male is black with white wing patches in summer and molts to sparrow brown in winter, and it nests on the shortgrass prairie of eastern Colorado."}}, {"@type": "Question", "name": "What is on the Colorado state flag?", "acceptedAnswer": {"@type": "Answer", "text": "Three horizontal stripes of blue, white and blue, with a circular red letter C across the first two stripes and a gold disc filling the C. Blue stands for the sky, white for mountain snow, gold for sunshine and red for the earth. It was adopted in 1911."}}, {"@type": "Question", "name": "What is the Colorado state motto?", "acceptedAnswer": {"@type": "Answer", "text": "Nil sine numine, a Latin phrase usually translated as \"nothing without providence.\" It appears on a scroll at the base of the state seal, which was adopted in 1877."}}, {"@type": "Question", "name": "What is the state flower of Colorado?", "acceptedAnswer": {"@type": "Answer", "text": "The Rocky Mountain columbine, Aquilegia caerulea, adopted in 1899 after a vote by schoolchildren. State law protects it on public land and limits picking to 25 stems a day."}}, {"@type": "Question", "name": "Why is Colorado called the Centennial State?", "acceptedAnswer": {"@type": "Answer", "text": "Colorado entered the Union on August 1, 1876, exactly 100 years after the Declaration of Independence, so it was nicknamed the Centennial State."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,23 +106,49 @@
     <p class="meta">Capital: Denver · West · Admitted 1876</p>
   </section>
   <div class="ss-main">
-    <h2>Colorado's official symbols</h2>
+    <p>Colorado's most recognized symbol is its flag, a red letter C wrapped around a gold disc on blue and white stripes. The name Colorado is Spanish for "colored red," borrowed from the sandstone canyons of the Colorado River, and that same red is why the C is the color it is. The rest of the official list leans on altitude: a wildflower that grows above 7,000 feet, a spruce carrying the state's name, and a bighorn sheep.</p>
 
-    <div class="symbol-grid">
-      <div class="card"><div class="label">Nickname</div><div class="value">The Centennial State</div></div>
-      <div class="card"><div class="label">State bird</div><div class="value">Lark Bunting</div></div>
-      <div class="card"><div class="label">State flower</div><div class="value">Rocky Mountain Columbine</div></div>
-      <div class="card"><div class="label">State tree</div><div class="value">Colorado Blue Spruce</div></div>
-      <div class="card"><div class="label">State motto</div><div class="value">Nil sine numine ("Nothing without providence")</div></div>
-      <div class="card"><div class="label">State song</div><div class="value">Where the Columbines Grow</div></div>
-      <div class="card"><div class="label">Capital</div><div class="value">Denver</div></div>
-      <div class="card"><div class="label">Statehood year</div><div class="value">1876</div></div>
-    </div>
+    <h2>Official state symbols</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+      <div class="sym-table-wrap">
+      <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+      <tr><td>Nickname</td><td>Centennial State</td><td>1876</td></tr>
+      <tr><td>Motto</td><td>Nil sine numine ("Nothing without providence")</td><td></td></tr>
+      <tr><td>Bird</td><td>Lark bunting</td><td>1931</td></tr>
+      <tr><td>Flower</td><td>Rocky Mountain columbine</td><td>1899</td></tr>
+      <tr><td>Tree</td><td>Colorado blue spruce</td><td>1939</td></tr>
+      <tr><td>Flag</td><td>Blue and white stripes, red C, gold disc</td><td>1911</td></tr>
+      <tr><td>Seal</td><td>Eye of God, fasces, mountains, miner's tools</td><td>1877</td></tr>
+      <tr><td>Song</td><td>Where the Columbines Grow</td><td>1915</td></tr>
+      <tr><td>Second song</td><td>Rocky Mountain High</td><td>2007</td></tr>
+      <tr><td>Animal</td><td>Rocky Mountain bighorn sheep</td><td>1961</td></tr>
+      <tr><td>Fossil</td><td>Stegosaurus</td><td>1982</td></tr>
+      <tr><td>Gemstone</td><td>Aquamarine</td><td>1971</td></tr>
+      <tr><td>Mineral</td><td>Rhodochrosite</td><td>2002</td></tr>
+      <tr><td>Rock</td><td>Yule marble</td><td>2004</td></tr>
+      <tr><td>Insect</td><td>Colorado hairstreak butterfly</td><td>1996</td></tr>
+      <tr><td>Fish</td><td>Greenback cutthroat trout</td><td>1994</td></tr>
+      </tbody>
+      </table>
+      </div>
 
-    <h2>About state symbols</h2>
-    <p>Every US state has officially designated symbols, usually a bird, flower, tree, motto, and song, chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <h2>What is on the Colorado state flag</h2>
+    <p>Andrew Carlisle Johnson designed the flag for the Colorado chapter of the Daughters of the American Revolution, and the General Assembly adopted it in June 1911. Three horizontal stripes run blue, white, blue. A circular red C sits across the first two stripes, and a solid gold disc fills it. Each color carries an assigned meaning: blue for the sky, white for the snow on the peaks, gold for the sunshine Colorado gets on close to 300 days a year, and red for the earth. The 1911 statute never fixed the shades or the size of the C, so early flags varied badly from maker to maker. A 1929 amendment set the blue and red to the same tones used in the national flag, and a 1964 revision pinned down the diameter of the gold disc and the exact placement of the C.</p>
 
-    <h2>How Colorado got its nickname</h2><p>Colorado is best known as "The Centennial State." The nickname reflects the state's signature feature.</p>
+    <h2>Inside the state seal</h2>
+    <p>The seal was adopted in 1877, a year after statehood, and it copies most of the 1861 territorial design. At the top is the eye of God inside a triangle, ringed by golden rays. Below it stands a Roman fasces, a bundle of rods around an axe, bound with a red, white and blue band: authority held together by union. The heraldic shield underneath carries three snow-capped mountains with clouds above them, and in the lower half a crossed miner's pick and sledgehammer, a nod to the gold rush that pulled settlers across the plains from 1859. The motto Nil sine numine runs on a scroll beneath, usually rendered as "nothing without providence," and the date 1876 closes the design.</p>
+
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>Pack burro racing</strong> is the official state summer heritage sport, designated in 2012. Runners lead a loaded burro over mountain passes, repeating what prospectors did walking their animals down from the high country.</li>
+      <li><strong>Stegosaurus</strong> became the state fossil in 1982 after a campaign by Colorado schoolchildren. The first specimen ever described was quarried near Morrison in 1877.</li>
+      <li><strong>Rhodochrosite</strong>, the state mineral, is a rose-pink crystal. The finest specimen ever pulled out of the ground, the Alma King, came from the Sweet Home Mine near Alma.</li>
+      <li><strong>Shelter dogs and cats</strong> were named the official state pet in 2013, one of very few such designations in the country.</li>
+      <li>Colorado has <strong>two official state songs</strong>. "Rocky Mountain High" joined "Where the Columbines Grow" in 2007, more than 90 years after the first one was adopted.</li>
+    </ul>
+
 
     <div class="cta-card">
       <h3>Symbols and nicknames in the daily puzzle</h3>
@@ -123,8 +156,11 @@
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Bordering states</h2><div class="related-grid"><a href="/states/wyoming/">→ Wyoming</a><a href="/states/nebraska/">→ Nebraska</a><a href="/states/kansas/">→ Kansas</a><a href="/states/oklahoma/">→ Oklahoma</a><a href="/states/new-mexico/">→ New Mexico</a><a href="/states/utah/">→ Utah</a></div>
-    <h2>Explore further</h2><div class="related-grid"><a href="/states/colorado/">→ Overview</a><a href="/states/colorado/map/">→ Map</a><a href="/states/colorado/history/">→ History</a><a href="/states/colorado/geography/">→ Geography</a><a href="/states/colorado/people/">→ People</a><a href="/states/colorado/sports/">→ Sports</a></div>
+    <h2>Neighboring states' symbols</h2>
+    <div class="related-grid"><a href="/states/wyoming/symbols/">→ Wyoming symbols</a><a href="/states/nebraska/symbols/">→ Nebraska symbols</a><a href="/states/kansas/symbols/">→ Kansas symbols</a><a href="/states/oklahoma/symbols/">→ Oklahoma symbols</a><a href="/states/new-mexico/symbols/">→ New Mexico symbols</a><a href="/states/utah/symbols/">→ Utah symbols</a></div>
+    <h2>More on Colorado</h2>
+    <div class="related-grid"><a href="/states/colorado/">→ Colorado overview</a><a href="/states/colorado/map/">→ Colorado map</a><a href="/states/colorado/history/">→ Colorado history</a><a href="/states/colorado/geography/">→ Colorado geography</a><a href="/states/colorado/fun-facts/">→ Colorado fun facts</a><a href="/states/colorado/people/">→ Famous Coloradans</a></div>
+    <!-- PLACEHOLDER_LEARN_BOTTOM -->
   </div>
 </main>
 <footer>

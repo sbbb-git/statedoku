@@ -72,8 +72,15 @@
     .symbol-grid .card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .symbol-grid .label { font-size: .72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-bottom: 4px; }
     .symbol-grid .value { font-size: .95rem; color: var(--text); font-weight: 600; }
+    .table-wrap { overflow-x: auto; margin: 14px 0; }
+    .sym-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sym-table th, .sym-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sym-table th { background: #F1F5F9; color: var(--navy); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+    .sym-table td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .sym-table tr:last-child td { border-bottom: none; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"States","item":"https://statedoku.com/states/"},{"@type":"ListItem","position":3,"name":"Pennsylvania","item":"https://statedoku.com/states/pennsylvania/"},{"@type":"ListItem","position":4,"name":"Symbols","item":"https://statedoku.com/states/pennsylvania/symbols/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the state bird of Pennsylvania?","acceptedAnswer":{"@type":"Answer","text":"The ruffed grouse, adopted in 1931. It is a woodland game bird found across the state's forested ridges."}},{"@type":"Question","name":"What is on the Pennsylvania state flag?","acceptedAnswer":{"@type":"Answer","text":"A blue field carrying the state coat of arms: two black draft horses flanking a shield charged with a ship, a plough and three sheaves of wheat, a bald eagle above, and a stalk of Indian corn crossed with an olive branch below. A red ribbon carries the motto. The design was standardised by law in 1907."}},{"@type":"Question","name":"What is the Pennsylvania state motto?","acceptedAnswer":{"@type":"Answer","text":"Virtue, Liberty and Independence. It appears on the coat of arms drawn up in 1778 and on the state flag."}},{"@type":"Question","name":"What is the state flower of Pennsylvania?","acceptedAnswer":{"@type":"Answer","text":"Mountain laurel, adopted in 1933. It blooms pink and white across the state's woodlands in late spring."}},{"@type":"Question","name":"Why is Pennsylvania called the Keystone State?","acceptedAnswer":{"@type":"Answer","text":"A keystone is the central wedge that locks an arch together. Pennsylvania sat in the geographic middle of the original thirteen states and was pivotal in both the Declaration of Independence and the ratification of the Constitution."}}]}</script>
 </head>
 <body class="legal-body">
 
@@ -99,23 +106,52 @@
     <p class="meta">Capital: Harrisburg · Northeast · Admitted 1787</p>
   </section>
   <div class="ss-main">
-    <h2>Pennsylvania's official symbols</h2>
+    <p>Pennsylvania's most recognisable symbol is the keystone, the wedge-shaped block at the top of an arch that holds the whole structure together. The image attached itself to the state around 1800, when speakers and newspapers began calling Pennsylvania the keystone of the federal union: it sat in the geographic middle of the original thirteen, and its delegation swung decisively toward independence in 1776 and toward the Constitution in 1787. The shape is now stamped on highway signs, state agency logos and licence plates, though it has never been formally adopted by statute.</p>
 
-    <div class="symbol-grid">
-      <div class="card"><div class="label">Nickname</div><div class="value">The Keystone State</div></div>
-      <div class="card"><div class="label">State bird</div><div class="value">Ruffed Grouse</div></div>
-      <div class="card"><div class="label">State flower</div><div class="value">Mountain Laurel</div></div>
-      <div class="card"><div class="label">State tree</div><div class="value">Eastern Hemlock</div></div>
-      <div class="card"><div class="label">State motto</div><div class="value">Virtue, liberty, and independence</div></div>
-      <div class="card"><div class="label">State song</div><div class="value">Pennsylvania</div></div>
-      <div class="card"><div class="label">Capital</div><div class="value">Harrisburg</div></div>
-      <div class="card"><div class="label">Statehood year</div><div class="value">1787</div></div>
+    <h2>Official state symbols</h2>
+    <div class="table-wrap">
+    <table class="sym-table">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Year adopted</th></tr></thead>
+      <tbody>
+        <tr><td>Nickname</td><td>The Keystone State</td><td></td></tr>
+        <tr><td>Motto</td><td>Virtue, Liberty and Independence</td><td>1778</td></tr>
+        <tr><td>Bird</td><td>Ruffed grouse</td><td>1931</td></tr>
+        <tr><td>Flower</td><td>Mountain laurel</td><td>1933</td></tr>
+        <tr><td>Tree</td><td>Eastern hemlock</td><td>1931</td></tr>
+        <tr><td>Flag</td><td>Coat of arms on a blue field</td><td>1907</td></tr>
+        <tr><td>Seal</td><td>Ship, plough and wheat sheaves</td><td>1791</td></tr>
+        <tr><td>Song</td><td>"Pennsylvania"</td><td>1990</td></tr>
+        <tr><td>Animal</td><td>White-tailed deer</td><td>1959</td></tr>
+        <tr><td>Dog</td><td>Great Dane</td><td>1965</td></tr>
+        <tr><td>Fish</td><td>Brook trout</td><td>1970</td></tr>
+        <tr><td>Insect</td><td>Pennsylvania firefly</td><td>1974</td></tr>
+        <tr><td>Beverage</td><td>Milk</td><td>1982</td></tr>
+        <tr><td>Fossil</td><td>Phacops rana (a trilobite)</td><td>1988</td></tr>
+        <tr><td>Ship</td><td>US Brig Niagara</td><td>1988</td></tr>
+        <tr><td>Amphibian</td><td>Eastern hellbender</td><td>2019</td></tr>
+      </tbody>
+    </table>
     </div>
 
-    <h2>About state symbols</h2>
-    <p>Every US state has officially designated symbols, usually a bird, flower, tree, motto, and song, chosen to represent the state's identity, history, or natural environment. These symbols often appear on state license plates, state quarters, government seals, and tourism materials.</p>
+    <!-- PLACEHOLDER_LEARN_MID -->
 
-    <h2>How Pennsylvania got its nickname</h2><p>Pennsylvania is best known as "The Keystone State." The nickname reflects the state's signature feature.</p>
+    <h2>What is on the Pennsylvania state flag</h2>
+    <p>The Pennsylvania flag is a blue field, matched to the blue of the United States flag, carrying the full state coat of arms. Two black draft horses stand rearing on either side of a shield. The shield is divided into three parts: a ship under full sail for commerce, a plough for the state's cleared farmland, and three golden sheaves of wheat for its harvests. A bald eagle sits above the shield. Below it a stalk of Indian corn crosses an olive branch, standing for prosperity and peace, and a red ribbon carries the motto Virtue, Liberty and Independence.</p>
+    <p>Militia units carried versions of this banner from the 1790s onward, but the designs drifted apart from regiment to regiment. In 1907 the General Assembly passed a law fixing the proportions and the exact arms so every Pennsylvania flag would look the same. The coat of arms itself is older, first drawn up by Caleb Lownes of Philadelphia in 1778.</p>
+
+    <h2>The two sides of the state seal</h2>
+    <p>Pennsylvania's seal was authorised in 1791 and repeats the arms on its obverse: the ship, the plough, the wheat sheaves, the eagle, and a stalk of corn crossed with an olive branch, ringed by the words "Seal of the State of Pennsylvania".</p>
+    <p>The reverse is far less familiar and far more aggressive. It shows a woman in classical dress, representing Liberty, holding a sword in her left hand and treading on a lion that has been thrown down. The lion stands for tyranny, meaning British rule, and the legend reads "Both Can't Survive". The reverse is a working part of the seal, not decoration: it is pressed into documents by the Department of State as a counterseal.</p>
+
+    <h2>Symbols that surprise people</h2>
+    <ul>
+      <li><strong>A state dog with an art-historical basis.</strong> The Great Dane was adopted in 1965 because a well-known portrait of William Penn shows him with one, and Penn is thought to have kept the breed at Pennsbury Manor.</li>
+      <li><strong>An official state electric locomotive.</strong> In 1987 the legislature designated GG1 number 4859, a Pennsylvania Railroad electric engine, and separately named the K4s the state steam locomotive. 4859 is preserved in Harrisburg.</li>
+      <li><strong>A state beautification and conservation plant.</strong> Penngift crownvetch, adopted in 1982, was planted along thousands of miles of Pennsylvania highway banks to hold the soil.</li>
+      <li><strong>A state toy.</strong> The Slinky, invented by naval engineer Richard James in Philadelphia during the Second World War and manufactured in Hollidaysburg, is the official state toy.</li>
+      <li><strong>A state amphibian chosen for water policy.</strong> The eastern hellbender, a giant stream salamander that only survives in clean, fast water, was adopted in 2019 after a years-long campaign by high school students who used it to argue for watershed protection.</li>
+      <li><strong>A state ship still afloat.</strong> The US Brig Niagara, Oliver Hazard Perry's relief flagship at the Battle of Lake Erie in 1813, sails out of Erie and was named the state ship in 1988.</li>
+    </ul>
 
     <div class="cta-card">
       <h3>Symbols and nicknames in the daily puzzle</h3>
@@ -123,9 +159,10 @@
       <a href="/">Play today's puzzle →</a>
     </div>
 
-    <h2>Bordering states</h2><div class="related-grid"><a href="/states/ohio/">→ Ohio</a><a href="/states/west-virginia/">→ West Virginia</a><a href="/states/maryland/">→ Maryland</a><a href="/states/delaware/">→ Delaware</a><a href="/states/new-jersey/">→ New Jersey</a><a href="/states/new-york/">→ New York</a></div>
-    <h2>Explore further</h2><div class="related-grid"><a href="/states/pennsylvania/">→ Overview</a><a href="/states/pennsylvania/map/">→ Map</a><a href="/states/pennsylvania/history/">→ History</a><a href="/states/pennsylvania/geography/">→ Geography</a><a href="/states/pennsylvania/people/">→ People</a><a href="/states/pennsylvania/sports/">→ Sports</a></div>
+    <h2>Symbols of bordering states</h2><div class="related-grid"><a href="/states/ohio/symbols/">→ Ohio symbols</a><a href="/states/west-virginia/symbols/">→ West Virginia symbols</a><a href="/states/maryland/symbols/">→ Maryland symbols</a><a href="/states/delaware/symbols/">→ Delaware symbols</a><a href="/states/new-jersey/symbols/">→ New Jersey symbols</a><a href="/states/new-york/symbols/">→ New York symbols</a></div>
+    <h2>More about Pennsylvania</h2><div class="related-grid"><a href="/states/pennsylvania/">→ Overview</a><a href="/states/pennsylvania/map/">→ Map</a><a href="/states/pennsylvania/history/">→ History</a><a href="/states/pennsylvania/geography/">→ Geography</a><a href="/states/pennsylvania/people/">→ People</a><a href="/states/pennsylvania/sports/">→ Sports</a><a href="/states/pennsylvania/fun-facts/">→ Fun facts</a><a href="/states/pennsylvania/food/">→ Food</a></div>
   </div>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a></p>
