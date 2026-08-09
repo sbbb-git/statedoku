@@ -149,7 +149,7 @@ const Game = (() => {
     const correct = _grid.flat().filter((s,i) => {
       if (!s) return false;
       const r = Math.floor(i/3), c = i%3;
-      return _puzzle.solution[r][c] === s;
+      return _isValidForCell(r, c, s);
     }).length;
     const el = document.getElementById('score-display');
     if (el) el.textContent = `${correct} / 9`;
@@ -199,15 +199,17 @@ const Game = (() => {
         cell.setAttribute('tabindex', (_solved || _gameOver) ? '-1' : '0');
         if (placed) {
           const state     = _stateMap[placed];
-          const isCorrect = _puzzle.solution[r][c] === placed;
+          const isCorrect = _isValidForCell(r, c, placed);
           cell.classList.add(isCorrect ? 'correct' : 'wrong');
           if (isCorrect) {
-            cell.classList.add('locked');
-            cell.setAttribute('tabindex', '-1');
+            // Filled cells are no longer locked. Any answer satisfying both
+            // clues is accepted, so a player can spend a state that another
+            // cell also needed and must be able to take it back. Keep the cell
+            // focusable and describe it as editable rather than locked.
             const isGolden = _puzzle.goldenState && placed === _puzzle.goldenState;
             if (isGolden) cell.classList.add('golden');
             cell.setAttribute('aria-label',
-              `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]})${isGolden ? ' — 🌟 Golden State' : ''} — locked`);
+              `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]})${isGolden ? ' — 🌟 Golden State' : ''}. ${I18n.t('cell_editable_hint') || 'Activate to change or clear.'}`);
           } else {
             cell.setAttribute('aria-label', `${state.names[lang]} — wrong`);
           }
@@ -261,8 +263,11 @@ const Game = (() => {
 
   function _onCellClick(r, c) {
     if (_solved || _gameOver) return;
-    // Locked cells (already correct) can't be re-edited
-    if (_grid[r][c] && _puzzle.solution[r][c] === _grid[r][c]) return;
+    // Filled cells stay editable on purpose. Now that any answer satisfying
+    // both clues is accepted, a player can legitimately fill a cell with a
+    // state that another cell also needed, and the only way out of that is to
+    // take it back. Locking correct placements would trade "punished for being
+    // right" for "stuck with no escape", which is not an improvement.
     _selectedCell = { r, c };
     _renderCells();
     _openSearch(r, c);
@@ -356,8 +361,80 @@ const Game = (() => {
       }
     });
 
+    // Clear button, shown only when there is something to clear. This is the
+    // escape hatch that makes accepting every valid answer safe: a player who
+    // used a state that another cell also needed can take it back.
+    const clearBtn = document.getElementById('sp-clear');
+    if (clearBtn) {
+      const filled = !!_grid[r][c];
+      clearBtn.hidden = !filled;
+      clearBtn.textContent = I18n.t('clear_cell') || 'Clear this cell';
+      const fresh = clearBtn.cloneNode(true);
+      clearBtn.parentNode.replaceChild(fresh, clearBtn);
+      fresh.addEventListener('click', () => {
+        _grid[r][c] = null;
+        _closeSearch();
+        _selectedCell = null;
+        _renderCells();
+        _updateScore();
+        _saveProgress();
+        _announce(I18n.t('cell_cleared') || 'Cell cleared');
+      });
+    }
+
+    _positionSearchPanel();
     panel.classList.add('open');
     setTimeout(() => newInput.focus(), 80);
+  }
+
+  // Put the picker directly under the grid on desktop instead of pinned to the
+  // bottom of the viewport. On a tall screen the bottom-sheet position opened
+  // the input hundreds of pixels away from the cell being filled, so the eye
+  // had to travel the whole page on every move. Phones keep the bottom sheet:
+  // it is thumb-reachable and the on-screen keyboard pushes it up.
+  function _positionSearchPanel() {
+    const panel = document.getElementById('search-panel');
+    if (!panel) return;
+    const root = panel.style;
+
+    if (window.matchMedia('(max-width: 579px)').matches) {
+      root.removeProperty('--sp-top');
+      root.removeProperty('--sp-bottom');
+      return;
+    }
+
+    const grid = document.querySelector('.grid-wrapper') || document.querySelector('.grid-outer');
+    if (!grid) return;
+
+    const rect = grid.getBoundingClientRect();
+    const gap = 14;
+    const panelH = panel.offsetHeight || 240;
+    const below = rect.bottom + gap;
+
+    // innerHeight can be 0 in headless and embedded contexts, which would make
+    // every branch below fail closed. Fall back through the other viewport
+    // measures before giving up.
+    const vh = window.innerHeight || document.documentElement.clientHeight
+             || document.body.clientHeight || 0;
+    if (!vh) {
+      root.removeProperty('--sp-top');
+      root.setProperty('--sp-bottom', '24px');
+      return;
+    }
+
+    // Prefer just under the grid. If that would run off the bottom of the
+    // viewport, sit just above the grid instead so the panel is always fully
+    // visible without scrolling. If neither fits, fall back to the sheet.
+    if (below + panelH <= vh - 12) {
+      root.setProperty('--sp-top', below + 'px');
+      root.setProperty('--sp-bottom', 'auto');
+    } else if (rect.top - gap - panelH >= 12) {
+      root.setProperty('--sp-top', (rect.top - gap - panelH) + 'px');
+      root.setProperty('--sp-bottom', 'auto');
+    } else {
+      root.removeProperty('--sp-top');
+      root.setProperty('--sp-bottom', '24px');
+    }
   }
 
   function _closeSearch() {
@@ -404,23 +481,24 @@ const Game = (() => {
     const alreadyUsed = _grid.some((row, ri) => row.some((sid, ci) => sid === stateId && !(ri === r && ci === c)));
 
     if (validForCell && !alreadyUsed) {
-      // 3. Tentatively lock the cell and check if the puzzle remains solvable.
-      const trial = _grid.map(row => row.slice());
-      trial[r][c] = stateId;
-
-      if (!_isStillSolvable(trial)) {
-        // 4a. Valid for THIS cell but breaks the global solution. No life lost
-        //     — the player understood the clues but happened to pick a state
-        //     that conflicts with another cell. Give them a clear, kind nudge.
-        _closeSearch();
-        _selectedCell = null;
-        _renderCells();
-        _announce(I18n.t('valid_but_conflict') || 'That state fits these two clues, but it would leave another cell with no valid answer. Try something else.');
-        _showToast(I18n.t('valid_but_conflict_toast') || 'Fits this cell — but conflicts elsewhere. Pick again.');
-        return;
-      }
-
-      // 4b. Valid + puzzle still solvable → accept and lock.
+      // Any state that satisfies both visible clues is accepted, full stop.
+      //
+      // There used to be a solvability gate here that refused such a pick when
+      // it "conflicted elsewhere". That check could never do what its message
+      // claimed. puzzle.js only ships grids with a unique solution, so
+      // "still solvable" and "equals the canonical answer" are the same test,
+      // and the toast was really saying "you did not pick my answer" to a
+      // player who had reasoned correctly from the clues they could see.
+      //
+      // Measured over 365 generated puzzles: 28.5% of cells accept more than
+      // one correct state, 97.8% of days contain at least one, and a player
+      // filling the grid left to right hit the refusal in 53.8% of games while
+      // one filling most-constrained-first hit it in 0%. Identical knowledge,
+      // punished by turn order.
+      //
+      // _checkSolved already accepts any valid grid of nine distinct states as
+      // a win, so removing the gate simply lets the rule the game already
+      // believed in actually apply.
       _grid[r][c] = stateId;
 
       // Golden State detection: did the player just place the puzzle's secret
@@ -597,7 +675,7 @@ const Game = (() => {
       for (let c = 0; c < 3; c++) {
         const span = document.createElement('span');
         const s = _grid[r][c];
-        span.textContent = (s && _puzzle.solution[r][c] === s) ? '🟩' : (s ? '🟥' : '⬜');
+        span.textContent = (s && _isValidForCell(r, c, s)) ? '🟩' : (s ? '🟥' : '⬜');
         host.appendChild(span);
       }
     }
@@ -754,7 +832,7 @@ const Game = (() => {
     for (let r = 0; r < 3; r++) {
       for (let c = 0; c < 3; c++) {
         const s = _grid[r][c];
-        grid += (s && _puzzle.solution[r][c] === s) ? '🟩' : s ? '🟥' : '⬜';
+        grid += (s && _isValidForCell(r, c, s)) ? '🟩' : s ? '🟥' : '⬜';
       }
       grid += '\n';
     }
@@ -833,7 +911,7 @@ const Game = (() => {
     for (let r = 0; r < 3; r++) {
       for (let c = 0; c < 3; c++) {
         const s = _grid[r][c];
-        const correct = s && _puzzle.solution[r][c] === s;
+        const correct = s && _isValidForCell(r, c, s);
         const x = gridX + c * (cellSize + cellGap);
         const y = gridY + r * (cellSize + cellGap);
         ctx.fillStyle = correct ? '#22C55E' : (s ? '#DC2626' : '#1F2937');
@@ -1079,7 +1157,7 @@ const Game = (() => {
         for (let r = 0; r < 3; r++) {
           for (let c = 0; c < 3; c++) {
             const s = _grid[r][c];
-            if (s && _puzzle.solution[r][c] !== s) {
+            if (s && !_isValidForCell(r, c, s)) {
               _grid[r][c] = null;
               dirty = true;
             }

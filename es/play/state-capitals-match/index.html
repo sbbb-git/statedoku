@@ -20,7 +20,7 @@
   <meta name="keywords" content="juego empareja estados capitales">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
-  <link rel="canonical" href="https://statedoku.com/play/state-capitals-match/">
+  <link rel="canonical" href="https://statedoku.com/es/play/state-capitals-match/">
   <link rel="alternate" hreflang="en" href="https://statedoku.com/play/state-capitals-match/">
   <link rel="alternate" hreflang="en-US" href="https://statedoku.com/play/state-capitals-match/">
   <link rel="alternate" hreflang="en-GB" href="https://statedoku.com/play/state-capitals-match/">
@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://statedoku.com/es/"},{"@type":"ListItem","position":2,"name":"Jugar y Aprender","item":"https://statedoku.com/es/play/"},{"@type":"ListItem","position":3,"name":"Empareja Estados y Capitales","item":"https://statedoku.com/es/play/state-capitals-match/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Empareja Estados y Capitales","description":"Empareja los 10 estados con sus capitales.","url":"https://statedoku.com/es/play/state-capitals-match/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"es","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cómo se juega Empareja Estados y Capitales?","acceptedAnswer":{"@type":"Answer","text":"Empareja los 10 estados con sus capitales. Puntuaciones guardadas localmente; racha conservada entre días."}},{"@type":"Question","name":"¿Es gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí — 100% gratis, sin registro, sin anuncios."}},{"@type":"Question","name":"¿Funciona en móvil?","acceptedAnswer":{"@type":"Answer","text":"Sí — totalmente adaptado a teléfono, tableta y escritorio."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cómo se juega Empareja Estados y Capitales?","acceptedAnswer":{"@type":"Answer","text":"Empareja los 10 estados con sus capitales. Puntuaciones guardadas localmente; racha conservada entre días."}},{"@type":"Question","name":"¿Es gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí, 100% gratis, sin registro, sin anuncios."}},{"@type":"Question","name":"¿Funciona en móvil?","acceptedAnswer":{"@type":"Answer","text":"Sí, totalmente adaptado a teléfono, tableta y escritorio."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🏛️ CAPITALS</span>
@@ -226,12 +226,93 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+  <!-- seo-copy -->
+  <section class="sdx">
+    <p>Emparejar estado y capital en dos columnas entrena una memoria distinta a la de escribir la respuesta: aquí ves los diez nombres a la vez y puedes descartar. La tanda son diez parejas del oeste y el medio oeste, las que menos se estudian, y se cierra en un par de minutos.</p>
+
+    <h2>Cómo se juega</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+    <ul>
+      <li>Pulsa Empezar. A la izquierda quedan los diez estados y a la derecha las diez capitales, ambas columnas barajadas.</li>
+      <li>Toca primero un estado y después su capital. Si la pareja es correcta, las dos fichas se quedan fijas y sube el contador Resuelto.</li>
+      <li>Si fallas, las dos fichas parpadean en rojo, se liberan y el contador Errores sube en uno. No pierdes la pareja, puedes reintentarla.</li>
+      <li>No hay vidas ni reloj: la partida solo acaba cuando resuelves las diez parejas. La puntuación final es diez menos tus errores.</li>
+      <li>Estrellas: tres con un error como máximo, dos hasta cuatro errores y una hasta siete.</li>
+      <li>Las diez parejas son siempre las mismas, lo que cambia en cada partida es el orden de las columnas. Eso convierte el juego en una lista corta y memorizable.</li>
+    </ul>
+
+    <h2>Qué mirar antes de tocar</h2>
+    <p>Empieza por las capitales que no se parecen a ninguna otra ficha de la columna: Boise, Cheyenne, Bismarck y Helena no comparten inicial ni sonido con nada más del tablero, así que resolverlas primero reduce el resto a un problema de seis parejas.</p>
+    <p>El error clásico es asumir que la capital es la ciudad más famosa del estado. En esta tanda solo cuatro capitales son además la ciudad más poblada de su estado: Boise, Jackson, Phoenix y Cheyenne. Las otras seis van perdiendo el pulso frente a una vecina más grande, Raleigh frente a Charlotte, Lincoln frente a Omaha, Santa Fe frente a Albuquerque, Helena frente a Billings, Saint Paul frente a Minneapolis y Bismarck frente a Fargo.</p>
+    <p>Cuidado también con Jackson, capital de Misisipi, que se confunde con Jacksonville, que está en Florida y no es capital de nada. Y con Santa Fe, la capital estatal fundada más antigua del país, que suele asociarse a Nuevo México solo cuando ya se ha descartado Albuquerque.</p>
+
+    <h2>Las diez parejas del tablero</h2>
+    <div class="sdx-tw">
+      <table>
+        <tr><th>Estado</th><th>Capital</th><th>Ciudad más poblada</th></tr>
+        <tr><td>Arizona</td><td>Phoenix</td><td>Phoenix</td></tr>
+        <tr><td>Idaho</td><td>Boise</td><td>Boise</td></tr>
+        <tr><td>Misisipi</td><td>Jackson</td><td>Jackson</td></tr>
+        <tr><td>Wyoming</td><td>Cheyenne</td><td>Cheyenne</td></tr>
+        <tr><td>Carolina del Norte</td><td>Raleigh</td><td>Charlotte</td></tr>
+        <tr><td>Nebraska</td><td>Lincoln</td><td>Omaha</td></tr>
+        <tr><td>Nuevo México</td><td>Santa Fe</td><td>Albuquerque</td></tr>
+        <tr><td>Montana</td><td>Helena</td><td>Billings</td></tr>
+        <tr><td>Minnesota</td><td>Saint Paul</td><td>Minneapolis</td></tr>
+        <tr><td>Dakota del Norte</td><td>Bismarck</td><td>Fargo</td></tr>
+      </table>
+    </div>
+
+    <h2>Sigue practicando</h2>
+    <p>Cuando las diez salgan sin errores, el siguiente escalón es escribir las capitales de memoria, sin columna de opciones.</p>
+    <div class="sdx-links">
+      <a href="/es/learn/capitales-de-estados/">Capitales de los 50 estados</a>
+      <a href="/es/learn/states-and-capitals/">Los 50 estados y sus capitales</a>
+      <a href="/es/play/state-capitals-typing/">Quiz Capitales</a>
+      <a href="/es/play/biggest-cities/">Quiz Ciudad más Grande</a>
+      <a href="/es/play/state-abbreviations/">Quiz Abreviaturas USPS</a>
+      <a href="/es/play/place-the-state/">Coloca el Estado</a>
+    </div>
+  </section>
+  <style>
+.sdx{max-width:760px;margin:26px auto 10px;padding:0 14px;line-height:1.65;color:var(--text,#1F2937)}
+.sdx h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.sdx p{margin:0 0 12px;font-size:.95rem}
+.sdx ul{margin:0 0 12px;padding-left:20px;font-size:.95rem}
+.sdx li{margin-bottom:6px}
+.sdx-tw{overflow-x:auto;margin:10px 0 14px}
+.sdx table{width:100%;border-collapse:collapse;font-size:.88rem;background:#fff}
+.sdx th,.sdx td{border:1px solid var(--border,#E2E8F0);padding:7px 9px;text-align:left;vertical-align:top}
+.sdx th{background:#F1F5F9;color:var(--navy,#0F2147);font-weight:800}
+.sdx-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:8px;margin:10px 0 4px}
+.sdx-links a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:600;font-size:.86rem;background:#fff}
+.sdx-links a:hover{border-color:var(--navy,#0F2147)}
+</style>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Leer más sobre este tema</h2>
       <a href="/es/learn/states-and-capitals/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States And Capitals</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Cómo se juega Empareja Estados y Capitales?</summary>
+      <p>Empareja los 10 estados con sus capitales. Puntuaciones guardadas localmente; racha conservada entre días.</p>
+    </details>
+    <details>
+      <summary>¿Es gratis?</summary>
+      <p>Sí, 100% gratis, sin registro, sin anuncios.</p>
+    </details>
+    <details>
+      <summary>¿Funciona en móvil?</summary>
+      <p>Sí, totalmente adaptado a teléfono, tableta y escritorio.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/es/play/">Jugar y Aprender</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

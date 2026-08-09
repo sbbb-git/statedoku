@@ -58,31 +58,47 @@
 <main class="legal-main">
   <article class="legal-page">
     <h1>Acerca de Statedoku</h1>
-    <p class="legal-meta">Un pequeño ritual diario que te enseña geografía americana.</p>
+    <p class="legal-meta">Un puzzle diario de geografía, hecho por una sola persona en París.</p>
 
-    <p>Bienvenido a <strong>Statedoku</strong>, un puzzle diario gratis para los que aman (o quieren aprender) la geografía estadounidense. Una cuadrícula al día, la misma para todo el mundo. La resuelves en 5 minutos, compartes tu grid emoji, vuelves mañana.</p>
+    <p><strong>Statedoku</strong> es un puzzle diario gratuito que se juega en una cuadrícula 3×3. Nueve celdas, tres pistas de fila, tres pistas de columna, y cada respuesta es uno de los 50 estados de EE.UU. Todo el mundo recibe la misma cuadrícula el mismo día, y aparece una nueva cada mañana.</p>
 
-    <h2>El puzzle</h2>
-    <p>Rellenas una cuadrícula 3×3 con estados de EE.UU. Cada fila y columna tiene una restricción, «frontera con México», «nombrado por un rey», «sin impuesto sobre la renta». Cada estado debe cumplir su fila y su columna. Tienes 3 errores. Eso es todo.</p>
+    <h2>Qué te pide la cuadrícula</h2>
 
-    <h2>Por qué lo hicimos</h2>
-    <p>Wordle demostró que el ritual diario adecuado puede enseñarte algo cada día sin parecer escuela. Queríamos lo mismo para la geografía americana. Tras un mes de Statedoku conocerás los 50 estados de memoria, y un montón de datos curiosos sobre cada uno.</p>
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
 
-    <h2>Qué lo hace diferente</h2>
+    <p>Cada fila y cada columna lleva una restricción real: «frontera con México», «sin impuesto sobre la renta», «admitido en la Unión después de 1900», «nombre de origen español». Un estado colocado arriba a la izquierda tiene que cumplir la pista de su fila y la de su columna a la vez. Ningún estado puede repetirse. Tienes tres errores, y una cuadrícula resuelta se comparte como un bloque de emojis, sin spoiler.</p>
+    <p>La doble condición es lo interesante. Saber que Arizona limita con México es un dato. Saber que limita con México <em>y</em> entró en la Unión en 1912 es un mapa.</p>
+
+    <h2>Quién lo hace</h2>
+    <p>Me llamo Sacha Bitoun. Soy desarrollador independiente, con base en París, Francia, y escribo yo mismo el código, los artículos y las restricciones del juego. Detrás de Statedoku no hay equipo, ni empresa, ni inversores. Si un dato de este sitio es falso, el error es mío, y un email basta para corregirlo.</p>
+
+    <h2>Cómo se genera el puzzle diario</h2>
+    <p>La cuadrícula no se escribe a mano ni se descarga de un servidor. La fecha se convierte en un número, ese número inicializa un generador pseudoaleatorio determinista, y el generador saca un trío de filas y un trío de columnas de un conjunto de unas 100 restricciones: regiones, fronteras, husos horarios, fechas de admisión, origen de los nombres, tramos de población, cordilleras.</p>
+    <p>Después, un solucionador con vuelta atrás prueba la cuadrícula candidata. Si más de una disposición de estados cumple las seis pistas, la cuadrícula se descarta y se prueba la siguiente combinación. Solo se publican las de solución única: todo se resuelve razonando, nunca adivinando. El generador también rechaza el tema de filas del día anterior y limita cuántos California, Nueva York y Texas caben en una misma solución. Como todo corre en tu navegador a partir de la fecha, cualquier cuadrícula del archivo se reconstruye igual.</p>
+
+    <h2>Qué más hay en el sitio</h2>
     <ul>
-      <li><strong>Cada cuadrícula tiene una sola solución.</strong> Nada de adivinar.</li>
-      <li><strong>~100 restricciones distintas</strong> rotan, regiones, fronteras, historia, origen de nombres, deportes, montañas, cinturones. Nunca dos días iguales.</li>
-      <li><strong>Mobile-first.</strong> Toca una celda, escribe tres letras, elige. Diseñado para pulgares.</li>
-      <li><strong>Tres idiomas</strong>, inglés, francés, español.</li>
-      <li><strong>Privacidad primero.</strong> Sin cuentas, sin tracking, sin base de datos. Tu progreso vive en tu dispositivo.</li>
+      <li>Más de 300 <a href="/es/learn/">artículos explicativos</a> en los tres idiomas: estados sin salida al mar, colegio electoral, la montaña más alta de cada estado, las trece colonias.</li>
+      <li>21 <a href="/es/play/">minijuegos</a>: capitales, siluetas, banderas, abreviaturas, lemas, husos horarios, swing states, orden de admisión.</li>
+      <li>Una ficha imprimible para cada uno de esos 21 juegos, en blanco y negro, pensada para clase.</li>
+      <li>Una <a href="/es/states/">página de referencia por estado</a>: capital, año de admisión, ciudad más grande, apodo, vecinos.</li>
+      <li>El <a href="/es/archive/">archivo</a> de cuadrículas pasadas y una sección de <a href="/facts/">datos</a>.</li>
+      <li>El juego y las páginas principales en inglés, francés y español.</li>
     </ul>
 
-    <h2>Contribuye</h2>
-    <p>Statedoku es un proyecto pequeño, hecho por amor a los puzzles diarios y a la geografía de EE.UU. Si encuentras un bug, una restricción te parece injusta, tienes una idea de nueva categoría o quieres ayudar con traducciones, escríbenos. Leemos cada mensaje y la mayoría de las buenas ideas acaban en producción.</p>
-    <p>Email: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a></p>
+    <h2>De dónde salen los datos</h2>
+    <p>Las cifras de población y superficie vienen de la Oficina del Censo de EE.UU. Las longitudes de ríos, las altitudes y los datos de relieve vienen del Servicio Geológico de EE.UU. Las abreviaturas de dos letras siguen el estándar del USPS. Las tres son fuentes federales estadounidenses de dominio público. Yo paso sus cifras al formato del juego y escribo los textos: los números son suyos, las frases son mías. Cuando una cifra está en disputa, la omito en vez de adivinarla.</p>
+
+    <h2>Cómo se financia y qué hace con tus datos</h2>
+    <p>Statedoku es gratis y paga su alojamiento con publicidad de Google AdSense. No hace falta cuenta para jugar: tu racha, tus estadísticas y tu cuadrícula sin terminar viven en el localStorage de tu navegador y nunca se me envían. Yo solo veo estadísticas agregadas: número de visitas, páginas vistas, país, tipo de dispositivo. El único dato identificable que guardo es una dirección de email, y solo si te apuntas al recordatorio diario. La <a href="/es/privacy/">política de privacidad</a> detalla cada servicio externo, cada cookie y cada plazo de conservación.</p>
+
+    <h2>Escribir</h2>
+    <p>Un bug, una restricción que te parezca injusta, una corrección factual, un fallo de traducción o una idea de minijuego: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>. Leo todos los mensajes.</p>
 
     <p class="legal-back"><a href="/es/">→ Jugar el puzzle de hoy</a></p>
   </article>
+
+  <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
 </main>
 
 <footer>

@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"No Income Tax Quiz","item":"https://statedoku.com/play/no-income-tax-states/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"No Income Tax Quiz","description":"Click all 9 US states with no state income tax.","url":"https://statedoku.com/play/no-income-tax-states/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play No Income Tax Quiz?","acceptedAnswer":{"@type":"Answer","text":"Click all 9 US states with no state income tax. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play No Income Tax Quiz?","acceptedAnswer":{"@type":"Answer","text":"Click all 9 US states with no state income tax. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">💰 NO TAX</span>
@@ -265,12 +265,87 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);font-size:.95rem;line-height:1.65}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.play-context h2:first-of-type{margin-top:12px}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 12px;padding-left:20px}
+.play-context li{margin-bottom:6px}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 14px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:440px;background:#fff}
+.play-context th,.play-context td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800}
+.play-context .next-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.play-context .next-links a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+<section class="play-context">
+  <p>No Income Tax Quiz asks you to click the nine states that levy no tax on personal income. It is the single most useful map in the relocation debate, and a full board takes about a minute and a half.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start and click states on the map. Each of the nine correct states fills green and advances the Solved counter. Any state that does tax income fills red and adds one to the mistake counter, which allows five. On the fifth mistake the run ends and the targets you missed are revealed in amber. There is no timer. The score becomes stars at 90, 60 and 30 percent of nine, so all nine earns three stars and six earns two. Best score and streak are stored in your browser.</p>
+
+  <h2>Where the five mistakes usually go</h2>
+  <p>The nine split into two clean clusters plus one outlier. West and northern plains: Alaska, Washington, Nevada, Wyoming, South Dakota. South: Texas, Tennessee, Florida. The outlier is New Hampshire, the only one in New England and the state most players never click.</p>
+  <ul>
+    <li>The big trap is confusing no income tax with no sales tax. Only five states have no general sales tax: Alaska, Delaware, Montana, New Hampshire and Oregon. Just Alaska and New Hampshire are on both lists, so Oregon, Montana and Delaware each cost you a mistake.</li>
+    <li>Alaska and New Hampshire are therefore the only two states with neither a personal income tax nor a statewide sales tax.</li>
+    <li>Nevada gets mixed up with Utah and Idaho, which both tax income, and Wyoming with Colorado and Montana, which do too.</li>
+    <li>Tennessee counts, but its neighbours do not. It used to tax interest and dividends under the Hall tax, repealed in full in 2021.</li>
+    <li>Washington counts even though it taxes long term capital gains. Its neighbour Oregon does not count.</li>
+  </ul>
+
+  <h2>The nine states and what each one actually does</h2>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>State</th><th>Region</th><th>Detail</th></tr></thead>
+      <tbody>
+<tr><td>Alaska</td><td>West</td><td>No state income tax and no statewide sales tax. Pays residents an annual Permanent Fund Dividend.</td></tr>
+<tr><td>Florida</td><td>South</td><td>No income tax, written into the state constitution.</td></tr>
+<tr><td>Nevada</td><td>West</td><td>No income tax. State revenue leans heavily on sales and gaming taxes.</td></tr>
+<tr><td>New Hampshire</td><td>Northeast</td><td>Its tax on interest and dividends was phased out and ended after 2024. No sales tax either.</td></tr>
+<tr><td>South Dakota</td><td>Midwest</td><td>No income tax and no corporate income tax.</td></tr>
+<tr><td>Tennessee</td><td>South</td><td>The Hall tax on interest and dividends was fully repealed in 2021.</td></tr>
+<tr><td>Texas</td><td>South</td><td>No income tax, barred by a 2019 constitutional amendment.</td></tr>
+<tr><td>Washington</td><td>West</td><td>No income tax, but it does tax long term capital gains, a levy upheld by the state supreme court in 2023.</td></tr>
+<tr><td>Wyoming</td><td>West</td><td>No income tax and no corporate income tax.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Keep going</h2>
+  <div class="next-links">
+    <a href="/learn/no-income-tax/">States with no income tax</a>
+    <a href="/learn/cheapest-states-to-live/">Cheapest states to live in</a>
+    <a href="/play/place-the-state/">Place the State</a>
+    <a href="/play/border-states/">Border States Quiz</a>
+    <a href="/play/state-nicknames/">State Nicknames</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/no-income-tax/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /No Income Tax</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play No Income Tax Quiz?</summary>
+      <p>Click all 9 US states with no state income tax. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"Swing States Quiz","item":"https://statedoku.com/play/swing-states/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Swing States Quiz","description":"Click all 7 swing states of 2024 on the US map.","url":"https://statedoku.com/play/swing-states/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Swing States Quiz?","acceptedAnswer":{"@type":"Answer","text":"Click all 7 swing states of 2024 on the US map. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Swing States Quiz?","acceptedAnswer":{"@type":"Answer","text":"Click all 7 swing states of 2024 on the US map. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">⚖️ SWING</span>
@@ -265,12 +265,74 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.pgx{max-width:760px;margin:22px auto 0;padding:0 14px}.pgx h2{font-size:1.32rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.015em;margin:26px 0 10px;line-height:1.25}.pgx p{color:var(--text-2,#475569);line-height:1.68;font-size:.96rem;margin:0 0 12px}.pgx strong{color:var(--navy,#0F2147);font-weight:800}.pgx a{color:var(--navy,#0F2147);font-weight:700}.pgx-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 14px;border-radius:10px}.pgx table{width:100%;min-width:420px;border-collapse:collapse;font-size:.88rem;background:#fff}.pgx th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:9px 11px;border:1px solid #E2E8F0}.pgx td{padding:9px 11px;border:1px solid #E2E8F0;color:var(--text-2,#475569);line-height:1.5;vertical-align:top}.pgx-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:12px 0 4px}.pgx-links a{display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:700;font-size:.88rem;background:#fff}.pgx-links a:hover{background:#F8FAFC}</style>
+<section class="pgx">
+  <p>Seven states, one blank map, no labels. This drills two things at once: which states both campaigns actually contested in 2024, and where they sit on the map without a name printed on them. A round takes well under a minute.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start, then click states directly on the map. A correct state fills green and the Solved counter moves up. A wrong click fills red and costs one of your five mistakes. Hit five mistakes and the map reveals any swing states you had not found in gold, then the round ends. Find all seven and you finish immediately.</p>
+  <p>Your score is states found out of seven. Seven earns three stars, five or six earns two, three or four earns one. The result and your daily streak are saved locally in your browser.</p>
+
+  <h2>Three clusters, not seven states</h2>
+  <p>Do not hunt for seven separate states. Learn three groups and the map becomes trivial.</p>
+  <p><strong>The Blue Wall three.</strong> Michigan, Pennsylvania and Wisconsin. All three voted the same way in 2016, reversed in 2020, and reversed again in 2024, which is why they get the most campaign spending. Michigan is the only one of the three with two peninsulas, so it is the easiest to click accurately.</p>
+  <p><strong>The Sun Belt two in the west.</strong> Arizona and Nevada, side by side. Nevada carries only six electoral votes, the fewest of the seven, and Arizona sits directly to its southeast.</p>
+  <p><strong>The Southeast two.</strong> Georgia and North Carolina. Not South Carolina, which is wedged between them and is the single most common wrong click on this map. Not Virginia and not Florida either.</p>
+  <p>The other wrong clicks worth naming: Ohio and Minnesota. Both were competitive in past cycles and both sit next to genuine 2024 battlegrounds, so they attract stray clicks that cost mistakes.</p>
+
+  <h2>What the seven are worth</h2>
+  <p>Together these states carried 93 electoral votes in 2024, which is why a campaign can concentrate on seven maps and ignore the other forty three states.</p>
+  <div class="pgx-table-wrap">
+  <table>
+    <thead><tr><th>State</th><th>Electoral votes</th><th>2016</th><th>2020</th><th>2024</th></tr></thead>
+    <tbody>
+      <tr><td>Pennsylvania</td><td>19</td><td>R</td><td>D</td><td>R</td></tr>
+      <tr><td>Georgia</td><td>16</td><td>R</td><td>D</td><td>R</td></tr>
+      <tr><td>North Carolina</td><td>16</td><td>R</td><td>R</td><td>R</td></tr>
+      <tr><td>Michigan</td><td>15</td><td>R</td><td>D</td><td>R</td></tr>
+      <tr><td>Arizona</td><td>11</td><td>R</td><td>D</td><td>R</td></tr>
+      <tr><td>Wisconsin</td><td>10</td><td>R</td><td>D</td><td>R</td></tr>
+      <tr><td>Nevada</td><td>6</td><td>D</td><td>D</td><td>R</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Two patterns fall out of that table. North Carolina is the only one of the seven that has not changed party since 2012, which is why it is often described as leaning rather than swinging. Nevada is the opposite case: it held steady through 2008, 2012, 2016 and 2020 before flipping in 2024, so it joined the list late.</p>
+
+  <h2>Go deeper</h2>
+  <p>The background on how these seven came to dominate the map is in <a href="/learn/swing-states/">swing states explained</a>, and the arithmetic behind the 270 threshold is in <a href="/learn/electoral-college/">the electoral college guide</a>. Related games:</p>
+  <div class="pgx-links">
+    <a href="/play/electoral-college/">Electoral College Quiz</a>
+    <a href="/play/place-the-state/">Place the State</a>
+    <a href="/play/border-states/">Border States Quiz</a>
+    <a href="/play/states-connections/">States Connections</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/swing-states/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /Swing States</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play Swing States Quiz?</summary>
+      <p>Click all 7 swing states of 2024 on the US map. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

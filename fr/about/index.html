@@ -58,31 +58,47 @@
 <main class="legal-main">
   <article class="legal-page">
     <h1>À propos de Statedoku</h1>
-    <p class="legal-meta">Un petit rituel quotidien qui t'apprend la géo américaine.</p>
+    <p class="legal-meta">Un puzzle de géographie quotidien, fait par une seule personne à Paris.</p>
 
-    <p>Bienvenue sur <strong>Statedoku</strong>, un puzzle quotidien gratuit pour tous ceux qui aiment (ou veulent apprendre) la géographie américaine. Une grille par jour, la même pour tout le monde. Tu la résous en 5 minutes, tu partages ta grille emoji, tu reviens demain.</p>
+    <p><strong>Statedoku</strong> est un puzzle quotidien gratuit qui se joue sur une grille 3×3. Neuf cases, trois indices de ligne, trois indices de colonne, et chaque réponse est l'un des 50 États américains. Tout le monde reçoit la même grille le même jour, renouvelée chaque matin.</p>
 
-    <h2>Le puzzle</h2>
-    <p>Tu remplis une grille 3×3 avec des États américains. Chaque ligne et chaque colonne a une contrainte, « frontière avec le Mexique », « nommé d'après un roi », « sans impôt sur le revenu ». Chaque État doit satisfaire à la fois sa ligne et sa colonne. Tu as droit à 3 erreurs. C'est tout.</p>
+    <h2>Ce que la grille te demande</h2>
 
-    <h2>Pourquoi on l'a fait</h2>
-    <p>Wordle a prouvé que le bon petit rituel peut t'apprendre quelque chose chaque jour sans ressembler à de l'école. On voulait pareil pour la géographie américaine. Au bout d'un mois de Statedoku, tu connais les 50 États sur le bout des doigts, et plein d'anecdotes bizarres sur chacun.</p>
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
 
-    <h2>Ce qui le distingue</h2>
+    <p>Chaque ligne et chaque colonne porte une vraie contrainte : « frontière avec le Mexique », « sans impôt sur le revenu », « admis dans l'Union après 1900 », « nom d'origine espagnole ». Un État posé en haut à gauche doit satisfaire l'indice de sa ligne et celui de sa colonne. Aucun État ne peut servir deux fois. Tu as droit à trois erreurs, et une grille résolue se partage en emojis, sans spoiler.</p>
+    <p>La double condition, c'est tout l'intérêt. Savoir que l'Arizona borde le Mexique, c'est une info. Savoir qu'il borde le Mexique <em>et</em> qu'il est entré dans l'Union en 1912, c'est une carte.</p>
+
+    <h2>Qui le fabrique</h2>
+    <p>Je m'appelle Sacha Bitoun. Je suis développeur indépendant, basé à Paris, et j'écris moi-même le code, les articles et les contraintes du jeu. Il n'y a derrière Statedoku ni équipe, ni société, ni investisseur. Si un fait est faux ici, c'est mon erreur, et un email suffit à le corriger.</p>
+
+    <h2>Comment la grille du jour est générée</h2>
+    <p>La grille n'est ni écrite à la main ni téléchargée depuis un serveur. La date est convertie en nombre, ce nombre initialise un générateur pseudo-aléatoire déterministe, qui tire un triplet de lignes et un triplet de colonnes dans un ensemble d'une centaine de contraintes : régions, frontières, fuseaux horaires, dates d'admission, origine des noms, tranches de population, massifs montagneux.</p>
+    <p>Un solveur par retour sur trace teste ensuite la grille candidate. Si plus d'une disposition d'États satisfait les six indices, la grille est jetée et la combinaison suivante essayée. Seules les grilles à solution unique sont publiées : tout se résout par déduction, jamais au hasard. Le générateur refuse aussi le thème de lignes de la veille, et limite le nombre de Californie, New York et Texas dans une même solution. Comme tout tourne dans ton navigateur à partir de la seule date, n'importe quelle grille des archives se reconstruit à l'identique.</p>
+
+    <h2>Ce qu'il y a d'autre sur le site</h2>
     <ul>
-      <li><strong>Chaque grille a une seule solution.</strong> Aucun hasard.</li>
-      <li><strong>~100 contraintes différentes</strong> tournent, régions, frontières, histoire, origine des noms, sports, montagnes, ceintures. Pas deux jours pareils.</li>
-      <li><strong>Mobile first.</strong> Tape une case, écris 3 lettres, choisis. Conçu pour les pouces.</li>
-      <li><strong>Trois langues</strong>, anglais, français, espagnol.</li>
-      <li><strong>Privacy first.</strong> Aucun compte, aucun tracking, aucune base serveur. Ta progression reste sur ton appareil.</li>
+      <li>Plus de 300 <a href="/fr/learn/">articles explicatifs</a> dans les trois langues : États enclavés, collège électoral, plus haut sommet de chaque État, treize colonies.</li>
+      <li>21 <a href="/fr/play/">mini-jeux</a> : capitales, silhouettes, drapeaux, abréviations, devises, fuseaux horaires, swing states, ordre d'admission.</li>
+      <li>Une fiche imprimable pour chacun de ces 21 jeux, en noir et blanc, prévue pour la classe.</li>
+      <li>Une <a href="/states/">page de référence par État</a> : capitale, année d'admission, plus grande ville, surnom, voisins.</li>
+      <li>Les <a href="/fr/archive/">archives</a> des grilles passées et une section <a href="/facts/">faits</a>.</li>
+      <li>Le jeu et les pages principales en anglais, français et espagnol.</li>
     </ul>
 
-    <h2>Contribuer</h2>
-    <p>Statedoku est un petit projet, fait par amour des puzzles quotidiens et de la géographie américaine. Si tu trouves un bug, qu'une contrainte te semble injuste, que tu as une idée de nouvelle catégorie ou que tu veux aider sur les traductions, écris-nous. On lit tout, et la plupart des bonnes idées finissent en production.</p>
-    <p>Email : <a href="mailto:contact@statedoku.com">contact@statedoku.com</a></p>
+    <h2>D'où viennent les données</h2>
+    <p>Les chiffres de population et de superficie viennent du US Census Bureau. Les longueurs de fleuves, les altitudes et les données de relief viennent de l'US Geological Survey. Les abréviations à deux lettres suivent la norme de l'USPS. Ces trois sources fédérales américaines sont dans le domaine public. Je remets leurs chiffres au format du jeu et j'écris les textes moi-même : les nombres sont les leurs, les phrases sont les miennes. Quand un chiffre est contesté, je l'omets plutôt que de le deviner.</p>
+
+    <h2>Financement et données personnelles</h2>
+    <p>Statedoku est gratuit et paie son hébergement avec la publicité Google AdSense. Aucun compte n'est nécessaire : ta série, tes statistiques et ta grille en cours vivent dans le localStorage de ton navigateur et ne me sont jamais envoyées. Je ne vois que des statistiques agrégées : nombre de visites, pages consultées, pays, type d'appareil. La seule donnée identifiante que je conserve est une adresse email, et seulement si tu t'inscris au rappel quotidien. La <a href="/fr/privacy/">politique de confidentialité</a> liste chaque service tiers, chaque cookie et chaque durée de conservation.</p>
+
+    <h2>Écrire</h2>
+    <p>Un bug, une contrainte qui te paraît injuste, une correction factuelle, une faute de traduction ou une idée de mini-jeu : <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>. Je lis tous les messages.</p>
 
     <p class="legal-back"><a href="/fr/">→ Jouer au puzzle du jour</a></p>
   </article>
+
+  <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
 </main>
 
 <footer>

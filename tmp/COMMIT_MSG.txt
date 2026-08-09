@@ -1,107 +1,131 @@
-Deep SEO pass on Aug 7 data: rewrite 250 subtopic pages, 38 new pages, fix the uniqueness problem properly
+Puzzle: stop refusing correct answers. Plus site audit fixes and a 600-tweet bank.
 
-Covers everything since af5a6f0e. The earlier Aug 7 commit never landed, git
-add stalled on 1,300 files while agents were writing concurrently, so this
-one carries that work too.
+THE PUZZLE FIX
 
-THE ACTUAL PROBLEM, AND HOW IT WAS DIAGNOSED WRONG TWICE
+The game refused answers that satisfied both visible clues. The owner hit it,
+and it turns out to be the central rule rather than an edge case.
 
-AdSense flagged the site for low-value content. The first response was to
-noindex 813 doorway launchers, which was right. The second was to noindex all
-600 /states/<state>/<subtopic>/ pages, which was too broad. The third was to
-restore 250 of them because they were long, which was wrong for a different
-reason: length is not the test.
+js/game.js ran _isStillSolvable on a trial grid and rejected any placement that
+made the grid unsolvable, with a toast saying the answer conflicted elsewhere.
+That message could never be true. puzzle.js:348 only ships grids with a unique
+solution, so "keeps the grid solvable" and "equals the canonical answer" are
+mathematically the same test. The game was saying "you did not pick my answer"
+to players who had reasoned correctly.
 
-Measuring median pairwise 5-gram overlap across all 50 states per subtopic
-shows what was actually happening:
+Measured over 365 generated puzzles:
+  97.8% of days contain at least one cell where a correct answer is refused
+  28.5% of all cells accept more than one clue-satisfying state
+  24.9% of all valid answers get refused
+  53.8% of games hit a refusal when filling cells left to right
+   0.0% when filling most-constrained-cell first
 
-    history    1063 words   61.7% overlap
-    geography   842 words   59.1%
-    people      880 words   62.5%
+That last pair is the damning one. Identical knowledge was rewarded or punished
+by turn order alone.
 
-Long pages, generated from a template with the state name swapped in. That is
-the pattern Google penalises, and no amount of word count fixes it.
+Reproduction, today's grid: "Starts with M" x "Mountain timezone" accepts only
+Montana, and "Starts with M" x "Name ends in A" accepts Minnesota or Montana.
+Playing Montana in the second cell is correct by every visible clue and was
+silently rejected, cell left empty, score unchanged.
 
-WHAT CHANGED
+Fixed by deleting the gate and making "satisfies both clues" the definition of
+correct everywhere: _updateScore, _renderCells, the cell lock, the share emoji
+grid, the share text, the share image, and critically the reload scrub in
+_loadProgress, which would otherwise have wiped every valid non-canonical
+placement on refresh. _checkSolved already accepted any valid grid of nine
+distinct states as a win, with a comment saying so, so the rule the code
+already believed in can finally apply.
 
-All five subtopics with demand were rewritten so each page is genuinely about
-its own state. Measured after:
+Accepting every valid answer means a player can spend a state another cell
+needed, so filled cells are now editable and the picker has a Clear button.
+Without that the fix would have traded "punished for being right" for "stuck
+with no way out". Cells stay keyboard reachable, the not-allowed cursor is
+gone, and the aria-label says the cell can be changed rather than that it is
+locked. The two conflict strings are deleted from all three languages so
+nobody wires them back up.
 
-    geography  59.1% -> 4.0%     symbols   59% -> 7.9%
-    people     62.5% -> 3.9%     fun-facts ~55% -> 7.5%
-    history    61.7% -> 3.6%
+Verified in a browser end to end: Montana accepted, cell reopens, Clear empties
+it and returns the score to 0/9, Minnesota accepted in its place, and the
+placement survives a reload.
 
-Minnesota geography, the single most-cited page on the site at 987 AI
-citations plus 797 impressions at position 6.6, now opens on the Northwest
-Angle: 123 square miles unreachable without crossing into Manitoba, the
-northernmost land in the contiguous 48, a border post that is a shed with a
-videophone, all of it caused by an error in the 1783 Treaty of Paris traced
-back to John Mitchell's 1755 map. That is what these pages should have been.
+PUZZLE UI
 
-map and sports stay noindexed permanently. No citation evidence, and the
-state hub already serves the intent. economy, food, weather, travel and
-elections stay out too, 138-237 words with no demand worth the rewrite.
+The onboarding tooltip sat at top: 70px, directly over the column header row,
+completely hiding the middle constraint. It now sits below the grid with the
+arrow pointing up. Verified: zero header overlap.
 
-NEW PAGES, ALL EVIDENCE-BACKED
+The state picker is a bottom sheet, which is right on a phone and wrong on a
+desktop, where it opened roughly 400px below the cell being filled. On screens
+at least 580px wide it is now positioned from the grid's measured geometry:
+below the grid when there is room, above it when there is not, falling back to
+the sheet on short viewports. Verified against real page geometry at 900, 768,
+650 and 500px.
 
-38 pages, each justified by a query in the Aug 7 exports rather than by
-completing a set. Generating all 50 abbreviation codes per language would
-have repeated the doorway mistake, so only codes with individual demand got
-a page:
+SITE AUDIT FIXES
 
-  18 EN /learn/what-state-is-<code>/     "what state is mo" 405 impressions
-                                         at position 5.3, "is pa pennsylvania
-                                         or philadelphia" 277 AI citations
-                                         at 44.5% share
-  12 ES /es/learn/estado-eeuu-abreviatura-<code>/
-   6 ES /es/learn/<city>-es-un-estado/   "is miami a state" 141 citations
-   1 FR /fr/learn/liste-des-50-etats/    100% AI citation share, no page
-   1 ES /es/learn/lista-de-los-50-estados/   82.3% share, no page
+Six parallel audits of the live site produced these, all verified before fixing:
 
-Each abbreviation page is built on its own code's collision history rather
-than a template. MD lost MA to Massachusetts inside the eight-state M block
-and fell back to the Md. dateline form. TX is first-and-last because
-Tennessee took TE. NV lost NE to Nebraska. Measured overlap between siblings
-is 0.4 to 4.5 percent.
+- Created 404.html. Every nonexistent URL was returning 200 with the full
+  homepage, because Cloudflare Pages falls back to SPA mode without one. That
+  is an unbounded set of duplicate 200-status URLs during a low-value-content
+  review, and it silently masked every broken link on the site.
+- 588 Spanish and French pages had rel=canonical pointing at their English
+  equivalent while also declaring themselves the es/fr hreflang alternate. The
+  two signals cancel: Google honours the canonical and drops the translation.
+- 262 pages carried FAQPage structured data whose questions appeared nowhere on
+  the page. Markup-only FAQ is what draws a spammy-structured-markup manual
+  action. The answers already existed in the JSON-LD, so they are now rendered
+  as a real accordion, 1,192 questions across those pages. Zero pages remain in
+  breach.
+- 375 em-dashes survived inside JSON-LD because the earlier strip skipped
+  script blocks. That text is exactly what Google renders in rich results.
+  Fixed by parsing and re-serialising each block, so all 3,729 still validate.
+- 48 titles had been cut mid-word by an over-eager 62-character trim, leaving
+  half-words and unclosed parentheses. Recovered from og:title where available
+  and re-trimmed at word boundaries, never ending on a dangling article.
+- 168 links from Spanish and French pages pointed at English slugs inside their
+  own language tree. 41 hreflang alternates pointed at files that do not exist.
+- 19 meta descriptions had boilerplate spliced mid-word at apostrophes.
+- 4 pages referenced /styles/learn.css, a path that has never existed, so they
+  rendered with no site stylesheet at all.
+- One title contained a raw unclosed anchor tag injected by an auto-linker.
+- /launch/ now 301s to the homepage. It was the pre-launch teaser, 92 words,
+  still indexed two months after launch.
+- robots.txt disallows /tmp/, the www to apex redirect is uncommented, and the
+  duplicated /play/ CSP block is removed from _headers so the middleware is the
+  single source. Emitting it twice made browsers enforce the stricter of the
+  two, which is what would break the embeddable widgets.
 
-STATEHOOD ANSWERS AND THE 44K QUERY
+CONTENT
 
-"estadidad de wyoming" is the largest single query on the site: 44,449
-impressions at position 3.6 with 16 clicks, a 0.04% CTR, and separately the
-top AI grounding query at 1,631 citations. The page ranked and never answered
-the question. All 50 Spanish state pages now carry a direct-answer statehood
-block with the exact admission date, statehood number and prior territorial
-status, plus a matching FAQPage entry. Wyoming's title and description were
-rewritten around statehood, the other 49 keep theirs since the data does not
-show statehood as their dominant intent.
+142 thin indexable pages expanded: 14 region pages from ~130 words to 782-962,
+62 learn pages to 612-846, 63 game pages to 514-697 with real strategy content
+around the game rather than padding, and 3 About pages to ~698. An About page
+is one a human reviewer actually opens.
 
-REFERENCE CLUSTER
+61 post-event World Cup pages noindexed. The tournament ended July 19, those
+pages are under 400 words, the audit found them orphaned, and their AI citation
+share was 1 to 5%. The 45 substantial ones stay indexed.
 
-/learn/states-and-capitals/ 944 -> 1,649 words with ItemList JSON-LD over all
-50 states, a statehood-order table and an abbreviation grid.
-/learn/13-colonies/ 687 -> 960 words with ItemList and a section answering
-"which states were NOT among the 13", a query the page never served.
+Sitemap 634 to 819 URLs, deduped at source, per-city pages dropped since all
+101 are noindexed and listing them submitted URLs that then say do not index.
 
-Both already hold 91-100% AI citation share on their query cluster while
-ranking 5-9 in search. The gap was structure, not authority.
+TWITTER BOT
 
-HOUSEKEEPING
+Replaced the runtime Anthropic call with a pre-generated bank of 600 tweets at
+data/tweets.json, written in one pass across 12 angles of 50, interleaved so no
+two consecutive posts share a theme. 600 unique, max 237 characters, validated
+against the voice rules. The bank covers 300 days at two posts a day and wraps
+rather than failing.
 
-- Sitemap 634 -> 920 URLs, now deduped at source. Eight duplicate <loc>
-  entries existed, two of them predating this work.
-- /launch/ 301s to the homepage. It was the pre-launch teaser, still indexed
-  two months after launch, 92 words, titled "Launches Monday June 1".
-- states/oklahoma/elections/ and states/alaska/weather/ had escaped the
-  noindex sweep. Caught by a new filesystem-to-sitemap reconciliation script.
-- 3,155 em-dashes stripped across 637 files. Agents do not hold that rule
-  reliably, so it is enforced by a deterministic pass instead.
+X moved off fixed Basic plans to pay-per-use in 2026 at 0.015 USD per post and
+0.20 USD if the post contains a link, so SKIP_LINK_TWEETS lets the cost be
+dialled from about 3.50 USD a month down to 0.70. The dead prompt-building and
+Anthropic code is removed, 498 lines down to 235. humanize() stays as a
+backstop on the bank and on manual ?text= posts.
 
-TOOLING ADDED
+DATA
 
-tmp/reindex-expanded.py now gates on two conditions, not one: a page needs
-600+ words AND its topic must measure under 25% median overlap. The topic
-gate is what would have prevented the wrong call earlier, since it rejects a
-whole subtopic on similarity even when every page is long enough.
-
-tmp/sitemap-audit.py reconciles the filesystem against the served sitemap in
-both directions and exits non-zero on any discrepancy.
+South Carolina had capitalIsLargest true with largestCity Columbia. Charleston
+overtook Columbia at the 2020 census, so the count of states where the capital
+is also the largest city is 17, not 18. Not a puzzle constraint, so no gameplay
+impact, but it was feeding content.

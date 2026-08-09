@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"Border States Quiz","item":"https://statedoku.com/play/border-states/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Border States Quiz","description":"Click all states bordering Canada or Mexico on the US map.","url":"https://statedoku.com/play/border-states/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Border States Quiz?","acceptedAnswer":{"@type":"Answer","text":"Click all states bordering Canada or Mexico on the US map. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Border States Quiz?","acceptedAnswer":{"@type":"Answer","text":"Click all states bordering Canada or Mexico on the US map. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🌎 BORDERS</span>
@@ -265,12 +265,98 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);font-size:.95rem;line-height:1.65}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.play-context h2:first-of-type{margin-top:12px}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 12px;padding-left:20px}
+.play-context li{margin-bottom:6px}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 14px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:440px;background:#fff}
+.play-context th,.play-context td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800}
+.play-context .next-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.play-context .next-links a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+<section class="play-context">
+  <p>Border States Quiz builds recall of the northern tier and the southwest by making you find all 17 states that touch Canada or Mexico on a live map. Thirteen sit on the Canadian side, four on the Mexican side, and a clean board takes two to three minutes.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start, then click states straight on the map. A correct state fills green and the Solved counter climbs toward 17. A wrong state fills red and adds one to the mistake counter, which allows five. Hit five mistakes and the run stops, and every target you had not yet found is revealed in amber so you can study the gaps. There is no clock and no penalty for thinking. Your final tally scores as stars at 90, 60 and 30 percent of 17, and both your best result and your daily streak are kept in your browser.</p>
+
+  <h2>Sweep the border, do not hunt at random</h2>
+  <p>Work west to east along the 49th parallel first: Washington, Idaho, Montana, North Dakota, Minnesota. Then take the Great Lakes run of Michigan, Ohio, Pennsylvania and New York, then New England with Vermont, New Hampshire and Maine, then Alaska in the inset. That is all 13.</p>
+  <ul>
+    <li>Ohio and Pennsylvania are the two most commonly missed. Neither touches Canadian soil, both meet Ontario across the Lake Erie water boundary, and both count here.</li>
+    <li>Wisconsin, Illinois and Indiana are the classic wasted clicks. Lake Michigan lies entirely inside the United States, and Wisconsin's Lake Superior boundary stops short of Ontario.</li>
+    <li>New Hampshire reads as coastal New England, but its northern tip meets Quebec. Click it.</li>
+    <li>Minnesota's Northwest Angle is the only piece of the lower 48 that sits north of the 49th parallel.</li>
+    <li>Alaska is drawn in the bottom left inset and is forgotten more often than any other target. It borders Yukon and British Columbia.</li>
+    <li>Maine is the only state in the country that borders a single other state, New Hampshire, while touching two Canadian provinces.</li>
+    <li>On the Mexican side there are only four, in order along the line: California, Arizona, New Mexico, Texas. Nevada and Utah never reach it, and the entire Texas stretch follows the Rio Grande.</li>
+  </ul>
+
+  <h2>All 17 border states and who they touch</h2>
+  <p>Seven Canadian provinces and one territory reach the United States border: British Columbia, Alberta, Saskatchewan, Manitoba, Ontario, Quebec, New Brunswick and the Yukon. Six Mexican states do: Baja California, Sonora, Chihuahua, Coahuila, Nuevo Leon and Tamaulipas.</p>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>State</th><th>Province or Mexican state</th></tr></thead>
+      <tbody>
+<tr><td>Alaska</td><td>Yukon, British Columbia</td></tr>
+<tr><td>Washington</td><td>British Columbia</td></tr>
+<tr><td>Idaho</td><td>British Columbia</td></tr>
+<tr><td>Montana</td><td>British Columbia, Alberta, Saskatchewan</td></tr>
+<tr><td>North Dakota</td><td>Saskatchewan, Manitoba</td></tr>
+<tr><td>Minnesota</td><td>Manitoba, Ontario</td></tr>
+<tr><td>Michigan</td><td>Ontario</td></tr>
+<tr><td>Ohio</td><td>Ontario, across Lake Erie</td></tr>
+<tr><td>Pennsylvania</td><td>Ontario, across Lake Erie</td></tr>
+<tr><td>New York</td><td>Ontario, Quebec</td></tr>
+<tr><td>Vermont</td><td>Quebec</td></tr>
+<tr><td>New Hampshire</td><td>Quebec</td></tr>
+<tr><td>Maine</td><td>Quebec, New Brunswick</td></tr>
+<tr><td>California</td><td>Baja California</td></tr>
+<tr><td>Arizona</td><td>Sonora, Baja California</td></tr>
+<tr><td>New Mexico</td><td>Chihuahua, Sonora</td></tr>
+<tr><td>Texas</td><td>Chihuahua, Coahuila, Nuevo Leon, Tamaulipas</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Keep going</h2>
+  <div class="next-links">
+    <a href="/learn/states-bordering-canada/">States bordering Canada</a>
+    <a href="/learn/states-bordering-mexico/">States bordering Mexico</a>
+    <a href="/play/place-the-state/">Place the State</a>
+    <a href="/play/state-silhouettes/">State Silhouettes</a>
+    <a href="/play/time-zones/">Time Zones Quiz</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/states-bordering-canada/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States Bordering Canada</a><a href="/learn/states-bordering-mexico/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States Bordering Mexico</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play Border States Quiz?</summary>
+      <p>Click all states bordering Canada or Mexico on the US map. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

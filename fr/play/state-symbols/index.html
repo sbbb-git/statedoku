@@ -226,6 +226,65 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Comment joue-t-on à Quiz Symboles d'États ?</summary>
+      <p>Associe oiseaux, fleurs et arbres officiels à leur État. Scores enregistrés localement ; streak conservé entre les jours.</p>
+    </details>
+    <details>
+      <summary>Le jeu est-il gratuit ?</summary>
+      <p>Oui — 100% gratuit, sans inscription, sans pub.</p>
+    </details>
+    <details>
+      <summary>Fonctionne-t-il sur mobile ?</summary>
+      <p>Oui — entièrement adapté téléphone, tablette et bureau.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+
+<!-- play-context -->
+<style>
+.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);line-height:1.65;font-size:.95rem}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);margin:26px 0 10px;letter-spacing:-.01em}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 14px;padding-left:20px}
+.play-context li{margin-bottom:7px}
+.play-context strong{color:var(--navy,#0F2147)}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 16px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:320px;background:#fff}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:8px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context td{padding:7px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context .xlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:10px 0 0}
+.play-context .xlinks a{display:block;padding:10px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}
+</style>
+<section class="play-context">
+<p>Ce quiz porte sur les trois symboles officiels que chaque État désigne, l'oiseau, la fleur et l'arbre. Le jeu couvre les 150 symboles des 50 États et en tire 15 par partie, soit deux à trois minutes.</p>
+
+<h2>Comment jouer</h2>
+<!-- PLACEHOLDER_LEARN_MID -->
+
+<p>La carte annonce le type de symbole puis son nom anglais, par exemple <strong>Fleur d'État : Camellia</strong>, et propose quatre États. Un point par bonne réponse, une vie perdue par erreur, fin de partie à la troisième erreur. Le score se lit sur 15, avec trois étoiles à partir de 14, deux à partir de 9 et une à partir de 5. Le meilleur score reste enregistré localement.</p>
+
+<h2>Le vrai piège, les symboles partagés</h2>
+<p>Un tiers des questions porte sur un symbole qui n'appartient pas à un seul État. Le Northern Cardinal est l'oiseau de sept États, le Western Meadowlark de six, le Mockingbird de cinq. Côté arbres, le Sugar Maple est revendiqué par quatre États et le White Oak par trois. La méthode qui marche est donc l'élimination, pas le rappel direct, balaye les quatre propositions et cherche celle qui appartient à la famille du symbole.</p>
+<ul>
+<li><strong>Les symboles à réponse unique se repèrent à leur nom.</strong> Saguaro Cactus Blossom et Palo Verde renvoient à l'Arizona, California Poppy et Redwood à la Californie, Willow Ptarmigan et Sitka Spruce à l'Alaska, Yellowhammer à l'Alabama.</li>
+<li><strong>Le Northern Cardinal couvre une zone compacte</strong>, de l'Illinois à la Virginie en passant par le Kentucky et l'Ohio. Si une seule de ces sept propositions est à l'écran, c'est elle.</li>
+<li><strong>Le Western Meadowlark est l'oiseau des Grandes Plaines et des Rocheuses</strong>, avec une exception hors zone, l'Oregon.</li>
+<li><strong>Le Mockingbird est un marqueur du Sud</strong>, Arkansas, Floride, Mississippi, Tennessee et Texas.</li>
+<li><strong>Deux États cumulent les doublons.</strong> Le Michigan partage son oiseau, sa fleur et son arbre avec d'autres États, le Dakota du Nord aussi. Pour ces deux États, aucun des trois symboles ne suffit à les désigner seuls.</li>
+</ul>
+
+<h2>Les symboles revendiqués par plusieurs États</h2>
+<div class="tbl-scroll"><table><thead><tr><th>Type</th><th>Symbole</th><th>Nombre d'États</th><th>États concernés</th></tr></thead><tbody><tr><td>Oiseau</td><td>Northern Cardinal</td><td>7</td><td>Illinois, Indiana, Kentucky, Caroline du Nord, Ohio, Virginie, Virginie-Occidentale</td></tr><tr><td>Oiseau</td><td>Western Meadowlark</td><td>6</td><td>Kansas, Montana, Nebraska, Dakota du Nord, Oregon, Wyoming</td></tr><tr><td>Oiseau</td><td>Mockingbird</td><td>5</td><td>Arkansas, Floride, Mississippi, Tennessee, Texas</td></tr><tr><td>Oiseau</td><td>American Robin</td><td>3</td><td>Connecticut, Michigan, Wisconsin</td></tr><tr><td>Oiseau</td><td>American Goldfinch</td><td>3</td><td>Iowa, New Jersey, Washington</td></tr><tr><td>Arbre</td><td>Sugar Maple</td><td>4</td><td>New York, Vermont, Virginie-Occidentale, Wisconsin</td></tr><tr><td>Arbre</td><td>White Oak</td><td>3</td><td>Connecticut, Illinois, Maryland</td></tr><tr><td>Arbre</td><td>Eastern White Pine</td><td>2</td><td>Maine, Michigan</td></tr><tr><td>Arbre</td><td>Tulip Poplar</td><td>2</td><td>Kentucky, Tennessee</td></tr><tr><td>Arbre</td><td>American Elm</td><td>2</td><td>Massachusetts, Dakota du Nord</td></tr><tr><td>Fleur</td><td>Violet</td><td>3</td><td>Illinois, New Jersey, Rhode Island</td></tr><tr><td>Fleur</td><td>Magnolia</td><td>2</td><td>Louisiane, Mississippi</td></tr><tr><td>Fleur</td><td>Mountain Laurel</td><td>2</td><td>Connecticut, Pennsylvanie</td></tr><tr><td>Fleur</td><td>Wild Prairie Rose</td><td>2</td><td>Iowa, Dakota du Nord</td></tr><tr><td>Fleur</td><td>Apple Blossom</td><td>2</td><td>Arkansas, Michigan</td></tr><tr><td>Fleur</td><td>Goldenrod</td><td>2</td><td>Kentucky, Nebraska</td></tr></tbody></table></div>
+<h2>Aller plus loin</h2>
+<p>L'article <a href="/fr/learn/liste-des-50-etats/">La liste des 50 États américains</a> reprend les mêmes données hors du chronomètre. Les jeux voisins ci-dessous utilisent le même moteur et le même barème d'étoiles.</p>
+<div class="xlinks"><a href="/fr/play/state-nicknames/">Quiz Surnoms d'États</a><a href="/fr/play/state-mottos/">Quiz Devises d'États</a><a href="/fr/play/state-flags/">Quiz Drapeaux d'États</a><a href="/fr/play/state-capitals-match/">Mémo Capitales d'États</a></div>
+</section>
+
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

@@ -58,31 +58,47 @@
 <main class="legal-main">
   <article class="legal-page">
     <h1>About Statedoku</h1>
-    <p class="legal-meta">A tiny daily ritual that teaches you US geography.</p>
+    <p class="legal-meta">A daily geography puzzle, made by one person in Paris.</p>
 
-    <p>Welcome to <strong>Statedoku</strong>, a free daily puzzle for anyone who likes US geography or wants to learn it. One grid a day, same one for everyone in the world. Solve it in five minutes, share your emoji grid, come back tomorrow.</p>
+    <p><strong>Statedoku</strong> is a free daily puzzle played on a 3×3 grid. Nine cells, three row clues, three column clues, and every answer is one of the 50 US states. Everyone in the world gets the same grid on the same date, and a new one appears every day.</p>
 
-    <h2>The puzzle</h2>
-    <p>Fill a 3×3 grid with US states. Each row and column has a constraint, "borders Mexico", "named after a king", "no state income tax". Every state must satisfy both its row and column. You get 3 mistakes. That's it.</p>
+    <h2>What the puzzle asks you to do</h2>
 
-    <h2>Why we made it</h2>
-    <p>Wordle proved that the right small ritual can teach you something every day without feeling like school. We wanted the same thing for American geography. After a month of Statedoku you'll know the 50 states cold, and a lot of weird trivia about them.</p>
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
 
-    <h2>What makes it different</h2>
+    <p>Each row and each column carries a real constraint: "borders Mexico", "no state income tax", "admitted to the Union after 1900", "name of Spanish origin". A state in the top left cell must satisfy the first row clue and the first column clue at once. No state may be used twice in a grid. You get three mistakes, and a solved grid shares as a spoiler-free block of emoji.</p>
+    <p>The double condition is the point. Knowing Arizona borders Mexico is a fact. Knowing it borders Mexico <em>and</em> joined the Union in 1912 is a map.</p>
+
+    <h2>Who makes it</h2>
+    <p>My name is Sacha Bitoun. I am a solo developer based in Paris, France, and I write the code, the articles and the puzzle constraints on this site myself. There is no team, no company and no investor behind it. If a fact here is wrong, it is my mistake, and email is the fastest way to get it fixed.</p>
+
+    <h2>How the daily puzzle is generated</h2>
+    <p>The grid is not hand written and not fetched from a server. The date is converted into a number that seeds a deterministic random generator, which draws one row triple and one column triple from a pool of about 100 constraints covering regions, borders, time zones, statehood dates, name origins, population bands and mountain ranges.</p>
+    <p>A backtracking solver then tests the candidate grid. If more than one arrangement of states satisfies all six clues, the grid is discarded and the next combination is tried. Only grids with exactly one valid solution are published, so every grid is solvable by reasoning, never by guessing. The generator also refuses to repeat the previous day's row theme, and limits how many of California, New York and Texas can appear in a single solution. Because all of this runs in your browser from the date alone, any past puzzle in the archive rebuilds exactly as it was.</p>
+
+    <h2>What else is on the site</h2>
     <ul>
-      <li><strong>Every grid has exactly one solution.</strong> No guessing.</li>
-      <li><strong>~100 different constraints</strong> rotate, regions, borders, history, name origin, sports, mountains, belts. No two days feel the same.</li>
-      <li><strong>Mobile-first.</strong> Tap a cell, type three letters, pick. Built for thumbs.</li>
-      <li><strong>Three languages</strong>, English, French, Spanish.</li>
-      <li><strong>No accounts required.</strong> Play instantly. Your progress saves locally on your device.</li>
+      <li>More than 300 <a href="/learn/">explainer articles</a> across the three languages, on landlocked states, the Electoral College, the highest mountain in each state and the thirteen colonies.</li>
+      <li>21 <a href="/play/">mini-games</a>: capital matching, state silhouettes, flags, abbreviations, mottos, time zones, swing states, admission order.</li>
+      <li>A printable worksheet for each of those 21 games, black on white, made for classroom handouts.</li>
+      <li>A <a href="/states/">reference page for each of the 50 states</a>, with capital, statehood year, largest city, nickname and neighbours.</li>
+      <li>An <a href="/archive/">archive</a> of previous grids and a <a href="/facts/">facts</a> section.</li>
+      <li>The game and the main pages in English, French and Spanish.</li>
     </ul>
 
-    <h2>Get involved</h2>
-    <p>Statedoku is a small project, built out of love for daily puzzles and US geography. If you spot a bug, find a constraint that feels unfair, have an idea for a new category, or want to help with translations, please write. We read every message and most good ideas end up shipped.</p>
-    <p>Email: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a></p>
+    <h2>Where the data comes from</h2>
+    <p>Population and land area figures come from the US Census Bureau. River lengths, elevations and terrain data come from the US Geological Survey. The two-letter state abbreviations follow the USPS standard. All three are US federal sources in the public domain. I reformat their figures into the game's data file and write the prose myself, so the numbers are theirs and the sentences are mine. Where a figure is disputed, I leave it out rather than guess.</p>
+
+    <h2>How it is funded, and what it does with your data</h2>
+    <p>Statedoku is free and pays for its hosting with advertising served by Google AdSense. You do not need an account to play: your streak, your statistics and your unfinished grid live in your browser's localStorage and are never sent to me. What I see is aggregated analytics, visit counts, page paths, country and device type. The only identifying detail I ever store is an email address, and only if you opt in to the daily reminder. The <a href="/privacy/">privacy policy</a> lists every third-party service, cookie and retention period.</p>
+
+    <h2>Contact</h2>
+    <p>Bug reports, a constraint that looks unfair, a factual correction, a translation fix or an idea for a new mini-game: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>. I read every message.</p>
 
     <p class="legal-back"><a href="/">→ Play today's puzzle</a></p>
   </article>
+
+  <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
 </main>
 
 <footer>

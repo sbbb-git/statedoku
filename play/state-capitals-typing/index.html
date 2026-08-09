@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"State Capitals Quiz","item":"https://statedoku.com/play/state-capitals-typing/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"State Capitals Quiz","description":"Type the capital of each US state.","url":"https://statedoku.com/play/state-capitals-typing/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Capitals Quiz?","acceptedAnswer":{"@type":"Answer","text":"Type the capital of each US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Capitals Quiz?","acceptedAnswer":{"@type":"Answer","text":"Type the capital of each US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🏛️ TYPE CAPITALS</span>
@@ -222,12 +222,100 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.px8{max-width:760px;margin:26px auto 0;padding:0 14px;line-height:1.65;color:var(--text-2,#475569);font-size:.95rem}
+.px8 h2{font-size:1.22rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.px8 h2:first-of-type{margin-top:14px}
+.px8 p{margin:0 0 12px}
+.px8 ul{margin:0 0 12px;padding-left:20px}
+.px8 li{margin-bottom:6px}
+.px8 .tw{overflow-x:auto;margin:0 0 16px}
+.px8 table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:430px;background:#fff}
+.px8 th,.px8 td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.px8 th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800;font-size:.8rem}
+.px8 .nx{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.px8 .nx a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+
+<section class="px8">
+  <p>Multiple choice lets you recognize a capital. This quiz makes you produce it from memory and spell it, which is the harder and more durable skill. Fifteen states per game, about two minutes end to end.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>A state name appears under "Capital of". Type the capital into the box and press Enter, or tap Submit.</p>
+  <ul>
+    <li>Fifteen states per game, drawn at random from all fifty, so the deck rotates every run.</li>
+    <li>Matching ignores capitalization, accents and punctuation. Both "santa fe" and "Santa Fe" pass.</li>
+    <li>A wrong answer prints the correct capital, then costs one of three lives.</li>
+    <li>Skip also costs a life. There is no free pass out of a round you do not know.</li>
+    <li>Three hearts gone ends the run. 14 out of 15 earns three stars, 9 earns two, 5 earns one.</li>
+    <li>Best score and daily streak are saved in your browser, nowhere else.</li>
+  </ul>
+
+  <h2>Spelling traps that eat lives</h2>
+  <p>The checker strips punctuation but it does not expand abbreviations, so a shortened form fails even when you knew the answer.</p>
+  <ul>
+    <li><strong>Saint Paul</strong> has to be typed in full. "St. Paul" and "St Paul" are both marked wrong.</li>
+    <li><strong>Tallahassee</strong> carries a double L, a double S and a double E.</li>
+    <li><strong>Montpelier</strong> takes one L. The double L spelling belongs to a city in France.</li>
+    <li><strong>Bismarck</strong> ends in CK, <strong>Frankfort</strong> ends in ORT, and <strong>Pierre</strong> ends in RRE.</li>
+    <li><strong>Cheyenne</strong> and <strong>Annapolis</strong> each hide a double N, <strong>Harrisburg</strong> a double R.</li>
+    <li><strong>Juneau</strong>, <strong>Des Moines</strong> and <strong>Baton Rouge</strong> keep their French spelling.</li>
+  </ul>
+
+  <h2>The capitals people always miss</h2>
+  <p>In 33 of the 50 states the capital is not the largest city, and nearly every miss in this game is a player typing the famous city instead. These ten are the widest gaps in the deck.</p>
+  <div class="tw"><table>
+    <thead><tr><th>State</th><th>Capital, the answer</th><th>Largest city, the trap</th></tr></thead>
+    <tbody>
+      <tr><td>New York</td><td>Albany</td><td>New York City</td></tr>
+      <tr><td>Illinois</td><td>Springfield</td><td>Chicago</td></tr>
+      <tr><td>California</td><td>Sacramento</td><td>Los Angeles</td></tr>
+      <tr><td>Pennsylvania</td><td>Harrisburg</td><td>Philadelphia</td></tr>
+      <tr><td>Washington</td><td>Olympia</td><td>Seattle</td></tr>
+      <tr><td>Nevada</td><td>Carson City</td><td>Las Vegas</td></tr>
+      <tr><td>Missouri</td><td>Jefferson City</td><td>Kansas City</td></tr>
+      <tr><td>Florida</td><td>Tallahassee</td><td>Jacksonville</td></tr>
+      <tr><td>Alaska</td><td>Juneau</td><td>Anchorage</td></tr>
+      <tr><td>Michigan</td><td>Lansing</td><td>Detroit</td></tr>
+    </tbody>
+  </table></div>
+  <p>Oregon and Maine share a trap of their own. Oregon answers Salem and Maine answers Augusta, yet both states have a city called Portland, and Portland, Oregon is much the larger of the two. Two more pairs blur in the ear: Columbia is South Carolina while Columbus is Ohio, and Charleston is the capital of West Virginia while the larger Charleston sits in South Carolina, which answers Columbia.</p>
+  <p>In the other 17 states the capital does win, so the reflex to type the famous name pays off about a third of the time, which is exactly why it is so hard to unlearn. Phoenix, Boston, Denver, Indianapolis, Atlanta, Honolulu, Columbus, Oklahoma City, Salt Lake City and Nashville all reward it.</p>
+
+  <h2>Keep drilling</h2>
+  <div class="nx">
+    <a href="/learn/state-capitals/">All 50 state capitals</a>
+    <a href="/learn/state-capitals-pronunciation/">How to pronounce the capitals</a>
+    <a href="/play/state-capitals-typing/guide/">Strategy guide for this quiz</a>
+    <a href="/play/state-capitals-match/">State Capitals Match</a>
+    <a href="/play/biggest-cities/">Biggest City Quiz</a>
+    <a href="/play/state-abbreviations/">USPS Abbreviations Quiz</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/state-capitals/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /State Capitals</a><a href="/learn/states-and-capitals/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States And Capitals</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play State Capitals Quiz?</summary>
+      <p>Type the capital of each US state. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

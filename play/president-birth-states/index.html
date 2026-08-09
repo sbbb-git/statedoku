@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"Presidents by State","item":"https://statedoku.com/play/president-birth-states/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Presidents by State","description":"Match US presidents to their state of birth.","url":"https://statedoku.com/play/president-birth-states/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Presidents by State?","acceptedAnswer":{"@type":"Answer","text":"Match US presidents to their state of birth. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Presidents by State?","acceptedAnswer":{"@type":"Answer","text":"Match US presidents to their state of birth. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🏛️ PRESIDENTS</span>
@@ -226,12 +226,93 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);font-size:.95rem;line-height:1.65}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.play-context h2:first-of-type{margin-top:12px}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 12px;padding-left:20px}
+.play-context li{margin-bottom:6px}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 14px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:440px;background:#fff}
+.play-context th,.play-context td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800}
+.play-context .next-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.play-context .next-links a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+<section class="play-context">
+  <p>Presidents by State pairs a president with the state he came from, which is a different memory job from remembering the order of the presidencies. Fifteen names per round, four states offered each time, roughly two minutes end to end.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start and a president's name appears in the navy card with four state buttons below. Click the state. A correct pick turns green and scores a point. A wrong pick turns red, the correct state turns green, and you lose one of three lives. The three wrong options are drawn at random from the other 49 states, so a rough sense of region is often enough to eliminate two of them. Fifteen names are dealt from a deck of 53 cards, there is no timer, and stars land at 90, 60 and 30 percent. Best score and daily streak are kept in your browser.</p>
+
+  <h2>Two states carry a third of the deck</h2>
+  <p>Virginia holds 8 cards and Ohio 7, so a blind guess is far from even money. For presidents who served before the Civil War, Virginia is the strongest fallback, and it accounts for four of the first five presidents. For the run of presidents between the Civil War and the First World War, Ohio is the fallback and it covers seven of them.</p>
+  <p>Eight names sit in the deck twice, once for the state of birth and once for the state where the career was built. Which card you are dealt decides which state is correct, so learn both halves:</p>
+  <ul>
+    <li>Lincoln, born in Kentucky, career in Illinois.</li>
+    <li>Grant, born in Ohio, home in Illinois.</li>
+    <li>Obama, born in Hawaii, career in Illinois.</li>
+    <li>Benjamin Harrison, born in Ohio, career in Indiana.</li>
+    <li>Zachary Taylor, born in Virginia, home in Louisiana.</li>
+    <li>Polk and Andrew Johnson, both born in North Carolina, both careers in Tennessee.</li>
+    <li>Andrew Jackson, born in the Waxhaws on the Carolina border, career in Tennessee.</li>
+  </ul>
+  <p>Three more split birth from home but appear on a single card, so answer with the home state: Eisenhower was born in Denison, Texas and raised in Abilene, Kansas, and the deck wants Kansas. Gerald Ford was born in Omaha, Nebraska and raised in Grand Rapids, Michigan, and the deck wants Michigan. George W. Bush was born in New Haven, Connecticut and raised in Texas, and the deck wants Texas.</p>
+
+  <h2>Presidents per state in this deck</h2>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>State</th><th>Cards</th><th>Presidents</th></tr></thead>
+      <tbody>
+<tr><td>Virginia</td><td>8</td><td>Washington, Jefferson, Madison, Monroe, William Henry Harrison, Tyler, Taylor, Wilson</td></tr>
+<tr><td>Ohio</td><td>7</td><td>Grant, Hayes, Garfield, Benjamin Harrison, McKinley, Taft, Harding</td></tr>
+<tr><td>New York</td><td>5</td><td>Van Buren, Fillmore, Theodore Roosevelt, Franklin D. Roosevelt, Trump</td></tr>
+<tr><td>Illinois</td><td>4</td><td>Lincoln, Grant, Reagan, Obama</td></tr>
+<tr><td>Massachusetts</td><td>4</td><td>John Adams, John Quincy Adams, Kennedy, George H. W. Bush</td></tr>
+<tr><td>Tennessee</td><td>3</td><td>Jackson, Polk, Andrew Johnson</td></tr>
+<tr><td>North Carolina</td><td>2</td><td>Polk, Andrew Johnson</td></tr>
+<tr><td>Pennsylvania</td><td>2</td><td>Buchanan, Biden</td></tr>
+<tr><td>Texas</td><td>2</td><td>Lyndon B. Johnson, George W. Bush</td></tr>
+<tr><td>Vermont</td><td>2</td><td>Chester A. Arthur, Coolidge</td></tr>
+<tr><td>One card each</td><td>14</td><td>Arkansas, California, Georgia, Hawaii, Indiana, Iowa, Kansas, Kentucky, Louisiana, Michigan, Missouri, New Hampshire, New Jersey, South Carolina</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Keep going</h2>
+  <div class="next-links">
+    <a href="/learn/states-presidents-born/">Presidents born in each state</a>
+    <a href="/play/electoral-college/">Electoral College Quiz</a>
+    <a href="/play/thirteen-colonies/">Thirteen Colonies</a>
+    <a href="/play/state-admission-order/">State Admission Order</a>
+    <a href="/play/state-mottos/">State Mottos</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/states-presidents-born/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States Presidents Born</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play Presidents by State?</summary>
+      <p>Match US presidents to their state of birth. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>
