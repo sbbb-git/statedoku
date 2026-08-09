@@ -1,131 +1,79 @@
-Puzzle: stop refusing correct answers. Plus site audit fixes and a 600-tweet bank.
+Grid redesign on the Metrodoku model, constraint explanations, asset version fixes
 
-THE PUZZLE FIX
+THE GRID
 
-The game refused answers that satisfied both visible clues. The owner hit it,
-and it turns out to be the central rule rather than an edge case.
+The grid was drawn as a table: one shared 1px gap over a border-coloured
+background, cells with no outline of their own, constraint labels carrying
+gradients and a single accent edge. Everything read as one dense block.
 
-js/game.js ran _isStillSolvable on a trial grid and rejected any placement that
-made the grid unsolvable, with a toast saying the answer conflicted elsewhere.
-That message could never be true. puzzle.js:348 only ships grids with a unique
-solution, so "keeps the grid solvable" and "equals the canonical answer" are
-mathematically the same test. The game was saying "you did not pick my answer"
-to players who had reasoned correctly.
+It is now a set of separated cards. gap goes from 1px to 10px on desktop and
+6px on phones, each cell gets its own 2px navy outline and a 10px radius, and
+the constraint labels become flat tinted cards in the same shape as the cells
+they rule over. Filled and wrong states now colour their own border rather
+than sitting under a gradient, so the state of a cell is readable from its
+edge instead of from a wash. The empty-cell star is replaced by a faint plus:
+the star decorated, the plus says the cell is waiting for input.
 
-Measured over 365 generated puzzles:
-  97.8% of days contain at least one cell where a correct answer is refused
-  28.5% of all cells accept more than one clue-satisfying state
-  24.9% of all valid answers get refused
-  53.8% of games hit a refusal when filling cells left to right
-   0.0% when filling most-constrained-cell first
+The wrapper loses its card chrome, since the cards are the design now. On
+phones it also loses the negative side margins that used to bleed the grid to
+the screen edge, which would have clipped the new outlines.
 
-That last pair is the damning one. Identical knowledge was rewarded or punished
-by turn order alone.
+CONSTRAINT EXPLANATIONS
 
-Reproduction, today's grid: "Starts with M" x "Mountain timezone" accepts only
-Montana, and "Starts with M" x "Name ends in A" accepts Minnesota or Montana.
-Playing Montana in the second cell is correct by every visible clue and was
-silently rejected, cell left empty, score unchanged.
+Opaque labels were the loudest complaint about the puzzle, and "Medical drama
+setting" is not something a player can reason their way to. Constraints now
+carry a plain-language gloss, shown in a popover anchored under the label.
 
-Fixed by deleting the gate and making "satisfies both clues" the definition of
-correct everywhere: _updateScore, _renderCells, the cell lock, the share emoji
-grid, the share text, the share image, and critically the reload scrub in
-_loadProgress, which would otherwise have wiped every valid non-canonical
-placement on refresh. _checkSolved already accepted any valid grid of nine
-distinct states as a win, with a comment saying so, so the rule the code
-already believed in can finally apply.
+105 of the 156 constraints the generator can pick are explained, across all
+three languages. The other 51 are things like "Starts with M" that explain
+themselves, and they draw no affordance at all: the "?" only appears where
+there is something worth saying, so it means something when it shows up. The
+whole card is the tap target rather than the small glyph, which is what makes
+it usable on a phone. Escape, an outside tap, or a second tap closes it.
 
-Accepting every valid answer means a player can spend a state another cell
-needed, so filled cells are now editable and the picker has a Clear button.
-Without that the fix would have traded "punished for being right" for "stuck
-with no way out". Cells stay keyboard reachable, the not-allowed cursor is
-gone, and the aria-label says the cell can be changed rather than that it is
-locked. The two conflict strings are deleted from all three languages so
-nobody wires them back up.
+The glosses deliberately never name the states that satisfy a constraint, so
+none of them leak an answer. Where a label is genuinely ambiguous they say so
+outright: "Top 5 largest by area" now adds that this is about size, not
+population, and "Admitted before 1800" that this is the date of statehood,
+not of settlement.
 
-Verified in a browser end to end: Montana accepted, cell reopens, Clear empties
-it and returns the score to 0/9, Minnesota accepted in its place, and the
-placement survives a reload.
+ASSET VERSIONS
 
-PUZZLE UI
+The cache-buster versions had drifted apart: style.css was pinned at v=17 on
+973 pages, v=18 on 275 and v=19 on 755, for one single file. Worse, the French
+and Spanish homepages still asked for game.js?v=11 while English was on v=14,
+so a returning FR or ES player kept the build from before the puzzle fix and
+went on being told their correct answers were wrong. All 2,011 pages now agree
+on one version per asset.
 
-The onboarding tooltip sat at top: 70px, directly over the column header row,
-completely hiding the middle constraint. It now sits below the grid with the
-arrow pointing up. Verified: zero header overlap.
+The JSON under /data/ was fetched with no version query at all, so translations
+and state data could never reach a returning player once cached. Both fetches
+now carry CONFIG.DATA_VERSION.
 
-The state picker is a bottom sheet, which is right on a phone and wrong on a
-desktop, where it opened roughly 400px below the cell being filled. On screens
-at least 580px wide it is now positioned from the grid's measured geometry:
-below the grid when there is room, above it when there is not, falling back to
-the sheet on short viewports. Verified against real page geometry at 900, 768,
-650 and 500px.
+VOICE
 
-SITE AUDIT FIXES
+The earlier em-dash sweep covered HTML and JSON but never looked at the JS, so
+14 user-visible strings still carried them: cell aria-labels, the "already on
+the board" announcement, the share text that goes out with every result, the
+archive date line, and the placeholders in the stats panel. Plus 23 range
+dashes in constraint labels. Zero unicode dashes remain in any user-facing
+string; what is left lives in code comments.
 
-Six parallel audits of the live site produced these, all verified before fixing:
+NOTES
 
-- Created 404.html. Every nonexistent URL was returning 200 with the full
-  homepage, because Cloudflare Pages falls back to SPA mode without one. That
-  is an unbounded set of duplicate 200-status URLs during a low-value-content
-  review, and it silently masked every broken link on the site.
-- 588 Spanish and French pages had rel=canonical pointing at their English
-  equivalent while also declaring themselves the es/fr hreflang alternate. The
-  two signals cancel: Google honours the canonical and drops the translation.
-- 262 pages carried FAQPage structured data whose questions appeared nowhere on
-  the page. Markup-only FAQ is what draws a spammy-structured-markup manual
-  action. The answers already existed in the JSON-LD, so they are now rendered
-  as a real accordion, 1,192 questions across those pages. Zero pages remain in
-  breach.
-- 375 em-dashes survived inside JSON-LD because the earlier strip skipped
-  script blocks. That text is exactly what Google renders in rich results.
-  Fixed by parsing and re-serialising each block, so all 3,729 still validate.
-- 48 titles had been cut mid-word by an over-eager 62-character trim, leaving
-  half-words and unclosed parentheses. Recovered from og:title where available
-  and re-trimmed at word boundaries, never ending on a dangling article.
-- 168 links from Spanish and French pages pointed at English slugs inside their
-  own language tree. 41 hreflang alternates pointed at files that do not exist.
-- 19 meta descriptions had boilerplate spliced mid-word at apostrophes.
-- 4 pages referenced /styles/learn.css, a path that has never existed, so they
-  rendered with no site stylesheet at all.
-- One title contained a raw unclosed anchor tag injected by an auto-linker.
-- /launch/ now 301s to the homepage. It was the pre-launch teaser, 92 words,
-  still indexed two months after launch.
-- robots.txt disallows /tmp/, the www to apex redirect is uncommented, and the
-  duplicated /play/ CSP block is removed from _headers so the middleware is the
-  single source. Emitting it twice made browsers enforce the stricter of the
-  two, which is what would break the embeddable widgets.
+Rewrote the three how-to-play pages to describe the rules as they now work
+rather than as they used to, around 800 words each.
 
-CONTENT
+Audited the constraint pool for redundancy: 16 groups match exactly the same
+states, mostly a built-in constraint and its pop-culture twin (tz_eastern and
+pc_eastern_time, contains_letter_k and pc_contains_k, and so on). Generating a
+full year found 0 grids that pair two of them, so nothing is broken today and
+nothing is changed here. Removing the duplicates would shift the pool the
+seeded RNG indexes into and rewrite every archived puzzle, which is not worth
+it for a fault that never fires.
 
-142 thin indexable pages expanded: 14 region pages from ~130 words to 782-962,
-62 learn pages to 612-846, 63 game pages to 514-697 with real strategy content
-around the game rather than padding, and 3 About pages to ~698. An About page
-is one a human reviewer actually opens.
-
-61 post-event World Cup pages noindexed. The tournament ended July 19, those
-pages are under 400 words, the audit found them orphaned, and their AI citation
-share was 1 to 5%. The 45 substantial ones stay indexed.
-
-Sitemap 634 to 819 URLs, deduped at source, per-city pages dropped since all
-101 are noindexed and listing them submitted URLs that then say do not index.
-
-TWITTER BOT
-
-Replaced the runtime Anthropic call with a pre-generated bank of 600 tweets at
-data/tweets.json, written in one pass across 12 angles of 50, interleaved so no
-two consecutive posts share a theme. 600 unique, max 237 characters, validated
-against the voice rules. The bank covers 300 days at two posts a day and wraps
-rather than failing.
-
-X moved off fixed Basic plans to pay-per-use in 2026 at 0.015 USD per post and
-0.20 USD if the post contains a link, so SKIP_LINK_TWEETS lets the cost be
-dialled from about 3.50 USD a month down to 0.70. The dead prompt-building and
-Anthropic code is removed, 498 lines down to 235. humanize() stays as a
-backstop on the bank and on manual ?text= posts.
-
-DATA
-
-South Carolina had capitalIsLargest true with largestCity Columbia. Charleston
-overtook Columbia at the 2020 census, so the count of states where the capital
-is also the largest city is 17, not 18. Not a puzzle constraint, so no gameplay
-impact, but it was feeding content.
+Verified in a browser at 1280 and 375 wide, in all three languages: cards and
+outlines render, the popover anchors under its label and stays inside the
+viewport on a phone, the picker still opens below the grid on desktop and as a
+sheet on mobile, and two states that both satisfy their clues are both
+accepted and both survive a reload.

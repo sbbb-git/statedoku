@@ -1,4 +1,9 @@
 const CONFIG = {
+  // Cache-buster for the JSON files under /data/. Those are fetched at runtime,
+  // so without a version query a returning player keeps the copy their browser
+  // cached and never sees updated translations or state data. Bump on edit.
+  DATA_VERSION: '2',
+
   // Global feature flags
   ADS_ENABLED: false,                // false → no ads rendered. Toggle to true once AdSense approves + slot IDs are pasted into placeholders. See /ADS-ACTIVATION.md
   ADSENSE_PUBLISHER_ID: 'ca-pub-1481624152917622',  // real publisher ID (Sacha Bitoun, June 2026). Site verification snippet is in <head> of the 3 homepages.

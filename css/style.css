@@ -240,25 +240,28 @@ main {
 }
 
 /* ─────────────────── Grid ─────────────────── */
+/* The grid is a set of separated cards, not a bordered table. Each cell and
+   each constraint carries its own outline, so the wrapper adds no chrome. */
 .grid-wrapper {
   width: 100%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .grid-outer {
   display: grid;
-  grid-template-columns: 88px repeat(3, minmax(0, 1fr));
+  grid-template-columns: 92px repeat(3, minmax(0, 1fr));
   grid-template-rows: auto repeat(3, minmax(96px, 1fr));
-  gap: 1px;
-  background: var(--border);
+  gap: 10px;
+  background: transparent;
 }
 
 .grid-corner {
   background: var(--navy);
+  border-radius: 10px;
   position: relative;
   display: flex; align-items: center; justify-content: center;
   padding: 6px;
@@ -278,34 +281,60 @@ main {
   pointer-events: none;
 }
 
-/* Constraint labels — unified navy accent, more readable size */
+/* Constraint labels — flat tinted cards, matching the cells they rule over */
 .col-label, .row-label {
-  background: var(--surface-2);
+  background: #EDF1F9;
+  border: 2px solid rgba(15, 33, 71, 0.16);
+  border-radius: 10px;
+  position: relative;
   display: flex; align-items: center; justify-content: center;
   text-align: center;
   padding: 10px 8px;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   line-height: 1.25;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   color: var(--navy);
   min-width: 0;
   overflow-wrap: break-word;
   word-break: break-word;
+  transition: background var(--d-fast) var(--ease), border-color var(--d-fast) var(--ease);
 }
+
+/* Only constraints that ship an explanation become tappable. The rest stay
+   plain text, so a "?" never appears on something like "Starts with M". */
+.col-label.has-help, .row-label.has-help { cursor: pointer; }
+.col-label.has-help:hover, .row-label.has-help:hover,
+.col-label.has-help:focus-visible, .row-label.has-help:focus-visible {
+  background: #E3EAF6;
+  border-color: rgba(15, 33, 71, 0.38);
+  outline: none;
+}
+.cl-help {
+  position: absolute; top: 4px; right: 5px;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: rgba(15, 33, 71, 0.13);
+  color: var(--navy);
+  font-size: 0.6rem; font-weight: 800;
+  line-height: 15px; text-align: center;
+  pointer-events: none;
+  transition: background var(--d-fast) var(--ease);
+}
+.has-help:hover .cl-help { background: var(--navy); color: #fff; }
+
 .col-label {
   min-height: 56px;
-  background: linear-gradient(to bottom, #EEF2F8, var(--surface));
-  border-top: 2px solid var(--navy);
 }
 .row-label {
-  background: linear-gradient(to right, #EEF2F8, var(--surface));
-  border-left: 2px solid var(--navy);
+  min-height: 0;
 }
 
 /* Cells */
 .cell {
   background: var(--surface);
+  border: 2px solid var(--navy);
+  border-radius: 10px;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 4px;
@@ -313,31 +342,33 @@ main {
   min-height: 96px;
   cursor: pointer;
   position: relative;
-  transition: background var(--d-fast) var(--ease);
+  transition: background var(--d-fast) var(--ease),
+              border-color var(--d-fast) var(--ease),
+              box-shadow var(--d-fast) var(--ease);
 }
-.cell:hover:not(.locked) { background: #F5F8FF; }
+.cell:hover { background: #F3F7FF; }
 
 .cell.selected,
 .cell:focus-visible {
-  background: #EEF3FF;
-  outline: 2px solid var(--navy);
-  outline-offset: -2px;
+  background: #EAF1FF;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(15, 33, 71, 0.20);
   z-index: 1;
 }
 .cell:focus { outline: none; } /* only show on keyboard-focus */
 
 .cell.empty::after {
-  content: '★';
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: var(--border-med);
-  transition: color var(--d-fast) var(--ease), transform var(--d-fast) var(--ease);
-  opacity: 0.55;
+  content: '+';
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1;
+  opacity: 0.22;
+  transition: opacity var(--d-fast) var(--ease), transform var(--d-fast) var(--ease);
 }
 .cell.empty:hover::after {
-  color: var(--navy);
-  opacity: 1;
-  transform: scale(1.15) rotate(15deg);
+  opacity: 0.6;
+  transform: scale(1.1);
 }
 
 .cell-abbr {
@@ -352,7 +383,8 @@ main {
 }
 
 .cell.correct {
-  background: linear-gradient(135deg, var(--green-bg) 0%, #FFFFFF 100%);
+  background: var(--green-bg);
+  border-color: var(--green);
   color: var(--green);
   cursor: default;
   animation: cellPop 0.35s var(--ease-out);
@@ -382,6 +414,7 @@ main {
 
 .cell.wrong {
   background: var(--red-bg);
+  border-color: var(--red);
   color: var(--red);
 }
 .cell.wrong .cell-abbr { color: var(--red); }
@@ -393,6 +426,46 @@ main {
   40%  { transform: translateX(6px); }
   60%  { transform: translateX(-4px); }
   80%  { transform: translateX(4px); }
+}
+
+/* ── Constraint explanation popover ── */
+.grid-wrapper { position: relative; }
+#constraint-help {
+  position: absolute;
+  z-index: 30;
+  width: min(260px, calc(100vw - 32px));
+  background: var(--navy);
+  color: #F2F5FA;
+  border-radius: var(--r-md);
+  padding: 11px 30px 12px 13px;
+  box-shadow: var(--shadow-lg);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  animation: chIn 0.16s var(--ease-out);
+}
+#constraint-help strong {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+#constraint-help p { margin: 0; }
+#constraint-help .ch-close {
+  position: absolute; top: 6px; right: 6px;
+  width: 20px; height: 20px;
+  border: 0; border-radius: 50%;
+  background: transparent;
+  color: rgba(242, 245, 250, 0.65);
+  font-size: 0.68rem; line-height: 1;
+  cursor: pointer;
+}
+#constraint-help .ch-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
+@keyframes chIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ─────────────────── Search Panel ─────────────────── */
@@ -2048,26 +2121,32 @@ footer, main, .score-bar {
   }
   #game-wrap { gap: 12px; }
 
-  /* Grid: edge-to-edge, fluid */
+  /* Separated cards need side padding, not an edge bleed, so every outline
+     stays visible against the screen edge. */
   .grid-wrapper {
-    border-radius: var(--r-md);
-    border-left: 0; border-right: 0;
-    margin-left: -8px; margin-right: -8px;
-    width: calc(100% + 16px);
-    box-shadow: var(--shadow-sm);
+    margin-left: 0; margin-right: 0;
+    width: 100%;
   }
   /* Make row labels slimmer to give cells more breathing room */
   .grid-outer {
     grid-template-columns: 64px repeat(3, minmax(0, 1fr));
-    grid-template-rows: 46px repeat(3, 1fr);
+    grid-template-rows: 50px repeat(3, 1fr);
+    gap: 6px;
   }
   .col-label, .row-label {
     padding: 5px 4px;
     font-size: clamp(0.52rem, 2.6vw, 0.65rem);
     line-height: 1.18;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
+    border-width: 1.5px;
+    border-radius: 8px;
   }
-  .col-label { min-height: 46px; }
+  .col-label { min-height: 50px; }
+  .cell { border-width: 1.5px; border-radius: 8px; }
+  .cl-help {
+    width: 13px; height: 13px; line-height: 13px;
+    font-size: 0.52rem; top: 2px; right: 3px;
+  }
 
   /* Bigger, square-ish cells */
   .cell {
@@ -2089,7 +2168,7 @@ footer, main, .score-bar {
   .grid-corner .us-flag { max-width: 50px; max-height: 28px; }
 
   /* Press-down feedback for cells (replaces tap highlight) */
-  .cell:active:not(.locked):not(.correct) {
+  .cell:active:not(.correct) {
     background: #E8EFFF;
     transform: scale(0.97);
     transition: transform 0.08s ease-out, background 0.08s ease-out;
@@ -2176,8 +2255,8 @@ footer, main, .score-bar {
     padding: 4px 3px;
   }
   header { padding-left: 12px; padding-right: 12px; }
-  main { padding-left: 6px; padding-right: 6px; }
-  .grid-wrapper { margin-left: -6px; margin-right: -6px; width: calc(100% + 12px); }
+  main { padding-left: 8px; padding-right: 8px; }
+  .grid-outer { gap: 5px; }
 }
 
 /* ───────── Tablet portrait (481–767 px) ───────── */
@@ -2213,8 +2292,8 @@ footer, main, .score-bar {
 
 /* ───────── Pointer-fine (mouse): preserve hover; coarse: no hover ───────── */
 @media (hover: none) {
-  .cell:hover:not(.locked) { background: var(--surface); }
-  .cell.empty:hover::after { color: var(--border-med); transform: none; }
+  .cell:hover { background: var(--surface); }
+  .cell.empty:hover::after { opacity: 0.22; transform: none; }
   .sp-item:hover { background: var(--surface); }
 }
 

@@ -32,7 +32,7 @@
   <link rel="alternate" hreflang="en-IN" href="https://statedoku.com/quiz/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/quiz/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=17">
+  <link rel="stylesheet" href="/css/style.css?v=22">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="US States Quiz, Test All 50 States & Capitals">
@@ -297,7 +297,7 @@ function showResult() {
   document.getElementById('quiz-screen').hidden = true;
   document.getElementById('result-screen').hidden = false;
   document.getElementById('rscore').textContent = `${score} / 10`;
-  const grade = score === 10 ? "Perfect — you know the 50 states cold." : score >= 8 ? "Strong. A bit of polish and you're at 10/10." : score >= 6 ? "Solid base. The full guide will close the gap." : score >= 4 ? "Worth a refresher. Start with the regions guide." : "Plenty of room. Start with the 50 states guide and play daily.";
+  const grade = score === 10 ? "Perfect. You know the 50 states cold." : score >= 8 ? "Strong. A bit of polish and you're at 10/10." : score >= 6 ? "Solid base. The full guide will close the gap." : score >= 4 ? "Worth a refresher. Start with the regions guide." : "Plenty of room. Start with the 50 states guide and play daily.";
   document.getElementById('rgrade').textContent = grade;
 }
 
