@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────
-// Statedoku — Pending constraint candidates (admin review)
+// Statedoku - Pending constraint candidates (admin review)
 //
 // All candidates have ≥5 matching states. Labels are written to feel human
 // in EN/FR/ES (no robotic phrasing). Tasteful emojis used sparingly.
@@ -122,7 +122,7 @@ const PENDING_CONSTRAINTS = (() => {
       'CA NY UT MO GA');
 
   // ═════════════════════════════════════════════════════════════════════
-  // 📺 TV — Multi-state franchises
+  // 📺 TV - Multi-state franchises
   // ═════════════════════════════════════════════════════════════════════
   add('pc_real_housewives_franchise','📺 Real Housewives city','Ville Real Housewives','Ciudad Real Housewives',
       'NY GA NJ CA UT MD FL TX TN');
@@ -562,7 +562,7 @@ const PENDING_CONSTRAINTS = (() => {
       'TX OK KS MO OH MI AL NC SC FL GA');
 
   // ═════════════════════════════════════════════════════════════════════
-  //  BATCH 2 — 200 MORE CANDIDATES (all ≥5 states)
+  //  BATCH 2 - 200 MORE CANDIDATES (all ≥5 states)
   // ═════════════════════════════════════════════════════════════════════
 
   // ─── 🍔 REGIONAL SANDWICHES & ICONIC DISHES ───
@@ -861,7 +861,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_unique_county_naming','🗺️ County governance is unique (parish/borough)','Comtés au nom unique','Condados con nomenclatura única',
       'LA AK');
 
-  // ─── 🦅 FILM / TV — More ───
+  // ─── 🦅 FILM / TV - More ───
   add('pc_reality_dating_show', '💕 Setting of a major dating reality',  'Décor d\'une téléréalité dating','Escenario reality de citas',
       'CA NV FL HI NY');
   add('pc_amazing_race_start',  '🌍 Hosted Amazing Race start/finish',   'Étape Amazing Race',            'Etapa Amazing Race',
@@ -984,10 +984,10 @@ const PENDING_CONSTRAINTS = (() => {
       'TX OH PA IN MI WI MO');
 
   // ═════════════════════════════════════════════════════════════════════
-  //  BATCH 3 — 500 MORE CANDIDATES (≥5 states each, fresh angles)
+  //  BATCH 3 - 500 MORE CANDIDATES (≥5 states each, fresh angles)
   // ═════════════════════════════════════════════════════════════════════
 
-  // ─── 🎬 MOVIES — Specific franchises & directors ───
+  // ─── 🎬 MOVIES - Specific franchises & directors ───
   add('pc_movie_spielberg',     '🎬 Spielberg film setting',         'Décor d\'un Spielberg',          'Escenario de un Spielberg',         'CA IN MA WY NJ NY');
   add('pc_movie_scorsese',      '🎬 Scorsese film setting',          'Décor d\'un Scorsese',           'Escenario de Scorsese',             'NY NJ MA NV IL');
   add('pc_movie_lynch',         '🎬 Setting of a David Lynch film',       'Décor d\'un Lynch',              'Escenario de Lynch',                'WA CA NE MT WY');
@@ -1004,7 +1004,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_movie_animation_loc', '🎬 Setting of a major animated feature', 'Décor d\'un film d\'animation',  'Escenario animado',                 'CA NY LA HI MO');
   add('pc_movie_thriller_loc',  '🔍 Setting of a thriller blockbuster',   'Décor d\'un thriller blockbuster','Escenario thriller mayor',         'CA NY NV TX LA WA');
 
-  // ─── 📺 TV — More shows ───
+  // ─── 📺 TV - More shows ───
   add('pc_tv_lost_setting',     '📺 Setting of LOST flashbacks',          'Flashbacks Lost',                'Flashbacks de Lost',                'CA NY OK TN AK FL HI');
   add('pc_tv_madmen_era',       '📺 Mad Men flashback locations',         'Flashbacks Mad Men',             'Flashbacks Mad Men',                'NY CA OH CT');
   add('pc_tv_curb_setting',     '📺 Curb Your Enthusiasm setting',        'Décor Curb',                     'Escenario Curb',                    'CA NY FL');
@@ -1023,7 +1023,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_tv_handmaids_tale',   '📺 Handmaid\'s Tale (US setting)',       'Décor Handmaid\'s Tale',         'Escenario Handmaid\'s Tale',        'MA NH');
   add('pc_tv_ted_lasso_us',     '⚽ Ted Lasso US callbacks',              'Rappels US Ted Lasso',           'Referencias US Ted Lasso',          'KS MO');
 
-  // ─── 🎤 MUSIC — Specific scenes & icons ───
+  // ─── 🎤 MUSIC - Specific scenes & icons ───
   add('pc_music_outkast_origin','🎤 Birthed OutKast / Atlanta hip-hop',   'OutKast / Atlanta hip-hop',      'OutKast / Atlanta hip-hop',         'GA');
   add('pc_music_motown_artists','🎤 Major Motown artist origin',          'Origine artiste Motown',         'Origen artista Motown',             'MI TN MS');
   add('pc_music_grunge_artists','🎸 Major grunge band origin',            'Origine groupe grunge',          'Origen grupo grunge',               'WA OR');
@@ -1063,7 +1063,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_born_comedians_top',  '🎙️ Birth state of a top stand-up',        'Comique top',                    'Cómico top',                        'NY CA IL OH MA MI NJ FL');
   add('pc_born_late_night_hosts','🎙️ Birth state of a late-night host',    'Animateur late-night',           'Presentador late-night',            'IN MA OH NJ NY IA NE');
 
-  // ─── 🏞️ NATIONAL PARKS — Specific ones ───
+  // ─── 🏞️ NATIONAL PARKS - Specific ones ───
   add('pc_yosemite_state',      '🏞️ Has Yosemite (or major park)',        'Yosemite ou parc majeur',        'Yosemite o parque mayor',           'CA AZ UT WY MT CO');
   add('pc_zion_acadia_states',  '🏞️ Has Zion, Bryce, Acadia or similar', 'Zion / Bryce / Acadia',          'Zion / Bryce / Acadia',             'UT ME CA AZ WY');
   add('pc_redwood_giant_trees', '🌲 Famous for giant trees',              'Connu pour ses arbres géants',   'Famoso por árboles gigantes',       'CA OR WA AK');
@@ -1096,7 +1096,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_top_design_school',   '🎨 Top-10 design school',                'Top 10 design',                  'Top 10 diseño',                     'NY CA RI IL MA');
   add('pc_top_acting_school',   '🎭 Top-10 acting school',                'Top 10 école de théâtre',        'Top 10 actuación',                  'NY CA CT MA');
 
-  // ─── 🏛️ HISTORICAL — Specific events ───
+  // ─── 🏛️ HISTORICAL - Specific events ───
   add('pc_hist_constitution_1','🏛️ First state to ratify Constitution',  'Premier à ratifier',             'Primero en ratificar',              'DE');
   add('pc_hist_2nd_ratify',     '🏛️ 2nd-5th to ratify Constitution',      'Top 5 ratification',             'Top 5 ratificación',                'PA NJ GA CT MA MD');
   add('pc_hist_louisiana_purch','🦅 Part of Louisiana Purchase',          'Achat de la Louisiane',          'Compra de Luisiana',                'LA AR MO IA SD MN NE KS OK CO MT WY ND');
@@ -1127,7 +1127,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_classical_fest_top',  '🎻 Major classical music festival',      'Festival classique',             'Festival clásico',                  'NY MA CO MI CA');
   add('pc_indie_film_fest',     '🎬 Major indie film festival',           'Festival cinéma indie',          'Festival indie cine',               'UT TX NY CA OH NC');
 
-  // ─── 🏈 SPORTS — Niche & specifics ───
+  // ─── 🏈 SPORTS - Niche & specifics ───
   add('pc_pro_team_top5_old',   '🏈 Has a pre-1960 pro franchise',        'Franchise pro pré-1960',         'Franquicia pro pre-1960',           'IL NY PA OH MI CA MA WI');
   add('pc_super_bowl_won_5plus','🏈 NFL team won Super Bowl 5+ times',    '5+ Super Bowls',                 '5+ Super Bowls',                    'MA CA PA');
   add('pc_world_series_5plus',  '⚾ MLB team won 5+ World Series',        '5+ World Series',                '5+ World Series',                   'NY MA CA MO');
@@ -1139,7 +1139,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_minor_league_strong', '⚾ Top minor-league baseball culture',   'Pôle baseball mineur',           'Béisbol menor fuerte',              'CA FL TX NY OH PA NC TN GA');
   add('pc_college_basketball_top','🏀 Top-25 college basketball regular','Top 25 basket NCAA régulier',    'Top 25 basket NCAA',                'NC KY IN KS CA AZ MI VA OH IL');
 
-  // ─── 🍔 FOOD — Regional specifics ───
+  // ─── 🍔 FOOD - Regional specifics ───
   add('pc_seafood_capital',     '🦀 Famous seafood region',               'Région fruits de mer',           'Región de mariscos',                'MD ME MA LA WA FL OR');
   add('pc_steakhouse_capital', '🥩 Famous for steakhouses',              'Capital du steak',               'Capital del bistec',                'TX NE NY CO IL MO');
   add('pc_pizza_capital',       '🍕 Pizza capital state',                 'Capital pizza',                  'Capital pizza',                     'NY IL CT NJ MO CA');
@@ -1344,7 +1344,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_first_skyscraper',    '🏙️ First-skyscraper era city',           'Premiers gratte-ciel',           'Primer rascacielos',                'IL NY PA MO');
   add('pc_first_aviation',      '✈️ Aviation firsts',                     'Premières en aviation',          'Primeras en aviación',              'NC OH CA WA');
 
-  // ─── 🎬 CINEMA — More directors / icons ───
+  // ─── 🎬 CINEMA - More directors / icons ───
   add('pc_jordan_peele_movie',  '🎬 Jordan Peele film setting',           'Décor de Peele',                 'Escenario de Peele',                'NY CA AL');
   add('pc_christopher_nolan_us','🎬 Nolan film US locations',             'Décor US Nolan',                 'Escenario US Nolan',                'NV CO CA NY NJ');
   add('pc_p_t_anderson_us',     '🎬 P.T. Anderson film setting',          'Décor de P.T. Anderson',         'Escenario P.T. Anderson',           'CA TX NV');
@@ -1390,7 +1390,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_state_capital_small', '🏛️ Capital under 100k pop',  'Capitale petite (<100k)',        'Capital pequeña (<100k)',           'VT AK MT NH SD');
 
   // ═══════════════════════════════════════════════════════════════════════
-  // BATCH 4 — 100 CLASSIC CANDIDATES (LETTER / SPELLING / CLASSIC THEMES)
+  // BATCH 4 - 100 CLASSIC CANDIDATES (LETTER / SPELLING / CLASSIC THEMES)
   // ═══════════════════════════════════════════════════════════════════════
 
   // ─── 🔤 LETTERS IN THE NAME ───
@@ -1416,7 +1416,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_starts_with_s',       '🔡 Name starts with S',                  'Commence par S',                 'Empieza con S',                     'SC SD');
   add('pc_starts_with_t',       '🔡 Name starts with T',                  'Commence par T',                 'Empieza con T',                     'TN TX');
   add('pc_starts_with_k',       '🔡 Name starts with K',                  'Commence par K',                 'Empieza con K',                     'KS KY');
-  add('pc_starts_with_consonant_h_to_p','🔡 Name starts H–P',              'Commence H–P',                   'Empieza H–P',                       'HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA');
+  add('pc_starts_with_consonant_h_to_p','🔡 Name starts H-P',              'Commence H-P',                   'Empieza H-P',                       'HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA');
   add('pc_starts_with_a_or_i',  '🔡 Name starts A or I',                  'Commence par A ou I',            'Empieza con A o I',                 'AL AK AZ AR ID IL IN IA');
   add('pc_starts_with_m_or_w',  '🔡 Name starts M or W',                  'Commence par M ou W',            'Empieza con M o W',                 'ME MD MA MI MN MS MO MT WA WV WI WY');
   add('pc_starts_and_ends_a',   '🔡 Starts and ends with A',              'Commence et termine par A',      'Empieza y termina con A',           'AL AK AZ');
@@ -1428,7 +1428,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_ends_in_t_or_d',      '🔡 Name ends in T or D',                 'Termine par T ou D',             'Termina con T o D',                 'CT VT MD RI');
 
   // ─── 📏 LETTER COUNT ───
-  add('pc_letters_4_to_5',      '📏 Name is 4–5 letters',                 'Nom de 4–5 lettres',             'Nombre 4–5 letras',                 'IA OH UT ID ME TX');
+  add('pc_letters_4_to_5',      '📏 Name is 4-5 letters',                 'Nom de 4-5 lettres',             'Nombre 4-5 letras',                 'IA OH UT ID ME TX');
   add('pc_letters_exactly_4',   '📏 Name is exactly 4 letters',           'Nom de 4 lettres',               'Nombre de 4 letras',                'IA OH UT');
   add('pc_letters_exactly_5',   '📏 Name is exactly 5 letters',           'Nom de 5 lettres',               'Nombre de 5 letras',                'ID ME TX');
   add('pc_letters_11_exact',    '📏 Name is exactly 11 letters',          'Nom de 11 lettres',              'Nombre 11 letras',                  'CT MS RI');
@@ -1461,7 +1461,7 @@ const PENDING_CONSTRAINTS = (() => {
   add('pc_thirteen_colonies',   '📜 One of the 13 colonies',     '13 colonies originelles',        '13 colonias originales',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI');
   add('pc_admitted_before_1800','📜 Admitted before 1800',                'Admis avant 1800',               'Admitido antes de 1800',            'DE PA NJ GA CT MA MD SC NH VA NY NC RI VT KY TN');
   add('pc_admitted_1800s',      '📜 Admitted in the 1800s',               'Admis au XIXe siècle',           'Admitido en el siglo XIX',          'OH LA IN MS IL AL ME MO AR MI FL TX IA WI CA MN OR KS WV NV NE CO ND SD MT WA ID WY UT');
-  add('pc_admitted_after_civil','📜 Admitted 1865–1900',                  'Admis 1865–1900',                'Admitido 1865–1900',                'NE CO ND SD MT WA ID WY UT');
+  add('pc_admitted_after_civil','📜 Admitted 1865-1900',                  'Admis 1865-1900',                'Admitido 1865-1900',                'NE CO ND SD MT WA ID WY UT');
   add('pc_admitted_20th_century','📜 Admitted in the 20th century',       'Admis au XXe siècle',            'Admitido en el siglo XX',           'OK NM AZ AK HI');
   add('pc_civil_war_union',     '📜 Union state in Civil War',            'Camp de l\'Union',               'Lado de la Unión',                  'CA CT IL IN IA KS ME MA MI MN NV NH NJ NY OH OR PA RI VT WV WI');
   add('pc_pony_express',        '🐎 On the Pony Express route',           'Pony Express',                   'Pony Express',                      'MO KS NE CO WY UT NV CA');

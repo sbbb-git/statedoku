@@ -101,7 +101,7 @@
       el.className = `arc-day arc-${status}` + (isToday ? ' arc-today' : '');
       if (isClickable) {
         el.href = `${homeUrl}?date=${dateStr}`;
-        el.setAttribute('aria-label', `${d.toLocaleDateString(locale, { weekday:'long', month:'long', day:'numeric' })} — ${status}`);
+        el.setAttribute('aria-label', `${d.toLocaleDateString(locale, { weekday:'long', month:'long', day:'numeric' })}, ${status}`);
       }
       el.innerHTML = `<span class="arc-num">${day}</span>`;
       cal.appendChild(el);

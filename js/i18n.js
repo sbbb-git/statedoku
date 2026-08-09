@@ -5,7 +5,7 @@ const I18n = (() => {
   async function init(lang) {
     const base = location.pathname.includes('/fr/') || location.pathname.includes('/es/')
       ? '../data/translations.json' : 'data/translations.json';
-    const res = await fetch(base);
+    const res = await fetch(`${base}?v=${CONFIG.DATA_VERSION}`);
     _translations = await res.json();
     // Lang priority: 1) explicit URL path (/fr/, /es/) → 2) user-chosen via switcher (localStorage) → 3) default (English).
     // No browser-locale auto-detection: English is the global default.
@@ -54,6 +54,15 @@ const I18n = (() => {
       .replace(/\b\w/g, c => c.toUpperCase());
   }
 
+  // Plain-language gloss for constraints whose label does not explain itself.
+  // Returns '' when there is nothing worth saying, and the caller then draws
+  // no help affordance at all.
+  function constraintHelp(id) {
+    const key = 'constraint_help.' + id;
+    const txt = t(key);
+    return (txt && txt !== key) ? txt : '';
+  }
+
   function _apply() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
@@ -68,5 +77,5 @@ const I18n = (() => {
     });
   }
 
-  return { init, setLang, getLang, t, constraint };
+  return { init, setLang, getLang, t, constraint, constraintHelp };
 })();

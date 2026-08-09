@@ -596,7 +596,7 @@ const Puzzle = (() => {
     if (_states) return _states;
     const base = location.pathname.includes('/fr/') || location.pathname.includes('/es/')
       ? '../data/states.json' : 'data/states.json';
-    const res = await fetch(base);
+    const res = await fetch(`${base}?v=${CONFIG.DATA_VERSION}`);
     _states = await res.json();
     return _states;
   }

@@ -66,13 +66,14 @@ const Game = (() => {
 
     _puzzle = await Puzzle.getPuzzle(_dateStr);
     if (!_puzzle) {
-      document.getElementById('loading').textContent = 'Puzzle unavailable — please refresh.';
+      document.getElementById('loading').textContent = 'Puzzle unavailable, please refresh.';
       return;
     }
 
     _loadProgress();
     _render();
     _setupDelegation();
+    _bindConstraintHelp();
     _startTime = _startTime || Date.now();
     document.getElementById('loading').style.display = 'none';
     document.getElementById('game-wrap').style.display = 'flex';
@@ -113,7 +114,7 @@ const Game = (() => {
     const el = document.getElementById('puzzle-date');
     if (!el) return;
     if (_puzzle && _puzzle._preview) {
-      // Banner above grid already says "Preview — Day #1 drops Monday June 1".
+      // Banner above grid already says "Preview: Day #1 drops Monday June 1".
       // Score bar stays clean — hide the date label entirely during preview.
       el.textContent = '';
       _showPreviewBanner();
@@ -129,9 +130,9 @@ const Game = (() => {
   function _showPreviewBanner() {
     if (document.getElementById('preview-banner')) return;
     const lang = I18n.getLang();
-    const txt = lang === 'fr' ? 'Aperçu — Day #1 sort le lundi 1er juin'
-              : lang === 'es' ? 'Vista previa — Day #1 sale el lunes 1 de junio'
-              : "Preview — Day #1 drops Monday June 1";
+    const txt = lang === 'fr' ? 'Apercu : Day #1 sort le lundi 1er juin'
+              : lang === 'es' ? 'Vista previa: Day #1 sale el lunes 1 de junio'
+              : "Preview: Day #1 drops Monday June 1";
     const cta = lang === 'fr' ? 'Réserver ma place →'
               : lang === 'es' ? 'Reservar mi lugar →'
               : 'Get Day #1 in my inbox →';
@@ -172,13 +173,102 @@ const Game = (() => {
   }
 
   function _renderLabels() {
-    _puzzle.rows.forEach((rc, i) => {
-      const el = document.getElementById(`row-label-${i}`);
-      if (el) el.textContent = I18n.constraint(rc);
+    _puzzle.rows.forEach((rc, i) => _paintLabel(document.getElementById(`row-label-${i}`), rc));
+    _puzzle.cols.forEach((cc, j) => _paintLabel(document.getElementById(`col-label-${j}`), cc));
+  }
+
+  // Writes a constraint into its card. Constraints that ship an explanation
+  // get a "?" and become tappable; the self-evident ones stay plain text so
+  // the affordance means something when it does appear.
+  function _paintLabel(el, cid) {
+    if (!el) return;
+    const label = I18n.constraint(cid);
+    const help  = I18n.constraintHelp(cid);
+    el.textContent = label;
+    el.dataset.cid = cid;
+    el.classList.toggle('has-help', !!help);
+    if (help) {
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', `${label}. ${I18n.t('what_does_this_mean')}`);
+      const q = document.createElement('span');
+      q.className = 'cl-help';
+      q.setAttribute('aria-hidden', 'true');
+      q.textContent = '?';
+      el.appendChild(q);
+    } else {
+      el.removeAttribute('role');
+      el.removeAttribute('tabindex');
+      el.removeAttribute('aria-label');
+    }
+  }
+
+  // ── Constraint explanation popover ──────────────────────────────
+  function _closeConstraintHelp() {
+    const open = document.getElementById('constraint-help');
+    if (open) open.remove();
+    document.querySelectorAll('.has-help[aria-expanded="true"]')
+      .forEach(el => el.setAttribute('aria-expanded', 'false'));
+  }
+
+  function _openConstraintHelp(labelEl) {
+    const cid  = labelEl.dataset.cid;
+    const help = cid && I18n.constraintHelp(cid);
+    if (!help) return;
+    const already = labelEl.getAttribute('aria-expanded') === 'true';
+    _closeConstraintHelp();
+    if (already) return; // second tap closes
+
+    const pop = document.createElement('div');
+    pop.id = 'constraint-help';
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-live', 'polite');
+    const h = document.createElement('strong');
+    h.textContent = I18n.constraint(cid);
+    const p = document.createElement('p');
+    p.textContent = help;
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'ch-close';
+    close.setAttribute('aria-label', I18n.t('close'));
+    close.textContent = '✕';
+    close.addEventListener('click', _closeConstraintHelp);
+    pop.append(h, p, close);
+
+    const wrap = document.querySelector('.grid-wrapper');
+    (wrap || document.body).appendChild(pop);
+
+    // Anchor under the label, clamped to the grid so it never leaves the page.
+    const host = (wrap || document.body).getBoundingClientRect();
+    const rect = labelEl.getBoundingClientRect();
+    const w    = pop.offsetWidth || 240;
+    let left   = rect.left - host.left + rect.width / 2 - w / 2;
+    left = Math.max(4, Math.min(left, host.width - w - 4));
+    pop.style.left = `${left}px`;
+    pop.style.top  = `${rect.bottom - host.top + 8}px`;
+
+    labelEl.setAttribute('aria-expanded', 'true');
+  }
+
+  function _bindConstraintHelp() {
+    document.querySelectorAll('.col-label, .row-label').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('has-help')) _openConstraintHelp(el);
+      });
+      el.addEventListener('keydown', e => {
+        if ((e.key === 'Enter' || e.key === ' ') && el.classList.contains('has-help')) {
+          e.preventDefault();
+          _openConstraintHelp(el);
+        }
+      });
     });
-    _puzzle.cols.forEach((cc, j) => {
-      const el = document.getElementById(`col-label-${j}`);
-      if (el) el.textContent = I18n.constraint(cc);
+    document.addEventListener('click', e => {
+      if (!e.target.closest('#constraint-help') && !e.target.closest('.has-help')) {
+        _closeConstraintHelp();
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') _closeConstraintHelp();
     });
   }
 
@@ -209,9 +299,9 @@ const Game = (() => {
             const isGolden = _puzzle.goldenState && placed === _puzzle.goldenState;
             if (isGolden) cell.classList.add('golden');
             cell.setAttribute('aria-label',
-              `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]})${isGolden ? ' — 🌟 Golden State' : ''}. ${I18n.t('cell_editable_hint') || 'Activate to change or clear.'}`);
+              `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]})${isGolden ? ', 🌟 Golden State' : ''}. ${I18n.t('cell_editable_hint') || 'Activate to change or clear.'}`);
           } else {
-            cell.setAttribute('aria-label', `${state.names[lang]} — wrong`);
+            cell.setAttribute('aria-label', `${state.names[lang]}, wrong`);
           }
           cell.innerHTML = `
             <span class="cell-abbr">${state.id}</span>
@@ -220,7 +310,7 @@ const Game = (() => {
           `;
         } else {
           cell.classList.add('empty');
-          cell.setAttribute('aria-label', `Empty cell — ${rowLabels[r]} × ${colLabels[c]}. Press Enter to pick a state.`);
+          cell.setAttribute('aria-label', `Empty cell, ${rowLabels[r]} × ${colLabels[c]}. Press Enter to pick a state.`);
         }
       }
     }
@@ -526,7 +616,7 @@ const Game = (() => {
     _renderCells();
     _updateScore();
     if (alreadyUsed) {
-      _announce(I18n.t('state_already_used') || `${stateId} is already on the board — pick a different state.`);
+      _announce(I18n.t('state_already_used') || `${stateId} is already on the board, pick a different state.`);
     } else {
       _announce(I18n.t('wrong_state') || 'Wrong state, try again');
     }
@@ -682,7 +772,7 @@ const Game = (() => {
   }
 
   function _fmtTime(sec) {
-    if (sec == null) return '—';
+    if (sec == null) return '-';
     const m = Math.floor(sec / 60), s = sec % 60;
     return `${m}:${String(s).padStart(2,'0')}`;
   }
@@ -962,7 +1052,7 @@ const Game = (() => {
       id: 'twitter', label: 'X / Twitter', color: '#000000',
       icon: '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
       url: (body) => {
-        const tweet = `I just played today's Statedoku 🇺🇸 — the daily US states puzzle, like Sudoku with American geography.\n\n${body}\n\n#Statedoku — try it:`;
+        const tweet = `I just played today's Statedoku 🇺🇸, the daily US states puzzle, like Sudoku with American geography.\n\n${body}\n\n#Statedoku, try it:`;
         return `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}&url=${encodeURIComponent(SITE_URL)}`;
       },
     },
@@ -1111,7 +1201,7 @@ const Game = (() => {
     s = s || _getStats();
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
     set('stat-played',    s.played);
-    set('stat-win-rate',  s.played ? Math.round(s.won/s.played*100)+'%' : '—');
+    set('stat-win-rate',  s.played ? Math.round(s.won/s.played*100)+'%' : '-');
     // Streak with progressive fire emoji (longer streak = hotter fire)
     const streakEl = document.getElementById('stat-streak');
     if (streakEl) {
@@ -1125,7 +1215,7 @@ const Game = (() => {
       streakEl.textContent = prefix + n;
       streakEl.className = 'stat-value ' + tier;
     }
-    set('stat-best-time', s.bestTime ? _fmt(s.bestTime) : '—');
+    set('stat-best-time', s.bestTime ? _fmt(s.bestTime) : '-');
   }
 
   function _fmt(s) { return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; }
@@ -1180,7 +1270,7 @@ const Game = (() => {
     const btn = document.getElementById('reminder-toggle');
     const time = document.getElementById('reminder-time');
     if (enabled && pref) {
-      if (status) status.textContent = (I18n.t('remind_on') || 'On — daily at') + ' ' + pref.time;
+      if (status) status.textContent = (I18n.t('remind_on') || 'On, daily at') + ' ' + pref.time;
       if (btn) btn.textContent = I18n.t('disable') || 'Disable';
       if (time) time.value = pref.time;
     } else {
