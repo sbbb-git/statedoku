@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"Biggest City Quiz","item":"https://statedoku.com/play/biggest-cities/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Biggest City Quiz","description":"Identify the biggest city of each US state.","url":"https://statedoku.com/play/biggest-cities/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Biggest City Quiz?","acceptedAnswer":{"@type":"Answer","text":"Identify the biggest city of each US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Biggest City Quiz?","acceptedAnswer":{"@type":"Answer","text":"Identify the biggest city of each US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🏙️ BIG CITIES</span>
@@ -226,12 +226,106 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);font-size:.95rem;line-height:1.65}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.play-context h2:first-of-type{margin-top:12px}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 12px;padding-left:20px}
+.play-context li{margin-bottom:6px}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 14px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:440px;background:#fff}
+.play-context th,.play-context td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800}
+.play-context .next-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.play-context .next-links a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+<section class="play-context">
+  <p>Biggest City Quiz tests one fact per state, which city holds the most people, and it is deliberately not the same fact as the state capital. A full round is 15 states with four buttons each and takes about two minutes.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start. A city name appears in the navy card, four state names appear underneath, and you click the state that city belongs to. A correct pick turns green and adds one point. A wrong pick turns red, the right state turns green so you see the answer, and you lose one of three lives. The deck is drawn at random from all 50 states, so no two runs are identical and there is no clock. Score converts to stars at the end: three stars from 90 percent, two from 60 percent, one from 30 percent. Losing all three lives ends the run early. Your best score and your day to day streak are stored in your own browser.</p>
+
+  <h2>The cities that cost people lives</h2>
+  <p>Two city names sit in the deck twice. Portland is the largest city of Maine and of Oregon, and Charleston is the largest city of South Carolina and of West Virginia. Read all four buttons before clicking, because only one member of each pair is ever offered. Kansas City is the third classic trap: it is the largest city in Missouri, and Kansas answers to Wichita.</p>
+  <p>The other half of the game is knowing when the capital is also the answer. In 17 states it is: Phoenix, Little Rock, Denver, Atlanta, Honolulu, Boise, Indianapolis, Des Moines, Boston, Jackson, Columbus, Oklahoma City, Providence, Nashville, Salt Lake City, Charleston in West Virginia and Cheyenne. Everywhere else the capital is a decoy. Virginia answers Virginia Beach rather than Richmond, Florida answers Jacksonville rather than Tallahassee, Alabama answers Huntsville rather than Montgomery, and Nevada answers Las Vegas rather than Carson City.</p>
+
+  <h2>The 33 states where capital and biggest city split</h2>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>State</th><th>Biggest city</th><th>Capital</th></tr></thead>
+      <tbody>
+<tr><td>Alabama</td><td>Huntsville</td><td>Montgomery</td></tr>
+<tr><td>Alaska</td><td>Anchorage</td><td>Juneau</td></tr>
+<tr><td>California</td><td>Los Angeles</td><td>Sacramento</td></tr>
+<tr><td>Connecticut</td><td>Bridgeport</td><td>Hartford</td></tr>
+<tr><td>Delaware</td><td>Wilmington</td><td>Dover</td></tr>
+<tr><td>Florida</td><td>Jacksonville</td><td>Tallahassee</td></tr>
+<tr><td>Illinois</td><td>Chicago</td><td>Springfield</td></tr>
+<tr><td>Kansas</td><td>Wichita</td><td>Topeka</td></tr>
+<tr><td>Kentucky</td><td>Louisville</td><td>Frankfort</td></tr>
+<tr><td>Louisiana</td><td>New Orleans</td><td>Baton Rouge</td></tr>
+<tr><td>Maine</td><td>Portland</td><td>Augusta</td></tr>
+<tr><td>Maryland</td><td>Baltimore</td><td>Annapolis</td></tr>
+<tr><td>Michigan</td><td>Detroit</td><td>Lansing</td></tr>
+<tr><td>Minnesota</td><td>Minneapolis</td><td>Saint Paul</td></tr>
+<tr><td>Missouri</td><td>Kansas City</td><td>Jefferson City</td></tr>
+<tr><td>Montana</td><td>Billings</td><td>Helena</td></tr>
+<tr><td>Nebraska</td><td>Omaha</td><td>Lincoln</td></tr>
+<tr><td>Nevada</td><td>Las Vegas</td><td>Carson City</td></tr>
+<tr><td>New Hampshire</td><td>Manchester</td><td>Concord</td></tr>
+<tr><td>New Jersey</td><td>Newark</td><td>Trenton</td></tr>
+<tr><td>New Mexico</td><td>Albuquerque</td><td>Santa Fe</td></tr>
+<tr><td>New York</td><td>New York City</td><td>Albany</td></tr>
+<tr><td>North Carolina</td><td>Charlotte</td><td>Raleigh</td></tr>
+<tr><td>North Dakota</td><td>Fargo</td><td>Bismarck</td></tr>
+<tr><td>Oregon</td><td>Portland</td><td>Salem</td></tr>
+<tr><td>Pennsylvania</td><td>Philadelphia</td><td>Harrisburg</td></tr>
+<tr><td>South Carolina</td><td>Charleston</td><td>Columbia</td></tr>
+<tr><td>South Dakota</td><td>Sioux Falls</td><td>Pierre</td></tr>
+<tr><td>Texas</td><td>Houston</td><td>Austin</td></tr>
+<tr><td>Vermont</td><td>Burlington</td><td>Montpelier</td></tr>
+<tr><td>Virginia</td><td>Virginia Beach</td><td>Richmond</td></tr>
+<tr><td>Washington</td><td>Seattle</td><td>Olympia</td></tr>
+<tr><td>Wisconsin</td><td>Milwaukee</td><td>Madison</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Keep going</h2>
+  <p>The reference article behind this quiz lists every state with its largest city and how the ranking has shifted.</p>
+  <div class="next-links">
+    <a href="/learn/states-largest-cities/">Largest city in each state</a>
+    <a href="/play/state-capitals-typing/">State Capitals Typing</a>
+    <a href="/play/state-capitals-match/">State Capitals Match</a>
+    <a href="/play/place-the-state/">Place the State</a>
+    <a href="/play/state-abbreviations/">State Abbreviations</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/states-largest-cities/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States Largest Cities</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play Biggest City Quiz?</summary>
+      <p>Identify the biggest city of each US state. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

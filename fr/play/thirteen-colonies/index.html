@@ -265,12 +265,70 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Comment joue-t-on à 13 Colonies originelles ?</summary>
+      <p>Clique sur les 13 colonies originelles sur la carte. Scores enregistrés localement ; streak conservé entre les jours.</p>
+    </details>
+    <details>
+      <summary>Le jeu est-il gratuit ?</summary>
+      <p>Oui — 100% gratuit, sans inscription, sans pub.</p>
+    </details>
+    <details>
+      <summary>Fonctionne-t-il sur mobile ?</summary>
+      <p>Oui — entièrement adapté téléphone, tablette et bureau.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+
+<!-- play-context -->
+<style>
+.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);line-height:1.65;font-size:.95rem}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);margin:26px 0 10px;letter-spacing:-.01em}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 14px;padding-left:20px}
+.play-context li{margin-bottom:7px}
+.play-context strong{color:var(--navy,#0F2147)}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 16px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:320px;background:#fff}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:8px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context td{padding:7px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context .xlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:10px 0 0}
+.play-context .xlinks a{display:block;padding:10px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}
+</style>
+<section class="play-context">
+<p>Ce jeu demande de cliquer sur les treize colonies originelles à partir de la carte actuelle des 50 États. Il travaille la géographie de la côte atlantique autant que la chronologie. Comptez une à deux minutes.</p>
+
+<h2>Comment jouer</h2>
+<!-- PLACEHOLDER_LEARN_MID -->
+
+<p>Aucune question n'est posée, la carte des 50 États est cliquable telle quelle. Chaque colonie trouvée passe en vert et fait avancer le compteur <strong>Résolu</strong> jusqu'à 13. Chaque autre État cliqué passe en rouge et compte une erreur, cinq erreurs mettent fin à la partie et les colonies manquées s'affichent en orange. Le score se lit sur 13, avec trois étoiles à partir de 12 trouvées, deux étoiles à partir de 8 et une étoile à partir de 4.</p>
+
+<h2>Où les joueurs perdent leurs cinq erreurs</h2>
+<ul>
+<li><strong>Le Vermont et le Maine.</strong> Ce sont les deux fautes les plus fréquentes. Le Vermont est entré dans l'Union en 1791 et le Maine en 1820, après la période coloniale. Sur les six États de Nouvelle-Angleterre, seuls quatre comptent, Connecticut, Massachusetts, Nouveau-Hampshire et Rhode Island.</li>
+<li><strong>La Virginie-Occidentale.</strong> Elle s'est détachée de la Virginie et n'est entrée dans l'Union qu'en 1863, elle ne fait pas partie des treize.</li>
+<li><strong>La Floride.</strong> Espagnole à l'époque coloniale, elle n'entre dans l'Union qu'en 1845 et ne compte pas, alors qu'elle est sur la même côte.</li>
+<li><strong>La règle de balayage.</strong> Les treize forment une bande continue sans trou, du Nouveau-Hampshire au nord à la Géorgie au sud. Aucune colonie ne se trouve à l'ouest des Appalaches. Descends la côte dans l'ordre et ne saute pas le Delaware, 49e État par superficie, donc minuscule à cliquer entre le Maryland et le New Jersey.</li>
+<li><strong>Les deux extrémités.</strong> Le Nouveau-Hampshire est la cible la plus au nord, la Géorgie la plus au sud. Tout ce qui dépasse ces deux bornes est une erreur.</li>
+</ul>
+
+<h2>Entrée dans l'Union des treize colonies</h2>
+<div class="tbl-scroll"><table><thead><tr><th>Année</th><th>Nombre</th><th>États</th></tr></thead><tbody><tr><td>1787</td><td>3</td><td>Delaware, New Jersey, Pennsylvanie</td></tr><tr><td>1788</td><td>8</td><td>Caroline du Sud, Connecticut, Géorgie, Maryland, Massachusetts, New York, Nouveau-Hampshire, Virginie</td></tr><tr><td>1789</td><td>1</td><td>Caroline du Nord</td></tr><tr><td>1790</td><td>1</td><td>Rhode Island</td></tr></tbody></table></div>
+<h2>Aller plus loin</h2>
+<p>L'article <a href="/fr/learn/13-colonies/">Les 13 colonies originelles</a> reprend les mêmes données hors du chronomètre. Les jeux voisins ci-dessous utilisent le même moteur et le même barème d'étoiles.</p>
+<div class="xlinks"><a href="/fr/play/state-admission-order/">Ordre d'admission à l'Union</a><a href="/fr/play/confederate-states/">Quiz États Confédérés</a><a href="/fr/play/place-the-state/">Placer l'État</a><a href="/fr/play/president-birth-states/">Présidents par État natal</a></div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">En savoir plus sur ce sujet</h2>
       <a href="/fr/learn/13-colonies/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /13 Colonies</a>
     </div>
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

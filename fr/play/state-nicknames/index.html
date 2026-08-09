@@ -226,6 +226,65 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Comment joue-t-on à Quiz Surnoms d'États ?</summary>
+      <p>Associe les surnoms ("Lone Star State"...) aux États. Scores enregistrés localement ; streak conservé entre les jours.</p>
+    </details>
+    <details>
+      <summary>Le jeu est-il gratuit ?</summary>
+      <p>Oui — 100% gratuit, sans inscription, sans pub.</p>
+    </details>
+    <details>
+      <summary>Fonctionne-t-il sur mobile ?</summary>
+      <p>Oui — entièrement adapté téléphone, tablette et bureau.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+
+<!-- play-context -->
+<style>
+.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);line-height:1.65;font-size:.95rem}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);margin:26px 0 10px;letter-spacing:-.01em}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 14px;padding-left:20px}
+.play-context li{margin-bottom:7px}
+.play-context strong{color:var(--navy,#0F2147)}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 16px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:320px;background:#fff}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:8px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context td{padding:7px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context .xlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:10px 0 0}
+.play-context .xlinks a{display:block;padding:10px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}
+</style>
+<section class="play-context">
+<p>Ce quiz travaille une seule chose, la correspondance entre un surnom anglais et l'État qui le porte. Les 50 surnoms sont dans le jeu, une partie en tire 15, ce qui prend deux à trois minutes.</p>
+
+<h2>Comment jouer</h2>
+<!-- PLACEHOLDER_LEARN_MID -->
+
+<p>Chaque carte affiche un surnom en anglais, par exemple <strong>Lone Star State</strong>, et propose quatre États en français. La bonne réponse rapporte un point. Une erreur retire une vie et révèle immédiatement le bon État, la partie s'arrête à la troisième erreur. Le score se lit sur 15, avec trois étoiles à partir de 14 bonnes réponses, deux à partir de 9 et une à partir de 5. Le meilleur score et la série de jours consécutifs restent stockés dans le navigateur, rien n'est envoyé à un serveur.</p>
+
+<h2>Les familles de surnoms qui piègent</h2>
+<ul>
+<li><strong>Le trio minéral de l'Est</strong>. Granite State est le Nouveau-Hampshire, Green Mountain State le Vermont, Mountain State la Virginie-Occidentale. Trois surnoms de roche et de relief, trois États différents.</li>
+<li><strong>Les quatre métaux de l'Ouest</strong>. Golden State pour la Californie, Silver State pour le Nevada, Gem State pour l'Idaho, Treasure State pour le Montana.</li>
+<li><strong>Les deux surnoms constitutionnels</strong>. First State est le Delaware, entré dans l'Union en 1787, Constitution State est le Connecticut, entré en 1788.</li>
+<li><strong>Les quatre animaux</strong>. Yellowhammer State pour l'Alabama, Pelican State pour la Louisiane, Badger State pour le Wisconsin, Beaver State pour l'Oregon.</li>
+<li><strong>Les surnoms datés</strong>. Centennial State est le Colorado, admis en 1876, cent ans après 1776. Sooner State est l'Oklahoma, admis en 1907.</li>
+<li><strong>Les six sans indice géographique</strong>. Show Me State (Missouri), Hoosier State (Indiana), Tar Heel State (Caroline du Nord), Volunteer State (Tennessee), Old Line State (Maryland) et Old Dominion (Virginie) ne contiennent aucun mot exploitable. Ce sont ceux qu'il faut apprendre par cœur.</li>
+</ul>
+
+<h2>Les 50 surnoms testés par le jeu</h2>
+<div class="tbl-scroll"><table><thead><tr><th>Surnom</th><th>État</th></tr></thead><tbody><tr><td>Yellowhammer State</td><td>Alabama</td></tr><tr><td>The Last Frontier</td><td>Alaska</td></tr><tr><td>Grand Canyon State</td><td>Arizona</td></tr><tr><td>Natural State</td><td>Arkansas</td></tr><tr><td>Golden State</td><td>Californie</td></tr><tr><td>Tar Heel State</td><td>Caroline du Nord</td></tr><tr><td>Palmetto State</td><td>Caroline du Sud</td></tr><tr><td>Centennial State</td><td>Colorado</td></tr><tr><td>Constitution State</td><td>Connecticut</td></tr><tr><td>Peace Garden State</td><td>Dakota du Nord</td></tr><tr><td>Mount Rushmore State</td><td>Dakota du Sud</td></tr><tr><td>First State</td><td>Delaware</td></tr><tr><td>Sunshine State</td><td>Floride</td></tr><tr><td>Peach State</td><td>Géorgie</td></tr><tr><td>Aloha State</td><td>Hawaï</td></tr><tr><td>Gem State</td><td>Idaho</td></tr><tr><td>Prairie State</td><td>Illinois</td></tr><tr><td>Hoosier State</td><td>Indiana</td></tr><tr><td>Hawkeye State</td><td>Iowa</td></tr><tr><td>Sunflower State</td><td>Kansas</td></tr><tr><td>Bluegrass State</td><td>Kentucky</td></tr><tr><td>Pelican State</td><td>Louisiane</td></tr><tr><td>Pine Tree State</td><td>Maine</td></tr><tr><td>Old Line State</td><td>Maryland</td></tr><tr><td>Bay State</td><td>Massachusetts</td></tr><tr><td>Great Lakes State</td><td>Michigan</td></tr><tr><td>North Star State</td><td>Minnesota</td></tr><tr><td>Magnolia State</td><td>Mississippi</td></tr><tr><td>Show Me State</td><td>Missouri</td></tr><tr><td>Treasure State</td><td>Montana</td></tr><tr><td>Cornhusker State</td><td>Nebraska</td></tr><tr><td>Silver State</td><td>Nevada</td></tr><tr><td>Garden State</td><td>New Jersey</td></tr><tr><td>Empire State</td><td>New York</td></tr><tr><td>Granite State</td><td>Nouveau-Hampshire</td></tr><tr><td>Land of Enchantment</td><td>Nouveau-Mexique</td></tr><tr><td>Buckeye State</td><td>Ohio</td></tr><tr><td>Sooner State</td><td>Oklahoma</td></tr><tr><td>Beaver State</td><td>Oregon</td></tr><tr><td>Keystone State</td><td>Pennsylvanie</td></tr><tr><td>Ocean State</td><td>Rhode Island</td></tr><tr><td>Volunteer State</td><td>Tennessee</td></tr><tr><td>Lone Star State</td><td>Texas</td></tr><tr><td>Beehive State</td><td>Utah</td></tr><tr><td>Green Mountain State</td><td>Vermont</td></tr><tr><td>Old Dominion</td><td>Virginie</td></tr><tr><td>Mountain State</td><td>Virginie-Occidentale</td></tr><tr><td>Evergreen State</td><td>Washington</td></tr><tr><td>Badger State</td><td>Wisconsin</td></tr><tr><td>Equality State</td><td>Wyoming</td></tr></tbody></table></div>
+<h2>Aller plus loin</h2>
+<p>L'article <a href="/fr/learn/surnoms-des-etats/">Les surnoms des États américains</a> reprend les mêmes données hors du chronomètre. Les jeux voisins ci-dessous utilisent le même moteur et le même barème d'étoiles.</p>
+<div class="xlinks"><a href="/fr/play/state-mottos/">Quiz Devises d'États</a><a href="/fr/play/state-symbols/">Quiz Symboles d'États</a><a href="/fr/play/state-flags/">Quiz Drapeaux d'États</a><a href="/fr/play/state-abbreviations/">Quiz Abréviations USPS</a></div>
+</section>
+
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

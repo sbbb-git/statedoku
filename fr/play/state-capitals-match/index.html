@@ -20,7 +20,7 @@
   <meta name="keywords" content="memo capitales etats americains">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
-  <link rel="canonical" href="https://statedoku.com/play/state-capitals-match/">
+  <link rel="canonical" href="https://statedoku.com/fr/play/state-capitals-match/">
   <link rel="alternate" hreflang="en" href="https://statedoku.com/play/state-capitals-match/">
   <link rel="alternate" hreflang="en-US" href="https://statedoku.com/play/state-capitals-match/">
   <link rel="alternate" hreflang="en-GB" href="https://statedoku.com/play/state-capitals-match/">
@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://statedoku.com/fr/"},{"@type":"ListItem","position":2,"name":"Jouer & Apprendre","item":"https://statedoku.com/fr/play/"},{"@type":"ListItem","position":3,"name":"Mémo Capitales d'États","item":"https://statedoku.com/fr/play/state-capitals-match/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Mémo Capitales d'États","description":"Associe les 10 États avec leurs capitales.","url":"https://statedoku.com/fr/play/state-capitals-match/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"fr","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment joue-t-on à Mémo Capitales d'États ?","acceptedAnswer":{"@type":"Answer","text":"Associe les 10 États avec leurs capitales. Scores enregistrés localement ; streak conservé entre les jours."}},{"@type":"Question","name":"Le jeu est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui — 100% gratuit, sans inscription, sans pub."}},{"@type":"Question","name":"Fonctionne-t-il sur mobile ?","acceptedAnswer":{"@type":"Answer","text":"Oui — entièrement adapté téléphone, tablette et bureau."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment joue-t-on à Mémo Capitales d'États ?","acceptedAnswer":{"@type":"Answer","text":"Associe les 10 États avec leurs capitales. Scores enregistrés localement ; streak conservé entre les jours."}},{"@type":"Question","name":"Le jeu est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui, 100% gratuit, sans inscription, sans pub."}},{"@type":"Question","name":"Fonctionne-t-il sur mobile ?","acceptedAnswer":{"@type":"Answer","text":"Oui, entièrement adapté téléphone, tablette et bureau."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🏛️ CAPITALS</span>
@@ -227,11 +227,106 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
 
+<style>
+.pgx{max-width:760px;margin:24px auto 0;padding:0 14px;line-height:1.62;color:var(--text,#1E293B)}
+.pgx h2{font-size:1.22rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.012em;margin:26px 0 10px}
+.pgx p{margin:0 0 12px;font-size:.95rem}
+.pgx .pgx-lede{font-size:1rem;color:var(--text-2,#475569)}
+.pgx ul{margin:0 0 14px;padding-left:20px}
+.pgx li{margin-bottom:6px;font-size:.95rem}
+.pgx .tw{overflow-x:auto;margin:0 0 14px;border:1px solid #E2E8F0;border-radius:10px;background:#fff}
+.pgx table{border-collapse:collapse;width:100%;font-size:.9rem}
+.pgx th,.pgx td{padding:8px 12px;text-align:left;border-bottom:1px solid #EEF2F7}
+.pgx th{background:#F8FAFC;font-weight:800;color:var(--navy,#0F2147);font-size:.8rem;letter-spacing:.02em}
+.pgx tbody tr:last-child td{border-bottom:none}
+.pgx .nx{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:14px 18px;margin:24px 0 8px}
+.pgx .nx h2{margin:4px 0 8px}
+.pgx .nx ul{list-style:none;padding:0;margin:0}
+.pgx .nx li{margin-bottom:8px}
+.pgx .nx a{color:var(--navy,#0F2147);font-weight:700;text-decoration:none;border-bottom:1px solid #CBD5E1}
+.pgx .nx a:hover{border-color:var(--navy,#0F2147)}
+</style>
+
+  <section class="pgx">
+    <p class="pgx-lede">Ce jeu entraîne la mémoire d'appariement entre un État et sa capitale, sans choix multiple pour aider. Dix paires à relier, une partie tient en moins d'une minute.</p>
+
+    <h2>Comment jouer</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+    <p>Deux colonnes s'affichent, les États à gauche et les capitales à droite, chacune mélangée à part. Tu cliques un État, puis la capitale que tu lui associes.</p>
+    <ul>
+      <li>Paire correcte: les deux cases se verrouillent et le compteur Résolu monte.</li>
+      <li>Paire fausse: les deux cases clignotent en rouge, le compteur Erreurs monte de 1 et la sélection se libère.</li>
+      <li>Ni vies ni chronomètre. La partie se termine quand les dix paires sont verrouillées.</li>
+      <li>Score final: 10 moins le nombre d'erreurs, avec un plancher à zéro. Trois étoiles avec zéro ou une erreur, deux étoiles jusqu'à quatre erreurs, une étoile jusqu'à sept.</li>
+      <li>Comme une paire fausse ne se verrouille jamais, tu peux toujours finir la grille. Le seul enjeu est le nombre d'essais ratés.</li>
+    </ul>
+
+    <h2>La grille est toujours la même</h2>
+    <p>Cette grille tire dix États fixes, seul l'ordre d'affichage change d'une partie à l'autre. Les connaître par coeur transforme le jeu en exercice de vitesse. Et le choix n'a rien d'anodin: six des dix capitales ne sont pas la plus grande ville de leur État, ce qui est précisément la source d'erreur.</p>
+    <ul>
+      <li>Raleigh est la capitale de la Caroline du Nord, mais Charlotte est la plus grande ville.</li>
+      <li>Lincoln est la capitale du Nebraska, Omaha est plus grande.</li>
+      <li>Santa Fe est la capitale du Nouveau-Mexique, Albuquerque est plus grande.</li>
+      <li>Helena est la capitale du Montana, Billings est plus grande.</li>
+      <li>Saint Paul est la capitale du Minnesota, Minneapolis est plus grande. Les deux forment les Twin Cities, une seule est capitale.</li>
+      <li>Bismarck est la capitale du Dakota du Nord, Fargo est plus grande.</li>
+    </ul>
+    <p>Les quatre paires restantes sont les plus sûres, car capitale et plus grande ville se confondent: Boise dans l'Idaho, Phoenix en Arizona, Jackson dans le Mississippi, Cheyenne dans le Wyoming. Verrouille ces quatre-là en premier, il ne reste ensuite que six lignes à trier. Phoenix est aussi la seule capitale de la grille à dépasser le million d'habitants.</p>
+    <p>Dernier réflexe utile: deux capitales de la grille portent des noms de présidents, Lincoln pour le Nebraska et Jackson pour le Mississippi. Ce sont celles que l'on attribue le plus souvent au mauvais État.</p>
+
+    <h2>Les dix paires de cette grille</h2>
+    <div class="tw"><table>
+      <thead><tr><th>État</th><th>Capitale</th><th>Plus grande ville</th></tr></thead>
+      <tbody>
+        <tr><td>Arizona</td><td>Phoenix</td><td>Phoenix</td></tr>
+        <tr><td>Caroline du Nord</td><td>Raleigh</td><td>Charlotte</td></tr>
+        <tr><td>Dakota du Nord</td><td>Bismarck</td><td>Fargo</td></tr>
+        <tr><td>Idaho</td><td>Boise</td><td>Boise</td></tr>
+        <tr><td>Minnesota</td><td>Saint Paul</td><td>Minneapolis</td></tr>
+        <tr><td>Mississippi</td><td>Jackson</td><td>Jackson</td></tr>
+        <tr><td>Montana</td><td>Helena</td><td>Billings</td></tr>
+        <tr><td>Nebraska</td><td>Lincoln</td><td>Omaha</td></tr>
+        <tr><td>Nouveau-Mexique</td><td>Santa Fe</td><td>Albuquerque</td></tr>
+        <tr><td>Wyoming</td><td>Cheyenne</td><td>Cheyenne</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="nx">
+      <h2>Continuer</h2>
+      <ul>
+        <li><a href="/fr/learn/capitales-des-etats/">Les 50 capitales des États américains</a>, la liste complète des cinquante.</li>
+        <li><a href="/fr/play/state-capitals-typing/">Quiz Capitales</a>, les mêmes réponses mais en saisie libre.</li>
+        <li><a href="/fr/play/biggest-cities/">Quiz Plus Grande Ville</a>, l'envers de ce jeu.</li>
+        <li><a href="/fr/play/state-abbreviations/">Quiz Abréviations USPS</a>, pour les codes à deux lettres.</li>
+        <li><a href="/fr/play/place-the-state/">Placer l'État</a>, pour situer chacun de ces dix États.</li>
+      </ul>
+    </div>
+  </section>
+
+
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">En savoir plus sur ce sujet</h2>
       <a href="/fr/learn/states-and-capitals/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States And Capitals</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Comment joue-t-on à Mémo Capitales d'États ?</summary>
+      <p>Associe les 10 États avec leurs capitales. Scores enregistrés localement ; streak conservé entre les jours.</p>
+    </details>
+    <details>
+      <summary>Le jeu est-il gratuit ?</summary>
+      <p>Oui, 100% gratuit, sans inscription, sans pub.</p>
+    </details>
+    <details>
+      <summary>Fonctionne-t-il sur mobile ?</summary>
+      <p>Oui, entièrement adapté téléphone, tablette et bureau.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

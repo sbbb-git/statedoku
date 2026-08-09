@@ -1,10 +1,12 @@
 # Cloudflare Pages: custom response headers
 # Docs: https://developers.cloudflare.com/pages/configuration/headers/
 #
-# CF Pages applies LAST matching rule per header name. So put the
-# global rule FIRST, then specific overrides AFTER. The /play/* rules
-# below replace the global CSP with one that allows third-party
-# framing (frame-ancestors *) — that powers the embeddable widgets.
+# One global rule, no per-path CSP overrides. The /play/* pages need a
+# permissive frame-ancestors so third-party sites can iframe the games, but
+# that is handled entirely in functions/_middleware.js, which rewrites the
+# header per request. Setting it here as well made Cloudflare emit two CSP
+# headers comma-joined, and browsers then enforce the strictest
+# frame-ancestors of the two, which broke embedding.
 
 /*
   X-Content-Type-Options: nosniff
@@ -12,13 +14,6 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
-
-/play/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors *; base-uri 'self'; form-action 'self'
-/fr/play/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors *; base-uri 'self'; form-action 'self'
-/es/play/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors *; base-uri 'self'; form-action 'self'
 
 # ─────────────────────────────────────────────────────────────
 # Caching strategy:
@@ -71,3 +66,8 @@
   Cache-Control: public, max-age=2592000
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
+
+# NOTE: /play/* CSP is deliberately NOT set here. functions/_middleware.js
+# rewrites it per request so third-party sites can iframe the games. Setting
+# it in both places made Cloudflare emit the policy twice, comma-joined, and
+# browsers then enforce the strictest frame-ancestors of the two.

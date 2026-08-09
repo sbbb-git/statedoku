@@ -20,7 +20,7 @@
   <meta name="keywords" content="quiz 50 capitales etats unis">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
-  <link rel="canonical" href="https://statedoku.com/play/state-capitals-typing/">
+  <link rel="canonical" href="https://statedoku.com/fr/play/state-capitals-typing/">
   <link rel="alternate" hreflang="en" href="https://statedoku.com/play/state-capitals-typing/">
   <link rel="alternate" hreflang="en-US" href="https://statedoku.com/play/state-capitals-typing/">
   <link rel="alternate" hreflang="en-GB" href="https://statedoku.com/play/state-capitals-typing/">
@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://statedoku.com/fr/"},{"@type":"ListItem","position":2,"name":"Jouer & Apprendre","item":"https://statedoku.com/fr/play/"},{"@type":"ListItem","position":3,"name":"Quiz Capitales","item":"https://statedoku.com/fr/play/state-capitals-typing/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Quiz Capitales","description":"Tape la capitale de chaque État.","url":"https://statedoku.com/fr/play/state-capitals-typing/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"fr","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment joue-t-on à Quiz Capitales ?","acceptedAnswer":{"@type":"Answer","text":"Tape la capitale de chaque État. Scores enregistrés localement ; streak conservé entre les jours."}},{"@type":"Question","name":"Le jeu est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui — 100% gratuit, sans inscription, sans pub."}},{"@type":"Question","name":"Fonctionne-t-il sur mobile ?","acceptedAnswer":{"@type":"Answer","text":"Oui — entièrement adapté téléphone, tablette et bureau."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment joue-t-on à Quiz Capitales ?","acceptedAnswer":{"@type":"Answer","text":"Tape la capitale de chaque État. Scores enregistrés localement ; streak conservé entre les jours."}},{"@type":"Question","name":"Le jeu est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui, 100% gratuit, sans inscription, sans pub."}},{"@type":"Question","name":"Fonctionne-t-il sur mobile ?","acceptedAnswer":{"@type":"Answer","text":"Oui, entièrement adapté téléphone, tablette et bureau."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🏛️ TYPE CAPITALS</span>
@@ -223,11 +223,113 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
 
+<style>
+.pgx{max-width:760px;margin:24px auto 0;padding:0 14px;line-height:1.62;color:var(--text,#1E293B)}
+.pgx h2{font-size:1.22rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.012em;margin:26px 0 10px}
+.pgx p{margin:0 0 12px;font-size:.95rem}
+.pgx .pgx-lede{font-size:1rem;color:var(--text-2,#475569)}
+.pgx ul{margin:0 0 14px;padding-left:20px}
+.pgx li{margin-bottom:6px;font-size:.95rem}
+.pgx .tw{overflow-x:auto;margin:0 0 14px;border:1px solid #E2E8F0;border-radius:10px;background:#fff}
+.pgx table{border-collapse:collapse;width:100%;font-size:.9rem}
+.pgx th,.pgx td{padding:8px 12px;text-align:left;border-bottom:1px solid #EEF2F7}
+.pgx th{background:#F8FAFC;font-weight:800;color:var(--navy,#0F2147);font-size:.8rem;letter-spacing:.02em}
+.pgx tbody tr:last-child td{border-bottom:none}
+.pgx .nx{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:14px 18px;margin:24px 0 8px}
+.pgx .nx h2{margin:4px 0 8px}
+.pgx .nx ul{list-style:none;padding:0;margin:0}
+.pgx .nx li{margin-bottom:8px}
+.pgx .nx a{color:var(--navy,#0F2147);font-weight:700;text-decoration:none;border-bottom:1px solid #CBD5E1}
+.pgx .nx a:hover{border-color:var(--navy,#0F2147)}
+</style>
+
+  <section class="pgx">
+    <p class="pgx-lede">Ici il n'y a pas de propositions: tu tapes la capitale toi-même. C'est le format qui teste vraiment la mémoire, et l'orthographe avec. Quinze États tirés parmi les 50, environ trois minutes.</p>
+
+    <h2>Comment jouer</h2>
+    <!-- PLACEHOLDER_LEARN_MID -->
+    <p>Le nom de l'État s'affiche, tu écris sa capitale dans le champ et tu valides avec Entrée ou le bouton.</p>
+    <ul>
+      <li>La comparaison ignore les majuscules, les accents et la ponctuation. "des moines" est accepté comme Des Moines.</li>
+      <li>Les espaces comptent en revanche, et les abréviations ne passent pas: pour le Minnesota il faut écrire Saint Paul en toutes lettres, St Paul est refusé.</li>
+      <li>Bonne réponse: plus 1 point, la capitale s'affiche en vert.</li>
+      <li>Mauvaise réponse ou bouton Passer: tu perds une vie et la bonne réponse apparaît. Passer coûte donc exactement autant qu'une erreur.</li>
+      <li>Trois vies, 15 manches. Trois étoiles à partir de 14 bonnes réponses, deux à partir de 9, une à partir de 5.</li>
+    </ul>
+
+    <h2>Les pièges d'orthographe</h2>
+    <p>Comme la saisie doit tomber juste lettre à lettre, une poignée de capitales font perdre des vies pour de simples fautes de frappe.</p>
+    <ul>
+      <li>Tallahassee, en Floride: deux L, deux S, et un E final.</li>
+      <li>Montpelier, dans le Vermont: un seul L, contrairement à la ville française Montpellier. C'est l'erreur la plus fréquente chez les joueurs francophones.</li>
+      <li>Frankfort, dans le Kentucky: la fin est fort, pas furt comme Francfort.</li>
+      <li>Des Moines, dans l'Iowa: deux mots séparés.</li>
+      <li>Annapolis, dans le Maryland: deux N puis un seul P.</li>
+      <li>Harrisburg, en Pennsylvanie: deux R.</li>
+      <li>Juneau, en Alaska: la finale s'écrit eau.</li>
+      <li>Columbia en Caroline du Sud et Columbus dans l'Ohio: mêmes six premières lettres, deux États différents.</li>
+    </ul>
+    <p>Quatre capitales contiennent le mot City et il faut le taper: Carson City au Nevada, Jefferson City au Missouri, Oklahoma City en Oklahoma, Salt Lake City en Utah.</p>
+
+    <h2>Les capitales que tout le monde rate</h2>
+    <p>Trente-deux des cinquante capitales ne sont pas la plus grande ville de leur État. C'est de là que viennent la plupart des réponses fausses: on tape la ville connue au lieu de la capitale.</p>
+    <div class="tw"><table>
+      <thead><tr><th>État</th><th>Capitale attendue</th><th>Ville répondue à tort</th></tr></thead>
+      <tbody>
+        <tr><td>New York</td><td>Albany</td><td>New York City</td></tr>
+        <tr><td>Californie</td><td>Sacramento</td><td>Los Angeles</td></tr>
+        <tr><td>Illinois</td><td>Springfield</td><td>Chicago</td></tr>
+        <tr><td>Pennsylvanie</td><td>Harrisburg</td><td>Philadelphie</td></tr>
+        <tr><td>Floride</td><td>Tallahassee</td><td>Jacksonville</td></tr>
+        <tr><td>Washington</td><td>Olympia</td><td>Seattle</td></tr>
+        <tr><td>Michigan</td><td>Lansing</td><td>Detroit</td></tr>
+        <tr><td>Missouri</td><td>Jefferson City</td><td>Kansas City</td></tr>
+        <tr><td>Nevada</td><td>Carson City</td><td>Las Vegas</td></tr>
+        <tr><td>Maryland</td><td>Annapolis</td><td>Baltimore</td></tr>
+        <tr><td>Louisiane</td><td>Baton Rouge</td><td>La Nouvelle-Orléans</td></tr>
+        <tr><td>Alaska</td><td>Juneau</td><td>Anchorage</td></tr>
+        <tr><td>Oregon</td><td>Salem</td><td>Portland</td></tr>
+        <tr><td>Texas</td><td>Austin</td><td>Houston</td></tr>
+      </tbody>
+    </table></div>
+    <p>À l'inverse, dix-huit États rendent la tâche simple parce que capitale et plus grande ville coïncident, comme Boston au Massachusetts, Denver au Colorado, Atlanta en Géorgie, Honolulu à Hawaï ou Phoenix en Arizona.</p>
+
+    <div class="nx">
+      <h2>Continuer</h2>
+      <ul>
+        <li><a href="/fr/learn/capitales-des-etats/">Les 50 capitales des États américains</a>, la fiche à réviser avant de rejouer.</li>
+        <li><a href="/fr/play/state-capitals-match/">Mémo Capitales d'États</a>, la version appariement, plus indulgente.</li>
+        <li><a href="/fr/play/biggest-cities/">Quiz Plus Grande Ville</a>, exactement les villes qui te font tomber ici.</li>
+        <li><a href="/fr/play/state-abbreviations/">Quiz Abréviations USPS</a>, les codes à deux lettres.</li>
+        <li><a href="/fr/play/place-the-state/">Placer l'État</a>, pour ancrer chaque capitale sur la carte.</li>
+      </ul>
+    </div>
+  </section>
+
+
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">En savoir plus sur ce sujet</h2>
       <a href="/fr/learn/states-and-capitals/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States And Capitals</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Comment joue-t-on à Quiz Capitales ?</summary>
+      <p>Tape la capitale de chaque État. Scores enregistrés localement ; streak conservé entre les jours.</p>
+    </details>
+    <details>
+      <summary>Le jeu est-il gratuit ?</summary>
+      <p>Oui, 100% gratuit, sans inscription, sans pub.</p>
+    </details>
+    <details>
+      <summary>Fonctionne-t-il sur mobile ?</summary>
+      <p>Oui, entièrement adapté téléphone, tablette et bureau.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

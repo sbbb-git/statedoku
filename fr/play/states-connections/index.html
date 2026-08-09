@@ -225,6 +225,63 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Comment joue-t-on à Connexions d'États ?</summary>
+      <p>Style Connections NYT : regroupe 16 États en 4 catégories cachées. Scores enregistrés localement ; streak conservé entre les jours.</p>
+    </details>
+    <details>
+      <summary>Le jeu est-il gratuit ?</summary>
+      <p>Oui — 100% gratuit, sans inscription, sans pub.</p>
+    </details>
+    <details>
+      <summary>Fonctionne-t-il sur mobile ?</summary>
+      <p>Oui — entièrement adapté téléphone, tablette et bureau.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+
+<!-- play-context -->
+<style>
+.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);line-height:1.65;font-size:.95rem}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);margin:26px 0 10px;letter-spacing:-.01em}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 14px;padding-left:20px}
+.play-context li{margin-bottom:7px}
+.play-context strong{color:var(--navy,#0F2147)}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 16px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:320px;background:#fff}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:8px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context td{padding:7px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context .xlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:10px 0 0}
+.play-context .xlinks a{display:block;padding:10px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}
+</style>
+<section class="play-context">
+<p>Ce jeu entraîne le classement, pas le rappel. Il faut retrouver quatre familles de quatre États dans une grille de seize tuiles. Une grille se résout en trois à cinq minutes.</p>
+
+<h2>Comment jouer</h2>
+<!-- PLACEHOLDER_LEARN_MID -->
+
+<p>Sélectionne quatre États puis appuie sur <strong>Valider</strong>. Un groupe juste se colore et sa catégorie s'affiche au-dessus de la grille. Un groupe faux compte une erreur et la sélection se vide. La partie s'arrête à quatre catégories résolues ou à quatre erreurs. Le score se lit sur 4, avec trois étoiles pour un sans-faute, deux étoiles à trois catégories, une étoile à deux. Le jeu tire au hasard l'une des trois grilles disponibles.</p>
+
+<h2>La clé, les États à double appartenance</h2>
+<p>Chaque grille affiche seize tuiles mais moins de seize États distincts, parce que plusieurs États remplissent deux critères à la fois, parfois trois. Commence toujours par les États qui n'appartiennent qu'à une seule catégorie, la suite se déduit.</p>
+<ul>
+<li><strong>Grille frontières et histoire.</strong> L'Alaska est à la fois frontalier du Canada et sans impôt sur le revenu. Le Tennessee est sans impôt sur le revenu et confédéré. La Géorgie et la Caroline du Nord sont confédérées et comptent parmi les 13 colonies. Les points d'entrée sûrs sont le Michigan, l'Idaho et la Pennsylvanie pour le Canada, puis le Maryland et Rhode Island pour les colonies.</li>
+<li><strong>Grille Sud et Ouest.</strong> La Californie appartient à trois groupes, côte Pacifique, Sun Belt et frontière mexicaine. Aucun État n'est exclusivement Sun Belt dans cette grille, il faut donc la résoudre en dernier. Commence par Hawaï, l'Alaska et l'Oregon pour la côte Pacifique, puis le Nouveau-Mexique et le Texas pour la frontière mexicaine.</li>
+<li><strong>Grille politique et relief.</strong> L'Arizona figure dans trois groupes, swing states 2024, États enclavés et patrimoine espagnol. Les tuiles non ambiguës sont l'Illinois, l'Indiana et New York pour le Rust Belt, l'Arkansas et l'Idaho pour les États enclavés.</li>
+</ul>
+
+<h2>Les trois grilles et leurs pièges</h2>
+<div class="tbl-scroll"><table><thead><tr><th>Grille</th><th>Les quatre catégories</th><th>États à double emploi</th></tr></thead><tbody><tr><td>Frontières et histoire</td><td>Frontaliers du Canada, Sans impôt sur le revenu, États confédérés, 13 colonies originelles</td><td>Alaska, Tennessee, Géorgie, Caroline du Nord</td></tr><tr><td>Sud et Ouest</td><td>Côte Pacifique, Sun Belt, Bible Belt, Frontaliers du Mexique</td><td>Californie (trois groupes), Alabama, Arizona, Floride</td></tr><tr><td>Politique et relief</td><td>Swing states 2024, Sans accès à la mer, Patrimoine espagnol, Rust Belt</td><td>Arizona (trois groupes), Michigan, Colorado</td></tr></tbody></table></div>
+<h2>Aller plus loin</h2>
+<p>L'article <a href="/fr/learn/regions-des-etats-unis/">Les régions des États-Unis</a> reprend les mêmes données hors du chronomètre. Les jeux voisins ci-dessous utilisent le même moteur et le même barème d'étoiles.</p>
+<div class="xlinks"><a href="/fr/play/confederate-states/">Quiz États Confédérés</a><a href="/fr/play/no-income-tax-states/">Quiz Sans Impôt sur le Revenu</a><a href="/fr/play/border-states/">Quiz États Frontaliers</a><a href="/fr/play/swing-states/">Quiz États-pivots</a></div>
+</section>
+
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"State Admission Order","item":"https://statedoku.com/play/state-admission-order/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"State Admission Order","description":"Order 8 states by their year of admission to the Union.","url":"https://statedoku.com/play/state-admission-order/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Admission Order?","acceptedAnswer":{"@type":"Answer","text":"Order 8 states by their year of admission to the Union. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Admission Order?","acceptedAnswer":{"@type":"Answer","text":"Order 8 states by their year of admission to the Union. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">⏳ STATEHOOD</span>
@@ -211,12 +211,92 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.px8{max-width:760px;margin:26px auto 0;padding:0 14px;line-height:1.65;color:var(--text-2,#475569);font-size:.95rem}
+.px8 h2{font-size:1.22rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.px8 h2:first-of-type{margin-top:14px}
+.px8 p{margin:0 0 12px}
+.px8 ul{margin:0 0 12px;padding-left:20px}
+.px8 li{margin-bottom:6px}
+.px8 .tw{overflow-x:auto;margin:0 0 16px}
+.px8 table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:430px;background:#fff}
+.px8 th,.px8 td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.px8 th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800;font-size:.8rem}
+.px8 .nx{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.px8 .nx a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+
+<section class="px8">
+  <p>Eight states, one column, arrows on every row. Put them in order of admission to the Union with the oldest at the top. Two minutes per board, and the skill it builds is turning fifty separate dates into six clusters you can actually hold in your head.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start and eight states are drawn at random from all fifty, listed in scrambled order.</p>
+  <ul>
+    <li>The up and down arrows move a state one slot at a time. Reorder the whole column before you commit.</li>
+    <li>There is one Submit, no lives and no second attempt on the same board.</li>
+    <li>Scoring is strict slot matching. You earn a point for every state sitting in exactly the right position, out of eight.</li>
+    <li>That makes it unforgiving: a sequence that is correct but shifted by one place scores zero on every displaced row.</li>
+    <li>Eight out of eight earns three stars, five earns two, three earns one.</li>
+    <li>Best score and daily streak are kept in your browser.</li>
+  </ul>
+
+  <h2>Ties are broken alphabetically</h2>
+  <p>Twenty three of the fifty states share their admission year with at least one other state, so a random draw of eight will often hand you two from the same year. When that happens the board expects them in alphabetical order, and getting it backwards costs two slots rather than one.</p>
+  <ul>
+    <li><strong>1787:</strong> Delaware, then New Jersey, then Pennsylvania.</li>
+    <li><strong>1788:</strong> Connecticut, Georgia, Maryland, Massachusetts, New Hampshire, New York, South Carolina, Virginia. Eight states in a single year, the largest tie in the game.</li>
+    <li><strong>1845:</strong> Florida, then Texas.</li>
+    <li><strong>1889:</strong> Montana, North Dakota, South Dakota, Washington.</li>
+    <li><strong>1890:</strong> Idaho, then Wyoming. <strong>1912:</strong> Arizona, then New Mexico. <strong>1959:</strong> Alaska, then Hawaii.</li>
+  </ul>
+  <p>Two anchors handle the rest. Everything admitted between 1787 and 1790 is one of the thirteen original colonies, and nothing else can outrank them. At the other end, Oklahoma in 1907 is followed by Arizona and New Mexico in 1912, then a gap of 47 years to Alaska and Hawaii in 1959, so those five always sit at the bottom of any board they appear on.</p>
+
+  <h2>The admission timeline in six blocks</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Years</th><th>What was joining</th><th>Marker states</th></tr></thead>
+    <tbody>
+      <tr><td>1787 to 1790</td><td>The thirteen original colonies ratify</td><td>Delaware first, Rhode Island last</td></tr>
+      <tr><td>1791 to 1821</td><td>The first wave beyond the colonies</td><td>Vermont 1791, Ohio 1803, Missouri 1821</td></tr>
+      <tr><td>1836 to 1850</td><td>Westward expansion and Texas</td><td>Florida and Texas 1845, California 1850</td></tr>
+      <tr><td>1858 to 1867</td><td>Around the Civil War</td><td>Kansas 1861, West Virginia 1863, Nevada 1864</td></tr>
+      <tr><td>1876 to 1896</td><td>The West fills in</td><td>Colorado 1876, the 1889 group of four, Utah 1896</td></tr>
+      <tr><td>1907 to 1959</td><td>The final five</td><td>Oklahoma, Arizona, New Mexico, Alaska, Hawaii</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Keep drilling</h2>
+  <div class="nx">
+    <a href="/learn/states-by-statehood-year/">Every state by year of admission</a>
+    <a href="/learn/13-colonies/">The thirteen original colonies</a>
+    <a href="/play/thirteen-colonies/">13 Original Colonies quiz</a>
+    <a href="/play/confederate-states/">Confederate States Quiz</a>
+    <a href="/play/president-birth-states/">Presidents by State</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/states-by-statehood-year/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States By Statehood Year</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play State Admission Order?</summary>
+      <p>Order 8 states by their year of admission to the Union. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

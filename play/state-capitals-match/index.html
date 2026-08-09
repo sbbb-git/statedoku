@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"State Capitals Match","item":"https://statedoku.com/play/state-capitals-match/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"State Capitals Match","description":"Match 10 US states with their capitals.","url":"https://statedoku.com/play/state-capitals-match/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Capitals Match?","acceptedAnswer":{"@type":"Answer","text":"Match 10 US states with their capitals. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Capitals Match?","acceptedAnswer":{"@type":"Answer","text":"Match 10 US states with their capitals. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🏛️ CAPITALS</span>
@@ -226,12 +226,90 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.px8{max-width:760px;margin:26px auto 0;padding:0 14px;line-height:1.65;color:var(--text-2,#475569);font-size:.95rem}
+.px8 h2{font-size:1.22rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.px8 h2:first-of-type{margin-top:14px}
+.px8 p{margin:0 0 12px}
+.px8 ul{margin:0 0 12px;padding-left:20px}
+.px8 li{margin-bottom:6px}
+.px8 .tw{overflow-x:auto;margin:0 0 16px}
+.px8 table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:430px;background:#fff}
+.px8 th,.px8 td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.px8 th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800;font-size:.8rem}
+.px8 .nx{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.px8 .nx a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+
+<section class="px8">
+  <p>Ten states in the left column, ten capitals in the right, and you pair them by tapping one from each side. Two to three minutes per board, and unlike a typing quiz it trains recall in both directions at once.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Tap a state, then tap the capital you believe belongs to it. A correct pair locks green and stops responding.</p>
+  <ul>
+    <li>The board always uses the same ten states: Arizona, Idaho, Minnesota, Mississippi, Montana, Nebraska, New Mexico, North Carolina, North Dakota and Wyoming.</li>
+    <li>Both columns are shuffled independently every game, so a tile's position never hints at its partner.</li>
+    <li>There are no lives and no clock. A wrong pair flashes red, both tiles unlock, and the mistake counter goes up by one.</li>
+    <li>Final score is ten minus your mistakes. Nine out of ten earns three stars, six earns two, three earns one.</li>
+    <li>Because there is no fail state, the only way to improve is to cut mistakes, not to finish faster.</li>
+    <li>Best score and daily streak save to your browser.</li>
+  </ul>
+
+  <h2>Clear the four easy pairs first</h2>
+  <p>Four of these ten capitals are also the largest city in their own state, which is exactly why most people already know them: Phoenix, Boise, Jackson and Cheyenne. Lock those four in before you touch anything else and the board shrinks from ten rows to six.</p>
+  <p>The remaining six are all capitals that lose to a bigger city, and they are where every mistake comes from. Anchor each one to the city that beats it. Saint Paul sits behind Minneapolis, Helena behind Billings, Lincoln behind Omaha, Santa Fe behind Albuquerque, Raleigh behind Charlotte, Bismarck behind Fargo. Two specific traps deserve naming. Minnesota is Saint Paul, never Minneapolis, even though Minneapolis is the bigger half of the pair. And Bismarck belongs to North Dakota, while South Dakota's Pierre is not on this board at all, so a Dakota tile can only ever resolve to Bismarck.</p>
+  <p>If the largest city hook does not stick, use a second one. Four of these ten capitals are named after people: Lincoln for Abraham Lincoln, Jackson for Andrew Jackson, Raleigh for Sir Walter Raleigh, and Bismarck for Otto von Bismarck. The other six take their names from places, features or legends, and one of them is worth a fact of its own. Santa Fe is both the oldest of the fifty state capitals and the highest above sea level, which is a useful tag for a tile that otherwise looks interchangeable with Helena.</p>
+
+  <h2>The ten pairs on this board</h2>
+  <div class="tw"><table>
+    <thead><tr><th>State</th><th>Capital</th><th>Largest city</th></tr></thead>
+    <tbody>
+      <tr><td>Arizona</td><td>Phoenix</td><td>Phoenix</td></tr>
+      <tr><td>Idaho</td><td>Boise</td><td>Boise</td></tr>
+      <tr><td>Mississippi</td><td>Jackson</td><td>Jackson</td></tr>
+      <tr><td>Wyoming</td><td>Cheyenne</td><td>Cheyenne</td></tr>
+      <tr><td>Minnesota</td><td>Saint Paul</td><td>Minneapolis</td></tr>
+      <tr><td>Montana</td><td>Helena</td><td>Billings</td></tr>
+      <tr><td>Nebraska</td><td>Lincoln</td><td>Omaha</td></tr>
+      <tr><td>New Mexico</td><td>Santa Fe</td><td>Albuquerque</td></tr>
+      <tr><td>North Carolina</td><td>Raleigh</td><td>Charlotte</td></tr>
+      <tr><td>North Dakota</td><td>Bismarck</td><td>Fargo</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Keep drilling</h2>
+  <div class="nx">
+    <a href="/learn/states-and-capitals/">Every state and its capital</a>
+    <a href="/learn/states-without-capital-largest/">Where the capital is not the biggest city</a>
+    <a href="/play/state-capitals-typing/">State Capitals Quiz, typing mode</a>
+    <a href="/play/biggest-cities/">Biggest City Quiz</a>
+    <a href="/play/place-the-state/">Place the State</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/state-capitals/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /State Capitals</a><a href="/learn/states-and-capitals/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /States And Capitals</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play State Capitals Match?</summary>
+      <p>Match 10 US states with their capitals. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

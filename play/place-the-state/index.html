@@ -111,7 +111,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"Place the State","item":"https://statedoku.com/play/place-the-state/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Place the State","description":"Click the right state on the US map when prompted. 10 rounds, 3 lives. Free quiz.","url":"https://statedoku.com/play/place-the-state/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Place the State?","acceptedAnswer":{"@type":"Answer","text":"A state name appears at the top. Click that state on the US map. 10 rounds, 3 lives, score 1–3 stars."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — the map and tap targets are touch-friendly. East-coast inset coming soon."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Place the State?","acceptedAnswer":{"@type":"Answer","text":"A state name appears at the top. Click that state on the US map. 10 rounds, 3 lives, score 1,3 stars."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, the map and tap targets are touch-friendly. East-coast inset coming soon."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">📍 MAP CHALLENGE</span>
@@ -201,21 +201,70 @@
 
     <div class="pts-result" id="pts-result" style="display:none"></div>
 
-    <h2>How to play</h2>
-    <p>A state name appears in the gold box. Click that state on the US map. Three lives, ten rounds. Score is shown as X/10 and 1,3 stars.</p>
-
     <h2>Frequently asked</h2>
     <details><summary><strong>Is this free?</strong></summary><p>Yes, 100% free, no signup, no ads.</p></details>
     <details><summary><strong>Does it save my streak?</strong></summary><p>Yes, streak saved locally in your browser.</p></details>
     <details><summary><strong>What about tiny states like Rhode Island?</strong></summary><p>Tap accuracy is forgiving for small states. An East-Coast inset is coming soon.</p></details>
   </div>
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);font-size:.95rem;line-height:1.65}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
+.play-context h2:first-of-type{margin-top:12px}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 12px;padding-left:20px}
+.play-context li{margin-bottom:6px}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 14px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:440px;background:#fff}
+.play-context th,.play-context td{border:1px solid var(--border,#E2E8F0);padding:7px 10px;text-align:left;vertical-align:top}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);font-weight:800}
+.play-context .next-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.play-context .next-links a{display:block;padding:9px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}</style>
+<section class="play-context">
+  <p>Place the State builds map recall the hard way: no outlines, no labels, just a name and 50 clickable shapes. A Normal round is 10 states and takes under two minutes.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Pick a difficulty first. Easy runs five well known states, Normal draws 10 at random, and Hard runs 15 and pulls from a list of shapes that look alike. Press Start and a state name appears in the gold box. Click that state on the map. A correct click scores a point and turns green. A wrong click turns red, costs one of three lives, and the state you were meant to hit flashes amber so the miss teaches you something. The run ends at zero lives or when the round counter reaches your chosen total. Stars are awarded at 90, 60 and 30 percent, so 9 of 10 earns three stars. Tap targets are enlarged on phones so small states stay clickable, and your best score and daily streak live in your browser.</p>
+
+  <h2>Anchors first, then the lookalikes</h2>
+  <p>Before hunting, fix three anchors: Texas and Florida in the south, the Great Lakes in the north, and the pair of plain rectangles in the west. Wyoming and Colorado are the only two states with no natural boundary at all, and once you find them the rest of the interior west falls into place around them. The Four Corners point where Utah, Colorado, Arizona and New Mexico meet is the only spot in the country where four states touch.</p>
+  <p>Hard mode is built almost entirely from confusable pairs. The table below is the tell for each one.</p>
+
+  <h2>Lookalike pairs and how to tell them apart</h2>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>Pair</th><th>The tell</th></tr></thead>
+      <tbody>
+<tr><td>Vermont and New Hampshire</td><td>Vermont is the western one and is widest along the Canadian border. New Hampshire is the eastern one, widest at the bottom, and it touches the Atlantic.</td></tr>
+<tr><td>North and South Dakota</td><td>North Dakota is the upper rectangle and it touches Canada. South Dakota does not, and the Missouri River cuts through its middle.</td></tr>
+<tr><td>Kansas and Nebraska</td><td>Nebraska is the upper one, with a panhandle reaching west and a curved northern edge. Kansas is the tidier rectangle below it with a notch cut from its northeast corner.</td></tr>
+<tr><td>Iowa and Missouri</td><td>Missouri has the bootheel hanging off its southeast corner. Iowa sits above it, penned between two rivers, with no bootheel.</td></tr>
+<tr><td>Alabama and Mississippi</td><td>Mississippi is on the left and its wiggly river edge is on the west side. Alabama is on the right and its wiggly river edge is on the east side.</td></tr>
+<tr><td>Wyoming and Colorado</td><td>The only two states drawn as plain rectangles. Colorado is the wider one and sits directly south of Wyoming.</td></tr>
+<tr><td>New Mexico and Arizona</td><td>New Mexico is the square with the small boot notch at its southwest corner. Arizona is the one to its west with the long diagonal Colorado River edge.</td></tr>
+<tr><td>Connecticut, Rhode Island, Delaware</td><td>The three smallest targets. Rhode Island is area rank 50, Delaware 49, Connecticut 48. Rhode Island sits east of Connecticut, Delaware sits east of Chesapeake Bay.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>West Virginia is the other Hard mode regular, and it is unmistakable once you look for two panhandles, one pointing north between Ohio and Pennsylvania, one pointing east toward Maryland and Virginia.</p>
+
+  <h2>Keep going</h2>
+  <div class="next-links">
+    <a href="/learn/us-regions/">The four US regions</a>
+    <a href="/play/state-silhouettes/">State Silhouettes</a>
+    <a href="/play/border-states/">Border States Quiz</a>
+    <a href="/play/state-abbreviations/">State Abbreviations</a>
+    <a href="/play/time-zones/">Time Zones Quiz</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/us-regions/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /Us Regions</a><a href="/learn/largest-states/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /Largest States</a><a href="/learn/landlocked-states/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /Landlocked States</a>
     </div>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 

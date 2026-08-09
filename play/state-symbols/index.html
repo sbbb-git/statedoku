@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"State Symbols Quiz","item":"https://statedoku.com/play/state-symbols/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"State Symbols Quiz","description":"Match state birds, flowers, and trees to their US state.","url":"https://statedoku.com/play/state-symbols/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Symbols Quiz?","acceptedAnswer":{"@type":"Answer","text":"Match state birds, flowers, and trees to their US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Symbols Quiz?","acceptedAnswer":{"@type":"Answer","text":"Match state birds, flowers, and trees to their US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">🌼 SYMBOLS</span>
@@ -226,12 +226,74 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.pgx{max-width:760px;margin:22px auto 0;padding:0 14px}.pgx h2{font-size:1.32rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.015em;margin:26px 0 10px;line-height:1.25}.pgx p{color:var(--text-2,#475569);line-height:1.68;font-size:.96rem;margin:0 0 12px}.pgx strong{color:var(--navy,#0F2147);font-weight:800}.pgx a{color:var(--navy,#0F2147);font-weight:700}.pgx-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 14px;border-radius:10px}.pgx table{width:100%;min-width:420px;border-collapse:collapse;font-size:.88rem;background:#fff}.pgx th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:9px 11px;border:1px solid #E2E8F0}.pgx td{padding:9px 11px;border:1px solid #E2E8F0;color:var(--text-2,#475569);line-height:1.5;vertical-align:top}.pgx-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:12px 0 4px}.pgx-links a{display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:700;font-size:.88rem;background:#fff}.pgx-links a:hover{background:#F8FAFC}</style>
+<section class="pgx">
+  <p>Every state has an official bird, flower and tree, and this quiz pulls fifteen of those one hundred and fifty designations at random. It builds the recall that decides crossword clues and pub quiz rounds, and a game takes about two minutes. The difficulty comes from one thing: states share symbols, and a shared symbol means several states could plausibly be the answer.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start. Each round names a symbol, such as State flower: Bluebonnet, and offers four states. Click the one that claims it. A right answer adds a point. A wrong answer costs one of your three hearts and shows the correct state before the next prompt. Run out of hearts and the round stops early, otherwise you play all fifteen.</p>
+  <p>Stars are set by percentage: 90 percent earns three, 60 percent earns two, 30 percent earns one. Your best score and your streak sit in your browser's local storage, nowhere else.</p>
+
+  <h2>Learn the shared symbols, not the unique ones</h2>
+  <p>Only one of the four buttons is ever correct, so a symbol held by seven states is not seven times harder. It is a memory test of which states are in that club. The Northern Cardinal is the biggest club in the whole set.</p>
+  <div class="pgx-table-wrap">
+  <table>
+    <thead><tr><th>Symbol</th><th>States that share it</th></tr></thead>
+    <tbody>
+      <tr><td>Bird: Northern Cardinal</td><td>Illinois, Indiana, Kentucky, North Carolina, Ohio, Virginia, West Virginia</td></tr>
+      <tr><td>Bird: Western Meadowlark</td><td>Kansas, Montana, Nebraska, North Dakota, Oregon, Wyoming</td></tr>
+      <tr><td>Bird: Mockingbird</td><td>Arkansas, Florida, Mississippi, Tennessee, Texas</td></tr>
+      <tr><td>Bird: American Goldfinch</td><td>Iowa, New Jersey, Washington</td></tr>
+      <tr><td>Tree: Sugar Maple</td><td>New York, Vermont, West Virginia, Wisconsin</td></tr>
+      <tr><td>Tree: White Oak</td><td>Connecticut, Illinois, Maryland</td></tr>
+      <tr><td>Flower: Violet</td><td>Illinois, New Jersey, Rhode Island</td></tr>
+      <tr><td>Flower: Magnolia</td><td>Louisiana, Mississippi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>The traps and the free points</h2>
+  <p><strong>The name is usually the answer, once.</strong> Colorado Blue Spruce belongs to Colorado and Ohio Buckeye belongs to Ohio, which trains you to trust the label. Then California Gull appears and the answer is Utah, not California. That single item catches more players than any other in the set.</p>
+  <p><strong>Two palms, two states.</strong> Sabal Palm is Florida's tree, Sabal Palmetto is South Carolina's. The Palmetto State nickname is the anchor to remember.</p>
+  <p><strong>Two states use one plant twice.</strong> Mississippi lists Magnolia as both flower and tree. Virginia lists American Dogwood as both. If a prompt gives you a plant that feels like it appeared before, these two are why.</p>
+  <p><strong>The unique birds are free points.</strong> Blue Hen Chicken is Delaware, Rhode Island Red is Rhode Island, Nene is Hawaii, Willow Ptarmigan is Alaska, Greater Roadrunner is New Mexico, Cactus Wren is Arizona, Scissor-tailed Flycatcher is Oklahoma, Brown Pelican is Louisiana, Common Loon is Minnesota, Ring-necked Pheasant is South Dakota, Carolina Wren is South Carolina, Hermit Thrush is Vermont. No other state claims any of them, so recognizing the name is the entire answer.</p>
+  <p><strong>Desert and mountain trees are regional.</strong> Palo Verde is Arizona, Single-leaf Pinon is Nevada, Pinyon Pine is New Mexico, Quaking Aspen is Utah, Black Hills Spruce is South Dakota. If the prompt names something that only grows in dry high country, discard any eastern state on the board.</p>
+
+  <h2>Full lists and next games</h2>
+  <p>All fifty of each are listed in <a href="/learn/state-birds/">state birds</a>, <a href="/learn/state-flowers/">state flowers</a> and <a href="/learn/state-trees/">state trees</a>. Then try these:</p>
+  <div class="pgx-links">
+    <a href="/play/state-nicknames/">State Nicknames Quiz</a>
+    <a href="/play/state-mottos/">State Mottos Quiz</a>
+    <a href="/play/state-flags/">State Flags Quiz</a>
+    <a href="/play/state-capitals-match/">State Capitals Match</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/state-birds/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /State Birds</a><a href="/learn/state-flowers/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /State Flowers</a><a href="/learn/state-trees/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /State Trees</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play State Symbols Quiz?</summary>
+      <p>Match state birds, flowers, and trees to their US state. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

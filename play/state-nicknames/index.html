@@ -126,7 +126,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://statedoku.com/"},{"@type":"ListItem","position":2,"name":"Play & Learn","item":"https://statedoku.com/play/"},{"@type":"ListItem","position":3,"name":"State Nicknames Quiz","item":"https://statedoku.com/play/state-nicknames/"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"State Nicknames Quiz","description":"Match nicknames like \"Lone Star State\" to their US state.","url":"https://statedoku.com/play/state-nicknames/","genre":"Geography Quiz","gamePlatform":"Web Browser","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Statedoku"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Nicknames Quiz?","acceptedAnswer":{"@type":"Answer","text":"Match nicknames like \"Lone Star State\" to their US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes — 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully responsive on phones, tablets and desktop."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play State Nicknames Quiz?","acceptedAnswer":{"@type":"Answer","text":"Match nicknames like \"Lone Star State\" to their US state. Scores tracked locally; streak preserved across days."}},{"@type":"Question","name":"Is this game free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, no signup, no ads. Just play."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully responsive on phones, tablets and desktop."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">✨ NICKNAMES</span>
@@ -226,12 +226,77 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+<style>.pgx{max-width:760px;margin:22px auto 0;padding:0 14px}.pgx h2{font-size:1.32rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.015em;margin:26px 0 10px;line-height:1.25}.pgx p{color:var(--text-2,#475569);line-height:1.68;font-size:.96rem;margin:0 0 12px}.pgx strong{color:var(--navy,#0F2147);font-weight:800}.pgx a{color:var(--navy,#0F2147);font-weight:700}.pgx-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 14px;border-radius:10px}.pgx table{width:100%;min-width:420px;border-collapse:collapse;font-size:.88rem;background:#fff}.pgx th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:9px 11px;border:1px solid #E2E8F0}.pgx td{padding:9px 11px;border:1px solid #E2E8F0;color:var(--text-2,#475569);line-height:1.5;vertical-align:top}.pgx-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:12px 0 4px}.pgx-links a{display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:700;font-size:.88rem;background:#fff}.pgx-links a:hover{background:#F8FAFC}</style>
+<section class="pgx">
+  <p>Fifty nicknames, fifteen prompts, one right state each time. A round takes about two minutes and trains the half of US geography that map drills never reach: the names states picked for themselves. Some describe a crop or a landform. Others come from a mining boom, a Revolutionary War regiment or a college mascot, and those are the ones that decide your score.</p>
+
+  <h2>How to play</h2>
+  <!-- PLACEHOLDER_LEARN_MID -->
+  <p>Press Start. Each round shows one nickname, say Tar Heel State, with four state names as buttons. Click the state that carries it. A correct pick scores a point and the next nickname loads after a short pause. A wrong pick costs one of your three hearts and highlights the state you should have chosen, so you still learn the answer. Lose all three hearts and the round ends early. A full game is fifteen nicknames drawn at random from the fifty.</p>
+  <p>Stars are awarded on percentage, not raw score: 90 percent correct earns three stars, 60 percent earns two, 30 percent earns one. Your best result and a day to day streak are stored in your own browser, so coming back tomorrow extends the streak with no account and no signup.</p>
+
+  <h2>The clusters that decide your score</h2>
+  <p>Nicknames built on a plant or an animal can be reasoned out cold: Peach State is Georgia, Pelican State is Louisiana, Sunflower State is Kansas, Beaver State is Oregon, Magnolia State is Mississippi. Points vanish in three groups where reasoning gives you nothing.</p>
+  <p><strong>The mascot six.</strong> Hoosier State, Hawkeye State, Buckeye State, Sooner State, Cornhusker State and Tar Heel State describe no landscape at all. They belong to Indiana, Iowa, Ohio, Oklahoma, Nebraska and North Carolina, and they have to be memorized outright.</p>
+  <p><strong>The mining three.</strong> Gem State is Idaho, Silver State is Nevada, Treasure State is Montana. Three western states, three precious things, no way to tell them apart by logic.</p>
+  <p><strong>The New England trio.</strong> Pine Tree State is Maine, Green Mountain State is Vermont, Granite State is New Hampshire. They border each other, so a wrong answer here is almost always one of the other two.</p>
+  <p>Three small tells are worth banking. Old Line State is Maryland while Old Dominion is Virginia. The Dakotas split cleanly, Peace Garden State for North Dakota and Mount Rushmore State for South Dakota. And exactly three of the fifty drop the word State entirely, which makes them instant recognitions once you spot the pattern: The Last Frontier for Alaska, Old Dominion for Virginia, Land of Enchantment for New Mexico.</p>
+
+  <h2>Twelve nicknames worth memorizing first</h2>
+  <div class="pgx-table-wrap">
+  <table>
+    <thead><tr><th>Nickname</th><th>State</th><th>Where it comes from</th></tr></thead>
+    <tbody>
+      <tr><td>Hoosier State</td><td>Indiana</td><td>Mascot, no geographic clue</td></tr>
+      <tr><td>Hawkeye State</td><td>Iowa</td><td>Mascot, no geographic clue</td></tr>
+      <tr><td>Buckeye State</td><td>Ohio</td><td>Mascot and state tree</td></tr>
+      <tr><td>Sooner State</td><td>Oklahoma</td><td>Land rush settlers</td></tr>
+      <tr><td>Tar Heel State</td><td>North Carolina</td><td>Mascot, no geographic clue</td></tr>
+      <tr><td>Gem State</td><td>Idaho</td><td>Mining group</td></tr>
+      <tr><td>Silver State</td><td>Nevada</td><td>Mining group</td></tr>
+      <tr><td>Treasure State</td><td>Montana</td><td>Mining group</td></tr>
+      <tr><td>Old Line State</td><td>Maryland</td><td>Easily swapped with Old Dominion</td></tr>
+      <tr><td>Equality State</td><td>Wyoming</td><td>Voting rights, not landscape</td></tr>
+      <tr><td>Peace Garden State</td><td>North Dakota</td><td>Dakota pair</td></tr>
+      <tr><td>Mount Rushmore State</td><td>South Dakota</td><td>Dakota pair</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Read the full list, then play something harder</h2>
+  <p>The complete fifty, with the story behind each one, is written up in <a href="/learn/state-nicknames-complete/">every state nickname explained</a> and summarized in the shorter <a href="/learn/state-nicknames/">state nicknames guide</a>. When the nicknames stop catching you out, these games use the same recall in a different shape:</p>
+  <div class="pgx-links">
+    <a href="/play/state-mottos/">State Mottos Quiz</a>
+    <a href="/play/state-symbols/">State Symbols Quiz</a>
+    <a href="/play/state-flags/">State Flags Quiz</a>
+    <a href="/play/state-capitals-match/">State Capitals Match</a>
+  </div>
+</section>
+
 
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
       <a href="/learn/state-nicknames-complete/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /State Nicknames Complete</a><a href="/learn/state-nicknames/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /State Nicknames</a>
     </div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>How do you play State Nicknames Quiz?</summary>
+      <p>Match nicknames like "Lone Star State" to their US state. Scores tracked locally; streak preserved across days.</p>
+    </details>
+    <details>
+      <summary>Is this game free?</summary>
+      <p>Yes, 100% free, no signup, no ads. Just play.</p>
+    </details>
+    <details>
+      <summary>Does it work on mobile?</summary>
+      <p>Yes, fully responsive on phones, tablets and desktop.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+  <!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/play/">Play & Learn</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>

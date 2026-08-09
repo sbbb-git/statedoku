@@ -357,7 +357,9 @@ main {
   cursor: default;
   animation: cellPop 0.35s var(--ease-out);
 }
-.cell.correct.locked { cursor: not-allowed; }
+/* Filled cells stay editable, so no not-allowed cursor. The old rule was
+   part of the lock-on-correct model that also refused valid answers. */
+.cell.correct { cursor: pointer; }
 .cell.correct .cell-abbr { color: var(--green); }
 .cell.correct::before {
   content: '★';
@@ -416,13 +418,22 @@ main {
   max-width: 540px;
   margin: 0 auto;
 }
+/* On a phone the bottom sheet is correct: thumb-reachable, and the on-screen
+   keyboard pushes it up rather than covering it.
+
+   On desktop it was wrong. Pinned to the bottom of a tall viewport, the input
+   opened roughly 400px below the cell being filled, so the eye had to cross
+   the whole page on every move. The panel lives at the end of <body>, not
+   inside the grid, so it stays position:fixed and _openSearch sets `top` from
+   the grid's measured position. See --sp-top in js/game.js. */
 @media (min-width: 580px) {
   #search-panel {
     left: 50%; right: auto;
     transform: translateX(-50%);
     width: 480px;
-    bottom: 24px;
     border-radius: var(--r-lg);
+    top: var(--sp-top, auto);
+    bottom: var(--sp-bottom, 24px);
   }
 }
 
@@ -2434,10 +2445,13 @@ footer, main, .score-bar {
 .stat-value.streak-red    { color: var(--red); }
 .stat-value.streak-gold   { color: var(--gold); text-shadow: 0 0 8px rgba(245,158,11,0.35); }
 
-/* ─────────────────── First-time onboarding tooltip ─────────────────── */
+/* ─────────────────── First-time onboarding tooltip ───────────────────
+   Sits BELOW the grid, not over it. At top: 70px it was landing exactly on
+   the column header row and hiding the middle constraint entirely, which is
+   the one thing a first-time player most needs to read. */
 #first-tip {
   position: absolute;
-  top: 70px; left: 50%;
+  top: calc(100% + 12px); left: 50%;
   transform: translateX(-50%);
   background: var(--navy);
   color: #fff;
@@ -2450,15 +2464,16 @@ footer, main, .score-bar {
   pointer-events: none;
   white-space: nowrap;
 }
+/* Arrow points up, toward the grid it is talking about. */
 #first-tip::after {
   content: ''; position: absolute;
-  bottom: -6px; left: 50%; transform: translateX(-50%);
-  border: 6px solid transparent; border-bottom: 0;
-  border-top-color: var(--navy);
+  top: -6px; left: 50%; transform: translateX(-50%);
+  border: 6px solid transparent; border-top: 0;
+  border-bottom-color: var(--navy);
 }
 @keyframes tipBounce {
   0%, 100% { transform: translate(-50%, 0); }
-  50%      { transform: translate(-50%, -4px); }
+  50%      { transform: translate(-50%, 4px); }
 }
 
 /* ─────────────────── Skeleton loader (replaces #loading) ─────────────────── */
@@ -2622,3 +2637,24 @@ footer, main, .score-bar {
   min-height:auto;
 }
 .ad-slot[data-ad-activated="1"]::before{display:none}
+
+/* Clear-cell escape hatch in the picker. Present only when the selected cell
+   already holds a state. Accepting every clue-satisfying answer means a player
+   can spend a state another cell needed, so taking it back has to be possible. */
+#sp-clear {
+  display: block;
+  width: 100%;
+  margin: 10px 0 4px;
+  padding: 11px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--text-2);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+}
+#sp-clear:hover { background: var(--surface-2); color: var(--navy); border-color: var(--navy); }
+#sp-clear[hidden] { display: none; }

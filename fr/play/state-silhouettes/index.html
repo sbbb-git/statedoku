@@ -234,6 +234,65 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   </script>
 
 <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_PLAY_BOTTOM" data-ad-format="auto" style="max-width:760px"></div>
+  <!-- faq-rendered -->
+  <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Comment joue-t-on à Silhouettes d'États ?</summary>
+      <p>Devine l'État à partir de sa silhouette. Scores enregistrés localement ; streak conservé entre les jours.</p>
+    </details>
+    <details>
+      <summary>Le jeu est-il gratuit ?</summary>
+      <p>Oui — 100% gratuit, sans inscription, sans pub.</p>
+    </details>
+    <details>
+      <summary>Fonctionne-t-il sur mobile ?</summary>
+      <p>Oui — entièrement adapté téléphone, tablette et bureau.</p>
+    </details>
+  </section>
+<style>.faq-rendered{margin:34px 0 10px}.faq-rendered h2{font-size:1.3rem;font-weight:800;margin:0 0 12px}.faq-rendered details{border:1px solid var(--border,#E2E8F0);border-radius:10px;margin-bottom:8px;padding:12px 16px;background:#fff}.faq-rendered summary{cursor:pointer;font-weight:700;color:var(--navy,#0F2147);list-style:none}.faq-rendered summary::-webkit-details-marker{display:none}.faq-rendered summary::after{content:"+";float:right;font-weight:800;color:var(--gold,#F59E0B)}.faq-rendered details[open] summary::after{content:"\2013"}.faq-rendered details[open] summary{margin-bottom:8px}.faq-rendered p{margin:0;color:var(--text-2,#475569);line-height:1.6;font-size:.95rem}</style>
+
+<!-- play-context -->
+<style>
+.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);line-height:1.65;font-size:.95rem}
+.play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);margin:26px 0 10px;letter-spacing:-.01em}
+.play-context p{margin:0 0 12px}
+.play-context ul{margin:0 0 14px;padding-left:20px}
+.play-context li{margin-bottom:7px}
+.play-context strong{color:var(--navy,#0F2147)}
+.play-context .tbl-scroll{overflow-x:auto;margin:0 0 16px}
+.play-context table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:320px;background:#fff}
+.play-context th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:8px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context td{padding:7px 10px;border:1px solid var(--border,#E2E8F0)}
+.play-context .xlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:10px 0 0}
+.play-context .xlinks a{display:block;padding:10px 12px;border:1px solid var(--border,#E2E8F0);border-radius:8px;color:var(--navy,#0F2147);text-decoration:none;font-weight:700;font-size:.86rem;background:#fff}
+</style>
+<section class="play-context">
+<p>Ce jeu entraîne la lecture de contours, sans nom d'État, sans capitale, sans carte de contexte. Une partie compte 10 silhouettes et se termine en une à deux minutes.</p>
+
+<h2>Comment jouer</h2>
+<!-- PLACEHOLDER_LEARN_MID -->
+
+<p>Le jeu tire 10 États parmi les 50 et affiche le contour en aplat bleu marine. Le cadrage est recalculé pour chaque forme afin qu'elle remplisse le cadre, donc <strong>la taille apparente ne dit rien de la superficie réelle</strong>, seules comptent les proportions et les découpes. Quatre noms sont proposés, une erreur coûte une vie et affiche le bon État, la partie s'arrête à la troisième. Trois étoiles à partir de 9 bonnes réponses sur 10, deux à partir de 6, une à partir de 3.</p>
+
+<h2>Les paires qui se ressemblent vraiment</h2>
+<ul>
+<li><strong>Colorado et Wyoming</strong>. Les deux seuls contours entièrement rectangulaires. Sans échelle, compare le rapport largeur sur hauteur, celui du Colorado est nettement plus allongé.</li>
+<li><strong>Vermont et Nouveau-Hampshire</strong>. Deux coins inversés. Le Vermont s'élargit vers le haut le long de la frontière canadienne et n'a aucun accès à la mer. Le Nouveau-Hampshire s'élargit vers le bas et garde une petite entaille côtière.</li>
+<li><strong>Les deux Dakotas</strong>. Le Dakota du Nord borde le Canada, son côté supérieur est une ligne droite parfaite. Le Dakota du Sud n'a pas cette ligne et montre un angle sud-est cassé.</li>
+<li><strong>Iowa et Missouri</strong>. L'Iowa est le seul de la paire dont les deux flancs suivent des fleuves, le Mississippi à l'est et le Missouri à l'ouest, d'où deux bords ondulés. Le Missouri se reconnaît à la pointe qui descend au sud-est.</li>
+<li><strong>Kansas et Nebraska</strong>. Le Kansas est un rectangle avec une petite encoche au nord-est. Le Nebraska porte un décrochement rectangulaire à l'ouest.</li>
+<li><strong>Alabama et Mississippi</strong>. Deux rectangles verticaux ouverts sur le golfe du Mexique, classés 30e et 32e par superficie. L'Alabama a le pied plus large.</li>
+</ul>
+
+<h2>Le repère décisif, paire par paire</h2>
+<div class="tbl-scroll"><table><thead><tr><th>Paire</th><th>Indice à chercher</th><th>Rangs de superficie</th></tr></thead><tbody><tr><td>Colorado et Wyoming</td><td>Deux rectangles purs, aucun repère de côte ni de rivière</td><td>8e et 10e</td></tr><tr><td>Vermont et Nouveau-Hampshire</td><td>Le Vermont est enclavé, le Nouveau-Hampshire garde une courte façade atlantique</td><td>45e et 46e</td></tr><tr><td>Dakota du Nord et Dakota du Sud</td><td>Seul le Dakota du Nord touche le Canada, son bord haut est rectiligne</td><td>19e et 17e</td></tr><tr><td>Iowa et Missouri</td><td>Les deux flancs de l'Iowa sont fluviaux, le Missouri ajoute sa pointe sud-est</td><td>26e et 21e</td></tr><tr><td>Kansas et Nebraska</td><td>Encoche au nord-est pour le Kansas, appendice ouest pour le Nebraska</td><td>15e et 16e</td></tr><tr><td>Alabama et Mississippi</td><td>Deux bandes verticales du Golfe, l'Alabama s'élargit au sud-ouest</td><td>30e et 32e</td></tr><tr><td>Utah et Arizona</td><td>Encoche carrée au nord-est pour l'Utah, angle sud-ouest en diagonale pour l'Arizona</td><td>13e et 6e</td></tr><tr><td>Rhode Island, Delaware, Connecticut</td><td>Trois petits contours souvent confondus une fois recadrés</td><td>50e, 49e, 48e</td></tr></tbody></table></div>
+<h2>Aller plus loin</h2>
+<p>L'article <a href="/fr/learn/largest-states/">Les plus grands États américains</a> reprend les mêmes données hors du chronomètre. Les jeux voisins ci-dessous utilisent le même moteur et le même barème d'étoiles.</p>
+<div class="xlinks"><a href="/fr/play/place-the-state/">Placer l'État</a><a href="/fr/play/border-states/">Quiz États Frontaliers</a><a href="/fr/play/state-flags/">Quiz Drapeaux d'États</a><a href="/fr/play/rivers-mountains/">Fleuves et Montagnes</a></div>
+</section>
+
+<!-- PLACEHOLDER_LEARN_BOTTOM -->
 </main>
 <footer><p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="/fr/play/">Jouer & Apprendre</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p></footer>
 <script src="/js/ads.js?v=1"></script>
