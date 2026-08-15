@@ -33,9 +33,9 @@ if (/TA_CLE|YOUR_KEY|your_key|xxx+$|TON_TOKEN/i.test(token)) {
   console.error('Get the real one at https://publish.buffer.com/settings/api and pass that instead.');
   process.exit(1);
 }
-if (!token.startsWith('buf_')) {
-  console.error(`warning: Buffer keys normally start with "buf_", got "${token.slice(0, 6)}..."`);
-}
+// No format check here on purpose. Buffer's docs describe keys as `buf_...`,
+// but working keys are issued in an older format too, and warning about a key
+// that then authenticates fine just trains you to ignore the output.
 
 async function gql(query) {
   const r = await fetch('https://api.buffer.com', {
@@ -48,6 +48,8 @@ async function gql(query) {
   try { json = JSON.parse(text); } catch { json = null; }
   if (r.status === 401) {
     console.error('401 Unauthorized. The key is wrong, revoked, or was copied with whitespace.');
+    console.error('Keys are at https://publish.buffer.com/settings/api. Both the newer');
+    console.error('"buf_..." format and the older opaque one work, so the shape is not the issue.');
     process.exit(1);
   }
   if (!json) {
