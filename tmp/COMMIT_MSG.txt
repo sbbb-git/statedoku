@@ -1,86 +1,23 @@
-Post two links a day to X for nothing, by routing through Buffer instead of the X API
+Guard the paid X path behind an explicit flag, add a Buffer channel lister, deploy
 
-THE BILL
+Four TWITTER_* secrets were still on the deployed worker. With routing based on
+"a network is on when its secrets are present", deploying before the Buffer
+secrets existed would have sent the next cron straight back down the paid path
+at 0.20 USD a post, which is the exact bill this work removes. The paid path now
+also requires X_PAID_ENABLED to be the string "true", so leftover credentials
+cannot bill anything on their own. Turning X off again is deleting one flag
+rather than four secrets.
 
-X has no free tier. It closed to new signups on 6 February 2026 and the API is
-pay-per-use only: 0.015 USD per post, 0.200 USD per post containing a URL, a
-13.3x surcharge that landed on 20 April 2026. Two link-posts a day is the most
-expensive configuration the pricing has, 60 x 0.200 = 12 USD a month. That is
-the bill that showed up.
+bot/buffer-channels.mjs prints the channel ids straight from Buffer's GraphQL
+API. Reading them through the worker meant deploying before you could configure
+the thing the deploy depends on, and it confused "is my key valid" with "is my
+worker up". No dependencies, Node 18+.
 
-Buffer is an official X API partner. Connecting X to Buffer is OAuth, with no X
-developer account and no keys, and Buffer absorbs the per-post charge. Its free
-plan includes API access, so a cron can drive it unattended.
+Deployed to statedoku-twitter-bot.sachabitoun17.workers.dev. Verified it answers
+403 without a key and with a wrong one, and that with no Buffer secrets set it
+resolves to no networks at all, so it currently posts nowhere and bills nothing.
 
-The worker now posts through Buffer's GraphQL API at api.buffer.com rather than
-calling X directly. Each run schedules one post three minutes out, so the free
-plan's 10-post queue cap is never approached: depth stays at 1. Roughly 60 calls
-a month against a 3,000 per 30 days allowance.
-
-Deliberately GraphQL, not the legacy REST API at api.bufferapp.com/1/. Legacy is
-closed to new registrations and retires 1 February 2027 with brownouts in
-November and December 2026, so every tutorial showing /1/updates/create.json is
-building on something already scheduled for demolition.
-
-TWO LINKS A DAY
-
-The bank was one flat list where 24% of entries happened to carry a link, all
-four of them pointing at the same handful of URLs, and which one went out on a
-given day was luck. It is now two slots. The 13:00 UTC run posts from "game" and
-links to the puzzle; the 23:00 run posts from "page" and links to the page that
-tweet is actually about.
-
-The page link is matched to the tweet rather than picked at random. A tweet that
-names one state links to that state's page; one that names several, or none,
-falls to a keyword match over 28 topics, then to an angle default. 243 of 400
-resolve to a state page, 68 to a topic page, 73 to the first state named, and
-only 16 land on a generic fallback. 65 distinct URLs, against 4 before.
-
-Matching had to be longest-name-first, because "West Virginia" contains
-"Virginia": without that, every West Virginia tweet counted as two states and
-lost its state page to a generic fallback.
-
-Slots are indexed by day number and advance independently, so a missed run
-cannot desynchronise them. 200 days of runway on the game side, 400 on the page
-side, zero repeated text. That matters beyond tidiness: X forbids duplicative
-or substantially similar posts, and a template with an incrementing number is
-exactly the targeted pattern.
-
-FREE NETWORKS
-
-Bluesky and Mastodon are both free to post to and are now wired in. A network
-switches on when its secrets are present, so changing route is adding or
-deleting secrets, never editing code. Setting the Buffer secrets takes
-precedence over the X ones, so having both configured cannot double-post.
-
-Bluesky does not linkify URLs on its own; a URL with no matching facet posts as
-dead plain text. Facet offsets are indices into the UTF-8 bytes, not the JS
-string, and these tweets carry emoji: on a real one the naive string index gives
-25 where the correct byte offset is 31, which would put the link six bytes early
-and break it. The worker encodes before measuring.
-
-WITHOUT AUTOMATION
-
-tmp/export-tweet-schedule.py writes a dated CSV of every post. X's own composer
-has a free scheduler, so a month can be pasted in one sitting depending on no
-third party at all. The export resolves the same day-indexed rotation the worker
-uses, so both routes send the same tweet on the same day.
-
-NOT DONE, ON PURPOSE
-
-Browser automation of a logged-in account was assessed and rejected. X's
-Developer Guidelines list non-API automation under a table headed "There are no
-exceptions" with the penalty "Permanent suspension", and X states the ban
-extends to associated accounts. Vendors selling "browser-based workflows that
-bypass API pricing" surfaced during the research; they are selling a permanent
-suspension to save 12 USD a month, and a compliant free route exists anyway.
-
-One caveat worth writing down: Buffer covering X on a free plan is Buffer's
-commercial decision, not a contract. Publer has already carved X out of its free
-plan and Hypefury and Later dropped X entirely. The routing is config, so if
-Buffer follows, the fallback is the CSV plus X's native scheduler at no cost, or
-Buffer Essentials at 5 USD a month.
-
-ANTHROPIC_API_KEY is unused and documented for deletion.
+Recorded in the README: production still serves the v1 bank, so the worker falls
+back to a generic tweet until the site is pushed.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

@@ -38,11 +38,25 @@ wrangler secret put MANUAL_TRIGGER_KEY
 
 ### Buffer, the free route to X
 
+Deployed at <https://statedoku-twitter-bot.sachabitoun17.workers.dev>.
+
 1. Connect the X account at <https://publish.buffer.com> on the free plan.
-2. Create an API key at <https://publish.buffer.com/settings/api>.
-3. `wrangler secret put BUFFER_TOKEN`
-4. Find the channel id: `curl "https://<worker>/?key=<MANUAL_TRIGGER_KEY>&buffer_channels=1"`
-5. `wrangler secret put BUFFER_CHANNEL_ID`
+2. Create an API key at <https://publish.buffer.com/settings/api>. It looks like
+   `buf_...` and acts on your whole account.
+3. `npx wrangler secret put BUFFER_TOKEN`, then paste the key at the prompt.
+4. Find the channel id, straight from Buffer, no deploy needed:
+
+   ```bash
+   node bot/buffer-channels.mjs buf_your_key_here
+   ```
+
+   It prints every channel with its service and id, and points at the X one.
+   The same thing is available through the worker if you prefer:
+   `curl "https://statedoku-twitter-bot.sachabitoun17.workers.dev/?key=<MANUAL_TRIGGER_KEY>&buffer_channels=1"`
+5. `npx wrangler secret put BUFFER_CHANNEL_ID`, then paste the id.
+
+Nothing posts to X until both are set. Until then the worker runs and posts
+nowhere, which is the safe state.
 
 ### Bluesky, free
 
@@ -68,17 +82,23 @@ wrangler secret put MASTODON_TOKEN
 
 ### X directly, paid
 
-Only if you decide the 12 USD a month is worth it. Setting the Buffer secrets
-takes precedence over these, so the worker never double-posts to X.
+Only if you decide the 12 USD a month is worth it.
+
+The four `TWITTER_*` secrets are not enough on their own. The paid path also
+needs `X_PAID_ENABLED` set to the string `true`, so that leftover credentials
+from an earlier setup can never quietly start billing at 0.20 USD a post:
 
 ```bash
 wrangler secret put TWITTER_API_KEY
 wrangler secret put TWITTER_API_SECRET
 wrangler secret put TWITTER_ACCESS_TOKEN
 wrangler secret put TWITTER_ACCESS_TOKEN_SECRET
+wrangler secret put X_PAID_ENABLED          # the literal string: true
 ```
 
-To stop paying: `wrangler secret delete TWITTER_API_KEY` and the other three.
+Buffer takes precedence over this, so having both live never double-posts.
+
+To stop paying, deleting `X_PAID_ENABLED` is enough. The credentials can stay.
 
 `ANTHROPIC_API_KEY` is no longer used at all. Delete it with
 `wrangler secret delete ANTHROPIC_API_KEY`.
@@ -109,3 +129,17 @@ that shortcut worth the account.
 
 X also disallows duplicate posts. The bank has no repeated text and 200 days of
 runway on the shorter list, so this only becomes a concern once it wraps.
+
+## Dependency worth knowing
+
+The worker reads the bank from <https://statedoku.com/data/tweets.json> and
+requires the two-slot v2 shape. If the site has not been deployed since the bank
+was rebuilt, production still serves v1, the worker cannot find its slots, and
+it falls back to a single generic tweet. Push the site before expecting the two
+daily posts to be correct.
+
+Check which version is live:
+
+```bash
+curl -s https://statedoku.com/data/tweets.json | head -c 40
+```
