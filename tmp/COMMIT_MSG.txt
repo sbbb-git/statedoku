@@ -1,14 +1,18 @@
-Stop the setup placeholder coming back as a 401
+Stop humanize() flattening the line break before the link
 
-The setup instructions hand out `node bot/buffer-channels.mjs buf_TA_CLE_ICI`.
-Run verbatim, the placeholder starts with `buf_` so it passed the format check,
-reached Buffer, and came back "401 Unauthorized. The key is wrong, revoked, or
-was copied with whitespace." None of which is true, and it points at the key
-rather than at the paste.
+humanize() ended on replace(/\s+/g, ' '), which collapses newlines along with
+spaces. The bank deliberately puts the link on its own line after a blank one,
+and that final sweep undid it, so every post went out with the URL welded to the
+end of the last sentence:
 
-The placeholder is now recognised before any request goes out and named as such.
+  ... still the sixth largest state in the union. #Statedoku https://statedoku.com/states/illinois/
 
-The key can also come from stdin now, since passing it as an argument writes it
-into shell history. Piping works, and with no argument on a terminal it prompts.
+Caught in the dry run against the live worker, not in the bank, because the bank
+stores the newlines correctly and only the scrub destroys them.
+
+Now collapses horizontal whitespace only, tidies spaces around a break, and
+caps runs of blank lines at one. The dash, caps and opener rules are unchanged.
+
+Deployed, version 3ba18b2f.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
