@@ -279,8 +279,14 @@ function humanize(text) {
   // Cliché / app emojis → strip.
   t = t.replace(/[\u{1F9E9}\u{2728}\u{1F3AF}\u{1F680}\u{1F4A1}\u{1F4AF}\u{1F525}]/gu, '');
 
-  // Collapse extra spaces and trim.
-  t = t.replace(/\s+/g, ' ').replace(/\s+([.!?,])/g, '$1').trim();
+  // Collapse horizontal whitespace only. The line breaks are deliberate: the
+  // bank puts the link on its own line after a blank one, and a blanket \s+
+  // collapse flattens that, jamming the URL onto the end of the last sentence.
+  t = t.replace(/[ \t]+/g, ' ')
+       .replace(/[ \t]*\n[ \t]*/g, '\n')
+       .replace(/\n{3,}/g, '\n\n')
+       .replace(/[ \t]+([.!?,])/g, '$1')
+       .trim();
 
   return t;
 }
