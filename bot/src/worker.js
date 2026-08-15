@@ -360,13 +360,19 @@ async function _runOnce(env, { dryRun = false, customText = null, now = Date.now
 // A network is on when its secrets are present, so switching route is a matter
 // of adding or deleting secrets, with no code change.
 //
-// buffer and x both end up on X. Configuring both would double-post, so buffer
-// wins when the two are set: it is the free one.
+// The paid X path is the one exception: leftover TWITTER_* secrets are not
+// enough to turn it on, because that would mean an ordering slip during setup
+// silently bills 0.20 USD a post. It also needs X_PAID_ENABLED set to "true",
+// which nothing sets by default.
+//
+// buffer and x both end up on the same X account, so buffer wins when both are
+// somehow live. Nothing double-posts.
 function _enabledNetworks(env) {
   const nets = [];
   const viaBuffer = env.BUFFER_TOKEN && env.BUFFER_CHANNEL_ID;
+  const paidX = env.X_PAID_ENABLED === 'true' && env.TWITTER_API_KEY && env.TWITTER_ACCESS_TOKEN;
   if (viaBuffer) nets.push('buffer');
-  else if (env.TWITTER_API_KEY && env.TWITTER_ACCESS_TOKEN) nets.push('x');
+  else if (paidX) nets.push('x');
   if (env.BLUESKY_HANDLE && env.BLUESKY_APP_PASSWORD) nets.push('bluesky');
   if (env.MASTODON_HOST && env.MASTODON_TOKEN) nets.push('mastodon');
   return nets;
