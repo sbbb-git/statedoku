@@ -1,116 +1,111 @@
-# 🤖 Statedoku Twitter Bot (Claude-powered)
+# Statedoku posting bot
 
-Cloudflare Worker that posts a daily tweet on X (@Statedoku) every day at 14:00 UTC.
-Tweet content is **generated fresh by Claude API** (no repetition).
+Two posts a day, no LLM at runtime, no X API bill.
 
-## Architecture
+- **13:00 UTC** posts from the `game` slot and links to the puzzle.
+- **23:00 UTC** posts from the `page` slot and links to the page that tweet is about.
 
-```
-Daily cron (14:00 UTC)
-     ↓
-Worker wakes up
-     ↓
-Calls Anthropic Claude API ($0.001 per tweet)
-     ↓
-Generates a unique tweet (rotates 7 styles by day-of-year)
-     ↓
-Posts via Twitter API v2 (OAuth 1.0a)
-```
+Text comes from `data/tweets.json`, a pre-generated bank served from the site.
+The `game` list holds 200 tweets and the `page` list 400, indexed by day number,
+so the game side repeats after 200 days and the page side after 400. The two
+advance independently, so a missed run cannot desynchronise them.
 
-## Setup (one-time, ~15 min)
+Rebuild the bank with `python3 tmp/rebuild-tweet-bank.py`.
 
-### 1. Twitter Developer Portal
+## Why it does not go through the X API any more
 
-1. Go to https://developer.twitter.com → Sign up for Free tier ($0)
-2. Create a Project + App with name "Statedoku Bot"
-3. In **User authentication settings**: enable OAuth 1.0a with read+write permissions
-4. From **Keys and tokens** copy these 4 values:
-   - API Key (consumer key)
-   - API Key Secret (consumer secret)
-   - Access Token
-   - Access Token Secret
+X has been pay-per-use since February 2026. There is no free tier, and a post
+that contains a URL is billed at 0.20 USD against 0.015 USD for a plain one.
+Both of our daily posts carry a link by design, so the X API route costs about
+12 USD a month. That is what the bill was.
 
-### 2. Anthropic API Key
+Buffer publishes to X through its own approved X app. No X developer account,
+no per-post charge, and the Buffer free plan covers a single X channel. That is
+the route the worker uses when `BUFFER_TOKEN` and `BUFFER_CHANNEL_ID` are set.
 
-1. Go to https://console.anthropic.com → Sign up
-2. Add ~$5 credits (lasts ~3 years at 1 tweet/day with Haiku model)
-3. Create an API key in **Settings → API Keys**
-4. Copy the key (starts with `sk-ant-…`)
+Buffer's free plan caps a channel queue at 10 scheduled posts, which we never
+approach: each cron run schedules one post three minutes out and Buffer
+publishes it, so queue depth stays at 1.
 
-### 3. Deploy the Worker
+## Setup
+
+Everything is a Cloudflare secret. A network switches on when its secrets are
+present, so changing route means adding or deleting secrets, never editing code.
 
 ```bash
-cd /Users/sacha/Desktop/Statoku/bot
-npm install -g wrangler         # if you don't already have it
-wrangler login                   # opens browser to authenticate
+wrangler secret put MANUAL_TRIGGER_KEY
+```
 
-# Paste each secret when prompted:
+### Buffer, the free route to X
+
+1. Connect the X account at <https://publish.buffer.com> on the free plan.
+2. Create an API key at <https://publish.buffer.com/settings/api>.
+3. `wrangler secret put BUFFER_TOKEN`
+4. Find the channel id: `curl "https://<worker>/?key=<MANUAL_TRIGGER_KEY>&buffer_channels=1"`
+5. `wrangler secret put BUFFER_CHANNEL_ID`
+
+### Bluesky, free
+
+App password from Settings > App Passwords, not the account password.
+
+```bash
+wrangler secret put BLUESKY_HANDLE          # statedoku.bsky.social
+wrangler secret put BLUESKY_APP_PASSWORD
+```
+
+Bluesky does not linkify URLs on its own. The worker computes rich-text facets
+over the UTF-8 bytes of the post, which matters because the tweets contain
+emoji: using JS string indices puts every link in the wrong place.
+
+### Mastodon, free
+
+Token from Preferences > Development > New application, scope `write:statuses`.
+
+```bash
+wrangler secret put MASTODON_HOST           # https://mastodon.social
+wrangler secret put MASTODON_TOKEN
+```
+
+### X directly, paid
+
+Only if you decide the 12 USD a month is worth it. Setting the Buffer secrets
+takes precedence over these, so the worker never double-posts to X.
+
+```bash
 wrangler secret put TWITTER_API_KEY
 wrangler secret put TWITTER_API_SECRET
 wrangler secret put TWITTER_ACCESS_TOKEN
 wrangler secret put TWITTER_ACCESS_TOKEN_SECRET
-wrangler secret put ANTHROPIC_API_KEY
-wrangler secret put MANUAL_TRIGGER_KEY      # any random string for manual testing
-
-# Deploy:
-wrangler deploy
 ```
 
-That's it. The cron schedule in `wrangler.toml` will fire automatically every day at 14:00 UTC.
+To stop paying: `wrangler secret delete TWITTER_API_KEY` and the other three.
 
-### 4. Test manually (dry-run, no actual post)
+`ANTHROPIC_API_KEY` is no longer used at all. Delete it with
+`wrangler secret delete ANTHROPIC_API_KEY`.
 
-After deploy, Wrangler gives you a URL like `https://statedoku-twitter-bot.YOUR_ACCOUNT.workers.dev`.
+## Testing
 
 ```bash
-# Preview what Claude generates (does NOT post)
-curl "https://statedoku-twitter-bot.YOUR_ACCOUNT.workers.dev/?key=YOUR_MANUAL_TRIGGER_KEY&dry=1"
-
-# Actually post a tweet right now
-curl "https://statedoku-twitter-bot.YOUR_ACCOUNT.workers.dev/?key=YOUR_MANUAL_TRIGGER_KEY"
+curl "https://<worker>/?key=<MANUAL_TRIGGER_KEY>&dry=1"
 ```
 
-## How tweet variety works
+Shows the tweet that would go out, which slot it came from, and which networks
+are configured, without posting anything.
 
-The bot rotates through **7 styles** based on day-of-year:
-1. Daily reminder
-2. Geography "did you know"
-3. Engagement poll / question
-4. Single-state spotlight
-5. Wordle/Connections comparison
-6. Meme-y playful post
-7. Streak / brag invitation
+## If you would rather not automate at all
 
-Claude sees the date, the style of the day, and gameplay context. It writes a fresh, on-brand tweet under 270 chars with a hashtag + URL.
+`python3 tmp/export-tweet-schedule.py 2026-09-01 90` writes
+`bot/exports/statedoku-schedule.csv`, a dated list of every post. X's own
+composer has a free scheduler (the calendar icon), so pasting a month of posts
+in one sitting costs nothing and depends on no third party. The export resolves
+the same rotation the worker uses, so both routes send the same tweet on the
+same day.
 
-**Result**: 365 unique tweets a year, never the exact same thing twice.
+## What not to do
 
-## Cost
+X's Developer Guidelines state that non-API automation, meaning scraping or
+browser automation, results in permanent suspension. There is no version of
+that shortcut worth the account.
 
-| Item | Per tweet | Per month | Per year |
-|---|---|---|---|
-| Anthropic Claude Haiku | ~$0.0008 | $0.024 | $0.30 |
-| Cloudflare Workers | $0 (free tier) | $0 | $0 |
-| Twitter API Free | $0 | $0 | $0 |
-| **TOTAL** | **~$0.001** | **~$0.02** | **~$0.30** |
-
-So: **~30 cents per year** to run the bot. Yes really.
-
-## Customize
-
-- **Posting time**: edit `crons` in `wrangler.toml` (Cron syntax). `0 14 * * *` = 14:00 UTC daily.
-- **Tweet styles**: edit the `STYLES` array in `src/worker.js`.
-- **Prompt**: edit `generateTweetText` for tone/format changes.
-- **Multiple tweets per day**: add more cron lines.
-
-## Logs
-
-```bash
-wrangler tail     # live log stream
-```
-
-You'll see `[Statedoku Bot] ✓ 201 <tweet text>` for each successful daily run.
-
-## Fallback
-
-If Claude API is unavailable for any reason (rate limit, network, etc.), the bot falls back to a simple hardcoded daily-reminder tweet. The bot won't miss a day.
+X also disallows duplicate posts. The bank has no repeated text and 200 days of
+runway on the shorter list, so this only becomes a concern once it wraps.

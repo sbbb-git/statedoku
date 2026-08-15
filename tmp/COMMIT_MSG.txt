@@ -1,79 +1,86 @@
-Grid redesign on the Metrodoku model, constraint explanations, asset version fixes
+Post two links a day to X for nothing, by routing through Buffer instead of the X API
 
-THE GRID
+THE BILL
 
-The grid was drawn as a table: one shared 1px gap over a border-coloured
-background, cells with no outline of their own, constraint labels carrying
-gradients and a single accent edge. Everything read as one dense block.
+X has no free tier. It closed to new signups on 6 February 2026 and the API is
+pay-per-use only: 0.015 USD per post, 0.200 USD per post containing a URL, a
+13.3x surcharge that landed on 20 April 2026. Two link-posts a day is the most
+expensive configuration the pricing has, 60 x 0.200 = 12 USD a month. That is
+the bill that showed up.
 
-It is now a set of separated cards. gap goes from 1px to 10px on desktop and
-6px on phones, each cell gets its own 2px navy outline and a 10px radius, and
-the constraint labels become flat tinted cards in the same shape as the cells
-they rule over. Filled and wrong states now colour their own border rather
-than sitting under a gradient, so the state of a cell is readable from its
-edge instead of from a wash. The empty-cell star is replaced by a faint plus:
-the star decorated, the plus says the cell is waiting for input.
+Buffer is an official X API partner. Connecting X to Buffer is OAuth, with no X
+developer account and no keys, and Buffer absorbs the per-post charge. Its free
+plan includes API access, so a cron can drive it unattended.
 
-The wrapper loses its card chrome, since the cards are the design now. On
-phones it also loses the negative side margins that used to bleed the grid to
-the screen edge, which would have clipped the new outlines.
+The worker now posts through Buffer's GraphQL API at api.buffer.com rather than
+calling X directly. Each run schedules one post three minutes out, so the free
+plan's 10-post queue cap is never approached: depth stays at 1. Roughly 60 calls
+a month against a 3,000 per 30 days allowance.
 
-CONSTRAINT EXPLANATIONS
+Deliberately GraphQL, not the legacy REST API at api.bufferapp.com/1/. Legacy is
+closed to new registrations and retires 1 February 2027 with brownouts in
+November and December 2026, so every tutorial showing /1/updates/create.json is
+building on something already scheduled for demolition.
 
-Opaque labels were the loudest complaint about the puzzle, and "Medical drama
-setting" is not something a player can reason their way to. Constraints now
-carry a plain-language gloss, shown in a popover anchored under the label.
+TWO LINKS A DAY
 
-105 of the 156 constraints the generator can pick are explained, across all
-three languages. The other 51 are things like "Starts with M" that explain
-themselves, and they draw no affordance at all: the "?" only appears where
-there is something worth saying, so it means something when it shows up. The
-whole card is the tap target rather than the small glyph, which is what makes
-it usable on a phone. Escape, an outside tap, or a second tap closes it.
+The bank was one flat list where 24% of entries happened to carry a link, all
+four of them pointing at the same handful of URLs, and which one went out on a
+given day was luck. It is now two slots. The 13:00 UTC run posts from "game" and
+links to the puzzle; the 23:00 run posts from "page" and links to the page that
+tweet is actually about.
 
-The glosses deliberately never name the states that satisfy a constraint, so
-none of them leak an answer. Where a label is genuinely ambiguous they say so
-outright: "Top 5 largest by area" now adds that this is about size, not
-population, and "Admitted before 1800" that this is the date of statehood,
-not of settlement.
+The page link is matched to the tweet rather than picked at random. A tweet that
+names one state links to that state's page; one that names several, or none,
+falls to a keyword match over 28 topics, then to an angle default. 243 of 400
+resolve to a state page, 68 to a topic page, 73 to the first state named, and
+only 16 land on a generic fallback. 65 distinct URLs, against 4 before.
 
-ASSET VERSIONS
+Matching had to be longest-name-first, because "West Virginia" contains
+"Virginia": without that, every West Virginia tweet counted as two states and
+lost its state page to a generic fallback.
 
-The cache-buster versions had drifted apart: style.css was pinned at v=17 on
-973 pages, v=18 on 275 and v=19 on 755, for one single file. Worse, the French
-and Spanish homepages still asked for game.js?v=11 while English was on v=14,
-so a returning FR or ES player kept the build from before the puzzle fix and
-went on being told their correct answers were wrong. All 2,011 pages now agree
-on one version per asset.
+Slots are indexed by day number and advance independently, so a missed run
+cannot desynchronise them. 200 days of runway on the game side, 400 on the page
+side, zero repeated text. That matters beyond tidiness: X forbids duplicative
+or substantially similar posts, and a template with an incrementing number is
+exactly the targeted pattern.
 
-The JSON under /data/ was fetched with no version query at all, so translations
-and state data could never reach a returning player once cached. Both fetches
-now carry CONFIG.DATA_VERSION.
+FREE NETWORKS
 
-VOICE
+Bluesky and Mastodon are both free to post to and are now wired in. A network
+switches on when its secrets are present, so changing route is adding or
+deleting secrets, never editing code. Setting the Buffer secrets takes
+precedence over the X ones, so having both configured cannot double-post.
 
-The earlier em-dash sweep covered HTML and JSON but never looked at the JS, so
-14 user-visible strings still carried them: cell aria-labels, the "already on
-the board" announcement, the share text that goes out with every result, the
-archive date line, and the placeholders in the stats panel. Plus 23 range
-dashes in constraint labels. Zero unicode dashes remain in any user-facing
-string; what is left lives in code comments.
+Bluesky does not linkify URLs on its own; a URL with no matching facet posts as
+dead plain text. Facet offsets are indices into the UTF-8 bytes, not the JS
+string, and these tweets carry emoji: on a real one the naive string index gives
+25 where the correct byte offset is 31, which would put the link six bytes early
+and break it. The worker encodes before measuring.
 
-NOTES
+WITHOUT AUTOMATION
 
-Rewrote the three how-to-play pages to describe the rules as they now work
-rather than as they used to, around 800 words each.
+tmp/export-tweet-schedule.py writes a dated CSV of every post. X's own composer
+has a free scheduler, so a month can be pasted in one sitting depending on no
+third party at all. The export resolves the same day-indexed rotation the worker
+uses, so both routes send the same tweet on the same day.
 
-Audited the constraint pool for redundancy: 16 groups match exactly the same
-states, mostly a built-in constraint and its pop-culture twin (tz_eastern and
-pc_eastern_time, contains_letter_k and pc_contains_k, and so on). Generating a
-full year found 0 grids that pair two of them, so nothing is broken today and
-nothing is changed here. Removing the duplicates would shift the pool the
-seeded RNG indexes into and rewrite every archived puzzle, which is not worth
-it for a fault that never fires.
+NOT DONE, ON PURPOSE
 
-Verified in a browser at 1280 and 375 wide, in all three languages: cards and
-outlines render, the popover anchors under its label and stays inside the
-viewport on a phone, the picker still opens below the grid on desktop and as a
-sheet on mobile, and two states that both satisfy their clues are both
-accepted and both survive a reload.
+Browser automation of a logged-in account was assessed and rejected. X's
+Developer Guidelines list non-API automation under a table headed "There are no
+exceptions" with the penalty "Permanent suspension", and X states the ban
+extends to associated accounts. Vendors selling "browser-based workflows that
+bypass API pricing" surfaced during the research; they are selling a permanent
+suspension to save 12 USD a month, and a compliant free route exists anyway.
+
+One caveat worth writing down: Buffer covering X on a free plan is Buffer's
+commercial decision, not a contract. Publer has already carved X out of its free
+plan and Hypefury and Later dropped X entirely. The routing is config, so if
+Buffer follows, the fallback is the CSV plus X's native scheduler at no cost, or
+Buffer Essentials at 5 USD a month.
+
+ANTHROPIC_API_KEY is unused and documented for deletion.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
