@@ -2,24 +2,38 @@ name = "statedoku-twitter-bot"
 main = "src/worker.js"
 compatibility_date = "2024-09-23"
 
-# Cron — prelaunch phase: 2 tweets/day, optimized for US audience
-#   13:00 UTC = 09:00 ET / 06:00 PT / 15:00 Paris   → US morning commute
-#   23:00 UTC = 19:00 ET / 16:00 PT / 01:00 Paris   → US after-work prime time
-# When you flip PHASE='launch' in worker.js, change this to a single cron
-# like "0 14 * * *" for one daily tweet.
+# Cron, two posts a day, timed for a US audience.
+#   13:00 UTC = 09:00 ET / 06:00 PT / 15:00 Paris   -> US morning commute
+#   23:00 UTC = 19:00 ET / 16:00 PT / 01:00 Paris   -> US after-work prime time
+#
+# The 13:00 run posts from the "game" slot and links to the puzzle; the 23:00
+# run posts from the "page" slot and links to the page that tweet is about.
+# The split is by UTC hour in worker.js (PAGE_SLOT_FROM_UTC_HOUR), so moving
+# these times means checking that threshold still puts one run either side.
 [triggers]
 crons = ["0 13 * * *", "0 23 * * *"]
 
 # ─────────────────────────────────────────────────────────────────────────
-# Secrets to set (NEVER commit these to git):
+# Secrets to set (NEVER commit these to git).
 #
+# Always needed:
+#   wrangler secret put MANUAL_TRIGGER_KEY    # random string, gates the test URL
+#
+# X, paid per post. Leave these unset and the worker simply skips X:
 #   wrangler secret put TWITTER_API_KEY
 #   wrangler secret put TWITTER_API_SECRET
 #   wrangler secret put TWITTER_ACCESS_TOKEN
 #   wrangler secret put TWITTER_ACCESS_TOKEN_SECRET
-#   wrangler secret put ANTHROPIC_API_KEY
-#   wrangler secret put MANUAL_TRIGGER_KEY    # random string for manual testing
+#   To stop paying X:  wrangler secret delete TWITTER_API_KEY   (and the rest)
 #
-# Get Twitter keys at:    https://developer.twitter.com
-# Get Anthropic key at:   https://console.anthropic.com
+# Bluesky, free. App password from Settings > App Passwords, not the login one:
+#   wrangler secret put BLUESKY_HANDLE          # e.g. statedoku.bsky.social
+#   wrangler secret put BLUESKY_APP_PASSWORD
+#
+# Mastodon, free. Token from Preferences > Development, scope write:statuses:
+#   wrangler secret put MASTODON_HOST           # e.g. https://mastodon.social
+#   wrangler secret put MASTODON_TOKEN
+#
+# ANTHROPIC_API_KEY is no longer used. Remove it with:
+#   wrangler secret delete ANTHROPIC_API_KEY
 # ─────────────────────────────────────────────────────────────────────────
