@@ -1,23 +1,14 @@
-Guard the paid X path behind an explicit flag, add a Buffer channel lister, deploy
+Stop the setup placeholder coming back as a 401
 
-Four TWITTER_* secrets were still on the deployed worker. With routing based on
-"a network is on when its secrets are present", deploying before the Buffer
-secrets existed would have sent the next cron straight back down the paid path
-at 0.20 USD a post, which is the exact bill this work removes. The paid path now
-also requires X_PAID_ENABLED to be the string "true", so leftover credentials
-cannot bill anything on their own. Turning X off again is deleting one flag
-rather than four secrets.
+The setup instructions hand out `node bot/buffer-channels.mjs buf_TA_CLE_ICI`.
+Run verbatim, the placeholder starts with `buf_` so it passed the format check,
+reached Buffer, and came back "401 Unauthorized. The key is wrong, revoked, or
+was copied with whitespace." None of which is true, and it points at the key
+rather than at the paste.
 
-bot/buffer-channels.mjs prints the channel ids straight from Buffer's GraphQL
-API. Reading them through the worker meant deploying before you could configure
-the thing the deploy depends on, and it confused "is my key valid" with "is my
-worker up". No dependencies, Node 18+.
+The placeholder is now recognised before any request goes out and named as such.
 
-Deployed to statedoku-twitter-bot.sachabitoun17.workers.dev. Verified it answers
-403 without a key and with a wrong one, and that with no Buffer secrets set it
-resolves to no networks at all, so it currently posts nowhere and bills nothing.
-
-Recorded in the README: production still serves the v1 bank, so the worker falls
-back to a generic tweet until the site is pushed.
+The key can also come from stdin now, since passing it as an argument writes it
+into shell history. Piping works, and with no argument on a terminal it prompts.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
