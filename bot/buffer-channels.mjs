@@ -7,9 +7,30 @@
 //
 // No dependencies. Node 18+ for global fetch.
 
-const token = process.argv[2] || process.env.BUFFER_TOKEN;
+// Reading from stdin when no argument is given keeps the key out of shell
+// history, which is where it ends up if it is typed as an argument.
+async function readStdin(promptText) {
+  process.stderr.write(promptText);
+  const chunks = [];
+  for await (const c of process.stdin) chunks.push(c);
+  return Buffer.concat(chunks).toString().trim();
+}
+
+let token = process.argv[2] || process.env.BUFFER_TOKEN;
+if (!token && !process.stdin.isTTY) token = await readStdin('');
+if (!token && process.stdin.isTTY) token = await readStdin('Paste your Buffer API key, then Ctrl-D: ');
+
 if (!token) {
   console.error('usage: node bot/buffer-channels.mjs <BUFFER_TOKEN>');
+  console.error('   or: node bot/buffer-channels.mjs        (prompts, keeps the key out of history)');
+  process.exit(1);
+}
+
+// The setup instructions hand out a command with a placeholder in it, so catch
+// the placeholder itself rather than letting it come back as a puzzling 401.
+if (/TA_CLE|YOUR_KEY|your_key|xxx+$|TON_TOKEN/i.test(token)) {
+  console.error(`That is the placeholder from the instructions, not a key: "${token}"`);
+  console.error('Get the real one at https://publish.buffer.com/settings/api and pass that instead.');
   process.exit(1);
 }
 if (!token.startsWith('buf_')) {
