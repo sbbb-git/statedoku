@@ -98,5 +98,5 @@ for m, miss, extra in missing_self[:8]:
 
 json.dump({'clusters': {k: sorted(v) for k, v in clusters.items()},
            'fails': fails, 'off_site': dict(targets_off_site)},
-          open('tmp/hreflang-map.json','w'), indent=1)
-print('\n-> tmp/hreflang-map.json')
+          open('scripts/hreflang-map.json','w'), indent=1)
+print('\n-> scripts/hreflang-map.json')

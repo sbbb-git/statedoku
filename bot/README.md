@@ -10,7 +10,7 @@ The `game` list holds 200 tweets and the `page` list 400, indexed by day number,
 so the game side repeats after 200 days and the page side after 400. The two
 advance independently, so a missed run cannot desynchronise them.
 
-Rebuild the bank with `python3 tmp/rebuild-tweet-bank.py`.
+Rebuild the bank with `python3 scripts/rebuild-tweet-bank.py`.
 
 ## Why it does not go through the X API any more
 
@@ -114,7 +114,7 @@ are configured, without posting anything.
 
 ## If you would rather not automate at all
 
-`python3 tmp/export-tweet-schedule.py 2026-09-01 90` writes
+`python3 scripts/export-tweet-schedule.py 2026-09-01 90` writes
 `bot/exports/statedoku-schedule.csv`, a dated list of every post. X's own
 composer has a free scheduler (the calendar icon), so pasting a month of posts
 in one sitting costs nothing and depends on no third party. The export resolves

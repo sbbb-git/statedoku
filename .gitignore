@@ -29,3 +29,13 @@ Thumbs.db
 marketing/outreach-sent.json
 marketing/.Rhistory
 marketing/*.bak
+
+# Throwaway scripts and audit dumps. Reusable tools live in scripts/ instead.
+tmp/
+
+# Outreach lists hold third parties' contact details. They have no business in
+# a public repo, and the deploy used to serve them from statedoku.com.
+marketing/
+
+# Audit output written next to the scripts that produce it
+scripts/*.json

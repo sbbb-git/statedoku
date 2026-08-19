@@ -148,5 +148,5 @@ json.dump({
   'broken': {k: sorted(v) for k, v in broken.items()},
   'meta_long': long_d, 'meta_short': short_d, 'meta_none': none_d,
   'og_incomplete': incomplete,
-}, open('tmp/audit-local.json', 'w'), indent=1)
-print("\nfull detail -> tmp/audit-local.json")
+}, open('scripts/audit-local.json', 'w'), indent=1)
+print("\nfull detail -> scripts/audit-local.json")

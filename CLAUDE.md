@@ -15,6 +15,25 @@ pipeline. Live about a minute after the push.
 The Twitter bot in `bot/` is **not** in CI. Deploy it by hand:
 `cd bot && npx wrangler deploy`.
 
+## What ships and what does not
+
+The repo holds more than the website. `wrangler pages deploy` has no exclude
+flag, so the workflow copies the tree into a staging directory with
+`--exclude-from=.deployignore` and deploys that. Anything listed there stays out
+of statedoku.com.
+
+This exists because it was not always so: `tmp/`, `marketing/`, `bot/` and
+`email-worker/` were all served publicly, and `marketing/outreach-batch-3.md`
+put 71 journalists' email addresses on the open web. robots.txt only asks
+crawlers not to look, it does not stop anyone fetching the file.
+
+The list is exclude-based on purpose. A new content directory ships by default;
+only what is named is held back. The workflow fails the build if an excluded
+directory reaches the deploy folder anyway.
+
+`marketing/` and `tmp/` are gitignored and local-only. Reusable tooling goes in
+`scripts/`, which stays in the repo but never deploys.
+
 ## The puzzle rule, which is not obvious
 
 A cell is correct when the state **satisfies both visible clues**. Not when it
@@ -68,7 +87,7 @@ and truncated others mid-word. Match `content="([^"]*)"` instead.
 
 ## SEO invariants
 
-Re-check these after any bulk edit. `tmp/audit-local.py` measures all of them
+Re-check these after any bulk edit. `scripts/audit-local.py` measures all of them
 and should read zero.
 
 - **hreflang is reciprocal.** If A declares B, B declares A. Repair pairwise,
@@ -128,7 +147,7 @@ announce how many answers a cell accepts.
 `game` and links to the puzzle; the 23:00 run posts from `page` and links to the
 page that tweet is about. 200 and 400 entries, indexed by day number, advancing
 independently so a missed run cannot desynchronise them. Rebuild with
-`python3 tmp/rebuild-tweet-bank.py`.
+`python3 scripts/rebuild-tweet-bank.py`.
 
 X forbids duplicative posts, which is why the bank has no repeated text.
 

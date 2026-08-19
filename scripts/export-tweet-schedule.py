@@ -6,7 +6,7 @@ needed when posting through a third-party tool instead of the X API. It resolves
 the same day-indexed rotation the worker uses, so both routes send exactly the
 same tweet on the same day and switching between them changes nothing.
 
-Usage:  python3 tmp/export-tweet-schedule.py [start_date] [days]
+Usage:  python3 scripts/export-tweet-schedule.py [start_date] [days]
 """
 import csv, json, pathlib, sys
 from datetime import date, datetime, timedelta, timezone

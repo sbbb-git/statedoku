@@ -1,0 +1,18 @@
+# Directories that live in the repo but must never be served from statedoku.com.
+# wrangler pages deploy has no exclude flag (workers-sdk#3176), so the workflow
+# copies the tree into dist/ with these removed and deploys that instead.
+#
+# Exclude-based on purpose: a new content directory ships by default, and only
+# what is listed here is held back.
+.git
+.github
+node_modules
+tmp
+scripts
+marketing
+bot
+email-worker
+.claude
+.deployignore
+CLAUDE.md
+README.md
