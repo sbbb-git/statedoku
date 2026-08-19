@@ -1,18 +1,84 @@
-Stop humanize() flattening the line break before the link
+Ahrefs audit: kill the hreflang errors, the broken links and the spliced descriptions
 
-humanize() ended on replace(/\s+/g, ' '), which collapses newlines along with
-spaces. The bank deliberately puts the link on its own line after a blank one,
-and that final sweep undid it, so every post went out with the URL welded to the
-end of the last sentence:
+Reproduced the locally checkable half of the 11 August crawl against the repo,
+since that crawl predates the last push and fixing from a five-day-old report
+means fixing things that may no longer be true.
 
-  ... still the sixth largest state in the union. #Statedoku https://statedoku.com/states/illinois/
+HREFLANG, THE TOP ERROR
 
-Caught in the dry run against the live worker, not in the bank, because the bank
-stores the newlines correctly and only the scrub destroys them.
+114 declarations across 43 pages had no return tag, every one of them a French
+or Spanish page declaring an English alternate that the English page never
+declared back.
 
-Now collapses horizontal whitespace only, tidies spaces around a break, and
-caps runs of blank lines at one. The dash, caps and opener rules are unchanged.
+Repaired pairwise rather than by rebuilding clusters. A union-find over the
+hreflang graph produces clusters that already contain two pages of the same
+language, because /learn/state-capitals/ and /learn/states-and-capitals/ are
+distinct pages that reference each other. Writing a cluster's full alternate set
+into every member would have made two pages claim hreflang="es" in one set,
+which is invalid and worse than the current state.
 
-Deployed, version 3ba18b2f.
+So: add the missing return tag where the language slot is free, and drop the
+forward claim where another page already holds it. 50 return tags added, 20
+forward claims dropped. Reciprocity failures now 0.
+
+BROKEN INTERNAL LINKS
+
+217 links to paths that do not exist, over 134 pages. 182 of them were two
+targets: /es/learn/us-regions/ and /es/learn/state-flags/, English slugs inside
+the Spanish tree, left over from the translation pass. The pages exist, at
+regiones-de-eeuu and banderas-de-estados.
+
+The rest were repointed where a real destination existed, or unwrapped where
+none did. District of Columbia is not a state and gets no /states/ page, so
+those anchors are now plain text. Eleven Spanish capital pages linked from a
+sibling were never written; creating eleven thin pages during an AdSense review
+is a worse trade than removing eleven links. Now 0.
+
+CANONICALS THAT DELETED THEIR OWN PAGE
+
+Nine pages carrying real translated content, 550 to 600 words with lang="fr" or
+lang="es", declared rel=canonical pointing at the English version. Google honours
+the canonical and drops the translation, so those pages could never rank. This
+was fixed for 588 pages earlier; these nine were missed.
+
+Two were worse: /es/learn/regiones-de-eeuu/ and /es/learn/banderas-de-estados/
+pointed their canonical at /es/learn/us-regions/ and /es/learn/state-flags/,
+which do not exist. Those are the pages 182 links were just repointed to, so
+they had to be self-canonical for the link fix to mean anything.
+
+SITEMAP
+
+61 noindexed URLs were being submitted, which Search Console reports as
+"Submitted URL marked noindex". The generator is a Pages Function assembled from
+hardcoded entries and cannot read the filesystem at request time, so the entries
+are removed at source. 63 lines gone, two of them duplicates. Also dropped
+colonias-originales, which correctly canonicalises to 13-colonies.
+
+The generator's 271 literal paths now resolve to a real file, none noindexed,
+none non-canonical.
+
+META DESCRIPTIONS
+
+Twelve English descriptions had boilerplate spliced into the middle of a word:
+
+  Every US state. Full 50-state breakdown with data, maps, and updates for 2026.'s 2-letter postal code
+
+An earlier expansion matched attribute content with [^"']*, which stops at the
+first apostrophe. It captured up to "state", appended a full stop and the
+boilerplate, and left the rest dangling after it. The French copy hit this and
+was fixed; the English pages were missed because the same naive regex was used
+to find them. og:description escaped the splice and was the recovery source for
+seven; five were rewritten from the page's own h1 and opening paragraph.
+
+Three more were cut mid-list at an apostrophe, "Texas 'Lone Star'" losing
+everything from the quote. Four ended on an unclosed parenthesis. All rewritten.
+Eleven over 160 characters trimmed at a sentence or word boundary.
+
+Descriptions now: 0 too long, 0 too short, 0 missing, 0 unbalanced.
+
+Three widget pages had no og:image and now share the site image.
+
+Verified across 2,088 pages: no broken head, no duplicate canonical, no
+duplicate hreflang, 3,728 JSON-LD blocks all still parsing.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
