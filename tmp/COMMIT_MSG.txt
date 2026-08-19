@@ -1,37 +1,44 @@
-Ahrefs audit part two: no page is orphaned any more
+Stop inlining the 218 KB US map on 21 play pages
 
-34 indexable pages had no incoming internal link at all. An orphan gets almost
-no crawl priority and receives no internal PageRank, so the work that went into
-writing them was being thrown away.
+Ahrefs reported 21 slow pages, up 21 from the previous crawl. Exactly 21 pages
+carry an inlined copy of the US states map, which is 218 KB of path data and
+about 90% of each page's 243 KB. That match is what identified the cause.
 
-18 of them were the substantial World Cup pages, orphaned for a simple reason:
-/learn/ had no World Cup section. Not a broken link, a missing one. The other
-notable pair was /learn/most-populous-states/ and /learn/national-parks-by-state/,
-evergreen pages nothing pointed at.
+/data/us-map.svg already existed and is byte-identical to the inlined copies,
+right down to the root tag's class, role, aria-label and every data-* attribute
+on the 50 paths. So the map was being shipped twice: once as a cacheable file
+nothing used, and once inline on every page, where the browser has to download
+it again on every navigation and can never reuse it.
 
-Each orphan is now linked from its own language hub, in the card markup those
-hubs already use so the blocks do not read as bolted on:
+The pages now fetch it. First play page pays the 218 KB once; every other one
+reads it from cache. Verified in the browser: transferSize 0, one request per
+page, served in a millisecond.
 
-  /learn/      +14 World Cup, +3 other
-  /es/learn/    +6 World Cup, +4 other
-  /fr/learn/    +3 World Cup
+  21 pages, ~5,103 KB of HTML -> 519 KB, 90% less
 
-The four outside a learn tree got the link that belongs to them rather than a
-hub dump: each /play/<game>/guide/ is now linked from its own game page, and
-/press/ from /about/, which is where a journalist actually looks.
+Two shapes had to be handled. Eighteen pages inline an <svg> the game binds to
+synchronously with document.querySelector('#pts-map-wrap svg'), so the body of
+the game IIFE moves into a boot function that runs once the SVG is injected.
+The three state-silhouettes pages instead carry a PATHS object holding the same
+50 path strings; those are now derived from the fetched SVG. All 50 d values
+were confirmed byte-identical to the file first, so the derivation is exact
+rather than approximate. Both paths show a readable message if the fetch fails
+instead of leaving a dead map.
 
-Verified in a browser at 375px: the new sections render in the existing card
-style and the page does not scroll horizontally.
+No indexable text is lost: the map is role="img" with an aria-label, and the
+state names live in data-name attributes, never in text nodes. Removing 218 KB
+of markup also improves the text-to-HTML ratio considerably, which matters while
+AdSense is judging the site.
 
-Also swept the structured data for the four schema.org errors the crawl
-reported. Checked every Article, BlogPosting, FAQPage, BreadcrumbList, ItemList,
-Game, WebSite and VideoGame node across 3,728 blocks for missing required
-properties and over-long headlines: none found. Whatever Ahrefs saw on 11 August
-either predates the last push or needs their validator to reproduce, so it is
-left alone rather than guessed at.
+Verified by playing them, not just by loading them:
+  play/border-states       Texas counted correct 1/17, Florida wrong 1/5
+  play/swing-states        Pennsylvania correct 0/7 -> 1/7
+  fr/play/place-the-state  asked Maryland, clicked it, score 0 -> 1
+  play/state-silhouettes   silhouette drawn, answered, score 0 -> 1, round 1 -> 2
+  es/play/state-silhouettes  silhouette drawn, Spanish choices, SVG from cache
 
-Local audit now reads zero on every counter it can measure: hreflang return
-tags, orphans, broken internal links, meta descriptions too long, too short or
-missing, and incomplete Open Graph.
+All 21 keep a single head and main, 63 JSON-LD blocks still parse, and the local
+audit still reads zero on hreflang, orphans, broken links, meta descriptions and
+Open Graph.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
