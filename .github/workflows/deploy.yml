@@ -16,9 +16,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Stage the site without the repo-only directories
+        run: |
+          mkdir -p /tmp/dist
+          rsync -a --delete \
+            --exclude-from=.deployignore \
+            ./ /tmp/dist/
+          echo "staged $(find /tmp/dist -name index.html | wc -l) pages"
+          for d in marketing tmp bot email-worker scripts; do
+            if [ -e "/tmp/dist/$d" ]; then
+              echo "::error::$d reached the deploy directory"; exit 1
+            fi
+          done
+
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=statedoku --branch=main --commit-dirty=true
+          command: pages deploy /tmp/dist --project-name=statedoku --branch=main --commit-dirty=true
