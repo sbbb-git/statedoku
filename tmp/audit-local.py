@@ -113,7 +113,9 @@ for s, ts in list(broken.items())[:6]:
     print('   ', s); [print('        ->', t) for t in list(ts)[:3]]
 
 # ---- meta descriptions ----------------------------------------------------
-MD = re.compile(r'<meta[^>]+name=["\']description["\'][^>]*content=["\']([^"\']*)', re.I)
+# a double-quoted attribute may contain apostrophes, which French and Spanish
+# copy is full of; [^"\']* would report "L\'histoire..." as one character long
+MD = re.compile(r'<meta[^>]*?name="description"[^>]*?content="([^"]*)"', re.I)
 long_d, short_d, none_d = [], [], []
 for p, html in docs.items():
     if url_of(p) in noindex: continue
