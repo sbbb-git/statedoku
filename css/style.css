@@ -296,8 +296,13 @@ main {
   letter-spacing: 0.02em;
   color: var(--navy);
   min-width: 0;
+  /* overflow-wrap alone. word-break: break-word used to sit here too, and it
+     breaks inside a word even when the whole word would have fitted on the
+     next line: "Nouvelle-Angleterre" came out as "Nouvelle-Angleterr / e" and
+     "Ouest montagneux" as "Ouest montagne / ux". overflow-wrap only breaks a
+     word that cannot fit on a line of its own, which is the behaviour wanted
+     here, and the labels are short enough that it almost never fires. */
   overflow-wrap: break-word;
-  word-break: break-word;
   transition: background var(--d-fast) var(--ease), border-color var(--d-fast) var(--ease);
 }
 
