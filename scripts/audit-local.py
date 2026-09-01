@@ -132,12 +132,15 @@ print(f"[WARN ] no meta description: {len(none_d)}")
 for u in none_d[:5]: print('   ', u)
 
 # ---- open graph -----------------------------------------------------------
-need = ['og:title', 'og:description', 'og:image', 'og:url']
+# a page with no og tags at all is the worst case, not an exempt one:
+# the three homepages had zero and shared as bare links for three months
+need = ['og:title', 'og:description', 'og:image', 'og:url', 'twitter:card']
 incomplete = []
 for p, html in docs.items():
     if url_of(p) in noindex: continue
     head = html[:9000]
-    miss = [t for t in need if f'property="{t}"' not in head and f"property='{t}'" not in head]
+    miss = [t for t in need
+            if f'property="{t}"' not in head and f'name="{t}"' not in head]
     if miss: incomplete.append((url_of(p), miss))
 print(f"\n[WARN ] incomplete Open Graph: {len(incomplete)}")
 for u, m in incomplete[:6]: print('   ', u, 'missing', ','.join(m))
