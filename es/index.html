@@ -57,7 +57,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
   <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/css/style.css?v=23">
+  <link rel="stylesheet" href="/css/style.css?v=24">
 
   <script type="application/ld+json">
   {
@@ -291,14 +291,14 @@
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 
-<script src="/config.js?v=6"></script>
+<script src="/config.js?v=7"></script>
 <script src="/js/admin.js?v=2"></script>
 <script src="/js/ads.js?v=1"></script>
 <script src="/js/analytics.js?v=2"></script>
 <script src="/js/reminders.js?v=2"></script>
 <script src="../js/email.js?v=4"></script>
-<script src="/js/i18n.js?v=5"></script>
-<script src="/js/constraints-approved.js?v=1"></script>
+<script src="/js/i18n.js?v=6"></script>
+<script src="/js/constraints-approved.js?v=3"></script>
 <script>
 // The 77 approved pop-culture constraints, 15KB. The full 765-candidate list
 // is 152KB and is only ever loaded by /admin/constraints/.
@@ -309,14 +309,14 @@
     var hasLocal = Array.isArray(local) && local.length > 0;
     if (hasRepo || hasLocal) {
       var s = document.createElement('script');
-      s.src = '/js/constraints-live.js?v=1';
+      s.src = '/js/constraints-live.js?v=2';
       s.async = false;
       document.head.appendChild(s);
     }
   } catch(e){}
 })();
 </script>
-<script src="../js/puzzle.js?v=13"></script>
-<script src="../js/game.js?v=16"></script>
+<script src="../js/puzzle.js?v=14"></script>
+<script src="../js/game.js?v=17"></script>
 </body>
 </html>

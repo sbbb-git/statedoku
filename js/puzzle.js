@@ -80,7 +80,50 @@ const Puzzle = (() => {
     ['earthquake_zone', 'sub_deep_south', 'sub_mid_atlantic'],            // 4×
     ['pop_1m5m', 'pop_5m10m', 'pop_gt10m'],                               // 3×
     ['largest_state', 'sub_new_england', 'sub_mid_atlantic'],             // 3×
+    // ─── Added with the 2026 constraint pass ───
+    // Both of these carry a constraint whose states sit in one corner of the
+    // country. As a column such a constraint cannot reach three disjoint rows,
+    // so it is placed on a row instead, the same way desert_state and
+    // route_66 already are. Counts are unique-solution grids found by search.
+    ['smaller_than_portugal', 'sub_plains', 'sub_mountain'],              // 23×
+    ['more_cows_than_people', 'sub_new_england', 'sub_mid_atlantic'],     // 3×
   ];
+
+  // --- Sourced constraint lists -------------------------------------------
+  // Membership here is a curated fact rather than a field in states.json, so
+  // each list is written out in full and can be audited at a glance. Every
+  // list holds at least 5 states, the minimum the generator needs.
+  //
+  // Areas are total area (land plus water), the basis on which the reference
+  // countries are quoted too: the United Kingdom is 244,376 km2 and Portugal
+  // is 92,212 km2.
+  const LIST_CONSTRAINTS = {
+    larger_than_uk:        'AK AZ CA CO MI MT NM NV OR TX WY',
+    // Belgium (30,689 km2) was the first cut, but it selects only New England
+    // plus Hawaii, and a column has to reach all three mutually exclusive rows.
+    // Portugal widens it to three census regions without losing the point.
+    smaller_than_portugal: 'CT DE HI MA MD ME NH NJ RI SC VT WV',
+    // The eight commonly recognised US panhandles.
+    has_panhandle:         'AK FL ID MD NE OK TX WV',
+    // Cattle inventory exceeds human population.
+    more_cows_than_people: 'IA ID KS MT ND NE OK SD WY',
+    // Highest point below 500 m / 1,600 ft. The nearest state above the line
+    // is Iowa at 509 m, so the metric and imperial thresholds agree.
+    low_high_point:        'DE FL IL IN LA MS OH RI',
+    // Flags carrying symbols only, with no state name and no motto.
+    flag_no_lettering:     'AL AK AZ CO HI MD NM OH SC TN TX',
+    // Two-letter postal abbreviation that is also an ordinary English word.
+    postal_code_is_word:   'HI ID IN MA ME OK OR PA',
+    // More than one president born inside the state. The presidentBirthplace
+    // flag in states.json covers 26 states, half the country, which is loose
+    // enough that grids built on it almost never resolve to one solution.
+    // Requiring two or more cuts it to a set that carries real information.
+    two_presidents_born:   'MA NC NY OH TX VA VT',
+  };
+
+  const LIST_SETS = Object.fromEntries(
+    Object.entries(LIST_CONSTRAINTS).map(([k, v]) => [k, new Set(v.split(/\s+/))])
+  );
 
   const ALL_CONSTRAINTS = [
     // Regions
@@ -126,6 +169,15 @@ const Puzzle = (() => {
     'letters_6', 'letters_7', 'letters_8', 'letters_9',
     // Starts with letter
     'starts_a', 'starts_i', 'starts_m', 'starts_n', 'starts_w',
+    // ─── Map reading: true whatever the player knows about the country ───
+    'has_islands', 'continental_divide',
+    'has_panhandle', 'larger_than_uk', 'smaller_than_portugal',
+    // ─── Names, read against something else rather than letter by letter ───
+    'name_longer_than_capital', 'postal_code_is_word',
+    // ─── Superlatives that teach something ───
+    'all_four_leagues', 'more_cows_than_people', 'low_high_point',
+    // ─── Culture that travels ───
+    'two_presidents_born', 'flag_no_lettering',
   ];
 
   function matches(state, c) {
@@ -137,6 +189,8 @@ const Puzzle = (() => {
     if (c.startsWith('letters_')) {
       return state.letterCount === parseInt(c.slice(8), 10);
     }
+    // Curated lists (see LIST_CONSTRAINTS)
+    if (LIST_SETS[c]) return LIST_SETS[c].has(state.id);
     switch (c) {
       // Regions
       case 'region_west':      return state.region === 'west';
@@ -239,6 +293,30 @@ const Puzzle = (() => {
       case 'short_name':             return state.letterCount <= 5;
       case 'long_name':              return state.letterCount >= 10;
       case 'two_word_starts_n':      return state.wordCount === 2 && state.startsWith === 'N';
+
+      // ───────── Map reading ─────────
+      case 'has_islands':         return !!state.hasIslands;
+      case 'continental_divide':  return !!state.continentalDivide;
+      // ───────── Names read against something else ─────────
+      // Letters only, so a name is not penalised for its spaces or hyphens.
+      //
+      // The margin is 2 rather than 1: at 1 the constraint takes 22 states,
+      // loose enough that grids built on it rarely have a unique solution.
+      //
+      // The test has to hold in all three languages at once, because the
+      // player counts the name they can actually see. In Spanish "Nueva York"
+      // clears Albany by three letters while "New York" does not clear it at
+      // all, so an English-only test would reject a Spanish player who had
+      // reasoned correctly. Requiring agreement costs two states, Mississippi
+      // and Pennsylvania, and leaves the clue true whatever the page language.
+      case 'name_longer_than_capital': {
+        const cap = state.capital.replace(/[\s-]/g, '').length;
+        return ['en', 'fr', 'es'].every(l =>
+          state.names[l].replace(/[\s-]/g, '').length - cap >= 2);
+      }
+      // ───────── Superlatives ─────────
+      case 'all_four_leagues':
+        return !!(state.nbaTeam && state.nflTeam && state.mlbTeam && state.nhlTeam);
 
       default:
         // Pending candidates registered globally (constraints-pending.js)
