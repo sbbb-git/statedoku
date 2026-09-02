@@ -51,8 +51,16 @@ def union(a, b):
     ra, rb = find(a), find(b)
     if ra != rb: parent[ra] = rb
 
+# x-default is a fallback pointer, not a translation edge, so it must not join
+# two pages into a cluster. Including it did: unrelated clusters share an
+# x-default target, and the transitive closure collapsed 121 pages into one
+# component. Every language in that blob then mapped to many URLs, the conflict
+# guard below refused the whole thing, and the clusters inside it were never
+# repaired. Dropping it takes the largest component from 121 pages to 4 and the
+# refused count from 3 clusters to 1, the genuinely ambiguous one.
 for src, a in decl.items():
     for lg, t in a.items():
+        if lg == 'x-default': continue
         if t in pages: union(src, t)
 
 clusters = collections.defaultdict(set)
