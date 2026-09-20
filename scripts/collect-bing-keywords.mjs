@@ -28,12 +28,27 @@ import { fetchRetry, pool } from './_gsc-auth.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = 'https://ssl.bing.com/webmaster/api.svc/json';
-const CONCURRENCY = 4;
+// Bing throttles these two methods hard. It answers HTTP 400 with ThrottleUser
+// in the body rather than a 429, so the generic retry cannot see it, and at
+// four at a time it refused 27 of 73 seeds on the first real run. Two at a
+// time, with an explicit wait on that message.
+const CONCURRENCY = 2;
+const THROTTLE_TRIES = 4;
+const THROTTLE_WAIT_MS = 4000;
 
 async function call(method, apikey, params = {}) {
   const qs = new URLSearchParams({ apikey, ...params });
-  const res = await fetchRetry(`${BASE}/${method}?${qs}`);
-  const text = await res.text();
+  let res, text;
+  for (let attempt = 1; ; attempt++) {
+    res = await fetchRetry(`${BASE}/${method}?${qs}`);
+    text = await res.text();
+    if (!text.includes('ThrottleUser') || attempt === THROTTLE_TRIES) break;
+    await new Promise((r) => setTimeout(r, THROTTLE_WAIT_MS * attempt));
+  }
+  if (text.includes('ThrottleUser')) {
+    throw new Error(`${method} still throttled after ${THROTTLE_TRIES} tries. ` +
+      'Lower CONCURRENCY or cut the seed list with BING_KW_LIMIT.');
+  }
   // Bing answers 400, not 401, on a bad key, with InvalidApiKey in the body.
   // Trusting the status alone surfaces the commonest failure as a parse error.
   if (text.includes('InvalidApiKey')) {
