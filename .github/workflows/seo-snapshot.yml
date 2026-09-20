@@ -34,9 +34,19 @@ jobs:
       # Both collectors warn and exit 0 when their secret is absent. A red cross
       # every week stops being read, and the alert is worthless the day it means
       # something.
+      #
+      # Several names are passed for the Google key because GitHub offers no way
+      # to list the secrets on a repository: a secret that does not exist simply
+      # expands to an empty string, so guessing one name and getting it wrong
+      # means skipping in silence forever. The collector takes the first one
+      # filled and logs which name it used, never the value.
       - name: Google Search Console
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: ${{ secrets.SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON }}
+          GSC_KEY_JSON: ${{ secrets.GSC_KEY_JSON }}
         run: node scripts/collect-gsc.mjs
 
       # continue-on-error so that a Bing outage still leaves the Google snapshot
