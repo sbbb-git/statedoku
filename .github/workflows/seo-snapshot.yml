@@ -1,0 +1,59 @@
+name: Weekly SEO snapshot
+
+# Collection is separate from analysis. This job holds the keys and writes raw
+# JSON into the repo; an assistant session reads the committed file later and
+# never sees a credential. Committing each week also turns the history into git:
+# Search Console keeps sixteen months and only shows deltas in its own UI, so
+# once this is archived, comparing two periods is a diff.
+
+on:
+  schedule:
+    # Monday morning UTC. Off the hour on purpose: every cron written by hand
+    # lands on :00 and the runner queue is busiest there.
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Both collectors warn and exit 0 when their secret is absent. A red cross
+      # every week stops being read, and the alert is worthless the day it means
+      # something.
+      - name: Google Search Console
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: node scripts/collect-gsc.mjs
+
+      # continue-on-error so that a Bing outage still leaves the Google snapshot
+      # written above to be committed.
+      - name: Bing Webmaster Tools
+        continue-on-error: true
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+        run: node scripts/collect-bing.mjs
+
+      - name: Commit the snapshot
+        run: |
+          if [ -z "$(git status --porcelain seo-snapshots)" ]; then
+            echo "nothing new to archive"; exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add seo-snapshots
+          git commit -m "SEO snapshot $(date -u +%Y-%m-%d)"
+          git push
