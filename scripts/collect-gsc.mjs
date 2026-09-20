@@ -19,7 +19,9 @@
  * Env:
  *   GSC_SERVICE_ACCOUNT_JSON  the whole downloaded key file, braces included
  *   GSC_OUT_DIR               where to write (default seo-snapshots/)
- *   GSC_SITE                  optional: restrict to one property id
+ *   GSC_SITE                  property id to collect; default is whichever
+ *                             visible property is about statedoku.com
+ *   GSC_ALL_SITES             set to "true" to collect every visible property
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
@@ -28,6 +30,9 @@ import path from 'node:path';
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const API = 'https://searchconsole.googleapis.com/webmasters/v3';
 const SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
+
+// This repo is statedoku, and it is public.
+const SITE_DOMAIN = 'statedoku.com';
 
 // Search Console data lags two to three days. Asking up to today returns empty
 // days that read as a traffic collapse.
@@ -123,11 +128,23 @@ async function main() {
     throw new Error('The service account sees no property. Add its client_email under ' +
       'Search Console > Settings > Users and permissions (Restricted is enough): ' + key.client_email);
   }
-  if (process.env.GSC_SITE) {
-    if (!sites.includes(process.env.GSC_SITE)) {
-      throw new Error(`GSC_SITE="${process.env.GSC_SITE}" is not among the properties this account sees: ${sites.join(', ')}`);
+  const visible = sites;
+  if (process.env.GSC_ALL_SITES !== 'true') {
+    if (process.env.GSC_SITE) {
+      if (!visible.includes(process.env.GSC_SITE)) {
+        throw new Error(`GSC_SITE="${process.env.GSC_SITE}" is not among the properties this account sees: ${visible.join(', ')}`);
+      }
+      sites = [process.env.GSC_SITE];
+    } else {
+      // A service account can be added to properties for several projects. This
+      // repo is statedoku and is public, so collect only the properties about
+      // this domain rather than everything the account happens to see.
+      sites = visible.filter((u) => u.includes(SITE_DOMAIN));
+      if (!sites.length) {
+        throw new Error(`No visible property mentions ${SITE_DOMAIN}. Set GSC_SITE explicitly, ` +
+          'or GSC_ALL_SITES=true to collect every property this account sees.');
+      }
     }
-    sites = [process.env.GSC_SITE];
   }
 
   const endDate = isoDaysAgo(LAG_DAYS);
@@ -149,7 +166,10 @@ async function main() {
     source: 'google-search-console',
     collected_at: new Date().toISOString(),
     window: { startDate, endDate, lag_days: LAG_DAYS },
-    properties_visible: siteList.siteEntry || [],
+    // A count, not the list: naming every property the account can reach would
+    // publish other projects' domains in a public repo.
+    properties_visible_count: visible.length,
+    properties_collected: sites,
     data: {},
   };
 
