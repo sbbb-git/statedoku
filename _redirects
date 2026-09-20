@@ -1,8 +1,11 @@
 # Cloudflare Pages redirects
 # Docs: https://developers.cloudflare.com/pages/configuration/redirects/
 
-# Force HTTPS + www → apex (or apex → www, your choice)
-https://www.statedoku.com/* https://statedoku.com/:splat 301
+# www to apex is NOT done here. Cloudflare Pages matches a path in this file,
+# not an absolute URL carrying a different hostname, so the rule below was
+# silently inert for as long as it existed and every page was reachable twice:
+#   https://www.statedoku.com/* https://statedoku.com/:splat 301
+# It now lives at the top of functions/_middleware.js, which does see the host.
 
 # /launch/ was the pre-launch teaser ("Launches Monday June 1"). The site
 # went live June 1 2026, so the page is a dead 92-word stub that an AdSense
