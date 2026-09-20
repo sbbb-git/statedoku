@@ -151,6 +151,49 @@ independently so a missed run cannot desynchronise them. Rebuild with
 
 X forbids duplicative posts, which is why the bank has no repeated text.
 
+Every tweet carries one or two hashtags, in a rotation per angle rather than one
+fixed block, which X reads as a spam signal when it repeats across hundreds of
+scheduled posts. `scripts/add-tweet-hashtags.py` is idempotent and must be
+re-run after a bank rebuild, which would otherwise drop the tags.
+
+## Search performance readings
+
+`.github/workflows/seo-snapshot.yml` queries Google Search Console and Bing
+Webmaster Tools every Monday and commits raw JSON to `seo-snapshots/`. Read the
+committed file; do not ask for a live API call.
+
+Collection is deliberately separate from analysis. The keys live as GitHub
+secrets, readable by that action and nothing else, so a session that analyses
+the data cannot leak a credential into a transcript or an error body. It also
+turns the history into git: Search Console keeps sixteen months and only shows
+deltas in its own UI, so once a week is archived, comparing two periods is a
+diff.
+
+`seo-snapshots/` is in `.deployignore` and in the deploy guard, and the deploy
+trigger ignores it, so a weekly reading never republishes 2,000 pages.
+
+Both collectors warn and exit 0 when their secret is missing. That is on
+purpose: a red cross every week stops being read.
+
+**What to look at, in this order.**
+
+- **query x page.** Which page Google actually serves for a query. It is the
+  cut that shows cannibalisation and wrong internal targeting, and the manual
+  CSV export does not contain it.
+- **Queries between position 8 and 20.** The only band where work on a page
+  moves anything. Past 30, position is noise.
+- **Week-on-week deltas**, not absolute values.
+- **Bing crawl anomalies**, which Google does not report at all.
+
+**Two things that turn this routine into commentary instead of work.** An
+impression or two is noise; signal is a pattern repeated across several
+queries. And a young site takes three to six months to settle. The routine
+exists so nothing is missed and work keeps shipping, not to hurry Google.
+
+**The two engines are not comparable.** A Bing impression is counted far more
+loosely than a Google one: over the same summer quarter Bing reported 486,250
+impressions against Google's 882. Never put the two totals in one sentence.
+
 ## Verify, do not assume
 
 This site has 2,000+ pages and most bugs here are systematic. Measure before and
