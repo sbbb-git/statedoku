@@ -17,7 +17,13 @@
  * webmasters/v3 API.
  *
  * Env:
- *   GSC_SERVICE_ACCOUNT_JSON  the whole downloaded key file, braces included
+ *   GSC_SERVICE_ACCOUNT_JSON  the whole downloaded key file, braces included.
+ *                             GOOGLE_SERVICE_ACCOUNT_JSON and the other names in
+ *                             KEY_VARS are accepted too: GitHub gives no way to
+ *                             list the secrets on a repository, so rather than
+ *                             guess one name and silently skip forever, the
+ *                             workflow passes several and the first one filled
+ *                             wins. Only the name is ever logged.
  *   GSC_OUT_DIR               where to write (default seo-snapshots/)
  *   GSC_SITE                  property id to collect; default is whichever
  *                             visible property is about statedoku.com
@@ -42,21 +48,31 @@ const WINDOW_DAYS = 28;
 const b64url = (buf) =>
   Buffer.from(buf).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
+const KEY_VARS = [
+  'GSC_SERVICE_ACCOUNT_JSON',
+  'GOOGLE_SERVICE_ACCOUNT_JSON',
+  'GOOGLE_SERVICE_ACCOUNT',
+  'SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON',
+  'GSC_KEY_JSON',
+];
+
 function readKey() {
-  const raw = process.env.GSC_SERVICE_ACCOUNT_JSON;
-  if (!raw || !raw.trim()) {
-    return { skip: 'GSC_SERVICE_ACCOUNT_JSON is not set' };
+  const found = KEY_VARS.find((v) => (process.env[v] || '').trim());
+  if (!found) {
+    return { skip: `none of ${KEY_VARS.join(', ')} is set` };
   }
+  const raw = process.env[found];
+  console.log(`[gsc] using ${found}`);
   let key;
   try {
     key = JSON.parse(raw);
   } catch (e) {
     throw new Error(
-      'GSC_SERVICE_ACCOUNT_JSON is not valid JSON (' + e.message + '). ' +
+      found + ' is not valid JSON (' + e.message + '). ' +
       'Paste the downloaded key file whole, including the outer braces.');
   }
   for (const f of ['client_email', 'private_key']) {
-    if (!key[f]) throw new Error(`GSC_SERVICE_ACCOUNT_JSON has no "${f}". This is not a service-account key file.`);
+    if (!key[f]) throw new Error(`${found} has no "${f}". This is not a service-account key file.`);
   }
   return { key };
 }

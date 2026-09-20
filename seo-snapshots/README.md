@@ -45,7 +45,10 @@ Both steps skip with a warning when their secret is absent, so the workflow is
 harmless until they are set.
 
 **`GSC_SERVICE_ACCOUNT_JSON`** is the whole downloaded key file, braces
-included. Create a service account in Google Cloud with the Search Console API
+included. `GOOGLE_SERVICE_ACCOUNT_JSON` and a few other names work too: GitHub
+offers no way to list the secrets on a repository, so the workflow passes
+several and the collector takes the first one filled, logging which name it
+used and never the value. Create a service account in Google Cloud with the Search Console API
 enabled and **no project role at all**, then add its `client_email` under
 Search Console, Settings, Users and permissions. The permission comes from
 Search Console, not from the Cloud project, and that is the step people miss.
