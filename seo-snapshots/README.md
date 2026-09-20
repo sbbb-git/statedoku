@@ -52,4 +52,11 @@ Search Console, not from the Cloud project, and that is the step people miss.
 
 **`BING_API_KEY`** comes from Bing Webmaster Tools, Settings, API Access. The
 key belongs to the account rather than to one site, so it opens every verified
-site: worth remembering if it ever leaks.
+site on it.
+
+That last point is not theoretical. The first run of this workflow looped over
+everything the key could reach and committed 3 MB of search data for nine
+sites, eight of them unrelated projects, into this public repo. Both collectors
+now take one site by default, statedoku.com, and record a count of the
+properties they can see rather than their names. Collecting more needs an
+explicit `BING_ALL_SITES=true` or `GSC_ALL_SITES=true`.
