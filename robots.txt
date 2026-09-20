@@ -3,6 +3,10 @@ Allow: /
 Disallow: /bin/
 Disallow: /tmp/
 Disallow: /cdn-cgi/
+# /api/ is a real HTML hub page, indexable and listed in the sitemap. The
+# endpoints under it are not. Allow matches the hub exactly thanks to the
+# anchor, Disallow still covers /api/events, /api/states and the rest.
+Allow: /api/$
 Disallow: /api/
 Disallow: /*?date=archive
 Disallow: /*?dev=
