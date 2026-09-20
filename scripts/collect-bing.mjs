@@ -12,20 +12,22 @@
  *
  * Env:
  *   BING_API_KEY    from Bing Webmaster Tools > Settings > API Access
- *   BING_SITE       site to collect (default https://statedoku.com/)
+ *   BING_SITE       site to collect; default is the host that
+ *                   functions/sitemap.xml.js declares
  *   BING_ALL_SITES  set to "true" to collect every site the key opens
  *   BING_OUT_DIR    where to write (default seo-snapshots/)
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fetchRetry } from './_gsc-auth.mjs';
+import { siteHost, pickProperty } from './_site.mjs';
 
 const BASE = 'https://ssl.bing.com/webmaster/api.svc/json';
 
-// This repo is statedoku. The key opens every site verified on the account,
-// which here is nine of them, so collecting "whatever the key can see" writes
-// other projects' search data into a public repo. Collect this site only,
-// unless someone explicitly asks for the rest.
-const DEFAULT_SITE = 'https://statedoku.com/';
+// The key opens every site verified on the account, nine of them here, so
+// collecting "whatever the key can see" writes other projects' search data into
+// a public repo. Which site this repo is about is read from the project, never
+// hardcoded here: see _site.mjs.
 
 // Bing serialises dates in the legacy .NET form, /Date(1316156400000-0700)/,
 // which JSON.parse leaves as a string. Converting at collection time is what
@@ -46,7 +48,10 @@ function normaliseDates(value) {
 
 async function call(method, apikey, params = {}) {
   const qs = new URLSearchParams({ apikey, ...params });
-  const res = await fetch(`${BASE}/${method}?${qs}`);
+  // Retry on 429 and 5xx: Bing returns passing 503s, and a method missing from
+  // one reading is a hole no later run can fill, since the API only ever
+  // returns the present.
+  const res = await fetchRetry(`${BASE}/${method}?${qs}`);
   const text = await res.text();
 
   // Bing answers 400, not 401, on a bad key, with InvalidApiKey in the body.
@@ -87,16 +92,12 @@ async function main() {
   let sites;
   if (process.env.BING_ALL_SITES === 'true') {
     sites = visible;
+  } else if (process.env.BING_SITE) {
+    sites = pickProperty(visible, new URL(process.env.BING_SITE).host, 'Bing sites');
   } else {
-    const want = process.env.BING_SITE || DEFAULT_SITE;
-    // Bing reports urls with a trailing slash; compare forgivingly.
-    const norm = (u) => u.replace(/\/+$/, '').toLowerCase();
-    const hit = visible.find((u) => norm(u) === norm(want));
-    if (!hit) {
-      throw new Error(`"${want}" is not among the sites this key opens: ${visible.join(', ')}. ` +
-        'Set BING_SITE, or BING_ALL_SITES=true to collect them all.');
-    }
-    sites = [hit];
+    // Match on the host functions/sitemap.xml.js declares, and refuse rather
+    // than guess: one key opens every site verified on the account.
+    sites = pickProperty(visible, await siteHost(), 'Bing sites');
   }
 
   // What Bing gives and Google does not: crawl anomalies and the URL

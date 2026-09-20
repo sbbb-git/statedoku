@@ -158,9 +158,46 @@ re-run after a bank rebuild, which would otherwise drop the tags.
 
 ## Search performance readings
 
-`.github/workflows/seo-snapshot.yml` queries Google Search Console and Bing
-Webmaster Tools every Monday and commits raw JSON to `seo-snapshots/`. Read the
-committed file; do not ask for a live API call.
+`.github/workflows/seo-snapshot.yml` runs every Monday at 06:17 UTC and commits
+raw JSON to `seo-snapshots/`. Read the committed file; do not ask for a live API
+call.
+
+### The order of priorities
+
+Without this order in mind you will build something that measures very well what
+does not move. It is the trap of this kind of arrangement.
+
+1. **Authority**, meaning inbound links from other sites. The dominant factor
+   and the ceiling on almost any young site. You cannot lift it and must not
+   try: no buying, no directories, no artificial exchanges. Say it once to the
+   owner, clearly, then work on the rest.
+2. **Indexation.** A page missing from the index cannot rank, however good the
+   work done on it. It is measurable and almost nobody measures it, which is why
+   `scripts/collect-gsc-index.mjs` exists.
+3. **Depth on commercial intent.** Pages that answer an intent to act, not
+   pages that inform.
+4. **Trust signals.** About page, named author, complete legal notices. Never
+   fill that gap by inventing a person, a background or a figure. Ask for the
+   material.
+5. **Technical and on-page.** Usually already done, and what one flogs out of
+   habit because it is the easy part.
+
+### What the readings hold
+
+- `gsc-*.json` performance, six cuts including **query x page**, the one that
+  says which page Google actually serves for a query. Cannibalisation and wrong
+  internal targeting live there, and the manual CSV export does not contain it.
+- `gsc-index-*.json` index coverage, one row per sitemap URL: verdict, coverage
+  state, robots state, fetch state, and both canonicals. **Google's chosen
+  canonical differing from the declared one is always a real defect** and is
+  invisible from the page itself.
+- `bing-*.json` performance and crawl anomalies, which Google does not report.
+- `bing-keywords-*.json` keyword demand, independent of this site. Without it
+  the analysis is a closed loop: performance data only ever reports queries the
+  site already appears on, so it can improve what exists and can never find
+  demand nobody serves.
+- `bing-submitted.json` the register of URLs already pushed to Bing. Re-sending
+  the same list burns the quota and teaches Bing nothing.
 
 Collection is deliberately separate from analysis. The keys live as GitHub
 secrets, readable by that action and nothing else, so a session that analyses
@@ -172,27 +209,42 @@ diff.
 `seo-snapshots/` is in `.deployignore` and in the deploy guard, and the deploy
 trigger ignores it, so a weekly reading never republishes 2,000 pages.
 
-Both collectors warn and exit 0 when their secret is missing. That is on
+Every collector warns and exits 0 when its secret is missing. That is on
 purpose: a red cross every week stops being read.
 
-**What to look at, in this order.**
+### What to look at, in this order
 
-- **query x page.** Which page Google actually serves for a query. It is the
-  cut that shows cannibalisation and wrong internal targeting, and the manual
-  CSV export does not contain it.
+- **Pages entering or leaving the index.** A page leaving is urgent.
+- **query x page.** Which page is served, is it the right one, are two pages
+  fighting over one query.
 - **Queries between position 8 and 20.** The only band where work on a page
   moves anything. Past 30, position is noise.
-- **Week-on-week deltas**, not absolute values.
-- **Bing crawl anomalies**, which Google does not report at all.
+- **A chosen canonical differing from the declared one.**
+- **Bing crawl anomalies.**
+- **The keyword reading**, to decide what to write from measured demand rather
+  than intuition.
+
+Week-on-week deltas, never absolute values.
 
 **Two things that turn this routine into commentary instead of work.** An
 impression or two is noise; signal is a pattern repeated across several
 queries. And a young site takes three to six months to settle. The routine
 exists so nothing is missed and work keeps shipping, not to hurry Google.
 
+**Do the work, do not propose it.** A routine that files a report every week and
+never changes anything costs money and produces nothing.
+
+**A check that finds nothing has verified nothing.** A regex matching no line,
+then a loop announcing "all clear" over zero items, is false assurance. Always
+print how many items were checked.
+
+**Never conclude from an incomplete search.** Claiming a thing does not exist
+requires having looked everywhere it could be.
+
 **The two engines are not comparable.** A Bing impression is counted far more
-loosely than a Google one: over the same summer quarter Bing reported 486,250
-impressions against Google's 882. Never put the two totals in one sentence.
+loosely than a Google one, and partly artifactually: one query showed 42,844
+impressions for 15 clicks. Judge Bing on clicks and position. Never put a Bing
+total and a Google total in one sentence.
 
 ## Verify, do not assume
 
