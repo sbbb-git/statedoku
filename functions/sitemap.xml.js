@@ -1,3 +1,5 @@
+import { LASTMOD } from './_sitemap-lastmod.js';
+
 // Dynamic sitemap — auto-includes scheduled SEO pages on their publish date.
 // Replaces the static sitemap.xml from this date forward.
 
@@ -27,9 +29,17 @@ function buildEntry(loc, opts = {}) {
   const cf = opts.changefreq || 'monthly';
   const pri = opts.priority != null ? opts.priority : 0.7;
   const alts = opts.alternates ? opts.alternates.map(([hl, h]) => `    <xhtml:link rel="alternate" hreflang="${hl}" href="${h}"/>`).join('\n') + '\n' : '';
+  // lastmod is the main signal Google uses to decide what to re-crawl, and this
+  // sitemap carried none. The dates come from git history, walking past commits
+  // that only move an asset ?v=N, so a cache-bust pass does not stamp 2,000
+  // pages as freshly written. Regenerate with scripts/build-sitemap-lastmod.py
+  // after any content change. A page with no entry emits no lastmod rather than
+  // a guessed one.
+  const lm = LASTMOD[loc.replace(/^https?:\/\/[^/]+/, '')];
+  const lastmod = lm ? `    <lastmod>${lm}</lastmod>\n` : '';
   return `  <url>
     <loc>${loc}</loc>
-${alts}    <changefreq>${cf}</changefreq>
+${lastmod}${alts}    <changefreq>${cf}</changefreq>
     <priority>${pri}</priority>
   </url>`;
 }
