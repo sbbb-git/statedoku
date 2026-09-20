@@ -5,8 +5,11 @@ and committed automatically. Nothing here is served: the directory is listed in
 `.deployignore`, checked by the deploy guard, and excluded from the deploy
 trigger so archiving a reading never republishes the site.
 
-    gsc-YYYY-MM-DD.json     Google Search Console, dated by the end of its window
-    bing-YYYY-MM-DD.json    Bing Webmaster Tools, dated by the collection day
+    gsc-YYYY-MM-DD.json           Google performance, dated by the end of its window
+    gsc-index-YYYY-MM-DD.json     Google index coverage, one row per sitemap URL
+    bing-YYYY-MM-DD.json          Bing performance and crawl anomalies
+    bing-keywords-YYYY-MM-DD.json Keyword demand, independent of this site
+    bing-submitted.json           Register of URLs already pushed to Bing
 
 ## Reading them
 
@@ -29,6 +32,34 @@ and the totals are not comparable between them.
 anomalies and the URL submission quota are the two things Bing reports and
 Google does not. Dates arrive in the legacy .NET form and are converted to ISO
 at collection, so weeks stay comparable.
+
+## Index coverage
+
+`gsc-index-*.json` is the reading almost nobody takes and the one that says
+whether a page can rank at all. Performance data cannot tell a page that ranks
+badly from a page Google never indexed: both simply never appear.
+
+One row per sitemap URL, carrying `verdict`, `coverageState`, `robotsTxtState`,
+`pageFetchState`, `googleCanonical` and `userCanonical`. When Google's chosen
+canonical differs from the declared one it is always a real defect, and it
+cannot be seen from the page itself.
+
+Quota is 2,000 inspections per day per site, 600 per minute. This site publishes
+757 URLs, so a full weekly pass costs about 37% of one day. Concurrency stays at
+four: nothing presses, and a 429 would cost the whole reading.
+
+## Keyword demand
+
+`bing-keywords-*.json` is what stops the whole arrangement being a closed loop.
+Performance data only ever reports queries the site already appears on, so on
+its own it can improve what exists and can never find demand nobody serves. A
+site that appears on nothing learns nothing from its own performance data.
+
+`GetKeyword` and `GetRelatedKeywords` take no `siteUrl`: they return the volume
+of any term, which makes this free keyword research with the key already in
+place. Seeds are derived from `data/states.json` and the `learn/` topic slugs,
+never from a hand-written list that would go stale, and the collector fails
+rather than write a reading over an empty seed list.
 
 ## Two cautions
 
