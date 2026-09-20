@@ -34,6 +34,18 @@ export const onRequest = async (context) => {
   const { request, next } = context;
   const url = new URL(request.url);
 
+  // www to apex, 301, before anything else runs.
+  //
+  // _redirects carries a rule for this and it has never fired: Cloudflare Pages
+  // matches a path there, not an absolute URL carrying a different hostname, so
+  // the rule is silently inert. Every page of the site has therefore been
+  // reachable twice, and Bing indexed and reported the www copies. The canonical
+  // tag limited the damage; it did not remove the duplicate.
+  if (url.hostname.startsWith('www.')) {
+    url.hostname = url.hostname.slice(4);
+    return Response.redirect(url.toString(), 301);
+  }
+
   // Pass through — get whatever response the static asset / function returned.
   const response = await next();
 
