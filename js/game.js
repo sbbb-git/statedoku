@@ -1,6 +1,16 @@
 const Game = (() => {
 
-  const MAX_ERRORS = 3;
+  // Nine cells, no givens, fifty candidate states. At three this was the
+  // binding constraint on the whole game rather than a safety net: measured on
+  // 22 September 2026, 649 losses against 97 wins all time, and 87% of the
+  // players who reached an end reached the losing one. Of the fourteen who won
+  // in the preceding thirty days, six won carrying two errors, one step from
+  // death, and winning with three is impossible by construction.
+  //
+  // Five is a first move, not a final answer. Watch the solve rate in
+  // audience-snapshots/ before moving it again. The error dots render from this
+  // constant and no page copy names a number, so this line is the whole knob.
+  const MAX_ERRORS = 5;
 
   let _puzzle     = null;
   let _states     = null;
