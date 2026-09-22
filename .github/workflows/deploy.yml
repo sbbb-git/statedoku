@@ -3,10 +3,12 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [main]
-    # The weekly SEO snapshot commits into seo-snapshots/ and changes no page.
-    # Without this, every archived reading would republish 2,000 pages.
+    # The weekly snapshot commits into seo-snapshots/ and audience-snapshots/
+    # and changes no page. Without this, every archived reading would republish
+    # 2,000 pages.
     paths-ignore:
       - 'seo-snapshots/**'
+      - 'audience-snapshots/**'
   workflow_dispatch:
 
 jobs:
@@ -27,7 +29,7 @@ jobs:
             --exclude-from=.deployignore \
             ./ /tmp/dist/
           echo "staged $(find /tmp/dist -name index.html | wc -l) pages"
-          for d in marketing tmp bot email-worker scripts seo-snapshots; do
+          for d in marketing tmp bot email-worker scripts seo-snapshots audience-snapshots; do
             if [ -e "/tmp/dist/$d" ]; then
               echo "::error::$d reached the deploy directory"; exit 1
             fi

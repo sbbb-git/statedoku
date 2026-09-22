@@ -90,13 +90,28 @@ jobs:
           BING_API_KEY: ${{ secrets.BING_API_KEY }}
         run: node scripts/submit-bing-urls.mjs
 
+      # Who actually plays, and who subscribes. The search collectors cannot say:
+      # to Search Console a click on a reference page and a solved puzzle look
+      # identical, which is how the site reached ~600 Bing clicks a week with
+      # nobody able to tell whether the game was being used.
+      #
+      # Counts only. The subscribers endpoint returns email addresses and this
+      # repository is public, so the collector drops them and then refuses to
+      # write a file in which an address survived anyway.
+      - name: Audience and subscribers
+        continue-on-error: true
+        env:
+          STATS_ADMIN_KEY: ${{ secrets.STATS_ADMIN_KEY }}
+          ADMIN_API_KEY: ${{ secrets.ADMIN_API_KEY }}
+        run: node scripts/collect-audience.mjs
+
       - name: Commit the readings
         run: |
-          if [ -z "$(git status --porcelain seo-snapshots)" ]; then
+          if [ -z "$(git status --porcelain seo-snapshots audience-snapshots)" ]; then
             echo "nothing new to archive"; exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add seo-snapshots
-          git commit -m "SEO snapshot $(date -u +%Y-%m-%d)"
+          git add seo-snapshots audience-snapshots
+          git commit -m "Snapshot $(date -u +%Y-%m-%d)"
           git push

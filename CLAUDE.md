@@ -207,7 +207,25 @@ deltas in its own UI, so once a week is archived, comparing two periods is a
 diff.
 
 `seo-snapshots/` is in `.deployignore` and in the deploy guard, and the deploy
-trigger ignores it, so a weekly reading never republishes 2,000 pages.
+trigger ignores it, so a weekly reading never republishes 2,000 pages. The same
+three places hold `audience-snapshots/` back.
+
+### Audience readings
+
+Search data cannot say whether anyone played. A click on a reference page and a
+solved puzzle are the same row to Search Console, which is how the site reached
+roughly 600 Bing clicks a week with 70% landing on `learn/` and thirteen on the
+homepage, where the game is. `scripts/collect-audience.mjs` closes that by
+reading the site's own admin endpoints into `audience-snapshots/`, described in
+its README.
+
+**It writes counts and never a person.** `/api/admin/subscribers` returns the
+subscriber table with addresses in it and this repo is public, so the collector
+strips `email`, `token`, `subscribers` and `rows` at any depth, then re-reads
+the finished payload and refuses to write it if an address survived. Keep both
+checks: the first trusts the endpoint's shape and shapes change. Never add a
+field to that file without asking whether it identifies somebody, and never
+commit the subscriber list here whatever the reason.
 
 Every collector warns and exits 0 when its secret is missing. That is on
 purpose: a red cross every week stops being read.
