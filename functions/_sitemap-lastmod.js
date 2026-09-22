@@ -5,12 +5,12 @@
 // cache-bust pass rewrites 2,000 pages without changing a word, and
 // stamping them all as fresh is what gets lastmod discounted.
 export const LASTMOD = {
-  "/": "2026-09-02",
+  "/": "2026-09-22",
   "/about/": "2026-09-02",
   "/api/": "2026-08-07",
   "/archive/": "2026-09-02",
   "/cities/": "2026-08-19",
-  "/es/": "2026-09-02",
+  "/es/": "2026-09-22",
   "/es/about/": "2026-09-02",
   "/es/archive/": "2026-09-02",
   "/es/faq/": "2026-09-02",
@@ -226,7 +226,7 @@ export const LASTMOD = {
   "/es/widgets/": "2026-09-02",
   "/facts/": "2026-07-14",
   "/faq/": "2026-09-02",
-  "/fr/": "2026-09-02",
+  "/fr/": "2026-09-22",
   "/fr/about/": "2026-09-02",
   "/fr/archive/": "2026-09-02",
   "/fr/faq/": "2026-09-02",
