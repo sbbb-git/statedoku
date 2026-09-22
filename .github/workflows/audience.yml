@@ -1,0 +1,55 @@
+name: Audience snapshot
+
+# Who actually plays, and who subscribes. Split out of seo-snapshot.yml on
+# purpose: this reading takes two seconds and the search one takes a quarter of
+# an hour, almost all of it inspecting 757 URLs one by one. Sharing a workflow
+# meant nobody could ask "how many people played this week" without waiting for
+# a crawl that answers a different question.
+#
+# Counts only. The subscribers endpoint returns email addresses and this
+# repository is public, so the collector drops them and then refuses to write a
+# file in which an address survived anyway.
+
+on:
+  schedule:
+    # Monday, ahead of the search snapshot so both are in place for the Tuesday
+    # reading. Off the hour: every hand-written cron lands on :00 and the runner
+    # queue is busiest there.
+    - cron: '9 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audience-snapshot
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Read the audience
+        env:
+          STATS_ADMIN_KEY: ${{ secrets.STATS_ADMIN_KEY }}
+          ADMIN_API_KEY: ${{ secrets.ADMIN_API_KEY }}
+        run: node scripts/collect-audience.mjs
+
+      - name: Commit the reading
+        run: |
+          if [ -z "$(git status --porcelain audience-snapshots)" ]; then
+            echo "nothing new to archive"; exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audience-snapshots
+          git commit -m "Audience snapshot $(date -u +%Y-%m-%d)"
+          # Another workflow may have pushed while this one ran.
+          git pull --rebase origin main
+          git push
