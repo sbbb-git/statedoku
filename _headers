@@ -8,12 +8,18 @@
 # headers comma-joined, and browsers then enforce the strictest
 # frame-ancestors of the two, which broke embedding.
 
+# Content-Security-Policy below: connect-src and img-src must carry the
+# google-analytics hosts. script-src alone lets gtag.js load, count the visit,
+# and then have every hit refused on the way out: until 24 September 2026 GA4
+# saw 56 sessions in 28 days while Bing alone sent about 2,500 clicks. When ads
+# go live, AdSense will need its own frame-src and connect-src entries too;
+# test it the same way, with a securitypolicyviolation listener.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://analytics.ahrefs.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://statedoku.com https://*.clarity.ms https://*.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://cloudflareinsights.com https://analytics.ahrefs.com https://*.clarity.ms https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
 
 # ─────────────────────────────────────────────────────────────
 # Caching strategy:
