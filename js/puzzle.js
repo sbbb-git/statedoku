@@ -345,14 +345,20 @@ const Puzzle = (() => {
   }
 
   // Check if a 3×3 grid has exactly 1 valid assignment (global backtracking)
+  //
+  // Cells are visited smallest first. The number of assignments does not
+  // depend on the order they are counted in, so the answer is the same as a
+  // row-by-row walk, but a one-state cell pins its state before the search
+  // fans out and dead branches die early. This check runs for every column
+  // triple tried, and in row order it was 43% of a first visit's generation.
   function hasUniqueSolution(grid) {
+    const cells = [...grid[0], ...grid[1], ...grid[2]].sort((a, b) => a.length - b.length);
     const used = new Set();
     let count = 0;
     function bt(idx) {
       if (count > 1) return;
       if (idx === 9) { count++; return; }
-      const r = Math.floor(idx / 3), c = idx % 3;
-      for (const s of grid[r][c]) {
+      for (const s of cells[idx]) {
         if (!used.has(s.id)) {
           used.add(s.id);
           bt(idx + 1);
@@ -413,15 +419,19 @@ const Puzzle = (() => {
       return rowStateSets.every(rs => rs.some(s => matches(s, c)));
     }).slice(0, 60);
 
+    // Each column's states per row, filtered once. The loop below tries every
+    // triple of up to 60 columns, and filtering inside it re-ran the same
+    // 180 filters about 34,000 times. Same arrays, same order, same grids.
+    const colCells = new Map(availableCols.map(cc =>
+      [cc, rowStateSets.map(rs => rs.filter(s => matches(s, cc)))]));
+
     const found = [];
     for (let i = 0; i < availableCols.length - 2; i++) {
       for (let j = i + 1; j < availableCols.length - 1; j++) {
         for (let k = j + 1; k < availableCols.length; k++) {
           const cols = [availableCols[i], availableCols[j], availableCols[k]];
 
-          const grid = rowStateSets.map(rs =>
-            cols.map(cc => rs.filter(s => matches(s, cc)))
-          );
+          const grid = rowStateSets.map((_, r) => cols.map(cc => colCells.get(cc)[r]));
 
           if (!hasUniqueSolution(grid)) continue;
 
