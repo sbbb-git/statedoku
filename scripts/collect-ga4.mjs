@@ -88,10 +88,13 @@ async function main() {
       'not the G-XXXXXXX measurement id that appears in the page source.');
   }
 
-  let key;
-  try { key = readKey(); }
-  catch (e) { console.warn(`[ga4] skipped: ${e.message}`); return; }
-  if (!key) { console.warn('[ga4] skipped: no service account key is set'); return; }
+  // readKey returns an envelope, { key, found } or { skip }, not the key itself.
+  // The first version of this file passed the envelope to accessToken and died
+  // on "No key provided to sign" in production, which no absent-secret test
+  // could have caught.
+  const { skip, key, found } = readKey();
+  if (skip) { console.warn(`[ga4] skipped: ${skip}`); return; }
+  console.log(`[ga4] service account key read from ${found}`);
 
   const token = await accessToken(key, SCOPE);
 
