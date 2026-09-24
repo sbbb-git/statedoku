@@ -1,6 +1,6 @@
 {
   "source": "adsense-management-v2",
-  "collected_at": "2026-09-24T13:47:05.796Z",
+  "collected_at": "2026-09-24T13:48:15.177Z",
   "site": "statedoku.com",
   "accounts": [
     {
@@ -16,9 +16,13 @@
           "auto_ads_enabled": true
         }
       ],
-      "alerts": {
-        "error": "/accounts/pub-1481624152917622/alerts?pageSize=100 -> 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid JSON payload received. Unknown name \\\"pageSize\\\": Cannot bind query parameter. Field 'pageSize' could not be found in request message.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      "
-      },
+      "alerts": [
+        {
+          "severity": "WARNING",
+          "type": "ua-conflict-policy-update",
+          "message": "En raison de la guerre en Ukraine, nous allons suspendre la monétisation de tout contenu qui exploite, nie ou cautionne la guerre"
+        }
+      ],
       "policy_issues": [],
       "policy_issues_other_sites_count": 0
     }
