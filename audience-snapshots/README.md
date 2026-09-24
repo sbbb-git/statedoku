@@ -61,3 +61,23 @@ header.
 
 Set either one alone and the collector gathers that half and says which half is
 missing. Neither key is ever printed, and neither leaves the Actions runner.
+
+## AdSense status
+
+`adsense-YYYY-MM-DD.json`, from `scripts/collect-adsense.mjs`, says whether
+statedoku.com is approved (`sites[].state`: `REQUIRES_REVIEW`, `GETTING_READY`,
+`READY`, `NEEDS_ATTENTION`), whether Auto ads is on, the account's alerts, and
+any policy issue Google has raised on a statedoku.com page.
+
+It never holds earnings: reports and payments are not called. An AdSense
+account covers every site its owner has added, so other sites are counted, not
+named, the account display name is dropped, and the collector re-reads the
+finished file and refuses to write it if any host other than statedoku.com (or
+Google's own) or any email address survived. File names such as `ads.txt` are
+not mistaken for hosts; that is tested.
+
+Auth is OAuth with a refresh token, because the AdSense Management API does not
+accept service accounts. Three repository secrets: `ADSENSE_CLIENT_ID`,
+`ADSENSE_CLIENT_SECRET`, `ADSENSE_REFRESH_TOKEN`. If the OAuth app is left in
+"Testing", Google expires its refresh tokens after 7 days; set it to "In
+production". An `invalid_grant` in the log means the token needs issuing again.

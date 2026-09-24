@@ -61,6 +61,19 @@ jobs:
           GSC_KEY_JSON: ${{ secrets.GSC_KEY_JSON }}
         run: node scripts/collect-ga4.mjs
 
+      # Whether statedoku.com is approved, and whether anything is flagged.
+      # The review status otherwise lives only in the AdSense UI. Read-only
+      # OAuth, since the AdSense API takes no service account. statedoku.com
+      # only, no earnings, and the collector refuses to write a file naming
+      # another site or holding an address, because this repository is public.
+      - name: AdSense status
+        continue-on-error: true
+        env:
+          ADSENSE_CLIENT_ID: ${{ secrets.ADSENSE_CLIENT_ID }}
+          ADSENSE_CLIENT_SECRET: ${{ secrets.ADSENSE_CLIENT_SECRET }}
+          ADSENSE_REFRESH_TOKEN: ${{ secrets.ADSENSE_REFRESH_TOKEN }}
+        run: node scripts/collect-adsense.mjs
+
       - name: Commit the reading
         run: |
           if [ -z "$(git status --porcelain audience-snapshots)" ]; then
