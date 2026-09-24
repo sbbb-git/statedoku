@@ -166,6 +166,10 @@ const Game = (() => {
     if (el) el.textContent = `${correct} / 9`;
     const errEl = document.getElementById('error-display');
     if (errEl) {
+      // The dots are empty spans, so the label is all a screen reader gets:
+      // give it the count they show. The page's own label stays the prefix.
+      if (!errEl.dataset.label) errEl.dataset.label = errEl.getAttribute('aria-label') || '';
+      errEl.setAttribute('aria-label', `${errEl.dataset.label}: ${MAX_ERRORS - _errors}/${MAX_ERRORS}`);
       errEl.innerHTML = '';
       for (let i = 0; i < MAX_ERRORS; i++) {
         const dot = document.createElement('span');
