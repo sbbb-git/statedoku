@@ -41,6 +41,26 @@ jobs:
           ADMIN_API_KEY: ${{ secrets.ADMIN_API_KEY }}
         run: node scripts/collect-audience.mjs
 
+      # How many people, and where from. The D1 reading above counts games and
+      # its events table holds no visitor id, so a daily player counts thirty
+      # times in a month; Search Console and Bing each report one engine's
+      # arrivals. Only this one answers "how many people".
+      #
+      # It reuses the Search Console service account, so the only new secret is
+      # the numeric property id. GitHub expands an unset secret to an empty
+      # string, so all the key names are passed and the collector takes the
+      # first one filled, exactly as the search collectors do.
+      - name: Google Analytics
+        continue-on-error: true
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: ${{ secrets.SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON }}
+          GSC_KEY_JSON: ${{ secrets.GSC_KEY_JSON }}
+        run: node scripts/collect-ga4.mjs
+
       - name: Commit the reading
         run: |
           if [ -z "$(git status --porcelain audience-snapshots)" ]; then
