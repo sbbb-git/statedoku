@@ -1,12 +1,12 @@
 {
   "source": "statedoku-audience",
-  "collected_at": "2026-09-24T05:54:49.353Z",
+  "collected_at": "2026-09-24T13:47:01.424Z",
   "site": "https://statedoku.com",
   "gameplay": {
     "totals": [
       {
         "event_type": "puzzle_lost",
-        "n": 669
+        "n": 672
       },
       {
         "event_type": "puzzle_solve",
@@ -14,15 +14,15 @@
       },
       {
         "event_type": "puzzle_start",
-        "n": 1992
+        "n": 1995
       }
     ],
     "daily": [
       {
         "puzzle_date": "2026-09-24",
-        "starts": 3,
+        "starts": 6,
         "solves": 0,
-        "losses": 0,
+        "losses": 3,
         "avg_solve_sec": null
       },
       {
@@ -232,7 +232,7 @@
     "countries": [
       {
         "country": "US",
-        "n": 488
+        "n": 485
       },
       {
         "country": "CN",
@@ -240,7 +240,7 @@
       },
       {
         "country": "CA",
-        "n": 16
+        "n": 18
       },
       {
         "country": "FR",
@@ -251,12 +251,12 @@
         "n": 12
       },
       {
-        "country": "GB",
-        "n": 11
+        "country": "AU",
+        "n": 12
       },
       {
-        "country": "AU",
-        "n": 9
+        "country": "GB",
+        "n": 11
       },
       {
         "country": "ES",
@@ -334,7 +334,7 @@
     "langs": [
       {
         "lang": "en",
-        "n": 613
+        "n": 615
       },
       {
         "lang": "es",
@@ -398,6 +398,6 @@
         }
       ]
     },
-    "generated_at": "2026-09-24T05:54:50.661Z"
+    "generated_at": "2026-09-24T13:47:02.781Z"
   }
 }
