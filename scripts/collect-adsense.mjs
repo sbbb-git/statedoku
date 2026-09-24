@@ -125,7 +125,9 @@ async function main() {
   for (const acc of accounts) {
     const sites = await list(token, `${API}/${acc.name}/sites`, 'sites');
     const ours = sites.filter((s) => (s.domain || '').replace(/^www\./, '').toLowerCase() === host);
-    const alerts = await list(token, `${API}/${acc.name}/alerts`, 'alerts').catch((e) => ({ error: e.message }));
+    // alerts.list is not paginated and answers 400 to a pageSize parameter.
+    const alerts = await get(token, `${API}/${acc.name}/alerts`)
+      .then((j) => j.alerts || []).catch((e) => ({ error: e.message }));
     const issues = await list(token, `${API}/${acc.name}/policyIssues`, 'policyIssues').catch((e) => ({ error: e.message }));
 
     const ourIssues = Array.isArray(issues)
