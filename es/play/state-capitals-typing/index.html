@@ -31,7 +31,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/state-capitals-typing/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/state-capitals-typing/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=25">
+  <link rel="stylesheet" href="/css/style.css?v=26">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Quiz Capitales">
   <meta property="og:description" content="Escribe la capital de cada estado.">
@@ -163,7 +163,7 @@
 
     <div class="feedback" id="g-feedback">&nbsp;</div>
 
-    <input type="text" class="text-input" id="g-input" placeholder="Escribe un nombre de estado…" autocomplete="off" />
+    <input type="text" class="text-input" id="g-input" placeholder="Escribe la capital…" autocomplete="off" />
 
     <div class="controls">
       <button class="gbtn gold" id="g-start">Empezar</button>
@@ -184,7 +184,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
 
     const ITEMS = [{"prompt":"Alabama","answer":"Montgomery","alt":[]},{"prompt":"Alaska","answer":"Juneau","alt":[]},{"prompt":"Arizona","answer":"Phoenix","alt":[]},{"prompt":"Arkansas","answer":"Little Rock","alt":[]},{"prompt":"California","answer":"Sacramento","alt":[]},{"prompt":"Colorado","answer":"Denver","alt":[]},{"prompt":"Connecticut","answer":"Hartford","alt":[]},{"prompt":"Delaware","answer":"Dover","alt":[]},{"prompt":"Florida","answer":"Tallahassee","alt":[]},{"prompt":"Georgia","answer":"Atlanta","alt":[]},{"prompt":"Hawái","answer":"Honolulu","alt":[]},{"prompt":"Idaho","answer":"Boise","alt":[]},{"prompt":"Illinois","answer":"Springfield","alt":[]},{"prompt":"Indiana","answer":"Indianapolis","alt":[]},{"prompt":"Iowa","answer":"Des Moines","alt":[]},{"prompt":"Kansas","answer":"Topeka","alt":[]},{"prompt":"Kentucky","answer":"Frankfort","alt":[]},{"prompt":"Luisiana","answer":"Baton Rouge","alt":[]},{"prompt":"Maine","answer":"Augusta","alt":[]},{"prompt":"Maryland","answer":"Annapolis","alt":[]},{"prompt":"Massachusetts","answer":"Boston","alt":[]},{"prompt":"Michigan","answer":"Lansing","alt":[]},{"prompt":"Minnesota","answer":"Saint Paul","alt":[]},{"prompt":"Misisipi","answer":"Jackson","alt":[]},{"prompt":"Misuri","answer":"Jefferson City","alt":[]},{"prompt":"Montana","answer":"Helena","alt":[]},{"prompt":"Nebraska","answer":"Lincoln","alt":[]},{"prompt":"Nevada","answer":"Carson City","alt":[]},{"prompt":"Nuevo Hampshire","answer":"Concord","alt":[]},{"prompt":"Nueva Jersey","answer":"Trenton","alt":[]},{"prompt":"Nuevo México","answer":"Santa Fe","alt":[]},{"prompt":"Nueva York","answer":"Albany","alt":[]},{"prompt":"Carolina del Norte","answer":"Raleigh","alt":[]},{"prompt":"Dakota del Norte","answer":"Bismarck","alt":[]},{"prompt":"Ohio","answer":"Columbus","alt":[]},{"prompt":"Oklahoma","answer":"Oklahoma City","alt":[]},{"prompt":"Oregón","answer":"Salem","alt":[]},{"prompt":"Pensilvania","answer":"Harrisburg","alt":[]},{"prompt":"Rhode Island","answer":"Providence","alt":[]},{"prompt":"Carolina del Sur","answer":"Columbia","alt":[]},{"prompt":"Dakota del Sur","answer":"Pierre","alt":[]},{"prompt":"Tennessee","answer":"Nashville","alt":[]},{"prompt":"Texas","answer":"Austin","alt":[]},{"prompt":"Utah","answer":"Salt Lake City","alt":[]},{"prompt":"Vermont","answer":"Montpelier","alt":[]},{"prompt":"Virginia","answer":"Richmond","alt":[]},{"prompt":"Washington","answer":"Olympia","alt":[]},{"prompt":"Virginia Occidental","answer":"Charleston","alt":[]},{"prompt":"Wisconsin","answer":"Madison","alt":[]},{"prompt":"Wyoming","answer":"Cheyenne","alt":[]}];
     const SHARE_PREFIX = "⌨️";
-    const T_ = {"round":"Ronda","score":"Puntuación","lives":"Vidas","start":"Empezar","tryAgain":"Volver a jugar","share":"Compartir","wellDone":"¡Bien!","gameOver":"Juego terminado","easy":"Fácil","normal":"Normal","hard":"Difícil","submit":"Enviar","skip":"Pasar","categories":"Categorías","solved":"Resuelto","mistakes":"Errores","pick4":"Elige 4 estados que compartan una categoría","placeholder":"Escribe un nombre de estado…"};
+    const T_ = {"round":"Ronda","score":"Puntuación","lives":"Vidas","start":"Empezar","tryAgain":"Volver a jugar","share":"Compartir","wellDone":"¡Bien!","gameOver":"Juego terminado","easy":"Fácil","normal":"Normal","hard":"Difícil","submit":"Enviar","skip":"Pasar","categories":"Categorías","solved":"Resuelto","mistakes":"Errores","pick4":"Elige 4 estados que compartan una categoría","placeholder":"Escribe la capital…"};
     const TOTAL = 15;
     let queue=[],round=0,score=0,lives=3;
     const $ = id => document.getElementById(id);

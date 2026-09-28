@@ -2756,3 +2756,27 @@ footer, main, .score-bar {
 }
 #sp-clear:hover { background: var(--surface-2); color: var(--navy); border-color: var(--navy); }
 #sp-clear[hidden] { display: none; }
+
+/* Content columns on phones. main is a centred flex column and these columns
+   carry margin: 0 auto, and in flexbox an auto margin beats stretching, so each
+   one was sized to its own min-content: the widest table row or one long word
+   (Chargoggagoggmanchauggagoggchaubunagungamaugg). On 28 September 2026 that
+   pushed 153 of 757 indexable pages wider than a 390px screen, the first page
+   visitors land on among them. Pin the column to the screen and let a wide table
+   scroll inside its own box. The game's own wrappers are deliberately absent. */
+@media (max-width: 760px) {
+  main > .lt-main, main > .ss-main, main > .hp-main, main > .reg-main,
+  main > .api-main, main > .pgx, main > .pg, main > .px8, main > .sctx,
+  main > .play-context {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+  }
+  .lt-main table, .ss-main table, .hp-main table, .reg-main table,
+  .api-main table, .pgx table, .pg table, .px8 table, .sctx table,
+  .play-context table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
