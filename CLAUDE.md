@@ -158,9 +158,15 @@ re-run after a bank rebuild, which would otherwise drop the tags.
 
 ## Search performance readings
 
-`.github/workflows/seo-snapshot.yml` runs every Monday at 06:17 UTC and commits
+`.github/workflows/seo-snapshot.yml` runs every Saturday at 01:17 UTC and commits
 raw JSON to `seo-snapshots/`. Read the committed file; do not ask for a live API
 call.
+
+The weekly SEO routine reads it on **Saturday at 09:00 UTC**, eight hours
+later, running on Opus 5.5 in a persistent host session that carries the repo
+(a routine that spawns a fresh session gets no repo and no push rights). It
+appends a line to `seo-snapshots/JOURNAL.md` every week: the scheduler reports
+success on delivery of the wake-up, not on the work, so the journal is the proof.
 
 ### The order of priorities
 
