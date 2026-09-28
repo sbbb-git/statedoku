@@ -12,10 +12,10 @@ name: Audience snapshot
 
 on:
   schedule:
-    # Monday, ahead of the search snapshot so both are in place for the Tuesday
-    # reading. Off the hour: every hand-written cron lands on :00 and the runner
-    # queue is busiest there.
-    - cron: '9 6 * * 1'
+    # Saturday, just ahead of the search snapshot, so both are in place for the
+    # Saturday 09:00 UTC routine. Off the hour: every hand-written cron lands on
+    # :00 and the runner queue is busiest there.
+    - cron: '9 1 * * 6'
   workflow_dispatch:
 
 permissions:
