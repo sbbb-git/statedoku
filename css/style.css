@@ -2780,3 +2780,15 @@ footer, main, .score-bar {
     overflow-x: auto;
   }
 }
+
+/* Game header between 381px and 440px. Below 381 the language switcher is
+   hidden; above, it stayed, and logo, switcher and three icons needed 401px.
+   From 384 to 429px (iPhone 12 to 16, Pixel) the Share button sat off the
+   right edge and widened the page. Measured on 3 October 2026 on the three
+   homepages. The flag emoji goes, the padding tightens; nothing usable is
+   removed. */
+@media (max-width: 440px) {
+  header { padding-left: 12px; padding-right: 12px; gap: 8px; }
+  .logo-flag { display: none; }
+  .lang-btn { padding: 4px 5px; }
+}
