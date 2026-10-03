@@ -1,0 +1,1801 @@
+{
+  "source": "google-analytics-4",
+  "collected_at": "2026-10-03T06:25:28.001Z",
+  "property_id": "543185062",
+  "window": {
+    "startDate": "28daysAgo",
+    "endDate": "yesterday"
+  },
+  "data": {
+    "by_date": {
+      "rows": [
+        {
+          "date": "20260929",
+          "activeUsers": 273,
+          "newUsers": 259,
+          "sessions": 326,
+          "screenPageViews": 521,
+          "userEngagementDuration": 17049
+        },
+        {
+          "date": "20261001",
+          "activeUsers": 250,
+          "newUsers": 242,
+          "sessions": 300,
+          "screenPageViews": 418,
+          "userEngagementDuration": 21138
+        },
+        {
+          "date": "20260930",
+          "activeUsers": 223,
+          "newUsers": 207,
+          "sessions": 255,
+          "screenPageViews": 475,
+          "userEngagementDuration": 15107
+        },
+        {
+          "date": "20260925",
+          "activeUsers": 209,
+          "newUsers": 200,
+          "sessions": 251,
+          "screenPageViews": 308,
+          "userEngagementDuration": 16565
+        },
+        {
+          "date": "20261002",
+          "activeUsers": 205,
+          "newUsers": 192,
+          "sessions": 238,
+          "screenPageViews": 370,
+          "userEngagementDuration": 14868
+        },
+        {
+          "date": "20260926",
+          "activeUsers": 183,
+          "newUsers": 175,
+          "sessions": 225,
+          "screenPageViews": 269,
+          "userEngagementDuration": 7523
+        },
+        {
+          "date": "20260928",
+          "activeUsers": 181,
+          "newUsers": 174,
+          "sessions": 216,
+          "screenPageViews": 431,
+          "userEngagementDuration": 12093
+        },
+        {
+          "date": "20260927",
+          "activeUsers": 169,
+          "newUsers": 160,
+          "sessions": 223,
+          "screenPageViews": 321,
+          "userEngagementDuration": 10977
+        },
+        {
+          "date": "20260924",
+          "activeUsers": 148,
+          "newUsers": 132,
+          "sessions": 171,
+          "screenPageViews": 213,
+          "userEngagementDuration": 10386
+        },
+        {
+          "date": "20260908",
+          "activeUsers": 5,
+          "newUsers": 5,
+          "sessions": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 3
+        },
+        {
+          "date": "20260918",
+          "activeUsers": 5,
+          "newUsers": 5,
+          "sessions": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 0
+        },
+        {
+          "date": "20260910",
+          "activeUsers": 4,
+          "newUsers": 4,
+          "sessions": 6,
+          "screenPageViews": 6,
+          "userEngagementDuration": 2
+        },
+        {
+          "date": "20260907",
+          "activeUsers": 3,
+          "newUsers": 3,
+          "sessions": 4,
+          "screenPageViews": 3,
+          "userEngagementDuration": 6
+        },
+        {
+          "date": "20260913",
+          "activeUsers": 3,
+          "newUsers": 3,
+          "sessions": 3,
+          "screenPageViews": 3,
+          "userEngagementDuration": 5
+        },
+        {
+          "date": "20260915",
+          "activeUsers": 3,
+          "newUsers": 3,
+          "sessions": 3,
+          "screenPageViews": 3,
+          "userEngagementDuration": 39
+        },
+        {
+          "date": "20260921",
+          "activeUsers": 3,
+          "newUsers": 3,
+          "sessions": 3,
+          "screenPageViews": 4,
+          "userEngagementDuration": 160
+        },
+        {
+          "date": "20260909",
+          "activeUsers": 2,
+          "newUsers": 2,
+          "sessions": 2,
+          "screenPageViews": 2,
+          "userEngagementDuration": 0
+        },
+        {
+          "date": "20260911",
+          "activeUsers": 2,
+          "newUsers": 2,
+          "sessions": 2,
+          "screenPageViews": 2,
+          "userEngagementDuration": 150
+        },
+        {
+          "date": "20260922",
+          "activeUsers": 2,
+          "newUsers": 2,
+          "sessions": 2,
+          "screenPageViews": 2,
+          "userEngagementDuration": 8
+        },
+        {
+          "date": "20260923",
+          "activeUsers": 2,
+          "newUsers": 2,
+          "sessions": 2,
+          "screenPageViews": 2,
+          "userEngagementDuration": 4
+        },
+        {
+          "date": "20260905",
+          "activeUsers": 1,
+          "newUsers": 1,
+          "sessions": 1,
+          "screenPageViews": 1,
+          "userEngagementDuration": 0
+        },
+        {
+          "date": "20260914",
+          "activeUsers": 1,
+          "newUsers": 1,
+          "sessions": 1,
+          "screenPageViews": 1,
+          "userEngagementDuration": 708
+        },
+        {
+          "date": "20260916",
+          "activeUsers": 1,
+          "newUsers": 1,
+          "sessions": 1,
+          "screenPageViews": 1,
+          "userEngagementDuration": 33
+        },
+        {
+          "date": "20260919",
+          "activeUsers": 1,
+          "newUsers": 1,
+          "sessions": 1,
+          "screenPageViews": 1,
+          "userEngagementDuration": 0
+        },
+        {
+          "date": "20260920",
+          "activeUsers": 1,
+          "newUsers": 1,
+          "sessions": 1,
+          "screenPageViews": 1,
+          "userEngagementDuration": 0
+        }
+      ],
+      "rowCount": 25
+    },
+    "by_source": {
+      "rows": [
+        {
+          "sessionSource": "(direct)",
+          "sessionMedium": "(none)",
+          "activeUsers": 827,
+          "sessions": 883,
+          "engagedSessions": 37
+        },
+        {
+          "sessionSource": "bing",
+          "sessionMedium": "organic",
+          "activeUsers": 393,
+          "sessions": 545,
+          "engagedSessions": 259
+        },
+        {
+          "sessionSource": "yahoo",
+          "sessionMedium": "organic",
+          "activeUsers": 178,
+          "sessions": 251,
+          "engagedSessions": 115
+        },
+        {
+          "sessionSource": "duckduckgo",
+          "sessionMedium": "organic",
+          "activeUsers": 119,
+          "sessions": 168,
+          "engagedSessions": 67
+        },
+        {
+          "sessionSource": "listdle",
+          "sessionMedium": "(not set)",
+          "activeUsers": 55,
+          "sessions": 80,
+          "engagedSessions": 54
+        },
+        {
+          "sessionSource": "(data not available)",
+          "sessionMedium": "(data not available)",
+          "activeUsers": 74,
+          "sessions": 75,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "(not set)",
+          "sessionMedium": "(not set)",
+          "activeUsers": 61,
+          "sessions": 64,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "classroom.google.com",
+          "sessionMedium": "referral",
+          "activeUsers": 40,
+          "sessions": 50,
+          "engagedSessions": 43
+        },
+        {
+          "sessionSource": "chatgpt.com",
+          "sessionMedium": "ai-assistant",
+          "activeUsers": 29,
+          "sessions": 41,
+          "engagedSessions": 26
+        },
+        {
+          "sessionSource": "uk.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 22,
+          "sessions": 26,
+          "engagedSessions": 9
+        },
+        {
+          "sessionSource": "ecosia.org",
+          "sessionMedium": "organic",
+          "activeUsers": 21,
+          "sessions": 26,
+          "engagedSessions": 15
+        },
+        {
+          "sessionSource": "google",
+          "sessionMedium": "organic",
+          "activeUsers": 8,
+          "sessions": 13,
+          "engagedSessions": 10
+        },
+        {
+          "sessionSource": "ca.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 5,
+          "sessions": 7,
+          "engagedSessions": 3
+        },
+        {
+          "sessionSource": "listdle",
+          "sessionMedium": "",
+          "activeUsers": 4,
+          "sessions": 7,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "cn.bing.com",
+          "sessionMedium": "referral",
+          "activeUsers": 5,
+          "sessions": 6,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "mx.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 4,
+          "sessions": 6,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "canva.com",
+          "sessionMedium": "referral",
+          "activeUsers": 3,
+          "sessions": 5,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "us.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 4,
+          "sessions": 4,
+          "engagedSessions": 3
+        },
+        {
+          "sessionSource": "qwant.com",
+          "sessionMedium": "organic",
+          "activeUsers": 3,
+          "sessions": 4,
+          "engagedSessions": 2
+        },
+        {
+          "sessionSource": "fr.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 3,
+          "sessions": 3,
+          "engagedSessions": 2
+        },
+        {
+          "sessionSource": "listdle",
+          "sessionMedium": "(none)",
+          "activeUsers": 3,
+          "sessions": 3,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "malaysia.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 2,
+          "sessions": 3,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "teams.public.onecdn.static.microsoft",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 3,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "api.microsoft.ai",
+          "sessionMedium": "referral",
+          "activeUsers": 2,
+          "sessions": 2,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "es.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 2,
+          "sessions": 2,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "in.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 2,
+          "sessions": 2,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "noai.duckduckgo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 2,
+          "sessions": 2,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "ntp.msn.com",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 2,
+          "engagedSessions": 2
+        },
+        {
+          "sessionSource": "startpage.com",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 2,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "adoryvo.github.io",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 0
+        },
+        {
+          "sessionSource": "attg.visualstudio.com",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "au.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "chatgpt.com",
+          "sessionMedium": "organic",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "copilot.com",
+          "sessionMedium": "(not set)",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "copilot.com",
+          "sessionMedium": "ai-assistant",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "facebook.com",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "ph.search.yahoo.com",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 1
+        },
+        {
+          "sessionSource": "tiktok.com",
+          "sessionMedium": "referral",
+          "activeUsers": 1,
+          "sessions": 1,
+          "engagedSessions": 0
+        }
+      ],
+      "rowCount": 38
+    },
+    "by_page": {
+      "rows": [
+        {
+          "pagePath": "/learn/states-and-capitals/",
+          "activeUsers": 504,
+          "screenPageViews": 727,
+          "userEngagementDuration": 42001,
+          "bounceRate": 0.6486486486486487
+        },
+        {
+          "pagePath": "/",
+          "activeUsers": 122,
+          "screenPageViews": 188,
+          "userEngagementDuration": 12815,
+          "bounceRate": 0.4759036144578313
+        },
+        {
+          "pagePath": "/play/place-the-state/",
+          "activeUsers": 44,
+          "screenPageViews": 121,
+          "userEngagementDuration": 8366,
+          "bounceRate": 0.2857142857142857
+        },
+        {
+          "pagePath": "/learn/13-colonies/",
+          "activeUsers": 47,
+          "screenPageViews": 56,
+          "userEngagementDuration": 4792,
+          "bounceRate": 0.603448275862069
+        },
+        {
+          "pagePath": "/es/learn/state-abbreviations/",
+          "activeUsers": 35,
+          "screenPageViews": 51,
+          "userEngagementDuration": 762,
+          "bounceRate": 0.6346153846153846
+        },
+        {
+          "pagePath": "/learn/electoral-college/",
+          "activeUsers": 40,
+          "screenPageViews": 47,
+          "userEngagementDuration": 3180,
+          "bounceRate": 0.6458333333333334
+        },
+        {
+          "pagePath": "/play/state-nicknames/",
+          "activeUsers": 24,
+          "screenPageViews": 45,
+          "userEngagementDuration": 7530,
+          "bounceRate": 0.14814814814814814
+        },
+        {
+          "pagePath": "/play/state-capitals-match/",
+          "activeUsers": 3,
+          "screenPageViews": 34,
+          "userEngagementDuration": 2477,
+          "bounceRate": 0.125
+        },
+        {
+          "pagePath": "/states/texas/",
+          "activeUsers": 25,
+          "screenPageViews": 33,
+          "userEngagementDuration": 263,
+          "bounceRate": 0.56
+        },
+        {
+          "pagePath": "/states/",
+          "activeUsers": 14,
+          "screenPageViews": 31,
+          "userEngagementDuration": 799,
+          "bounceRate": 0.26666666666666666
+        },
+        {
+          "pagePath": "/states/virginia/",
+          "activeUsers": 13,
+          "screenPageViews": 27,
+          "userEngagementDuration": 92,
+          "bounceRate": 0.42857142857142855
+        },
+        {
+          "pagePath": "/states/florida/",
+          "activeUsers": 16,
+          "screenPageViews": 25,
+          "userEngagementDuration": 453,
+          "bounceRate": 0.23529411764705882
+        },
+        {
+          "pagePath": "/states/idaho/",
+          "activeUsers": 14,
+          "screenPageViews": 25,
+          "userEngagementDuration": 363,
+          "bounceRate": 0.375
+        },
+        {
+          "pagePath": "/play/state-capitals-typing/",
+          "activeUsers": 11,
+          "screenPageViews": 24,
+          "userEngagementDuration": 1561,
+          "bounceRate": 0.3333333333333333
+        },
+        {
+          "pagePath": "/states/utah/",
+          "activeUsers": 10,
+          "screenPageViews": 23,
+          "userEngagementDuration": 183,
+          "bounceRate": 0.6
+        },
+        {
+          "pagePath": "/states/alabama/",
+          "activeUsers": 18,
+          "screenPageViews": 22,
+          "userEngagementDuration": 572,
+          "bounceRate": 0.3684210526315789
+        },
+        {
+          "pagePath": "/states/pennsylvania/",
+          "activeUsers": 17,
+          "screenPageViews": 21,
+          "userEngagementDuration": 247,
+          "bounceRate": 0.3
+        },
+        {
+          "pagePath": "/states/new-york/",
+          "activeUsers": 14,
+          "screenPageViews": 21,
+          "userEngagementDuration": 203,
+          "bounceRate": 0.21428571428571427
+        },
+        {
+          "pagePath": "/states/illinois/",
+          "activeUsers": 13,
+          "screenPageViews": 21,
+          "userEngagementDuration": 156,
+          "bounceRate": 0.3076923076923077
+        },
+        {
+          "pagePath": "/states/colorado/",
+          "activeUsers": 11,
+          "screenPageViews": 21,
+          "userEngagementDuration": 59,
+          "bounceRate": 0.18181818181818182
+        },
+        {
+          "pagePath": "/states/tennessee/",
+          "activeUsers": 11,
+          "screenPageViews": 21,
+          "userEngagementDuration": 359,
+          "bounceRate": 0.25
+        },
+        {
+          "pagePath": "/learn/states-confederate/",
+          "activeUsers": 16,
+          "screenPageViews": 20,
+          "userEngagementDuration": 2528,
+          "bounceRate": 0.7272727272727273
+        },
+        {
+          "pagePath": "/states/california/",
+          "activeUsers": 13,
+          "screenPageViews": 20,
+          "userEngagementDuration": 370,
+          "bounceRate": 0.14285714285714285
+        },
+        {
+          "pagePath": "/states/maryland/",
+          "activeUsers": 12,
+          "screenPageViews": 20,
+          "userEngagementDuration": 253,
+          "bounceRate": 0.2857142857142857
+        },
+        {
+          "pagePath": "/states/michigan/",
+          "activeUsers": 12,
+          "screenPageViews": 20,
+          "userEngagementDuration": 438,
+          "bounceRate": 0.23076923076923078
+        },
+        {
+          "pagePath": "/states/kentucky/",
+          "activeUsers": 11,
+          "screenPageViews": 20,
+          "userEngagementDuration": 76,
+          "bounceRate": 0.38461538461538464
+        },
+        {
+          "pagePath": "/states/ohio/",
+          "activeUsers": 14,
+          "screenPageViews": 19,
+          "userEngagementDuration": 83,
+          "bounceRate": 0.5
+        },
+        {
+          "pagePath": "/states/indiana/",
+          "activeUsers": 13,
+          "screenPageViews": 19,
+          "userEngagementDuration": 299,
+          "bounceRate": 0.14285714285714285
+        },
+        {
+          "pagePath": "/states/wyoming/",
+          "activeUsers": 12,
+          "screenPageViews": 19,
+          "userEngagementDuration": 66,
+          "bounceRate": 0.3076923076923077
+        },
+        {
+          "pagePath": "/states/montana/",
+          "activeUsers": 11,
+          "screenPageViews": 19,
+          "userEngagementDuration": 117,
+          "bounceRate": 0.15384615384615385
+        },
+        {
+          "pagePath": "/states/south-carolina/",
+          "activeUsers": 11,
+          "screenPageViews": 19,
+          "userEngagementDuration": 501,
+          "bounceRate": 0.3076923076923077
+        },
+        {
+          "pagePath": "/learn/",
+          "activeUsers": 18,
+          "screenPageViews": 18,
+          "userEngagementDuration": 664,
+          "bounceRate": 0.4444444444444444
+        },
+        {
+          "pagePath": "/states/maine/",
+          "activeUsers": 14,
+          "screenPageViews": 18,
+          "userEngagementDuration": 176,
+          "bounceRate": 0.14285714285714285
+        },
+        {
+          "pagePath": "/states/massachusetts/",
+          "activeUsers": 13,
+          "screenPageViews": 18,
+          "userEngagementDuration": 206,
+          "bounceRate": 0.13333333333333333
+        },
+        {
+          "pagePath": "/states/new-hampshire/",
+          "activeUsers": 10,
+          "screenPageViews": 18,
+          "userEngagementDuration": 465,
+          "bounceRate": 0.16666666666666666
+        },
+        {
+          "pagePath": "/regions/northeast/",
+          "activeUsers": 17,
+          "screenPageViews": 17,
+          "userEngagementDuration": 210,
+          "bounceRate": 0.6470588235294118
+        },
+        {
+          "pagePath": "/states/oregon/",
+          "activeUsers": 11,
+          "screenPageViews": 17,
+          "userEngagementDuration": 70,
+          "bounceRate": 0.2727272727272727
+        },
+        {
+          "pagePath": "/states/kansas/",
+          "activeUsers": 10,
+          "screenPageViews": 17,
+          "userEngagementDuration": 159,
+          "bounceRate": 0.4
+        },
+        {
+          "pagePath": "/states/missouri/",
+          "activeUsers": 10,
+          "screenPageViews": 17,
+          "userEngagementDuration": 179,
+          "bounceRate": 0.2
+        },
+        {
+          "pagePath": "/states/arizona/",
+          "activeUsers": 9,
+          "screenPageViews": 16,
+          "userEngagementDuration": 233,
+          "bounceRate": 0.2222222222222222
+        },
+        {
+          "pagePath": "/states/georgia/",
+          "activeUsers": 13,
+          "screenPageViews": 15,
+          "userEngagementDuration": 294,
+          "bounceRate": 0.14285714285714285
+        },
+        {
+          "pagePath": "/states/arkansas/",
+          "activeUsers": 12,
+          "screenPageViews": 15,
+          "userEngagementDuration": 108,
+          "bounceRate": 0.25
+        },
+        {
+          "pagePath": "/states/alaska/",
+          "activeUsers": 11,
+          "screenPageViews": 15,
+          "userEngagementDuration": 236,
+          "bounceRate": 0.18181818181818182
+        },
+        {
+          "pagePath": "/states/minnesota/",
+          "activeUsers": 10,
+          "screenPageViews": 15,
+          "userEngagementDuration": 702,
+          "bounceRate": 0.2
+        },
+        {
+          "pagePath": "/states/oklahoma/",
+          "activeUsers": 10,
+          "screenPageViews": 15,
+          "userEngagementDuration": 73,
+          "bounceRate": 0.2
+        },
+        {
+          "pagePath": "/states/west-virginia/",
+          "activeUsers": 9,
+          "screenPageViews": 15,
+          "userEngagementDuration": 152,
+          "bounceRate": 0.4444444444444444
+        },
+        {
+          "pagePath": "/es/play/place-the-state/",
+          "activeUsers": 2,
+          "screenPageViews": 15,
+          "userEngagementDuration": 921,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/learn/state-flags/",
+          "activeUsers": 14,
+          "screenPageViews": 14,
+          "userEngagementDuration": 3,
+          "bounceRate": 0.9285714285714286
+        },
+        {
+          "pagePath": "/regions/",
+          "activeUsers": 14,
+          "screenPageViews": 14,
+          "userEngagementDuration": 95,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/facts/",
+          "activeUsers": 11,
+          "screenPageViews": 14,
+          "userEngagementDuration": 682,
+          "bounceRate": 0.5833333333333334
+        },
+        {
+          "pagePath": "/states/vermont/",
+          "activeUsers": 11,
+          "screenPageViews": 14,
+          "userEngagementDuration": 369,
+          "bounceRate": 0.25
+        },
+        {
+          "pagePath": "/states/south-dakota/",
+          "activeUsers": 10,
+          "screenPageViews": 14,
+          "userEngagementDuration": 32,
+          "bounceRate": 0.2
+        },
+        {
+          "pagePath": "/states/wisconsin/",
+          "activeUsers": 9,
+          "screenPageViews": 14,
+          "userEngagementDuration": 62,
+          "bounceRate": 0.3333333333333333
+        },
+        {
+          "pagePath": "/learn/us-regions/",
+          "activeUsers": 13,
+          "screenPageViews": 13,
+          "userEngagementDuration": 254,
+          "bounceRate": 0.8461538461538461
+        },
+        {
+          "pagePath": "/learn/states-by-gdp-ranking/",
+          "activeUsers": 12,
+          "screenPageViews": 13,
+          "userEngagementDuration": 376,
+          "bounceRate": 0.6666666666666666
+        },
+        {
+          "pagePath": "/states/nebraska/",
+          "activeUsers": 12,
+          "screenPageViews": 13,
+          "userEngagementDuration": 253,
+          "bounceRate": 0.3333333333333333
+        },
+        {
+          "pagePath": "/states/new-jersey/",
+          "activeUsers": 9,
+          "screenPageViews": 13,
+          "userEngagementDuration": 77,
+          "bounceRate": 0.4444444444444444
+        },
+        {
+          "pagePath": "/learn/is-philadelphia-a-state/",
+          "activeUsers": 12,
+          "screenPageViews": 12,
+          "userEngagementDuration": 204,
+          "bounceRate": 0.75
+        },
+        {
+          "pagePath": "/states/delaware/",
+          "activeUsers": 12,
+          "screenPageViews": 12,
+          "userEngagementDuration": 104,
+          "bounceRate": 0.3333333333333333
+        },
+        {
+          "pagePath": "/states/nevada/",
+          "activeUsers": 10,
+          "screenPageViews": 12,
+          "userEngagementDuration": 48,
+          "bounceRate": 0.3
+        },
+        {
+          "pagePath": "/states/michigan/fun-facts/",
+          "activeUsers": 9,
+          "screenPageViews": 12,
+          "userEngagementDuration": 1709,
+          "bounceRate": 0.5714285714285714
+        },
+        {
+          "pagePath": "/states/mississippi/",
+          "activeUsers": 9,
+          "screenPageViews": 12,
+          "userEngagementDuration": 214,
+          "bounceRate": 0.4444444444444444
+        },
+        {
+          "pagePath": "/states/new-mexico/",
+          "activeUsers": 7,
+          "screenPageViews": 12,
+          "userEngagementDuration": 65,
+          "bounceRate": 0.2857142857142857
+        },
+        {
+          "pagePath": "/learn/states-by-statehood-year/",
+          "activeUsers": 11,
+          "screenPageViews": 11,
+          "userEngagementDuration": 2,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/play/",
+          "activeUsers": 11,
+          "screenPageViews": 11,
+          "userEngagementDuration": 19,
+          "bounceRate": 0.2727272727272727
+        },
+        {
+          "pagePath": "/states/north-carolina/",
+          "activeUsers": 10,
+          "screenPageViews": 11,
+          "userEngagementDuration": 66,
+          "bounceRate": 0.3
+        },
+        {
+          "pagePath": "/states/north-dakota/",
+          "activeUsers": 10,
+          "screenPageViews": 11,
+          "userEngagementDuration": 40,
+          "bounceRate": 0.3
+        },
+        {
+          "pagePath": "/learn/state-abbreviations/",
+          "activeUsers": 9,
+          "screenPageViews": 11,
+          "userEngagementDuration": 46,
+          "bounceRate": 0.9090909090909091
+        },
+        {
+          "pagePath": "/states/louisiana/",
+          "activeUsers": 9,
+          "screenPageViews": 11,
+          "userEngagementDuration": 168,
+          "bounceRate": 0.4444444444444444
+        },
+        {
+          "pagePath": "/states/rhode-island/",
+          "activeUsers": 8,
+          "screenPageViews": 11,
+          "userEngagementDuration": 138,
+          "bounceRate": 0.125
+        },
+        {
+          "pagePath": "/states/iowa/",
+          "activeUsers": 7,
+          "screenPageViews": 11,
+          "userEngagementDuration": 191,
+          "bounceRate": 0.5714285714285714
+        },
+        {
+          "pagePath": "/states/connecticut/",
+          "activeUsers": 10,
+          "screenPageViews": 10,
+          "userEngagementDuration": 41,
+          "bounceRate": 0.3
+        },
+        {
+          "pagePath": "/states/washington/",
+          "activeUsers": 8,
+          "screenPageViews": 10,
+          "userEngagementDuration": 47,
+          "bounceRate": 0.25
+        },
+        {
+          "pagePath": "/learn/printable-us-states-map/",
+          "activeUsers": 9,
+          "screenPageViews": 9,
+          "userEngagementDuration": 88,
+          "bounceRate": 0.5555555555555556
+        },
+        {
+          "pagePath": "/learn/states-by-population/",
+          "activeUsers": 9,
+          "screenPageViews": 9,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/states/georgia/fun-facts/",
+          "activeUsers": 7,
+          "screenPageViews": 9,
+          "userEngagementDuration": 597,
+          "bounceRate": 0.3333333333333333
+        },
+        {
+          "pagePath": "/states/minnesota/symbols/",
+          "activeUsers": 7,
+          "screenPageViews": 9,
+          "userEngagementDuration": 5,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/largest-states/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 34,
+          "bounceRate": 0.875
+        },
+        {
+          "pagePath": "/learn/state-capitals/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 418,
+          "bounceRate": 0.625
+        },
+        {
+          "pagePath": "/learn/states-bordering-mexico/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-by-region-list/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-presidents-born/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-with-mountains/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-without-capital-largest/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 138,
+          "bounceRate": 0.875
+        },
+        {
+          "pagePath": "/regions/west/",
+          "activeUsers": 8,
+          "screenPageViews": 8,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/fr/",
+          "activeUsers": 7,
+          "screenPageViews": 8,
+          "userEngagementDuration": 20,
+          "bounceRate": 0.7142857142857143
+        },
+        {
+          "pagePath": "/states/delaware/fun-facts/",
+          "activeUsers": 7,
+          "screenPageViews": 8,
+          "userEngagementDuration": 235,
+          "bounceRate": 0.5
+        },
+        {
+          "pagePath": "/states/indiana/fun-facts/",
+          "activeUsers": 5,
+          "screenPageViews": 8,
+          "userEngagementDuration": 98,
+          "bounceRate": 0.16666666666666666
+        },
+        {
+          "pagePath": "/states/maryland/fun-facts/",
+          "activeUsers": 3,
+          "screenPageViews": 8,
+          "userEngagementDuration": 55,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/es/play/",
+          "activeUsers": 2,
+          "screenPageViews": 8,
+          "userEngagementDuration": 55,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/cities/",
+          "activeUsers": 7,
+          "screenPageViews": 7,
+          "userEngagementDuration": 97,
+          "bounceRate": 0.8571428571428571
+        },
+        {
+          "pagePath": "/learn/cheapest-states-to-live/",
+          "activeUsers": 7,
+          "screenPageViews": 7,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/state-flowers/",
+          "activeUsers": 7,
+          "screenPageViews": 7,
+          "userEngagementDuration": 2,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-with-deserts/",
+          "activeUsers": 7,
+          "screenPageViews": 7,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-with-oceans/",
+          "activeUsers": 7,
+          "screenPageViews": 7,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/quiz/",
+          "activeUsers": 4,
+          "screenPageViews": 7,
+          "userEngagementDuration": 254,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/es/play/state-silhouettes/",
+          "activeUsers": 2,
+          "screenPageViews": 7,
+          "userEngagementDuration": 421,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/learn/states-by-time-zone/",
+          "activeUsers": 6,
+          "screenPageViews": 6,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-largest-cities/",
+          "activeUsers": 6,
+          "screenPageViews": 6,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/swing-states/",
+          "activeUsers": 6,
+          "screenPageViews": 6,
+          "userEngagementDuration": 9,
+          "bounceRate": 0.8333333333333334
+        },
+        {
+          "pagePath": "/learn/what-state-is-pa/",
+          "activeUsers": 6,
+          "screenPageViews": 6,
+          "userEngagementDuration": 10,
+          "bounceRate": 0.8571428571428571
+        },
+        {
+          "pagePath": "/states/hawaii/",
+          "activeUsers": 6,
+          "screenPageViews": 6,
+          "userEngagementDuration": 147,
+          "bounceRate": 0.16666666666666666
+        },
+        {
+          "pagePath": "/es/learn/states-bordering-mexico/",
+          "activeUsers": 5,
+          "screenPageViews": 6,
+          "userEngagementDuration": 105,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/es/states/oregon/",
+          "activeUsers": 5,
+          "screenPageViews": 6,
+          "userEngagementDuration": 124,
+          "bounceRate": 0.6
+        },
+        {
+          "pagePath": "/states/illinois/symbols/",
+          "activeUsers": 5,
+          "screenPageViews": 6,
+          "userEngagementDuration": 73,
+          "bounceRate": 0.5
+        },
+        {
+          "pagePath": "/states/indiana/symbols/",
+          "activeUsers": 5,
+          "screenPageViews": 6,
+          "userEngagementDuration": 2166,
+          "bounceRate": 0.2
+        },
+        {
+          "pagePath": "/states/new-york/symbols/",
+          "activeUsers": 5,
+          "screenPageViews": 6,
+          "userEngagementDuration": 9,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/states/washington/symbols/",
+          "activeUsers": 5,
+          "screenPageViews": 6,
+          "userEngagementDuration": 8,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/play/thirteen-colonies/",
+          "activeUsers": 4,
+          "screenPageViews": 6,
+          "userEngagementDuration": 370,
+          "bounceRate": 0.5
+        },
+        {
+          "pagePath": "/states/florida/symbols/",
+          "activeUsers": 4,
+          "screenPageViews": 6,
+          "userEngagementDuration": 297,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/states/new-mexico/fun-facts/",
+          "activeUsers": 4,
+          "screenPageViews": 6,
+          "userEngagementDuration": 522,
+          "bounceRate": 0.25
+        },
+        {
+          "pagePath": "/states/texas/symbols/",
+          "activeUsers": 4,
+          "screenPageViews": 6,
+          "userEngagementDuration": 7,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/state-quarters/",
+          "activeUsers": 6,
+          "screenPageViews": 5,
+          "userEngagementDuration": 3,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/landlocked-states/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 3,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/state-license-plates/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 357,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/learn/what-state-is-nj/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/world-cup-2026-closing-ceremony/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/regions/south/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/states/illinois/map/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 16,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/states/new-hampshire/fun-facts/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 1235,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/states/texas/map/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 2,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/states/washington/people/",
+          "activeUsers": 5,
+          "screenPageViews": 5,
+          "userEngagementDuration": 13,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/es/",
+          "activeUsers": 4,
+          "screenPageViews": 5,
+          "userEngagementDuration": 74,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/es/learn/estados-por-pib/",
+          "activeUsers": 4,
+          "screenPageViews": 5,
+          "userEngagementDuration": 164,
+          "bounceRate": 0.4
+        },
+        {
+          "pagePath": "/es/states/",
+          "activeUsers": 4,
+          "screenPageViews": 5,
+          "userEngagementDuration": 150,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/states/idaho/fun-facts/",
+          "activeUsers": 4,
+          "screenPageViews": 5,
+          "userEngagementDuration": 100,
+          "bounceRate": 0.25
+        },
+        {
+          "pagePath": "/states/louisiana/symbols/",
+          "activeUsers": 4,
+          "screenPageViews": 5,
+          "userEngagementDuration": 100,
+          "bounceRate": 0.8
+        },
+        {
+          "pagePath": "/states/maine/symbols/",
+          "activeUsers": 4,
+          "screenPageViews": 5,
+          "userEngagementDuration": 134,
+          "bounceRate": 0.6
+        },
+        {
+          "pagePath": "/states/georgia/symbols/",
+          "activeUsers": 3,
+          "screenPageViews": 5,
+          "userEngagementDuration": 33,
+          "bounceRate": 0.3333333333333333
+        },
+        {
+          "pagePath": "/states/vermont/symbols/",
+          "activeUsers": 3,
+          "screenPageViews": 5,
+          "userEngagementDuration": 515,
+          "bounceRate": 0.6666666666666666
+        },
+        {
+          "pagePath": "/states/pennsylvania/people/",
+          "activeUsers": 2,
+          "screenPageViews": 5,
+          "userEngagementDuration": 274,
+          "bounceRate": 0
+        },
+        {
+          "pagePath": "/learn/california-world-cup-2026/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/is-charlotte-a-state/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 11,
+          "bounceRate": 0.75
+        },
+        {
+          "pagePath": "/learn/is-las-vegas-a-state/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/is-miami-a-state/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/is-portland-a-state/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 6,
+          "bounceRate": 0.75
+        },
+        {
+          "pagePath": "/learn/safest-states-to-live/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 1,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/state-songs/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 2,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/states-with-great-lakes/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/what-state-is-hi/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/what-state-is-ma/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/what-state-is-nv/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/what-state-is-tx/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/world-cup-2026-dates-schedule/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/learn/world-cup-2026-stadiums-complete/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/states/alabama/symbols/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 181,
+          "bounceRate": 0.4
+        },
+        {
+          "pagePath": "/states/mississippi/fun-facts/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 63,
+          "bounceRate": 0.75
+        },
+        {
+          "pagePath": "/states/montana/fun-facts/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 131,
+          "bounceRate": 0.5
+        },
+        {
+          "pagePath": "/states/new-mexico/map/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        },
+        {
+          "pagePath": "/states/north-carolina/map/",
+          "activeUsers": 4,
+          "screenPageViews": 4,
+          "userEngagementDuration": 0,
+          "bounceRate": 1
+        }
+      ],
+      "rowCount": 484
+    },
+    "by_country": {
+      "rows": [
+        {
+          "country": "United States",
+          "activeUsers": 860,
+          "sessions": 1179
+        },
+        {
+          "country": "Singapore",
+          "activeUsers": 434,
+          "sessions": 436
+        },
+        {
+          "country": "China",
+          "activeUsers": 199,
+          "sessions": 199
+        },
+        {
+          "country": "United Kingdom",
+          "activeUsers": 60,
+          "sessions": 74
+        },
+        {
+          "country": "France",
+          "activeUsers": 25,
+          "sessions": 28
+        },
+        {
+          "country": "India",
+          "activeUsers": 23,
+          "sessions": 33
+        },
+        {
+          "country": "Canada",
+          "activeUsers": 20,
+          "sessions": 31
+        },
+        {
+          "country": "Mexico",
+          "activeUsers": 17,
+          "sessions": 21
+        },
+        {
+          "country": "(not set)",
+          "activeUsers": 14,
+          "sessions": 14
+        },
+        {
+          "country": "Netherlands",
+          "activeUsers": 12,
+          "sessions": 13
+        },
+        {
+          "country": "Vietnam",
+          "activeUsers": 11,
+          "sessions": 11
+        },
+        {
+          "country": "Germany",
+          "activeUsers": 10,
+          "sessions": 11
+        },
+        {
+          "country": "Australia",
+          "activeUsers": 9,
+          "sessions": 11
+        },
+        {
+          "country": "Colombia",
+          "activeUsers": 9,
+          "sessions": 17
+        },
+        {
+          "country": "Nigeria",
+          "activeUsers": 7,
+          "sessions": 16
+        },
+        {
+          "country": "Spain",
+          "activeUsers": 7,
+          "sessions": 7
+        },
+        {
+          "country": "Uzbekistan",
+          "activeUsers": 7,
+          "sessions": 19
+        },
+        {
+          "country": "Sweden",
+          "activeUsers": 6,
+          "sessions": 7
+        },
+        {
+          "country": "Brazil",
+          "activeUsers": 5,
+          "sessions": 5
+        },
+        {
+          "country": "Greece",
+          "activeUsers": 5,
+          "sessions": 5
+        },
+        {
+          "country": "Japan",
+          "activeUsers": 5,
+          "sessions": 5
+        },
+        {
+          "country": "Philippines",
+          "activeUsers": 5,
+          "sessions": 6
+        },
+        {
+          "country": "Puerto Rico",
+          "activeUsers": 5,
+          "sessions": 5
+        },
+        {
+          "country": "Denmark",
+          "activeUsers": 4,
+          "sessions": 5
+        },
+        {
+          "country": "Dominican Republic",
+          "activeUsers": 4,
+          "sessions": 10
+        },
+        {
+          "country": "Ghana",
+          "activeUsers": 4,
+          "sessions": 5
+        },
+        {
+          "country": "Poland",
+          "activeUsers": 4,
+          "sessions": 4
+        },
+        {
+          "country": "Switzerland",
+          "activeUsers": 4,
+          "sessions": 4
+        },
+        {
+          "country": "Belgium",
+          "activeUsers": 3,
+          "sessions": 3
+        },
+        {
+          "country": "Ecuador",
+          "activeUsers": 3,
+          "sessions": 3
+        },
+        {
+          "country": "El Salvador",
+          "activeUsers": 3,
+          "sessions": 3
+        },
+        {
+          "country": "Malaysia",
+          "activeUsers": 3,
+          "sessions": 4
+        },
+        {
+          "country": "Pakistan",
+          "activeUsers": 3,
+          "sessions": 3
+        },
+        {
+          "country": "Romania",
+          "activeUsers": 3,
+          "sessions": 4
+        },
+        {
+          "country": "South Africa",
+          "activeUsers": 3,
+          "sessions": 3
+        },
+        {
+          "country": "Argentina",
+          "activeUsers": 2,
+          "sessions": 4
+        },
+        {
+          "country": "Bangladesh",
+          "activeUsers": 2,
+          "sessions": 2
+        },
+        {
+          "country": "Chile",
+          "activeUsers": 2,
+          "sessions": 3
+        },
+        {
+          "country": "Indonesia",
+          "activeUsers": 2,
+          "sessions": 3
+        },
+        {
+          "country": "Ireland",
+          "activeUsers": 2,
+          "sessions": 2
+        }
+      ],
+      "rowCount": 69
+    },
+    "by_device": {
+      "rows": [
+        {
+          "deviceCategory": "desktop",
+          "activeUsers": 1306,
+          "sessions": 1553,
+          "bounceRate": 0.6870573084352866
+        },
+        {
+          "deviceCategory": "mobile",
+          "activeUsers": 493,
+          "sessions": 660,
+          "bounceRate": 0.7560606060606061
+        },
+        {
+          "deviceCategory": "tablet",
+          "activeUsers": 29,
+          "sessions": 36,
+          "bounceRate": 0.6388888888888888
+        },
+        {
+          "deviceCategory": "smart tv",
+          "activeUsers": 1,
+          "sessions": 1,
+          "bounceRate": 1
+        }
+      ],
+      "rowCount": 4
+    },
+    "by_new_returning": {
+      "rows": [
+        {
+          "newVsReturning": "new",
+          "activeUsers": 1779,
+          "sessions": 1794
+        },
+        {
+          "newVsReturning": "returning",
+          "activeUsers": 180,
+          "sessions": 269
+        },
+        {
+          "newVsReturning": "",
+          "activeUsers": 52,
+          "sessions": 61
+        },
+        {
+          "newVsReturning": "(not set)",
+          "activeUsers": 0,
+          "sessions": 160
+        }
+      ],
+      "rowCount": 4
+    }
+  }
+}
