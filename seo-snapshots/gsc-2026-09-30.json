@@ -1,0 +1,1522 @@
+{
+  "source": "google-search-console",
+  "collected_at": "2026-10-03T06:35:05.269Z",
+  "window": {
+    "startDate": "2026-09-02",
+    "endDate": "2026-09-30",
+    "lag_days": 3
+  },
+  "properties_visible_count": 1,
+  "properties_collected": [
+    "sc-domain:statedoku.com"
+  ],
+  "data": {
+    "sc-domain:statedoku.com": {
+      "by_date": [
+        {
+          "keys": [
+            "2026-09-02"
+          ],
+          "clicks": 1,
+          "impressions": 5,
+          "ctr": 0.2,
+          "position": 22.6
+        },
+        {
+          "keys": [
+            "2026-09-03"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 3
+        },
+        {
+          "keys": [
+            "2026-09-04"
+          ],
+          "clicks": 1,
+          "impressions": 7,
+          "ctr": 0.14285714285714285,
+          "position": 27
+        },
+        {
+          "keys": [
+            "2026-09-05"
+          ],
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 32.75
+        },
+        {
+          "keys": [
+            "2026-09-06"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 13.4
+        },
+        {
+          "keys": [
+            "2026-09-07"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "2026-09-08"
+          ],
+          "clicks": 1,
+          "impressions": 6,
+          "ctr": 0.16666666666666666,
+          "position": 5.333333333333333
+        },
+        {
+          "keys": [
+            "2026-09-09"
+          ],
+          "clicks": 0,
+          "impressions": 9,
+          "ctr": 0,
+          "position": 12.444444444444445
+        },
+        {
+          "keys": [
+            "2026-09-10"
+          ],
+          "clicks": 1,
+          "impressions": 7,
+          "ctr": 0.14285714285714285,
+          "position": 1.2857142857142856
+        },
+        {
+          "keys": [
+            "2026-09-11"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 15
+        },
+        {
+          "keys": [
+            "2026-09-12"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 3.4
+        },
+        {
+          "keys": [
+            "2026-09-13"
+          ],
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 54.5
+        },
+        {
+          "keys": [
+            "2026-09-14"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "2026-09-15"
+          ],
+          "clicks": 1,
+          "impressions": 5,
+          "ctr": 0.2,
+          "position": 33
+        },
+        {
+          "keys": [
+            "2026-09-16"
+          ],
+          "clicks": 1,
+          "impressions": 7,
+          "ctr": 0.14285714285714285,
+          "position": 26
+        },
+        {
+          "keys": [
+            "2026-09-17"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 3.75
+        },
+        {
+          "keys": [
+            "2026-09-18"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 11.5
+        },
+        {
+          "keys": [
+            "2026-09-19"
+          ],
+          "clicks": 0,
+          "impressions": 0,
+          "ctr": 0,
+          "position": 0
+        },
+        {
+          "keys": [
+            "2026-09-20"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 35.25
+        },
+        {
+          "keys": [
+            "2026-09-21"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 3.6666666666666665
+        },
+        {
+          "keys": [
+            "2026-09-22"
+          ],
+          "clicks": 2,
+          "impressions": 5,
+          "ctr": 0.4,
+          "position": 13.6
+        },
+        {
+          "keys": [
+            "2026-09-23"
+          ],
+          "clicks": 0,
+          "impressions": 7,
+          "ctr": 0,
+          "position": 46.857142857142854
+        },
+        {
+          "keys": [
+            "2026-09-24"
+          ],
+          "clicks": 1,
+          "impressions": 4,
+          "ctr": 0.25,
+          "position": 5.5
+        },
+        {
+          "keys": [
+            "2026-09-25"
+          ],
+          "clicks": 4,
+          "impressions": 5,
+          "ctr": 0.8,
+          "position": 2
+        },
+        {
+          "keys": [
+            "2026-09-26"
+          ],
+          "clicks": 1,
+          "impressions": 3,
+          "ctr": 0.3333333333333333,
+          "position": 1.6666666666666665
+        },
+        {
+          "keys": [
+            "2026-09-27"
+          ],
+          "clicks": 0,
+          "impressions": 7,
+          "ctr": 0,
+          "position": 19.428571428571427
+        },
+        {
+          "keys": [
+            "2026-09-28"
+          ],
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 16.333333333333336
+        },
+        {
+          "keys": [
+            "2026-09-29"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 19
+        }
+      ],
+      "by_query": [
+        {
+          "keys": [
+            "50 estado de estados unidos"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 88
+        },
+        {
+          "keys": [
+            "50 estados de estados unidos"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 88
+        },
+        {
+          "keys": [
+            "50 estados de usa"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 76
+        },
+        {
+          "keys": [
+            "cities where us presidents were born"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 71
+        },
+        {
+          "keys": [
+            "ciudad de ohio crucigrama"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 62
+        },
+        {
+          "keys": [
+            "cuales son los 50 estados de estados unidos"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 83
+        },
+        {
+          "keys": [
+            "easy way to learn 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 49
+        },
+        {
+          "keys": [
+            "easy way to learn the 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 48
+        },
+        {
+          "keys": [
+            "easy way to remember 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 48
+        },
+        {
+          "keys": [
+            "estados crucigrama"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 31
+        },
+        {
+          "keys": [
+            "how to learn 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 54
+        },
+        {
+          "keys": [
+            "how to learn states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 49
+        },
+        {
+          "keys": [
+            "how to learn the 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 48
+        },
+        {
+          "keys": [
+            "how to learn the 50 states fast"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 50
+        },
+        {
+          "keys": [
+            "how to learn the states of the us"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 46
+        },
+        {
+          "keys": [
+            "how to learn us states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 54
+        },
+        {
+          "keys": [
+            "how to memorize 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 43
+        },
+        {
+          "keys": [
+            "how to memorize states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 46
+        },
+        {
+          "keys": [
+            "how to memorize the 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 67
+        },
+        {
+          "keys": [
+            "how to memorize the us states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 54
+        },
+        {
+          "keys": [
+            "how to memorize where the 50 states are"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 47
+        },
+        {
+          "keys": [
+            "how to study 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 64
+        },
+        {
+          "keys": [
+            "how to study all 50 states"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 66
+        },
+        {
+          "keys": [
+            "los 50 estados de estados unidos"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 91
+        },
+        {
+          "keys": [
+            "stat of california"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 67
+        },
+        {
+          "keys": [
+            "tiene tres estados crucigrama"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 37
+        }
+      ],
+      "by_page": [
+        {
+          "keys": [
+            "https://statedoku.com/"
+          ],
+          "clicks": 13,
+          "impressions": 34,
+          "ctr": 0.38235294117647056,
+          "position": 2.5294117647058822
+        },
+        {
+          "keys": [
+            "https://statedoku.com/fr/"
+          ],
+          "clicks": 2,
+          "impressions": 5,
+          "ctr": 0.4,
+          "position": 3.2
+        },
+        {
+          "keys": [
+            "https://statedoku.com/about/"
+          ],
+          "clicks": 0,
+          "impressions": 19,
+          "ctr": 0,
+          "position": 2.052631578947368
+        },
+        {
+          "keys": [
+            "https://statedoku.com/archive/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 4
+        },
+        {
+          "keys": [
+            "https://statedoku.com/es/"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 7.333333333333333
+        },
+        {
+          "keys": [
+            "https://statedoku.com/es/learn/crucigrama-estados/"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 28
+        },
+        {
+          "keys": [
+            "https://statedoku.com/es/learn/landlocked-states/"
+          ],
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 6.625
+        },
+        {
+          "keys": [
+            "https://statedoku.com/es/states/"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 85.2
+        },
+        {
+          "keys": [
+            "https://statedoku.com/faq/"
+          ],
+          "clicks": 0,
+          "impressions": 20,
+          "ctr": 0,
+          "position": 2.45
+        },
+        {
+          "keys": [
+            "https://statedoku.com/fr/about/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/fr/faq/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/fr/how-to-play/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/fr/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 3.2
+        },
+        {
+          "keys": [
+            "https://statedoku.com/fr/learn/states-and-capitals/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/fr/terms/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/how-to-play/"
+          ],
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 1.5454545454545454
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 30,
+          "ctr": 0,
+          "position": 41.9
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/13-colonies/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/capital-of-las-vegas/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 5
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/capital-of-milwaukee/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 13
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/electoral-college/"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/is-portland-a-state/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/landlocked-states/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 43
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/state-capitals-pronunciation/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/state-flags/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-bordering-canada/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 4
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-by-population/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 3
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-confederate/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 5
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-largest-cities/"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 5.75
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-presidents-born/"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 26.666666666666668
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-with-national-parks/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-with-oceans/"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 6.6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/states-without-capital-largest/"
+          ],
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 9.375
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/swing-states/"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 2
+        },
+        {
+          "keys": [
+            "https://statedoku.com/learn/team-base-camps-world-cup-2026/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 4
+        },
+        {
+          "keys": [
+            "https://statedoku.com/privacy/"
+          ],
+          "clicks": 0,
+          "impressions": 15,
+          "ctr": 0,
+          "position": 1.6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/quiz/"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 5.333333333333333
+        },
+        {
+          "keys": [
+            "https://statedoku.com/regions/east-north-central/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/regions/northeast/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 3.6666666666666665
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/california/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 67
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/connecticut/geography/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 2
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/georgia/elections/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 3
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/indiana/geography/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 4
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/indiana/people/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 2
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/iowa/symbols/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/kansas/history/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 98
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/nevada/people/"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/nevada/symbols/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/ohio/people/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/oregon/fun-facts/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/oregon/people/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 4.5
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/washington/people/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "https://statedoku.com/states/west-virginia/people/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 8.5
+        },
+        {
+          "keys": [
+            "https://statedoku.com/terms/"
+          ],
+          "clicks": 0,
+          "impressions": 16,
+          "ctr": 0,
+          "position": 2.625
+        }
+      ],
+      "by_query_page": [
+        {
+          "keys": [
+            "50 estado de estados unidos",
+            "https://statedoku.com/es/states/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 88
+        },
+        {
+          "keys": [
+            "50 estados de estados unidos",
+            "https://statedoku.com/es/states/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 88
+        },
+        {
+          "keys": [
+            "50 estados de usa",
+            "https://statedoku.com/es/states/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 76
+        },
+        {
+          "keys": [
+            "cities where us presidents were born",
+            "https://statedoku.com/learn/states-presidents-born/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 71
+        },
+        {
+          "keys": [
+            "ciudad de ohio crucigrama",
+            "https://statedoku.com/es/learn/crucigrama-estados/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 62
+        },
+        {
+          "keys": [
+            "cuales son los 50 estados de estados unidos",
+            "https://statedoku.com/es/states/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 83
+        },
+        {
+          "keys": [
+            "easy way to learn 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 49
+        },
+        {
+          "keys": [
+            "easy way to learn the 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 48
+        },
+        {
+          "keys": [
+            "easy way to remember 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 48
+        },
+        {
+          "keys": [
+            "estados crucigrama",
+            "https://statedoku.com/es/learn/crucigrama-estados/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 31
+        },
+        {
+          "keys": [
+            "how to learn 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 54
+        },
+        {
+          "keys": [
+            "how to learn states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 49
+        },
+        {
+          "keys": [
+            "how to learn the 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 48
+        },
+        {
+          "keys": [
+            "how to learn the 50 states fast",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 50
+        },
+        {
+          "keys": [
+            "how to learn the states of the us",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 46
+        },
+        {
+          "keys": [
+            "how to learn us states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 54
+        },
+        {
+          "keys": [
+            "how to memorize 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 43
+        },
+        {
+          "keys": [
+            "how to memorize states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 46
+        },
+        {
+          "keys": [
+            "how to memorize the 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 67
+        },
+        {
+          "keys": [
+            "how to memorize the us states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 54
+        },
+        {
+          "keys": [
+            "how to memorize where the 50 states are",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 47
+        },
+        {
+          "keys": [
+            "how to study 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 64
+        },
+        {
+          "keys": [
+            "how to study all 50 states",
+            "https://statedoku.com/learn/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 66
+        },
+        {
+          "keys": [
+            "los 50 estados de estados unidos",
+            "https://statedoku.com/es/states/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 91
+        },
+        {
+          "keys": [
+            "stat of california",
+            "https://statedoku.com/states/california/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 67
+        },
+        {
+          "keys": [
+            "tiene tres estados crucigrama",
+            "https://statedoku.com/es/learn/crucigrama-estados/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 37
+        }
+      ],
+      "by_country": [
+        {
+          "keys": [
+            "usa"
+          ],
+          "clicks": 11,
+          "impressions": 92,
+          "ctr": 0.11956521739130435,
+          "position": 20.206521739130434
+        },
+        {
+          "keys": [
+            "fra"
+          ],
+          "clicks": 2,
+          "impressions": 3,
+          "ctr": 0.6666666666666666,
+          "position": 2
+        },
+        {
+          "keys": [
+            "uzb"
+          ],
+          "clicks": 1,
+          "impressions": 1,
+          "ctr": 1,
+          "position": 1
+        },
+        {
+          "keys": [
+            "are"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "arg"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 32.33333333333333
+        },
+        {
+          "keys": [
+            "bgd"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "bra"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "keys": [
+            "can"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 7
+        },
+        {
+          "keys": [
+            "chl"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 7
+        },
+        {
+          "keys": [
+            "col"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 31.666666666666668
+        },
+        {
+          "keys": [
+            "deu"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 34
+        },
+        {
+          "keys": [
+            "dnk"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 5
+        },
+        {
+          "keys": [
+            "dom"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 7.333333333333333
+        },
+        {
+          "keys": [
+            "esp"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 27.6
+        },
+        {
+          "keys": [
+            "gbr"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 4
+        },
+        {
+          "keys": [
+            "ita"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 2
+        },
+        {
+          "keys": [
+            "mdg"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "mex"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 31.333333333333332
+        },
+        {
+          "keys": [
+            "nor"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 46
+        },
+        {
+          "keys": [
+            "per"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "pol"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "pri"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 3.5
+        },
+        {
+          "keys": [
+            "swe"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 11
+        },
+        {
+          "keys": [
+            "ukr"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "vnm"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 4
+        }
+      ],
+      "by_device": [
+        {
+          "keys": [
+            "DESKTOP"
+          ],
+          "clicks": 11,
+          "impressions": 106,
+          "ctr": 0.10377358490566038,
+          "position": 22.141509433962263
+        },
+        {
+          "keys": [
+            "MOBILE"
+          ],
+          "clicks": 2,
+          "impressions": 26,
+          "ctr": 0.07692307692307693,
+          "position": 6.115384615384615
+        },
+        {
+          "keys": [
+            "TABLET"
+          ],
+          "clicks": 1,
+          "impressions": 3,
+          "ctr": 0.3333333333333333,
+          "position": 3.3333333333333335
+        }
+      ]
+    }
+  }
+}
