@@ -58,6 +58,17 @@ Removing either brings back the dead end.
 approves. Do not touch ad code, `/privacy/`, `/about/` or `/terms/` during a
 review.
 
+**Ad code lives only on pages with real content.** AdSense refused the site on
+3 October 2026 (site state `NEEDS_ATTENTION`, no page-level policy issue). At
+that point all 1,326 noindexed thin pages (play state launchers, state food,
+economy, weather, travel, elections, map and sports pages, city stubs) loaded
+`adsbygoogle.js` and most carried ad slots, and 760 links from indexable pages
+led straight to them. `noindex` hides a page from Search, not from an AdSense
+reviewer. So: a noindexed page carries no AdSense script and no `ad-slot`, an
+indexable page never links to a noindexed one, and utility screens (archive,
+widgets) carry no ads either. A new page that is not worth indexing is not
+worth an ad.
+
 **The X API is never called.** It is pay-per-use with no free tier, and a post
 containing a link costs 0.20 USD against 0.015. Two link-posts a day is about
 12 USD a month. The worker posts through Buffer, which publishes to X on its own
