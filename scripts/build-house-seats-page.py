@@ -721,7 +721,7 @@ def page(lang):
                           'publisher': {'@type': 'Organization', 'name': 'Statedoku', 'url': BASE + '/'},
                           'isBasedOn': {'@type': 'Dataset', 'name': 'Historical Apportionment Data (1910-2020)',
                                         'url': SRC, 'creator': {'@type': 'Organization', 'name': 'U.S. Census Bureau'}},
-                          'image': BASE + '/og-image.png?v=2'}, ensure_ascii=False)
+                          'image': f'{BASE}/og/og-house-seats-{lang}.png'}, ensure_ascii=False)
     related = ''.join(f'<a href="{u}">→ {esc(n)}</a>' for u, n in t['related'])
 
     return f'''<!DOCTYPE html>
@@ -753,11 +753,13 @@ def page(lang):
   <meta property="og:title" content="{esc(t["og_title"])}">
   <meta property="og:description" content="{esc(t["desc"])}">
   <meta property="og:url" content="{url}">
-  <meta property="og:image" content="{BASE}/og-image.png?v=2">
+  <meta property="og:image" content="{BASE}/og/og-house-seats-{lang}.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{esc(t["og_title"])}">
   <meta name="twitter:description" content="{esc(t["desc"])}">
-  <meta name="twitter:image" content="{BASE}/og-image.png?v=2">
+  <meta name="twitter:image" content="{BASE}/og/og-house-seats-{lang}.png">
   <style>{CSS}
   </style>
   <script type="application/ld+json">{crumbs}</script>

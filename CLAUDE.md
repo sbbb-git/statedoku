@@ -142,9 +142,32 @@ passed on the earlier version, and 79 pages went unreachable for a day.
   to point at, drop the anchor and keep the text rather than inventing a page.
 - **Meta descriptions 70 to 160 characters**, balanced parentheses and quotes.
 
-634 pages are indexable and 1,449 are deliberately noindexed. Thin or
+637 pages are indexable and 1,449 are deliberately noindexed. Thin or
 near-duplicate pages are noindexed on purpose, not deleted. Adding thin pages to
 fix a broken link is a bad trade while AdSense is judging the site.
+
+## Facts on the page
+
+Rankings "of the 50 states" are computed over the 50 states. The Census files
+also rank DC and Puerto Rico, and a density rank taken straight from them once
+told readers Alaska was "the 52nd most densely populated" of 50.
+
+Data articles are generated, not hand-typed. `scripts/build-house-seats-page.py`
+builds the three House-seats pages from the Census apportionment file in
+`scripts/data/` and asserts every figure its prose quotes; edit the script, not
+the HTML, and re-run it after the 2030 census.
+
+On 5 October about 300 errors were corrected on the state subpages and 333 in
+the learn articles, each one confirmed by a second, independent check before
+it was applied. New copy gets the same treatment: a claim of "the only" or
+"the first" is the most common way these pages were wrong.
+
+`data/states.json` drives the game and is wrong in a few places (Tennessee
+marked as a president's birthplace, Wyoming as having a fourteener, Arizona
+as spanning two time zones and Nevada not, Delaware and Maryland in the
+Northeast, the Alabama and Delaware population bands). Correcting it changes
+past grids, so it waits for the owner's decision on a dated cut-over. Never
+edit it silently.
 
 ## Weight
 
@@ -155,7 +178,7 @@ build their game once it lands. That took them from 243 KB to 25 KB each.
 ## Layout
 
 - `index.html`, `fr/`, `es/` are the three homepages, each running the daily game.
-- `states/` 651 pages, `learn/` 146, `play/` 298, `cities/` 102, `regions/` 14.
+- `states/` 651 pages, `learn/` 147, `play/` 298, `cities/` 102, `regions/` 14.
 - `js/` game logic: `game.js` loop, `puzzle.js` generation, `i18n.js`,
   `constraints-pending.js` and `constraints-approved.js` for the pop-culture pool.
 - `data/` `states.json`, `translations.json`, `tweets.json`, `us-map.svg`.
