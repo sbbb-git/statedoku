@@ -69,8 +69,12 @@ def region_seats(r, y):
     return sum(seats(n, y) or 0 for n in STATES if REGION[n] == r)
 
 
+US = {int(r['Year']): r for r in csv.DictReader(open(CSV, encoding='utf-8')) if r['Name'] == 'United States'}
+
+
 def region_share(r, y):
-    return 100 * sum(pop(n, y) for n in STATES if REGION[n] == r) / sum(pop(n, y) for n in STATES)
+    # Share of the whole US count, as the Census Bureau reports it (DC included)
+    return 100 * sum(pop(n, y) for n in STATES if REGION[n] == r) / num(US[y]['Resident Population'])
 
 
 REG = {r: [region_seats(r, y) for y in YEARS] for r in ('NE', 'MW', 'S', 'W')}
@@ -132,7 +136,11 @@ assert [n for n in STATES if len({seats(n, y) for y in YEARS if seats(n, y)}) ==
     ['Alaska', 'Delaware', 'Hawaii', 'Idaho', 'New Hampshire', 'Wyoming']
 assert [seats('Montana', y) for y in (1980, 1990, 2010, 2020)] == [2, 1, 1, 2]
 assert [n for n in STATES if num(D[n][2020]['Percent Change in Resident Population']) < 0] == ['Illinois', 'Mississippi', 'West Virginia']
-assert round(region_share('W', 1910), 1) == 7.7 and round(region_share('W', 2020), 1) == 23.8
+assert round(region_share('W', 1910), 1) == 7.7 and round(region_share('W', 2020), 1) == 23.7
+assert num(US[1910]['Average Apportionment Population Per Representative']) == 210328
+assert num(US[2020]['Average Apportionment Population Per Representative']) == 761169
+assert seats('California', 1980) == 45 and [seats('Ohio', y) for y in (1930, 1940, 1950, 1960)] == [24, 23, 23, 24]
+assert seats('Arizona', 2020) / first('Arizona')[1] > seats('Florida', 2020) / seats('Florida', 1910) > max(seats(n, 2020) / seats(n, 1910) for n in STATES if seats(n, 1910) and n != 'Florida')
 avg = {n: int(num(D[n][2020]['Average Apportionment Population Per Representative'])) for n in STATES}
 assert min(avg, key=avg.get) == 'Montana' and avg['Montana'] == 542704
 assert max(avg, key=avg.get) == 'Delaware' and avg['Delaware'] == 990837
@@ -205,7 +213,7 @@ T['en'] = dict(
         '<p>The Northeast lost seats at every census from 1930 on, falling from 123 to 76, and the Midwest did the same, from 143 to 91. '
         'The South held between 133 and 136 seats for half a century, then gained at every census from 1970, reaching 164. '
         'The West gained at every census, from 31 seats to 104, and has had more seats than the Northeast since 1990. '
-        'Its share of the country\'s population rose from 7.7% to 23.8%.</p>'),
+        'Its share of the country\'s population rose from 7.7% to 23.7%.</p>'),
     all_h='Every state, 1910 to 2020',
     all_intro='Seats after selected censuses, the change since the state\'s first apportionment in the period, and its peak. Arizona and New Mexico start from their admission in 1912, Alaska and Hawaii from 1960.',
     all_cols=['State', '1910', '1950', '1980', '2020', 'Change', 'Peak'],
@@ -224,11 +232,11 @@ T['en'] = dict(
     lose=(
         '<p><strong>Pennsylvania</strong> lost seats at ten censuses in a row, every one from 1930 to 2020, falling from 36 to 17. '
         'No state has lost more.</p>'
-        '<p><strong>New York</strong> peaked at 45 seats after the 1930 and 1940 censuses, a delegation no state matched until '
-        'California reached 52 in 1990. It has lost seats at eight censuses in a row since 1950, including five at once after 1980, '
+        '<p><strong>New York</strong> peaked at 45 seats after the 1930 and 1940 censuses, a record California equalled in 1980 '
+        'and passed in 1990, when it reached 52. It has lost seats at eight censuses in a row since 1950, including five at once after 1980, '
         'the largest single loss of the century, and has 26.</p>'
         '<p>The Midwest shrank across the board. Illinois went from 27 seats to 17, Missouri from 16 to 8 and Iowa from 11 to 4. '
-        'Ohio held 24 seats from 1930 to 1960 and has 15 after six losses in a row. <strong>Michigan</strong> rose from 13 to 19 '
+        'Ohio had 24 seats after both the 1930 and 1960 censuses and has 15 after six losses in a row. <strong>Michigan</strong> rose from 13 to 19 '
         'with the car industry, peaking in 1960 and 1970, and is back at 13 after five losses in a row. <strong>West Virginia</strong> '
         'went from 6 seats to 2, and was one of three states, with Illinois and Mississippi, whose population fell between 2010 and 2020.</p>'),
     same_h='The states that never moved',
@@ -246,8 +254,8 @@ T['en'] = dict(
     grow_fast='Fastest growing', grow_slow='Slowest growing', times='×',
     seat_h='How many people one seat represents',
     seat=(
-        '<p>In 1910 the House had one member for roughly every 212,000 residents. After the 2020 census the Census Bureau\'s average '
-        'was 761,169 people per seat. Because seats come whole, the gap between states is wide: <strong>Montana\'s</strong> two seats '
+        '<p>After the 1910 census the Census Bureau\'s average was about 210,000 people per seat; after the 2020 census it '
+        'was 761,169. Because seats come whole, the gap between states is wide: <strong>Montana\'s</strong> two seats '
         'average 542,704 people each, the fewest, while <strong>Delaware\'s</strong> single seat covers 990,837, the most.</p>'),
     full_h='The full table: seats after every census',
     full_note='1920 is left out because no reapportionment followed it.',
@@ -259,7 +267,7 @@ T['en'] = dict(
         'sitting on a given day. The page is rebuilt from that file by a script, and each figure quoted in the text is checked against it.</p>'),
     faq_h='Frequently asked questions',
     faq=[('Which state has gained the most House seats since 1910?',
-          'California, from 11 seats in 1910 to 52 after the 2020 census, a gain of 41. Florida grew the most in proportion, from 4 seats to 28.'),
+          'California, from 11 seats in 1910 to 52 after the 2020 census, a gain of 41. In proportion, Arizona grew most, from 1 seat at statehood in 1912 to 9; among states that already had seats in 1910, Florida did, from 4 to 28.'),
          ('Which state has lost the most House seats?',
           'Pennsylvania, from 36 seats in 1910 to 17 after the 2020 census, a loss of 19. New York lost 17 over the same period, from 43 to 26, after a peak of 45.'),
          ('Why were House seats not reapportioned after the 1920 census?',
@@ -323,7 +331,7 @@ T['fr'] = dict(
         '<p>Le Nord-Est a perdu des sièges à chaque recensement depuis 1930, passant de 123 à 76, et le Midwest aussi, de 143 à 91. '
         'Le Sud est resté entre 133 et 136 sièges pendant un demi-siècle, puis a progressé à chaque recensement depuis 1970 pour '
         'atteindre 164. L\'Ouest a gagné des sièges à chaque recensement, de 31 à 104, et en compte plus que le Nord-Est depuis 1990. '
-        'Sa part de la population du pays est passée de 7,7 % à 23,8 %.</p>'),
+        'Sa part de la population du pays est passée de 7,7 % à 23,7 %.</p>'),
     all_h='Chaque État, de 1910 à 2020',
     all_intro='Sièges après quelques recensements, variation depuis la première répartition de l\'État sur la période, et maximum atteint. L\'Arizona et le Nouveau-Mexique partent de leur admission en 1912, l\'Alaska et Hawaï de 1960.',
     all_cols=['État', '1910', '1950', '1980', '2020', 'Variation', 'Maximum'],
@@ -342,16 +350,16 @@ T['fr'] = dict(
     lose=(
         '<p>La <strong>Pennsylvanie</strong> a perdu des sièges à dix recensements consécutifs, tous ceux de 1930 à 2020, tombant de '
         '36 à 17. Aucun État n\'a perdu davantage.</p>'
-        '<p>L\'<strong>État de New York</strong> a culminé à 45 sièges après les recensements de 1930 et 1940, une délégation qu\'aucun '
-        'État n\'a égalée avant que la Californie n\'atteigne 52 en 1990. Il a perdu des sièges à huit recensements d\'affilée depuis '
+        '<p>L\'<strong>État de New York</strong> a culminé à 45 sièges après les recensements de 1930 et 1940, un record que la Californie '
+        'a égalé en 1980 et dépassé en 1990, avec 52 sièges. Il a perdu des sièges à huit recensements d\'affilée depuis '
         '1950, dont cinq d\'un coup après 1980, la plus forte perte du siècle, et en compte 26.</p>'
-        '<p>Le Midwest a reculé partout. L\'Illinois est passé de 27 sièges à 17, le Missouri de 16 à 8 et l\'Iowa de 11 à 4. L\'Ohio a '
-        'gardé 24 sièges de 1930 à 1960 et en a 15 après six pertes d\'affilée. Le <strong>Michigan</strong> est monté de 13 à 19 avec '
+        '<p>Le Midwest a reculé partout. L\'Illinois est passé de 27 sièges à 17, le Missouri de 16 à 8 et l\'Iowa de 11 à 4. L\'Ohio '
+        'avait 24 sièges après les recensements de 1930 et de 1960, et en a 15 après six pertes d\'affilée. Le <strong>Michigan</strong> est monté de 13 à 19 avec '
         'l\'industrie automobile, son maximum en 1960 et 1970, et est revenu à 13 après cinq pertes consécutives. La <strong>Virginie-Occidentale</strong> '
         'est passée de 6 sièges à 2, et fait partie des trois États, avec l\'Illinois et le Mississippi, dont la population a baissé entre 2010 et 2020.</p>'),
     same_h='Les États qui n\'ont jamais bougé',
     same=(
-        '<p>Le Delaware et le Wyoming ont eu un siège après chaque recensement de la période, l\'Idaho et le New Hampshire deux. L\'Alaska '
+        '<p>Le Delaware et le Wyoming ont eu un siège après chaque recensement de la période, l\'Idaho et le Nouveau-Hampshire deux. L\'Alaska '
         '(un siège) et Hawaï (deux) n\'ont pas changé depuis leur première répartition en 1960. Le Montana a failli en faire partie : '
         'deux sièges jusqu\'au recensement de 1990, qui lui en a retiré un, puis son second siège retrouvé en 2020.</p>'),
     moves_h='Combien de sièges ont bougé à chaque recensement',
@@ -364,8 +372,8 @@ T['fr'] = dict(
     grow_fast='Croissance la plus rapide', grow_slow='Croissance la plus lente', times='×',
     seat_h='Combien d\'habitants pour un siège',
     seat=(
-        '<p>En 1910, la Chambre comptait un membre pour environ 212 000 habitants. Après le recensement de 2020, la moyenne du '
-        'Census Bureau était de 761 169 personnes par siège. Comme les sièges ne se divisent pas, l\'écart entre États est large : les '
+        '<p>Après le recensement de 1910, la moyenne du Census Bureau était d\'environ 210 000 personnes par siège ; après celui de 2020, '
+        'elle était de 761 169. Comme les sièges ne se divisent pas, l\'écart entre États est large : les '
         'deux sièges du <strong>Montana</strong> représentent 542 704 personnes chacun, le plus petit chiffre, et le siège unique du '
         '<strong>Delaware</strong> en couvre 990 837, le plus grand.</p>'),
     full_h='Le tableau complet : sièges après chaque recensement',
@@ -378,7 +386,7 @@ T['fr'] = dict(
         'un jour donné. La page est reconstruite à partir de ce fichier par un script, qui vérifie chaque chiffre cité dans le texte.</p>'),
     faq_h='Questions fréquentes',
     faq=[('Quel État a gagné le plus de sièges à la Chambre depuis 1910 ?',
-          'La Californie, passée de 11 sièges en 1910 à 52 après le recensement de 2020, soit 41 de plus. La Floride a le plus progressé en proportion, de 4 sièges à 28.'),
+          'La Californie, passée de 11 sièges en 1910 à 52 après le recensement de 2020, soit 41 de plus. En proportion, l\'Arizona a le plus progressé, d\'un siège à son admission en 1912 à 9 ; parmi les États qui avaient déjà des sièges en 1910, c\'est la Floride, de 4 à 28.'),
          ('Quel État a perdu le plus de sièges ?',
           'La Pennsylvanie, de 36 sièges en 1910 à 17 après le recensement de 2020, soit 19 de moins. L\'État de New York en a perdu 17 sur la même période, de 43 à 26, après un maximum de 45.'),
          ('Pourquoi les sièges n\'ont-ils pas été redistribués après le recensement de 1920 ?',
@@ -386,7 +394,7 @@ T['fr'] = dict(
          ('Pourquoi la Chambre compte-t-elle 435 membres ?',
           'La loi de 1911 a fixé 433 sièges plus un chacun pour l\'Arizona et le Nouveau-Mexique à leur admission, soit 435, et la loi de 1929 a figé ce nombre. La Chambre a brièvement compté 437 membres après l\'entrée de l\'Alaska et d\'Hawaï en 1959, jusqu\'à la répartition du recensement de 1960.'),
          ('Quels États n\'ont jamais gagné ni perdu de siège depuis 1910 ?',
-          'Le Delaware et le Wyoming, avec un siège chacun, et l\'Idaho et le New Hampshire, avec deux. L\'Alaska et Hawaï n\'ont pas changé depuis leur première répartition en 1960.'),
+          'Le Delaware et le Wyoming, avec un siège chacun, et l\'Idaho et le Nouveau-Hampshire, avec deux. L\'Alaska et Hawaï n\'ont pas changé depuis leur première répartition en 1960.'),
          ('Quand les sièges changeront-ils la prochaine fois ?',
           'Après le recensement de 2030. Le Census Bureau doit transmettre les chiffres des États dans les neuf mois suivant le jour du recensement, et les nouveaux sièges s\'appliqueront à partir des élections de 2032, présidentielle comprise.')],
     cta_h='Testez-vous sur la carte électorale', cta_p='Quels États ont le plus de grands électeurs ? Le quiz prend deux minutes.',
@@ -433,7 +441,7 @@ T['es'] = dict(
         'de 1960. Los nuevos escaños rigen en las elecciones a la Cámara dos años después del censo: el recuento de 2020 vale para las '
         'elecciones de 2022 a 2030 y fija los votos electorales de cada estado para las presidenciales de 2024 y 2028.</p>'),
     chart_h='El Norte frente al Sur y el Oeste',
-    chart_note='Escaños tras cada censo del Noreste y el Medio Oeste juntos, y del Sur y el Oeste juntos. Pase el cursor o use las flechas del teclado para ver los valores; la tabla de abajo los da por región.',
+    chart_note='Escaños tras cada censo del Noreste y el Medio Oeste juntos, y del Sur y el Oeste juntos. Pasa el cursor o usa las flechas del teclado para ver los valores; la tabla de abajo los da por región.',
     s_north='Noreste + Medio Oeste', s_south='Sur + Oeste', axis='escaños',
     reg_h='Escaños por región del censo tras cada censo',
     reg_cols=['Censo', 'Noreste', 'Medio Oeste', 'Sur', 'Oeste', 'Peso del Oeste en la población'],
@@ -441,7 +449,7 @@ T['es'] = dict(
         '<p>El Noreste perdió escaños en todos los censos desde 1930, de 123 a 76, y el Medio Oeste también, de 143 a 91. El Sur se '
         'mantuvo entre 133 y 136 escaños durante medio siglo y después ganó en cada censo desde 1970 hasta llegar a 164. El Oeste ganó '
         'en todos los censos, de 31 escaños a 104, y desde 1990 tiene más que el Noreste. Su peso en la población del país pasó del '
-        '7,7 % al 23,8 %.</p>'),
+        '7,7 % al 23,7 %.</p>'),
     all_h='Cada estado, de 1910 a 2020',
     all_intro='Escaños tras algunos censos, cambio desde el primer reparto del estado en el periodo, y máximo alcanzado. Arizona y Nuevo México parten de su admisión en 1912, Alaska y Hawái de 1960.',
     all_cols=['Estado', '1910', '1950', '1980', '2020', 'Cambio', 'Máximo'],
@@ -460,11 +468,11 @@ T['es'] = dict(
     lose=(
         '<p><strong>Pensilvania</strong> perdió escaños en diez censos seguidos, todos los de 1930 a 2020, y bajó de 36 a 17. Ningún '
         'estado ha perdido más.</p>'
-        '<p><strong>Nueva York</strong> llegó a 45 escaños tras los censos de 1930 y 1940, una delegación que ningún estado igualó hasta '
-        'que California alcanzó 52 en 1990. Ha perdido escaños en ocho censos seguidos desde 1950, cinco de una vez tras 1980, la mayor '
+        '<p><strong>Nueva York</strong> llegó a 45 escaños tras los censos de 1930 y 1940, un récord que California igualó en 1980 '
+        'y superó en 1990, con 52 escaños. Ha perdido escaños en ocho censos seguidos desde 1950, cinco de una vez tras 1980, la mayor '
         'pérdida del siglo, y hoy tiene 26.</p>'
-        '<p>El Medio Oeste retrocedió en todas partes. Illinois pasó de 27 escaños a 17, Misuri de 16 a 8 e Iowa de 11 a 4. Ohio mantuvo '
-        '24 escaños de 1930 a 1960 y tiene 15 tras seis pérdidas seguidas. <strong>Míchigan</strong> subió de 13 a 19 con la industria '
+        '<p>El Medio Oeste retrocedió en todas partes. Illinois pasó de 27 escaños a 17, Misuri de 16 a 8 e Iowa de 11 a 4. Ohio tenía '
+        '24 escaños tras los censos de 1930 y 1960, y tiene 15 tras seis pérdidas seguidas. <strong>Míchigan</strong> subió de 13 a 19 con la industria '
         'del automóvil, su máximo en 1960 y 1970, y ha vuelto a 13 tras cinco pérdidas seguidas. <strong>Virginia Occidental</strong> pasó '
         'de 6 escaños a 2, y es uno de los tres estados, con Illinois y Misisipi, cuya población bajó entre 2010 y 2020.</p>'),
     same_h='Los estados que nunca cambiaron',
@@ -482,8 +490,8 @@ T['es'] = dict(
     grow_fast='Mayor crecimiento', grow_slow='Menor crecimiento', times='×',
     seat_h='Cuántas personas representa un escaño',
     seat=(
-        '<p>En 1910 la Cámara tenía un miembro por cada 212.000 residentes aproximadamente. Tras el censo de 2020, la media del Census '
-        'Bureau era de 761.169 personas por escaño. Como los escaños no se dividen, la diferencia entre estados es grande: los dos escaños '
+        '<p>Tras el censo de 1910, la media del Census Bureau era de unas 210.000 personas por escaño; tras el de 2020, '
+        'era de 761.169. Como los escaños no se dividen, la diferencia entre estados es grande: los dos escaños '
         'de <strong>Montana</strong> representan 542.704 personas cada uno, la cifra más baja, y el único escaño de <strong>Delaware</strong> '
         'cubre 990.837, la más alta.</p>'),
     full_h='La tabla completa: escaños tras cada censo',
@@ -496,7 +504,7 @@ T['es'] = dict(
         'Un script reconstruye la página a partir de ese archivo y comprueba cada cifra citada en el texto.</p>'),
     faq_h='Preguntas frecuentes',
     faq=[('¿Qué estado ha ganado más escaños en la Cámara desde 1910?',
-          'California, que pasó de 11 escaños en 1910 a 52 tras el censo de 2020, 41 más. Florida es la que más creció en proporción, de 4 escaños a 28.'),
+          'California, que pasó de 11 escaños en 1910 a 52 tras el censo de 2020, 41 más. En proporción, Arizona fue la que más creció, de 1 escaño al ser admitida en 1912 a 9; entre los estados que ya tenían escaños en 1910, fue Florida, de 4 a 28.'),
          ('¿Qué estado ha perdido más escaños?',
           'Pensilvania, de 36 escaños en 1910 a 17 tras el censo de 2020, 19 menos. Nueva York perdió 17 en el mismo periodo, de 43 a 26, después de un máximo de 45.'),
          ('¿Por qué no se repartieron los escaños tras el censo de 1920?',
