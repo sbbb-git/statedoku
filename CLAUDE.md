@@ -162,12 +162,22 @@ the learn articles, each one confirmed by a second, independent check before
 it was applied. New copy gets the same treatment: a claim of "the only" or
 "the first" is the most common way these pages were wrong.
 
-`data/states.json` drives the game and is wrong in a few places (Tennessee
-marked as a president's birthplace, Wyoming as having a fourteener, Arizona
-as spanning two time zones and Nevada not, Delaware and Maryland in the
-Northeast, the Alabama and Delaware population bands). Correcting it changes
-past grids, so it waits for the owner's decision on a dated cut-over. Never
-edit it silently.
+`data/states.json` drives the game. On 5 October an audit of every clue against
+its label found about 50 wrong values (Salt Lake City missing from "capital
+starts with S", Arizona still credited with an NHL team, New Hampshire a swing
+state, Tennessee on Eastern time...) and 30 pop-culture clues whose answer set
+no list can make complete (film settings, "has islands"). Correcting the data
+would have changed every grid already played, so `js/puzzle.js` carries a
+cut-over: `DATA_FIX_FROM` is 2026-10-07, `STATE_FIXES`, `LIST_FIXES` and
+`PC_FIXES` hold both the old and the corrected values, and `RETIRED_FROM_FIX`
+takes the open-ended clues out of the pool from that date. Grids dated before
+it come out byte for byte as they were; this was checked on every date from
+1 June 2026 to 31 March 2027, and the later grids were checked for a unique
+solution and for cells that match the corrected data.
+
+The next correction needs a second cut-over date, not an edit to the first:
+any change to states.json, `LIST_CONSTRAINTS` or constraints-live.js without
+recording the old value for earlier dates rewrites grids people have played.
 
 ## Weight
 

@@ -111,14 +111,14 @@ const Puzzle = (() => {
     // is Iowa at 509 m, so the metric and imperial thresholds agree.
     low_high_point:        'DE FL IL IN LA MS OH RI',
     // Flags carrying symbols only, with no state name and no motto.
-    flag_no_lettering:     'AL AK AZ CO HI MD NM OH SC TN TX',
+    flag_no_lettering:     'AL AK AZ CO HI MD MN NM OH SC TN TX UT',
     // Two-letter postal abbreviation that is also an ordinary English word.
-    postal_code_is_word:   'HI ID IN MA ME OK OR PA',
+    postal_code_is_word:   'HI ID IN MA ME OH OK OR PA',
     // More than one president born inside the state. The presidentBirthplace
-    // flag in states.json covers 26 states, half the country, which is loose
+    // flag in states.json covers 21 states, close to half the country, loose
     // enough that grids built on it almost never resolve to one solution.
     // Requiring two or more cuts it to a set that carries real information.
-    two_presidents_born:   'MA NC NY OH TX VA VT',
+    two_presidents_born:   'MA NC NY OH PA TX VA VT',
   };
 
   const _toSets = lists => Object.fromEntries(
@@ -135,11 +135,100 @@ const Puzzle = (() => {
   // states.json builds the same grid as everyone else.
   const DATA_FIX_FROM = '2026-10-07';
   const STATE_FIXES = {           // id: { field: [old, corrected] }
+    AL: { population: ["1M-5M", "5M-10M"] },
+    AZ: { multiTimezone: [true, false], nhlTeam: [true, false] },
+    CA: { hasGlaciers: [false, true] },
+    CT: { bordersFew: [false, true] },
+    DE: { bordersFew: [false, true], nameRoyalty: [true, false], region: ["northeast", "south"] },
+    FL: { hasMillionCity: [false, true] },
+    HI: { earthquakeZone: [false, true] },
+    IA: { borders6Plus: [false, true] },
+    ID: { earthquakeZone: [false, true] },
+    IL: { earthquakeZone: [false, true] },
+    KY: { earthquakeZone: [false, true] },
+    LA: { bordersFew: [false, true] },
+    MD: { region: ["northeast", "south"] },
+    MI: { bordersFew: [false, true] },
+    MT: { earthquakeZone: [false, true] },
+    NC: { political: ["swing", "red"] },
+    ND: { bordersFew: [false, true] },
+    NE: { borders6Plus: [false, true] },
+    NH: { bordersFew: [false, true], political: ["swing", "blue"] },
+    NJ: { bordersFew: [false, true], nflTeam: [false, true] },
+    NM: { greatPlains: [false, true] },
+    NV: { multiTimezone: [false, true] },
+    OR: { desertState: [false, true], hasGlaciers: [false, true] },
+    RI: { bordersFew: [false, true] },
+    SC: { bordersFew: [false, true], earthquakeZone: [false, true] },
+    SD: { borders6Plus: [false, true] },
+    TN: { timezone: ["eastern", "central"] },
+    TX: { desertState: [false, true] },
+    UT: { capitalStartsWithS: [false, true], earthquakeZone: [false, true], nhlTeam: [false, true] },
+    VT: { bordersFew: [false, true] },
+    WA: { bordersFew: [false, true] },
+    WY: { earthquakeZone: [false, true], hasVolcano: [false, true] },
   };
   const LIST_FIXES = {            // list: old membership (LIST_CONSTRAINTS holds the new one)
+    two_presidents_born: 'MA NC NY OH TX VA VT',
+    flag_no_lettering: 'AL AK AZ CO HI MD NM OH SC TN TX',
+    postal_code_is_word: 'HI ID IN MA ME OK OR PA',
   };
+  // Pop-culture clues: constraints-live.js keeps the membership the old grids
+  // were built from; from DATA_FIX_FROM these corrected lists replace it.
+  const PC_FIXES = {
+    pc_super_bowl_host: 'CA FL LA TX MN AZ NJ MI GA IN NV',
+    pc_music_taylor_swift: 'CA NV AZ TX MA FL GA IL MI MO MN OH PA WA TN IN LA NJ CO',
+    pc_music_beyonce_tour: 'PA MA TX MD GA MI MO MN IL FL NV TN KY NJ NC AZ CA WA LA',
+    pc_born_president_post60: 'TX HI MA AR GA NE CA IL CT NY PA',
+    pc_volcano_active: 'HI WA OR CA AK WY',
+    pc_named_after_person: 'LA MD NC SC GA WA PA DE NY VA WV',
+    pc_capital_is_largest: 'AR AZ CO GA HI IA ID IN MA MS OH OK RI TN UT WV WY',
+    pc_capital_under_50k: 'VT MT SD KY AK ME MD DE MO NH WV',
+    pc_state_capital_small: 'VT AK MT NH SD ME KY MD DE MO NV WY ND WA NM PA WV NJ',
+    pc_eastern_time: 'ME NH VT MA RI CT NY NJ DE PA MD VA WV NC SC GA FL OH MI IN KY',
+    pc_central_time: 'AL AR IL IA KS LA MN MS MO NE ND OK SD TX WI TN',
+    pc_multiple_time_zones: 'AK FL ID KS KY MI NE ND OR SD TN TX IN NV',
+  };
+  // Clues whose answer set no list can make complete or checkable (film and
+  // TV settings, "has islands", "on a major river"...). A player who knows
+  // the subject could not win them, so they leave the pool from DATA_FIX_FROM.
+  const RETIRED_FROM_FIX = new Set([
+    'has_islands',
+    'pc_stephen_king_setting',
+    'pc_marvel_mcu_us_setting',
+    'pc_pixar_film_setting',
+    'pc_tarantino_setting',
+    'pc_iconic_cocktail',
+    'pc_disaster_movie_set',
+    'pc_cop_show_setting',
+    'pc_medical_drama_set',
+    'pc_long_river_state',
+    'pc_movie_spielberg',
+    'pc_movie_scorsese',
+    'pc_movie_anderson_wes',
+    'pc_movie_eastwood',
+    'pc_movie_marvel_loc',
+    'pc_movie_pixar_inspo',
+    'pc_music_dylan_song',
+    'pc_born_first_lady',
+    'pc_amusement_park_top',
+    'pc_christopher_nolan_us',
+    'pc_sea_level_low',
+    'pc_letters_12_plus',
+    'pc_two_syllables',
+    'pc_pro_team_animal_name',
+    'pc_major_cruise_port',
+    'pc_named_after_river',
+    'pc_named_native_tribe',
+    'pc_hist_spanish_colonial',
+    'pc_hist_french_colonial',
+    'pc_real_housewives_franchise',
+    'pc_underground_subway',
+  ]);
+  const PC_FIX_SETS = _toSets(PC_FIXES);
   const LEGACY_LIST_SETS = { ...LIST_SETS, ..._toSets(LIST_FIXES) };
   let _lists = LIST_SETS;
+  let _legacy = false;       // true while building a grid dated before DATA_FIX_FROM
 
   function _withDataFor(dateStr, states, fn) {
     const legacy = dateStr < DATA_FIX_FROM;
@@ -150,9 +239,10 @@ const Puzzle = (() => {
       for (const k in fix) o[k] = fix[k][legacy ? 0 : 1];
       return o;
     });
-    const prev = _lists;
+    const prev = [_lists, _legacy];
     _lists = legacy ? LEGACY_LIST_SETS : LIST_SETS;
-    try { return fn(patched); } finally { _lists = prev; }
+    _legacy = legacy;
+    try { return fn(patched); } finally { [_lists, _legacy] = prev; }
   }
 
   const ALL_CONSTRAINTS = [
@@ -349,6 +439,7 @@ const Puzzle = (() => {
         return !!(state.nbaTeam && state.nflTeam && state.mlbTeam && state.nhlTeam);
 
       default:
+        if (!_legacy && PC_FIX_SETS[c]) return PC_FIX_SETS[c].has(state.id);
         // Pending candidates registered globally (constraints-pending.js)
         if (typeof window !== 'undefined' && window.PENDING_MAP && window.PENDING_MAP[c]) {
           try { return !!window.PENDING_MAP[c].match(state); } catch { return false; }
@@ -709,11 +800,12 @@ const Puzzle = (() => {
     // Merge built-in pool with admin-approved pending candidates so approved
     // constraints actually appear as columns in generated puzzles.
     const merged = [...ALL_CONSTRAINTS, ..._approvedPendingList()];
-    return merged.filter(c => !dis.has(c));
+    return merged.filter(c => !dis.has(c) && (_legacy || !RETIRED_FROM_FIX.has(c)));
   }
   function _activeRowGroups() {
     const dis = _getDisabled();
-    return MUTEX_ROW_GROUPS.filter(g => !g.some(c => dis.has(c)));
+    return MUTEX_ROW_GROUPS.filter(g => !g.some(c => dis.has(c)) &&
+      (_legacy || !g.some(c => RETIRED_FROM_FIX.has(c))));
   }
 
   async function loadStates() {
