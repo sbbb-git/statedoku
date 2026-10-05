@@ -69,6 +69,15 @@ indexable page never links to a noindexed one, and utility screens (archive,
 widgets) carry no ads either. A new page that is not worth indexing is not
 worth an ad.
 
+On 5 October AdSense named the reason: "Contenu à faible valeur informative".
+114 indexable pages were then retired the same way (noindex, no ads, out of the
+sitemap, no inbound link): 44 World Cup 2026 pages in three languages, about an
+event already over and off the site's subject; 50 `es/learn/capital-de-*`
+pages, one template per state; 7 `learn/capital-of-<city>` pages answering a
+question that has no answer; 7 Spanish crossword pages and 6 "X es un estado".
+Together they had earned 14 Bing clicks since launch and none from Google.
+Do not bring a family like these back to fill the hubs or chase a query.
+
 **The X API is never called.** It is pay-per-use with no free tier, and a post
 containing a link costs 0.20 USD against 0.015. Two link-posts a day is about
 12 USD a month. The worker posts through Buffer, which publishes to X on its own
@@ -118,7 +127,7 @@ and should read zero.
   to point at, drop the anchor and keep the text rather than inventing a page.
 - **Meta descriptions 70 to 160 characters**, balanced parentheses and quotes.
 
-758 pages are indexable and 1,330 are deliberately noindexed. Thin or
+643 pages are indexable and 1,440 are deliberately noindexed. Thin or
 near-duplicate pages are noindexed on purpose, not deleted. Adding thin pages to
 fix a broken link is a bad trade while AdSense is judging the site.
 
