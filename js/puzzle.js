@@ -121,9 +121,39 @@ const Puzzle = (() => {
     two_presidents_born:   'MA NC NY OH TX VA VT',
   };
 
-  const LIST_SETS = Object.fromEntries(
-    Object.entries(LIST_CONSTRAINTS).map(([k, v]) => [k, new Set(v.split(/\s+/))])
+  const _toSets = lists => Object.fromEntries(
+    Object.entries(lists).map(([k, v]) => [k, new Set(v.split(/\s+/))])
   );
+  const LIST_SETS = _toSets(LIST_CONSTRAINTS);
+
+  // --- Data corrections with a cut-over date ------------------------------
+  // data/states.json and LIST_CONSTRAINTS hold the corrected facts. Every grid
+  // dated before DATA_FIX_FROM was generated from the old values, and players
+  // have played and shared it, so for those dates the old values are put back
+  // and the grid comes out byte for byte as it did. Both values are written
+  // here rather than read from the JSON, so a browser still holding a stale
+  // states.json builds the same grid as everyone else.
+  const DATA_FIX_FROM = '2026-10-07';
+  const STATE_FIXES = {           // id: { field: [old, corrected] }
+  };
+  const LIST_FIXES = {            // list: old membership (LIST_CONSTRAINTS holds the new one)
+  };
+  const LEGACY_LIST_SETS = { ...LIST_SETS, ..._toSets(LIST_FIXES) };
+  let _lists = LIST_SETS;
+
+  function _withDataFor(dateStr, states, fn) {
+    const legacy = dateStr < DATA_FIX_FROM;
+    const patched = states.map(s => {
+      const fix = STATE_FIXES[s.id];
+      if (!fix) return s;
+      const o = { ...s };
+      for (const k in fix) o[k] = fix[k][legacy ? 0 : 1];
+      return o;
+    });
+    const prev = _lists;
+    _lists = legacy ? LEGACY_LIST_SETS : LIST_SETS;
+    try { return fn(patched); } finally { _lists = prev; }
+  }
 
   const ALL_CONSTRAINTS = [
     // Regions
@@ -190,7 +220,7 @@ const Puzzle = (() => {
       return state.letterCount === parseInt(c.slice(8), 10);
     }
     // Curated lists (see LIST_CONSTRAINTS)
-    if (LIST_SETS[c]) return LIST_SETS[c].has(state.id);
+    if (_lists[c]) return _lists[c].has(state.id);
     switch (c) {
       // Regions
       case 'region_west':      return state.region === 'west';
@@ -562,6 +592,10 @@ const Puzzle = (() => {
   }
 
   function generatePuzzle(dateStr, states) {
+    return _withDataFor(dateStr, states, st => _generatePuzzle(dateStr, states, st));
+  }
+
+  function _generatePuzzle(dateStr, rawStates, states) {
     const baseSeed = dateToSeed(dateStr);
 
     // Compute yesterday's row group to avoid same-group repeats.
@@ -569,7 +603,9 @@ const Puzzle = (() => {
     const prevDate = new Date(y, m - 1, d - 1);
     const prevStr = prevDate.toISOString().slice(0, 10);
     const prevSeed = dateToSeed(prevStr);
-    const prevPuzzle = _generateForSeed(prevSeed, states, -1);
+    // Yesterday is rebuilt from yesterday's data, so the day after the
+    // cut-over still sees the row group that was actually played.
+    const prevPuzzle = _withDataFor(prevStr, rawStates, st => _generateForSeed(prevSeed, st, -1));
     const activeGroups = _activeRowGroups();
     const prevGroupIdx = prevPuzzle
       ? activeGroups.findIndex(g => g.join() === prevPuzzle.rows.join())
@@ -716,7 +752,10 @@ const Puzzle = (() => {
   };
 
   async function _buildPreviewPuzzle(dateStr) {
-    const states = await loadStates();
+    return _withDataFor(dateStr, await loadStates(), states => _previewFrom(dateStr, states));
+  }
+
+  function _previewFrom(dateStr, states) {
     const cells = PREVIEW_PUZZLE.rows.map(rc =>
       PREVIEW_PUZZLE.cols.map(cc =>
         states.filter(s => matches(s, rc) && matches(s, cc)).map(s => s.id)
