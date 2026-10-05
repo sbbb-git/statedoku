@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
+  <!-- adsense-head -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
+     crossorigin="anonymous"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P7ZBQNYLS4');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2147">
+  <meta name="color-scheme" content="light">
+  <title>Sièges à la Chambre par État, 1910 à 2020 | Statedoku</title>
+  <meta name="description" content="Les sièges de chaque État à la Chambre des représentants à chaque recensement de 1910 à 2020, d'après le Census Bureau : gains, pertes et bascule vers le Sud.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://statedoku.com/fr/learn/sieges-chambre-par-etat-1910-2020/">
+  <link rel="alternate" hreflang="en" href="https://statedoku.com/learn/house-seats-by-state-1910-2020/">
+  <link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/learn/sieges-chambre-par-etat-1910-2020/">
+  <link rel="alternate" hreflang="es" href="https://statedoku.com/es/learn/escanos-camara-por-estado-1910-2020/">
+  <link rel="alternate" hreflang="x-default" href="https://statedoku.com/learn/house-seats-by-state-1910-2020/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=27">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Les sièges à la Chambre par État, de 1910 à 2020">
+  <meta property="og:description" content="Les sièges de chaque État à la Chambre des représentants à chaque recensement de 1910 à 2020, d'après le Census Bureau : gains, pertes et bascule vers le Sud.">
+  <meta property="og:url" content="https://statedoku.com/fr/learn/sieges-chambre-par-etat-1910-2020/">
+  <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Les sièges à la Chambre par État, de 1910 à 2020">
+  <meta name="twitter:description" content="Les sièges de chaque État à la Chambre des représentants à chaque recensement de 1910 à 2020, d'après le Census Bureau : gains, pertes et bascule vers le Sud.">
+  <meta name="twitter:image" content="https://statedoku.com/og-image.png?v=2">
+  <style>
+    .hp-hero { max-width: 900px; margin: 28px auto 14px; padding: 0 16px; text-align: center; }
+    .hp-hero .crumb { font-size: .8rem; color: var(--text-3); margin-bottom: 8px; }
+    .hp-hero .crumb a { color: var(--text-2); text-decoration: none; }
+    .hp-hero h1 { font-size: clamp(1.7rem, 5.5vw, 2.4rem); font-weight: 900; letter-spacing: -0.025em; margin: 4px 0 8px; }
+    .hp-hero .meta { color: var(--text-2); font-size: 1rem; }
+    .hp-main { max-width: 760px; margin: 0 auto; padding: 18px 16px 60px; line-height: 1.65; }
+    .hp-main h2 { margin-top: 32px; margin-bottom: 10px; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; }
+    .keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 14px 0 6px; padding: 0; list-style: none; }
+    .keys li { border: 2px solid var(--border); border-radius: 12px; padding: 12px 14px; background: #fff; font-size: .88rem; color: var(--text-2); line-height: 1.45; }
+    .keys b { display: block; font-size: 1.7rem; font-weight: 900; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 2px; font-variant-numeric: tabular-nums; }
+    .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0 22px; }
+    table.tbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    table.tbl th, table.tbl td { padding: 7px 10px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+    table.tbl th { background: #F8FAFC; font-weight: 700; color: var(--navy); font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; }
+    table.tbl .n { text-align: right; font-variant-numeric: tabular-nums; }
+    table.tbl a { color: var(--navy); font-weight: 700; text-decoration: none; }
+    table.tbl a:hover { text-decoration: underline; }
+    table.tbl.dense { font-size: .82rem; }
+    table.tbl.dense th, table.tbl.dense td { padding: 5px 7px; }
+    .note { font-size: .85rem; color: var(--text-3); margin-top: -12px; }
+    .viz { margin: 16px 0 24px; }
+    .viz-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .85rem; color: var(--text-2); margin-bottom: 6px; }
+    .viz-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .k { display: inline-block; width: 16px; height: 2px; border-radius: 1px; vertical-align: middle; }
+    .ka { background: #eb6834; } .kb { background: #2a78d6; }
+    .viz-box { position: relative; }
+    .viz svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .viz svg:focus { outline: 2px solid var(--navy); outline-offset: 4px; border-radius: 4px; }
+    .viz .g { stroke: #E5E7EB; stroke-width: 1; }
+    .viz .ax { fill: #6B6B6B; font-size: 11px; font-family: inherit; }
+    .viz polyline { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+    .viz polyline.sa { stroke: #eb6834; } .viz polyline.sb { stroke: #2a78d6; }
+    .viz circle { stroke: #fff; stroke-width: 2; } .viz circle.sa { fill: #eb6834; } .viz circle.sb { fill: #2a78d6; }
+    .viz .dl { font-size: 12px; fill: #475569; font-family: inherit; } .viz .dv { font-weight: 800; fill: #0F2147; }
+    .viz .xh { stroke: #94A3B8; stroke-width: 1; }
+    .viz-tip { position: absolute; top: 0; min-width: 150px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: .82rem; box-shadow: 0 4px 14px rgba(15,33,71,.12); pointer-events: none; }
+    .viz-tip .th { font-weight: 700; color: var(--text-3); margin-bottom: 4px; }
+    .viz-tip div { white-space: nowrap; } .viz-tip strong { color: var(--navy); margin-left: 6px; font-variant-numeric: tabular-nums; } .viz-tip span { color: var(--text-2); }
+    .viz figcaption { font-size: .85rem; color: var(--text-3); margin-top: 6px; }
+    @media (max-width: 560px) { .viz .ax { font-size: 19px; } .viz .ax.minor { display: none; } .viz .dl { font-size: 19px; } .viz circle { r: 6px; } .viz polyline { stroke-width: 3; } }
+    .cta-card { background: linear-gradient(135deg, var(--navy), var(--navy-soft)); color: #fff; padding: 22px; border-radius: 14px; margin: 28px 0; text-align: center; }
+    .cta-card h3 { color: #fff; margin: 0 0 8px; }
+    .cta-card p { margin: 0 0 12px; color: rgba(255,255,255,0.85); }
+    .cta-card a { display: inline-block; background: var(--gold); color: var(--navy); padding: 10px 22px; border-radius: 999px; font-weight: 800; text-decoration: none; font-size: .92rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin: 14px 0; }
+    .related-grid a { display: block; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--navy); text-decoration: none; font-weight: 600; font-size: .9rem; }
+    .related-grid a:hover { background: #F8FAFC; border-color: var(--navy); }
+    .faq-rendered details { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; padding: 12px 16px; background: #fff; }
+    .faq-rendered summary { cursor: pointer; font-weight: 700; color: var(--navy); }
+    .faq-rendered details p { margin: 8px 0 0; color: var(--text-2); }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://statedoku.com/fr/"}, {"@type": "ListItem", "position": 2, "name": "Apprendre", "item": "https://statedoku.com/fr/learn/"}, {"@type": "ListItem", "position": 3, "name": "Sièges à la Chambre par État, 1910 à 2020", "item": "https://statedoku.com/fr/learn/sieges-chambre-par-etat-1910-2020/"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Comment les sièges de la Chambre ont changé d'État, de 1910 à 2020", "description": "Les sièges de chaque État à la Chambre des représentants à chaque recensement de 1910 à 2020, d'après le Census Bureau : gains, pertes et bascule vers le Sud.", "inLanguage": "fr", "url": "https://statedoku.com/fr/learn/sieges-chambre-par-etat-1910-2020/", "datePublished": "2026-10-05", "dateModified": "2026-10-05", "author": {"@type": "Person", "name": "Moses Tounby", "url": "https://statedoku.com/about/"}, "publisher": {"@type": "Organization", "name": "Statedoku", "url": "https://statedoku.com/"}, "isBasedOn": {"@type": "Dataset", "name": "Historical Apportionment Data (1910-2020)", "url": "https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/apportionment.csv", "creator": {"@type": "Organization", "name": "U.S. Census Bureau"}}, "image": "https://statedoku.com/og-image.png?v=2"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quel État a gagné le plus de sièges à la Chambre depuis 1910 ?", "acceptedAnswer": {"@type": "Answer", "text": "La Californie, passée de 11 sièges en 1910 à 52 après le recensement de 2020, soit 41 de plus. La Floride a le plus progressé en proportion, de 4 sièges à 28."}}, {"@type": "Question", "name": "Quel État a perdu le plus de sièges ?", "acceptedAnswer": {"@type": "Answer", "text": "La Pennsylvanie, de 36 sièges en 1910 à 17 après le recensement de 2020, soit 19 de moins. L'État de New York en a perdu 17 sur la même période, de 43 à 26, après un maximum de 45."}}, {"@type": "Question", "name": "Pourquoi les sièges n'ont-ils pas été redistribués après le recensement de 1920 ?", "acceptedAnswer": {"@type": "Answer", "text": "Le Congrès n'a jamais voté de répartition pour le recensement de 1920, le premier à compter plus d'Américains en ville qu'à la campagne. La répartition de 1910 est restée en vigueur jusqu'à la loi de 1929, qui a rendu le processus automatique à partir du recensement de 1930."}}, {"@type": "Question", "name": "Pourquoi la Chambre compte-t-elle 435 membres ?", "acceptedAnswer": {"@type": "Answer", "text": "La loi de 1911 a fixé 433 sièges plus un chacun pour l'Arizona et le Nouveau-Mexique à leur admission, soit 435, et la loi de 1929 a figé ce nombre. La Chambre a brièvement compté 437 membres après l'entrée de l'Alaska et d'Hawaï en 1959, jusqu'à la répartition du recensement de 1960."}}, {"@type": "Question", "name": "Quels États n'ont jamais gagné ni perdu de siège depuis 1910 ?", "acceptedAnswer": {"@type": "Answer", "text": "Le Delaware et le Wyoming, avec un siège chacun, et l'Idaho et le New Hampshire, avec deux. L'Alaska et Hawaï n'ont pas changé depuis leur première répartition en 1960."}}, {"@type": "Question", "name": "Quand les sièges changeront-ils la prochaine fois ?", "acceptedAnswer": {"@type": "Answer", "text": "Après le recensement de 2030. Le Census Bureau doit transmettre les chiffres des États dans les neuf mois suivant le jour du recensement, et les nouveaux sièges s'appliqueront à partir des élections de 2032, présidentielle comprise."}}]}</script>
+</head>
+<body class="legal-body">
+
+<header>
+  <a href="/fr/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <nav class="nav-actions"><a href="/fr/learn/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← Apprendre</a></nav>
+</header><main>
+  <section class="hp-hero">
+    <p class="crumb"><a href="/fr/">Accueil</a> · <a href="/fr/learn/">Apprendre</a> · Sièges à la Chambre par État, 1910 à 2020</p>
+    <h1>Comment les sièges de la Chambre ont changé d'État, de 1910 à 2020</h1>
+    <p class="meta">Un siècle de répartition, recensement par recensement et État par État, calculé à partir des chiffres du Census Bureau.</p>
+  </section>
+  <div class="hp-main">
+    <p>La Chambre des représentants des États-Unis compte 435 sièges depuis 1913, et après chaque recensement ils sont redistribués selon la population de chaque État. En un siècle, cette arithmétique discrète a déplacé plus de poids politique que presque n'importe quelle élection. En 1910, le <strong>Nord-Est et le Midwest détenaient 266 sièges</strong>, le <strong>Sud et l'Ouest 167</strong>. Après le recensement de 2020, c'était 167 et 268 : presque exactement l'inverse.</p><p>Cette page suit ce basculement recensement par recensement et État par État. Chaque chiffre vient du fichier de répartition que publie le Census Bureau pour les recensements de 1910 à 2020, et les tableaux sont calculés à partir de lui.</p>
+
+    <h2>Le siècle en quatre chiffres</h2>
+    <ul class="keys"><li><b>+41</b>sièges pour la Californie, de 11 en 1910 à 52 aujourd'hui, le plus fort gain</li><li><b>-19</b>sièges pour la Pennsylvanie, de 36 à 17, la plus forte perte</li><li><b>27</b>sièges ont changé d'État après le recensement de 1930, le plus grand remaniement, parce que celui de 1920 n'en a produit aucun</li><li><b>104</b>sièges pour l'Ouest, contre 31 en 1910 (33 après l'entrée de l'Arizona et du Nouveau-Mexique en 1912)</li></ul>
+
+    <h2>Comment les sièges sont répartis</h2>
+    <p>La Constitution impose un recensement tous les dix ans et garantit au moins un représentant à chaque État. La loi de répartition de 1911 a fixé la Chambre à 433 membres, plus un siège chacun pour l'Arizona et le Nouveau-Mexique à leur admission en 1912, soit 435 au total.</p><p>Le recensement de 1920 est le seul de l'histoire américaine à n'avoir été suivi d'aucune nouvelle répartition. Il était le premier à trouver plus d'Américains en zone urbaine qu'en zone rurale, les élus ruraux du Congrès ont résisté, et la répartition de 1910 est restée en vigueur vingt ans. La loi de 1929 a mis fin au blocage : elle a fixé la Chambre à 435 sièges et rendu la répartition automatique après chaque recensement. C'est pourquoi cette page passe directement de 1910 à 1930.</p><p>Depuis le recensement de 1940, les sièges sont répartis selon la <strong>méthode des proportions égales</strong>, inscrite dans la loi en 1941. La Chambre est passée à 437 membres pendant quelques années après l'entrée de l'Alaska et d'Hawaï en 1959, puis est revenue à 435 avec la répartition du recensement de 1960. Les nouveaux sièges s'appliquent aux élections de la Chambre deux ans après le recensement : le décompte de 2020 vaut pour les élections de 2022 à 2030 et fixe le nombre de grands électeurs de chaque État pour les présidentielles de 2024 et 2028.</p>
+
+    <h2>Le Nord face au Sud et à l'Ouest</h2>
+    <figure class="viz" aria-labelledby="viz-cap">
+      <div class="viz-legend"><span><i class="k ka"></i>Sud + Ouest</span><span><i class="k kb"></i>Nord-Est + Midwest</span></div>
+      <div class="viz-box">
+        <svg viewBox="0 0 640 300" role="img" tabindex="0" aria-label="Le Nord face au Sud et à l'Ouest: Nord-Est + Midwest 266 (1910) 167 (2020); Sud + Ouest 167 (1910) 268 (2020)">
+          <line x1="48" x2="490" y1="266.0" y2="266.0" class="g"/><text x="40" y="270.0" class="ax" text-anchor="end">140</text><line x1="48" x2="490" y1="195.1" y2="195.1" class="g"/><text x="40" y="199.1" class="ax" text-anchor="end">180</text><line x1="48" x2="490" y1="124.3" y2="124.3" class="g"/><text x="40" y="128.3" class="ax" text-anchor="end">220</text><line x1="48" x2="490" y1="53.4" y2="53.4" class="g"/><text x="40" y="57.4" class="ax" text-anchor="end">260</text><text x="48.0" y="288" class="ax" text-anchor="middle">1910</text><text x="92.2" y="288" class="ax minor" text-anchor="middle">1930</text><text x="180.6" y="288" class="ax" text-anchor="middle">1950</text><text x="269.0" y="288" class="ax minor" text-anchor="middle">1970</text><text x="357.4" y="288" class="ax" text-anchor="middle">1990</text><text x="490.0" y="288" class="ax" text-anchor="middle">2020</text>
+          <line class="xh" x1="0" x2="0" y1="18" y2="266" style="display:none"/>
+          <polyline points="48.0,42.8 92.2,55.2 136.4,69.4 180.6,81.8 224.8,101.3 269.0,115.4 313.2,145.5 357.4,172.1 401.6,189.8 445.8,209.3 490.0,218.2" class="sb"/><circle cx="48.0" cy="42.8" r="4" class="sb"/><circle cx="92.2" cy="55.2" r="4" class="sb"/><circle cx="136.4" cy="69.4" r="4" class="sb"/><circle cx="180.6" cy="81.8" r="4" class="sb"/><circle cx="224.8" cy="101.3" r="4" class="sb"/><circle cx="269.0" cy="115.4" r="4" class="sb"/><circle cx="313.2" cy="145.5" r="4" class="sb"/><circle cx="357.4" cy="172.1" r="4" class="sb"/><circle cx="401.6" cy="189.8" r="4" class="sb"/><circle cx="445.8" cy="209.3" r="4" class="sb"/><circle cx="490.0" cy="218.2" r="4" class="sb"/><polyline points="48.0,218.2 92.2,202.2 136.4,188.1 180.6,175.7 224.8,156.2 269.0,142.0 313.2,111.9 357.4,85.3 401.6,67.6 445.8,48.1 490.0,39.3" class="sa"/><circle cx="48.0" cy="218.2" r="4" class="sa"/><circle cx="92.2" cy="202.2" r="4" class="sa"/><circle cx="136.4" cy="188.1" r="4" class="sa"/><circle cx="180.6" cy="175.7" r="4" class="sa"/><circle cx="224.8" cy="156.2" r="4" class="sa"/><circle cx="269.0" cy="142.0" r="4" class="sa"/><circle cx="313.2" cy="111.9" r="4" class="sa"/><circle cx="357.4" cy="85.3" r="4" class="sa"/><circle cx="401.6" cy="67.6" r="4" class="sa"/><circle cx="445.8" cy="48.1" r="4" class="sa"/><circle cx="490.0" cy="39.3" r="4" class="sa"/><text x="502.0" y="33.3" class="dl"><tspan class="dv">268</tspan><tspan x="502.0" dy="1.25em">Sud +</tspan><tspan x="502.0" dy="1.2em">Ouest</tspan></text><text x="502.0" y="212.2" class="dl"><tspan class="dv">167</tspan><tspan x="502.0" dy="1.25em">Nord-Est +</tspan><tspan x="502.0" dy="1.2em">Midwest</tspan></text>
+          <rect x="48" y="18" width="442" height="248" fill="transparent" class="hit"/>
+        </svg>
+        <div class="viz-tip" role="status" aria-live="polite" hidden></div>
+      </div>
+      <figcaption id="viz-cap">Sièges détenus après chaque recensement par le Nord-Est et le Midwest réunis, et par le Sud et l'Ouest réunis. Survolez le graphique ou utilisez les flèches du clavier pour lire les valeurs ; le tableau ci-dessous les donne par région.</figcaption>
+      <script type="application/json" class="viz-data">{"x": [48.0, 92.2, 136.4, 180.6, 224.8, 269.0, 313.2, 357.4, 401.6, 445.8, 490.0], "years": [1910, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020], "a": [167, 176, 184, 191, 202, 210, 227, 242, 252, 263, 268], "b": [266, 259, 251, 244, 233, 225, 208, 193, 183, 172, 167]}</script>
+    </figure>
+
+    <h2>Sièges par région du Census après chaque recensement</h2>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Recensement</th><th class="n">Nord-Est</th><th class="n">Midwest</th><th class="n">Sud</th><th class="n">Ouest</th><th class="n">Part de l'Ouest dans la population</th></tr></thead><tbody>
+<tr><td>1910</td><td class="n">123</td><td class="n">143</td><td class="n">136</td><td class="n">31</td><td class="n">7,7 %</td></tr>
+<tr><td>1930</td><td class="n">122</td><td class="n">137</td><td class="n">133</td><td class="n">43</td><td class="n">10,0 %</td></tr>
+<tr><td>1940</td><td class="n">120</td><td class="n">131</td><td class="n">135</td><td class="n">49</td><td class="n">10,9 %</td></tr>
+<tr><td>1950</td><td class="n">115</td><td class="n">129</td><td class="n">134</td><td class="n">57</td><td class="n">13,4 %</td></tr>
+<tr><td>1960</td><td class="n">108</td><td class="n">125</td><td class="n">133</td><td class="n">69</td><td class="n">15,7 %</td></tr>
+<tr><td>1970</td><td class="n">104</td><td class="n">121</td><td class="n">134</td><td class="n">76</td><td class="n">17,2 %</td></tr>
+<tr><td>1980</td><td class="n">95</td><td class="n">113</td><td class="n">142</td><td class="n">85</td><td class="n">19,1 %</td></tr>
+<tr><td>1990</td><td class="n">88</td><td class="n">105</td><td class="n">149</td><td class="n">93</td><td class="n">21,3 %</td></tr>
+<tr><td>2000</td><td class="n">83</td><td class="n">100</td><td class="n">154</td><td class="n">98</td><td class="n">22,5 %</td></tr>
+<tr><td>2010</td><td class="n">78</td><td class="n">94</td><td class="n">161</td><td class="n">102</td><td class="n">23,3 %</td></tr>
+<tr><td>2020</td><td class="n">76</td><td class="n">91</td><td class="n">164</td><td class="n">104</td><td class="n">23,8 %</td></tr>
+</tbody></table></div>
+    <p>Le Nord-Est a perdu des sièges à chaque recensement depuis 1930, passant de 123 à 76, et le Midwest aussi, de 143 à 91. Le Sud est resté entre 133 et 136 sièges pendant un demi-siècle, puis a progressé à chaque recensement depuis 1970 pour atteindre 164. L'Ouest a gagné des sièges à chaque recensement, de 31 à 104, et en compte plus que le Nord-Est depuis 1990. Sa part de la population du pays est passée de 7,7 % à 23,8 %.</p>
+
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
+
+    <h2>Les grands gagnants</h2>
+    <p>La <strong>Californie</strong> avait 11 sièges en 1910 et en a 52 aujourd'hui. Elle a progressé à chaque recensement de 1930 à 2000, dont neuf sièges d'un coup en 1930, en a détenu 53 après 2000 et 2010, puis en a perdu un en 2020, la première perte de son histoire. Sa population est passée de 2,4 à 39,5 millions d'habitants.</p><p>La <strong>Floride</strong> est la plus régulière : elle a gagné des sièges à dix recensements consécutifs, tous ceux de 1930 à 2020, passant de 4 à 28. Elle comptait 752 619 habitants en 1910 et 21 538 187 en 2020, 28,6 fois plus.</p><p>Le <strong>Texas</strong> est passé de 18 à 38 sièges, avec un gain à chaque recensement depuis 1950, huit d'affilée, dont quatre sièges après 2010. L'<strong>Arizona</strong> est entré dans l'Union en 1912 avec un siège et en compte neuf. Plus loin, l'État de Washington a doublé de 5 à 10, le Colorado de 4 à 8, et le Nevada est passé de 1 à 4.</p>
+
+    <h2>Les grands perdants</h2>
+    <p>La <strong>Pennsylvanie</strong> a perdu des sièges à dix recensements consécutifs, tous ceux de 1930 à 2020, tombant de 36 à 17. Aucun État n'a perdu davantage.</p><p>L'<strong>État de New York</strong> a culminé à 45 sièges après les recensements de 1930 et 1940, une délégation qu'aucun État n'a égalée avant que la Californie n'atteigne 52 en 1990. Il a perdu des sièges à huit recensements d'affilée depuis 1950, dont cinq d'un coup après 1980, la plus forte perte du siècle, et en compte 26.</p><p>Le Midwest a reculé partout. L'Illinois est passé de 27 sièges à 17, le Missouri de 16 à 8 et l'Iowa de 11 à 4. L'Ohio a gardé 24 sièges de 1930 à 1960 et en a 15 après six pertes d'affilée. Le <strong>Michigan</strong> est monté de 13 à 19 avec l'industrie automobile, son maximum en 1960 et 1970, et est revenu à 13 après cinq pertes consécutives. La <strong>Virginie-Occidentale</strong> est passée de 6 sièges à 2, et fait partie des trois États, avec l'Illinois et le Mississippi, dont la population a baissé entre 2010 et 2020.</p>
+
+    <h2>Les États qui n'ont jamais bougé</h2>
+    <p>Le Delaware et le Wyoming ont eu un siège après chaque recensement de la période, l'Idaho et le New Hampshire deux. L'Alaska (un siège) et Hawaï (deux) n'ont pas changé depuis leur première répartition en 1960. Le Montana a failli en faire partie : deux sièges jusqu'au recensement de 1990, qui lui en a retiré un, puis son second siège retrouvé en 2020.</p>
+
+    <h2>Chaque État, de 1910 à 2020</h2>
+    <p>Sièges après quelques recensements, variation depuis la première répartition de l'État sur la période, et maximum atteint. L'Arizona et le Nouveau-Mexique partent de leur admission en 1912, l'Alaska et Hawaï de 1960.</p>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>État</th><th class="n">1910</th><th class="n">1950</th><th class="n">1980</th><th class="n">2020</th><th class="n">Variation</th><th>Maximum</th></tr></thead><tbody>
+<tr><td>Alabama</td><td class="n">10</td><td class="n">9</td><td class="n">7</td><td class="n">7</td><td class="n">-3</td><td>10 (1910)</td></tr>
+<tr><td>Alaska</td><td class="n">pas encore</td><td class="n">pas encore</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td>1 (chaque recensement)</td></tr>
+<tr><td>Arizona</td><td class="n">1 (1912)</td><td class="n">2</td><td class="n">5</td><td class="n">9</td><td class="n">+8</td><td>9 (2010, 2020)</td></tr>
+<tr><td>Arkansas</td><td class="n">7</td><td class="n">6</td><td class="n">4</td><td class="n">4</td><td class="n">-3</td><td>7 (1910, 1930, 1940)</td></tr>
+<tr><td>Californie</td><td class="n">11</td><td class="n">30</td><td class="n">45</td><td class="n">52</td><td class="n">+41</td><td>53 (2000, 2010)</td></tr>
+<tr><td>Colorado</td><td class="n">4</td><td class="n">4</td><td class="n">6</td><td class="n">8</td><td class="n">+4</td><td>8 (2020)</td></tr>
+<tr><td>Connecticut</td><td class="n">5</td><td class="n">6</td><td class="n">6</td><td class="n">5</td><td class="n">0</td><td>6 (1930, 1940, 1950, 1960, 1970, 1980, 1990)</td></tr>
+<tr><td>Delaware</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td>1 (chaque recensement)</td></tr>
+<tr><td>Floride</td><td class="n">4</td><td class="n">8</td><td class="n">19</td><td class="n">28</td><td class="n">+24</td><td>28 (2020)</td></tr>
+<tr><td>Géorgie</td><td class="n">12</td><td class="n">10</td><td class="n">10</td><td class="n">14</td><td class="n">+2</td><td>14 (2010, 2020)</td></tr>
+<tr><td>Hawaï</td><td class="n">pas encore</td><td class="n">pas encore</td><td class="n">2</td><td class="n">2</td><td class="n">0</td><td>2 (chaque recensement)</td></tr>
+<tr><td>Idaho</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">0</td><td>2 (chaque recensement)</td></tr>
+<tr><td>Illinois</td><td class="n">27</td><td class="n">25</td><td class="n">22</td><td class="n">17</td><td class="n">-10</td><td>27 (1910, 1930)</td></tr>
+<tr><td>Indiana</td><td class="n">13</td><td class="n">11</td><td class="n">10</td><td class="n">9</td><td class="n">-4</td><td>13 (1910)</td></tr>
+<tr><td>Iowa</td><td class="n">11</td><td class="n">8</td><td class="n">6</td><td class="n">4</td><td class="n">-7</td><td>11 (1910)</td></tr>
+<tr><td>Kansas</td><td class="n">8</td><td class="n">6</td><td class="n">5</td><td class="n">4</td><td class="n">-4</td><td>8 (1910)</td></tr>
+<tr><td>Kentucky</td><td class="n">11</td><td class="n">8</td><td class="n">7</td><td class="n">6</td><td class="n">-5</td><td>11 (1910)</td></tr>
+<tr><td>Louisiane</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">6</td><td class="n">-2</td><td>8 (1910, 1930, 1940, 1950, 1960, 1970, 1980)</td></tr>
+<tr><td>Maine</td><td class="n">4</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">-2</td><td>4 (1910)</td></tr>
+<tr><td>Maryland</td><td class="n">6</td><td class="n">7</td><td class="n">8</td><td class="n">8</td><td class="n">+2</td><td>8 (1960, 1970, 1980, 1990, 2000, 2010, 2020)</td></tr>
+<tr><td>Massachusetts</td><td class="n">16</td><td class="n">14</td><td class="n">11</td><td class="n">9</td><td class="n">-7</td><td>16 (1910)</td></tr>
+<tr><td>Michigan</td><td class="n">13</td><td class="n">18</td><td class="n">18</td><td class="n">13</td><td class="n">0</td><td>19 (1960, 1970)</td></tr>
+<tr><td>Minnesota</td><td class="n">10</td><td class="n">9</td><td class="n">8</td><td class="n">8</td><td class="n">-2</td><td>10 (1910)</td></tr>
+<tr><td>Mississippi</td><td class="n">8</td><td class="n">6</td><td class="n">5</td><td class="n">4</td><td class="n">-4</td><td>8 (1910)</td></tr>
+<tr><td>Missouri</td><td class="n">16</td><td class="n">11</td><td class="n">9</td><td class="n">8</td><td class="n">-8</td><td>16 (1910)</td></tr>
+<tr><td>Montana</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">0</td><td>2 (1910, 1930, 1940, 1950, 1960, 1970, 1980, 2020)</td></tr>
+<tr><td>Nebraska</td><td class="n">6</td><td class="n">4</td><td class="n">3</td><td class="n">3</td><td class="n">-3</td><td>6 (1910)</td></tr>
+<tr><td>Nevada</td><td class="n">1</td><td class="n">1</td><td class="n">2</td><td class="n">4</td><td class="n">+3</td><td>4 (2010, 2020)</td></tr>
+<tr><td>Nouveau-Hampshire</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">0</td><td>2 (chaque recensement)</td></tr>
+<tr><td>New Jersey</td><td class="n">12</td><td class="n">14</td><td class="n">14</td><td class="n">12</td><td class="n">0</td><td>15 (1960, 1970)</td></tr>
+<tr><td>Nouveau-Mexique</td><td class="n">1 (1912)</td><td class="n">2</td><td class="n">3</td><td class="n">3</td><td class="n">+2</td><td>3 (1980, 1990, 2000, 2010, 2020)</td></tr>
+<tr><td>New York</td><td class="n">43</td><td class="n">43</td><td class="n">34</td><td class="n">26</td><td class="n">-17</td><td>45 (1930, 1940)</td></tr>
+<tr><td>Caroline du Nord</td><td class="n">10</td><td class="n">12</td><td class="n">11</td><td class="n">14</td><td class="n">+4</td><td>14 (2020)</td></tr>
+<tr><td>Dakota du Nord</td><td class="n">3</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">-2</td><td>3 (1910)</td></tr>
+<tr><td>Ohio</td><td class="n">22</td><td class="n">23</td><td class="n">21</td><td class="n">15</td><td class="n">-7</td><td>24 (1930, 1960)</td></tr>
+<tr><td>Oklahoma</td><td class="n">8</td><td class="n">6</td><td class="n">6</td><td class="n">5</td><td class="n">-3</td><td>9 (1930)</td></tr>
+<tr><td>Oregon</td><td class="n">3</td><td class="n">4</td><td class="n">5</td><td class="n">6</td><td class="n">+3</td><td>6 (2020)</td></tr>
+<tr><td>Pennsylvanie</td><td class="n">36</td><td class="n">30</td><td class="n">23</td><td class="n">17</td><td class="n">-19</td><td>36 (1910)</td></tr>
+<tr><td>Rhode Island</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">-1</td><td>3 (1910)</td></tr>
+<tr><td>Caroline du Sud</td><td class="n">7</td><td class="n">6</td><td class="n">6</td><td class="n">7</td><td class="n">0</td><td>7 (1910, 2010, 2020)</td></tr>
+<tr><td>Dakota du Sud</td><td class="n">3</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">-2</td><td>3 (1910)</td></tr>
+<tr><td>Tennessee</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">9</td><td class="n">-1</td><td>10 (1910, 1940)</td></tr>
+<tr><td>Texas</td><td class="n">18</td><td class="n">22</td><td class="n">27</td><td class="n">38</td><td class="n">+20</td><td>38 (2020)</td></tr>
+<tr><td>Utah</td><td class="n">2</td><td class="n">2</td><td class="n">3</td><td class="n">4</td><td class="n">+2</td><td>4 (2010, 2020)</td></tr>
+<tr><td>Vermont</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">-1</td><td>2 (1910)</td></tr>
+<tr><td>Virginie</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">11</td><td class="n">+1</td><td>11 (1990, 2000, 2010, 2020)</td></tr>
+<tr><td>Washington</td><td class="n">5</td><td class="n">7</td><td class="n">8</td><td class="n">10</td><td class="n">+5</td><td>10 (2010, 2020)</td></tr>
+<tr><td>Virginie-Occidentale</td><td class="n">6</td><td class="n">6</td><td class="n">4</td><td class="n">2</td><td class="n">-4</td><td>6 (1910, 1930, 1940, 1950)</td></tr>
+<tr><td>Wisconsin</td><td class="n">11</td><td class="n">10</td><td class="n">9</td><td class="n">8</td><td class="n">-3</td><td>11 (1910)</td></tr>
+<tr><td>Wyoming</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">0</td><td>1 (chaque recensement)</td></tr>
+</tbody></table></div>
+
+    <h2>Combien de sièges ont bougé à chaque recensement</h2>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Recensement</th><th class="n">Sièges qui ont changé d'État</th><th>Plus fort gain</th><th>Plus forte perte</th></tr></thead><tbody>
+<tr><td>1930</td><td class="n">27</td><td>Californie +9</td><td>Missouri -3</td></tr>
+<tr><td>1940</td><td class="n">9</td><td>Californie +3</td><td>9 États, -1 chacun</td></tr>
+<tr><td>1950</td><td class="n">14</td><td>Californie +7</td><td>Pennsylvanie -3</td></tr>
+<tr><td>1960</td><td class="n">21</td><td>Californie +8</td><td>Pennsylvanie -3</td></tr>
+<tr><td>1970</td><td class="n">11</td><td>Californie +5</td><td>New York -2, Pennsylvanie -2</td></tr>
+<tr><td>1980</td><td class="n">17</td><td>Floride +4</td><td>New York -5</td></tr>
+<tr><td>1990</td><td class="n">19</td><td>Californie +7</td><td>New York -3</td></tr>
+<tr><td>2000</td><td class="n">12</td><td>4 États, +2 chacun</td><td>New York -2, Pennsylvanie -2</td></tr>
+<tr><td>2010</td><td class="n">12</td><td>Texas +4</td><td>New York -2, Ohio -2</td></tr>
+<tr><td>2020</td><td class="n">7</td><td>Texas +2</td><td>7 États, -1 chacun</td></tr>
+</tbody></table></div>
+    <p class="note">1960 inclut les trois sièges reçus par l'Alaska et Hawaï lors de leur première répartition.</p>
+
+    <h2>Où sont partis les Américains : population en 1910 et en 2020</h2>
+    <p>Les sièges suivent les habitants. Voici les six États à la croissance la plus rapide et les six à la plus lente sur 110 ans.</p>
+    <h3>Croissance la plus rapide</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>État</th><th class="n">1910</th><th class="n">2020</th><th class="n">Croissance</th></tr></thead><tbody>
+<tr><td>Nevada</td><td class="n">81 875</td><td class="n">3 104 614</td><td class="n">37,9×</td></tr>
+<tr><td>Arizona</td><td class="n">204 354</td><td class="n">7 151 502</td><td class="n">35,0×</td></tr>
+<tr><td>Floride</td><td class="n">752 619</td><td class="n">21 538 187</td><td class="n">28,6×</td></tr>
+<tr><td>Californie</td><td class="n">2 377 549</td><td class="n">39 538 223</td><td class="n">16,6×</td></tr>
+<tr><td>Alaska</td><td class="n">64 356</td><td class="n">733 391</td><td class="n">11,4×</td></tr>
+<tr><td>Utah</td><td class="n">373 351</td><td class="n">3 271 616</td><td class="n">8,8×</td></tr>
+</tbody></table></div><h3>Croissance la plus lente</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>État</th><th class="n">1910</th><th class="n">2020</th><th class="n">Croissance</th></tr></thead><tbody>
+<tr><td>Dakota du Nord</td><td class="n">577 056</td><td class="n">779 094</td><td class="n">1,4×</td></tr>
+<tr><td>Iowa</td><td class="n">2 224 771</td><td class="n">3 190 369</td><td class="n">1,4×</td></tr>
+<tr><td>Virginie-Occidentale</td><td class="n">1 221 119</td><td class="n">1 793 716</td><td class="n">1,5×</td></tr>
+<tr><td>Dakota du Sud</td><td class="n">583 888</td><td class="n">886 667</td><td class="n">1,5×</td></tr>
+<tr><td>Nebraska</td><td class="n">1 192 214</td><td class="n">1 961 504</td><td class="n">1,6×</td></tr>
+<tr><td>Mississippi</td><td class="n">1 797 114</td><td class="n">2 961 279</td><td class="n">1,6×</td></tr>
+</tbody></table></div>
+
+    <h2>Combien d'habitants pour un siège</h2>
+    <p>En 1910, la Chambre comptait un membre pour environ 212 000 habitants. Après le recensement de 2020, la moyenne du Census Bureau était de 761 169 personnes par siège. Comme les sièges ne se divisent pas, l'écart entre États est large : les deux sièges du <strong>Montana</strong> représentent 542 704 personnes chacun, le plus petit chiffre, et le siège unique du <strong>Delaware</strong> en couvre 990 837, le plus grand.</p>
+
+    <h2>Le tableau complet : sièges après chaque recensement</h2>
+    <div class="tbl-wrap"><table class="tbl dense"><thead><tr><th>État</th><th class="n">1910</th><th class="n">1930</th><th class="n">1940</th><th class="n">1950</th><th class="n">1960</th><th class="n">1970</th><th class="n">1980</th><th class="n">1990</th><th class="n">2000</th><th class="n">2010</th><th class="n">2020</th></tr></thead><tbody>
+<tr><td>Alabama</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">9</td><td class="n">8</td><td class="n">7</td><td class="n">7</td><td class="n">7</td><td class="n">7</td><td class="n">7</td><td class="n">7</td></tr>
+<tr><td>Alaska</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td></tr>
+<tr><td>Arizona</td><td class="n"></td><td class="n">1</td><td class="n">2</td><td class="n">2</td><td class="n">3</td><td class="n">4</td><td class="n">5</td><td class="n">6</td><td class="n">8</td><td class="n">9</td><td class="n">9</td></tr>
+<tr><td>Arkansas</td><td class="n">7</td><td class="n">7</td><td class="n">7</td><td class="n">6</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td></tr>
+<tr><td>Californie</td><td class="n">11</td><td class="n">20</td><td class="n">23</td><td class="n">30</td><td class="n">38</td><td class="n">43</td><td class="n">45</td><td class="n">52</td><td class="n">53</td><td class="n">53</td><td class="n">52</td></tr>
+<tr><td>Colorado</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">5</td><td class="n">6</td><td class="n">6</td><td class="n">7</td><td class="n">7</td><td class="n">8</td></tr>
+<tr><td>Connecticut</td><td class="n">5</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">5</td><td class="n">5</td><td class="n">5</td></tr>
+<tr><td>Delaware</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td></tr>
+<tr><td>Floride</td><td class="n">4</td><td class="n">5</td><td class="n">6</td><td class="n">8</td><td class="n">12</td><td class="n">15</td><td class="n">19</td><td class="n">23</td><td class="n">25</td><td class="n">27</td><td class="n">28</td></tr>
+<tr><td>Géorgie</td><td class="n">12</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">11</td><td class="n">13</td><td class="n">14</td><td class="n">14</td></tr>
+<tr><td>Hawaï</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td></tr>
+<tr><td>Idaho</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td></tr>
+<tr><td>Illinois</td><td class="n">27</td><td class="n">27</td><td class="n">26</td><td class="n">25</td><td class="n">24</td><td class="n">24</td><td class="n">22</td><td class="n">20</td><td class="n">19</td><td class="n">18</td><td class="n">17</td></tr>
+<tr><td>Indiana</td><td class="n">13</td><td class="n">12</td><td class="n">11</td><td class="n">11</td><td class="n">11</td><td class="n">11</td><td class="n">10</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">9</td></tr>
+<tr><td>Iowa</td><td class="n">11</td><td class="n">9</td><td class="n">8</td><td class="n">8</td><td class="n">7</td><td class="n">6</td><td class="n">6</td><td class="n">5</td><td class="n">5</td><td class="n">4</td><td class="n">4</td></tr>
+<tr><td>Kansas</td><td class="n">8</td><td class="n">7</td><td class="n">6</td><td class="n">6</td><td class="n">5</td><td class="n">5</td><td class="n">5</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td></tr>
+<tr><td>Kentucky</td><td class="n">11</td><td class="n">9</td><td class="n">9</td><td class="n">8</td><td class="n">7</td><td class="n">7</td><td class="n">7</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td></tr>
+<tr><td>Louisiane</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">7</td><td class="n">7</td><td class="n">6</td><td class="n">6</td></tr>
+<tr><td>Maine</td><td class="n">4</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td></tr>
+<tr><td>Maryland</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">7</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td></tr>
+<tr><td>Massachusetts</td><td class="n">16</td><td class="n">15</td><td class="n">14</td><td class="n">14</td><td class="n">12</td><td class="n">12</td><td class="n">11</td><td class="n">10</td><td class="n">10</td><td class="n">9</td><td class="n">9</td></tr>
+<tr><td>Michigan</td><td class="n">13</td><td class="n">17</td><td class="n">17</td><td class="n">18</td><td class="n">19</td><td class="n">19</td><td class="n">18</td><td class="n">16</td><td class="n">15</td><td class="n">14</td><td class="n">13</td></tr>
+<tr><td>Minnesota</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">9</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td><td class="n">8</td></tr>
+<tr><td>Mississippi</td><td class="n">8</td><td class="n">7</td><td class="n">7</td><td class="n">6</td><td class="n">5</td><td class="n">5</td><td class="n">5</td><td class="n">5</td><td class="n">4</td><td class="n">4</td><td class="n">4</td></tr>
+<tr><td>Missouri</td><td class="n">16</td><td class="n">13</td><td class="n">13</td><td class="n">11</td><td class="n">10</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">9</td><td class="n">8</td><td class="n">8</td></tr>
+<tr><td>Montana</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">2</td></tr>
+<tr><td>Nebraska</td><td class="n">6</td><td class="n">5</td><td class="n">4</td><td class="n">4</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">3</td></tr>
+<tr><td>Nevada</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">2</td><td class="n">2</td><td class="n">3</td><td class="n">4</td><td class="n">4</td></tr>
+<tr><td>Nouveau-Hampshire</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td></tr>
+<tr><td>New Jersey</td><td class="n">12</td><td class="n">14</td><td class="n">14</td><td class="n">14</td><td class="n">15</td><td class="n">15</td><td class="n">14</td><td class="n">13</td><td class="n">13</td><td class="n">12</td><td class="n">12</td></tr>
+<tr><td>Nouveau-Mexique</td><td class="n"></td><td class="n">1</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">3</td></tr>
+<tr><td>New York</td><td class="n">43</td><td class="n">45</td><td class="n">45</td><td class="n">43</td><td class="n">41</td><td class="n">39</td><td class="n">34</td><td class="n">31</td><td class="n">29</td><td class="n">27</td><td class="n">26</td></tr>
+<tr><td>Caroline du Nord</td><td class="n">10</td><td class="n">11</td><td class="n">12</td><td class="n">12</td><td class="n">11</td><td class="n">11</td><td class="n">11</td><td class="n">12</td><td class="n">13</td><td class="n">13</td><td class="n">14</td></tr>
+<tr><td>Dakota du Nord</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td></tr>
+<tr><td>Ohio</td><td class="n">22</td><td class="n">24</td><td class="n">23</td><td class="n">23</td><td class="n">24</td><td class="n">23</td><td class="n">21</td><td class="n">19</td><td class="n">18</td><td class="n">16</td><td class="n">15</td></tr>
+<tr><td>Oklahoma</td><td class="n">8</td><td class="n">9</td><td class="n">8</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">5</td><td class="n">5</td><td class="n">5</td></tr>
+<tr><td>Oregon</td><td class="n">3</td><td class="n">3</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">4</td><td class="n">5</td><td class="n">5</td><td class="n">5</td><td class="n">5</td><td class="n">6</td></tr>
+<tr><td>Pennsylvanie</td><td class="n">36</td><td class="n">34</td><td class="n">33</td><td class="n">30</td><td class="n">27</td><td class="n">25</td><td class="n">23</td><td class="n">21</td><td class="n">19</td><td class="n">18</td><td class="n">17</td></tr>
+<tr><td>Rhode Island</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td></tr>
+<tr><td>Caroline du Sud</td><td class="n">7</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">7</td><td class="n">7</td></tr>
+<tr><td>Dakota du Sud</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td></tr>
+<tr><td>Tennessee</td><td class="n">10</td><td class="n">9</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">8</td><td class="n">9</td><td class="n">9</td><td class="n">9</td><td class="n">9</td><td class="n">9</td></tr>
+<tr><td>Texas</td><td class="n">18</td><td class="n">21</td><td class="n">21</td><td class="n">22</td><td class="n">23</td><td class="n">24</td><td class="n">27</td><td class="n">30</td><td class="n">32</td><td class="n">36</td><td class="n">38</td></tr>
+<tr><td>Utah</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">2</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">4</td><td class="n">4</td></tr>
+<tr><td>Vermont</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td></tr>
+<tr><td>Virginie</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">11</td><td class="n">11</td><td class="n">11</td><td class="n">11</td></tr>
+<tr><td>Washington</td><td class="n">5</td><td class="n">6</td><td class="n">6</td><td class="n">7</td><td class="n">7</td><td class="n">7</td><td class="n">8</td><td class="n">9</td><td class="n">9</td><td class="n">10</td><td class="n">10</td></tr>
+<tr><td>Virginie-Occidentale</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">5</td><td class="n">4</td><td class="n">4</td><td class="n">3</td><td class="n">3</td><td class="n">3</td><td class="n">2</td></tr>
+<tr><td>Wisconsin</td><td class="n">11</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">10</td><td class="n">9</td><td class="n">9</td><td class="n">9</td><td class="n">8</td><td class="n">8</td><td class="n">8</td></tr>
+<tr><td>Wyoming</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td></tr>
+</tbody></table></div>
+    <p class="note">1920 n'y figure pas, faute de nouvelle répartition cette année-là.</p>
+
+    <h2>Source et méthode</h2>
+    <p>Tous les chiffres viennent du fichier historique de répartition du Census Bureau (<a href="https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/apportionment.csv" rel="noopener">apportionment.csv</a>), qui donne la population résidente et le nombre de représentants de chaque État à chaque recensement de 1910 à 2020. Les régions sont les quatre régions du Census Bureau. Les sièges sont ceux attribués à chaque recensement, pas le nombre d'élus en fonction un jour donné. La page est reconstruite à partir de ce fichier par un script, qui vérifie chaque chiffre cité dans le texte.</p>
+
+    <div class="cta-card">
+      <h3>Testez-vous sur la carte électorale</h3>
+      <p>Quels États ont le plus de grands électeurs ? Le quiz prend deux minutes.</p>
+      <a href="/fr/play/electoral-college/">Jouer au quiz →</a>
+    </div>
+
+    <section class="faq-rendered">
+    <h2>Questions fréquentes</h2>
+    <details><summary>Quel État a gagné le plus de sièges à la Chambre depuis 1910 ?</summary><p>La Californie, passée de 11 sièges en 1910 à 52 après le recensement de 2020, soit 41 de plus. La Floride a le plus progressé en proportion, de 4 sièges à 28.</p></details>
+<details><summary>Quel État a perdu le plus de sièges ?</summary><p>La Pennsylvanie, de 36 sièges en 1910 à 17 après le recensement de 2020, soit 19 de moins. L'État de New York en a perdu 17 sur la même période, de 43 à 26, après un maximum de 45.</p></details>
+<details><summary>Pourquoi les sièges n'ont-ils pas été redistribués après le recensement de 1920 ?</summary><p>Le Congrès n'a jamais voté de répartition pour le recensement de 1920, le premier à compter plus d'Américains en ville qu'à la campagne. La répartition de 1910 est restée en vigueur jusqu'à la loi de 1929, qui a rendu le processus automatique à partir du recensement de 1930.</p></details>
+<details><summary>Pourquoi la Chambre compte-t-elle 435 membres ?</summary><p>La loi de 1911 a fixé 433 sièges plus un chacun pour l'Arizona et le Nouveau-Mexique à leur admission, soit 435, et la loi de 1929 a figé ce nombre. La Chambre a brièvement compté 437 membres après l'entrée de l'Alaska et d'Hawaï en 1959, jusqu'à la répartition du recensement de 1960.</p></details>
+<details><summary>Quels États n'ont jamais gagné ni perdu de siège depuis 1910 ?</summary><p>Le Delaware et le Wyoming, avec un siège chacun, et l'Idaho et le New Hampshire, avec deux. L'Alaska et Hawaï n'ont pas changé depuis leur première répartition en 1960.</p></details>
+<details><summary>Quand les sièges changeront-ils la prochaine fois ?</summary><p>Après le recensement de 2030. Le Census Bureau doit transmettre les chiffres des États dans les neuf mois suivant le jour du recensement, et les nouveaux sièges s'appliqueront à partir des élections de 2032, présidentielle comprise.</p></details>
+    </section>
+
+    <h2>Guides associés</h2>
+    <div class="related-grid"><a href="/fr/learn/college-electoral/">→ Le Collège électoral</a><a href="/fr/learn/regions-des-etats-unis/">→ Les 4 régions des États-Unis</a><a href="/fr/learn/liste-des-50-etats/">→ La liste des 50 États</a><a href="/fr/learn/systeme-federal-americain/">→ Le système fédéral américain</a><a href="/fr/learn/13-colonies/">→ Les 13 colonies</a><a href="/fr/learn/">→ Apprendre les 50 États</a></div>
+  </div>
+</main><footer>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">Tous les états</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a></p>
+</footer>
+<script>
+(function(){
+  var f=document.querySelector('.viz');if(!f)return;
+  var d=JSON.parse(f.querySelector('.viz-data').textContent);
+  var svg=f.querySelector('svg'),xh=svg.querySelector('.xh'),tip=f.querySelector('.viz-tip'),hit=svg.querySelector('.hit');
+  var na=f.querySelector('.ka').parentNode.textContent,nb=f.querySelector('.kb').parentNode.textContent,cur=-1;
+  function row(cls,v,n){var r=document.createElement('div');var k=document.createElement('i');k.className='k '+cls;
+    var b=document.createElement('strong');b.textContent=v;var s=document.createElement('span');s.textContent=' '+n;
+    r.appendChild(k);r.appendChild(b);r.appendChild(s);return r;}
+  function show(i){cur=i;var x=d.x[i];xh.setAttribute('x1',x);xh.setAttribute('x2',x);xh.style.display='';
+    tip.textContent='';var h=document.createElement('div');h.className='th';h.textContent=d.years[i];tip.appendChild(h);
+    tip.appendChild(row('ka',d.a[i],na));tip.appendChild(row('kb',d.b[i],nb));tip.hidden=false;
+    var bx=svg.getBoundingClientRect(),px=x/640*bx.width;tip.style.left=Math.min(Math.max(px-70,0),bx.width-150)+'px';}
+  function hide(){xh.style.display='none';tip.hidden=true;cur=-1;}
+  function near(e){var bx=svg.getBoundingClientRect(),x=(e.clientX-bx.left)/bx.width*640,b=0;
+    for(var i=1;i<d.x.length;i++)if(Math.abs(d.x[i]-x)<Math.abs(d.x[b]-x))b=i;return b;}
+  hit.addEventListener('pointermove',function(e){show(near(e));});
+  hit.addEventListener('pointerdown',function(e){show(near(e));});
+  svg.addEventListener('pointerleave',hide);
+  svg.addEventListener('focus',function(){show(cur<0?d.x.length-1:cur);});
+  svg.addEventListener('blur',hide);
+  svg.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'&&cur>0){show(cur-1);e.preventDefault();}
+    if(e.key==='ArrowRight'&&cur<d.x.length-1){show(cur+1);e.preventDefault();}});
+})();
+</script>
+<script src="/config.js"></script>
+<script src="/js/admin.js"></script>
+<script src="/js/ads.js?v=1"></script>
+</body>
+</html>

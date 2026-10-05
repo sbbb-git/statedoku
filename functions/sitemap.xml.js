@@ -182,6 +182,10 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/regions-des-etats-unis/`, { priority: 0.9 }],
     [`${BASE}/fr/learn/drapeaux-des-etats/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/college-electoral/`, { priority: 0.85 }],
+    // House seats by state 1910-2020, built from Census apportionment data by scripts/build-house-seats-page.py
+    [`${BASE}/learn/house-seats-by-state-1910-2020/`, { priority: 0.85, alternates: [['en', `${BASE}/learn/house-seats-by-state-1910-2020/`], ['fr', `${BASE}/fr/learn/sieges-chambre-par-etat-1910-2020/`], ['es', `${BASE}/es/learn/escanos-camara-por-estado-1910-2020/`]] }],
+    [`${BASE}/fr/learn/sieges-chambre-par-etat-1910-2020/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/escanos-camara-por-estado-1910-2020/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/fuseaux-horaires-etats-unis/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/surnoms-des-etats/`, { priority: 0.85 }],
     // Batch 2 (June 4) — 2 EN + 5 ES + 5 FR
