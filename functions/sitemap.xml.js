@@ -209,16 +209,7 @@ export async function onRequestGet({ request }) {
     // most time-sensitive pages on the site for the next ~50 days.
     // WC mega-batch 2 (June 4) — country & state pages (huge query volume)
     // WC mega-batch 3 (June 4) — players, base camps, ceremonies, history
-    [`${BASE}/fr/learn/camps-de-base-mondial-2026/`, { priority: 0.9, changefreq: 'weekly' }],
-    [`${BASE}/fr/learn/ceremonie-ouverture-mondial-2026/`, { priority: 0.9, changefreq: 'weekly' }],
-    [`${BASE}/fr/learn/comparaison-mondial-2026-vs-qatar-2022/`, { priority: 0.85, changefreq: 'weekly' }],
-    [`${BASE}/fr/learn/prix-billets-mondial-2026/`, { priority: 0.95, changefreq: 'weekly' }],
     // WC mega-batch 4 (June 4) — more teams, players, stadium guides
-    [`${BASE}/learn/usa-vs-mexico-soccer-history/`, { priority: 0.9, changefreq: 'weekly' }],
-    [`${BASE}/es/learn/estadio-azteca-historia/`, { priority: 0.95, changefreq: 'weekly' }],
-    [`${BASE}/es/learn/mexico-vs-eeuu-historia/`, { priority: 0.9, changefreq: 'weekly' }],
-    [`${BASE}/fr/learn/metlife-stadium-guide-mondial-2026/`, { priority: 0.95, changefreq: 'weekly' }],
-    [`${BASE}/fr/learn/mondial-2026-budget-voyage/`, { priority: 0.9, changefreq: 'weekly' }],
     // GSC-driven mega-batch (June 19) — 50 capital-de-X + 15 crossword answer pages
     [`${BASE}/es/learn/ciudad-arizona-cabecera-condado-pima/`, { priority: 0.9, changefreq: 'weekly' }],
     [`${BASE}/es/learn/estado-eeuu-2-letras-nc/`, { priority: 0.9, changefreq: 'weekly' }],

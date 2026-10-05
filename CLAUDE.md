@@ -77,6 +77,10 @@ pages, one template per state; 7 `learn/capital-of-<city>` pages answering a
 question that has no answer; 7 Spanish crossword pages and 6 "X es un estado".
 Together they had earned 14 Bing clicks since launch and none from Google.
 Do not bring a family like these back to fill the hubs or chase a query.
+Nine more followed the same day, missed by the first filter because their slugs
+said "mondial" or did not name the tournament: six French World Cup 2026 pages,
+the Estadio Azteca history and the two USA-Mexico soccer rivalry pages, 6 Bing
+clicks between them. The site is about US geography; soccer is off its subject.
 
 **The site is signed with a pen name.** The About page, press kit and
 `llms.txt` say Statedoku is made by Moses Tounby and say plainly that it is a
@@ -138,7 +142,7 @@ passed on the earlier version, and 79 pages went unreachable for a day.
   to point at, drop the anchor and keep the text rather than inventing a page.
 - **Meta descriptions 70 to 160 characters**, balanced parentheses and quotes.
 
-643 pages are indexable and 1,440 are deliberately noindexed. Thin or
+634 pages are indexable and 1,449 are deliberately noindexed. Thin or
 near-duplicate pages are noindexed on purpose, not deleted. Adding thin pages to
 fix a broken link is a bad trade while AdSense is judging the site.
 
