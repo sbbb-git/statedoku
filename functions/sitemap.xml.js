@@ -126,11 +126,10 @@ export async function onRequestGet({ request }) {
   // since blanket generation is what produced the doorway problem.
   const EN_ABBREV = ['pa','hi','md','mo','nj','ga','mi','nm','ma','sc','va','nc','az','tx','nv','il','nh','fl'];
   const ES_ABBREV = ['pa','nj','ga','nm','mo','va','az','tx','nv','il','nh','fl','hi','ma','md','mi','mn'];
-  const ES_CITY = ['boston','atlanta','nueva-jersey','miami','las-vegas','filadelfia'];
   const gapEntries = [];
   for (const c of EN_ABBREV) gapEntries.push([`${BASE}/learn/what-state-is-${c}/`, { priority: 0.7 }]);
   for (const c of ES_ABBREV) gapEntries.push([`${BASE}/es/learn/estado-eeuu-abreviatura-${c}/`, { priority: 0.7 }]);
-  for (const c of ES_CITY) gapEntries.push([`${BASE}/es/learn/${c}-es-un-estado/`, { priority: 0.7 }]);
+  // es/learn/<city>-es-un-estado retired 5 Oct 2026 (AdSense low-value content): noindexed, not listed.
 
   // Reference lists. "liste des 50 etats des Etats-Unis" already returns
   // Statedoku in 100% of AI answers it appears in, and the Spanish variant
@@ -300,9 +299,8 @@ export async function onRequestGet({ request }) {
 
   // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
   const IS_A_STATE = ['las-vegas','boston','atlanta','miami','minneapolis','philadelphia','charlotte','seattle','portland','phoenix'];
-  const CAPITAL_OF = ['miami','pittsburgh','baltimore','milwaukee','las-vegas','charlotte','durham'];
   for (const city of IS_A_STATE) extras.push([`${BASE}/learn/is-${city}-a-state/`, { priority: 0.75 }]);
-  for (const city of CAPITAL_OF) extras.push([`${BASE}/learn/capital-of-${city}/`, { priority: 0.75 }]);
+  // learn/capital-of-<city> retired 5 Oct 2026 (AdSense low-value content): noindexed, not listed.
 
   // Press kit + FR/ES legal pages (were missing — flagged by Bing Webmaster Tools)
   extras.push([`${BASE}/press/`, { priority: 0.6 }]);
