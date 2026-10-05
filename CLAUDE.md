@@ -94,6 +94,17 @@ name on the site; only the privacy policies carry it, as the data controller.
 Never present the pen name as a separate real person: no invented biography, no
 photo, no nationality, no credentials.
 
+**The legal notice depends on whether ads run.** `/legal/`,
+`/fr/mentions-legales/` and `/es/aviso-legal/` (linked from every footer) use
+the non-professional regime of LCEN article 1-1, II: pen name, contact address
+and the hosting provider's details, the publisher's identity having been given
+to the host. That holds only while no ad is served. A site showing ads counts
+as published professionally, which requires article 1-1, I: real name,
+address, telephone and a director of publication on the page. Before
+`ADS_ENABLED` turns true, ask the owner for those details (he may use a
+domiciliation address); never invent them, and never switch ads on without
+the notice updated.
+
 **The X API is never called.** It is pay-per-use with no free tier, and a post
 containing a link costs 0.20 USD against 0.015. Two link-posts a day is about
 12 USD a month. The worker posts through Buffer, which publishes to X on its own
@@ -147,7 +158,7 @@ passed on the earlier version, and 79 pages went unreachable for a day.
   to point at, drop the anchor and keep the text rather than inventing a page.
 - **Meta descriptions 70 to 160 characters**, balanced parentheses and quotes.
 
-637 pages are indexable and 1,449 are deliberately noindexed. Thin or
+640 pages are indexable and 1,449 are deliberately noindexed. Thin or
 near-duplicate pages are noindexed on purpose, not deleted. Adding thin pages to
 fix a broken link is a bad trade while AdSense is judging the site.
 
