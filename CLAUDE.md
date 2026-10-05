@@ -78,6 +78,13 @@ question that has no answer; 7 Spanish crossword pages and 6 "X es un estado".
 Together they had earned 14 Bing clicks since launch and none from Google.
 Do not bring a family like these back to fill the hubs or chase a query.
 
+**The site is signed with a pen name.** The About page, press kit and
+`llms.txt` say Statedoku is made by Moses Tounby and say plainly that it is a
+pen name for a solo developer based in France. The owner does not want his real
+name on the site; only the privacy policies carry it, as the data controller.
+Never present the pen name as a separate real person: no invented biography, no
+photo, no nationality, no credentials.
+
 **The X API is never called.** It is pay-per-use with no free tier, and a post
 containing a link costs 0.20 USD against 0.015. Two link-posts a day is about
 12 USD a month. The worker posts through Buffer, which publishes to X on its own
@@ -107,8 +114,12 @@ and truncated others mid-word. Match `content="([^"]*)"` instead.
 
 ## SEO invariants
 
-Re-check these after any bulk edit. `scripts/audit-local.py` measures all of them
-and should read zero.
+Re-check these after any bulk edit, and after every change to the script that
+made it. Three audits, all must pass: `scripts/audit-local.py` (reads zero),
+`scripts/audit-click-depth.py` (nothing deeper than 3 clicks, every learn hub
+covers its section) and `node scripts/audit-sitemap.mjs` (sitemap equals the
+indexable set). On 5 October a regex fix was shipped after the first two had
+passed on the earlier version, and 79 pages went unreachable for a day.
 
 - **hreflang is reciprocal.** If A declares B, B declares A. Repair pairwise,
   never by rebuilding clusters: the graph already contains clusters holding two

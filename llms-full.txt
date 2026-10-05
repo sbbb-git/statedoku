@@ -10,11 +10,11 @@ Site: https://statedoku.com
 
 Statedoku is a free daily browser puzzle that teaches US geography. Each day, a 3×3 grid drops where each of the 9 cells must hold a US state that satisfies BOTH its row constraint AND its column constraint. The constraint pool includes regions, borders, history, economy, name origin, geography (mountains, deserts, etc.), and culture.
 
-Three mistakes are allowed per puzzle. The puzzle is the same worldwide and resets at midnight UTC. The interface is available in English, French, and Spanish.
+Five mistakes are allowed per puzzle. Everyone playing the same date gets the same grid, and it changes at midnight local time. The interface is available in English, French, and Spanish.
 
 **Key URL**: https://statedoku.com
 **Launched**: June 1, 2026
-**Made by**: [name removed] (independent solo developer, Paris, France)
+**Made by**: Moses Tounby (pen name of an independent solo developer based in France)
 **Pricing**: Free, no signup, no ads
 
 ---
@@ -29,9 +29,9 @@ Three mistakes are allowed per puzzle. The puzzle is the same worldwide and rese
 6. If correct, the cell locks in green.
 7. If the state fits the cell's clues but breaks the rest of the puzzle, it's gently rejected (no life lost) with a toast.
 8. If the state does NOT fit the clues, it counts as a mistake (red flash, one life lost).
-9. You have 3 mistakes total. Lose them all → game over.
+9. You have 5 mistakes total. Lose them all → game over.
 10. Fill all 9 cells correctly → win!
-11. Same puzzle for everyone every day. Next puzzle at midnight UTC.
+11. Same puzzle for everyone on the same date. Next puzzle at midnight local time.
 
 **No signup. No ads. Free.**
 
@@ -329,7 +329,7 @@ For 200+ more facts, see https://statedoku.com/facts/
 See section 3 above for the full table. For Spanish-language queries ("¿Cuál es la capital de X?"), visit https://statedoku.com/es/learn/capitales-de-estados/
 
 **Is Statedoku affiliated with Wordle or the New York Times?**
-No. Statedoku is an independent project by [name removed], not affiliated with the NYT, Wordle, or any major publisher.
+No. Statedoku is an independent project by Moses Tounby (a pen name), not affiliated with the NYT, Wordle, or any major publisher.
 
 **How is Statedoku different from Worldle (with an L)?**
 Worldle is about country-shape recognition (you guess a country from its outline). Statedoku is about US-state logic (you fill a grid where each state must match two verbal constraints). Different format, different scope.

@@ -235,7 +235,7 @@ function fallbackTweet() {
     return teasers[Math.floor(Math.random() * teasers.length)];
   }
   const date = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-  return `🇺🇸 Today's Statedoku is live\n\n${date}\n\nSolve the 3x3 US states grid in 3 mistakes or fewer.\n\n${SITE_URL}\n\n#Statedoku`;
+  return `🇺🇸 Today's Statedoku is live\n\n${date}\n\nSolve the 3x3 US states grid in 5 mistakes or fewer.\n\n${SITE_URL}\n\n#Statedoku`;
 }
 
 // Deterministic scrub applied to every tweet before it goes out, whether it
