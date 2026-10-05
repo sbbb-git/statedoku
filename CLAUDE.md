@@ -105,6 +105,12 @@ address, telephone and a director of publication on the page. Before
 domiciliation address); never invent them, and never switch ads on without
 the notice updated.
 
+**Cloudflare Bot Fight Mode stays off.** It has blocked Google's ad crawlers
+(Mediapartners-Google, Google-Display-Ads-Bot) on other sites during AdSense
+review. The owner confirmed it off on 5 October 2026, and the three Google
+user agents get a 200. `.github/workflows/cf-bot-check.yml` reports the zone
+settings, but the deploy token cannot read the bot setting itself.
+
 **The X API is never called.** It is pay-per-use with no free tier, and a post
 containing a link costs 0.20 USD against 0.015. Two link-posts a day is about
 12 USD a month. The worker posts through Buffer, which publishes to X on its own
