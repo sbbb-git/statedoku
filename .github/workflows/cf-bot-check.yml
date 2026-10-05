@@ -19,6 +19,9 @@ jobs:
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           api() { curl -s -H "Authorization: Bearer $CF_TOKEN" -H "Content-Type: application/json" "$@"; }
+          # Logs are served from a host some readers cannot reach, so the same
+          # lines are also published as annotations, a few per notice.
+          exec > >(tee /tmp/out.txt) 2>&1
           echo "== token"
           api https://api.cloudflare.com/client/v4/user/tokens/verify | jq -c '{success, status: .result.status, errors}'
           echo "== zone"
@@ -38,4 +41,12 @@ jobs:
             Q=$(jq -n --arg z "$ZID" --arg since "$SINCE" --arg ua "%$UA%" '{query: "query($z:String!,$since:Time!,$ua:String!){viewer{zones(filter:{zoneTag:$z}){firewallEventsAdaptiveGroups(limit:20,filter:{datetime_geq:$since,userAgent_like:$ua},orderBy:[count_DESC]){count dimensions{action source}}}}}", variables: {z: $z, since: $since, ua: $ua}}')
             echo "-- $UA"
             api https://api.cloudflare.com/client/v4/graphql -d "$Q" | jq -c '{errors: .errors, events: .data.viewer.zones[0].firewallEventsAdaptiveGroups}'
+          done
+      - name: Publish the results as annotations
+        if: always()
+        run: |
+          [ -f /tmp/out.txt ] || exit 0
+          split -l 6 /tmp/out.txt /tmp/part.
+          for f in /tmp/part.*; do
+            echo "::notice title=cf-check $(basename $f)::$(tr '\n' ' ' < $f | sed 's/%/%25/g' | cut -c1-3500)"
           done
