@@ -20,3 +20,8 @@ CLAUDE.md
 README.md
 ADS-ACTIVATION.md
 ADSENSE-REVIEW-RESPONSES.md
+# Root files that are tooling or private, not site content. constraints.csv
+# lists every clue with the states that satisfy it: the game's answer key.
+constraints.csv
+rename.sh
+1775838371621.jpeg

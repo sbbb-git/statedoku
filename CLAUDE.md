@@ -77,6 +77,11 @@ pages, one template per state; 7 `learn/capital-of-<city>` pages answering a
 question that has no answer; 7 Spanish crossword pages and 6 "X es un estado".
 Together they had earned 14 Bing clicks since launch and none from Google.
 Do not bring a family like these back to fill the hubs or chase a query.
+The 71 indexable game pages under `play/`, `fr/play/` and `es/play/` carry no
+ad code either, since 5 October: a game screen is the "screen without
+publisher content" the AdSense policy names, ads must sit 150 px from a game,
+and Google had indexed none of them. Ads belong on the articles and state
+pages, never on a page whose main content is the game.
 Nine more followed the same day, missed by the first filter because their slugs
 said "mondial" or did not name the tournament: six French World Cup 2026 pages,
 the Estadio Azteca history and the two USA-Mexico soccer rivalry pages, 6 Bing

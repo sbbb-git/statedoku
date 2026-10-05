@@ -29,7 +29,7 @@ jobs:
             --exclude-from=.deployignore \
             ./ /tmp/dist/
           echo "staged $(find /tmp/dist -name index.html | wc -l) pages"
-          for d in marketing tmp bot email-worker scripts seo-snapshots audience-snapshots; do
+          for d in marketing tmp bot email-worker scripts seo-snapshots audience-snapshots constraints.csv rename.sh ADSENSE-REVIEW-RESPONSES.md ADS-ACTIVATION.md CLAUDE.md; do
             if [ -e "/tmp/dist/$d" ]; then
               echo "::error::$d reached the deploy directory"; exit 1
             fi
