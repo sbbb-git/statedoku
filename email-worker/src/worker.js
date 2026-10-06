@@ -14,7 +14,9 @@ const FROM_NAME  = 'Statedoku';
 // Click tracking — when a subscriber's email is in this allow-list, the
 // play-button is wrapped with a redirect through /api/track/email-click so we
 // can record opens-and-clicks for them. Privacy-scoped to opted-in test users.
-const CLICK_TRACK_EMAILS = new Set(['[address removed]']);
+// Addresses whose clicks are tracked come from the CLICK_TRACK_EMAILS secret
+// (comma separated), never from this public repo. Unset means none.
+let CLICK_TRACK_EMAILS = new Set();
 
 const SUBJECTS = {
   en: "Today's grid is live 🗺️",
@@ -140,18 +142,31 @@ async function _runHourly(env) {
   return { ok, fail, total: (results || []).length };
 }
 
+function _loadTrackList(env) {
+  CLICK_TRACK_EMAILS = new Set((env.CLICK_TRACK_EMAILS || '').split(',').map(x => x.trim().toLowerCase()).filter(Boolean));
+}
+
+function _keyMatches(given, expected) {
+  if (!expected || typeof given !== 'string') return false;
+  const a = new TextEncoder().encode(given), b = new TextEncoder().encode(expected);
+  let diff = a.length ^ b.length;
+  for (let i = 0; i < b.length; i++) diff |= (a[i % (a.length || 1)] ?? 0) ^ b[i];
+  return diff === 0;
+}
+
 export default {
   async scheduled(event, env, ctx) {
+    _loadTrackList(env);
     try { await _runHourly(env); }
     catch (e) { console.error('[email] cron exception:', e.message); }
   },
 
-  // Manual trigger / debug — visit with ?key=<MANUAL_TRIGGER_KEY>
+  // Manual trigger / debug: send the header X-Trigger-Key: <MANUAL_TRIGGER_KEY>
   async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.searchParams.get('key') !== env.MANUAL_TRIGGER_KEY) {
+    if (!_keyMatches(request.headers.get('x-trigger-key') || '', env.MANUAL_TRIGGER_KEY)) {
       return new Response('Forbidden\n', { status: 403 });
     }
+    _loadTrackList(env);
     const out = await _runHourly(env);
     return new Response(JSON.stringify(out, null, 2), {
       headers: { 'content-type': 'application/json' },

@@ -384,6 +384,14 @@ function _enabledNetworks(env) {
   return nets;
 }
 
+function _keyMatches(given, expected) {
+  if (!expected || typeof given !== 'string') return false;
+  const a = new TextEncoder().encode(given), b = new TextEncoder().encode(expected);
+  let diff = a.length ^ b.length;
+  for (let i = 0; i < b.length; i++) diff |= (a[i % (a.length || 1)] ?? 0) ^ b[i];
+  return diff === 0;
+}
+
 export default {
   // Cron — schedule set in wrangler.toml.
   // prelaunch: fires twice a day (morning + evening UTC).
@@ -400,12 +408,11 @@ export default {
   },
 
   // Manual trigger / preview. Supports optional ?text= for custom-content
-  // announcements (still gated by MANUAL_TRIGGER_KEY + humanize()'s scrub).
+  // announcements (gated by the X-Trigger-Key header + humanize()'s scrub).
   async fetch(request, env) {
     const url = new URL(request.url);
-    const key = url.searchParams.get('key');
-
-    if (!key || key !== env.MANUAL_TRIGGER_KEY) {
+    // Key in a header only (query strings land in logs), compared in constant time.
+    if (!_keyMatches(request.headers.get('x-trigger-key') || '', env.MANUAL_TRIGGER_KEY)) {
       return new Response('Forbidden\n', { status: 403, headers: { 'content-type': 'text/plain' } });
     }
 

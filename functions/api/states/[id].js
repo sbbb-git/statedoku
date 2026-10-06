@@ -62,7 +62,7 @@ export async function onRequestGet({ request, params }) {
       },
     });
   } catch (e) {
-    return jsonErr(500, e.message);
+    return jsonErr(500, 'Internal error');
   }
 }
 

@@ -12,7 +12,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard — Statedoku</title>
+<title>Admin Dashboard, Statedoku</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" href="/css/style.css">
 <style>
@@ -157,8 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const STORAGE = (window.CONFIG && CONFIG.STORAGE_KEY) || 'statedoku_v1';
   const stats = JSON.parse(localStorage.getItem(STORAGE + '_stats') || '{"played":0,"won":0,"streak":0,"maxStreak":0,"bestTime":null}');
 
-  const fmt = (s) => s ? `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}` : '—';
-  const winRate = stats.played ? Math.round(stats.won/stats.played*100) + '%' : '—';
+  const fmt = (s) => s ? `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}` : '-';
+  const winRate = stats.played ? Math.round(stats.won/stats.played*100) + '%' : '-';
 
   const cards = [
     { label: 'Total played (this device)', value: stats.played, sub: 'On this browser only' },
@@ -199,16 +199,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const out = document.getElementById('server-stats-out');
   const loadBtn = document.getElementById('stats-load');
   const keyInput = document.getElementById('stats-key');
-  // Remember key in localStorage (admin convenience)
+  // Key kept for this tab only; an older copy in localStorage is erased.
   const SK_KEY = 'statedoku_stats_admin_key';
-  keyInput.value = localStorage.getItem(SK_KEY) || '';
+  try { localStorage.removeItem(SK_KEY); } catch {}
+  keyInput.value = sessionStorage.getItem(SK_KEY) || '';
   loadBtn.addEventListener('click', async () => {
     const key = keyInput.value.trim();
     if (!key) { out.textContent = 'Enter STATS_ADMIN_KEY first.'; return; }
-    localStorage.setItem(SK_KEY, key);
+    sessionStorage.setItem(SK_KEY, key);
     out.textContent = 'Loading…';
     try {
-      const r = await fetch(`/api/stats?key=${encodeURIComponent(key)}`);
+      const r = await fetch('/api/stats', { headers: { 'x-admin-key': key }, cache: 'no-store' });
       if (!r.ok) { out.textContent = `Error ${r.status}: ${await r.text()}`; return; }
       const json = await r.json();
       out.textContent = formatStats(json);
@@ -222,10 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
     lines.push('═══ TOTALS (all time) ═══');
     (s.totals || []).forEach(t => lines.push(`  ${String(t.n).padStart(6)} × ${t.event_type}`));
     lines.push('');
-    lines.push(`═══ DAILY (last 30d) — ${s.unique_puzzles_30d} unique puzzle dates ═══`);
+    lines.push(`═══ DAILY (last 30d), ${s.unique_puzzles_30d} unique puzzle dates ═══`);
     lines.push('  date         starts  solves  losses  avg-sec');
     (s.daily || []).forEach(d => {
-      lines.push(`  ${d.puzzle_date}  ${String(d.starts).padStart(6)}  ${String(d.solves).padStart(6)}  ${String(d.losses).padStart(6)}  ${(d.avg_solve_sec ?? '—').toString().padStart(7)}`);
+      lines.push(`  ${d.puzzle_date}  ${String(d.starts).padStart(6)}  ${String(d.solves).padStart(6)}  ${String(d.losses).padStart(6)}  ${(d.avg_solve_sec ?? '-').toString().padStart(7)}`);
     });
     lines.push('');
     lines.push('═══ TOP COUNTRIES ═══');

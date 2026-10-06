@@ -70,7 +70,7 @@ export async function onRequestGet({ request }) {
       },
     });
   } catch (e) {
-    return new Response(JSON.stringify({ error: 'Internal error', message: e.message }), {
+    return new Response(JSON.stringify({ error: 'Internal error' }), {
       status: 500,
       headers: { 'content-type': 'application/json' },
     });

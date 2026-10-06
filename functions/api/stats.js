@@ -1,18 +1,17 @@
-// Statedoku — GET /api/stats?key=ADMIN_KEY
+// Statedoku: GET /api/stats with header X-Admin-Key
 // Returns aggregate analytics for the admin dashboard.
-// Auth: requires env.STATS_ADMIN_KEY in query string (?key=…).
+// Auth: header X-Admin-Key must equal env.STATS_ADMIN_KEY (constant-time).
 // Bindings:
 //   - STATS_DB (D1)
 //   - STATS_ADMIN_KEY (env var)
 
-export async function onRequestGet({ request, env }) {
-  if (!env.STATS_DB) return new Response('STATS_DB missing', { status: 500 });
+import { keyMatches, adminKey } from '../_shared/auth.js';
 
-  const url = new URL(request.url);
-  const key = url.searchParams.get('key');
-  if (!env.STATS_ADMIN_KEY || key !== env.STATS_ADMIN_KEY) {
+export async function onRequestGet({ request, env }) {
+  if (!keyMatches(adminKey(request), env.STATS_ADMIN_KEY)) {
     return new Response('Forbidden', { status: 403 });
   }
+  if (!env.STATS_DB) return new Response('Service unavailable', { status: 503 });
 
   const since = Date.now() - 30 * 86400000;
   const all = {};

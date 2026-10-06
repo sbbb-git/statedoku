@@ -45,7 +45,7 @@ export async function onRequestPost({ request, env }) {
        VALUES (?, ?, ?, ?, ?, ?, ?)`
     ).bind(body.event_type, body.puzzle_date, Date.now(), country, lang, timeSec, mistakes).run();
   } catch (e) {
-    return new Response('DB error: ' + e.message, { status: 500 });
+    return new Response('Internal error', { status: 500 });
   }
 
   return new Response(null, { status: 204 });

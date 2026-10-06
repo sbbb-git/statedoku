@@ -3,7 +3,7 @@
 //   Auth: requires header `X-Admin-Key: <env.ADMIN_API_KEY>`.
 //
 // DELETE /api/admin/subscribers?email=<email>
-//   Soft-deactivates a subscriber (sets active=0). Used by the admin UI.
+//   Deletes a subscriber's row (erasure, as the privacy policy promises).
 //
 // Set the secret with:
 //   wrangler pages secret put ADMIN_API_KEY --project-name statedoku
@@ -84,7 +84,7 @@ export async function onRequestGet({ request, env }) {
       generated_at: new Date().toISOString(),
     }), { headers: JSON_HEADERS });
   } catch (e) {
-    return new Response(JSON.stringify({ ok: false, error: 'query_failed', detail: e.message }), {
+    return new Response(JSON.stringify({ ok: false, error: 'query_failed' }), {
       status: 500,
       headers: JSON_HEADERS,
     });
@@ -101,11 +101,11 @@ export async function onRequestDelete({ request, env }) {
 
   try {
     const res = await env.STATS_DB.prepare(
-      `UPDATE email_subscribers SET active = 0 WHERE email = ?`
+      `DELETE FROM email_subscribers WHERE email = ?`
     ).bind(email).run();
     return new Response(JSON.stringify({ ok: true, updated: res.meta?.changes || 0 }), { headers: JSON_HEADERS });
   } catch (e) {
-    return new Response(JSON.stringify({ ok: false, error: 'update_failed', detail: e.message }), {
+    return new Response(JSON.stringify({ ok: false, error: 'update_failed' }), {
       status: 500,
       headers: JSON_HEADERS,
     });

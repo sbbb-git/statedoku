@@ -1,34 +1,43 @@
-// GET /api/unsubscribe?token=...
-// Marks the subscriber as inactive. Returns a tiny HTML confirmation.
+// GET  /api/unsubscribe?token=...  shows a button (mail scanners only GET links)
+// POST /api/unsubscribe            token in the form body; deletes the address
+//
+// Unsubscribing erases the row, as the privacy policy promises, instead of
+// keeping the address with a flag.
+import { page, T, HOME, validToken } from '../_shared/page.js';
 
-export async function onRequestGet({ request, env }) {
-  if (!env.STATS_DB) return _html('Database not configured', 500);
-
-  const url = new URL(request.url);
-  const token = url.searchParams.get('token');
-  if (!token) return _html('Missing token', 400);
-
-  try {
-    const r = await env.STATS_DB
-      .prepare('UPDATE email_subscribers SET active = 0 WHERE token = ?')
-      .bind(token).run();
-    if (r.meta && r.meta.changes === 0) return _html('Already unsubscribed or invalid link.', 404);
-  } catch (e) {
-    return _html('DB error: ' + e.message, 500);
-  }
-
-  return _html(`
-    <div style="text-align:center;padding:60px 24px;font-family:system-ui,sans-serif;color:#0F2147">
-      <h1 style="font-size:1.4rem;font-weight:900;margin-bottom:8px">You're unsubscribed.</h1>
-      <p style="color:#525252;font-size:.95rem">No more daily emails from Statedoku.</p>
-      <p style="margin-top:24px"><a href="/" style="color:#0F2147;font-weight:700">← Back to today's puzzle</a></p>
-    </div>
-  `);
+async function _row(env, token) {
+  return env.STATS_DB.prepare('SELECT lang FROM email_subscribers WHERE token = ?').bind(token).first();
 }
 
-function _html(body, status = 200) {
-  return new Response(`<!doctype html><html><body>${body}</body></html>`, {
-    status,
-    headers: { 'content-type': 'text/html; charset=utf-8' },
-  });
+export async function onRequestGet({ request, env }) {
+  const token = new URL(request.url).searchParams.get('token');
+  if (!env.STATS_DB || !validToken(token)) return page('Statedoku', `<p>${T.en.bad}</p>`, 400);
+  const row = await _row(env, token).catch(() => null);
+  const t = T[row?.lang] || T.en;
+  if (!row) return page('Statedoku', `<p>${t.bad}</p>`, 404);
+  return page(t.uTitle, `<h1 style="font-size:1.3rem">${t.uTitle}</h1><p>${t.uText}</p>
+<form method="post" action="/api/unsubscribe"><input type="hidden" name="token" value="${token}">
+<button type="submit" style="background:#DC2626;color:#fff;border:0;border-radius:999px;padding:12px 24px;font-weight:700;font-size:1rem;cursor:pointer">${t.uBtn}</button></form>`);
+}
+
+export async function onRequestPost({ request, env }) {
+  let token = null;
+  const ct = (request.headers.get('content-type') || '').toLowerCase();
+  try {
+    // Form posts from the page above, and RFC 8058 one-click posts from mail
+    // clients (List-Unsubscribe-Post), which carry the token in the URL.
+    token = new URL(request.url).searchParams.get('token');
+    if (!token && (ct.includes('form') || ct.includes('multipart'))) token = (await request.formData()).get('token');
+  } catch {}
+  if (!env.STATS_DB || !validToken(token)) return page('Statedoku', `<p>${T.en.bad}</p>`, 400);
+  const row = await _row(env, token).catch(() => null);
+  const t = T[row?.lang] || T.en;
+  if (!row) return page('Statedoku', `<p>${t.bad}</p>`, 404);
+  try {
+    await env.STATS_DB.prepare('DELETE FROM email_subscribers WHERE token = ?').bind(token).run();
+  } catch {
+    return page('Statedoku', `<p>${t.bad}</p>`, 500);
+  }
+  const home = HOME[row.lang] || '/';
+  return page(t.uTitle, `<h1 style="font-size:1.3rem">${t.uTitle}</h1><p>${t.uDone}</p><p><a href="${home}" style="color:#0F2147;font-weight:700">${t.home}</a></p>`);
 }

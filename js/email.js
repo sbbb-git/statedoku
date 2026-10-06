@@ -74,10 +74,14 @@ const EmailReminder = (() => {
         return;
       }
       status.classList.add('ok');
-      const lang2 = (typeof I18n !== 'undefined' && I18n.t) ? I18n.t('email_thanks') : '';
-      status.textContent = lang2 && lang2 !== 'email_thanks'
+      // Double opt-in: the address only goes live once its owner clicks the
+      // link in the confirmation email.
+      const key = data.pending ? 'email_check_inbox' : 'email_thanks';
+      const lang2 = (typeof I18n !== 'undefined' && I18n.t) ? I18n.t(key) : '';
+      status.textContent = lang2 && lang2 !== key
         ? lang2
-        : '✓ You\'re in! Tomorrow you\'ll get the puzzle in your inbox.';
+        : (data.pending ? '✓ Almost done: check your inbox and click the link to confirm.'
+                        : '✓ You\'re in! Tomorrow you\'ll get the puzzle in your inbox.');
       localStorage.setItem(LS_SUBSCRIBED, '1');
       setTimeout(() => { _closeModal(); _hideCTA(); }, 1800);
     } catch (err) {

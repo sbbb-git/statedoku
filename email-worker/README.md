@@ -56,7 +56,7 @@ After deploy, Wrangler gives you a URL like
 `https://statedoku-email-reminders.YOUR_ACCOUNT.workers.dev`.
 
 ```bash
-curl "https://statedoku-email-reminders.YOUR_ACCOUNT.workers.dev/?key=YOUR_MANUAL_TRIGGER_KEY"
+curl -H "X-Trigger-Key: YOUR_MANUAL_TRIGGER_KEY" "https://statedoku-email-reminders.YOUR_ACCOUNT.workers.dev/"
 ```
 Returns JSON `{ ok, fail, total }` — the count of subscribers processed this run.
 

@@ -1,3 +1,10 @@
+// ?date= only ever selects a puzzle date; anything that is not YYYY-MM-DD
+// is ignored, so the value can never reach the page as markup.
+function _dateParam() {
+  const d = new URLSearchParams(location.search).get('date');
+  return d && /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : null;
+}
+
 const Game = (() => {
 
   // Nine cells, no givens, fifty candidate states. At three this was the
@@ -426,9 +433,11 @@ const Game = (() => {
       }
 
       const q = trimmed.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+      // French and Spanish players often type the English name (New
+      // Hampshire, not Nouveau-Hampshire), so that matches too.
+      const fold = n => n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
       const matches = _states.filter(s => {
-        const name = s.names[lang].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-        return name.startsWith(q) || name.includes(q);
+        return fold(s.names[lang]).includes(q) || fold(s.names.en).includes(q);
       }).sort((a, b) => {
         const na = a.names[lang].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
         const nb = b.names[lang].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
@@ -1437,7 +1446,7 @@ const DevPanel = (() => {
       <div class="dev-body" id="dev-tab-tools">
         <label class="dev-row">
           <span>Jump to date</span>
-          <input type="date" id="dev-date" value="${new URLSearchParams(location.search).get('date') || Puzzle.getTodayStr()}">
+          <input type="date" id="dev-date" value="${_dateParam() || Puzzle.getTodayStr()}">
         </label>
         <div class="dev-row dev-buttons">
           <button data-act="prev">◀ Prev day</button>
@@ -1631,7 +1640,7 @@ const DevPanel = (() => {
   }
 
   function _shiftDate(days) {
-    const cur = new URLSearchParams(location.search).get('date') || Puzzle.getTodayStr();
+    const cur = _dateParam() || Puzzle.getTodayStr();
     const [y,m,d] = cur.split('-').map(Number);
     const dt = new Date(y, m-1, d);
     dt.setDate(dt.getDate() + days);
@@ -1682,7 +1691,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const langFromPath = path.includes('/fr/') ? 'fr' : path.includes('/es/') ? 'es' : null;
   await I18n.init(langFromPath);
 
-  const dateStr = new URLSearchParams(location.search).get('date') || Puzzle.getTodayStr();
+  const dateStr = _dateParam() || Puzzle.getTodayStr();
   await Game.init(dateStr);
 
   // Dev panel — auto-mounts if ?dev=1 in URL, or if previously enabled

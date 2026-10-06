@@ -25,3 +25,7 @@ ADSENSE-REVIEW-RESPONSES.md
 constraints.csv
 rename.sh
 1775838371621.jpeg
+
+# Repo tooling and metadata, not site content
+bin
+.gitignore

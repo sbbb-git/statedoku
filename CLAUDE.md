@@ -201,6 +201,33 @@ The next correction needs a second cut-over date, not an edit to the first:
 any change to states.json, `LIST_CONSTRAINTS` or constraints-live.js without
 recording the old value for earlier dates rewrites grids people have played.
 
+## Endpoints and keys
+
+The repo is public, so nothing here may depend on an address or a key being
+unknown.
+
+- **Email sign-up is double opt-in.** `/api/subscribe` stores a new address
+  inactive and mails a link to `/api/confirm`; only that turns it on. An active
+  address is never changed by a new sign-up and an unsubscribed one never
+  switches back on without a fresh confirmation, so nobody can subscribe a
+  third party. The endpoint only takes `application/json`, which forces a CORS
+  preflight. Unsubscribe deletes the row (erasure, not a flag), and both confirm
+  and unsubscribe need a POST from a button, because mail scanners follow GET
+  links.
+- **Keys travel in headers, never in a URL.** `/api/stats` and the admin API
+  read `x-admin-key`, the two workers read `x-trigger-key`, all compared in
+  constant time (`functions/_shared/auth.js`). A key in a query string ends up
+  in logs and browser history.
+- **Admin pages keep the key in `sessionStorage`** and escape every value they
+  render: a subscriber row is attacker-controlled text.
+- **Click tracking names nobody in code.** The addresses whose email clicks are
+  recorded come from the `CLICK_TRACK_EMAILS` secret (comma separated), in both
+  the email worker and `/api/track/email-click`. Unset means none.
+- **`ADMIN_HASH` in config.js is public.** It only toggles the dev panel in the
+  browser; the password behind it must never be reused anywhere.
+- **Error bodies are generic.** Never return `e.message` from a function.
+- **Workflow actions are pinned to a commit SHA**, with the tag in a comment.
+
 ## Weight
 
 Do not inline the US map. `/data/us-map.svg` is 218 KB; inlined it cannot be

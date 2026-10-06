@@ -20,7 +20,7 @@ jobs:
       deployments: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Stage the site without the repo-only directories
         run: |
@@ -29,14 +29,14 @@ jobs:
             --exclude-from=.deployignore \
             ./ /tmp/dist/
           echo "staged $(find /tmp/dist -name index.html | wc -l) pages"
-          for d in marketing tmp bot email-worker scripts seo-snapshots audience-snapshots constraints.csv rename.sh ADSENSE-REVIEW-RESPONSES.md ADS-ACTIVATION.md CLAUDE.md; do
+          for d in marketing tmp bot email-worker scripts seo-snapshots audience-snapshots constraints.csv rename.sh ADS-ACTIVATION.md CLAUDE.md .git .github .claude node_modules bin .gitignore; do
             if [ -e "/tmp/dist/$d" ]; then
               echo "::error::$d reached the deploy directory"; exit 1
             fi
           done
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

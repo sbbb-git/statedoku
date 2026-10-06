@@ -203,7 +203,7 @@
     "email_modal_sub": "Delivered around noon NYC. Unsubscribe in 1 click.",
     "email_label": "Your email",
     "email_time_label": "Delivery time (your local timezone)",
-    "email_gdpr": "Just your email. No tracking, no third parties.",
+    "email_gdpr": "Just your email, used only to send the puzzle. Unsubscribe in one click.",
     "email_thanks": "✓ You're in! Tomorrow you'll get the puzzle in your inbox.",
     "email_invalid": "Please enter a valid email.",
     "email_network_error": "Network error. Please try again.",
@@ -340,7 +340,8 @@
       "pop_5m10m": "Population from the latest Census Bureau estimate, not the 2020 count.",
       "pop_gt10m": "Population from the latest Census Bureau estimate, not the 2020 count."
     },
-    "what_does_this_mean": "What does this mean?"
+    "what_does_this_mean": "What does this mean?",
+    "email_check_inbox": "✓ Almost done: check your inbox and click the link to confirm."
   },
   "fr": {
     "title": "Statedoku",
@@ -546,7 +547,7 @@
     "email_modal_sub": "Livré vers midi (heure de New York). Désinscription en 1 clic.",
     "email_label": "Ton email",
     "email_time_label": "Heure de livraison (votre fuseau)",
-    "email_gdpr": "Juste ton email. Aucun tracking, aucun tiers.",
+    "email_gdpr": "Seulement ton adresse, utilisée uniquement pour t'envoyer le puzzle. Désinscription en un clic.",
     "email_thanks": "✓ C'est bon ! Tu recevras le puzzle demain dans ta boîte.",
     "email_invalid": "Email invalide.",
     "email_network_error": "Erreur réseau. Réessaie plus tard.",
@@ -683,7 +684,8 @@
       "pop_5m10m": "Population selon la dernière estimation du Census Bureau, pas le recensement de 2020.",
       "pop_gt10m": "Population selon la dernière estimation du Census Bureau, pas le recensement de 2020."
     },
-    "what_does_this_mean": "Qu'est-ce que ça veut dire ?"
+    "what_does_this_mean": "Qu'est-ce que ça veut dire ?",
+    "email_check_inbox": "✓ Presque fini : ouvre l'e-mail reçu et clique sur le lien pour confirmer."
   },
   "es": {
     "title": "Statedoku",
@@ -889,7 +891,7 @@
     "email_modal_sub": "Entregado al mediodía (hora de Nueva York). Cancela en 1 clic.",
     "email_label": "Tu email",
     "email_time_label": "Hora de entrega (tu zona horaria)",
-    "email_gdpr": "Solo tu email. Sin tracking, sin terceros.",
+    "email_gdpr": "Solo tu correo, usado únicamente para enviarte el puzzle. Baja en un clic.",
     "email_thanks": "✓ ¡Listo! Mañana recibirás el puzzle en tu correo.",
     "email_invalid": "Email no válido.",
     "email_network_error": "Error de red. Inténtalo más tarde.",
@@ -1026,6 +1028,7 @@
       "pop_5m10m": "Población según la última estimación del Census Bureau, no el censo de 2020.",
       "pop_gt10m": "Población según la última estimación del Census Bureau, no el censo de 2020."
     },
-    "what_does_this_mean": "¿Qué significa esto?"
+    "what_does_this_mean": "¿Qué significa esto?",
+    "email_check_inbox": "✓ Casi listo: abre el correo que te enviamos y haz clic en el enlace para confirmar."
   }
 }

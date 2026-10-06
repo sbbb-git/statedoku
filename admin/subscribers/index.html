@@ -12,7 +12,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Email Subscribers — Statedoku Admin</title>
+<title>Email Subscribers, Statedoku Admin</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
 <link rel="stylesheet" href="/css/style.css?v=27">
@@ -96,7 +96,7 @@
   <div id="lock-state" class="lock-state" style="display:none;">
     <h2>🔒 Admin key required</h2>
     <p>Paste your <code>ADMIN_API_KEY</code> (set in Cloudflare Pages env vars).<br>
-       It's stored only in your browser's localStorage on this device.</p>
+       It is kept only for this browser tab and forgotten when you close it.</p>
     <form class="key-input" id="key-form">
       <input type="password" id="key-input" autocomplete="off" spellcheck="false" placeholder="Paste admin key…">
       <button type="submit">Unlock</button>
@@ -114,7 +114,7 @@
 
   <div id="error-state" class="error-state" style="display:none;">
     <h2>Something went wrong</h2>
-    <p id="error-detail">—</p>
+    <p id="error-detail">-</p>
     <button id="logout-btn" style="background:#fff;border:1px solid var(--border);padding:8px 14px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.85rem;">Reset admin key</button>
   </div>
 
@@ -170,7 +170,7 @@
   </div>
 </div>
 
-<script src="/config.js?v=9"></script>
+<script src="/config.js?v=10"></script>
 <script src="/js/admin.js?v=4"></script>
 <script src="/js/ads.js?v=1"></script>
 <script>
@@ -184,12 +184,18 @@
   }
 
   // 2) Check we have an API key (separate from password — a server-side secret)
+  // The key lives in sessionStorage only: it is gone when the tab closes, and
+  // a copy left in localStorage by an earlier version is erased.
   const KEY_STORAGE = 'statedoku_admin_api_key';
-  let apiKey = localStorage.getItem(KEY_STORAGE);
+  try { localStorage.removeItem(KEY_STORAGE); } catch {}
+  let apiKey = sessionStorage.getItem(KEY_STORAGE);
+  // Every value from the API is escaped before it reaches innerHTML: subscriber
+  // emails come from a public form.
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   const $ = id => document.getElementById(id);
   const show = (id) => ['lock-state', 'loading-state', 'error-state', 'data-view'].forEach(s => $(s).style.display = (s === id ? '' : 'none'));
-  const fmt = d => d ? new Date(d).toISOString().slice(0, 16).replace('T', ' ') : '—';
+  const fmt = d => d ? new Date(d).toISOString().slice(0, 16).replace('T', ' ') : '-';
 
   let allRows = [];
   let summary = {};
@@ -205,7 +211,7 @@
         cache: 'no-store',
       });
       if (r.status === 401) {
-        localStorage.removeItem(KEY_STORAGE);
+        sessionStorage.removeItem(KEY_STORAGE);
         apiKey = null;
         show('lock-state');
         $('key-err').textContent = 'Wrong key. Try again.';
@@ -242,19 +248,19 @@
       { l: 'Languages', v: summary.langs },
       { l: 'Countries', v: summary.countries },
     ];
-    $('summary').innerHTML = items.map(i => `<div class="stat-card"><div class="v">${i.v ?? 0}</div><div class="l">${i.l}</div></div>`).join('');
+    $('summary').innerHTML = items.map(i => `<div class="stat-card"><div class="v">${esc(i.v ?? 0)}</div><div class="l">${esc(i.l)}</div></div>`).join('');
   }
 
   function renderBreakdowns() {
     const cards = [];
     if (breakdowns.byLang && breakdowns.byLang.length) {
-      cards.push(`<div class="bd-card"><h4>By language</h4>${breakdowns.byLang.map(r => `<div class="bd-row"><span class="k">${r.lang || '?'}</span><span class="v">${r.n}</span></div>`).join('')}</div>`);
+      cards.push(`<div class="bd-card"><h4>By language</h4>${breakdowns.byLang.map(r => `<div class="bd-row"><span class="k">${esc(r.lang || '?')}</span><span class="v">${esc(r.n)}</span></div>`).join('')}</div>`);
     }
     if (breakdowns.byHour && breakdowns.byHour.length) {
-      cards.push(`<div class="bd-card"><h4>Preferred send hour (UTC)</h4>${breakdowns.byHour.map(r => `<div class="bd-row"><span class="k">${String(r.hour_utc).padStart(2,'0')}:00</span><span class="v">${r.n}</span></div>`).join('')}</div>`);
+      cards.push(`<div class="bd-card"><h4>Preferred send hour (UTC)</h4>${breakdowns.byHour.map(r => `<div class="bd-row"><span class="k">${esc(String(r.hour_utc).padStart(2,'0'))}:00</span><span class="v">${esc(r.n)}</span></div>`).join('')}</div>`);
     }
     if (breakdowns.byCountry && breakdowns.byCountry.length) {
-      cards.push(`<div class="bd-card"><h4>By country (top 20)</h4>${breakdowns.byCountry.map(r => `<div class="bd-row"><span class="k">${r.country || '?'}</span><span class="v">${r.n}</span></div>`).join('')}</div>`);
+      cards.push(`<div class="bd-card"><h4>By country (top 20)</h4>${breakdowns.byCountry.map(r => `<div class="bd-row"><span class="k">${esc(r.country || '?')}</span><span class="v">${esc(r.n)}</span></div>`).join('')}</div>`);
     }
     $('breakdowns').innerHTML = cards.join('');
   }
@@ -262,8 +268,8 @@
   function renderFilters() {
     const langs = [...new Set(allRows.map(r => r.lang).filter(Boolean))].sort();
     const countries = [...new Set(allRows.map(r => r.country).filter(Boolean))].sort();
-    $('f-lang').innerHTML = '<option value="">All</option>' + langs.map(l => `<option value="${l}">${l}</option>`).join('');
-    $('f-country').innerHTML = '<option value="">All</option>' + countries.map(c => `<option value="${c}">${c}</option>`).join('');
+    $('f-lang').innerHTML = '<option value="">All</option>' + langs.map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join('');
+    $('f-country').innerHTML = '<option value="">All</option>' + countries.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
   }
 
   function getFilteredSorted() {
@@ -302,17 +308,15 @@
         const cls = r.active ? '' : 'inactive';
         const status = r.active
           ? '<span class="badge badge-green">Active</span>'
-          : '<span class="badge badge-red">Inactive</span>';
-        const action = r.active
-          ? `<button class="deactivate-btn" data-email="${r.email}">Deactivate</button>`
-          : `<span style="font-size:.74rem;color:var(--text-3);">—</span>`;
+          : '<span class="badge badge-red">Not active</span>';
+        const action = `<button class="deactivate-btn" data-email="${esc(r.email)}">Remove</button>`;
         return `<tr class="${cls}">
-          <td><a href="mailto:${r.email}" style="color:var(--navy);font-weight:600;text-decoration:none;">${r.email}</a></td>
-          <td><span class="badge badge-blue">${r.lang || '?'}</span></td>
-          <td>${r.country || '—'}</td>
-          <td>${String(r.hour_utc).padStart(2,'0')}:00</td>
-          <td>${fmt(r.subscribed_at)}</td>
-          <td>${r.last_sent_date || '—'}</td>
+          <td><a href="mailto:${encodeURIComponent(r.email || '')}" style="color:var(--navy);font-weight:600;text-decoration:none;">${esc(r.email)}</a></td>
+          <td><span class="badge badge-blue">${esc(r.lang || '?')}</span></td>
+          <td>${esc(r.country || '-')}</td>
+          <td>${esc(String(r.hour_utc).padStart(2,'0'))}:00</td>
+          <td>${esc(fmt(r.subscribed_at))}</td>
+          <td>${esc(r.last_sent_date || '-')}</td>
           <td>${status}</td>
           <td class="row-actions">${action}</td>
         </tr>`;
@@ -352,14 +356,14 @@
     e.preventDefault();
     const v = $('key-input').value.trim();
     if (!v) return;
-    localStorage.setItem(KEY_STORAGE, v);
+    sessionStorage.setItem(KEY_STORAGE, v);
     apiKey = v;
     $('key-err').textContent = '';
     loadData();
   });
 
   $('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem(KEY_STORAGE);
+    sessionStorage.removeItem(KEY_STORAGE);
     location.reload();
   });
 
@@ -375,7 +379,7 @@
     const btn = e.target.closest('.deactivate-btn');
     if (!btn) return;
     const email = btn.dataset.email;
-    if (!confirm(`Deactivate ${email}? They will stop receiving the daily email but their record stays in the DB.`)) return;
+    if (!confirm(`Remove ${email}? The address is deleted and will stop receiving the daily email.`)) return;
     btn.disabled = true;
     btn.textContent = 'Deactivating…';
     try {

@@ -61,6 +61,6 @@ export async function onRequestGet({ request, env }) {
       clicks: rows,
     }, null, 2), { headers: JSON_HEADERS });
   } catch (e) {
-    return new Response(JSON.stringify({ ok: false, error: e.message }), { status: 500, headers: JSON_HEADERS });
+    return new Response(JSON.stringify({ ok: false, error: 'query_failed' }), { status: 500, headers: JSON_HEADERS });
   }
 }

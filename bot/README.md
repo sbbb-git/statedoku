@@ -38,7 +38,7 @@ wrangler secret put MANUAL_TRIGGER_KEY
 
 ### Buffer, the free route to X
 
-Deployed at <https://statedoku-twitter-bot.your-subdomain.workers.dev>.
+Deployed at <https://statedoku-twitter-bot.<your-subdomain>.workers.dev>.
 
 1. Connect the X account at <https://publish.buffer.com> on the free plan.
 2. Create an API key at <https://publish.buffer.com/settings/api>. It looks like
@@ -52,7 +52,7 @@ Deployed at <https://statedoku-twitter-bot.your-subdomain.workers.dev>.
 
    It prints every channel with its service and id, and points at the X one.
    The same thing is available through the worker if you prefer:
-   `curl "https://statedoku-twitter-bot.your-subdomain.workers.dev/?key=<MANUAL_TRIGGER_KEY>&buffer_channels=1"`
+   `curl -H "X-Trigger-Key: <MANUAL_TRIGGER_KEY>" "https://<worker>/?buffer_channels=1"`
 5. `npx wrangler secret put BUFFER_CHANNEL_ID`, then paste the id.
 
 Nothing posts to X until both are set. Until then the worker runs and posts
@@ -106,7 +106,7 @@ To stop paying, deleting `X_PAID_ENABLED` is enough. The credentials can stay.
 ## Testing
 
 ```bash
-curl "https://<worker>/?key=<MANUAL_TRIGGER_KEY>&dry=1"
+curl -H "X-Trigger-Key: <MANUAL_TRIGGER_KEY>" "https://<worker>/?dry=1"
 ```
 
 Shows the tweet that would go out, which slot it came from, and which networks

@@ -1,13 +1,13 @@
 // GET /api/track/email-click?u=<base64-email>&d=<base64-dest>&l=<lang>
 //
 // Records a click from an email and 302-redirects to the destination URL.
-// Currently scoped to a single test user — see SCOPE_TO_EMAILS below.
-// To open it up to all subscribers later, just empty SCOPE_TO_EMAILS.
+// Recording is opt-in per address: env.CLICK_TRACK_EMAILS holds a comma
+// separated allow-list, kept out of this public repo. Unset or empty, no click
+// is recorded and the link simply redirects.
 //
 // Storage: D1 table `email_clicks`.
 // Privacy: stores email, user_agent, country, ref_lang, dest, timestamp.
 
-const SCOPE_TO_EMAILS = ['[address removed]'];
 
 function _b64decode(s) {
   try { return atob(s.replace(/-/g, '+').replace(/_/g, '/')); }
@@ -47,7 +47,8 @@ export async function onRequestGet({ request, env }) {
   }
 
   // Skip recording unless this email is in scope (privacy + opt-in semantics)
-  if (SCOPE_TO_EMAILS.length > 0 && !SCOPE_TO_EMAILS.includes(email)) {
+  const scope = (env.CLICK_TRACK_EMAILS || '').split(',').map(x => x.trim().toLowerCase()).filter(Boolean);
+  if (!scope.includes(email)) {
     return Response.redirect(fallbackRedirect, 302);
   }
 

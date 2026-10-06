@@ -2,7 +2,7 @@ const CONFIG = {
   // Cache-buster for the JSON files under /data/. Those are fetched at runtime,
   // so without a version query a returning player keeps the copy their browser
   // cached and never sees updated translations or state data. Bump on edit.
-  DATA_VERSION: '5',
+  DATA_VERSION: '6',
 
   // Global feature flags
   ADS_ENABLED: false,                // false → no ads rendered. Toggle to true once AdSense approves + slot IDs are pasted into placeholders. See /ADS-ACTIVATION.md
@@ -25,7 +25,8 @@ const CONFIG = {
 
   // Superadmin: SHA-256 hash of the admin password.
   // ⚠️ Change immediately with: node bin/set-admin-password.mjs
-  // Default password: ChangeMe_Statedoku_2026
+  // UI toggle only (dev panel, analytics opt-out); server endpoints use their own keys.
+  // The hash is public, so this password must never be reused anywhere else.
   ADMIN_HASH: '26eb84f4a05045e38616b565f17c64185fd92f109ffa69930377ba5eebf3a0b9',
 
   // i18n + storage
