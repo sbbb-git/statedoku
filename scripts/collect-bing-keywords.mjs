@@ -67,40 +67,75 @@ async function call(method, apikey, params = {}) {
 
 /**
  * Seeds from the taxonomy this project already maintains: the 50 states in
- * data/states.json, and the topic slugs under learn/. Crossed with the intents
- * the site actually serves.
+ * data/states.json, and the topic slugs of the indexable pages under learn/.
+ * Crossed with the intents the site actually serves.
+ *
+ * Only live subjects are seeded. A learn/ page carrying noindex has been
+ * retired on purpose (World Cup 2026, "capital of <city>", crossword helpers,
+ * one-template-per-state families: see CLAUDE.md), and measuring demand for
+ * it would only invite bringing it back. RETIRED repeats the families by name
+ * so a retired page that loses its noindex by accident still stays out.
  */
+const RETIRED = /world-cup|mondial|soccer|azteca|metlife-stadium|crossword|^capital-of-/;
+
+// Cost: every seed is two calls (GetKeyword and GetRelatedKeywords), made
+// CONCURRENCY at a time. MAX_SEEDS keeps a weekly run near 400 calls. Seeds are
+// added in priority order (core cluster, the 50 states, then learn topics), so
+// if the cap ever bites it trims learn topics, never a state.
+const MAX_SEEDS = 200;
+
+async function isIndexable(file) {
+  let html;
+  try { html = await fs.readFile(file, 'utf8'); } catch { return false; }
+  const head = html.split('</head>')[0];
+  return !/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(head);
+}
+
 async function seeds() {
   const states = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'states.json'), 'utf8'));
-  if (!Array.isArray(states) || !states.length) {
-    throw new Error('data/states.json parsed to zero states. Seeding from an empty taxonomy would ' +
-      'produce a hollow reading, so this stops instead.');
+  if (!Array.isArray(states) || states.length !== 50) {
+    throw new Error(`data/states.json parsed to ${Array.isArray(states) ? states.length : 0} states, ` +
+      'not 50. Seeding from a broken taxonomy would produce a hollow reading, so this stops instead.');
   }
   const learnDirs = (await fs.readdir(path.join(ROOT, 'learn'), { withFileTypes: true }))
-    .filter((d) => d.isDirectory()).map((d) => d.name);
-  if (!learnDirs.length) {
-    throw new Error('learn/ holds no topic directory. Same reason: an empty seed list is worse ' +
-      'than no reading at all.');
+    .filter((d) => d.isDirectory()).map((d) => d.name).sort();
+  const liveTopics = [];
+  for (const d of learnDirs) {
+    if (RETIRED.test(d)) continue;
+    if (await isIndexable(path.join(ROOT, 'learn', d, 'index.html'))) liveTopics.push(d);
+  }
+  if (!liveTopics.length) {
+    throw new Error('learn/ holds no indexable topic directory. Same reason: an empty seed list is ' +
+      'worse than no reading at all.');
   }
 
   const out = new Set();
 
-  // The cluster this site already wins on, and its neighbours.
+  // The cluster this site already wins on, and the live subjects around it:
+  // states and capitals, abbreviations, time zones, regions, state facts,
+  // geography quizzes, territories, how many states.
   for (const t of ['list of states and capitals', 'us state capitals', 'list of 50 states',
-    'states and capitals', 'us states quiz', 'state abbreviations list',
-    'memorize state capitals', 'us states map', 'state nicknames list']) out.add(t);
+    'states and capitals', '50 states and capitals quiz', 'memorize state capitals',
+    'us states quiz', 'us geography quiz', 'us states map',
+    'state abbreviations list', 'us state abbreviations', 'state nicknames list',
+    'us time zones map', 'time zones by state', 'states with two time zones',
+    'regions of the united states', 'us census regions', 'state facts',
+    'fun facts about the 50 states', 'us territories', 'how many states are in the us',
+    'how many states in america']) out.add(t);
 
-  // Topic slugs, humanised. The taxonomy speaks for itself.
-  for (const d of learnDirs.slice(0, 40)) out.add(d.replace(/-/g, ' '));
-
-  // States crossed with the intents the site serves.
-  for (const s of states.slice(0, 12)) {
+  // All 50 states crossed with the intents the site serves.
+  for (const s of states) {
     const n = (s.names && s.names.en) || s.id;
     out.add(`capital of ${n}`.toLowerCase());
     out.add(`${n} facts`.toLowerCase());
   }
 
-  const list = [...out].filter((s) => s.length > 2);
+  // Indexable learn topics, humanised. The taxonomy speaks for itself.
+  for (const d of liveTopics) out.add(d.replace(/-/g, ' '));
+
+  const list = [...out].filter((s) => s.length > 2).slice(0, MAX_SEEDS);
+  console.log(`[kw] taxonomy: ${states.length} states, ${liveTopics.length} of ${learnDirs.length} ` +
+    `learn topics indexable and live, ${out.size} seeds before the cap of ${MAX_SEEDS}`);
   const limit = Number(process.env.BING_KW_LIMIT || 0);
   return limit > 0 ? list.slice(0, limit) : list;
 }

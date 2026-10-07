@@ -2792,3 +2792,38 @@ footer, main, .score-bar {
   .logo-flag { display: none; }
   .lang-btn { padding: 4px 5px; }
 }
+
+/* ───────── Fixes from the 6 October game QA ───────── */
+/* Phones and small tablets: the header could not fit logo, score, language switch and three
+   buttons on one line, and .score-inline (flex: 1; overflow: hidden) was
+   squeezed to 13 px at 390 px, hiding "0 / 9" and every mistake dot (and
+   one dot was still cut at 768 px). Below 900 px the score takes its own row
+   under the logo and the buttons. */
+@media (max-width: 899px) {
+  header { flex-wrap: wrap; height: auto; min-height: 56px; row-gap: 0; padding-top: 6px; padding-bottom: 6px; }
+  .score-inline { order: 3; flex: 1 0 100%; overflow: visible; padding-top: 2px; }
+  .score-inline .score-date { display: none; }
+  .score-inline .score-date + .score-sep { display: none; }
+}
+/* .score-sep:first-of-type never matched (the first span is the date). */
+@media (max-width: 480px) {
+  .score-inline .score-date + .score-sep { display: none; }
+}
+
+/* The result banners sit over the grid and can be taller than it: scroll
+   inside instead of clipping the heading and the buttons. */
+#solved-banner, #gameover-banner { overflow-y: auto; justify-content: safe center; }
+
+/* Long French and Spanish row labels ("Ouest montagneux", "Oeste montañoso")
+   ran 2 to 6 px past a 64 px card. Hyphenate rather than overflow. */
+@media (max-width: 480px) {
+  .col-label, .row-label { letter-spacing: 0; padding-left: 3px; padding-right: 3px; -webkit-hyphens: auto; hyphens: auto; }
+  .grid-outer { grid-template-columns: 72px repeat(3, minmax(0, 1fr)); }
+  .row-label { font-size: clamp(0.52rem, 2.4vw, 0.6rem); }
+}
+@media (max-width: 360px) {
+  .grid-outer { grid-template-columns: 66px repeat(3, minmax(0, 1fr)); }
+}
+
+/* The first-visit hint ran 4 px past a 320 px screen in French. */
+#first-tip { max-width: calc(100vw - 24px); white-space: normal; text-align: center; }

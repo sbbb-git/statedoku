@@ -177,7 +177,7 @@ function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const t
 async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copied");}catch(e){alert(txt);}}
 function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
 
-    const PUZZLES = [{"categories":[{"label":"Border Canada","states":["ND","ID","VT","NH"]},{"label":"No income tax","states":["TN","FL","WA","SD"]},{"label":"Confederate states","states":["VA","TX","AL","AR"]},{"label":"Original 13 colonies","states":["CT","VA","NC","MD"]}]},{"categories":[{"label":"Pacific Coast","states":["AK","CA","HI","OR"]},{"label":"Sun Belt","states":["AL","AZ","CA","FL"]},{"label":"Bible Belt","states":["AL","AR","FL","GA"]},{"label":"Border Mexico","states":["AZ","CA","NM","TX"]}]},{"categories":[{"label":"2024 Swing states","states":["NV","MI","NC","AZ"]},{"label":"Landlocked","states":["AZ","AR","CO","ID"]},{"label":"Spanish heritage","states":["AZ","CA","CO","FL"]},{"label":"Rust Belt","states":["IL","IN","MI","NY"]}]}];
+    const PUZZLES = [{"categories": [{"label": "Border Canada", "states": ["ND", "ID", "VT", "MN"]}, {"label": "No income tax", "states": ["SD", "NV", "WY", "WA"]}, {"label": "Confederate states", "states": ["AL", "AR", "MS", "LA"]}, {"label": "Original 13 colonies", "states": ["CT", "VA", "NC", "MD"]}]}, {"categories": [{"label": "Border Mexico", "states": ["AZ", "NM", "TX", "CA"]}, {"label": "Pacific coast", "states": ["OR", "WA", "AK", "HI"]}, {"label": "On the Mississippi River", "states": ["IA", "MO", "KY", "WI"]}, {"label": "Gulf Coast", "states": ["AL", "MS", "LA", "FL"]}]}, {"categories": [{"label": "2024 swing states", "states": ["GA", "MI", "PA", "NV"]}, {"label": "Landlocked", "states": ["KS", "NE", "MT", "SD"]}, {"label": "No state sales tax", "states": ["DE", "NH", "OR", "AK"]}, {"label": "Capital is the largest city", "states": ["MA", "RI", "HI", "OK"]}]}];
     const NAMES = {"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
     const SHARE_PREFIX = "🎯";
     const T_ = {"round":"Round","score":"Score","lives":"Lives","start":"Start","tryAgain":"Play again","share":"Share result","wellDone":"Well done!","gameOver":"Game over","easy":"Easy","normal":"Normal","hard":"Hard","submit":"Submit","skip":"Skip","categories":"Categories","solved":"Solved","mistakes":"Mistakes","pick4":"Pick 4 states that share a category","placeholder":"Type a state name…"};
@@ -238,38 +238,41 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
 
 <style>.pgx{max-width:760px;margin:22px auto 0;padding:0 14px}.pgx h2{font-size:1.32rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.015em;margin:26px 0 10px;line-height:1.25}.pgx p{color:var(--text-2,#475569);line-height:1.68;font-size:.96rem;margin:0 0 12px}.pgx strong{color:var(--navy,#0F2147);font-weight:800}.pgx a{color:var(--navy,#0F2147);font-weight:700}.pgx-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 14px;border-radius:10px}.pgx table{width:100%;min-width:420px;border-collapse:collapse;font-size:.88rem;background:#fff}.pgx th{background:#F8FAFC;color:var(--navy,#0F2147);text-align:left;font-weight:800;padding:9px 11px;border:1px solid #E2E8F0}.pgx td{padding:9px 11px;border:1px solid #E2E8F0;color:var(--text-2,#475569);line-height:1.5;vertical-align:top}.pgx-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:12px 0 4px}.pgx-links a{display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:700;font-size:.88rem;background:#fff}.pgx-links a:hover{background:#F8FAFC}</style>
 <section class="pgx">
-  <p>Sixteen states, four hidden categories, four states in each. Unlike a capitals quiz this one tests classification rather than recall: you have to know which states border Canada, which levy no income tax, which seceded, which sit in the Rust Belt. One board takes three to five minutes.</p>
+  <p>Sixteen states, four hidden categories, four states in each. Unlike a capitals quiz this one tests classification rather than recall: you have to know which states border Canada, which levy no income tax, which seceded, which touch the Mississippi. One board takes three to five minutes.</p>
 
   <h2>How to play</h2>
   <!-- PLACEHOLDER_LEARN_MID -->
   <p>Press Start and a grid of sixteen state names appears in random order. Select exactly four you think share a category, then press Submit. A correct group locks in, turns a solid color, and its category label is revealed above the grid. A wrong group clears your selection and costs one of four mistakes. Four mistakes ends the board. Your score is groups solved out of four, so solving all four is three stars, three groups is two stars.</p>
-  <p>There is no timer and no penalty for deselecting, so nothing is lost by rearranging tiles before you commit.</p>
+  <p>There is no timer and no penalty for deselecting, so nothing is lost by rearranging tiles before you commit. The game deals one of three boards at random. Each board uses four of the twelve categories below, and each has exactly one way to split its sixteen states into four groups.</p>
 
   <h2>Solve the closed lists first</h2>
-  <p>The categories in play are drawn from a fixed set of national groupings, and some of those groupings are tiny. That is your opening move: find the category with the fewest members in the whole country, because on a board of sixteen it has the least room to hide.</p>
+  <p>Every category is a closed national list, and some of those lists are tiny. That is your opening move: find the category with the fewest members in the whole country, because on a board of sixteen it has the least room to hide.</p>
   <div class="pgx-table-wrap">
   <table>
     <thead><tr><th>Category</th><th>States nationally</th><th>Why it helps</th></tr></thead>
     <tbody>
-      <tr><td>Border Mexico</td><td>4</td><td>Arizona, California, New Mexico, Texas. The entire list fits on the board, so all four are the group.</td></tr>
-      <tr><td>Rust Belt</td><td>7</td><td>Illinois, Indiana, Michigan, New York, Ohio, Pennsylvania, Wisconsin. Nothing south or west of that block qualifies.</td></tr>
+      <tr><td>Border Mexico</td><td>4</td><td>Arizona, California, New Mexico, Texas. The entire list fits on the board.</td></tr>
+      <tr><td>No state sales tax</td><td>5</td><td>Alaska, Delaware, Montana, New Hampshire, Oregon. Local sales taxes do not count.</td></tr>
+      <tr><td>Gulf Coast</td><td>5</td><td>Alabama, Florida, Louisiana, Mississippi, Texas.</td></tr>
+      <tr><td>Pacific coast</td><td>5</td><td>Alaska, California, Hawaii, Oregon, Washington.</td></tr>
+      <tr><td>2024 swing states</td><td>7</td><td>Arizona, Georgia, Michigan, Nevada, North Carolina, Pennsylvania, Wisconsin.</td></tr>
       <tr><td>No income tax</td><td>9</td><td>Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming. Scattered across every region, which is the point.</td></tr>
-      <tr><td>Spanish heritage</td><td>9</td><td>Mostly the Southwest, but Florida and Louisiana belong too.</td></tr>
+      <tr><td>On the Mississippi River</td><td>10</td><td>Minnesota and Wisconsin down to Mississippi and Louisiana, both banks.</td></tr>
       <tr><td>Confederate states</td><td>11</td><td>Eleven exactly. Kentucky, Missouri and Maryland are not among them.</td></tr>
-      <tr><td>Sun Belt</td><td>11</td><td>Overlaps heavily with the Bible Belt, so never open with it.</td></tr>
       <tr><td>Border Canada</td><td>13</td><td>Includes Ohio and Pennsylvania through Lake Erie, which surprises people.</td></tr>
       <tr><td>Original 13 colonies</td><td>13</td><td>A closed historical list with no judgement calls.</td></tr>
+      <tr><td>Capital is the largest city</td><td>17</td><td>Boston, Phoenix, Denver and Honolulu qualify, New York and Los Angeles do not.</td></tr>
       <tr><td>Landlocked</td><td>20</td><td>The largest group, so it is usually the leftover four.</td></tr>
     </tbody>
   </table>
   </div>
 
   <h2>Where boards trip you up</h2>
-  <p>Many states genuinely belong to more than one grouping. Texas borders Mexico, has no income tax, was Confederate and sits in the Sun Belt. Florida is Sun Belt, Bible Belt, Confederate, no income tax and Spanish heritage all at once. So a tile that fits your hunch is weak evidence. The strong move is to find the state that fits only one category on the board and build outward from it.</p>
+  <p>Each board plants red herrings: tiles that also fit a second category on the same board. Many states belong to several groupings at once. Washington borders Canada and levies no income tax. California borders Mexico and has a Pacific coast. Montana is landlocked and has no state sales tax. Virginia was one of the 13 colonies and joined the Confederacy. So a tile that fits your hunch is weak evidence. The strong move is to find the category that has exactly four candidates on the board, lock it, and let the leftovers decide the rest.</p>
   <p>Two specific edges catch people. Border Canada is not just the northern tier you picture: Ohio and Pennsylvania both count through their Great Lakes water boundary, while Idaho, Montana, North Dakota, Minnesota, Michigan, New York, Vermont, New Hampshire, Maine, Washington and Alaska make up the rest. And landlocked here means no ocean and no Great Lakes frontage, which is why Michigan, Illinois and Ohio sit outside the group of twenty even though none of them touches salt water.</p>
 
   <h2>The groupings behind the board</h2>
-  <p>The regional and cultural categories used here are explained in <a href="/learn/us-cultural-belts/">US cultural belts</a> and <a href="/learn/us-regions/">US regions</a>. To drill any single category on its own map:</p>
+  <p>Several categories have their own pages: <a href="/learn/no-income-tax/">no income tax states</a>, <a href="/learn/landlocked-states/">landlocked states</a> and <a href="/learn/us-regions/">US regions</a>. To drill any single category on its own:</p>
   <div class="pgx-links">
     <a href="/play/border-states/">Border States Quiz</a>
     <a href="/play/confederate-states/">Confederate States Quiz</a>
@@ -283,7 +286,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Read more about this topic</h2>
-      <a href="/learn/us-cultural-belts/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ /Us Cultural Belts</a>
+      <a href="/learn/us-cultural-belts/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ The US Cultural Belts</a>
     </div>
   <!-- faq-rendered -->
   <section class="faq-rendered">

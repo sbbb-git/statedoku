@@ -24,7 +24,6 @@ export const LASTMOD = {
   "/es/learn/cinturones-eeuu/": "2026-10-05",
   "/es/learn/ciudad-arizona-cabecera-condado-pima/": "2026-10-05",
   "/es/learn/colegio-electoral/": "2026-10-05",
-  "/es/learn/colonias-originales/": "2026-10-05",
   "/es/learn/crucigrama-estados/": "2026-10-05",
   "/es/learn/escanos-camara-por-estado-1910-2020/": "2026-10-05",
   "/es/learn/estado-eeuu-2-letras-nc/": "2026-10-05",

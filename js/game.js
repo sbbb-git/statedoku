@@ -2,7 +2,11 @@
 // is ignored, so the value can never reach the page as markup.
 function _dateParam() {
   const d = new URLSearchParams(location.search).get('date');
-  return d && /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : null;
+  if (!d || !/^\d{4}-\d{2}-\d{2}$/.test(d)) return null;
+  // A future grid is not shown before its day, except to the admin dev panel.
+  const isAdmin = typeof Admin !== 'undefined' && Admin.isAuthenticated();
+  if (d > Puzzle.getTodayStr() && !isAdmin) return null;
+  return d;
 }
 
 const Game = (() => {
@@ -204,7 +208,9 @@ const Game = (() => {
   function _paintLabel(el, cid) {
     if (!el) return;
     const label = I18n.constraint(cid);
-    const help  = I18n.constraintHelp(cid);
+    // Glosses describe the corrected data; an older grid whose clue had a
+    // different answer set then shows none rather than contradict itself.
+    const help  = Puzzle.helpFitsDate(cid, _dateStr) ? I18n.constraintHelp(cid) : null;
     el.textContent = label;
     el.dataset.cid = cid;
     el.classList.toggle('has-help', !!help);
@@ -634,6 +640,10 @@ const Game = (() => {
     // 5. Hard-wrong: state does NOT satisfy clues (or it's a duplicate).
     //    Penalize as before — flash, count a mistake, clear after 600ms.
     _errors = Math.min(_errors + 1, MAX_ERRORS);
+    // A wrong pick over a correct state puts that state back afterwards. The
+    // mistake is saved now, so a reload during the flash cannot undo it.
+    const prev = _grid[r][c];
+    _saveProgress();
     _grid[r][c] = stateId;
     _closeSearch();
     _renderCells();
@@ -648,7 +658,7 @@ const Game = (() => {
     if (cell) {
       cell.classList.add('shake');
       setTimeout(() => {
-        _grid[r][c] = null;
+        _grid[r][c] = prev;
         cell.classList.remove('shake');
         _selectedCell = null;
         _renderCells();
@@ -816,7 +826,7 @@ const Game = (() => {
       <span class="rs-sep"></span>
       <span><b>${stats.streak || 1}</b>${L.streak}</span>
       <span class="rs-sep"></span>
-      <span><b>${_errors}/3</b>${L.err}</span>
+      <span><b>${_errors}/${MAX_ERRORS}</b>${L.err}</span>
     `;
   }
 
@@ -950,7 +960,8 @@ const Game = (() => {
       grid += '\n';
     }
     const gold = (_goldenFound && _puzzle.goldenState) ? ' 🌟' : '';
-    return `Statedoku 🗺️ ${ds}${gold}\n${grid.trim()}`;
+    const tally = _gameOver && !_solved ? ` ❌ ${_errors}/${MAX_ERRORS}` : '';
+    return `Statedoku 🗺️ ${ds}${gold}${tally}\n${grid.trim()}`;
   }
   // Backwards-compat: full share text (body + URL)
   function getShareText() { return `${getShareBody()}\n${SITE_URL}`; }
@@ -996,7 +1007,13 @@ const Game = (() => {
     ctx.fillText(dateStr, 50, 150);
 
     // Stats line
-    const stats = _readStats();
+    const stats = _getStats();
+    const lang = (typeof I18n !== 'undefined' && I18n.getLang && I18n.getLang()) || 'en';
+    const IMG = {
+      en: { won: 'Solved!', lost: 'Game over', streak: 'streak', tried: 'Tried for' },
+      fr: { won: 'Réussi !', lost: 'Perdu', streak: 'série', tried: 'Essayé pendant' },
+      es: { won: '¡Resuelto!', lost: 'Fin del juego', streak: 'racha', tried: 'Intentado durante' },
+    }[lang] || { won: 'Solved!', lost: 'Game over', streak: 'streak', tried: 'Tried for' };
     const elapsed = _solveTime || 0;
     const time = _fmtTime(elapsed);
     const streak = stats.streak || 1;
@@ -1005,14 +1022,14 @@ const Game = (() => {
 
     ctx.fillStyle = won ? '#22C55E' : '#DC2626';
     ctx.font = '900 56px Inter, system-ui, sans-serif';
-    ctx.fillText(won ? 'Solved!' : 'Game over', 50, 200);
+    ctx.fillText(won ? IMG.won : IMG.lost, 50, 200);
 
     ctx.fillStyle = '#94A3B8';
     ctx.font = '600 22px Inter, system-ui, sans-serif';
     if (won) {
-      ctx.fillText(`⏱ ${time}   ·   🔥 streak ${streak}   ·   ❌ ${errCount}/3`, 50, 275);
+      ctx.fillText(`⏱ ${time}   ·   🔥 ${IMG.streak} ${streak}   ·   ❌ ${errCount}/${MAX_ERRORS}`, 50, 275);
     } else {
-      ctx.fillText(`Tried for ${time}`, 50, 275);
+      ctx.fillText(`${IMG.tried} ${time}   ·   ❌ ${errCount}/${MAX_ERRORS}`, 50, 275);
     }
 
     // Result grid 3×3 (centered horizontally)
@@ -1197,24 +1214,45 @@ const Game = (() => {
     return raw ? JSON.parse(raw) : { played:0, won:0, streak:0, maxStreak:0, bestTime:null, lastDate:null };
   }
 
+  // The day before a YYYY-MM-DD date, computed in UTC so the time zone of
+  // the player cannot shift it (toISOString of a local midnight did, east of
+  // UTC, and streaks never grew in France).
+  function _dayBefore(ds) {
+    const [y, m, d] = ds.split('-').map(Number);
+    return new Date(Date.UTC(y, m - 1, d - 1)).toISOString().slice(0, 10);
+  }
+
+  // Archive days count as played but never touch the streak, which belongs to
+  // the daily puzzle. Each date is counted once.
+  function _countOnce(stats) {
+    stats.counted = Array.isArray(stats.counted) ? stats.counted : [];
+    if (stats.counted.includes(_dateStr) || stats.lastDate === _dateStr) return false;
+    stats.counted.push(_dateStr);
+    if (stats.counted.length > 400) stats.counted = stats.counted.slice(-400);
+    return true;
+  }
+
   function _updateStatsLoss() {
     const stats = _getStats();
-    if (stats.lastDate === _dateStr) return;
+    if (!_countOnce(stats)) return;
     stats.played++;
-    stats.streak = 0;
-    stats.lastDate = _dateStr;
+    if (_dateStr === Puzzle.getTodayStr()) {
+      stats.streak = 0;
+      stats.lastDate = _dateStr;
+    }
     localStorage.setItem(CONFIG.STORAGE_KEY + '_stats', JSON.stringify(stats));
     _renderStats(stats);
   }
 
   function _updateStats(elapsed) {
     const stats = _getStats();
-    if (stats.lastDate === _dateStr) return;
+    if (!_countOnce(stats)) return;
     stats.played++; stats.won++;
-    const yest = new Date(new Date(_dateStr+'T00:00:00').getTime()-86400000).toISOString().slice(0,10);
-    stats.streak  = stats.lastDate === yest ? stats.streak + 1 : 1;
-    stats.maxStreak = Math.max(stats.maxStreak, stats.streak);
-    stats.lastDate  = _dateStr;
+    if (_dateStr === Puzzle.getTodayStr()) {
+      stats.streak  = stats.lastDate === _dayBefore(_dateStr) ? stats.streak + 1 : 1;
+      stats.maxStreak = Math.max(stats.maxStreak, stats.streak);
+      stats.lastDate  = _dateStr;
+    }
     if (!stats.bestTime || elapsed < stats.bestTime) stats.bestTime = elapsed;
     localStorage.setItem(CONFIG.STORAGE_KEY + '_stats', JSON.stringify(stats));
     _renderStats(stats);
@@ -1279,7 +1317,8 @@ const Game = (() => {
         if (dirty) _saveProgress();
       }
 
-      if (_gameOver) setTimeout(() => _showGameOverBanner(), 100);
+      if (!_solved && !_gameOver && _errors >= MAX_ERRORS) setTimeout(() => _triggerGameOver(), 100);
+      else if (_gameOver) setTimeout(() => _showGameOverBanner(), 100);
     } catch(e) { _startTime = Date.now(); }
   }
 

@@ -818,7 +818,9 @@ const Puzzle = (() => {
   }
 
   // One-time purge of stale cached puzzles (bump CACHE_GEN to invalidate)
-  const CACHE_GEN = 'gen6';   // bump when puzzle structure changes
+  // gen7: grids cached before constraints-live.js had loaded could differ from
+  // the real grid of the day; purging them makes every player regenerate it.
+  const CACHE_GEN = 'gen7';   // bump when puzzle structure changes
   (function _purgeOldPuzzleCaches() {
     try {
       if (localStorage.getItem('statedoku_cache_gen') === CACHE_GEN) return;
@@ -865,6 +867,20 @@ const Puzzle = (() => {
     return preview;
   }
 
+  function _liveConstraintsReady() {
+    if (typeof PENDING_CONSTRAINTS !== 'undefined' || typeof document === 'undefined') return Promise.resolve();
+    const tag = document.querySelector('script[src*="constraints-live.js"]');
+    if (!tag) return Promise.resolve();
+    return new Promise(resolve => {
+      const done = () => resolve();
+      tag.addEventListener('load', done, { once: true });
+      tag.addEventListener('error', done, { once: true });
+      // Belt and braces: the load event may already have fired.
+      const t = setInterval(() => { if (typeof PENDING_CONSTRAINTS !== 'undefined') { clearInterval(t); done(); } }, 50);
+      setTimeout(() => { clearInterval(t); done(); }, 15000);
+    });
+  }
+
   async function getPuzzle(dateStr) {
     // PREVIEW mode: lock to a single puzzle until LAUNCH_DATE
     if (dateStr < LAUNCH_DATE) {
@@ -875,6 +891,11 @@ const Puzzle = (() => {
     }
 
     if (_puzzleCache[dateStr]) return _puzzleCache[dateStr];
+
+    // The pop-culture clues arrive in constraints-live.js, injected without
+    // anything waiting for it. A grid generated before it lands is built from
+    // a smaller pool and differs from everyone else's, so wait for it.
+    await _liveConstraintsReady();
 
     const storageKey = CONFIG.STORAGE_KEY + '_puzzle_' + dateStr;
     const cached = localStorage.getItem(storageKey);
@@ -893,6 +914,15 @@ const Puzzle = (() => {
       _puzzleCache[dateStr] = puzzle;
     }
     return puzzle;
+  }
+
+  // constraint_help glosses describe the corrected data. On a grid dated
+  // before DATA_FIX_FROM a clue whose answer set changed would be glossed
+  // with a rule its own cell contradicts, so it carries no gloss there.
+  function helpFitsDate(cid, dateStr) {
+    if (!dateStr || dateStr >= DATA_FIX_FROM || !_states) return true;
+    const ids = d => _withDataFor(d, _states, st => st.filter(s => matches(s, cid)).map(s => s.id).join());
+    try { return ids(dateStr) === ids(DATA_FIX_FROM); } catch (e) { return false; }
   }
 
   function getTodayStr() {
@@ -938,6 +968,6 @@ const Puzzle = (() => {
     return states.filter(s => matches(s, constraintId)).length;
   }
 
-  return { getPuzzle, getTodayStr, loadStates, matches,
+  return { getPuzzle, getTodayStr, loadStates, matches, helpFitsDate,
            getAllConstraints, getAllRowGroups, getDisabled, setDisabled, countMatching };
 })();

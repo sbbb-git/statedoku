@@ -10,6 +10,7 @@
     gtag('config', 'G-P7ZBQNYLS4');
   </script>
   <!-- Google AdSense — site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
+  <meta name="google-adsense-account" content="ca-pub-1481624152917622">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
        crossorigin="anonymous"></script>
 
@@ -61,13 +62,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
-  <link rel="preload" href="/data/states.json" as="fetch" crossorigin="anonymous">
+  <link rel="preload" href="/data/states.json?v=7" as="fetch" crossorigin="anonymous">
 
   <!-- ─── Styles ─── -->
   <link rel="stylesheet" href="/css/style.css?v=27">
 
   <!-- ─── Structured Data (JSON-LD) ─── -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Statedoku","alternateName":"Statedoku, Daily US States Puzzle","description":"A daily geography puzzle game where players fill a 3×3 grid with US states that satisfy row and column constraints. Sudoku rules meet American geography.","url":"https://statedoku.com/","image":"https://statedoku.com/og-image.png?v=2","genre":["Puzzle","Educational","Geography"],"gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","inLanguage":["en","fr","es"],"isAccessibleForFree":true,"datePublished":"2026-01-01","publisher":{"@type":"Organization","name":"Statedoku","url":"https://statedoku.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Statedoku","alternateName":"Statedoku, Daily US States Puzzle","description":"A daily geography puzzle game where players fill a 3×3 grid with US states that satisfy row and column constraints. Sudoku rules meet American geography.","url":"https://statedoku.com/","image":"https://statedoku.com/og-image.png?v=2","genre":["Puzzle","Educational","Geography"],"gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","inLanguage":["en","fr","es"],"isAccessibleForFree":true,"datePublished":"2026-05-13","publisher":{"@type":"Organization","name":"Statedoku","url":"https://statedoku.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -163,9 +164,6 @@
       <div class="result-emoji" id="result-emoji-solved"></div>
       <div class="result-stats" id="result-stats-solved"></div>
       <div class="share-row" data-banner="solved"></div>
-      <!-- Ad slot: post-solve banner. Set data-ad-slot to the AdSense slot ID once approved.
-           When CONFIG.ADS_ENABLED=false, ads.js hides this element entirely. -->
-      <div class="ad-slot" data-ad-slot="PLACEHOLDER_HOME_SOLVED" data-ad-format="auto"></div>
     </div>
 
     <div id="gameover-banner">
@@ -176,7 +174,6 @@
       <div id="gameover-solution"></div>
       <div class="share-row" data-banner="gameover"></div>
       <p class="banner-sub" data-i18n="come_back">New one drops at midnight.</p>
-      <div class="ad-slot" data-ad-slot="PLACEHOLDER_HOME_GAMEOVER" data-ad-format="auto"></div>
     </div>
   </div>
 
@@ -297,9 +294,9 @@
       <button class="modal-close" aria-label="Close">✕</button>
     </div>
     <div class="howto-content">
-      <p data-i18n="how_to_play_text">Fill each cell with a US state that satisfies both the row and column constraints. Each state can only be used once. Find the unique solution!</p>
+      <p data-i18n="how_to_play_text">Fill each cell with a US state that satisfies both the row and column constraints. Each state can only be used once. Any state that fits both clues is accepted, so you can change a cell if you need that state elsewhere.</p>
       <div class="howto-example">
-        <strong>Example:</strong> If the row says <em>"West Region"</em> and the column says <em>"Borders Mexico"</em>, valid answers include Arizona, California, or New Mexico.
+        <strong>Example:</strong> If the row says <em>"Original Colony"</em> and the column says <em>"Atlantic coast"</em>, Virginia fits both. Pennsylvania was a colony but has no ocean coast, and Florida is on the Atlantic but was never one of the thirteen colonies, so neither of those fits.
       </div>
       <p style="margin-top:12px">
         <strong>Green ✅</strong> = Correct placement<br>

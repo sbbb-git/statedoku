@@ -177,7 +177,7 @@ function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const t
 async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copiado");}catch(e){alert(txt);}}
 function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
 
-    const PUZZLES = [{"categories":[{"label":"Frontera con Canadá","states":["OH","PA","NH","VT"]},{"label":"Sin impuesto sobre la renta","states":["NV","TN","TX","AK"]},{"label":"Estados confederados","states":["AL","VA","GA","LA"]},{"label":"13 colonias originales","states":["NY","NH","PA","RI"]}]},{"categories":[{"label":"Costa Pacífica","states":["AK","CA","HI","OR"]},{"label":"Sun Belt","states":["AL","AZ","CA","FL"]},{"label":"Bible Belt","states":["AL","AR","FL","GA"]},{"label":"Frontera con México","states":["AZ","CA","NM","TX"]}]},{"categories":[{"label":"Estados bisagra 2024","states":["MI","GA","NV","NC"]},{"label":"Sin salida al mar","states":["AZ","AR","CO","ID"]},{"label":"Herencia española","states":["AZ","CA","CO","FL"]},{"label":"Rust Belt","states":["IL","IN","MI","NY"]}]}];
+    const PUZZLES = [{"categories": [{"label": "Frontera con Canadá", "states": ["ND", "ID", "VT", "MN"]}, {"label": "Sin impuesto sobre la renta", "states": ["SD", "NV", "WY", "WA"]}, {"label": "Estados confederados", "states": ["AL", "AR", "MS", "LA"]}, {"label": "13 colonias originales", "states": ["CT", "VA", "NC", "MD"]}]}, {"categories": [{"label": "Frontera con México", "states": ["AZ", "NM", "TX", "CA"]}, {"label": "Costa Pacífica", "states": ["OR", "WA", "AK", "HI"]}, {"label": "A orillas del Misisipi", "states": ["IA", "MO", "KY", "WI"]}, {"label": "Costa del Golfo", "states": ["AL", "MS", "LA", "FL"]}]}, {"categories": [{"label": "Estados bisagra 2024", "states": ["GA", "MI", "PA", "NV"]}, {"label": "Sin salida al mar", "states": ["KS", "NE", "MT", "SD"]}, {"label": "Sin impuesto estatal a las ventas", "states": ["DE", "NH", "OR", "AK"]}, {"label": "Capital = ciudad más grande", "states": ["MA", "RI", "HI", "OK"]}]}];
     const NAMES = {"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawái","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Luisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Misisipi","MO":"Misuri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"Nuevo Hampshire","NJ":"Nueva Jersey","NM":"Nuevo México","NY":"Nueva York","NC":"Carolina del Norte","ND":"Dakota del Norte","OH":"Ohio","OK":"Oklahoma","OR":"Oregón","PA":"Pensilvania","RI":"Rhode Island","SC":"Carolina del Sur","SD":"Dakota del Sur","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"Virginia Occidental","WI":"Wisconsin","WY":"Wyoming"};
     const SHARE_PREFIX = "🎯";
     const T_ = {"round":"Ronda","score":"Puntuación","lives":"Vidas","start":"Empezar","tryAgain":"Volver a jugar","share":"Compartir","wellDone":"¡Bien!","gameOver":"Juego terminado","easy":"Fácil","normal":"Normal","hard":"Difícil","submit":"Enviar","skip":"Pasar","categories":"Categorías","solved":"Resuelto","mistakes":"Errores","pick4":"Elige 4 estados que compartan una categoría","placeholder":"Escribe un nombre de estado…"};
@@ -256,7 +256,6 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
 
   <section class="sctx">
     <p class="sctx-lead">Conexiones de Estados aplica la mecánica de Connections al mapa de Estados Unidos: 16 estados en una cuadrícula y cuatro categorías ocultas de cuatro estados cada una. No mide memoria de nombres, mide si sabes a qué grupos pertenece cada estado. Una partida se resuelve en tres o cuatro minutos.</p>
-
     <h2>Cómo jugar</h2>
     <!-- PLACEHOLDER_LEARN_MID -->
     <ul>
@@ -265,36 +264,33 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
       <li>Tienes 4 errores. Al cuarto la partida termina con las categorías que hayas resuelto.</li>
       <li>El panel superior lleva dos contadores: categorías resueltas sobre 4 y errores sobre 4.</li>
       <li>Estrellas: las cuatro categorías dan 3 estrellas, tres dan 2 y dos dan 1.</li>
-      <li>El juego sortea uno de sus tres tableros al empezar, así que volver a jugar cambia el reto.</li>
+      <li>El juego sortea uno de sus tres tableros al empezar, y cada tablero tiene una sola forma de repartir sus 16 estados en cuatro grupos.</li>
     </ul>
-
-    <h2>Empieza por las categorías cerradas</h2>
-    <p>El truco no está en reconocer estados, está en saber qué categorías tienen un número fijo de miembros en la realidad y cuáles no. Cuando una categoría real tiene exactamente cuatro miembros, el tablero la muestra entera y es la única que puedes cerrar sin riesgo.</p>
+    <h2>Empieza por las categorías más cortas</h2>
+    <p>Todas las categorías son listas cerradas, y algunas son muy cortas. Cuanto menos miembros tiene una categoría en todo el país, menos sitio tiene para esconderse en un tablero de dieciséis.</p>
     <div class="sctx-tw">
     <table>
-      <tr><th>Categoría</th><th>Miembros reales</th><th>En el tablero</th></tr>
-      <tr><td>Frontera con México</td><td>4 (Arizona, California, Nuevo México, Texas)</td><td>4</td></tr>
-      <tr><td>Costa Pacífica</td><td>5 (Alaska, California, Hawái, Oregón, Washington)</td><td>4</td></tr>
-      <tr><td>Estados bisagra de 2024</td><td>7</td><td>4</td></tr>
-      <tr><td>Sin impuesto sobre la renta</td><td>9</td><td>4</td></tr>
-      <tr><td>Estados confederados</td><td>11</td><td>4</td></tr>
-      <tr><td>13 colonias originales</td><td>13</td><td>4</td></tr>
-      <tr><td>Sun Belt, Bible Belt, Rust Belt</td><td>sin lista cerrada</td><td>4</td></tr>
+      <tr><th>Categoría</th><th>Miembros reales</th></tr>
+      <tr><td>Frontera con México</td><td>4 (Arizona, California, Nuevo México, Texas)</td></tr>
+      <tr><td>Sin impuesto estatal a las ventas</td><td>5 (Alaska, Delaware, Montana, Nuevo Hampshire, Oregón)</td></tr>
+      <tr><td>Costa del Golfo</td><td>5 (Alabama, Florida, Luisiana, Misisipi, Texas)</td></tr>
+      <tr><td>Costa Pacífica</td><td>5 (Alaska, California, Hawái, Oregón, Washington)</td></tr>
+      <tr><td>Estados bisagra 2024</td><td>7</td></tr>
+      <tr><td>Sin impuesto sobre la renta</td><td>9</td></tr>
+      <tr><td>A orillas del Misisipi</td><td>10</td></tr>
+      <tr><td>Estados confederados</td><td>11</td></tr>
+      <tr><td>Frontera con Canadá</td><td>13</td></tr>
+      <tr><td>13 colonias originales</td><td>13</td></tr>
+      <tr><td>Capital = ciudad más grande</td><td>17</td></tr>
+      <tr><td>Sin salida al mar</td><td>20</td></tr>
     </table>
     </div>
-    <p>De esa tabla salen tres reglas prácticas:</p>
-    <ul>
-      <li><strong>Abre siempre por frontera con México</strong> si ves los cuatro en la cuadrícula. Es la única categoría del juego que coincide exactamente con su lista real.</li>
-      <li><strong>Deja los cinturones para el final.</strong> Sun Belt, Bible Belt y Rust Belt no tienen definición oficial y son los grupos que absorben los estados sobrantes. Si resuelves los otros tres, el cuarto se cae solo.</li>
-      <li><strong>No empieces por un estado que encaja en todo.</strong> California pertenece a la vez a la costa Pacífica, al Sun Belt, a la frontera con México y a la herencia española. Alabama entra a la vez en Sun Belt, Bible Belt y estados confederados. Arranca por el que solo cabe en un sitio, como Alaska o Nuevo México, y deja los polivalentes para cuando quede una sola casilla libre.</li>
-    </ul>
-
     <h2>Los solapamientos que hay que anticipar</h2>
-    <p>Cuando dos grupos se disputan un estado, el orden de resolución decide la partida. Casos frecuentes: Texas está en frontera con México y también en sin impuesto sobre la renta. Florida entra en Sun Belt, Bible Belt, confederados y sin impuesto sobre la renta a la vez. Georgia y Carolina del Norte pertenecen a confederados, a las colonias originales y a los estados bisagra. Antes de enviar, comprueba que ninguno de tus cuatro elegidos sea imprescindible para otro grupo del tablero.</p>
-
+    <p>Cada tablero incluye señuelos: casillas que también encajarían en otra categoría del mismo tablero. Washington limita con Canadá y no cobra impuesto sobre la renta. California limita con México y tiene costa en el Pacífico. Montana no tiene salida al mar ni impuesto estatal a las ventas. Virginia fue una de las 13 colonias y se unió a la Confederación. Busca primero la categoría que solo tiene cuatro candidatos posibles en el tablero, ciérrala y deja que las casillas restantes decidan el resto.</p>
+    <p>Dos bordes despistan a mucha gente. Ohio y Pensilvania cuentan como frontera con Canadá por el lago Erie. Y sin salida al mar significa sin costa oceánica ni orilla en los Grandes Lagos, por eso Michigan, Illinois y Ohio quedan fuera de ese grupo de veinte.</p>
     <div class="sctx-next">
       <h2>Seguir con el tema</h2>
-      <p>Artículos de referencia: <a href="/es/learn/cinturones-eeuu/">Los cinturones de EE.UU.</a> y <a href="/es/learn/regiones-de-eeuu/">Las regiones de EE.UU.</a></p>
+      <p>Artículos de referencia: <a href="/es/learn/regiones-de-eeuu/">Las regiones de EE.UU.</a>, <a href="/es/learn/no-income-tax/">los estados sin impuesto sobre la renta</a> y <a href="/es/learn/landlocked-states/">los estados sin salida al mar</a>. Para el contexto cultural, <a href="/es/learn/cinturones-eeuu/">Los cinturones de EE.UU.</a></p>
       <ul>
         <li><a href="/es/play/confederate-states/">Quiz Estados Confederados</a></li>
         <li><a href="/es/play/no-income-tax-states/">Quiz Sin Impuesto sobre la Renta</a></li>
