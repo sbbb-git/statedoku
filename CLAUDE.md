@@ -82,6 +82,11 @@ ad code either, since 5 October: a game screen is the "screen without
 publisher content" the AdSense policy names, ads must sit 150 px from a game,
 and Google had indexed none of them. Ads belong on the articles and state
 pages, never on a page whose main content is the game.
+The three homepages are game screens too: since 7 October they carry no
+`ad-slot` (two used to sit inside the solved and game-over banners). They keep
+the `adsbygoogle.js` tag and the `google-adsense-account` meta in the head,
+which is how AdSense verifies the site; if Auto ads are ever switched on,
+exclude the homepages and `play/` in the AdSense console.
 Nine more followed the same day, missed by the first filter because their slugs
 said "mondial" or did not name the tournament: six French World Cup 2026 pages,
 the Estadio Azteca history and the two USA-Mexico soccer rivalry pages, 6 Bing
@@ -129,6 +134,10 @@ and went on being told their correct answers were wrong. The JSON under `/data/`
 is fetched at runtime and versioned by `CONFIG.DATA_VERSION`; bump that when you
 edit `translations.json` or `states.json`.
 
+Cloudflare's zone Browser Cache TTL overrides the `no-cache` in `_headers`
+(JS and CSS were served `max-age=14400`), so the `?v=` bump is what actually
+reaches returning players. Every page now versions `config.js` too.
+
 **No unicode dashes in anything a human reads.** No em dash, en dash or figure
 dash in page copy, JSON-LD, JS strings, tweets or meta descriptions. Use a comma
 or rewrite. Ordinary hyphens are fine. Code comments are exempt.
@@ -154,6 +163,9 @@ passed on the earlier version, and 79 pages went unreachable for a day.
 - **Translations are self-canonical.** A French or Spanish page with real
   content must never canonicalise to the English one. Google honours the
   canonical and drops the translation.
+- **hreflang lives on the pages, not in the sitemap.** The sitemap used to
+  annotate ten entries, eight of them differently from the page; it emits none
+  now. Do not add `alternates` back.
 - **The sitemap lists only indexable, self-canonical pages.** It is a Pages
   Function built from hardcoded entries in `functions/sitemap.xml.js` and cannot
   check the filesystem at runtime, so entries must be removed at source when a
@@ -164,7 +176,7 @@ passed on the earlier version, and 79 pages went unreachable for a day.
   to point at, drop the anchor and keep the text rather than inventing a page.
 - **Meta descriptions 70 to 160 characters**, balanced parentheses and quotes.
 
-640 pages are indexable and 1,449 are deliberately noindexed. Thin or
+640 pages are indexable and 1,450 are deliberately noindexed. Thin or
 near-duplicate pages are noindexed on purpose, not deleted. Adding thin pages to
 fix a broken link is a bad trade while AdSense is judging the site.
 
@@ -196,6 +208,14 @@ takes the open-ended clues out of the pool from that date. Grids dated before
 it come out byte for byte as they were; this was checked on every date from
 1 June 2026 to 31 March 2027, and the later grids were checked for a unique
 solution and for cells that match the corrected data.
+
+Glosses (`constraint_help`) describe the corrected data. On a grid dated
+before the cut-over, `Puzzle.helpFitsDate` hides the gloss of any clue whose
+answer set changed, so an archive grid never contradicts its own `?`.
+
+The pop-culture clues load from `constraints-live.js`, injected by a script
+tag. `getPuzzle` waits for it: a grid generated before it lands is built from a
+smaller pool, differs from everyone else's and used to be cached that way.
 
 The next correction needs a second cut-over date, not an edit to the first:
 any change to states.json, `LIST_CONSTRAINTS` or constraints-live.js without

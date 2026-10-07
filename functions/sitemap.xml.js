@@ -28,7 +28,11 @@ function todayISO() {
 function buildEntry(loc, opts = {}) {
   const cf = opts.changefreq || 'monthly';
   const pri = opts.priority != null ? opts.priority : 0.7;
-  const alts = opts.alternates ? opts.alternates.map(([hl, h]) => `    <xhtml:link rel="alternate" hreflang="${hl}" href="${h}"/>`).join('\n') + '\n' : '';
+  // hreflang is declared on the pages themselves, reciprocally. Ten entries
+  // here also carried it, eight of them differing from their page (no
+  // x-default, no regional variant), and two sources that disagree are worse
+  // than one, so the sitemap no longer emits any. opts.alternates is ignored.
+  const alts = '';
   // lastmod is the main signal Google uses to decide what to re-crawl, and this
   // sitemap carried none. The dates come from git history, walking past commits
   // that only move an asset ?v=N, so a cache-bust pass does not stamp 2,000
