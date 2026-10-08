@@ -73,7 +73,7 @@ Should return `204 No Content`. (If 400/500, check the bindings.)
 
 ### Read stats
 ```bash
-curl "https://statedoku.com/api/stats?key=YOUR_STATS_ADMIN_KEY"
+curl -H "X-Admin-Key: YOUR_STATS_ADMIN_KEY" "https://statedoku.com/api/stats"
 ```
 
 Should return JSON with totals, daily, countries, langs, mistakes_dist.
@@ -93,6 +93,6 @@ Open https://statedoku.com/admin/dashboard/ → section "📈 Server-side game s
 ## Troubleshooting
 
 - **`STATS_DB binding missing`** → step 3 not done or redeploy not yet triggered (wait 30s).
-- **403 Forbidden on /api/stats** → wrong `STATS_ADMIN_KEY` in URL, or env var not set on Pages.
+- **403 Forbidden on /api/stats** → wrong `STATS_ADMIN_KEY` in the X-Admin-Key header, or env var not set on Pages.
 - **No events showing up** → check browser DevTools → Network → look for `POST /api/events`. If they don't fire, ad blocker may be intercepting (unlikely since same-origin).
 - **Country always null** → Cloudflare's `cf-ipcountry` header missing. This happens on localhost. On the live site it should always be present.

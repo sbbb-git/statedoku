@@ -93,7 +93,8 @@ async function postTweet(text, env) {
 // out and Buffer publishes it almost immediately. Queue depth stays at 1.
 //
 // Needs BUFFER_TOKEN (publish.buffer.com/settings/api) and BUFFER_CHANNEL_ID.
-// Run the worker with ?key=...&buffer_channels=1 once to list channel ids.
+// Run the worker with ?buffer_channels=1 and the X-Trigger-Key header once to
+// list channel ids.
 const BUFFER_API = 'https://api.buffer.com';
 const BUFFER_LEAD_MS = 3 * 60 * 1000;
 

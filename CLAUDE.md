@@ -15,6 +15,18 @@ pipeline. Live about a minute after the push.
 The Twitter bot in `bot/` is **not** in CI. Deploy it by hand:
 `cd bot && npx wrangler deploy`.
 
+## History was rewritten on 8 October 2026
+
+At the owner's request, `git filter-repo` removed `marketing/` and `tmp/` from
+every commit (126 journalists' addresses), a third party's address and first
+name, the owner's personal address and Mac paths, and his real name everywhere
+except the three privacy pages, which carry it on purpose as data controller.
+Authors became `sbbb-git <279963133+sbbb-git@users.noreply.github.com>`. The
+final tree was byte-identical before and after. A clone older than that date
+holds the old history: never pull, merge or push from it, re-clone or
+`git fetch && git reset --hard origin/main`. Keep it that way: no personal
+address, real name or third party in any commit, message or file.
+
 ## What ships and what does not
 
 The repo holds more than the website. `wrangler pages deploy` has no exclude
@@ -263,7 +275,7 @@ build their game once it lands. That took them from 243 KB to 25 KB each.
 - `data/` `states.json`, `translations.json`, `tweets.json`, `us-map.svg`.
 - `functions/` Cloudflare Pages Functions, including the sitemap.
 - `bot/` the posting worker, `email-worker/` the reminder worker.
-- `tmp/` throwaway scripts. Committed today, which it should not be.
+- `tmp/` and `marketing/` local only, gitignored, and absent from the whole history.
 
 ## Design
 

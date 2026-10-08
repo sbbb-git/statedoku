@@ -10,7 +10,7 @@
  * Both figures live in the same Cloudflare D1 (statedoku-stats), reachable only
  * through the site's own admin endpoints:
  *
- *   GET /api/stats?key=<STATS_ADMIN_KEY>       aggregates, no personal data
+ *   GET /api/stats                             header X-Admin-Key: <STATS_ADMIN_KEY>, aggregates only
  *   GET /api/admin/subscribers                 header X-Admin-Key: <ADMIN_API_KEY>
  *
  * THE SECOND ONE RETURNS EMAIL ADDRESSES. This repository is public. The
@@ -20,7 +20,7 @@
  * not, and they never consented to appearing in a git history.
  *
  * Env:
- *   STATS_ADMIN_KEY   query-string key for /api/stats
+ *   STATS_ADMIN_KEY   header key for /api/stats (a key in a URL ends up in logs)
  *   ADMIN_API_KEY     header key for /api/admin/subscribers
  *   AUDIENCE_OUT_DIR  where to write (default audience-snapshots/)
  */
@@ -75,7 +75,7 @@ async function main() {
   let fetched = 0;
 
   if (statsKey) {
-    const raw = await getJSON(`${base}/api/stats?key=${encodeURIComponent(statsKey)}`, {}, '/api/stats');
+    const raw = await getJSON(`${base}/api/stats`, { headers: { 'X-Admin-Key': statsKey } }, '/api/stats');
     snapshot.gameplay = stripPII(raw, dropped);
     fetched++;
     const d = snapshot.gameplay.daily || [];
