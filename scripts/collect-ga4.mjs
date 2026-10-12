@@ -30,7 +30,7 @@ const API = 'https://analyticsdata.googleapis.com/v1beta';
 const WINDOW = { startDate: '28daysAgo', endDate: 'yesterday' };
 
 /** One runReport call, flattened into plain rows. */
-async function report(propertyId, token, dimensions, metrics, { limit = 200, orderByMetric } = {}) {
+async function report(propertyId, token, dimensions, metrics, { limit = 200, orderByMetric, filter } = {}) {
   const body = {
     dateRanges: [WINDOW],
     dimensions: dimensions.map((name) => ({ name })),
@@ -38,6 +38,7 @@ async function report(propertyId, token, dimensions, metrics, { limit = 200, ord
     limit,
   };
   if (orderByMetric) body.orderBys = [{ metric: { metricName: orderByMetric }, desc: true }];
+  if (filter) body.dimensionFilter = filter;
 
   const res = await fetchRetry(`${API}/properties/${propertyId}:runReport`, {
     method: 'POST',
@@ -108,7 +109,7 @@ async function main() {
     // Which pages hold people, against which pages merely receive clicks.
     by_page: await report(propertyId, token, ['pagePath'],
       ['activeUsers', 'screenPageViews', 'userEngagementDuration', 'bounceRate'],
-      { limit: 150, orderByMetric: 'screenPageViews' }),
+      { limit: 600, orderByMetric: 'screenPageViews' }),
     by_country: await report(propertyId, token, ['country'],
       ['activeUsers', 'sessions'], { limit: 40, orderByMetric: 'activeUsers' }),
     by_device: await report(propertyId, token, ['deviceCategory'],
@@ -117,6 +118,35 @@ async function main() {
     by_new_returning: await report(propertyId, token, ['newVsReturning'],
       ['activeUsers', 'sessions'], { limit: 10 }),
   };
+
+  // The path through the site: where people land from each source, which page
+  // they open next, and where they stop. GA4's Data API has no exits metric, so
+  // exits are derived later from these: views of a page minus views whose
+  // referrer is that page (scripts/report-behavior.py). Each of these cuts is
+  // optional: one refused combination must not lose the whole weekly reading.
+  const optional = async (name, ...args) => {
+    try { cuts[name] = await report(propertyId, token, ...args); }
+    catch (e) { console.warn(`[ga4] cut ${name} failed: ${e.message}`); cuts[name] = { rows: [], rowCount: 0, error: e.message.slice(0, 300) }; }
+  };
+  await optional('by_channel', ['sessionDefaultChannelGroup'],
+    ['sessions', 'engagedSessions', 'activeUsers', 'userEngagementDuration'], { limit: 20, orderByMetric: 'sessions' });
+  // Entrances: a session's landing page, per source. The bot share shows up
+  // here as sessions with no engagement at all.
+  await optional('landing_by_source', ['landingPage', 'sessionSourceMedium'],
+    ['sessions', 'engagedSessions', 'userEngagementDuration', 'screenPageViews'], { limit: 600, orderByMetric: 'sessions' });
+  // Internal navigation: previous page -> next page, statedoku.com referrers only.
+  await optional('transitions', ['pageReferrer', 'pagePath'], ['screenPageViews'], {
+    limit: 3000, orderByMetric: 'screenPageViews',
+    filter: { filter: { fieldName: 'pageReferrer', stringFilter: { matchType: 'CONTAINS', value: 'statedoku.com' } } },
+  });
+  // Events per page: scroll (90%), outbound clicks, game funnels, Classroom shares.
+  await optional('events_by_page', ['eventName', 'pagePath'], ['eventCount'], {
+    limit: 3000, orderByMetric: 'eventCount',
+    filter: { filter: { fieldName: 'eventName', inListFilter: { values: [
+      'scroll', 'click', 'play_start', 'play_complete', 'puzzle_start', 'puzzle_solve', 'puzzle_lost', 'classroom_share',
+    ] } } },
+  });
+  await optional('events', ['eventName'], ['eventCount', 'activeUsers'], { limit: 60, orderByMetric: 'eventCount' });
 
   // Always say how much was actually read. A collector reporting success over
   // zero rows reads exactly like one that worked.

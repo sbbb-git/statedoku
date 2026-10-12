@@ -74,6 +74,16 @@ jobs:
           ADSENSE_REFRESH_TOKEN: ${{ secrets.ADSENSE_REFRESH_TOKEN }}
         run: node scripts/collect-adsense.mjs
 
+      # Visitor paths in plain words: source, landing page, time spent, next
+      # page, exits, game funnels. Derived from the GA4 reading just written,
+      # aggregates only, so nothing in it identifies anybody.
+      - name: Visitor paths report
+        continue-on-error: true
+        run: |
+          f=$(ls audience-snapshots/ga4-*.json 2>/dev/null | sort | tail -1)
+          [ -n "$f" ] || { echo "no GA4 reading"; exit 0; }
+          python3 scripts/report-behavior.py --in "$f" --out "audience-snapshots/behavior-$(date -u +%Y-%m-%d).md"
+
       - name: Commit the reading
         run: |
           if [ -z "$(git status --porcelain audience-snapshots)" ]; then

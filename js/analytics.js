@@ -54,6 +54,18 @@ const Analytics = (() => {
     // Allow puzzle_start once per day per device
     if (eventType === 'puzzle_start' && _hasSent(eventKey)) return;
 
+    // Same event in GA4, once per puzzle per device like the D1 row, so a
+    // game can be tied to the source and landing page of the visit.
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventType, {
+          puzzle_date: data.puzzle_date,
+          mistakes: data.mistakes ?? undefined,
+          time_seconds: data.time_seconds ?? undefined,
+        });
+      }
+    } catch (_) {}
+
     const payload = {
       event_type: eventType,
       puzzle_date: data.puzzle_date,
@@ -83,3 +95,12 @@ const Analytics = (() => {
 
   return { track };
 })();
+
+// Share to Google Classroom clicks, counted in GA4 with the page they came from.
+document.addEventListener('click', (e) => {
+  try {
+    if (e.target.closest && e.target.closest('.gc-share') && typeof window.gtag === 'function') {
+      window.gtag('event', 'classroom_share', { page_path: location.pathname });
+    }
+  } catch (_) {}
+}, true);

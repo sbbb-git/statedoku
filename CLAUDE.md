@@ -367,6 +367,12 @@ three places hold `audience-snapshots/` back.
 
 ### Audience readings
 
+Visitor paths (source, landing page, time, next page, exits, game funnels) are
+summarised every Saturday in `audience-snapshots/behavior-*.md` by
+`scripts/report-behavior.py`; the README there says how exits are estimated.
+Microsoft Clarity (session replays, heatmaps) loads from `config.js`, now on
+every page except print versions, embeddable widgets and admin.
+
 Search data cannot say whether anyone played. A click on a reference page and a
 solved puzzle are the same row to Search Console, which is how the site reached
 roughly 600 Bing clicks a week with 70% landing on `learn/` and thirteen on the

@@ -81,3 +81,28 @@ accept service accounts. Three repository secrets: `ADSENSE_CLIENT_ID`,
 `ADSENSE_CLIENT_SECRET`, `ADSENSE_REFRESH_TOKEN`. If the OAuth app is left in
 "Testing", Google expires its refresh tokens after 7 days; set it to "In
 production". An `invalid_grant` in the log means the token needs issuing again.
+
+## `behavior-YYYY-MM-DD.md`, visitor paths
+
+Written by `scripts/report-behavior.py` from the GA4 reading of the same run.
+Six sections: where visitors come from (channel and source), where they land
+(landing page per source), where they stay (engagement time per visitor, pages
+with at least 15 visitors), where they go next (previous page to next page),
+where they leave, and how far they get in the games.
+
+GA4's Data API has no exits metric, so exits are estimated: views of a page
+minus views of any statedoku.com page whose referrer is that page. Reloads
+count as neither. Back-button returns and second tabs blur it; read the exit
+rate as an estimate, compare it week to week rather than as an absolute.
+
+About half the `(direct)` sessions show almost no engagement and behave like
+automated visits. Every table also gives engaged sessions; judge by those.
+
+The GA4 cuts behind it (`collect-ga4.mjs`): `by_channel`, `landing_by_source`,
+`transitions` (`pageReferrer` x `pagePath`, statedoku.com referrers only),
+`events_by_page` and `events`. Each is optional, so one refused combination
+does not lose the weekly reading. Game events: `puzzle_start`, `puzzle_solve`
+and `puzzle_lost` on the daily game (once per puzzle per device), `play_start`
+and `play_complete` on the 21 mini-games, `classroom_share` on the Share to
+Classroom button. `play_start` and the daily-game events exist in GA4 from
+12 October 2026.
