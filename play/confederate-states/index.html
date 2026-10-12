@@ -191,7 +191,11 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
     const svg = document.querySelector('#pts-map-wrap svg');
     const paths = svg ? Array.from(svg.querySelectorAll('path.state, [data-usps]')) : [];
 
+    // Once a game is won or lost the map stops counting clicks: before this,
+    // each later click scored another mistake and ended the game again.
+    let __over=false;
     function handleClick(p){
+      if(__over)return;
       const usps = p.getAttribute('data-usps') || (p.id || '').replace(/^us-/,'');
       if(!usps || p.classList.contains('correct') || p.classList.contains('wrong'))return;
       if(targetSet.has(usps)){
@@ -199,13 +203,14 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
         $('g-solved').textContent = found+'/'+TOTAL;
         $('g-feedback').textContent = '✅ '+(NAMES[usps]||usps);
         $('g-feedback').className='feedback ok';
-        if(found>=TOTAL){setTimeout(finish,400);return;}
+        if(found>=TOTAL){__over=true;setTimeout(finish,400);return;}
       } else {
         p.classList.add('wrong'); mistakes++;
         $('g-mistakes').textContent = mistakes+'/'+MAX_MISTAKES;
         $('g-feedback').textContent='❌ '+(NAMES[usps]||usps);
         $('g-feedback').className='feedback no';
         if(mistakes>=MAX_MISTAKES){
+          __over=true;
           // Reveal missing targets
           paths.forEach(x=>{const k=x.getAttribute('data-usps')||x.id.replace(/^us-/,'');if(targetSet.has(k)&&!x.classList.contains('correct'))x.classList.add('target-reveal');});
           setTimeout(finish,1200);return;
@@ -216,7 +221,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
 
     function finish(){renderResult($('g-result'),found,TOTAL,T_,"confederate-states",SHARE_PREFIX);}
     $('g-start').addEventListener('click',()=>{
-      found=0; mistakes=0;
+      found=0; mistakes=0; __over=false;
       $('g-solved').textContent='0/'+TOTAL;
       $('g-mistakes').textContent='0/'+MAX_MISTAKES;
       $('g-result').style.display='none'; $('g-start').style.display='none';

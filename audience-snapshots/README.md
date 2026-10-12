@@ -106,3 +106,7 @@ and `puzzle_lost` on the daily game (once per puzzle per device), `play_start`
 and `play_complete` on the 21 mini-games, `classroom_share` on the Share to
 Classroom button. `play_start` and the daily-game events exist in GA4 from
 12 October 2026.
+Until that day the five map games (13 colonies, border, Confederate, swing and
+no-income-tax states) and States Connections let the board be clicked after a
+game ended, each click ending it again: `play_complete` counts on those pages
+are inflated in any window that starts before 12 October 2026.

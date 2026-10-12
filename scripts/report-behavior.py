@@ -193,7 +193,10 @@ def build(snapshot):
             for p, c in sorted(games, key=lambda pc: -pc[1]['play_start'])[:TOP * 2]:
                 out.append(f"| `{p}` | {views.get(p, 0)} | {c['play_start']} | {c['play_complete']} | "
                            f"{pct(c['play_complete'], c['play_start']) if c['play_start'] else 'n/a'} | {c['classroom_share']} |")
-            out.append('\nplay_start exists from 12 October 2026; before that only finishes were sent.\n')
+            out.append('\nplay_start exists from 12 October 2026; before that only finishes were sent. '
+                       'Until the same day the five map games (13 colonies, border, Confederate, swing and '
+                       'no-income-tax states) and States Connections sent play_complete again on every click '
+                       'after a game ended, so finish counts in windows before 12 October are inflated there.\n')
         sc = [(p, c['scroll'], views.get(p, 0)) for p, c in per.items() if views.get(p, 0) >= MIN_VIEWS]
         if sc:
             out.append('Scrolled to 90% of the page (GA4 scroll event), most-viewed pages:\n')

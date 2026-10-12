@@ -188,7 +188,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
     function pickPuzzle(){return PUZZLES[Math.floor(Math.random()*PUZZLES.length)];}
     function start(){
       puzzle = pickPuzzle();
-      mistakes=0; solvedCount=0; selected.clear(); solvedKeys.clear();
+      mistakes=0; solvedCount=0; __over=false; selected.clear(); solvedKeys.clear();
       $('g-solved').textContent='0/4'; $('g-mistakes').textContent='0/4';
       $('g-solved-cats').innerHTML='';
       $('g-result').style.display='none'; $('g-start').style.display='none'; $('g-submit').style.display='inline-block';
@@ -202,14 +202,18 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
         grid.appendChild(c);
       });
     }
+    // After the fourth mistake or the fourth group the board is closed: before
+    // this, more submissions kept scoring and ended the game again.
+    let __over=false;
     function toggle(c){
+      if(__over)return;
       if(c.classList.contains('solved-1')||c.classList.contains('solved-2')||c.classList.contains('solved-3')||c.classList.contains('solved-4'))return;
       if(c.classList.contains('selected')){c.classList.remove('selected');selected.delete(c.dataset.id);return;}
       if(selected.size>=4)return;
       c.classList.add('selected'); selected.add(c.dataset.id);
     }
     function submit(){
-      if(selected.size!==4){return;}
+      if(__over||selected.size!==4){return;}
       const chosen = Array.from(selected);
       const cat = puzzle.categories.find(c => c.states.every(s => chosen.includes(s)) && chosen.every(s => c.states.includes(s)));
       if(cat){
@@ -221,14 +225,14 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
         Array.from(document.querySelectorAll('.conn-cell.selected')).forEach(x=>{x.classList.remove('selected');x.classList.add('solved-'+solvedCount);});
         selected.clear();
         $('g-feedback').textContent='✅ '+cat.label; $('g-feedback').className='feedback ok';
-        if(solvedCount>=4){setTimeout(finish,600);return;}
+        if(solvedCount>=4){__over=true;setTimeout(finish,600);return;}
       } else {
         mistakes++;
         $('g-mistakes').textContent=mistakes+'/4';
         Array.from(document.querySelectorAll('.conn-cell.selected')).forEach(x=>{x.classList.remove('selected');});
         selected.clear();
         $('g-feedback').textContent='❌'; $('g-feedback').className='feedback no';
-        if(mistakes>=4){setTimeout(finish,600);return;}
+        if(mistakes>=4){__over=true;setTimeout(finish,600);return;}
       }
     }
     function finish(){renderResult($('g-result'),solvedCount,4,T_,"states-connections",SHARE_PREFIX);}

@@ -35,7 +35,7 @@ Yes, a free public JSON API at https://statedoku.com/api/. CORS-enabled, no auth
 
 - **50** US states covered
 - **100+** rotating puzzle constraints (clues)
-- **3** mistakes allowed per puzzle
+- **5** mistakes allowed per puzzle
 - **3** supported languages (EN/FR/ES)
 - **13** US states bordering Canada (AK, ID, ME, MI, MN, MT, NH, NY, ND, OH, PA, VT, WA)
 - **4** US states bordering Mexico (AZ, CA, NM, TX)
