@@ -21,8 +21,24 @@ OUT = ROOT / 'functions' / '_sitemap-lastmod.js'
 MAX_WALK = 12  # commits to look back before giving up and taking the newest
 
 ROBOTS = re.compile(r'<meta[^>]*name="robots"[^>]*content="([^"]*)"', re.I)
-# A line that only moves an asset version, e.g. style.css?v=23 -> ?v=24
-ONLY_VERSION = re.compile(r'^[+-].*\?v=\d+')
+# Boilerplate that changes on every page at once without changing a word a
+# reader reads: asset versions, script tags added or removed, the footer, the
+# Share to Classroom block. A commit that only touches these is walked past.
+# On 7 October 2026, removing an unused script tag from 696 pages and
+# versioning config.js on 1,957 would otherwise have re-dated 572 pages.
+VERSION = re.compile(r'\?v=\d+')
+SCRIPT_LINE = re.compile(r'^\s*<script\b[^>]*\bsrc="[^"]*"[^>]*>\s*</script>\s*$', re.M)
+FOOTER = re.compile(r'<footer\b.*?</footer>', re.S)
+GC_SHARE = re.compile(r'<div class="gc-share-wrap">.*?</div>', re.S)
+
+
+def reader_text(html):
+    """The page minus boilerplate, whitespace collapsed."""
+    html = VERSION.sub('', html)
+    html = SCRIPT_LINE.sub('', html)
+    html = FOOTER.sub('', html)
+    html = GC_SHARE.sub('', html)
+    return re.sub(r'\s+', ' ', html).strip()
 
 
 def git(*args):
@@ -30,19 +46,16 @@ def git(*args):
 
 
 def meaningful_date(rel):
-    """Newest commit touching this file whose change is more than a ?v= bump."""
+    """Newest commit touching this file that changed what a reader reads."""
     log = git('log', '--format=%H %cs', '--', rel).strip().splitlines()
     if not log:
         return None
     for line in log[:MAX_WALK]:
         sha, date = line.split(' ', 1)
-        patch = git('show', '--format=', '--unified=0', sha, '--', rel)
-        body = [l for l in patch.splitlines()
-                if l.startswith(('+', '-')) and not l.startswith(('+++', '---'))]
-        if not body:
-            continue
-        if all(ONLY_VERSION.match(l) for l in body):
-            continue          # cache-bust only, keep walking back
+        after = git('show', f'{sha}:{rel}')
+        before = git('show', f'{sha}^:{rel}')
+        if before and reader_text(before) == reader_text(after):
+            continue          # boilerplate only, keep walking back
         return date
     return log[0].split(' ', 1)[1]
 
