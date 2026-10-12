@@ -2826,4 +2826,18 @@ footer, main, .score-bar {
 }
 
 /* The first-visit hint ran 4 px past a 320 px screen in French. */
-#first-tip { max-width: calc(100vw - 24px); white-space: normal; text-align: center; }
+/* width: max-content, because with left: 50% an absolutely positioned box
+   only gets half its container to shrink into, and the hint broke onto three
+   lines on phones once it was allowed to wrap. */
+#first-tip { width: max-content; max-width: calc(100vw - 24px); white-space: normal; text-align: center; }
+
+/* Share to Google Classroom: Google's documented share link
+   (classroom.google.com/share?url=), no third-party script. Teachers already
+   brought classes in through Classroom before this button existed. */
+.gc-share-wrap { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 12px; margin: 14px auto 0; padding: 0 14px; color: var(--text-2); font-size: 0.85rem; text-align: center; }
+.gc-share { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 2px solid var(--navy); border-radius: 999px; background: #fff; color: var(--navy); font-weight: 700; font-size: 0.85rem; text-decoration: none; line-height: 1.2; }
+.gc-share:hover, .gc-share:focus-visible { background: var(--navy); color: #fff; outline: none; }
+.gc-share svg { width: 16px; height: 16px; flex: none; }
+/* The first-visit hint hangs below the grid, over this block, for its few
+   seconds on screen: keep the block's space but hide it until the hint goes. */
+body:has(#first-tip) .gc-share-wrap { visibility: hidden; }
