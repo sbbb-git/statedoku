@@ -2836,7 +2836,8 @@ footer, main, .score-bar {
    brought classes in through Classroom before this button existed. */
 .gc-share-wrap { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 12px; margin: 14px auto 0; padding: 0 14px; color: var(--text-2); font-size: 0.85rem; text-align: center; }
 .gc-share { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 2px solid var(--navy); border-radius: 999px; background: #fff; color: var(--navy); font-weight: 700; font-size: 0.85rem; text-decoration: none; line-height: 1.2; }
-.gc-share:hover, .gc-share:focus-visible { background: var(--navy); color: #fff; outline: none; }
+.gc-share:hover { background: var(--navy); color: #fff; }
+.gc-share:focus-visible { background: var(--navy); color: #fff; outline: 3px solid var(--gold); outline-offset: 2px; }
 .gc-share svg { width: 16px; height: 16px; flex: none; }
 /* The first-visit hint hangs below the grid, over this block, for its few
    seconds on screen: keep the block's space but hide it until the hint goes. */

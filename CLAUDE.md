@@ -371,7 +371,13 @@ Visitor paths (source, landing page, time, next page, exits, game funnels) are
 summarised every Saturday in `audience-snapshots/behavior-*.md` by
 `scripts/report-behavior.py`; the README there says how exits are estimated.
 Microsoft Clarity (session replays, heatmaps) loads from `config.js`, now on
-every page except print versions, embeddable widgets and admin.
+every page except the 63 print versions, the 3 widget pages, `admin/constraints`,
+`api/` and `logos/`.
+
+The behaviour report counts entries, not views: every game's "Play again"
+reloads the page, which GA4 records as a view whose referrer is the page
+itself. On 13 October 2026 those replays were 427 of 2,620 transition views,
+almost all on game pages, and had made every game look like a one-view exit.
 
 **The visitor-path report is for the weekly routine, not for the owner.** He
 said on 13 October 2026 that he will not read it: it exists so the Saturday

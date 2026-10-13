@@ -6,9 +6,12 @@ stay, where they go next, where they leave, and how far they get in the games.
 Reads audience-snapshots/ga4-*.json (written by scripts/collect-ga4.mjs) and
 prints Markdown, or writes it with --out.
 
-GA4's Data API has no exits metric, so exits are derived: the views of a page
-minus the views of any statedoku.com page whose referrer is that page. A view
-whose referrer is the same page (a reload) counts as neither. Back-button
+GA4's Data API has no exits metric, so exits are derived from entries: the
+views of a page minus its replays (a view whose referrer is the page itself:
+every game's "Play again" button reloads the page), minus the views of any
+statedoku.com page whose referrer is that page. Replays were 427 of 2,620
+transition views on 13 October 2026 and sat almost all on game pages, so
+counting them as entries made every game look like a one-view exit. Back-button
 returns and second tabs blur this a little; read it as an estimate.
 
 About half the "(direct)" traffic shows almost no engagement and behaves like
@@ -129,7 +132,7 @@ def build(snapshot):
     pg = rows(d, 'by_page')
     views = collections.Counter()
     if pg:
-        cand = [r for r in pg if r['screenPageViews'] >= MIN_VIEWS and r['activeUsers'] >= MIN_USERS]
+        cand = [r for r in pg if r['activeUsers'] >= MIN_USERS]
         for r in pg:
             views[norm(r['pagePath'])] += r['screenPageViews']
         out.append(f'Pages with at least {MIN_USERS} visitors, by engagement time per visitor:\n')
@@ -142,35 +145,48 @@ def build(snapshot):
 
     # 4 and 5. Where they go next, where they leave
     tr = rows(d, 'transitions')
+    nxt = collections.defaultdict(collections.Counter)
+    replays = collections.Counter()
+    for r in tr:
+        a, b = norm(r['pageReferrer']), norm(r['pagePath'])
+        if not a:
+            continue
+        if a == b:
+            replays[b] += r['screenPageViews']
+        else:
+            nxt[a][b] += r['screenPageViews']
+    # Entries: views that are not a reload of the same page.
+    entries = {p: max(0, v - replays[p]) for p, v in views.items()}
     out.append('## 4. Where they go next\n')
     if tr and views:
-        nxt = collections.defaultdict(collections.Counter)
-        for r in tr:
-            a, b = norm(r['pageReferrer']), norm(r['pagePath'])
-            if a and a != b:
-                nxt[a][b] += r['screenPageViews']
+        out.append('Entries are views minus replays (a reload of the same page, which is what '
+                   '"Play again" does on every game).\n')
         for p, v in views.most_common(TOP):
+            en = entries[p]
             moved = sum(nxt[p].values())
+            rp = f', {replays[p]} replays' if replays[p] else ''
             if not moved:
-                out.append(f'- `{p}` ({v} views): no recorded next page.')
+                out.append(f'- `{p}` ({en} entries{rp}): no recorded next page.')
                 continue
             top = ', '.join(f'`{q}` {n}' for q, n in nxt[p].most_common(4))
-            out.append(f'- `{p}` ({v} views): {moved} continue on the site ({pct(moved, v)}), to {top}.')
+            out.append(f'- `{p}` ({en} entries{rp}): {moved} continue on the site ({pct(moved, en)}), to {top}.')
         out.append('\n## 5. Where they leave\n')
-        out.append('Exits estimated as views minus views that continue to another page of the site.\n')
-        out.append('| Page | Views | Continue | Estimated exits | Exit rate |')
-        out.append('|---|---|---|---|---|')
+        out.append('Exits estimated as entries minus views that continue to another page of the site.\n')
+        out.append('| Page | Entries | Replays | Continue | Estimated exits | Exit rate |')
+        out.append('|---|---|---|---|---|---|')
         ex = []
-        for p, v in views.items():
-            if v < MIN_VIEWS:
+        for p, en in entries.items():
+            if en < MIN_VIEWS:
                 continue
-            moved = min(v, sum(nxt[p].values()))
-            ex.append((v - moved, p, v, moved))
-        for e, p, v, moved in sorted(ex, reverse=True)[:TOP]:
-            out.append(f'| `{p}` | {v} | {moved} | {e} | {pct(e, v)} |')
+            moved = min(en, sum(nxt[p].values()))
+            ex.append((en - moved, p, en, moved))
+        for e, p, en, moved in sorted(ex, reverse=True)[:TOP]:
+            out.append(f'| `{p}` | {en} | {replays[p]} | {moved} | {e} | {pct(e, en)} |')
         out.append('')
+    elif not views:
+        out.append('Not in this reading (needs the by_page cut).\n\n## 5. Where they leave\n\nNot in this reading (needs the by_page cut).\n')
     else:
-        out.append('Not in this reading (needs the transitions cut).\n')
+        out.append('Not in this reading (needs the transitions cut).\n\n## 5. Where they leave\n\nNot in this reading (needs the transitions cut).\n')
 
     # 6. Games
     out.append('## 6. How far they get in the games\n')
@@ -179,19 +195,22 @@ def build(snapshot):
         per = collections.defaultdict(collections.Counter)
         for r in ev:
             per[norm(r['pagePath'])][r['eventName']] += r['eventCount']
+        # A page outside the by_page cut has no view count: say so, not 0.
+        def ent(p):
+            return str(entries[p]) if p in views else 'n/a'
         daily = [(p, c) for p, c in per.items() if p in ('/', '/fr/', '/es/')]
         if daily:
-            out.append('| Daily game | Page views | Started | Won | Lost | Shared to Classroom |')
+            out.append('| Daily game | Entries | Started | Won | Lost | Shared to Classroom |')
             out.append('|---|---|---|---|---|---|')
             for p, c in sorted(daily):
-                out.append(f"| `{p}` | {views.get(p, 0)} | {c['puzzle_start']} | {c['puzzle_solve']} | {c['puzzle_lost']} | {c['classroom_share']} |")
+                out.append(f"| `{p}` | {ent(p)} | {c['puzzle_start']} | {c['puzzle_solve']} | {c['puzzle_lost']} | {c['classroom_share']} |")
             out.append('')
         games = [(p, c) for p, c in per.items() if '/play/' in p and (c['play_start'] or c['play_complete'])]
         if games:
-            out.append('| Mini-game page | Views | Started | Finished | Finish rate | Went to next game | Classroom shares |')
+            out.append('| Mini-game page | Entries | Started | Finished | Finish rate | Went to next game | Classroom shares |')
             out.append('|---|---|---|---|---|---|---|')
             for p, c in sorted(games, key=lambda pc: -pc[1]['play_start'])[:TOP * 2]:
-                out.append(f"| `{p}` | {views.get(p, 0)} | {c['play_start']} | {c['play_complete']} | "
+                out.append(f"| `{p}` | {ent(p)} | {c['play_start']} | {c['play_complete']} | "
                            f"{pct(c['play_complete'], c['play_start']) if c['play_start'] else 'n/a'} | "
                            f"{c['next_game_click']} | {c['classroom_share']} |")
             out.append('\nplay_start exists from 12 October 2026; before that only finishes were sent. '
@@ -201,12 +220,12 @@ def build(snapshot):
         cq = per.get('/learn/states-and-capitals/')
         if cq and cq['capitals_teaser_start']:
             out.append(f"Capitals page quick quiz (from 13 October 2026): {cq['capitals_teaser_start']} started, "
-                       f"{cq['capitals_teaser_done']} finished, out of {views.get('/learn/states-and-capitals/', 0)} views.\n")
-        sc = [(p, c['scroll'], views.get(p, 0)) for p, c in per.items() if views.get(p, 0) >= MIN_VIEWS]
+                       f"{cq['capitals_teaser_done']} finished, out of {ent('/learn/states-and-capitals/')} entries.\n")
+        sc = [(p, c['scroll'], entries.get(p, 0)) for p, c in per.items() if entries.get(p, 0) >= MIN_VIEWS]
         if sc:
-            out.append('Scrolled to 90% of the page (GA4 scroll event), most-viewed pages:\n')
+            out.append('Scrolled to 90% of the page (GA4 scroll event), most-entered pages:\n')
             for p, s, v in sorted(sc, key=lambda x: -x[2])[:TOP]:
-                out.append(f'- `{p}`: {s} of {v} views ({pct(s, v)})')
+                out.append(f'- `{p}`: {s} of {v} entries ({pct(s, v)})')
             out.append('')
     else:
         out.append('Not in this reading (needs the events_by_page cut).\n')

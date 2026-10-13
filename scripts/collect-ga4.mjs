@@ -29,6 +29,11 @@ const API = 'https://analyticsdata.googleapis.com/v1beta';
 // collapse when compared week on week.
 const WINDOW = { startDate: '28daysAgo', endDate: 'yesterday' };
 
+function stripQuery(u) {
+  try { const x = new URL(u); return x.origin + x.pathname; }
+  catch { return u.split('?')[0].split('#')[0]; }
+}
+
 /** One runReport call, flattened into plain rows. */
 async function report(propertyId, token, dimensions, metrics, { limit = 200, orderByMetric, filter } = {}) {
   const body = {
@@ -68,6 +73,11 @@ async function report(propertyId, token, dimensions, metrics, { limit = 200, ord
   const rows = (json.rows || []).map((r) => {
     const o = {};
     dims.forEach((d, i) => { o[d] = r.dimensionValues?.[i]?.value ?? null; });
+    // A referrer is a full URL and can carry a query string: a utm tag, or the
+    // token of a subscriber who clicked the home link on /api/confirm. Only
+    // origin and path are ever used, so only they are written.
+    if (typeof o.pageReferrer === 'string') o.pageReferrer = stripQuery(o.pageReferrer);
+    if (typeof o.landingPagePlusQueryString === 'string') o.landingPagePlusQueryString = stripQuery(o.landingPagePlusQueryString);
     mets.forEach((m, i) => {
       const v = r.metricValues?.[i]?.value;
       const n = Number(v);
@@ -172,6 +182,12 @@ async function main() {
     window: WINDOW,
     data: cuts,
   };
+
+  // This file is committed to a public repo. Refuse to write it if any value
+  // still looks like a query string, a subscriber token or an email address.
+  const text = JSON.stringify(snapshot);
+  const leak = text.match(/[?&](token|key|email)=|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
+  if (leak) throw new Error(`refusing to write the reading: it contains "${leak[0].slice(0, 12)}..."`);
 
   const outDir = process.env.GA4_OUT_DIR || 'audience-snapshots';
   await fs.mkdir(outDir, { recursive: true });

@@ -82,7 +82,14 @@ jobs:
         run: |
           f=$(ls audience-snapshots/ga4-*.json 2>/dev/null | sort | tail -1)
           [ -n "$f" ] || { echo "no GA4 reading"; exit 0; }
-          python3 scripts/report-behavior.py --in "$f" --out "audience-snapshots/behavior-$(date -u +%Y-%m-%d).md"
+          # The report takes the date of the reading it is built from. When the
+          # collector wrote nothing (missing secret, API refusal) the newest
+          # reading is last week's, and a report dated today from it would read
+          # as "no change" to the Saturday routine.
+          d=$(basename "$f" .json); d=${d#ga4-}
+          out="audience-snapshots/behavior-$d.md"
+          [ -f "$out" ] && { echo "report for $d already exists, nothing new"; exit 0; }
+          python3 scripts/report-behavior.py --in "$f" --out "$out"
 
       - name: Commit the reading
         run: |

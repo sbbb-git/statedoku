@@ -54,6 +54,12 @@ const Analytics = (() => {
     // Allow puzzle_start once per day per device
     if (eventType === 'puzzle_start' && _hasSent(eventKey)) return;
 
+    // Mark the event sent before any transport. _markSent used to run only
+    // after the beacon to /api/events succeeded, so with that request blocked
+    // (an ad blocker, a network error) every reload re-sent the GA4 event
+    // while the D1 count stayed deduped.
+    _markSent(eventKey);
+
     // Same event in GA4, once per puzzle per device like the D1 row, so a
     // game can be tied to the source and landing page of the visit.
     try {
@@ -76,10 +82,7 @@ const Analytics = (() => {
 
     try {
       const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-      if (navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, blob)) {
-        _markSent(eventKey);
-        return;
-      }
+      if (navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, blob)) return;
     } catch {}
 
     // Fallback (sendBeacon failed)
@@ -89,7 +92,7 @@ const Analytics = (() => {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(payload),
         keepalive: true,
-      }).then(() => _markSent(eventKey)).catch(() => {});
+      }).catch(() => {});
     } catch {}
   }
 

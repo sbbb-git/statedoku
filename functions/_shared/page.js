@@ -3,11 +3,15 @@ export function page(title, inner, status = 200) {
   const html = `<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
 <title>${title}</title></head>
 <body style="margin:0;background:#F7F8FB;font-family:system-ui,sans-serif;color:#0F2147">
 <div style="max-width:440px;margin:60px auto;padding:28px 24px;background:#fff;border-radius:14px;text-align:center">${inner}</div>
 </body></html>`;
-  return new Response(html, { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
+  // The GET URL carries the subscriber's token. Without this, a click on the
+  // home link sent that URL as the referrer, GA4 stored it as page_referrer,
+  // and the weekly transitions cut would have committed it to the public repo.
+  return new Response(html, { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'referrer-policy': 'no-referrer' } });
 }
 
 export const T = {

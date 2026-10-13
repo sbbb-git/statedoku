@@ -45,7 +45,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/learn/states-and-capitals/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/learn/states-and-capitals/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=29">
+  <link rel="stylesheet" href="/css/style.css?v=30">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="All 50 US States and Capitals (Full A to Z List)">
@@ -435,6 +435,8 @@
     var b = document.createElement('strong'); b.textContent = P[i][0]; qEl.appendChild(b); qEl.appendChild(document.createTextNode('?'));
     status.textContent = 'Question ' + (n + 1) + ' of ' + N;
     ch.innerHTML = '';
+    // The answered buttons are gone, so a keyboard user would land on <body>.
+    if (n > 0) { qEl.setAttribute('tabindex', '-1'); qEl.focus(); }
     opts.forEach(function (o) {
       var btn = document.createElement('button'); btn.type = 'button'; btn.textContent = o;
       btn.setAttribute('style', "display:block;width:100%;text-align:left;border:2px solid #0F2147;border-radius:10px;padding:10px 12px;background:#fff;color:#0F2147;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;");
@@ -457,7 +459,8 @@
   function done() {
     box.hidden = true;
     document.getElementById('cq-score').textContent = 'You got ' + score + ' of ' + N + '.';
-    document.getElementById('cq-end').hidden = false;
+    var endEl = document.getElementById('cq-end'); endEl.hidden = false;
+    endEl.setAttribute('tabindex', '-1'); endEl.focus();
     ev('capitals_teaser_done', { score: score });
   }
   box.hidden = false; ask();
