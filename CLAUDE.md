@@ -373,6 +373,34 @@ summarised every Saturday in `audience-snapshots/behavior-*.md` by
 Microsoft Clarity (session replays, heatmaps) loads from `config.js`, now on
 every page except print versions, embeddable widgets and admin.
 
+**The visitor-path report is for the weekly routine, not for the owner.** He
+said on 13 October 2026 that he will not read it: it exists so the Saturday
+session uses it to decide what to change on the site. Every Saturday, after the
+search readings, read this week's `behavior-*.md` and last week's, and weigh
+what they show alongside the SEO findings when choosing the week's change. The
+change can be behaviour-driven rather than SEO-driven when the data supports
+it better. Where to look:
+
+- **Pages with many entrances and a high exit rate** are where a reader needs a
+  better next step (the capitals page: 86% left without a second page).
+- **Games with many starts and few finishes** need their difficulty or
+  interface looked at; **finishes with no next-game click** mean the
+  end-of-game offer is not working.
+- **The capitals quick quiz**: started and finished against page views.
+- **The daily game**: started, won, lost, and the win rate week on week.
+- **Sources with high engagement** (Classroom, Listdle, ChatGPT so far) and the
+  page each one lands on: what to strengthen for them.
+
+Week-on-week deltas only, and under about 20 events a figure is noise. Write
+in `seo-snapshots/JOURNAL.md` which reading led to which change. Do not send
+the owner these figures as a report.
+
+Event start dates, so a jump on that day is not mistaken for a trend:
+`play_start`, `puzzle_start/solve/lost` and `classroom_share` from 12 October
+2026; `capitals_teaser_*` and `next_game_click` from 13 October 2026. Before 12
+October the five map games and States Connections sent `play_complete` once per
+click after a game ended, so earlier finish counts there are inflated.
+
 Search data cannot say whether anyone played. A click on a reference page and a
 solved puzzle are the same row to Search Console, which is how the site reached
 roughly 600 Bing clicks a week with 70% landing on `learn/` and thirteen on the
@@ -402,6 +430,8 @@ purpose: a red cross every week stops being read.
 - **Bing crawl anomalies.**
 - **The keyword reading**, to decide what to write from measured demand rather
   than intuition.
+- **The visitor-path report** (`audience-snapshots/behavior-*.md`), to decide
+  what to change for the people already arriving. See Audience readings.
 
 Week-on-week deltas, never absolute values.
 
