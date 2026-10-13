@@ -30,6 +30,11 @@ VERSION = re.compile(r'\?v=\d+')
 SCRIPT_LINE = re.compile(r'^\s*<script\b[^>]*\bsrc="[^"]*"[^>]*>\s*</script>\s*$', re.M)
 FOOTER = re.compile(r'<footer\b.*?</footer>', re.S)
 GC_SHARE = re.compile(r'<div class="gc-share-wrap">.*?</div>', re.S)
+# Instrumentation blocks added to every game page: the GA4 funnel listener and
+# the end-of-game offer. Not other inline scripts: a game's questions live in
+# its inline code, and a deck correction is a real content change.
+INSTRUMENTATION = re.compile(r'<script>\s*// (?:GA4 funnel for this game|End of a game: offer the next game).*?</script>', re.S)
+TEMPLATE = re.compile(r'<template id="next-game-tpl">.*?</template>', re.S)
 
 
 def reader_text(html):
@@ -38,6 +43,8 @@ def reader_text(html):
     html = SCRIPT_LINE.sub('', html)
     html = FOOTER.sub('', html)
     html = GC_SHARE.sub('', html)
+    html = INSTRUMENTATION.sub('', html)
+    html = TEMPLATE.sub('', html)
     return re.sub(r'\s+', ' ', html).strip()
 
 
