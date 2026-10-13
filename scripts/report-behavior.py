@@ -188,15 +188,20 @@ def build(snapshot):
             out.append('')
         games = [(p, c) for p, c in per.items() if '/play/' in p and (c['play_start'] or c['play_complete'])]
         if games:
-            out.append('| Mini-game page | Views | Started | Finished | Finish rate | Classroom shares |')
-            out.append('|---|---|---|---|---|---|')
+            out.append('| Mini-game page | Views | Started | Finished | Finish rate | Went to next game | Classroom shares |')
+            out.append('|---|---|---|---|---|---|---|')
             for p, c in sorted(games, key=lambda pc: -pc[1]['play_start'])[:TOP * 2]:
                 out.append(f"| `{p}` | {views.get(p, 0)} | {c['play_start']} | {c['play_complete']} | "
-                           f"{pct(c['play_complete'], c['play_start']) if c['play_start'] else 'n/a'} | {c['classroom_share']} |")
+                           f"{pct(c['play_complete'], c['play_start']) if c['play_start'] else 'n/a'} | "
+                           f"{c['next_game_click']} | {c['classroom_share']} |")
             out.append('\nplay_start exists from 12 October 2026; before that only finishes were sent. '
                        'Until the same day the five map games (13 colonies, border, Confederate, swing and '
                        'no-income-tax states) and States Connections sent play_complete again on every click '
                        'after a game ended, so finish counts in windows before 12 October are inflated there.\n')
+        cq = per.get('/learn/states-and-capitals/')
+        if cq and cq['capitals_teaser_start']:
+            out.append(f"Capitals page quick quiz (from 13 October 2026): {cq['capitals_teaser_start']} started, "
+                       f"{cq['capitals_teaser_done']} finished, out of {views.get('/learn/states-and-capitals/', 0)} views.\n")
         sc = [(p, c['scroll'], views.get(p, 0)) for p, c in per.items() if views.get(p, 0) >= MIN_VIEWS]
         if sc:
             out.append('Scrolled to 90% of the page (GA4 scroll event), most-viewed pages:\n')

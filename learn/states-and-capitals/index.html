@@ -114,8 +114,17 @@
     </section>
 
     <!-- capitals-play-top -->
-    <section class="capitals-play" aria-label="State capitals quizzes" style="border:2px solid #0F2147;border-radius:12px;padding:16px 20px;margin:0 0 22px;background:#fff;">
-      <p style="margin:0 0 10px;font-weight:800;color:#0F2147;font-size:1.05rem;">Already know some? Test yourself on the 50 capitals</p>
+    <section class="capitals-play" aria-label="State capitals quiz" style="border:2px solid #0F2147;border-radius:12px;padding:16px 20px;margin:0 0 22px;background:#fff;">
+      <p style="margin:0 0 10px;font-weight:800;color:#0F2147;font-size:1.05rem;">Quick check: do you know these three capitals?</p>
+      <div id="cq" hidden>
+        <p id="cq-q" style="margin:0 0 10px;font-size:1rem;"></p>
+        <div id="cq-choices" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;"></div>
+        <p id="cq-status" aria-live="polite" style="margin:10px 0 0;font-size:.88rem;color:#475569;"></p>
+      </div>
+      <div id="cq-end" hidden style="margin:0 0 12px;">
+        <p id="cq-score" style="margin:0 0 4px;font-size:1.05rem;font-weight:800;color:#0F2147;"></p>
+        <p style="margin:0;font-size:.95rem;">Now try all 50, or today's Statedoku grid.</p>
+      </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
         <a href="/play/state-capitals-typing/" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:9px 18px;border-radius:999px;font-weight:800;text-decoration:none;font-size:.92rem;">State capitals quiz, type all 50 →</a>
         <a href="/play/state-capitals-match/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:7px 16px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.92rem;">Capitals matching game</a>
@@ -186,6 +195,8 @@
       <tr><td>50</td><td><a href="/states/wyoming/"><strong>Wyoming</strong></a> (WY)</td><td>Cheyenne</td><td>1890</td></tr>
       </tbody>
     </table>
+    <!-- capitals-play-after-table -->
+    <p class="after-table-cta" style="margin:4px 0 26px;padding:12px 16px;border-radius:10px;background:#FFFBEB;border:1px solid #F59E0B;font-size:.98rem;"><strong>Found what you needed?</strong> See how many of the 50 capitals you can <a href="/play/state-capitals-typing/">type from memory</a>, or <a href="/">play today's Statedoku puzzle</a>.</p>
 
     <h2>Capitals that surprise people</h2>
     <p>Most US state capitals are <strong>not the biggest city</strong>. This is by design, when states picked their capitals in the 18th and 19th centuries, founders often chose a smaller, more centrally located town to avoid concentrating power in commercial hubs. The result: a long list of capital-vs-largest-city mismatches that trip up almost every American adult quizzed on the spot.</p>
@@ -403,5 +414,54 @@
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 <script src="/js/us-map.js?v=1" defer></script>
+<script>
+// Three-question capitals check at the top of the page. The page is mostly a
+// lookup: 86% of readers left without opening a second page (GA4, Oct 2026),
+// so the first step into the games happens here, without a click away. The
+// pairs are the page's own alphabetical table.
+(function () {
+  var P = [["Alabama", "Montgomery"], ["Alaska", "Juneau"], ["Arizona", "Phoenix"], ["Arkansas", "Little Rock"], ["California", "Sacramento"], ["Colorado", "Denver"], ["Connecticut", "Hartford"], ["Delaware", "Dover"], ["Florida", "Tallahassee"], ["Georgia", "Atlanta"], ["Hawaii", "Honolulu"], ["Idaho", "Boise"], ["Illinois", "Springfield"], ["Indiana", "Indianapolis"], ["Iowa", "Des Moines"], ["Kansas", "Topeka"], ["Kentucky", "Frankfort"], ["Louisiana", "Baton Rouge"], ["Maine", "Augusta"], ["Maryland", "Annapolis"], ["Massachusetts", "Boston"], ["Michigan", "Lansing"], ["Minnesota", "Saint Paul"], ["Mississippi", "Jackson"], ["Missouri", "Jefferson City"], ["Montana", "Helena"], ["Nebraska", "Lincoln"], ["Nevada", "Carson City"], ["New Hampshire", "Concord"], ["New Jersey", "Trenton"], ["New Mexico", "Santa Fe"], ["New York", "Albany"], ["North Carolina", "Raleigh"], ["North Dakota", "Bismarck"], ["Ohio", "Columbus"], ["Oklahoma", "Oklahoma City"], ["Oregon", "Salem"], ["Pennsylvania", "Harrisburg"], ["Rhode Island", "Providence"], ["South Carolina", "Columbia"], ["South Dakota", "Pierre"], ["Tennessee", "Nashville"], ["Texas", "Austin"], ["Utah", "Salt Lake City"], ["Vermont", "Montpelier"], ["Virginia", "Richmond"], ["Washington", "Olympia"], ["West Virginia", "Charleston"], ["Wisconsin", "Madison"], ["Wyoming", "Cheyenne"]];
+  var box = document.getElementById('cq'); if (!box) return;
+  var qEl = document.getElementById('cq-q'), ch = document.getElementById('cq-choices'), status = document.getElementById('cq-status');
+  var N = 3, n = 0, score = 0, asked = {};
+  function ev(name, params) { try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch (e) {} }
+  function rnd(k) { return Math.floor(Math.random() * k); }
+  function ask() {
+    var i; do { i = rnd(P.length); } while (asked[i]); asked[i] = 1;
+    var right = P[i][1], opts = [right];
+    while (opts.length < 4) { var c = P[rnd(P.length)][1]; if (opts.indexOf(c) < 0) opts.push(c); }
+    opts.sort(function () { return Math.random() - 0.5; });
+    qEl.textContent = 'What is the capital of ';
+    var b = document.createElement('strong'); b.textContent = P[i][0]; qEl.appendChild(b); qEl.appendChild(document.createTextNode('?'));
+    status.textContent = 'Question ' + (n + 1) + ' of ' + N;
+    ch.innerHTML = '';
+    opts.forEach(function (o) {
+      var btn = document.createElement('button'); btn.type = 'button'; btn.textContent = o;
+      btn.setAttribute('style', "display:block;width:100%;text-align:left;border:2px solid #0F2147;border-radius:10px;padding:10px 12px;background:#fff;color:#0F2147;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;");
+      btn.addEventListener('click', function () {
+        var ok = o === right; if (ok) score++;
+        [].forEach.call(ch.children, function (x) {
+          x.disabled = true; x.style.cursor = 'default';
+          if (x.textContent === right) { x.style.background = '#ECFDF5'; x.style.borderColor = '#059669'; }
+          else if (x === btn) { x.style.background = '#FEF2F2'; x.style.borderColor = '#DC2626'; }
+        });
+        status.textContent = ok ? 'Correct.' : 'The capital is ' + right + '.';
+        if (n === 0) ev('capitals_teaser_start');
+        ev('capitals_teaser_answer', { correct: ok });
+        n++;
+        setTimeout(n < N ? ask : done, ok ? 700 : 1400);
+      });
+      ch.appendChild(btn);
+    });
+  }
+  function done() {
+    box.hidden = true;
+    document.getElementById('cq-score').textContent = 'You got ' + score + ' of ' + N + '.';
+    document.getElementById('cq-end').hidden = false;
+    ev('capitals_teaser_done', { score: score });
+  }
+  box.hidden = false; ask();
+})();
+</script>
 </body>
 </html>

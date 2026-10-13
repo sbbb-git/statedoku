@@ -359,5 +359,24 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
 })();
 </script>
 <script src="/config.js?v=11"></script>
+<template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/fr/play/state-capitals-match/" data-next="state-capitals-match" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Jeu suivant : Mémo Capitales d'États →</a><a href="/fr/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">Le puzzle Statedoku du jour</a><a href="/fr/play/" style="color:#0F2147;font-weight:700;">Les 21 jeux</a></div></template>
+<script>
+// End of a game: offer the next game and the daily puzzle inside the result
+// card. 99% of Place the State players left after one game (GA4, Oct 2026).
+(function () {
+  var tpl = document.getElementById('next-game-tpl');
+  var res = document.querySelector('#g-result, #pts-result, #ab-result');
+  if (!tpl || !res || !window.MutationObserver) return;
+  function add() {
+    if (res.style.display === 'none' || !res.innerHTML.trim() || res.querySelector('.next-game')) return;
+    res.appendChild(tpl.content.cloneNode(true));
+  }
+  new MutationObserver(add).observe(res, { childList: true, attributes: true, attributeFilter: ['style'] });
+  res.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('.next-game a');
+    if (a && typeof window.gtag === 'function') window.gtag('event', 'next_game_click', { target: a.getAttribute('data-next') || a.getAttribute('href') });
+  });
+})();
+</script>
 </body>
 </html>
