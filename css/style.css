@@ -1492,6 +1492,16 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   margin-bottom: 24px !important;
 }
 
+/* "Last updated" line written by scripts/stamp-page-dates.py at the end of
+   <main> on every indexable content page. */
+.page-updated {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  text-align: center;
+  margin: 32px auto 8px;
+  padding: 0 16px;
+}
+
 .legal-back {
   margin-top: 32px !important;
   padding-top: 20px;

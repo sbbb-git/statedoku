@@ -39,3 +39,4 @@ marketing/
 
 # Audit output written next to the scripts that produce it
 scripts/*.json
+__pycache__/

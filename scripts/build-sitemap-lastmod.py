@@ -18,7 +18,11 @@ import json, pathlib, re, subprocess, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKIP = {'node_modules', '.git', 'tmp', 'marketing', 'scripts', 'admin', 'seo-snapshots'}
 OUT = ROOT / 'functions' / '_sitemap-lastmod.js'
-MAX_WALK = 12  # commits to look back before giving up and taking the newest
+# No cap on the walk. With one, a page whose last dozen commits were all
+# cache-busts fell back to the newest commit and was stamped with today's
+# date: on 15 October 2026 that re-dated /api/ and six region pages, none of
+# which had changed a word since August. The file's first commit always
+# counts, so the walk always ends on a real date.
 
 ROBOTS = re.compile(r'<meta[^>]*name="robots"[^>]*content="([^"]*)"', re.I)
 # Boilerplate that changes on every page at once without changing a word a
@@ -35,6 +39,11 @@ GC_SHARE = re.compile(r'<div class="gc-share-wrap">.*?</div>', re.S)
 # its inline code, and a deck correction is a real content change.
 INSTRUMENTATION = re.compile(r'<script>\s*// (?:GA4 funnel for this game|End of a game: offer the next game).*?</script>', re.S)
 TEMPLATE = re.compile(r'<template id="next-game-tpl">.*?</template>', re.S)
+# The dates stamp-page-dates.py writes from this very map. Left in, stamping a
+# page would count as a change to it and re-date it on the next run.
+PAGE_DATES = re.compile(r'<script type="application/ld\+json" data-page-dates>.*?</script>', re.S)
+PAGE_UPDATED = re.compile(r'<p class="page-updated">.*?</p>', re.S)
+DATE_MODIFIED = re.compile(r'"dateModified"\s*:\s*"[^"]*"')
 
 
 def reader_text(html):
@@ -45,6 +54,9 @@ def reader_text(html):
     html = GC_SHARE.sub('', html)
     html = INSTRUMENTATION.sub('', html)
     html = TEMPLATE.sub('', html)
+    html = PAGE_DATES.sub('', html)
+    html = PAGE_UPDATED.sub('', html)
+    html = DATE_MODIFIED.sub('', html)
     return re.sub(r'\s+', ' ', html).strip()
 
 
@@ -57,14 +69,14 @@ def meaningful_date(rel):
     log = git('log', '--format=%H %cs', '--', rel).strip().splitlines()
     if not log:
         return None
-    for line in log[:MAX_WALK]:
+    for line in log:
         sha, date = line.split(' ', 1)
         after = git('show', f'{sha}:{rel}')
         before = git('show', f'{sha}^:{rel}')
         if before and reader_text(before) == reader_text(after):
             continue          # boilerplate only, keep walking back
         return date
-    return log[0].split(' ', 1)[1]
+    return log[-1].split(' ', 1)[1]
 
 
 def main():
@@ -108,6 +120,9 @@ def main():
     print(f'{len(out)} indexable pages dated, out of {len(pages)} scanned')
     print(f'{bumped_only} would have been stamped today by a naive "last commit" read')
     print(f'wrote {OUT.relative_to(ROOT)}')
+
+    # The pages show the same dates, so they move with the map.
+    subprocess.run([sys.executable, str(ROOT / 'scripts' / 'stamp-page-dates.py')], cwd=ROOT, check=True)
 
 
 if __name__ == '__main__':

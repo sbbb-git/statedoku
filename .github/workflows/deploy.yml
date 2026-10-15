@@ -21,6 +21,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          # IndexNow compares each page with the commit before the push.
+          fetch-depth: 0
+
+      - name: Warn when generated files lag behind the pages
+        run: |
+          python3 scripts/build-llms.py --check || echo "::warning::llms.txt or llms-full.txt is stale: run python3 scripts/build-llms.py"
+          python3 scripts/stamp-page-dates.py --check || echo "::warning::page dates are stale: run python3 scripts/build-sitemap-lastmod.py"
 
       - name: Stage the site without the repo-only directories
         run: |
@@ -41,3 +49,12 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy /tmp/dist --project-name=statedoku --branch=main --commit-dirty=true
+
+      # Bing (which ChatGPT search and Copilot answer from) only hears about a
+      # page once otherwise. Sends the indexable pages whose reader text
+      # changed in this push; warns and carries on if anything fails.
+      - name: Tell IndexNow which pages changed
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: python3 scripts/indexnow.py "$BEFORE" "$GITHUB_SHA"

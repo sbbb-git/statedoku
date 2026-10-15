@@ -192,6 +192,43 @@ passed on the earlier version, and 79 pages went unreachable for a day.
 near-duplicate pages are noindexed on purpose, not deleted. Adding thin pages to
 fix a broken link is a bad trade while AdSense is judging the site.
 
+## Answer engines (GEO)
+
+ChatGPT is the best-engaged source of visitors (54 engaged sessions out of 80
+in the 13 October 2026 reading), and it sends them to the games: `/play/` and
+`/play/place-the-state/` first. ChatGPT search and Copilot answer from Bing's
+index, so what Bing knows is what they can cite.
+
+- **llms.txt and llms-full.txt are generated.** `python3 scripts/build-llms.py`
+  builds both from `data/states.json`, the ItemList on `/play/` and the listed
+  pages' own titles and descriptions. It fails on a noindexed, missing or
+  non-self-canonical link, on a list whose count differs from what the site
+  says, and on a unicode dash. Never edit the two files by hand: the typed
+  versions said three mistakes and five, midnight UTC and local, and carried
+  invented state facts. Re-run after changing states.json, a game, or a listed
+  page's title or description. The deploy warns when they are stale.
+- **Every indexable page shows its date.** `scripts/stamp-page-dates.py`, which
+  `build-sitemap-lastmod.py` runs at the end, writes a `data-page-dates` WebPage
+  JSON-LD (datePublished from the first commit, dateModified from the sitemap
+  lastmod, author the pen name linking to /about/) and a visible "Last updated"
+  line before `</main>`, on 622 pages. Skipped: the homepages and archives
+  (game screens), about, privacy, terms and legal. The stamp, and any
+  dateModified value, are excluded from `reader_text`, so stamping never
+  re-dates a page. After a content change: commit, run
+  `python3 scripts/build-sitemap-lastmod.py`, commit the dates. The deploy
+  warns when the stamps lag.
+- **IndexNow runs on every deploy.** `scripts/indexnow.py` sends the indexable
+  pages whose reader text changed in the push (and pages that left the index),
+  never a cache-bust. The key file `a7844e0c0770e4f1a297158b783450d7.txt` at the
+  root must keep deploying; it is public by design. A failed ping warns, it
+  does not fail the deploy.
+- **robots.txt names the AI crawlers inside the `*` group.** A named group does
+  not inherit from `*`; giving a bot its own group would let it into `/api/`.
+  On 15 October 2026 every one of them got a 200 from the edge.
+- **Lead with the answer.** The pages that earn clicks open with a direct,
+  checkable answer (states and capitals, 13 colonies, electoral college,
+  abbreviations). A new reference page does the same.
+
 ## Facts on the page
 
 Rankings "of the 50 states" are computed over the 50 states. The Census files
