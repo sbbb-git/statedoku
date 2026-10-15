@@ -16,7 +16,7 @@ Statedoku is made by Moses Tounby. That is a pen name for a solo developer based
 2. Every cell needs a US state that satisfies both its row clue and its column clue. No state may be used twice in the same grid.
 3. Any state that fits both clues is accepted, not only one intended answer. Each grid is checked to have exactly one complete solution, so it can be solved by reasoning rather than guessing.
 4. Because any fitting state is accepted, a state placed early can be the one another cell needed. Filled cells therefore stay editable, and the picker has a "Clear this cell" button. Clearing costs nothing.
-5. Five mistakes a day. A mistake is a state that fails one of its two clues, or one already used elsewhere in the grid. After the fifth, the puzzle ends and shows every state that would have worked in each cell.
+5. Five mistakes per puzzle. A mistake is a state that fails one or both of its clues. States already in the grid are greyed out in the picker and cannot be picked again. After the fifth mistake, the puzzle ends and shows every state that would have worked in each cell.
 6. A new grid appears at midnight in the player's local time. Everyone playing the same date gets the same grid. Past grids, from 1 June 2026, stay playable in the archive.
 7. To pick a state, type at least four letters of its name. Abbreviations are not searched.
 8. Free, in the browser, no signup and no download. English, French and Spanish.
@@ -123,7 +123,7 @@ The South includes Delaware and Maryland. Washington, D.C. is counted in the Sou
 
 **Confederate states (11)**: Alabama, Arkansas, Florida, Georgia, Louisiana, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Virginia.
 
-**States with no broad personal income tax (9)**: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming. Washington taxes some capital gains; New Hampshire taxed interest and dividends until 2025.
+**States with no broad personal income tax (9)**: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming. Washington taxes some capital gains, and a law signed in March 2026 adds a 9.9% tax on income above $1 million from 2028. New Hampshire taxed interest and dividends until 2025.
 
 **Landlocked states, with no ocean coast and no Great Lakes shore (20)**: Arizona, Arkansas, Colorado, Idaho, Iowa, Kansas, Kentucky, Missouri, Montana, Nebraska, Nevada, New Mexico, North Dakota, Oklahoma, South Dakota, Tennessee, Utah, Vermont, West Virginia, Wyoming.
 

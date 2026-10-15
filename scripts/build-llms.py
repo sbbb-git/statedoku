@@ -148,9 +148,10 @@ RULES = [
     'Because any fitting state is accepted, a state placed early can be the one '
     'another cell needed. Filled cells therefore stay editable, and the picker '
     'has a "Clear this cell" button. Clearing costs nothing.',
-    'Five mistakes a day. A mistake is a state that fails one of its two clues, or '
-    'one already used elsewhere in the grid. After the fifth, the puzzle ends and '
-    'shows every state that would have worked in each cell.',
+    'Five mistakes per puzzle. A mistake is a state that fails one or both of its '
+    'clues. States already in the grid are greyed out in the picker and cannot be '
+    'picked again. After the fifth mistake, the puzzle ends and shows every state '
+    'that would have worked in each cell.',
     'A new grid appears at midnight in the player\'s local time. Everyone playing '
     'the same date gets the same grid. Past grids, from 1 June 2026, stay '
     'playable in the archive.',
@@ -196,7 +197,7 @@ def build_short(stamp):
          '## Answers', '',
          '**What is Statedoku?** A daily logic puzzle about US geography at https://statedoku.com. '
          'Each cell of a 3×3 grid needs a US state that matches two clues at once, for example '
-         '"Borders Canada" and "No state income tax" (Alaska, New Hampshire and Washington fit).', '',
+         '"Borders Canada" and "Pacific coast" (Alaska and Washington fit).', '',
          '**How many mistakes are allowed?** Five per puzzle.', '',
          '**When does a new puzzle appear?** At midnight in the player\'s local time. Everyone '
          'playing the same date gets the same grid.', '',
@@ -205,7 +206,7 @@ def build_short(stamp):
          '**Is it free?** Yes. No signup, no download, no account. An optional daily email '
          'reminder needs a confirmed address.', '',
          f'**What else is there to play?** {GAME_COUNT} free games, each in English, French and Spanish, '
-         'listed below. Most deal a fresh random round each time and score from 1 to 3 stars.', '',
+         'listed below. Most deal a fresh random round each time and score from 0 to 3 stars.', '',
          '**Can teachers use it?** Yes. The daily puzzle and every game page have a "Share to '
          'Google Classroom" button, the games can be embedded in an iframe '
          '(https://statedoku.com/widgets/), and there is a free printable map. Students need no account.', '',
@@ -303,7 +304,8 @@ def build_full(stamp):
     lst('The original 13 colonies', ORIG13)
     lst('Confederate states', CONFED)
     lst('States with no broad personal income tax', NO_TAX,
-        'Washington taxes some capital gains; New Hampshire taxed interest and dividends until 2025.')
+        'Washington taxes some capital gains, and a law signed in March 2026 adds a 9.9% tax on '
+        'income above $1 million from 2028. New Hampshire taxed interest and dividends until 2025.')
     lst('Landlocked states, with no ocean coast and no Great Lakes shore', LANDLOCKED)
     lst('Capitals that are also the largest city of their state', CAPITAL_LARGEST,
         'In the other 33 states the capital is not the largest city.')

@@ -6,7 +6,7 @@ Last updated: 2026-10-15. Online since May 2026; daily puzzles since 1 June 2026
 
 ## Answers
 
-**What is Statedoku?** A daily logic puzzle about US geography at https://statedoku.com. Each cell of a 3×3 grid needs a US state that matches two clues at once, for example "Borders Canada" and "No state income tax" (Alaska, New Hampshire and Washington fit).
+**What is Statedoku?** A daily logic puzzle about US geography at https://statedoku.com. Each cell of a 3×3 grid needs a US state that matches two clues at once, for example "Borders Canada" and "Pacific coast" (Alaska and Washington fit).
 
 **How many mistakes are allowed?** Five per puzzle.
 
@@ -16,7 +16,7 @@ Last updated: 2026-10-15. Online since May 2026; daily puzzles since 1 June 2026
 
 **Is it free?** Yes. No signup, no download, no account. An optional daily email reminder needs a confirmed address.
 
-**What else is there to play?** 21 free games, each in English, French and Spanish, listed below. Most deal a fresh random round each time and score from 1 to 3 stars.
+**What else is there to play?** 21 free games, each in English, French and Spanish, listed below. Most deal a fresh random round each time and score from 0 to 3 stars.
 
 **Can teachers use it?** Yes. The daily puzzle and every game page have a "Share to Google Classroom" button, the games can be embedded in an iframe (https://statedoku.com/widgets/), and there is a free printable map. Students need no account.
 

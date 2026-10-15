@@ -225,6 +225,13 @@ index, so what Bing knows is what they can cite.
 - **robots.txt names the AI crawlers inside the `*` group.** A named group does
   not inherit from `*`; giving a bot its own group would let it into `/api/`.
   On 15 October 2026 every one of them got a 200 from the edge.
+- **Each play page previews as itself.** The 21 games and the hub, in three
+  languages, used to share a "Memorize the 50 State Capitals" card. Now
+  `scripts/build-game-og.cjs` renders `og/og-play-<slug>-<lang>.jpg` (title
+  and first sentence from the page, the US map, the answer set lit for the five
+  map games) and `scripts/set-game-og.py` points og:image, twitter:image and
+  the Game JSON-LD at it. Re-run both after renaming a game or changing its
+  answer set.
 - **Lead with the answer.** The pages that earn clicks open with a direct,
   checkable answer (states and capitals, 13 colonies, electoral college,
   abbreviations). A new reference page does the same.
