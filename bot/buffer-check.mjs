@@ -6,8 +6,9 @@
 // service names only: never the key, never an id. The X channel id is masked
 // and handed to later steps through $GITHUB_ENV as BUFFER_CHANNEL_ID.
 //
-// Exits 1 with a plain reason when the key is missing or refused, or when the
-// account does not hold exactly one X channel.
+// Exits 1 with a plain reason when the key is missing or refused, or when no
+// single X channel can be picked (one channel, or the one named BUFFER_X_HANDLE,
+// default "statedoku").
 import fs from 'node:fs';
 
 const token = (process.env.BUFFER_TOKEN || '').trim();
@@ -60,13 +61,20 @@ for (const org of orgs) {
 console.log(`Buffer key accepted. ${orgs.length} organization(s), ${total} channel(s): ` +
   (Object.entries(services).map(([s, n]) => `${s} ${n}`).join(', ') || 'none'));
 
-if (xChannels.length !== 1) {
-  console.log(`::error::Expected exactly one X channel in Buffer, found ${xChannels.length}. ` +
-    'Connect the @statedoku X account at https://publish.buffer.com, or remove the extra one.');
+// The Buffer account can hold other X accounts (on 16 October 2026 it held
+// two). Pick the one whose name is the handle, and never print the others:
+// these logs are public and would tie those accounts to this site.
+const handle = (process.env.BUFFER_X_HANDLE || 'statedoku').replace(/^@/, '').toLowerCase();
+const named = (c) => String(c.name || '').replace(/^@/, '').toLowerCase();
+const picked = xChannels.length === 1 ? xChannels : xChannels.filter((c) => named(c) === handle);
+if (picked.length !== 1) {
+  console.log(`::error::Found ${xChannels.length} X channel(s) in Buffer and ${picked.length} named "${handle}". ` +
+    'Connect the @statedoku X account at https://publish.buffer.com, or set BUFFER_X_HANDLE to its name.');
   process.exit(1);
 }
+if (xChannels.length > 1) console.log(`${xChannels.length} X channels in this Buffer account; using the one named "${handle}".`);
 
-const id = xChannels[0].id;
+const id = picked[0].id;
 console.log(`::add-mask::${id}`);
 console.log('One X channel found, its id is passed on as BUFFER_CHANNEL_ID.');
 if (process.env.GITHUB_ENV) fs.appendFileSync(process.env.GITHUB_ENV, `BUFFER_CHANNEL_ID=${id}\n`);
