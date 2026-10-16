@@ -42,6 +42,7 @@ jobs:
           case "$v" in 2*) ;; *) echo "::error::the site does not serve the two-slot bank (version 2)"; exit 1;; esac
 
       - name: Worker secrets currently set (names only)
+        id: secrets
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         continue-on-error: ${{ inputs.mode == 'check' }}
         with:
@@ -49,6 +50,17 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: bot
           command: secret list
+
+      # Names only, as an annotation, so the run page says which networks the
+      # worker can post to (and whether the paid X path is armed) without logs.
+      - name: Report the worker's secret names
+        if: always()
+        env:
+          OUT: ${{ steps.secrets.outputs.command-output }}
+          OUTCOME: ${{ steps.secrets.outcome }}
+        run: |
+          names=$(printf '%s' "$OUT" | python3 -c "import json,re,sys; t=sys.stdin.read(); m=re.search(r'\[.*\]', t, re.S); print(', '.join(sorted(x['name'] for x in json.loads(m.group(0)))) if m else '')" 2>/dev/null || true)
+          echo "::notice title=Worker secrets (${OUTCOME})::${names:-none, or the list could not be read}"
 
       - name: Deploy the bot and give it the Buffer secrets
         if: inputs.mode == 'deploy'
