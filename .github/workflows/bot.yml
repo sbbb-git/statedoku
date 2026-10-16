@@ -1,0 +1,66 @@
+name: Posting bot (Buffer)
+
+# The posting bot is a Cloudflare Worker (bot/), outside the site deploy. It
+# reads Cloudflare secrets only, while the Buffer key is kept as a GitHub
+# secret, so this workflow carries it across. Run by hand from the Actions tab.
+#
+#   check   validates BUFFER_TOKEN against Buffer, finds the X channel, and
+#           lists the names of the worker's current secrets. Changes nothing.
+#   deploy  the same checks, then deploys bot/ and sets BUFFER_TOKEN and
+#           BUFFER_CHANNEL_ID on the worker. From then on it posts on its crons.
+#
+# The repo is public and so are these logs: nothing here prints a key or an id.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'check changes nothing; deploy turns posting on'
+        type: choice
+        options: [check, deploy]
+        default: check
+
+permissions:
+  contents: read
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Check the Buffer key and find the X channel
+        env:
+          BUFFER_TOKEN: ${{ secrets.BUFFER_TOKEN }}
+        run: node bot/buffer-check.mjs
+
+      - name: Check the tweet bank served by the site
+        run: |
+          v=$(curl -s https://statedoku.com/data/tweets.json | python3 -c "import json,sys; b=json.load(sys.stdin); print(b.get('version'), {k: len(v['tweets']) for k, v in b.get('slots', {}).items()})")
+          echo "tweets.json live: version $v"
+          case "$v" in 2*) ;; *) echo "::error::the site does not serve the two-slot bank (version 2)"; exit 1;; esac
+
+      - name: Worker secrets currently set (names only)
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
+        continue-on-error: ${{ inputs.mode == 'check' }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: bot
+          command: secret list
+
+      - name: Deploy the bot and give it the Buffer secrets
+        if: inputs.mode == 'deploy'
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
+        env:
+          BUFFER_TOKEN: ${{ secrets.BUFFER_TOKEN }}
+          # BUFFER_CHANNEL_ID comes from the first step, through GITHUB_ENV.
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: bot
+          command: deploy
+          secrets: |
+            BUFFER_TOKEN
+            BUFFER_CHANNEL_ID

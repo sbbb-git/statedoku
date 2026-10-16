@@ -12,8 +12,15 @@ Solo project. Ship carefully, there is no staging and no one else to catch it.
 Cloudflare is **not** connected to the repo directly; the workflow is the
 pipeline. Live about a minute after the push.
 
-The Twitter bot in `bot/` is **not** in CI. Deploy it by hand:
-`cd bot && npx wrangler deploy`.
+The Twitter bot in `bot/` is **not** in the site deploy. It is deployed from
+the Actions tab, workflow "Posting bot (Buffer)" (`.github/workflows/bot.yml`):
+`check` validates the `BUFFER_TOKEN` GitHub secret against Buffer, finds the X
+channel and lists the worker's secret names without changing anything;
+`deploy` also deploys `bot/` and copies `BUFFER_TOKEN` and the X channel id
+into the worker's Cloudflare secrets. The worker reads Cloudflare secrets only,
+which is why a key stored on GitHub does nothing until this runs. Logs are
+public: `bot/buffer-check.mjs` prints counts, never a key or an id. By hand
+still works: `cd bot && npx wrangler deploy`.
 
 ## History was rewritten on 8 October 2026
 
