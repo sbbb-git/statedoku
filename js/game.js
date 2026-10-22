@@ -417,6 +417,22 @@ const Game = (() => {
     const newInput = input.cloneNode(true);
     input.parentNode.replaceChild(newInput, input);
     newInput.placeholder = I18n.t('search_placeholder');
+    // Combobox semantics: the list is announced, and Up/Down move through it.
+    newInput.setAttribute('role', 'combobox');
+    newInput.setAttribute('aria-autocomplete', 'list');
+    newInput.setAttribute('aria-controls', 'sp-dropdown');
+    newInput.setAttribute('aria-expanded', 'false');
+    newInput.setAttribute('aria-label', I18n.t('select_state'));
+    newInput.removeAttribute('aria-activedescendant');
+    dropdown.setAttribute('role', 'listbox');
+    let activeIdx = -1;
+    function setActive(i) {
+      const items = dropdown.querySelectorAll('.sp-item');
+      items.forEach((li, k) => { li.classList.toggle('sp-active', k === i); li.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      activeIdx = items.length ? i : -1;
+      if (activeIdx >= 0) { newInput.setAttribute('aria-activedescendant', items[activeIdx].id); items[activeIdx].scrollIntoView({ block: 'nearest' }); }
+      else newInput.removeAttribute('aria-activedescendant');
+    }
 
     const usedIds = new Set(_grid.flat().filter((s, i) => {
       const row = Math.floor(i/3), col = i%3;
@@ -427,7 +443,10 @@ const Game = (() => {
 
     function renderDropdown(query) {
       dropdown.innerHTML = '';
+      activeIdx = -1;
+      newInput.removeAttribute('aria-activedescendant');
       const trimmed = query.trim();
+      newInput.setAttribute('aria-expanded', trimmed ? 'true' : 'false');
       if (!trimmed) { dropdown.style.display = 'none'; return; }
 
       // Anti-spoiler: require at least MIN_QUERY_LEN chars before revealing
@@ -467,6 +486,9 @@ const Game = (() => {
         const used = usedIds.has(state.id);
         const li = document.createElement('li');
         li.className = 'sp-item' + (used ? ' sp-used' : '');
+        li.id = 'sp-opt-' + state.id;
+        li.setAttribute('role', 'option');
+        if (used) li.setAttribute('aria-disabled', 'true');
         li.innerHTML = `<span class="sp-abbr">${state.id}</span><span class="sp-sname">${state.names[lang]}</span>`;
         if (!used) {
           li.addEventListener('mousedown', e => { e.preventDefault(); _selectState(state.id); });
@@ -479,10 +501,19 @@ const Game = (() => {
     newInput.addEventListener('input', e => renderDropdown(e.target.value));
     newInput.addEventListener('keydown', e => {
       if (e.key === 'Escape') { _closeSearch(); _selectedCell = null; _renderCells(); _focusCell(r, c); }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        const n = dropdown.querySelectorAll('.sp-item').length;
+        if (!n) return;
+        e.preventDefault();
+        setActive(e.key === 'ArrowDown' ? (activeIdx + 1) % n : (activeIdx - 1 + n) % n);
+        return;
+      }
       if (e.key === 'Enter') {
-        // The top match only: with Virginia already placed, "Virginia" + Enter
-        // used to submit West Virginia, the first unused match, and cost a mistake.
-        const first = dropdown.querySelector('.sp-item');
+        // The highlighted match, else the top one. Never the first *unused*
+        // one: with Virginia already placed, "Virginia" + Enter used to submit
+        // West Virginia and cost a mistake.
+        const items = dropdown.querySelectorAll('.sp-item');
+        const first = activeIdx >= 0 ? items[activeIdx] : items[0];
         if (first && first.classList.contains('sp-used')) _announce(I18n.t('already_used') || 'Already used');
         else if (first) first.dispatchEvent(new MouseEvent('mousedown'));
       }
