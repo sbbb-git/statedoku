@@ -2,7 +2,7 @@
 
 > Statedoku is a free daily US geography puzzle: a 3×3 grid where every cell must hold a US state that satisfies both its row clue and its column clue. The site also has 21 free geography games (map clicking, capitals, abbreviations, flags, history) and reference pages on the 50 states, in English, French and Spanish. Free, no signup.
 
-Last updated: 2026-10-15. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
+Last updated: 2026-10-22. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
 
 ## Answers
 
@@ -78,7 +78,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [Electoral College Votes by State (Updated)](https://statedoku.com/learn/electoral-college/): How many electoral college votes each US state has, why it matters, and how it shaped recent elections.
 - [The 11 Confederate States in Order of Secession](https://statedoku.com/learn/states-confederate/): The 11 states that left the Union in 1860-61 to form the Confederacy. South Carolina went first, North Carolina last, exact dates and what triggered each.
 - [The 4 US Regions Explained, Census Map](https://statedoku.com/learn/us-regions/): The official US Census Bureau divides the country into 4 regions and 9 subregions. Learn which states are in each, why the divisions matter, and memory tricks.
-- [Largest & Smallest US States by Area (Ranked 1 to 50)](https://statedoku.com/learn/largest-states/): All 50 US states ranked by area. Alaska is biggest (#1, 663k sq mi), Rhode Island is smallest (#50). Includes top 10 + bottom 10 tables and an interactive map.
+- [Largest & Smallest US States by Area (Ranked 1 to 50)](https://statedoku.com/learn/largest-states/): All 50 US states ranked by area. Alaska is biggest (#1, 665k sq mi), Rhode Island is smallest (#50). Includes top 10 + bottom 10 tables and an interactive map.
 - [The 13 US states that border Canada](https://statedoku.com/learn/states-bordering-canada/): The 13 US states that share a border with Canada. Alaska has the longest at 1,538 mi, Michigan the longest in the lower 48, Pennsylvania the shortest.
 - [The 4 US states that border Mexico](https://statedoku.com/learn/states-bordering-mexico/): Just 4 US states border Mexico, California, Arizona, New Mexico, Texas. Border miles per state, busiest crossings, and the cities you'd never expect.
 - [20 Landlocked US States and the Doubly Landlocked Ones](https://statedoku.com/learn/landlocked-states/): The 20 landlocked US states, with no ocean coast and no Great Lakes shore. Full list with capitals and regions, a map, and what doubly landlocked means.
@@ -89,6 +89,8 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [US Presidents and the States Where They Were Born](https://statedoku.com/learn/states-presidents-born/): All 45 US presidents (47 presidencies) and their birth states. Virginia leads with 8 presidents. Learn US geography step by step with maps, lists, and trivia.
 - [Every State Flower and the Meaning Behind It](https://statedoku.com/learn/state-flowers/): The official flower of all 50 US states, when each was adopted, what it symbolizes, and the surprising stories behind the picks (yes, even the cactus).
 - [Which 8 States Touch the Great Lakes?](https://statedoku.com/learn/states-with-great-lakes/): Eight US states share shoreline with the Great Lakes, Superior, Michigan, Huron, Erie, Ontario. Mapped by lake, with miles of coastline per state.
+- [Best Free Games to Learn the 50 US States (2026)](https://statedoku.com/learn/best-games-to-learn-the-50-states/): Free games and quizzes to learn the 50 US states and capitals, compared: Seterra, Sporcle, Lizard Point, Sheppard Software and more.
+- [Best Daily Geography Games Like Wordle (2026)](https://statedoku.com/learn/best-daily-geography-games/): Daily geography games like Wordle, compared: Worldle, Globle, Travle, Flagle, GeoGrid and US-states dailies such as Statele. Rules, tries, cost.
 
 ## En français
 
@@ -96,12 +98,13 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [Jouer & Apprendre les 50 États américains](https://statedoku.com/fr/play/): 21 jeux gratuits pour apprendre les 50 États américains : placer sur la carte, capitales, abréviations, drapeaux, histoire, collège électoral.
 - [Apprendre les 50 États américains rapidement](https://statedoku.com/fr/learn/): Mémorise les 50 États des USA par région en moins d'une semaine. Une méthode basée sur la géographie et la pratique quotidienne, pas de flashcards inutiles.
 - [Les 50 États américains et leurs capitales](https://statedoku.com/fr/learn/states-and-capitals/): Liste alphabétique complète des 50 États américains et leurs capitales, avec année d'admission et abréviation. Gratuit, imprimable, sans inscription.
-- [Les 50 capitales des États américains](https://statedoku.com/fr/learn/capitales-des-etats/): La liste complète des 50 capitales des États des États-Unis. Sacramento (Californie), Austin (Texas), Tallahassee (Floride), Albany (New York)...
+- [Les 50 capitales des États américains](https://statedoku.com/fr/learn/capitales-des-etats/): La liste complète des 50 capitales d'État des États-Unis, de Sacramento (Californie) et Austin (Texas) à Tallahassee (Floride) et Albany (New York).
 - [Les 50 abréviations des États américains](https://statedoku.com/fr/learn/state-abbreviations/): Liste complète des abréviations des États américains : chaque État avec son code postal à 2 lettres et sa capitale. Astuce de mémorisation incluse.
-- [Surnoms des 50 États américains](https://statedoku.com/fr/learn/surnoms-des-etats/): Les surnoms officiels des 50 Etats americains : Lone Star pour le Texas, Golden State pour la Californie, Sunshine State pour la Floride, et leur origine.
+- [Surnoms des 50 États américains](https://statedoku.com/fr/learn/surnoms-des-etats/): Les surnoms officiels des 50 États américains : Lone Star pour le Texas, Golden State pour la Californie, Sunshine State pour la Floride, et leur origine.
 - [Les 13 colonies originelles américaines, Liste & Carte](https://statedoku.com/fr/learn/13-colonies/): Les 13 colonies américaines originelles avec leurs capitales, dates de ratification et régions. Carte cliquable avec uniquement les 13 surlignées.
 - [Les 4 régions des États-Unis](https://statedoku.com/fr/learn/regions-des-etats-unis/): Les 4 régions des États-Unis selon le Bureau du Recensement : Nord-Est (9 États), Sud (16), Midwest (12), Ouest (13).
 - [Sièges à la Chambre par État, 1910 à 2020](https://statedoku.com/fr/learn/sieges-chambre-par-etat-1910-2020/): Les sièges de chaque État à la Chambre des représentants à chaque recensement de 1910 à 2020, d'après le Census Bureau : gains, pertes et bascule vers le Sud.
+- [Meilleurs jeux gratuits pour apprendre les 50 États](https://statedoku.com/fr/learn/meilleurs-jeux-pour-apprendre-les-etats/): Jeux et quiz gratuits pour apprendre les 50 États américains et leurs capitales, comparés : Seterra, Sporcle, Lizard Point, Sheppard Software et plus.
 
 ## En español
 
@@ -115,6 +118,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [Estados de EE.UU. por PIB: ranking 2025 (BEA)](https://statedoku.com/es/learn/estados-por-pib/): Ranking de los 50 estados de Estados Unidos por PIB en 2025 (BEA): California 4,25 billones de dólares, Texas 2,9 billones, Nueva York 2,5 billones.
 - [Las 4 regiones de EE.UU. y sus estados](https://statedoku.com/es/learn/regiones-de-eeuu/): Las 4 regiones de Estados Unidos según la Oficina del Censo: Noreste (9 estados), Sur (16), Medio Oeste (12), Oeste (13).
 - [Escaños de la Cámara por estado, 1910 a 2020](https://statedoku.com/es/learn/escanos-camara-por-estado-1910-2020/): Los escaños de cada estado en la Cámara de Representantes en cada censo de 1910 a 2020, según el Census Bureau: quién ganó, quién perdió y el giro al Sur.
+- [Mejores juegos gratis para aprender los 50 estados](https://statedoku.com/es/learn/mejores-juegos-para-aprender-los-estados/): Juegos y quizzes gratis para aprender los 50 estados de EE.UU. y sus capitales, comparados: Seterra, Sporcle, Lizard Point, Sheppard Software y más.
 
 ## Quick facts
 
