@@ -1,0 +1,37 @@
+name: Purge old Pages deployments
+
+# Old Cloudflare Pages deployments stay live at <hash>.statedoku.pages.dev.
+# On 22 October 2026 one from August still served the journalists' list that
+# the 8 October history rewrite removed from the repo. See
+# scripts/pages-purge.py. Run by hand: list first, then delete.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'list counts only; delete removes them'
+        type: choice
+        options: [list, delete]
+        default: list
+      before:
+        description: 'remove deployments created before this UTC time'
+        type: string
+        default: '2026-10-08T12:20:00Z'
+
+permissions:
+  contents: read
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: List or delete old deployments
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          MODE: ${{ inputs.mode }}
+          BEFORE: ${{ inputs.before }}
+        run: python3 scripts/pages-purge.py
