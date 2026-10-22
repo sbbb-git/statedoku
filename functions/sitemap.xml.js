@@ -195,6 +195,13 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/sieges-chambre-par-etat-1910-2020/`, { priority: 0.85 }],
     [`${BASE}/es/learn/escanos-camara-por-estado-1910-2020/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/fuseaux-horaires-etats-unis/`, { priority: 0.85 }],
+    // "Best games" comparisons, 22 October 2026, built by scripts/build-games-articles.py
+    [`${BASE}/learn/best-games-to-learn-the-50-states/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/meilleurs-jeux-pour-apprendre-les-etats/`, { priority: 0.8 }],
+    [`${BASE}/es/learn/mejores-juegos-para-aprender-los-estados/`, { priority: 0.8 }],
+    [`${BASE}/learn/best-daily-geography-games/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/meilleurs-jeux-de-geographie-quotidiens/`, { priority: 0.8 }],
+    [`${BASE}/es/learn/mejores-juegos-diarios-de-geografia/`, { priority: 0.8 }],
     [`${BASE}/fr/learn/surnoms-des-etats/`, { priority: 0.85 }],
     // Batch 2 (June 4) — 2 EN + 5 ES + 5 FR
     [`${BASE}/learn/state-nicknames-complete/`, { priority: 0.85 }],
