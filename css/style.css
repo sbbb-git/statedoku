@@ -121,7 +121,6 @@ header::after {
 .score-inline .score-date {
   color: rgba(255,255,255,0.6);
   font-weight: 500;
-  text-transform: capitalize;
   letter-spacing: 0.01em;
   font-size: 0.75rem;
 }
@@ -596,6 +595,7 @@ main {
 }
 .sp-item:last-child { border-bottom: none; }
 .sp-item:hover { background: var(--surface-2); }
+.sp-item.sp-active { background: var(--surface-2); box-shadow: inset 3px 0 0 var(--navy); }
 .sp-item.sp-used {
   opacity: 0.35;
   cursor: not-allowed;
@@ -1298,7 +1298,6 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   letter-spacing: -0.01em;
   flex: 1;
   text-align: center;
-  text-transform: capitalize;
 }
 .archive-nav button {
   width: 36px; height: 36px;
@@ -2852,3 +2851,35 @@ footer, main, .score-bar {
 /* The first-visit hint hangs below the grid, over this block, for its few
    seconds on screen: keep the block's space but hide it until the hint goes. */
 body:has(#first-tip) .gc-share-wrap { visibility: hidden; }
+
+/* State abbreviation drawn before a state page's H1, so the heading text stays the state name alone */
+h1[data-abbr]::before { content: attr(data-abbr); display: inline-block; background: var(--abbr-bg, var(--region-color, #B91C1C)); color: #fff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: .9rem; margin-right: 6px; letter-spacing: .04em; }
+
+/* Dates: game.js and archive.js upper-case the first letter only. CSS
+   capitalize made "Jeudi 22 Octobre" and "Jueves, 22 De Octubre". */
+
+/* The header back link ("← Home", "← Learn") carries an inline
+   color:var(--text-2), grey on navy at 2.02:1. Light on navy instead. */
+header .nav-actions > a[style*="var(--text-2)"] { color: rgba(255, 255, 255, 0.85) !important; }
+
+/* Keyboard focus on the grid has to be visible: the fill change alone
+   measured 1.1 to 1.5:1. */
+.cell:focus-visible,
+.col-label.has-help:focus-visible, .row-label.has-help:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+
+/* White on the orange toast was about 2.2:1; navy is above 7:1. */
+.golden-toast { color: var(--navy); }
+
+/* Footer links were 13px tall on phones. */
+footer a { display: inline-block; padding: 6px 2px; }
+
+/* The printable map's table was 458px wide on a 390px phone, and the press
+   page's address ran off a 360px screen. */
+@media (max-width: 600px) {
+  table.sc { display: block; overflow-x: auto; }
+}
+article.pr-main { width: 100%; }   /* main is a flex box and the article has auto margins: it took the table's width */
+main a[href^="mailto:"] { overflow-wrap: anywhere; }

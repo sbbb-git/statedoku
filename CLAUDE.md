@@ -280,9 +280,19 @@ The pop-culture clues load from `constraints-live.js`, injected by a script
 tag. `getPuzzle` waits for it: a grid generated before it lands is built from a
 smaller pool, differs from everyone else's and used to be cached that way.
 
-The next correction needs a second cut-over date, not an edit to the first:
+`DATA_FIX2_FROM` (2026-10-24) is the second cut-over, in `STATE_FIXES2`:
+Minnesota joined "double letter", and the day before a grid, whose row group
+is avoided, is computed in UTC. It used to be local midnight, so east of UTC
+(France, Spain) 23 of 304 grids differed from the Americas'. Before the date
+every time zone keeps the grid it was shown; from it all zones share one.
+The next correction needs a third cut-over date, not an edit to these two:
 any change to states.json, `LIST_CONSTRAINTS` or constraints-live.js without
 recording the old value for earlier dates rewrites grids people have played.
+
+Name clues (starts with, letter counts, "New", double letter...) read the
+English name, so their French and Spanish labels say "(en anglais)" /
+"(en inglés)": read on "Dakota du Nord" or "Nueva York", 29 of 55 French and
+40 of 55 Spanish grids had a cell whose answers changed.
 
 ## Endpoints and keys
 
@@ -322,7 +332,9 @@ build their game once it lands. That took them from 243 KB to 25 KB each.
 - `index.html`, `fr/`, `es/` are the three homepages, each running the daily game.
 - `states/` 651 pages, `learn/` 147, `play/` 298, `cities/` 102, `regions/` 14.
 - `js/` game logic: `game.js` loop, `puzzle.js` generation, `i18n.js`,
-  `constraints-pending.js` and `constraints-approved.js` for the pop-culture pool.
+  `constraints-pending.js` and `constraints-approved.js` for the pop-culture pool,
+  `play-a11y.js` shared by the 63 game pages (keyboard access to map states and
+  tiles, live feedback, taps in the water next to the smallest states).
 - `data/` `states.json`, `translations.json`, `tweets.json`, `us-map.svg`.
 - `functions/` Cloudflare Pages Functions, including the sitemap.
 - `bot/` the posting worker, `email-worker/` the reminder worker.

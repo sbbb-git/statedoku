@@ -93,12 +93,12 @@ def learn_article(L):
             sub='Map drills, typing quizzes, games for kids and daily puzzles, compared on what they teach, what they cost and whether they need an account.',
             answer=('<strong>Short answer.</strong> To learn where each state sits, drill a click-the-map quiz such as Seterra or Lizard Point. '
                     'To test your recall against the clock, use Sporcle\'s typing quiz. For children, Sheppard Software builds up level by level. '
-                    'To keep it up, a daily puzzle takes five minutes. Every free web game below opens in the browser with no sign-up, and most show ads that a paid plan removes.'),
+                    'To keep it up, a daily puzzle takes five minutes. Every free web game below opens in the browser with no sign-up. Most show ads; Seterra and Sporcle sell a plan that removes them.'),
             disclosure=('<strong>A note on bias.</strong> Statedoku publishes this page and makes some of the games in it. Ours are listed last, with their limits. '
                         'Facts about the other games were checked on their own sites on October 22, 2026. Prices and features change, so check before paying for anything.'),
             table_head=['Game', 'Best for', 'Price', 'Account to play', 'Ads'],
             table=[
-                ['Seterra (GeoGuessr)', 'Clicking states on a map, then capitals, flags, counties', 'Free; Pro from $3.99 a month removes ads', 'No (log in to save scores)', 'Yes, on the web'],
+                ['Seterra (GeoGuessr)', 'Clicking states on a map, then capitals, flags, counties', 'Free; Pro from $3.99 a month, billed yearly, removes ads', 'No (log in to save scores)', 'Yes, on the web'],
                 ['Sporcle', 'Typing all 50 from memory against a timer', 'Free; Orange $3.99 a month removes ads', 'No', 'Yes'],
                 ['Lizard Point', 'Step-by-step study with hints', 'Free', 'No', 'Yes'],
                 ['Sheppard Software', 'Young children, level by level', 'Free', 'No', 'Yes'],
@@ -110,12 +110,12 @@ def learn_article(L):
             sections=[
                 ('Learn the map', [
                     ('Seterra', URL['seterra'], [
-                        f'Seterra is a long-running map quiz site that has been part of GeoGuessr since 2022. Its {a("seterra", "USA list")} holds 110 map quizzes: the 50 states, abbreviations, capitals, flags, the 13 colonies, territories, rivers, major cities and the counties of each state.',
-                        'On "The U.S.: 50 States" you either click each named state (Pin) or type the name of the highlighted one (Type). A guided Learn mode is kept for paying accounts. The web version is free with ads, and GeoGuessr Pro, from $3.99 a month in October 2026, removes them. The free iOS and Android apps list no ads or in-app purchases.',
+                        f'Seterra is a long-running map quiz site that has been part of GeoGuessr since 2022. Its {a("seterra", "USA list")} holds 110 map quizzes, on the 50 states, abbreviations, capitals, the 13 colonies, territories, rivers, major cities and the counties of each state, plus five picture quizzes on state flags, outlines and the Founding Fathers.',
+                        'On "The U.S.: 50 States" you either click each named state (Pin) or type the name of the highlighted one (Type). A guided Learn mode is kept for paying accounts. The web version is free with ads, and GeoGuessr Pro, $3.99 a month billed yearly ($6.99 month to month) in October 2026, removes them. The free iOS and Android apps list no ads or in-app purchases.',
                         '<em>Best for:</em> building the mental map, then moving on to capitals and counties.']),
                     ('Lizard Point', URL['lizard'], [
                         f'Lizard Point is a small family-run site from Ontario that has offered free geography quizzes since 1997. Its {a("lizard", "US states quiz")} has four modes: Study, Practice (three tries per state, with hints), Test, and Strict test (one try).',
-                        'Fifteen US quizzes cover the states and capitals, each also split into East and West, plus cities, rivers, flags and airport codes. It is ad-supported and web only. The teacher and student accounts it used to offer were discontinued in March 2023.',
+                        'Fifteen US quizzes cover the states and capitals (each also split into East and West, and in a typed version), plus major cities, rivers, bodies of water, geophysical regions, tourist spots, flags and airport codes. It is ad-supported and web only. The teacher and student accounts it used to offer were discontinued in March 2023.',
                         '<em>Best for:</em> learners who want hints and a gentle ramp rather than a timer.']),
                     ('Mappr US States by Shape', URL['mappr'], [
                         f'Mappr\'s {a("mappr", "shape quiz")} shows a state outline and asks which state it is, as multiple choice or typed. It adds a speed round, a find-the-state map mode, a learn mode and a daily challenge in which everyone gets the same six shapes.',
@@ -158,7 +158,7 @@ def learn_article(L):
                 ('What is the best free game to learn the 50 states?',
                  'It depends on the step. To learn where states are, a click-the-map quiz such as Seterra or Lizard Point. To check recall, Sporcle\'s typing quiz. For young children, Sheppard Software. To keep practicing every day, a daily puzzle such as Statedoku or Statele.'),
                 ('Is Seterra still free?',
-                 'Yes. Seterra\'s quizzes are free on the web, with ads. It has been part of GeoGuessr since 2022, and GeoGuessr\'s paid Pro plan, from $3.99 a month in October 2026, removes the ads. The guided Learn mode also needs a paid account.'),
+                 'Yes. Seterra\'s quizzes are free on the web, with ads. It has been part of GeoGuessr since 2022, and GeoGuessr\'s paid Pro plan, $3.99 a month billed yearly ($6.99 month to month) in October 2026, removes the ads. The guided Learn mode also needs a paid account.'),
                 ('Do I need an account to play these games?',
                  'No, none of the free games on this page asks for one before you play. Seterra and Sporcle ask you to log in only to save your scores.'),
                 ('Which of these games work in a classroom?',
@@ -176,17 +176,17 @@ def learn_article(L):
     if L == 'fr':
         return dict(
             title='Meilleurs jeux gratuits pour apprendre les 50 États',
-            desc='Jeux et quiz gratuits pour apprendre les 50 États américains et leurs capitales, comparés : Seterra, Sporcle, Lizard Point, Sheppard Software.',
+            desc='Jeux et quiz gratuits pour apprendre les 50 États américains et leurs capitales, comparés : Seterra, Sporcle, Lizard Point, Sheppard Software et plus.',
             h1='Les meilleurs jeux gratuits pour apprendre les 50 États américains',
             sub='Cartes à cliquer, quiz à taper, jeux pour enfants et puzzles quotidiens, comparés sur ce qu\'ils apprennent, ce qu\'ils coûtent et s\'il faut un compte.',
             answer=('<strong>En bref.</strong> Pour apprendre où se trouve chaque État, entraînez-vous sur une carte à cliquer comme Seterra ou Lizard Point. '
                     'Pour tester votre mémoire contre la montre, le quiz à taper de Sporcle. Pour les enfants, Sheppard Software progresse niveau par niveau. '
-                    'Pour tenir dans la durée, un puzzle quotidien prend cinq minutes. Tous les jeux web gratuits ci-dessous s\'ouvrent dans le navigateur sans inscription, et la plupart affichent des publicités qu\'un abonnement retire.'),
-            disclosure=('<strong>Transparence.</strong> Statedoku publie cette page et fait certains des jeux cités. Les nôtres sont présentés en dernier, avec leurs limites. '
+                    'Pour tenir dans la durée, un puzzle quotidien prend cinq minutes. Tous les jeux web gratuits ci-dessous s\'ouvrent dans le navigateur sans inscription. La plupart affichent de la publicité ; Seterra et Sporcle proposent un abonnement qui la retire.'),
+            disclosure=('<strong>Transparence.</strong> Statedoku publie cette page et a créé certains des jeux cités. Les nôtres sont présentés en dernier, avec leurs limites. '
                         'Les informations sur les autres jeux ont été vérifiées sur leurs propres sites le 22 octobre 2026. Prix et fonctions évoluent : vérifiez avant de payer quoi que ce soit.'),
             table_head=['Jeu', 'Idéal pour', 'Prix', 'Compte pour jouer', 'Publicité'],
             table=[
-                ['Seterra (GeoGuessr)', 'Placer les États sur la carte, puis capitales, drapeaux, comtés', 'Gratuit ; Pro dès 3,99 $ par mois sans pub', 'Non (connexion pour garder ses scores)', 'Oui, sur le web'],
+                ['Seterra (GeoGuessr)', 'Placer les États sur la carte, puis capitales, drapeaux, comtés', 'Gratuit ; Pro dès 3,99 $ par mois à l\'année, sans pub', 'Non (connexion pour garder ses scores)', 'Oui, sur le web'],
                 ['Sporcle', 'Taper les 50 de mémoire contre la montre', 'Gratuit ; Orange 3,99 $ par mois sans pub', 'Non', 'Oui'],
                 ['Lizard Point', 'Apprendre pas à pas avec des indices', 'Gratuit', 'Non', 'Oui'],
                 ['Sheppard Software', 'Jeunes enfants, niveau par niveau', 'Gratuit', 'Non', 'Oui'],
@@ -198,15 +198,15 @@ def learn_article(L):
             sections=[
                 ('Apprendre la carte', [
                     ('Seterra', URL['seterra'], [
-                        f'Seterra est un site de quiz de cartes de longue date, intégré à GeoGuessr depuis 2022. Sa {a("seterra", "liste USA")} compte 110 quiz : les 50 États, les abréviations, les capitales, les drapeaux, les 13 colonies, les territoires, les fleuves, les grandes villes et les comtés de chaque État.',
-                        'Sur « The U.S.: 50 States », on clique sur l\'État demandé (Pin) ou on tape le nom de l\'État surligné (Type). Un mode Learn guidé est réservé aux comptes payants. La version web est gratuite avec publicité, et GeoGuessr Pro, dès 3,99 $ par mois en octobre 2026, la retire. Les applis gratuites iOS et Android n\'annoncent ni publicité ni achat intégré.',
+                        f'Seterra est un site de quiz de cartes de longue date, intégré à GeoGuessr depuis 2022. Sa {a("seterra", "liste USA")} compte 110 quiz de cartes, sur les 50 États, les abréviations, les capitales, les 13 colonies, les territoires, les cours d\'eau, les grandes villes et les comtés de chaque État, plus cinq quiz d\'images sur les drapeaux, les silhouettes et les Pères fondateurs.',
+                        'Sur « The U.S.: 50 States », on clique sur l\'État demandé (Pin) ou on tape le nom de l\'État surligné (Type). Un mode Learn guidé est réservé aux comptes payants. La version web est gratuite avec publicité, et GeoGuessr Pro, dès 3,99 $ par mois facturés à l\'année (6,99 $ sans engagement) en octobre 2026, la retire. Les applis gratuites iOS et Android n\'annoncent ni publicité ni achat intégré.',
                         '<em>Idéal pour :</em> construire la carte mentale, puis passer aux capitales et aux comtés.']),
                     ('Lizard Point', URL['lizard'], [
                         f'Lizard Point est un petit site familial de l\'Ontario qui propose des quiz de géographie gratuits depuis 1997. Son {a("lizard", "quiz des États")} a quatre modes : Study, Practice (trois essais par État, avec indices), Test et Strict test (un seul essai).',
-                        'Quinze quiz américains couvrent les États et les capitales, chacun aussi découpé en Est et Ouest, ainsi que les villes, les fleuves, les drapeaux et les codes d\'aéroport. Le site vit de la publicité et n\'existe que sur le web. Ses comptes enseignant et élève ont été arrêtés en mars 2023.',
+                        'Quinze quiz américains couvrent les États et les capitales (chacun aussi découpé en Est et Ouest, et en version à taper), ainsi que les grandes villes, les cours d\'eau, les étendues d\'eau, les régions géophysiques, les sites touristiques, les drapeaux et les codes d\'aéroport. Le site vit de la publicité et n\'existe que sur le web. Ses comptes enseignant et élève ont été arrêtés en mars 2023.',
                         '<em>Idéal pour :</em> apprendre avec des indices et une progression douce plutôt qu\'un chrono.']),
                     ('Quiz des formes Mappr', URL['mappr'], [
-                        f'Le {a("mappr", "quiz des formes")} de Mappr montre la silhouette d\'un État et demande lequel c\'est, en choix multiple ou à taper. Il ajoute un mode rapide, un mode carte, un mode apprentissage et un défi quotidien où tout le monde reçoit les six mêmes formes.',
+                        f'Le {a("mappr", "quiz des formes")} de Mappr montre la silhouette d\'un État et demande lequel c\'est, en QCM ou en tapant la réponse. Il ajoute un mode rapide, un mode carte, un mode apprentissage et un défi quotidien où tout le monde reçoit les six mêmes formes.',
                         'Il est gratuit et sans inscription, et le site indique que le quiz lui-même n\'affiche pas de publicité.',
                         '<em>Idéal pour :</em> reconnaître les États à leur forme, ce que testent les jeux de silhouettes.']),
                 ]),
@@ -231,7 +231,7 @@ def learn_article(L):
                 ('Nos jeux', [
                     ('Statedoku', HOME[L], [
                         f'Statedoku, c\'est ce site. Le {own(L, HOME[L], "puzzle quotidien")} est une grille 3×3 où chaque case attend un État qui respecte à la fois l\'indice de sa ligne et celui de sa colonne, par exemple « Frontière Canada » et « Côte Pacifique ». Cinq erreurs sont permises, et tout le monde a la même grille chaque jour.',
-                        f'À côté, {own(L, p, "21 jeux courts")} couvrent la carte ({own(L, p + "place-the-state/", "Placer l’État")}, en niveaux Facile, Normal et Difficile), les capitales, les abréviations, les silhouettes, les drapeaux, les 13 colonies, les fuseaux horaires et plus, chacun en français, anglais et espagnol. Pas de compte, pas de publicité sur les pages de jeu, et un bouton Partager sur Google Classroom sur chacune.',
+                        f'À côté, {own(L, p, "21 jeux courts")} couvrent la carte ({own(L, p + "place-the-state/", "Placer l’État")}, avec les niveaux Facile, Normal et Difficile), les capitales, les abréviations, les silhouettes, les drapeaux, les 13 colonies, les fuseaux horaires et plus, chacun en français, anglais et espagnol. Pas de compte, pas de publicité sur les pages de jeu, et un bouton Partager sur Google Classroom sur chacune.',
                         '<em>Limites :</em> pas d\'appli, et moins de quiz spécialisés, comme les comtés ou les fleuves, que sur Seterra.']),
                 ]),
             ],
@@ -240,16 +240,16 @@ def learn_article(L):
                 f'<strong>Commencez par la carte.</strong> Utilisez une carte à cliquer jusqu\'à savoir placer chaque État, une région à la fois. Notre {own(L, HUB[L], "méthode région par région")} découpe les 50 en quatre groupes.',
                 '<strong>Puis retrouvez les noms.</strong> Passez à un quiz à taper : nommer un État de mémoire est un test plus dur que cliquer dessus.',
                 f'<strong>Ajoutez les capitales, puis les abréviations.</strong> Notre {own(L, "/fr/learn/states-and-capitals/", "liste des États et capitales")} et notre {own(L, "/fr/learn/state-abbreviations/", "liste des abréviations")} servent de référence.',
-                '<strong>Court et régulier.</strong> Dix minutes par jour se tiennent mieux qu\'une longue séance par semaine. Un puzzle quotidien donne une raison de revenir.',
+                '<strong>Court et régulier.</strong> Dix minutes par jour sont plus faciles à tenir qu\'une longue séance par semaine. Un puzzle quotidien donne une raison de revenir.',
             ],
             faq=[
                 ('Quel est le meilleur jeu gratuit pour apprendre les 50 États ?',
                  'Cela dépend de l\'étape. Pour savoir où sont les États, une carte à cliquer comme Seterra ou Lizard Point. Pour tester sa mémoire, le quiz à taper de Sporcle. Pour les jeunes enfants, Sheppard Software. Pour s\'entraîner chaque jour, un puzzle quotidien comme Statedoku ou Statele.'),
                 ('Seterra est-il toujours gratuit ?',
-                 'Oui. Les quiz de Seterra sont gratuits sur le web, avec publicité. Le site fait partie de GeoGuessr depuis 2022, et l\'abonnement Pro de GeoGuessr, dès 3,99 $ par mois en octobre 2026, retire la publicité. Le mode Learn guidé demande aussi un compte payant.'),
+                 'Oui. Les quiz de Seterra sont gratuits sur le web, avec publicité. Le site fait partie de GeoGuessr depuis 2022, et l\'abonnement Pro de GeoGuessr, dès 3,99 $ par mois facturés à l\'année (6,99 $ sans engagement) en octobre 2026, retire la publicité. Le mode Learn guidé demande aussi un compte payant.'),
                 ('Faut-il un compte pour jouer ?',
                  'Non, aucun des jeux gratuits de cette page n\'en demande avant de jouer. Seterra et Sporcle proposent de se connecter seulement pour garder ses scores.'),
-                ('Lesquels fonctionnent en classe ?',
+                ('Quels jeux fonctionnent en classe ?',
                  'Tous les jeux web tournent dans un navigateur sans compte élève. Les jeux de Statedoku ont un bouton Partager sur Google Classroom et s\'intègrent dans une page de classe. Lizard Point a arrêté ses comptes enseignant en mars 2023.'),
                 ('Existe-t-il des jeux pour les capitales ?',
                  'Oui. Seterra et Lizard Point ont des quiz de capitales sur carte, Sporcle un US Capitals Quiz à taper, et Statedoku un jeu d\'association et un quiz à taper.'),
@@ -263,17 +263,17 @@ def learn_article(L):
         )
     return dict(
         title='Mejores juegos gratis para aprender los 50 estados',
-        desc='Juegos y quizzes gratis para aprender los 50 estados de EE.UU. y sus capitales, comparados: Seterra, Sporcle, Lizard Point, Sheppard Software.',
+        desc='Juegos y quizzes gratis para aprender los 50 estados de EE.UU. y sus capitales, comparados: Seterra, Sporcle, Lizard Point, Sheppard Software y más.',
         h1='Los mejores juegos gratis para aprender los 50 estados de EE.UU.',
         sub='Mapas para hacer clic, quizzes para escribir, juegos para niños y puzzles diarios, comparados por lo que enseñan, lo que cuestan y si piden cuenta.',
         answer=('<strong>En resumen.</strong> Para aprender dónde está cada estado, practica con un mapa para hacer clic como Seterra o Lizard Point. '
                 'Para poner a prueba la memoria contra el reloj, el quiz para escribir de Sporcle. Para niños, Sheppard Software avanza nivel a nivel. '
-                'Para mantener el hábito, un puzzle diario lleva cinco minutos. Todos los juegos web gratis de abajo se abren en el navegador sin registro, y la mayoría muestra anuncios que un plan de pago quita.'),
-        disclosure=('<strong>Transparencia.</strong> Statedoku publica esta página y hace algunos de los juegos que aparecen. Los nuestros van al final, con sus límites. '
+                'Para mantener el hábito, un puzzle diario lleva cinco minutos. Todos los juegos web gratis de abajo se abren en el navegador sin registro. La mayoría muestra anuncios; Seterra y Sporcle venden un plan que los quita.'),
+        disclosure=('<strong>Transparencia.</strong> Statedoku publica esta página y ha creado algunos de los juegos que aparecen. Los nuestros van al final, con sus límites. '
                     'Los datos de los otros juegos se comprobaron en sus propios sitios el 22 de octubre de 2026. Los precios y funciones cambian: compruébalos antes de pagar.'),
         table_head=['Juego', 'Ideal para', 'Precio', 'Cuenta para jugar', 'Anuncios'],
         table=[
-            ['Seterra (GeoGuessr)', 'Ubicar estados en el mapa, luego capitales, banderas, condados', 'Gratis; Pro desde 3,99 $ al mes sin anuncios', 'No (inicio de sesión para guardar puntuaciones)', 'Sí, en la web'],
+            ['Seterra (GeoGuessr)', 'Ubicar estados en el mapa, luego capitales, banderas, condados', 'Gratis; Pro desde 3,99 $ al mes con pago anual, sin anuncios', 'No (inicio de sesión para guardar puntuaciones)', 'Sí, en la web'],
             ['Sporcle', 'Escribir los 50 de memoria contra el reloj', 'Gratis; Orange 3,99 $ al mes sin anuncios', 'No', 'Sí'],
             ['Lizard Point', 'Estudio paso a paso con pistas', 'Gratis', 'No', 'Sí'],
             ['Sheppard Software', 'Niños pequeños, nivel a nivel', 'Gratis', 'No', 'Sí'],
@@ -285,12 +285,12 @@ def learn_article(L):
         sections=[
             ('Aprender el mapa', [
                 ('Seterra', URL['seterra'], [
-                    f'Seterra es un sitio veterano de quizzes de mapas que forma parte de GeoGuessr desde 2022. Su {a("seterra", "lista de EE.UU.")} reúne 110 quizzes: los 50 estados, las abreviaturas, las capitales, las banderas, las 13 colonias, los territorios, los ríos, las grandes ciudades y los condados de cada estado.',
-                    'En «The U.S.: 50 States» haces clic en el estado pedido (Pin) o escribes el nombre del estado resaltado (Type). Un modo Learn guiado queda para las cuentas de pago. La versión web es gratis con anuncios, y GeoGuessr Pro, desde 3,99 $ al mes en octubre de 2026, los quita. Las apps gratis de iOS y Android no indican anuncios ni compras dentro de la app.',
+                    f'Seterra es un sitio veterano de quizzes de mapas que forma parte de GeoGuessr desde 2022. Su {a("seterra", "lista de EE.UU.")} reúne 110 quizzes de mapas, sobre los 50 estados, las abreviaturas, las capitales, las 13 colonias, los territorios, los ríos, las grandes ciudades y los condados de cada estado, más cinco quizzes de imágenes sobre banderas, siluetas y los Padres fundadores.',
+                    'En «The U.S.: 50 States» haces clic en el estado pedido (Pin) o escribes el nombre del estado resaltado (Type). Un modo Learn guiado queda para las cuentas de pago. La versión web es gratis con anuncios, y GeoGuessr Pro, desde 3,99 $ al mes con pago anual (6,99 $ mes a mes) en octubre de 2026, los quita. Las apps gratis de iOS y Android no indican anuncios ni compras dentro de la app.',
                     '<em>Ideal para:</em> construir el mapa mental y luego pasar a capitales y condados.']),
                 ('Lizard Point', URL['lizard'], [
                     f'Lizard Point es un pequeño sitio familiar de Ontario que ofrece quizzes de geografía gratis desde 1997. Su {a("lizard", "quiz de los estados")} tiene cuatro modos: Study, Practice (tres intentos por estado, con pistas), Test y Strict test (un solo intento).',
-                    'Quince quizzes de EE.UU. cubren los estados y las capitales, cada uno también dividido en Este y Oeste, además de ciudades, ríos, banderas y códigos de aeropuerto. Se financia con anuncios y solo existe en la web. Las cuentas de docente y alumno que ofrecía se suspendieron en marzo de 2023.',
+                    'Quince quizzes de EE.UU. cubren los estados y las capitales (cada uno también dividido en Este y Oeste, y en versión para escribir), además de grandes ciudades, ríos, masas de agua, regiones geofísicas, lugares turísticos, banderas y códigos de aeropuerto. Se financia con anuncios y solo existe en la web. Las cuentas de docente y alumno que ofrecía se eliminaron en marzo de 2023.',
                     '<em>Ideal para:</em> aprender con pistas y un avance suave, sin reloj.']),
                 ('Quiz de formas de Mappr', URL['mappr'], [
                     f'El {a("mappr", "quiz de formas")} de Mappr muestra la silueta de un estado y pregunta cuál es, con opciones o escribiendo. Añade una ronda rápida, un modo de mapa, un modo de aprendizaje y un reto diario en el que todos reciben las mismas seis formas.',
@@ -327,17 +327,17 @@ def learn_article(L):
             f'<strong>Empieza por el mapa.</strong> Usa un mapa para hacer clic hasta ubicar cada estado, una región cada vez. Nuestro {own(L, HUB[L], "método región por región")} divide los 50 en cuatro grupos.',
             '<strong>Luego recuerda los nombres.</strong> Pasa a un quiz para escribir: nombrar un estado de memoria es una prueba más difícil que hacer clic en él.',
             f'<strong>Añade las capitales y luego las abreviaturas.</strong> Nuestra {own(L, "/es/learn/capitales-de-estados/", "lista de capitales")} y nuestra {own(L, "/es/learn/state-abbreviations/", "lista de abreviaturas")} sirven de referencia.',
-            '<strong>Corto y constante.</strong> Diez minutos al día se mantienen mejor que una sesión larga a la semana. Un puzzle diario da un motivo para volver.',
+            '<strong>Corto y constante.</strong> Diez minutos al día son más fáciles de mantener que una sesión larga a la semana. Un puzzle diario da un motivo para volver.',
         ],
         faq=[
             ('¿Cuál es el mejor juego gratis para aprender los 50 estados?',
              'Depende de la etapa. Para saber dónde están los estados, un mapa para hacer clic como Seterra o Lizard Point. Para poner a prueba la memoria, el quiz para escribir de Sporcle. Para niños pequeños, Sheppard Software. Para practicar cada día, un puzzle diario como Statedoku o Statele.'),
             ('¿Seterra sigue siendo gratis?',
-             'Sí. Los quizzes de Seterra son gratis en la web, con anuncios. El sitio forma parte de GeoGuessr desde 2022, y el plan Pro de GeoGuessr, desde 3,99 $ al mes en octubre de 2026, quita los anuncios. El modo Learn guiado también requiere una cuenta de pago.'),
+             'Sí. Los quizzes de Seterra son gratis en la web, con anuncios. El sitio forma parte de GeoGuessr desde 2022, y el plan Pro de GeoGuessr, desde 3,99 $ al mes con pago anual (6,99 $ mes a mes) en octubre de 2026, quita los anuncios. El modo Learn guiado también requiere una cuenta de pago.'),
             ('¿Hace falta una cuenta para jugar?',
              'No, ninguno de los juegos gratis de esta página la pide para jugar. Seterra y Sporcle ofrecen iniciar sesión solo para guardar las puntuaciones.'),
-            ('¿Cuáles funcionan en clase?',
-             'Todos los juegos web funcionan en un navegador sin cuentas de alumno. Los juegos de Statedoku tienen un botón Compartir en Google Classroom y se pueden insertar en una página de clase. Lizard Point suspendió sus cuentas de docente en marzo de 2023.'),
+            ('¿Qué juegos funcionan en clase?',
+             'Todos los juegos web funcionan en un navegador sin cuentas de alumno. Los juegos de Statedoku tienen un botón Compartir en Google Classroom y se pueden insertar en una página de clase. Lizard Point eliminó sus cuentas de docente en marzo de 2023.'),
             ('¿Hay juegos para las capitales?',
              'Sí. Seterra y Lizard Point tienen quizzes de capitales en el mapa, Sporcle un US Capitals Quiz para escribir, y Statedoku un juego de emparejar y un quiz para escribir.'),
         ],
@@ -359,7 +359,7 @@ def daily_article(L):
             h1='The best daily geography games like Wordle',
             sub='One puzzle a day, the same for everyone: what each game asks you to guess, how many tries you get, and what it costs.',
             answer=('<strong>Short answer.</strong> For the world, start with Worldle (a country from its outline, six attempts), Globle (a country found by how warm each guess is on a globe) and Travle (the countries on the shortest route between two). '
-                    'For US states, Statele and Travle USA do the same for states. Grid puzzles such as GeoGrid, for countries, and Statedoku, for states, ask for answers that fit two clues at once. The daily round of every game here is free; most show ads.'),
+                    'For US states, Statele and Travle USA do the same for states. Grid puzzles such as GeoGrid (countries, and US states on GeoGrid USA) and Statedoku (states) ask for answers that fit two clues at once. The daily round of every game here is free; most show ads.'),
             disclosure=('<strong>A note on bias.</strong> Statedoku publishes this page and is one of the games in it, listed last. '
                         'Rules and prices of the other games were checked on their own sites on October 22, 2026.'),
             table_head=['Game', 'You guess', 'Tries', 'Feedback', 'Scope'],
@@ -369,11 +369,11 @@ def daily_article(L):
                 ['Travle', 'The countries on the shortest route between two', 'Route length plus 4 to 8', 'A rating per guess, 3 hints', 'World, and a USA version'],
                 ['Flagle', 'A country from its flag, revealed tile by tile', '6', 'Distance, direction, proximity', 'World'],
                 ['Tradle', 'A country from a chart of its exports', '6', 'Distance, direction, proximity', 'World'],
-                ['GeoGrid', '9 countries that fit row and column categories', '10', 'Rarer answers score better', 'World'],
+                ['GeoGrid', '9 countries (or US states on GeoGrid USA) that fit row and column categories', '10', 'Rarer answers score better', 'World, and a USA version'],
                 ['Countryle', 'A country from its attributes', 'No limit stated', 'Colors and arrows per attribute', 'World'],
-                ['Statele', 'A US state from its outline', '6', 'Distance, proximity', 'US'],
+                ['Statele', 'A US state from its outline', '6', 'Distance, direction, proximity', 'US'],
                 ['WhereTaken USA', 'The state where a photo was taken', 'Not stated', 'Distance and direction', 'US'],
-                ['Statle', 'A state from towns inside it', '6', 'Neighboring states shown in yellow', 'US'],
+                ['Statle', 'A state from towns inside it', '6', 'A guess that borders the answer turns yellow', 'US'],
                 ['Statedle', 'A US city from six clues', '10', 'Clues, distance and direction', 'US'],
                 ['Statedoku (ours)', '9 states that fit row and column clues', '5 mistakes', 'Each pick checked against both clues', 'US'],
             ],
@@ -387,31 +387,31 @@ def daily_article(L):
                         'Globle is made by Trainwreck Labs. It is free with ads, and the Trainwreck Club, $5 a month in October 2026, removes them.']),
                     ('Travle', URL['travle'], [
                         f'{a("travle", "Travle")} gives two countries and asks for the ones on the shortest land route between them. You get the route length plus 4 to 8 extra guesses, each rated by how useful it was, and three hints. There is a weekly challenge and a {a("travleusa", "USA version")} that works with states.',
-                        'It is a Teuteuf game created by Oisín Carroll, free with ads; Premium removes them.']),
+                        'It is a Teuteuf game created by Oisin Carroll, free with ads; Premium removes them.']),
                     ('Flagle', URL['flagle'], [
                         f'{a("flagle", "Flagle")} reveals a flag one tile per guess, six guesses in all, with distance and direction after each, then bonus rounds on shape, capital and borders. It is a Teuteuf game, free with ads.']),
                     ('Tradle', URL['tradle'], [
                         f'{a("tradle", "Tradle")}, from the Observatory of Economic Complexity, shows a chart of one country\'s exports. You get six guesses with distance, direction and proximity. It is free, with ads.']),
                     ('GeoGrid', URL['geogrid'], [
-                        f'{a("geogrid", "GeoGrid")} is a 3×3 grid: each cell needs a country that fits its row and its column, for example a category about flags crossed with one about population. You get ten guesses, and rarer correct answers score better. It resets at midnight local time, is free with ads, and has been supported by Teuteuf Games since 2024.']),
+                        f'{a("geogrid", "GeoGrid")} is a 3×3 grid: each cell needs a country that fits its row and its column, for example a category about flags crossed with one about population. You get ten guesses, and rarer correct answers score better. It resets at midnight local time, is free with ads, and has been supported by Teuteuf Games since 2024. Since May 2026 a daily GeoGrid USA board does the same with US states.']),
                     ('Countryle', URL['countryle'], [
                         f'{a("countryle", "Countryle")} asks for a hidden country and answers each guess with its continent, hemisphere, population, area, temperature and direction, each colored and marked with an arrow up or down. No guess limit is stated. It is free with ads.']),
                 ]),
                 ('US states dailies', [
                     ('Statele', URL['statele'], [
-                        f'{a("statele", "Statele")} is the US-states counterpart of Worldle, from Teuteuf Games: guess a state from its outline in six tries, with distance and proximity after each, then bonus rounds on neighbors and the capital. It is free with ads. Note that an iOS app with the same name comes from a different developer.']),
+                        f'{a("statele", "Statele")} is the US-states counterpart of Worldle, from Teuteuf Games: guess a state from its outline in six tries, with distance, direction and proximity after each, then bonus rounds on neighbors and the capital. It is free with ads. Note that an iOS app with the same name comes from a different developer.']),
                     ('Travle USA', URL['travleusa'], [
                         f'{a("travleusa", "Travle USA")} uses the Travle rules with states: name the states on the shortest route between two of them.']),
                     ('WhereTaken USA', URL['wheretaken'], [
                         f'{a("wheretaken", "WhereTaken USA")} shows a photograph and asks which state it was taken in, with distance and direction after a wrong guess, then four bonus rounds on facts, a landmark, the capital and a city. It is a Teuteuf game, free with ads.']),
                     ('Statle', URL['statle'], [
-                        f'In {a("statle", "Statle")} you see a town and guess its state; each wrong guess brings another town, and a neighboring state lights up yellow. Six tries, same puzzle for everyone each day, free with ads.']),
+                        f'In {a("statle", "Statle")} you see a town and guess its state; each wrong guess brings another town, and a guess that borders the answer turns yellow. Six tries, same puzzle for everyone each day, free with ads.']),
                     ('Statedle', URL['statedle'], [
                         f'{a("statedle", "Statedle")} is about cities rather than states: guess a mystery US city in ten tries from six clues, such as population, county, land area and interstate access, plus distance and direction.']),
                     ('Mappr Guess the State', URL['mapprdaily'], [
                         f'Mappr\'s {a("mapprdaily", "Guess the State")} gives one mystery state outline a day, the same worldwide, with six guesses and distance, an arrow and a proximity percentage after each. No login is needed.']),
                     ('Statedoku', HOME[L], [
-                        f'{own(L, HOME[L], "Statedoku")} is ours. Like GeoGrid, it is a 3×3 grid, but with US states: each cell needs a state that fits both its row clue and its column clue, such as "Borders Mexico" and "Name ends in A". Any state that fits is accepted, not one hidden answer, each grid is checked to have a complete solution, and you get five mistakes. It resets at midnight local time, in English, French or Spanish, with no account and no ads on the game.']),
+                        f'{own(L, HOME[L], "Statedoku")} is ours. Like GeoGrid USA, it is a 3×3 grid of US states: each cell needs a state that fits both its row clue and its column clue, such as "Borders Mexico" and "Name ends in A". Any state that fits is accepted, not one hidden answer, each grid is checked to have a complete solution, and you get five mistakes. It resets at midnight local time, in English, French or Spanish, with no account and no ads on the game.']),
                 ]),
             ],
             method_h='Where to find more daily games',
@@ -423,7 +423,7 @@ def daily_article(L):
                 ('What is the geography version of Wordle?',
                  'Worldle is the closest match: one mystery country a day, six attempts, and after each guess the distance and direction to the answer. It was created by French developer Antoine Teuf.'),
                 ('Is there a Wordle for US states?',
-                 'Yes, several. Statele asks for a state from its outline, Travle USA for the states on a route, WhereTaken USA for the state where a photo was taken, Statle for a state from its towns, and Statedoku for nine states that fit a grid of clues.'),
+                 'Yes, several. Statele asks for a state from its outline, Travle USA for the states on a route, WhereTaken USA for the state where a photo was taken, Statle for a state from its towns, GeoGrid USA for a grid of states, and Statedoku for nine states that fit a grid of clues.'),
                 ('Are daily geography games free?',
                  'The daily round of every game on this page is free. Most show ads, and paid plans remove them or open the archive, for example Teuteuf Premium for Worldle, Travle, Flagle, GeoGrid and Statele, or the Trainwreck Club for Globle.'),
                 ('When does a new puzzle come out?',
@@ -441,27 +441,27 @@ def daily_article(L):
     if L == 'fr':
         return dict(
             title='Meilleurs jeux de géographie quotidiens type Wordle',
-            desc='Jeux de géographie quotidiens type Wordle, comparés : Worldle, Globle, Travle, Flagle, GeoGrid et jeux des États comme Statele. Règles, essais, prix.',
+            desc='Jeux de géographie quotidiens type Wordle, comparés : Worldle, Globle, Travle, Flagle, GeoGrid et jeux sur les États comme Statele. Règles, essais, prix.',
             h1='Les meilleurs jeux de géographie quotidiens, façon Wordle',
             sub='Un puzzle par jour, le même pour tous : ce que chaque jeu fait deviner, combien d\'essais il donne, et ce qu\'il coûte.',
             answer=('<strong>En bref.</strong> Pour le monde, commencez par Worldle (un pays d\'après sa silhouette, six essais), Globle (un pays trouvé selon la couleur de chaque essai sur un globe) et Travle (les pays sur le plus court chemin entre deux). '
-                    'Pour les États américains, Statele et Travle USA font la même chose avec les États. Les grilles comme GeoGrid, pour les pays, et Statedoku, pour les États, demandent des réponses qui respectent deux indices à la fois. La partie du jour de chaque jeu est gratuite ; la plupart affichent de la publicité.'),
+                    'Pour les États américains, Statele et Travle USA font la même chose avec les États. Les grilles comme GeoGrid (les pays, et les États américains sur GeoGrid USA) et Statedoku (les États) demandent des réponses qui respectent deux indices à la fois. La partie du jour de chaque jeu est gratuite ; la plupart affichent de la publicité.'),
             disclosure=('<strong>Transparence.</strong> Statedoku publie cette page et fait partie des jeux présentés, en dernier. '
                         'Les règles et les prix des autres jeux ont été vérifiés sur leurs propres sites le 22 octobre 2026.'),
             table_head=['Jeu', 'À deviner', 'Essais', 'Indications', 'Portée'],
             table=[
                 ['Worldle', 'Un pays d\'après sa silhouette', '6', 'Distance, direction, proximité', 'Monde'],
-                ['Globle', 'Un pays mystère', 'Pas de limite indiquée', 'Couleurs sur un globe, plus chaudes si proche', 'Monde'],
+                ['Globle', 'Un pays mystère', 'Pas de limite indiquée', 'Couleurs sur un globe, plus chaudes à mesure qu\'on approche', 'Monde'],
                 ['Travle', 'Les pays du plus court chemin entre deux', 'Longueur du trajet plus 4 à 8', 'Une note par essai, 3 indices', 'Monde, et une version USA'],
                 ['Flagle', 'Un pays d\'après son drapeau, dévoilé case par case', '6', 'Distance, direction, proximité', 'Monde'],
                 ['Tradle', 'Un pays d\'après le graphique de ses exportations', '6', 'Distance, direction, proximité', 'Monde'],
-                ['GeoGrid', '9 pays qui respectent catégories de ligne et de colonne', '10', 'Les réponses rares rapportent plus', 'Monde'],
+                ['GeoGrid', '9 pays (ou États américains sur GeoGrid USA) qui respectent les catégories de ligne et de colonne', '10', 'Les réponses rares donnent un meilleur score', 'Monde, et une version USA'],
                 ['Countryle', 'Un pays d\'après ses caractéristiques', 'Pas de limite indiquée', 'Couleurs et flèches par critère', 'Monde'],
-                ['Statele', 'Un État américain d\'après sa silhouette', '6', 'Distance, proximité', 'États-Unis'],
+                ['Statele', 'Un État américain d\'après sa silhouette', '6', 'Distance, direction, proximité', 'États-Unis'],
                 ['WhereTaken USA', 'L\'État où une photo a été prise', 'Non indiqué', 'Distance et direction', 'États-Unis'],
-                ['Statle', 'Un État d\'après des villes qu\'il contient', '6', 'États voisins en jaune', 'États-Unis'],
+                ['Statle', 'Un État d\'après des villes qu\'il contient', '6', 'Essai voisin de la solution en jaune', 'États-Unis'],
                 ['Statedle', 'Une ville américaine d\'après six indices', '10', 'Indices, distance et direction', 'États-Unis'],
-                ['Statedoku (le nôtre)', '9 États qui respectent indices de ligne et de colonne', '5 erreurs', 'Chaque choix vérifié sur les deux indices', 'États-Unis'],
+                ['Statedoku (le nôtre)', '9 États qui respectent les indices de ligne et de colonne', '5 erreurs', 'Chaque choix vérifié sur les deux indices', 'États-Unis'],
             ],
             sections=[
                 ('Jeux quotidiens sur le monde', [
@@ -472,32 +472,32 @@ def daily_article(L):
                         f'Dans {a("globle", "Globle")}, on propose n\'importe quel pays et il se colore sur un globe : plus la couleur est chaude, plus on est proche, la distance étant mesurée entre frontières terrestres. Aucune limite d\'essais n\'est indiquée ; le but est d\'en faire le moins possible. Nouvelle partie à minuit dans votre fuseau horaire.',
                         'Globle est édité par Trainwreck Labs. Il est gratuit avec publicité, et le Trainwreck Club, à 5 $ par mois en octobre 2026, la retire.']),
                     ('Travle', URL['travle'], [
-                        f'{a("travle", "Travle")} donne deux pays et demande ceux qui se trouvent sur le plus court trajet terrestre entre eux. On dispose de la longueur du trajet plus 4 à 8 essais, chacun noté selon son utilité, et de trois indices. Il existe un défi hebdomadaire et une {a("travleusa", "version USA")} avec les États.',
-                        'C\'est un jeu Teuteuf créé par Oisín Carroll, gratuit avec publicité ; Premium la retire.']),
+                        f'{a("travle", "Travle")} donne deux pays et demande ceux qui se trouvent sur le plus court trajet terrestre entre eux. On a droit à autant d\'essais que le trajet compte de pays, plus 4 à 8, chacun noté selon son utilité, et de trois indices. Il existe un défi hebdomadaire et une {a("travleusa", "version USA")} avec les États.',
+                        'C\'est un jeu Teuteuf créé par Oisin Carroll, gratuit avec publicité ; Premium la retire.']),
                     ('Flagle', URL['flagle'], [
                         f'{a("flagle", "Flagle")} dévoile un drapeau case par case, six essais en tout, avec distance et direction après chacun, puis des manches bonus sur la forme, la capitale et les frontières. C\'est un jeu Teuteuf, gratuit avec publicité.']),
                     ('Tradle', URL['tradle'], [
                         f'{a("tradle", "Tradle")}, de l\'Observatory of Economic Complexity, montre le graphique des exportations d\'un pays. Six essais, avec distance, direction et proximité. Gratuit, avec publicité.']),
                     ('GeoGrid', URL['geogrid'], [
-                        f'{a("geogrid", "GeoGrid")} est une grille 3×3 : chaque case attend un pays qui respecte sa ligne et sa colonne, par exemple une catégorie sur les drapeaux croisée avec une autre sur la population. Dix essais, et les bonnes réponses rares rapportent plus. Nouvelle grille à minuit, heure locale, gratuite avec publicité, soutenue par Teuteuf Games depuis 2024.']),
+                        f'{a("geogrid", "GeoGrid")} est une grille 3×3 : chaque case attend un pays qui respecte sa ligne et sa colonne, par exemple une catégorie sur les drapeaux croisée avec une autre sur la population. Dix essais, et plus une bonne réponse est rare, meilleur est le score. Nouvelle grille à minuit, heure locale, gratuite avec publicité, soutenue par Teuteuf Games depuis 2024. Depuis mai 2026, une grille quotidienne GeoGrid USA fait de même avec les États américains.']),
                     ('Countryle', URL['countryle'], [
                         f'{a("countryle", "Countryle")} fait deviner un pays caché et répond à chaque essai par son continent, son hémisphère, sa population, sa superficie, sa température et sa direction, chaque critère coloré et accompagné d\'une flèche vers le haut ou le bas. Aucune limite d\'essais n\'est indiquée. Gratuit avec publicité.']),
                 ]),
                 ('Jeux quotidiens sur les États américains', [
                     ('Statele', URL['statele'], [
-                        f'{a("statele", "Statele")} est l\'équivalent de Worldle pour les États américains, chez Teuteuf Games : deviner un État d\'après sa silhouette en six essais, avec distance et proximité après chacun, puis des manches bonus sur les voisins et la capitale. Gratuit avec publicité. Attention, une appli iOS du même nom vient d\'un autre développeur.']),
+                        f'{a("statele", "Statele")} est l\'équivalent de Worldle pour les États américains, chez Teuteuf Games : deviner un État d\'après sa silhouette en six essais, avec distance, direction et proximité après chacun, puis des manches bonus sur les voisins et la capitale. Gratuit avec publicité. Attention, une appli iOS du même nom vient d\'un autre développeur.']),
                     ('Travle USA', URL['travleusa'], [
                         f'{a("travleusa", "Travle USA")} reprend les règles de Travle avec les États : nommer les États sur le plus court trajet entre deux d\'entre eux.']),
                     ('WhereTaken USA', URL['wheretaken'], [
                         f'{a("wheretaken", "WhereTaken USA")} montre une photo et demande dans quel État elle a été prise, avec distance et direction après une erreur, puis quatre manches bonus sur des anecdotes, un monument, la capitale et une ville. Jeu Teuteuf, gratuit avec publicité.']),
                     ('Statle', URL['statle'], [
-                        f'Dans {a("statle", "Statle")}, on voit une ville et on devine son État ; chaque erreur révèle une autre ville, et un État voisin s\'affiche en jaune. Six essais, la même partie pour tous chaque jour, gratuit avec publicité.']),
+                        f'Dans {a("statle", "Statle")}, on voit une ville et on devine son État ; chaque erreur révèle une autre ville, et un État proposé qui touche la solution s\'affiche en jaune. Six essais, la même partie pour tous chaque jour, gratuit avec publicité.']),
                     ('Statedle', URL['statedle'], [
                         f'{a("statedle", "Statedle")} porte sur les villes plutôt que les États : deviner une ville américaine mystère en dix essais à partir de six indices, comme la population, le comté, la superficie et l\'accès autoroutier, plus distance et direction.']),
                     ('Mappr Guess the State', URL['mapprdaily'], [
                         f'Le {a("mapprdaily", "Guess the State")} de Mappr propose une silhouette d\'État mystère par jour, la même dans le monde entier, avec six essais et, après chacun, distance, flèche et pourcentage de proximité. Pas de connexion nécessaire.']),
                     ('Statedoku', HOME[L], [
-                        f'{own(L, HOME[L], "Statedoku")} est le nôtre. Comme GeoGrid, c\'est une grille 3×3, mais avec les États américains : chaque case attend un État qui respecte à la fois l\'indice de sa ligne et celui de sa colonne, par exemple « Frontière Mexique » et « Nom finissant par A ». Tout État qui convient est accepté, pas une seule réponse cachée, chaque grille est vérifiée pour avoir une solution complète, et on a droit à cinq erreurs. Nouvelle grille à minuit heure locale, en français, anglais ou espagnol, sans compte et sans publicité sur le jeu.']),
+                        f'{own(L, HOME[L], "Statedoku")} est le nôtre. Comme GeoGrid USA, c\'est une grille 3×3 d\'États américains : chaque case attend un État qui respecte à la fois l\'indice de sa ligne et celui de sa colonne, par exemple « Frontière Mexique » et « Nom finissant par A ». Tout État qui convient est accepté, pas une seule réponse cachée, on vérifie que chaque grille a une solution complète, et on a droit à cinq erreurs. Nouvelle grille à minuit heure locale, en français, anglais ou espagnol, sans compte et sans publicité sur le jeu.']),
                 ]),
             ],
             method_h='Où trouver d\'autres jeux quotidiens',
@@ -509,7 +509,7 @@ def daily_article(L):
                 ('Quel est le Wordle de la géographie ?',
                  'Worldle est le plus proche : un pays mystère par jour, six essais, et après chaque essai la distance et la direction de la solution. Il a été créé par le développeur français Antoine Teuf.'),
                 ('Existe-t-il un Wordle des États américains ?',
-                 'Oui, plusieurs. Statele fait deviner un État d\'après sa silhouette, Travle USA les États d\'un trajet, WhereTaken USA l\'État d\'une photo, Statle un État d\'après ses villes, et Statedoku neuf États qui respectent une grille d\'indices.'),
+                 'Oui, plusieurs. Statele fait deviner un État d\'après sa silhouette, Travle USA les États d\'un trajet, WhereTaken USA l\'État d\'une photo, Statle un État d\'après ses villes, GeoGrid USA une grille d\'États, et Statedoku neuf États qui respectent une grille d\'indices.'),
                 ('Les jeux de géographie quotidiens sont-ils gratuits ?',
                  'La partie du jour de chaque jeu de cette page est gratuite. La plupart affichent de la publicité, et des abonnements la retirent ou ouvrent les archives, par exemple Teuteuf Premium pour Worldle, Travle, Flagle, GeoGrid et Statele, ou le Trainwreck Club pour Globle.'),
                 ('À quelle heure sort le nouveau puzzle ?',
@@ -530,21 +530,21 @@ def daily_article(L):
         h1='Los mejores juegos diarios de geografía al estilo Wordle',
         sub='Un puzzle al día, el mismo para todos: qué hace adivinar cada juego, cuántos intentos da y cuánto cuesta.',
         answer=('<strong>En resumen.</strong> Para el mundo, empieza por Worldle (un país por su silueta, seis intentos), Globle (un país que se encuentra por el color de cada intento en un globo) y Travle (los países en la ruta más corta entre dos). '
-                'Para los estados de EE.UU., Statele y Travle USA hacen lo mismo con los estados. Las cuadrículas como GeoGrid, para países, y Statedoku, para estados, piden respuestas que cumplan dos pistas a la vez. La partida del día de cada juego es gratis; la mayoría muestra anuncios.'),
+                'Para los estados de EE.UU., Statele y Travle USA hacen lo mismo con los estados. Las cuadrículas como GeoGrid (países, y estados de EE.UU. en GeoGrid USA) y Statedoku (estados) piden respuestas que cumplan dos pistas a la vez. La partida del día de cada juego es gratis; la mayoría muestra anuncios.'),
         disclosure=('<strong>Transparencia.</strong> Statedoku publica esta página y es uno de los juegos que aparecen, al final. '
                     'Las reglas y los precios de los otros juegos se comprobaron en sus propios sitios el 22 de octubre de 2026.'),
         table_head=['Juego', 'Qué adivinas', 'Intentos', 'Pistas', 'Alcance'],
         table=[
             ['Worldle', 'Un país por su silueta', '6', 'Distancia, dirección, proximidad', 'Mundo'],
             ['Globle', 'Un país misterioso', 'Sin límite indicado', 'Colores en un globo, más cálidos al acercarse', 'Mundo'],
-            ['Travle', 'Los países de la ruta más corta entre dos', 'Largo de la ruta más 4 a 8', 'Una nota por intento, 3 pistas', 'Mundo, y una versión USA'],
+            ['Travle', 'Los países de la ruta más corta entre dos', 'Longitud de la ruta más 4 a 8', 'Una nota por intento, 3 pistas', 'Mundo, y una versión de EE.UU.'],
             ['Flagle', 'Un país por su bandera, revelada por casillas', '6', 'Distancia, dirección, proximidad', 'Mundo'],
             ['Tradle', 'Un país por el gráfico de sus exportaciones', '6', 'Distancia, dirección, proximidad', 'Mundo'],
-            ['GeoGrid', '9 países que cumplan categorías de fila y columna', '10', 'Las respuestas raras puntúan mejor', 'Mundo'],
+            ['GeoGrid', '9 países (o estados de EE.UU. en GeoGrid USA) que cumplan categorías de fila y columna', '10', 'Las respuestas raras puntúan mejor', 'Mundo, y una versión de EE.UU.'],
             ['Countryle', 'Un país por sus características', 'Sin límite indicado', 'Colores y flechas por dato', 'Mundo'],
-            ['Statele', 'Un estado de EE.UU. por su silueta', '6', 'Distancia, proximidad', 'EE.UU.'],
+            ['Statele', 'Un estado de EE.UU. por su silueta', '6', 'Distancia, dirección, proximidad', 'EE.UU.'],
             ['WhereTaken USA', 'El estado donde se tomó una foto', 'No indicado', 'Distancia y dirección', 'EE.UU.'],
-            ['Statle', 'Un estado por pueblos que contiene', '6', 'Estados vecinos en amarillo', 'EE.UU.'],
+            ['Statle', 'Un estado por los pueblos que contiene', '6', 'Intento vecino de la respuesta en amarillo', 'EE.UU.'],
             ['Statedle', 'Una ciudad de EE.UU. por seis pistas', '10', 'Pistas, distancia y dirección', 'EE.UU.'],
             ['Statedoku (el nuestro)', '9 estados que cumplan pistas de fila y columna', '5 errores', 'Cada elección se comprueba con las dos pistas', 'EE.UU.'],
         ],
@@ -557,32 +557,32 @@ def daily_article(L):
                     f'En {a("globle", "Globle")} propones cualquier país y se colorea en un globo: cuanto más cálido el color, más cerca estás, con la distancia medida entre fronteras terrestres. No se indica límite de intentos; el objetivo es usar los menos posibles. Nueva partida a medianoche en tu zona horaria.',
                     'Globle lo hace Trainwreck Labs. Es gratis con anuncios, y el Trainwreck Club, 5 $ al mes en octubre de 2026, los quita.']),
                 ('Travle', URL['travle'], [
-                    f'{a("travle", "Travle")} da dos países y pide los que están en la ruta terrestre más corta entre ellos. Tienes el largo de la ruta más 4 a 8 intentos, cada uno valorado según su utilidad, y tres pistas. Hay un reto semanal y una {a("travleusa", "versión USA")} con estados.',
-                    'Es un juego de Teuteuf creado por Oisín Carroll, gratis con anuncios; Premium los quita.']),
+                    f'{a("travle", "Travle")} da dos países y pide los que están en la ruta terrestre más corta entre ellos. Tienes tantos intentos como países tiene la ruta, más 4 a 8, cada uno valorado según su utilidad, y tres pistas. Hay un reto semanal y una {a("travleusa", "versión de EE.UU.")} con estados.',
+                    'Es un juego de Teuteuf creado por Oisin Carroll, gratis con anuncios; Premium los quita.']),
                 ('Flagle', URL['flagle'], [
                     f'{a("flagle", "Flagle")} revela una bandera casilla a casilla, seis intentos en total, con distancia y dirección tras cada uno, y luego rondas extra sobre la forma, la capital y las fronteras. Es un juego de Teuteuf, gratis con anuncios.']),
                 ('Tradle', URL['tradle'], [
                     f'{a("tradle", "Tradle")}, del Observatory of Economic Complexity, muestra el gráfico de las exportaciones de un país. Seis intentos, con distancia, dirección y proximidad. Gratis, con anuncios.']),
                 ('GeoGrid', URL['geogrid'], [
-                    f'{a("geogrid", "GeoGrid")} es una cuadrícula 3×3: cada casilla pide un país que cumpla su fila y su columna, por ejemplo una categoría sobre banderas cruzada con otra sobre población. Diez intentos, y las respuestas correctas raras puntúan mejor. Nueva cuadrícula a medianoche, hora local, gratis con anuncios, con el apoyo de Teuteuf Games desde 2024.']),
+                    f'{a("geogrid", "GeoGrid")} es una cuadrícula 3×3: cada casilla pide un país que cumpla su fila y su columna, por ejemplo una categoría sobre banderas cruzada con otra sobre población. Diez intentos, y las respuestas correctas raras puntúan mejor. Nueva cuadrícula a medianoche, hora local, gratis con anuncios, con el apoyo de Teuteuf Games desde 2024. Desde mayo de 2026, una cuadrícula diaria GeoGrid USA hace lo mismo con los estados de EE.UU.']),
                 ('Countryle', URL['countryle'], [
                     f'{a("countryle", "Countryle")} hace adivinar un país oculto y responde a cada intento con su continente, hemisferio, población, superficie, temperatura y dirección, cada dato coloreado y con una flecha hacia arriba o hacia abajo. No se indica límite de intentos. Gratis con anuncios.']),
             ]),
             ('Juegos diarios sobre los estados de EE.UU.', [
                 ('Statele', URL['statele'], [
-                    f'{a("statele", "Statele")} es el equivalente de Worldle para los estados de EE.UU., de Teuteuf Games: adivinar un estado por su silueta en seis intentos, con distancia y proximidad tras cada uno, y luego rondas extra sobre los vecinos y la capital. Gratis con anuncios. Ojo: una app de iOS con el mismo nombre es de otro desarrollador.']),
+                    f'{a("statele", "Statele")} es el equivalente de Worldle para los estados de EE.UU., de Teuteuf Games: adivinar un estado por su silueta en seis intentos, con distancia, dirección y proximidad tras cada uno, y luego rondas extra sobre los vecinos y la capital. Gratis con anuncios. Ojo: una app de iOS con el mismo nombre es de otro desarrollador.']),
                 ('Travle USA', URL['travleusa'], [
                     f'{a("travleusa", "Travle USA")} usa las reglas de Travle con estados: nombrar los estados en la ruta más corta entre dos de ellos.']),
                 ('WhereTaken USA', URL['wheretaken'], [
                     f'{a("wheretaken", "WhereTaken USA")} muestra una foto y pregunta en qué estado se tomó, con distancia y dirección tras un fallo, y luego cuatro rondas extra sobre datos, un monumento, la capital y una ciudad. Juego de Teuteuf, gratis con anuncios.']),
                 ('Statle', URL['statle'], [
-                    f'En {a("statle", "Statle")} ves un pueblo y adivinas su estado; cada fallo muestra otro pueblo, y un estado vecino se ilumina en amarillo. Seis intentos, la misma partida para todos cada día, gratis con anuncios.']),
+                    f'En {a("statle", "Statle")} ves un pueblo y adivinas su estado; cada fallo muestra otro pueblo, y un intento que limita con la respuesta se pone amarillo. Seis intentos, la misma partida para todos cada día, gratis con anuncios.']),
                 ('Statedle', URL['statedle'], [
                     f'{a("statedle", "Statedle")} trata de ciudades, no de estados: adivinar una ciudad misteriosa de EE.UU. en diez intentos a partir de seis pistas, como la población, el condado, la superficie y el acceso a autopistas, más distancia y dirección.']),
                 ('Mappr Guess the State', URL['mapprdaily'], [
                     f'El {a("mapprdaily", "Guess the State")} de Mappr propone una silueta de estado misteriosa al día, la misma en todo el mundo, con seis intentos y, tras cada uno, distancia, flecha y porcentaje de proximidad. No hace falta iniciar sesión.']),
                 ('Statedoku', HOME[L], [
-                    f'{own(L, HOME[L], "Statedoku")} es el nuestro. Como GeoGrid, es una cuadrícula 3×3, pero con estados de EE.UU.: cada casilla pide un estado que cumpla a la vez la pista de su fila y la de su columna, por ejemplo «Frontera con México» y «Nombre termina en A». Se acepta cualquier estado que encaje, no una sola respuesta oculta, cada cuadrícula se comprueba para que tenga solución completa, y se permiten cinco errores. Nueva cuadrícula a medianoche hora local, en español, inglés o francés, sin cuenta y sin anuncios en el juego.']),
+                    f'{own(L, HOME[L], "Statedoku")} es el nuestro. Como GeoGrid USA, es una cuadrícula 3×3 de estados de EE.UU.: cada casilla pide un estado que cumpla a la vez la pista de su fila y la de su columna, por ejemplo «Frontera con México» y «Nombre termina en A». Se acepta cualquier estado que encaje, no una sola respuesta oculta, se comprueba que cada cuadrícula tenga una solución completa, y se permiten cinco errores. Nueva cuadrícula a medianoche hora local, en español, inglés o francés, sin cuenta y sin anuncios en el juego.']),
             ]),
         ],
         method_h='Dónde encontrar más juegos diarios',
@@ -594,7 +594,7 @@ def daily_article(L):
             ('¿Cuál es el Wordle de la geografía?',
              'Worldle es el más parecido: un país misterioso al día, seis intentos y, tras cada intento, la distancia y la dirección hasta la respuesta. Lo creó el desarrollador francés Antoine Teuf.'),
             ('¿Hay un Wordle de los estados de EE.UU.?',
-             'Sí, varios. Statele pide un estado por su silueta, Travle USA los estados de una ruta, WhereTaken USA el estado de una foto, Statle un estado por sus pueblos, y Statedoku nueve estados que cumplan una cuadrícula de pistas.'),
+             'Sí, varios. Statele pide un estado por su silueta, Travle USA los estados de una ruta, WhereTaken USA el estado de una foto, Statle un estado por sus pueblos, GeoGrid USA una cuadrícula de estados, y Statedoku nueve estados que cumplan una cuadrícula de pistas.'),
             ('¿Los juegos diarios de geografía son gratis?',
              'La partida del día de cada juego de esta página es gratis. La mayoría muestra anuncios, y los planes de pago los quitan o abren el archivo, por ejemplo Teuteuf Premium para Worldle, Travle, Flagle, GeoGrid y Statele, o el Trainwreck Club para Globle.'),
             ('¿A qué hora sale el nuevo puzzle?',
@@ -664,7 +664,7 @@ def render(kind, L, d):
     faq = ''.join(f'    <details><summary><strong>{q}</strong></summary><p>{ans}</p></details>\n' for q, ans in d['faq'])
     rel = ''.join(f'      <a href="{u}">→ {t}</a>\n' for u, t in d['related'])
     faq_h = {'en': 'Frequently asked questions', 'fr': 'Questions fréquentes', 'es': 'Preguntas frecuentes'}[L]
-    ext = '<script src="/config.js?v=11"></script>\n<script src="/js/admin.js"></script>\n<script src="/js/ads.js?v=1"></script>\n'
+    ext = '<script src="/config.js?v=12"></script>\n<script src="/js/admin.js"></script>\n<script src="/js/ads.js?v=1"></script>\n'
     page = f'''<!DOCTYPE html>
 <html lang="{L}">
 <head>{head_scripts}<meta charset="UTF-8">
@@ -676,7 +676,7 @@ def render(kind, L, d):
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{url}">
 {alts}  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{html.escape(d['title'])}">
   <meta property="og:description" content="{html.escape(d['desc'])}">

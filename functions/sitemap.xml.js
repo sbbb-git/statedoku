@@ -1,29 +1,16 @@
 import { LASTMOD } from './_sitemap-lastmod.js';
 
-// Dynamic sitemap — auto-includes scheduled SEO pages on their publish date.
-// Replaces the static sitemap.xml from this date forward.
+// Sitemap of the indexable, self-canonical pages, built from the entries below.
 
-// Drip schedule: each URL becomes indexable on its scheduled date.
+// Eight reference pages in three languages. They were once released on a drip
+// schedule by this file and by three functions/*/learn/[slug]/_middleware.js
+// files that rewrote noindex to index at the edge. Every date passed in May 2026
+// and the middlewares were removed on 22 October 2026, because one of them would
+// have silently re-indexed any of these pages retired with noindex later.
 const LONGTAIL_SLUGS = [
-  ['state-abbreviations',    '2026-05-15'],
-  ['states-and-capitals',    '2026-05-15'],
-  ['13-colonies',            '2026-05-15'],
-  ['landlocked-states',      '2026-05-15'],
-  ['states-bordering-mexico','2026-05-15'],
-  ['states-bordering-canada','2026-05-15'],
-  ['largest-states',         '2026-05-15'],
-  ['no-income-tax',          '2026-05-15'],
+  'state-abbreviations', 'states-and-capitals', '13-colonies', 'landlocked-states',
+  'states-bordering-mexico', 'states-bordering-canada', 'largest-states', 'no-income-tax',
 ];
-const SCHEDULE = {};
-for (const [slug, date] of LONGTAIL_SLUGS) {
-  SCHEDULE[`/learn/${slug}/`] = date;
-  SCHEDULE[`/fr/learn/${slug}/`] = date;
-  SCHEDULE[`/es/learn/${slug}/`] = date;
-}
-
-function todayISO() {
-  return new Date().toISOString().slice(0, 10);
-}
 
 function buildEntry(loc, opts = {}) {
   const cf = opts.changefreq || 'monthly';
@@ -49,7 +36,6 @@ ${lastmod}${alts}    <changefreq>${cf}</changefreq>
 }
 
 export async function onRequestGet({ request }) {
-  const today = todayISO();
   const BASE = 'https://statedoku.com';
 
   // Static evergreen URLs (always in sitemap)
@@ -159,9 +145,10 @@ export async function onRequestGet({ request }) {
   const REGIONS = ['northeast','south','midwest','west','new-england','mid-atlantic','south-atlantic','east-south-central','west-south-central','east-north-central','west-north-central','mountain','pacific'];
   for (const r of REGIONS) REGION_HUB.push([`${BASE}/regions/${r}/`, { priority: 0.7 }]);
 
-  const scheduled = Object.entries(SCHEDULE)
-    .filter(([url, date]) => today >= date)
-    .map(([url]) => [`${BASE}${url}`, { priority: 0.8 }]);
+  const scheduled = [];
+  for (const slug of LONGTAIL_SLUGS) {
+    for (const prefix of ['', '/fr', '/es']) scheduled.push([`${BASE}${prefix}/learn/${slug}/`, { priority: 0.8 }]);
+  }
 
   // New: API hub + printable map page + crossword helpers + ES capitals hub
   const extras = [

@@ -66,12 +66,33 @@ def human(date, lang):
     return f'Last updated: <time datetime="{date}">{month} {d}, {y}</time>'
 
 
+def article(s):
+    """The page's own Article JSON-LD block, if it has one."""
+    for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
+        try:
+            data = json.loads(m.group(1))
+        except ValueError:
+            continue
+        for item in data if isinstance(data, list) else data.get('@graph', [data]):
+            if isinstance(item, dict) and item.get('@type') == 'Article':
+                return item
+    return None
+
+
 def stamp(url, modified, check):
     rel = 'index.html' if url == '/' else url.strip('/') + '/index.html'
     f = ROOT / rel
     s = f.read_text(encoding='utf-8')
     lang = re.search(r'<html lang="([a-z]{2})', s).group(1)
     published = first_commit(rel) or modified
+    # A page that carries its own Article block states its author and its
+    # publication date there; the WebPage block repeats them rather than
+    # contradicting them (five pages did until 22 October 2026).
+    art = article(s)
+    author = AUTHOR
+    if art:
+        published = art.get('datePublished') or published
+        author = art.get('author') or AUTHOR
     if published > modified:
         published = modified
     title = html.unescape(re.search(r'<title>(.*?)</title>', s, re.S).group(1)).strip()
@@ -81,7 +102,7 @@ def stamp(url, modified, check):
         '@context': 'https://schema.org', '@type': 'WebPage', '@id': f'{BASE}{url}#webpage',
         'url': f'{BASE}{url}', 'name': title, 'inLanguage': lang,
         'datePublished': published, 'dateModified': modified,
-        'author': AUTHOR, 'publisher': PUBLISHER,
+        'author': author, 'publisher': PUBLISHER,
         'isPartOf': {'@type': 'WebSite', 'name': 'Statedoku', 'url': f'{BASE}/'},
     }
     if desc:
