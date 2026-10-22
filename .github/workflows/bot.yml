@@ -41,59 +41,35 @@ jobs:
           echo "tweets.json live: version $v"
           case "$v" in 2*) ;; *) echo "::error::the site does not serve the two-slot bank (version 2)"; exit 1;; esac
 
+      # Wrangler's own output names the Cloudflare account owner and the
+      # workers.dev host, and these logs are public: on 16 October 2026 the
+      # deployments list put the owner's address in three runs, since deleted.
+      # So every wrangler call below writes to a file in RUNNER_TEMP and the
+      # log only gets what is printed on purpose.
       - name: Worker secrets currently set (names only)
-        id: secrets
-        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
-        continue-on-error: ${{ inputs.mode == 'check' }}
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: bot
-          command: secret list
-
-      # Names only, as an annotation, so the run page says which networks the
-      # worker can post to (and whether the paid X path is armed) without logs.
-      - name: Report the worker's secret names
-        if: always()
+        working-directory: bot
         env:
-          OUT: ${{ steps.secrets.outputs.command-output }}
-          OUTCOME: ${{ steps.secrets.outcome }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          names=$(printf '%s' "$OUT" | python3 -c "import json,re,sys; t=sys.stdin.read(); m=re.search(r'\[.*\]', t, re.S); print(', '.join(sorted(x['name'] for x in json.loads(m.group(0)))) if m else '')" 2>/dev/null || true)
-          echo "::notice title=Worker secrets (${OUTCOME})::${names:-none, or the list could not be read}"
-
-      # Which code is live: a worker deployed before 16 August 2026 predates the
-      # X_PAID_ENABLED guard and would bill any TWITTER_* secrets it still has.
-      - name: Last deployments of the worker
-        id: deploys
-        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
-        continue-on-error: true
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: bot
-          command: deployments list
-
-      - name: Report the last deployment date
-        if: always()
-        env:
-          OUT: ${{ steps.deploys.outputs.command-output }}
-        run: |
-          last=$(printf '%s' "$OUT" | grep -oE '20[0-9]{2}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z?' | sort | tail -1)
-          count=$(printf '%s' "$OUT" | grep -oE '20[0-9]{2}-[0-9]{2}-[0-9]{2}T' | wc -l)
-          echo "::notice title=Worker deployments::${count} listed, latest ${last:-unknown}"
+          if npx --yes wrangler@3.114.17 secret list > "$RUNNER_TEMP/secrets.json" 2> "$RUNNER_TEMP/secrets.err"; then
+            names=$(python3 -c "import json,re,sys; t=open(sys.argv[1]).read(); m=re.search(r'\[.*\]', t, re.S); print(', '.join(sorted(x['name'] for x in json.loads(m.group(0)))) if m else '')" "$RUNNER_TEMP/secrets.json" 2>/dev/null || true)
+            echo "::notice title=Worker secrets::${names:-none}"
+          else
+            echo "::warning::could not list the worker's secrets (token permission or missing worker)"
+            [ "${{ inputs.mode }}" = "check" ] || exit 1
+          fi
 
       - name: Deploy the bot and give it the Buffer secrets
         if: inputs.mode == 'deploy'
-        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
+        working-directory: bot
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           BUFFER_TOKEN: ${{ secrets.BUFFER_TOKEN }}
           # BUFFER_CHANNEL_ID comes from the first step, through GITHUB_ENV.
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: bot
-          command: deploy
-          secrets: |
-            BUFFER_TOKEN
-            BUFFER_CHANNEL_ID
+        run: |
+          npx --yes wrangler@3.114.17 deploy > "$RUNNER_TEMP/deploy.log" 2>&1 || { echo "::error::wrangler deploy failed (output kept out of the public log)"; exit 1; }
+          printf '%s' "$BUFFER_TOKEN" | npx --yes wrangler@3.114.17 secret put BUFFER_TOKEN > "$RUNNER_TEMP/s1.log" 2>&1 || { echo "::error::could not set BUFFER_TOKEN"; exit 1; }
+          printf '%s' "$BUFFER_CHANNEL_ID" | npx --yes wrangler@3.114.17 secret put BUFFER_CHANNEL_ID > "$RUNNER_TEMP/s2.log" 2>&1 || { echo "::error::could not set BUFFER_CHANNEL_ID"; exit 1; }
+          echo "::notice title=Bot deployed::worker deployed, BUFFER_TOKEN and BUFFER_CHANNEL_ID set"
