@@ -52,8 +52,9 @@ is harmless until they are set. Add them as GitHub repository secrets, under
 Settings, Secrets and variables, Actions:
 
 **`STATS_ADMIN_KEY`** is the value already set as `STATS_ADMIN_KEY` on the
-Cloudflare Pages project. It gates `GET /api/stats?key=...`, which returns
-aggregates only.
+Cloudflare Pages project. It gates `GET /api/stats`, which returns
+aggregates only. It is sent as the `X-Admin-Key` header: the endpoint ignores
+a key in the query string, which would end up in logs and browser history.
 
 **`ADMIN_API_KEY`** is the value already set as `ADMIN_API_KEY` on the Pages
 project, the one the admin page asks for. It is sent as the `X-Admin-Key`

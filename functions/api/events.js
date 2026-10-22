@@ -6,11 +6,30 @@
 
 import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
 
+// The three names js/game.js sends through js/analytics.js, and the only
+// three the events table accepts (CHECK constraint in bot/d1-schema.sql).
 const ALLOWED_EVENTS = ['puzzle_start', 'puzzle_solve', 'puzzle_lost'];
+const LANGS = ['en', 'fr', 'es'];
+const MAX_BODY = 1024;            // a real payload is about 120 bytes
+const MAX_SECONDS = 7 * 86400;    // a tab left open for a week, no more
+const MAX_MISTAKES = 10;          // the game stops at 5
+
+// A real calendar date between the first archive day and tomorrow (UTC), so
+// a time zone ahead of UTC still counts and nothing else pads the table.
+function _validDate(s) {
+  if (typeof s !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+  const t = Date.parse(s + 'T00:00:00Z');
+  if (Number.isNaN(t) || new Date(t).toISOString().slice(0, 10) !== s) return false;
+  return s >= '2026-01-01' && t <= Date.now() + 2 * 86400000;
+}
+
+function _int(v, max) {
+  return Number.isInteger(v) && v >= 0 && v <= max ? v : null;
+}
 
 export async function onRequestPost({ request, env }) {
   if (!env.STATS_DB) {
-    return new Response('STATS_DB binding missing', { status: 500 });
+    return new Response('Service unavailable', { status: 503 });
   }
 
   // Rate limit: 60 events per IP per minute (generous — covers a normal day of play)
@@ -20,24 +39,31 @@ export async function onRequestPost({ request, env }) {
     return new Response(null, { status: 429 });
   }
 
+  if (Number(request.headers.get('content-length') || 0) > MAX_BODY) {
+    return new Response('Payload too large', { status: 413 });
+  }
   let body;
   try {
-    body = await request.json();
+    const text = await request.text();
+    if (text.length > MAX_BODY) return new Response('Payload too large', { status: 413 });
+    body = JSON.parse(text);
   } catch {
     return new Response('Invalid JSON', { status: 400 });
   }
 
-  if (!body || !ALLOWED_EVENTS.includes(body.event_type)) {
+  if (!body || typeof body !== 'object' || !ALLOWED_EVENTS.includes(body.event_type)) {
     return new Response('Invalid event_type', { status: 400 });
   }
-  if (!body.puzzle_date || !/^\d{4}-\d{2}-\d{2}$/.test(body.puzzle_date)) {
+  if (!_validDate(body.puzzle_date)) {
     return new Response('Invalid puzzle_date', { status: 400 });
   }
 
-  const country = request.headers.get('cf-ipcountry') || null;
-  const lang = (body.lang || 'en').toString().slice(0, 5);
-  const timeSec = Number.isInteger(body.time_seconds) ? body.time_seconds : null;
-  const mistakes = Number.isInteger(body.mistakes) ? body.mistakes : null;
+  const country = (request.headers.get('cf-ipcountry') || '').slice(0, 2) || null;
+  // <html lang> on the site is en, fr or es; anything else is not ours.
+  const l = String(body.lang || 'en').toLowerCase().slice(0, 2);
+  const lang = LANGS.includes(l) ? l : 'en';
+  const timeSec = _int(body.time_seconds, MAX_SECONDS);
+  const mistakes = _int(body.mistakes, MAX_MISTAKES);
 
   try {
     await env.STATS_DB.prepare(

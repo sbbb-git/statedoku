@@ -32,17 +32,19 @@ const BTN = {
 
 // base64url-encode for safe URL embedding (no +/=)
 function _b64url(s) {
-  // Workers/Node: btoa works on ASCII; emails are ASCII
+  // Workers/Node: btoa works on ASCII; the destination URL is ASCII
   return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
-function _playUrl(lang, email) {
+// The tracked link names the subscriber by their random token, never by
+// address: a URL ends up in logs, and an address in it let anyone who knew
+// one add clicks for it.
+function _playUrl(lang, sub) {
   const langPath = lang === 'fr' ? '/fr/' : lang === 'es' ? '/es/' : '/';
   const dest = `${SITE_URL}${langPath}?utm_source=email&utm_medium=daily&utm_campaign=reminder`;
-  if (CLICK_TRACK_EMAILS.has(email)) {
-    const u = _b64url(email);
+  if (CLICK_TRACK_EMAILS.has(String(sub.email).toLowerCase())) {
     const d = _b64url(dest);
-    return `${SITE_URL}/api/track/email-click?u=${u}&d=${d}&l=${lang}`;
+    return `${SITE_URL}/api/track/email-click?t=${encodeURIComponent(sub.token)}&d=${d}&l=${lang}`;
   }
   return dest;
 }
@@ -82,7 +84,7 @@ function _longDate(lang) {
 
 async function _sendOne(sub, env) {
   const lang = ['en','fr','es'].includes(sub.lang) ? sub.lang : 'en';
-  const playHref = _playUrl(lang, sub.email);
+  const playHref = _playUrl(lang, sub);
   const html = `
     <div style="font-family:system-ui,-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#0A0A0A;line-height:1.55">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
@@ -94,6 +96,10 @@ async function _sendOne(sub, env) {
     </div>
   `;
   const subject = SUBJECTS[lang];
+  // RFC 8058 one-click unsubscribe. /api/unsubscribe reads the token from the
+  // URL on a POST, so the mail client's List-Unsubscribe=One-Click post works
+  // without a form. Gmail and Yahoo require both headers from bulk senders.
+  const unsubUrl = `${SITE_URL}/api/unsubscribe?token=${encodeURIComponent(sub.token)}`;
 
   // Resend API — free 3000 emails/mo, clean. Requires verified domain (DKIM/SPF set in CF DNS)
   const res = await fetch('https://api.resend.com/emails', {
@@ -107,11 +113,16 @@ async function _sendOne(sub, env) {
       to: [sub.email],
       subject,
       html,
+      headers: {
+        'List-Unsubscribe': `<${unsubUrl}>`,
+        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+      },
     }),
   });
   if (!res.ok) {
-    const t = await res.text();
-    throw new Error(`Resend ${res.status}: ${t}`);
+    // Status only: Resend's error body can quote the recipient, and worker
+    // logs are no place for a subscriber's address.
+    throw new Error(`Resend ${res.status}`);
   }
   return true;
 }
@@ -134,7 +145,7 @@ async function _runHourly(env) {
         .bind(today, sub.email).run();
       ok++;
     } catch (e) {
-      console.error('[email] send failed for', sub.email, e.message);
+      console.error('[email] send failed:', e.message);
       fail++;
     }
   }

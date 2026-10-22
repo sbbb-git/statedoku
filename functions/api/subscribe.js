@@ -7,8 +7,18 @@
 // (/api/confirm). An address that is already active is left alone, and one
 // that unsubscribed is never switched back on without a new confirmation, so
 // nobody can sign up a third party.
+//
+// Without a mail provider (RESEND_API_KEY unset) no address can be confirmed,
+// so the endpoint refuses with 503 rather than storing anything: it used to
+// switch a brand new address on directly, which let anyone subscribe anyone.
+//
+// One confirmation mail per address per COOLDOWN_MS. The per-IP limit below
+// does not stop many IPs from mailing one inbox; this does, and the answer is
+// the same either way, so it reveals nothing about the address.
 
 import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
+
+const COOLDOWN_MS = 10 * 60_000;
 
 function _rand(bytes = 24) {
   const a = new Uint8Array(bytes);
@@ -40,7 +50,7 @@ const CONFIRM = {
 };
 
 export async function onRequestPost({ request, env, waitUntil }) {
-  if (!env.STATS_DB) return _bad('Service unavailable', 503);
+  if (!env.STATS_DB || !env.RESEND_API_KEY) return _bad('Service unavailable', 503);
 
   // A JSON content type forces a CORS preflight, so other sites cannot post
   // this form from a visitor's browser.
@@ -63,13 +73,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   let body;
   try { body = await request.json(); } catch { return _bad('Invalid JSON'); }
+  if (!body || typeof body !== 'object') return _bad('Invalid JSON');
 
   // Honeypot: if "website" field exists in payload, silently accept but drop
-  if (body.website) {
-    return new Response(JSON.stringify({ ok: true, pending: true }), {
-      headers: { 'content-type': 'application/json' },
-    });
-  }
+  if (body.website) return _pending();
 
   const email = (body.email || '').trim().toLowerCase();
   const hour = parseInt(body.hour_utc, 10);
@@ -79,56 +86,57 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (!_validEmail(email))   return _bad('Invalid email');
   if (!(hour >= 0 && hour <= 23)) return _bad('Invalid hour (0-23 UTC)');
 
-  const canConfirm = !!env.RESEND_API_KEY;
   const now = Date.now();
   let token, isNew = false;
   try {
     const existing = await env.STATS_DB
-      .prepare('SELECT active, token FROM email_subscribers WHERE email = ?')
+      .prepare('SELECT active, token, subscribed_at FROM email_subscribers WHERE email = ?')
       .bind(email).first();
     if (existing && existing.active === 1) {
       // Already subscribed: say nothing that would reveal it, change nothing.
-      return new Response(JSON.stringify({ ok: true, pending: canConfirm }), {
-        headers: { 'content-type': 'application/json' },
-      });
+      return _pending();
+    }
+    // A pending address had its confirmation mail less than COOLDOWN_MS ago:
+    // same answer, no second mail. subscribed_at holds the time of the last
+    // confirmation request for a row that is not active yet.
+    if (existing && now - (Number(existing.subscribed_at) || 0) < COOLDOWN_MS) {
+      return _pending();
     }
     isNew = !existing;
     token = existing ? existing.token : _rand(24);
-    // Without a mail provider there is no way to confirm; a brand new address
-    // is then accepted directly, but a previously unsubscribed one never is.
-    const activeNow = (!canConfirm && isNew) ? 1 : 0;
+    // The WHERE keeps an address that was confirmed in the meantime untouched.
     await env.STATS_DB
       .prepare(`INSERT INTO email_subscribers (email, hour_utc, lang, token, subscribed_at, active, country)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, 0, ?)
                 ON CONFLICT(email) DO UPDATE SET
                   hour_utc = excluded.hour_utc,
-                  lang = excluded.lang`)
-      .bind(email, hour, lang, token, now, activeNow, country)
+                  lang = excluded.lang,
+                  subscribed_at = excluded.subscribed_at
+                WHERE email_subscribers.active = 0`)
+      .bind(email, hour, lang, token, now, country)
       .run();
   } catch (e) {
     return _bad('Could not save your subscription. Please try again later.', 500);
   }
 
-  if (canConfirm) {
-    const t = CONFIRM[lang];
-    const link = `https://statedoku.com/api/confirm?token=${encodeURIComponent(token)}`;
-    const html = `
-      <div style="font-family:system-ui,sans-serif;max-width:480px;padding:20px;color:#0A0A0A">
-        <h2 style="margin:0 0 12px;color:#0F2147">Statedoku</h2>
-        <p style="margin:6px 0 16px">${_esc(t.p1)}</p>
-        <p><a href="${link}" style="display:inline-block;background:#0F2147;color:#fff;padding:10px 20px;border-radius:999px;text-decoration:none;font-weight:700">${_esc(t.btn)}</a></p>
-        <p style="margin:16px 0 0;color:#666;font-size:14px">${_esc(t.p2)}</p>
-      </div>`;
-    const send = fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { 'authorization': `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
-      body: JSON.stringify({ from: 'Statedoku <hello@statedoku.com>', to: [email], subject: t.subject, html }),
-    }).catch(() => {});
-    if (typeof waitUntil === 'function') waitUntil(send);
-  }
+  const t = CONFIRM[lang];
+  const link = `https://statedoku.com/api/confirm?token=${encodeURIComponent(token)}`;
+  const html = `
+    <div style="font-family:system-ui,sans-serif;max-width:480px;padding:20px;color:#0A0A0A">
+      <h2 style="margin:0 0 12px;color:#0F2147">Statedoku</h2>
+      <p style="margin:6px 0 16px">${_esc(t.p1)}</p>
+      <p><a href="${link}" style="display:inline-block;background:#0F2147;color:#fff;padding:10px 20px;border-radius:999px;text-decoration:none;font-weight:700">${_esc(t.btn)}</a></p>
+      <p style="margin:16px 0 0;color:#666;font-size:14px">${_esc(t.p2)}</p>
+    </div>`;
+  const send = fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'authorization': `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
+    body: JSON.stringify({ from: 'Statedoku <hello@statedoku.com>', to: [email], subject: t.subject, html }),
+  }).catch(() => {});
+  if (typeof waitUntil === 'function') waitUntil(send);
 
   // Owner notification for new addresses, with every value escaped.
-  if (isNew && env.RESEND_API_KEY && env.ADMIN_NOTIFY_EMAIL) {
+  if (isNew && env.ADMIN_NOTIFY_EMAIL) {
     const html = `
       <div style="font-family:system-ui,sans-serif;max-width:480px;padding:20px;color:#0A0A0A">
         <h2 style="margin:0 0 12px;color:#0F2147">New subscriber, awaiting confirmation</h2>
@@ -150,7 +158,11 @@ export async function onRequestPost({ request, env, waitUntil }) {
     if (typeof waitUntil === 'function') waitUntil(notify);
   }
 
-  return new Response(JSON.stringify({ ok: true, pending: canConfirm }), {
+  return _pending();
+}
+
+function _pending() {
+  return new Response(JSON.stringify({ ok: true, pending: true }), {
     headers: { 'content-type': 'application/json' },
   });
 }

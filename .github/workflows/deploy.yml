@@ -15,9 +15,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
+    # contents: read is all the job uses. deployments: write was only needed
+    # for wrangler-action to create GitHub deployments, which it does only when
+    # given a gitHubToken, and it is given none.
     permissions:
       contents: read
-      deployments: write
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -37,11 +39,26 @@ jobs:
             --exclude-from=.deployignore \
             ./ /tmp/dist/
           echo "staged $(find /tmp/dist -name index.html | wc -l) pages"
-          for d in marketing tmp bot email-worker scripts seo-snapshots audience-snapshots constraints.csv rename.sh ADS-ACTIVATION.md CLAUDE.md .git .github .claude node_modules bin .gitignore; do
-            if [ -e "/tmp/dist/$d" ]; then
-              echo "::error::$d reached the deploy directory"; exit 1
+          # The guard reads the same list rsync used, so a new entry in
+          # .deployignore is checked without anyone editing this file. A
+          # pattern without a slash matches at any depth for rsync, hence find.
+          n=0
+          while IFS= read -r p || [ -n "$p" ]; do
+            p="${p%$'\r'}"; p="${p%"${p##*[![:space:]]}"}"
+            case "$p" in ''|'#'*) continue ;; esac
+            n=$((n+1))
+            case "$p" in
+              */*) hit=$(cd /tmp/dist && ls -d ./${p#/} 2>/dev/null | head -1 || true) ;;
+              *)   hit=$(find /tmp/dist -name "$p" -print -quit) ;;
+            esac
+            if [ -n "$hit" ]; then
+              echo "::error::$p reached the deploy directory"; exit 1
             fi
-          done
+          done < .deployignore
+          if [ "$n" -lt 10 ]; then
+            echo "::error::.deployignore gave only $n patterns, the guard checked almost nothing"; exit 1
+          fi
+          echo "deploy guard: $n excluded patterns checked, none present"
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3

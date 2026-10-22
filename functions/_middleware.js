@@ -1,13 +1,15 @@
 // Root middleware — runs on every request including static assets.
 //
-// Sole job: rewrite the Content-Security-Policy header for /play/* routes
-// so the page can be embedded in third-party iframes (teacher blogs,
-// classroom LMS, news sites). _headers cannot do this — CF Pages
-// CONCATENATES duplicate CSP values across rules instead of replacing,
-// and browsers enforce the strictest policy when multiple CSP headers
-// are present.
+// Three jobs: send stray hosts (www., the bare pages.dev project host) to
+// statedoku.com; give /api/* responses the security headers that _headers
+// cannot add (Pages applies _headers to static assets, not to Functions); and
+// rewrite the Content-Security-Policy header for /play/* routes so the page
+// can be embedded in third-party iframes (teacher blogs, classroom LMS, news
+// sites). _headers cannot do the last one either — CF Pages CONCATENATES
+// duplicate CSP values across rules instead of replacing, and browsers
+// enforce the strictest policy when multiple CSP headers are present.
 //
-// Strategy: let the page render normally, then strip any inherited
+// Strategy for /play/: let the page render normally, then strip any inherited
 // frame-ancestors directive and pin our own (`frame-ancestors *`).
 
 const PLAY_PATHS = ['/play/', '/fr/play/', '/es/play/'];
@@ -30,6 +32,22 @@ function rewriteCspForEmbed(csp) {
   return directives.join('; ');
 }
 
+// /api/ answers carry subscriber tokens, admin data or one visitor's event,
+// so nothing there may be sniffed into another type, cached by a shared cache
+// unless the endpoint said so (the public states API does), or leak its URL
+// as a referrer. CORS headers set by an endpoint are left untouched.
+function withApiHeaders(response) {
+  const h = new Headers(response.headers);
+  h.set('x-content-type-options', 'nosniff');
+  if (!h.has('referrer-policy')) h.set('referrer-policy', 'no-referrer');
+  if (!h.has('cache-control')) h.set('cache-control', 'no-store');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: h,
+  });
+}
+
 export const onRequest = async (context) => {
   const { request, next } = context;
   const url = new URL(request.url);
@@ -46,9 +64,17 @@ export const onRequest = async (context) => {
     return Response.redirect(url.toString(), 301);
   }
 
+  // The project's own pages.dev host served the whole site, /api/ included,
+  // past every zone rule set on statedoku.com. Only the bare host moves:
+  // <hash>.statedoku.pages.dev is how a single deployment is checked.
+  if (url.hostname === 'statedoku.pages.dev') {
+    return Response.redirect('https://statedoku.com' + url.pathname + url.search, 301);
+  }
+
   // Pass through — get whatever response the static asset / function returned.
   const response = await next();
 
+  if (url.pathname.startsWith('/api/')) return withApiHeaders(response);
   if (!isPlayPath(url.pathname)) return response;
 
   // Clone so we can mutate headers (CF response headers are normally immutable).
