@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/state-abbreviations/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/state-abbreviations/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="website">
   <meta property="og:title" content="USPS Abbreviations Quiz">
   <meta property="og:description" content="Match the 2-letter postal code to its US state. 20 rounds, multiple choice.">
@@ -288,7 +288,7 @@
       lives--;
       $('ab-feedback').textContent = '❌';
       $('ab-feedback').className = 'ab-feedback no';
-      $('ab-lives').textContent = '❤️'.repeat(lives)+'🤍'.repeat(3-lives);
+      $('ab-lives').textContent = '❤️'.repeat(Math.max(0,lives))+'🤍'.repeat(3-lives);
       if (lives <= 0) { setTimeout(finish, 800); return; }
     }
     $('ab-score').textContent = score;
@@ -297,6 +297,10 @@
   function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
   function shareText(){const st=stars(score,total);return '✉️ USPS Abbreviations Quiz ' + score + '/' + total + ' ' + '⭐'.repeat(st)+'⬜'.repeat(3-st) + ' statedoku.com/play/state-abbreviations/';}
   function finish(){
+    if (finish._done) return;
+    finish._done = true;
+    answered = true;
+    document.querySelectorAll('.ab-choice').forEach(b => { b.disabled = true; });
     $('ab-result').style.display = 'block';
     const st = stars(score, total);
     $('ab-result').innerHTML = '<h2>' + (lives > 0 ? T.wellDone : T.gameOver) + '</h2>' +
@@ -349,7 +353,7 @@
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/play/states-connections/" data-next="states-connections" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Next: States Connections →</a><a href="/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">Today's Statedoku puzzle</a><a href="/play/" style="color:#0F2147;font-weight:700;">All 21 games</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -369,5 +373,6 @@
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>

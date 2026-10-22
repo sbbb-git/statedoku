@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/state-flags/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/state-flags/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Quiz Banderas de Estados">
   <meta property="og:description" content="Identifica el estado por la descripción de su bandera.">
@@ -161,7 +161,7 @@
 
     <div class="game-card-hero">
       <div class="qlbl">¿De quién es esta bandera?</div>
-      <div class="qval tiny" id="g-prompt">,</div>
+      <div class="qval tiny" id="g-prompt"></div>
     </div>
 
     <div class="feedback" id="g-feedback">&nbsp;</div>
@@ -180,9 +180,9 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
 function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const today=new Date().toISOString().slice(0,10);const prev=JSON.parse(localStorage.getItem(k)||'{}');const y=new Date(Date.now()-86400000).toISOString().slice(0,10);const streak=(prev.lastPlayed===today)?(prev.streak||0):(prev.lastPlayed===y)?((prev.streak||0)+1):1;localStorage.setItem(k,JSON.stringify({lastPlayed:today,streak:streak,best:Math.max(prev.best||0,score)}));if(window.gtag)window.gtag('event','play_complete',{game:slug,score:score,total:total,stars:st});}catch(e){}}
 async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copiado");}catch(e){alert(txt);}}
-function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
+function renderResult(rootEl,score,total,T_,slug,sharePrefix){if(rootEl._done)return;rootEl._done=true;document.querySelectorAll('.ab-choice,.order-controls button,#g-input,#g-submit,#g-skip').forEach(function(el){el.disabled=true;});const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
 
-    const ITEMS = [{"prompt":"Cruz roja de San Andrés sobre blanco","answer":"AL","distractors":["AK","AZ","AR","CA","CO","CT","DE","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]},{"prompt":"Osa Mayor + estrella polar sobre azul","answer":"AK"},{"prompt":"Estrella cobre, rayos rojos/amarillos, azul abajo","answer":"AZ"},{"prompt":"Oso caminando + \"California Republic\"","answer":"CA"},{"prompt":"Franjas azul/blanco/azul + \"C\" amarillo","answer":"CO"},{"prompt":"Union Jack + 8 franjas horizontales","answer":"HI"},{"prompt":"Patrón heráldico amarillo/negro + rojo/blanco","answer":"MD"},{"prompt":"Sol rojo (Zia) sobre amarillo","answer":"NM"},{"prompt":"Sello estatal sobre azul oscuro","answer":"NY","distractors":["AL","AK","AZ","AR","CA","CO","FL","HI","IN","MD","MA","MS","NM","NC","OH","RI","SC","TN","TX"]},{"prompt":"Forma banderín (¡única!)","answer":"OH"},{"prompt":"Palmera + media luna sobre añil","answer":"SC"},{"prompt":"3 estrellas en círculo azul sobre rojo","answer":"TN"},{"prompt":"Estrella solitaria (blanca) sobre azul + franjas rojo/blanco","answer":"TX"},{"prompt":"Colmena dorada en un hexágono azul + franjas azul, blanca y roja","answer":"UT"},{"prompt":"Bisonte blanco sobre azul + sello estatal","answer":"WY"}];
+    const ITEMS = [{"prompt":"Cruz roja de San Andrés sobre blanco","answer":"AL","distractors":["AK","AZ","AR","CA","CO","CT","DE","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]},{"prompt":"Osa Mayor + estrella polar sobre azul","answer":"AK"},{"prompt":"Estrella cobre, rayos rojos/amarillos, azul abajo","answer":"AZ"},{"prompt":"Oso caminando + \"California Republic\"","answer":"CA"},{"prompt":"Franjas azul/blanco/azul + \"C\" rojo con centro amarillo","answer":"CO"},{"prompt":"Union Jack + 8 franjas horizontales","answer":"HI"},{"prompt":"Patrón heráldico amarillo/negro + rojo/blanco","answer":"MD"},{"prompt":"Sol rojo (Zia) sobre amarillo","answer":"NM"},{"prompt":"Sello estatal sobre azul oscuro","answer":"NY","distractors":["AL","AK","AZ","AR","CA","CO","FL","HI","IN","MD","MA","MS","NM","NC","OH","RI","SC","TN","TX"]},{"prompt":"Forma banderín (¡única!)","answer":"OH"},{"prompt":"Palmera + media luna sobre añil","answer":"SC"},{"prompt":"3 estrellas en círculo azul sobre rojo","answer":"TN"},{"prompt":"Estrella solitaria (blanca) sobre azul + franjas rojo/blanco","answer":"TX"},{"prompt":"Colmena dorada en un hexágono azul + franjas azul, blanca y roja","answer":"UT"},{"prompt":"Bisonte blanco sobre azul + sello estatal","answer":"WY"}];
     const NAMES = {"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawái","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Luisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Misisipi","MO":"Misuri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"Nuevo Hampshire","NJ":"Nueva Jersey","NM":"Nuevo México","NY":"Nueva York","NC":"Carolina del Norte","ND":"Dakota del Norte","OH":"Ohio","OK":"Oklahoma","OR":"Oregón","PA":"Pensilvania","RI":"Rhode Island","SC":"Carolina del Sur","SD":"Dakota del Sur","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"Virginia Occidental","WI":"Wisconsin","WY":"Wyoming"};
     const SHARE_PREFIX = "🏳️";
     const T_ = {"round":"Ronda","score":"Puntuación","lives":"Vidas","start":"Empezar","tryAgain":"Volver a jugar","share":"Compartir","wellDone":"¡Bien!","gameOver":"Juego terminado","easy":"Fácil","normal":"Normal","hard":"Difícil","submit":"Enviar","skip":"Pasar","categories":"Categorías","solved":"Resuelto","mistakes":"Errores","pick4":"Elige 4 estados que compartan una categoría","placeholder":"Escribe un nombre de estado…"};
@@ -227,7 +227,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
         lives--;
         $('g-feedback').textContent='❌ → '+(NAMES[correctId]||correctId);
         $('g-feedback').className='feedback no';
-        $('g-lives').textContent='❤️'.repeat(lives)+'\u{1F90D}'.repeat(3-lives);
+        $('g-lives').textContent='❤️'.repeat(Math.max(0,lives))+'\u{1F90D}'.repeat(3-lives);
         if(lives<=0){setTimeout(finish,800);return;}
       }
       $('g-score').textContent=score;
@@ -346,7 +346,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/es/play/state-symbols/" data-next="state-symbols" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Siguiente: Quiz Símbolos Estatales →</a><a href="/es/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">El puzzle Statedoku de hoy</a><a href="/es/play/" style="color:#0F2147;font-weight:700;">Los 21 juegos</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -366,5 +366,6 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>

@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/electoral-college/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/electoral-college/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Electoral College Quiz">
   <meta property="og:description" content="Test how many electoral votes each state has.">
@@ -161,7 +161,7 @@
 
     <div class="game-card-hero">
       <div class="qlbl">Electoral votes for:</div>
-      <div class="qval" id="g-prompt">,</div>
+      <div class="qval" id="g-prompt"></div>
     </div>
 
     <div class="feedback" id="g-feedback">&nbsp;</div>
@@ -183,7 +183,7 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
 function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const today=new Date().toISOString().slice(0,10);const prev=JSON.parse(localStorage.getItem(k)||'{}');const y=new Date(Date.now()-86400000).toISOString().slice(0,10);const streak=(prev.lastPlayed===today)?(prev.streak||0):(prev.lastPlayed===y)?((prev.streak||0)+1):1;localStorage.setItem(k,JSON.stringify({lastPlayed:today,streak:streak,best:Math.max(prev.best||0,score)}));if(window.gtag)window.gtag('event','play_complete',{game:slug,score:score,total:total,stars:st});}catch(e){}}
 async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copied");}catch(e){alert(txt);}}
-function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
+function renderResult(rootEl,score,total,T_,slug,sharePrefix){if(rootEl._done)return;rootEl._done=true;document.querySelectorAll('.ab-choice,.order-controls button,#g-input,#g-submit,#g-skip').forEach(function(el){el.disabled=true;});const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
 
     const ITEMS = [{"prompt":"Alabama","answer":"9","alt":[]},{"prompt":"Alaska","answer":"3","alt":[]},{"prompt":"Arizona","answer":"11","alt":[]},{"prompt":"Arkansas","answer":"6","alt":[]},{"prompt":"California","answer":"54","alt":[]},{"prompt":"Colorado","answer":"10","alt":[]},{"prompt":"Connecticut","answer":"7","alt":[]},{"prompt":"Delaware","answer":"3","alt":[]},{"prompt":"Florida","answer":"30","alt":[]},{"prompt":"Georgia","answer":"16","alt":[]},{"prompt":"Hawaii","answer":"4","alt":[]},{"prompt":"Idaho","answer":"4","alt":[]},{"prompt":"Illinois","answer":"19","alt":[]},{"prompt":"Indiana","answer":"11","alt":[]},{"prompt":"Iowa","answer":"6","alt":[]},{"prompt":"Kansas","answer":"6","alt":[]},{"prompt":"Kentucky","answer":"8","alt":[]},{"prompt":"Louisiana","answer":"8","alt":[]},{"prompt":"Maine","answer":"4","alt":[]},{"prompt":"Maryland","answer":"10","alt":[]},{"prompt":"Massachusetts","answer":"11","alt":[]},{"prompt":"Michigan","answer":"15","alt":[]},{"prompt":"Minnesota","answer":"10","alt":[]},{"prompt":"Mississippi","answer":"6","alt":[]},{"prompt":"Missouri","answer":"10","alt":[]},{"prompt":"Montana","answer":"4","alt":[]},{"prompt":"Nebraska","answer":"5","alt":[]},{"prompt":"Nevada","answer":"6","alt":[]},{"prompt":"New Hampshire","answer":"4","alt":[]},{"prompt":"New Jersey","answer":"14","alt":[]},{"prompt":"New Mexico","answer":"5","alt":[]},{"prompt":"New York","answer":"28","alt":[]},{"prompt":"North Carolina","answer":"16","alt":[]},{"prompt":"North Dakota","answer":"3","alt":[]},{"prompt":"Ohio","answer":"17","alt":[]},{"prompt":"Oklahoma","answer":"7","alt":[]},{"prompt":"Oregon","answer":"8","alt":[]},{"prompt":"Pennsylvania","answer":"19","alt":[]},{"prompt":"Rhode Island","answer":"4","alt":[]},{"prompt":"South Carolina","answer":"9","alt":[]},{"prompt":"South Dakota","answer":"3","alt":[]},{"prompt":"Tennessee","answer":"11","alt":[]},{"prompt":"Texas","answer":"40","alt":[]},{"prompt":"Utah","answer":"6","alt":[]},{"prompt":"Vermont","answer":"3","alt":[]},{"prompt":"Virginia","answer":"13","alt":[]},{"prompt":"Washington","answer":"12","alt":[]},{"prompt":"West Virginia","answer":"4","alt":[]},{"prompt":"Wisconsin","answer":"10","alt":[]},{"prompt":"Wyoming","answer":"3","alt":[]}];
     const SHARE_PREFIX = "🗳️";
@@ -195,7 +195,9 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
     function normalize(s){return (s||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,'').trim();}
     function pickQueue(){return shuffle(ITEMS).slice(0,TOTAL);}
 
+    let busy=false;
     function nextRound(){
+      busy=false;
       if(round>=TOTAL||queue.length===0)return finish();
       round++;
       const it = queue.shift();
@@ -207,8 +209,10 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
       $('g-feedback').innerHTML='&nbsp;';
     }
     function submit(){
+      if(busy)return;
       const v = $('g-input').value.trim();
       if(!v)return;
+      busy=true;
       const correct = $('g-prompt').dataset.answer;
       const alts = JSON.parse($('g-prompt').dataset.altAnswers||'[]');
       const ok = normalize(v) === normalize(correct) || alts.some(a => normalize(v) === normalize(a));
@@ -218,13 +222,13 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
         lives--;
         $('g-feedback').textContent='❌ → '+correct;
         $('g-feedback').className='feedback no';
-        $('g-lives').textContent='❤️'.repeat(lives)+'\u{1F90D}'.repeat(3-lives);
+        $('g-lives').textContent='❤️'.repeat(Math.max(0,lives))+'\u{1F90D}'.repeat(3-lives);
         if(lives<=0){setTimeout(finish,800);return;}
       }
       $('g-score').textContent=score;
       setTimeout(nextRound,700);
     }
-    function skip(){lives--;$('g-feedback').textContent='⏭ → '+$('g-prompt').dataset.answer;$('g-feedback').className='feedback no';$('g-lives').textContent='❤️'.repeat(lives)+'\u{1F90D}'.repeat(3-lives);if(lives<=0){setTimeout(finish,800);return;}setTimeout(nextRound,700);}
+    function skip(){if(busy)return;busy=true;lives--;$('g-feedback').textContent='⏭ → '+$('g-prompt').dataset.answer;$('g-feedback').className='feedback no';$('g-lives').textContent='❤️'.repeat(Math.max(0,lives))+'\u{1F90D}'.repeat(3-lives);if(lives<=0){setTimeout(finish,800);return;}setTimeout(nextRound,700);}
     function finish(){renderResult($('g-result'),score,TOTAL,T_,"electoral-college",SHARE_PREFIX);}
     $('g-start').addEventListener('click',()=>{
       queue=pickQueue(); round=0; score=0; lives=3;
@@ -350,7 +354,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/play/president-birth-states/" data-next="president-birth-states" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Next: Presidents by State →</a><a href="/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">Today's Statedoku puzzle</a><a href="/play/" style="color:#0F2147;font-weight:700;">All 21 games</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -370,5 +374,6 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>

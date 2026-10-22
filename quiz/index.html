@@ -29,7 +29,7 @@
   <link rel="alternate" hreflang="en-IN" href="https://statedoku.com/quiz/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/quiz/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="US States Quiz, Test All 50 States & Capitals">
@@ -178,7 +178,7 @@
 
     <div class="seo-block">
       <h2>How the quiz works</h2>
-      <p>Each round picks 10 random questions across three categories: state capitals (which capital matches the state, or vice versa), regions (which region a state belongs to), and abbreviations (matching the 2-letter code to the state). Mixed mode rotates all three. Capitals-only, regions-only, and abbreviations-only let you drill a specific weakness.</p>
+      <p>Each round picks 10 random questions across three categories: state capitals (which capital matches the state), regions (which region a state belongs to), and abbreviations (matching the 2-letter code to the state). Mixed mode rotates all three. Capitals-only, regions-only, and abbreviations-only let you drill a specific weakness.</p>
       <h2>Want to learn the states properly?</h2>
       <p>The <a href="/learn/">50 states guide</a> walks you through every state by region in under a week. The <a href="/learn/state-capitals/">capitals guide</a> adds mnemonics for the 12 trickiest. The <a href="/learn/us-regions/">regions guide</a> covers the Census Bureau's 4-region division.</p>
       <h2>Or play the daily puzzle</h2>
@@ -226,11 +226,10 @@ const REGION_LABELS = {northeast:"Northeast",south:"South",midwest:"Midwest",wes
 
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-function makeQuestion(type) {
-  const s = STATES[(Math.random()*STATES.length)|0];
+function makeQuestion(type, s) {
   if (type === 'capitals' || (type === 'mixed' && Math.random() < .33)) {
     const wrongs = shuffle(STATES.filter(x => x.c !== s.c)).slice(0,3).map(x => x.c);
-    return { q: `What is the capital of <strong>${s.n}</strong>?`, opts: shuffle([s.c, ...wrongs]), ans: s.c, why: `${s.c} has been the capital of ${s.n} since ${s.n === "New Mexico" ? "1610" : "the state was admitted"}.` };
+    return { q: `What is the capital of <strong>${s.n}</strong>?`, opts: shuffle([s.c, ...wrongs]), ans: s.c, why: s.n === "New Mexico" ? `Santa Fe has been a capital since 1610, longer than any other US state capital.` : `${s.c} is the capital of ${s.n}.` };
   }
   if (type === 'regions' || (type === 'mixed' && Math.random() < .5)) {
     const wrongs = shuffle(Object.keys(REGION_LABELS).filter(r => r !== s.r)).slice(0,3).map(r => REGION_LABELS[r]);
@@ -246,7 +245,9 @@ let mode = 'mixed', current = 0, score = 0, qList = [];
 function startQuiz(m) {
   mode = m;
   current = 0; score = 0;
-  qList = Array.from({length: 10}, () => makeQuestion(m));
+  // Ten different states: drawing with replacement asked the same question
+  // twice in about six quizzes out of ten.
+  qList = shuffle(STATES).slice(0, 10).map(s => makeQuestion(m, s));
   document.getElementById('result-screen').hidden = true;
   document.getElementById('quiz-screen').hidden = false;
   renderQuestion();
@@ -315,6 +316,6 @@ document.querySelectorAll('#mode-picker button').forEach(btn => {
 startQuiz('mixed');
 </script>
 
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 </body>
 </html>

@@ -3348,7 +3348,7 @@
     "startsWith": "M",
     "endsWith": "A",
     "endsInVowel": true,
-    "doubleLetter": false,
+    "doubleLetter": true,
     "capital": "Saint Paul",
     "capitalIsLargest": false,
     "largestCity": "Minneapolis",

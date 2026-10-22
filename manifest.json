@@ -1,5 +1,5 @@
 {
-  "name": "Statedoku — Daily US States Puzzle",
+  "name": "Statedoku, Daily US States Puzzle",
   "short_name": "Statedoku",
   "description": "A free daily geography puzzle. Fill a 3×3 grid with US states matching every row and column constraint. Sudoku meets American geography.",
   "start_url": "/?utm_source=pwa",

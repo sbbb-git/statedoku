@@ -225,6 +225,15 @@ const Puzzle = (() => {
     'pc_real_housewives_franchise',
     'pc_underground_subway',
   ]);
+  // Second cut-over, same rule: grids dated before DATA_FIX2_FROM keep the
+  // values they were built from. Minnesota was missing from "double letter"
+  // ("nn"), and the day before a grid was computed in local time rather than
+  // UTC, so east of UTC (France, Spain) the row group to avoid came from two
+  // days back and 23 of 304 grids differed from everyone else's.
+  const DATA_FIX2_FROM = '2026-10-24';
+  const STATE_FIXES2 = {          // id: { field: [old, corrected] }
+    MN: { doubleLetter: [false, true] },
+  };
   const PC_FIX_SETS = _toSets(PC_FIXES);
   const LEGACY_LIST_SETS = { ...LIST_SETS, ..._toSets(LIST_FIXES) };
   let _lists = LIST_SETS;
@@ -233,10 +242,11 @@ const Puzzle = (() => {
   function _withDataFor(dateStr, states, fn) {
     const legacy = dateStr < DATA_FIX_FROM;
     const patched = states.map(s => {
-      const fix = STATE_FIXES[s.id];
-      if (!fix) return s;
+      const fix = STATE_FIXES[s.id], fix2 = STATE_FIXES2[s.id];
+      if (!fix && !fix2) return s;
       const o = { ...s };
-      for (const k in fix) o[k] = fix[k][legacy ? 0 : 1];
+      if (fix) for (const k in fix) o[k] = fix[k][legacy ? 0 : 1];
+      if (fix2) for (const k in fix2) o[k] = fix2[k][dateStr < DATA_FIX2_FROM ? 0 : 1];
       return o;
     });
     const prev = [_lists, _legacy];
@@ -691,7 +701,9 @@ const Puzzle = (() => {
 
     // Compute yesterday's row group to avoid same-group repeats.
     const [y, m, d] = dateStr.split('-').map(Number);
-    const prevDate = new Date(y, m - 1, d - 1);
+    const prevDate = dateStr < DATA_FIX2_FROM
+      ? new Date(y, m - 1, d - 1)             // as played: local midnight, see DATA_FIX2_FROM
+      : new Date(Date.UTC(y, m - 1, d - 1));
     const prevStr = prevDate.toISOString().slice(0, 10);
     const prevSeed = dateToSeed(prevStr);
     // Yesterday is rebuilt from yesterday's data, so the day after the
@@ -917,12 +929,12 @@ const Puzzle = (() => {
   }
 
   // constraint_help glosses describe the corrected data. On a grid dated
-  // before DATA_FIX_FROM a clue whose answer set changed would be glossed
-  // with a rule its own cell contradicts, so it carries no gloss there.
+  // before the latest cut-over a clue whose answer set changed would be
+  // glossed with a rule its own cell contradicts, so it carries no gloss there.
   function helpFitsDate(cid, dateStr) {
-    if (!dateStr || dateStr >= DATA_FIX_FROM || !_states) return true;
+    if (!dateStr || dateStr >= DATA_FIX2_FROM || !_states) return true;
     const ids = d => _withDataFor(d, _states, st => st.filter(s => matches(s, cid)).map(s => s.id).join());
-    try { return ids(dateStr) === ids(DATA_FIX_FROM); } catch (e) { return false; }
+    try { return ids(dateStr) === ids(DATA_FIX2_FROM); } catch (e) { return false; }
   }
 
   function getTodayStr() {

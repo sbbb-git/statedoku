@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/place-the-state/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/place-the-state/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Place the State">
   <meta property="og:description" content="Click the right state on the US map when prompted. 10 rounds, 3 lives. Free quiz.">
@@ -128,7 +128,7 @@
   },
   "image": "https://statedoku.com/og/og-play-place-the-state-en.jpg"
 }</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, 100% free, no signup, no ads."}}, {"@type": "Question", "name": "Does it save my streak?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, streak saved locally in your browser."}}, {"@type": "Question", "name": "What about tiny states like Rhode Island?", "acceptedAnswer": {"@type": "Answer", "text": "There is no extra margin: the click has to land inside the state's outline. If Rhode Island or Delaware is too small to hit, zoom in with your browser."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, 100% free, no signup, no ads."}}, {"@type": "Question", "name": "Does it save my streak?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, streak saved locally in your browser."}}, {"@type": "Question", "name": "What about tiny states like Rhode Island?", "acceptedAnswer": {"@type": "Answer", "text": "On a phone, a tap that lands in the water just off Rhode Island, Delaware, Connecticut or another of the smallest Northeast states counts for that state. On a computer the click has to land inside the outline; zoom in with your browser if a state is still too small to hit."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">📍 MAP CHALLENGE</span>
@@ -152,7 +152,7 @@
 
     <div class="pts-target" id="pts-target">
       <div class="pt-label">Find this state:</div>
-      <div class="pt-name" id="pts-target-name">,</div>
+      <div class="pt-name" id="pts-target-name"></div>
     </div>
 
     <div class="pts-feedback" id="pts-feedback">&nbsp;</div>
@@ -171,7 +171,7 @@
     <h2>Frequently asked</h2>
     <details><summary><strong>Is this free?</strong></summary><p>Yes, 100% free, no signup, no ads.</p></details>
     <details><summary><strong>Does it save my streak?</strong></summary><p>Yes, streak saved locally in your browser.</p></details>
-    <details><summary><strong>What about tiny states like Rhode Island?</strong></summary><p>There is no extra margin: the click has to land inside the state's outline. If Rhode Island or Delaware is too small to hit, zoom in with your browser.</p></details>
+    <details><summary><strong>What about tiny states like Rhode Island?</strong></summary><p>On a phone, a tap that lands in the water just off Rhode Island, Delaware, Connecticut or another of the smallest Northeast states counts for that state. On a computer the click has to land inside the outline; zoom in with your browser if a state is still too small to hit.</p></details>
   </div>
 <style>.play-context{max-width:760px;margin:26px auto 10px;padding:0 14px;color:var(--text-2,#475569);font-size:.95rem;line-height:1.65}
 .play-context h2{font-size:1.25rem;font-weight:800;color:var(--navy,#0F2147);letter-spacing:-.01em;margin:26px 0 10px}
@@ -190,7 +190,7 @@
 
   <h2>How to play</h2>
   <!-- PLACEHOLDER_LEARN_MID -->
-  <p>Pick a difficulty first. Easy runs five well known states, Normal draws 10 at random, and Hard runs 15 and pulls from a list of shapes that look alike. Press Start and a state name appears in the gold box. Click that state on the map. A correct click scores a point and turns green. A wrong click turns red, costs one of three lives, and the state you were meant to hit flashes amber so the miss teaches you something. The run ends at zero lives or when the round counter reaches your chosen total. Stars are awarded at 90, 60 and 30 percent, so 9 of 10 earns three stars. Tap targets are enlarged on phones so small states stay clickable, and your best score and daily streak live in your browser.</p>
+  <p>Pick a difficulty first. Easy runs five well known states, Normal draws 10 at random, and Hard runs 15 and pulls from a list of shapes that look alike. Press Start and a state name appears in the gold box. Click that state on the map. A correct click scores a point and turns green. A wrong click turns red, costs one of three lives, and the state you were meant to hit flashes amber so the miss teaches you something. The run ends at zero lives or when the round counter reaches your chosen total. Stars are awarded at 90, 60 and 30 percent, so 9 of 10 earns three stars. On a phone, a tap in the water just off a small Northeast state counts for that state, so Rhode Island and Delaware stay clickable, and your best score and daily streak live in your browser.</p>
 
   <h2>Anchors first, then the lookalikes</h2>
   <p>Before hunting, fix three anchors: Texas and Florida in the south, the Great Lakes in the north, and the pair of plain rectangles in the west. Wyoming and Colorado are the only two states drawn as plain four-sided rectangles, with no river or coast on any edge (Utah's borders are straight survey lines too, but it has a notch), and once you find them the rest of the interior west falls into place around them. The Four Corners point where Utah, Colorado, Arizona and New Mexico meet is the only spot in the country where four states touch.</p>
@@ -279,14 +279,16 @@ function __bootGame(){
     const easyList = ['CA','TX','FL','NY','AK'];
     const hardList = ['IA','MO','KS','NE','SD','ND','MS','AL','WV','NH','VT','CT','RI','DE','NM'];
     let pool = STATES.map(s => s.id);
-    if (d === 'easy') pool = easyList.concat(STATES.filter(s => !easyList.includes(s.id) && !hardList.includes(s.id)).slice(0,15).map(s=>s.id));
-    if (d === 'hard') pool = hardList.concat(STATES.map(s=>s.id)).filter(Boolean);
+    // Easy is the five well-known states the page names; Hard is the
+    // look-alike list, each state once (concat with all 50 repeated some).
+    if (d === 'easy') pool = easyList.slice();
+    if (d === 'hard') pool = hardList.slice();
     pool = pool.filter(id => STATES.find(s=>s.id===id));
     return shuffle(pool).slice(0, DIFF[d]);
   }
 
   function renderLives() {
-    $('pts-lives').textContent = '❤️'.repeat(lives) + '🤍'.repeat(Math.max(0,3-lives));
+    $('pts-lives').textContent = '❤️'.repeat(Math.max(0,lives)) + '🤍'.repeat(Math.max(0,3-lives));
   }
   function nextRound() {
     answered = false;
@@ -299,9 +301,11 @@ function __bootGame(){
     $('pts-target').dataset.target = id;
     $('pts-feedback').innerHTML = '&nbsp;';
   }
+  let over = false;
   function handleClick(p) {
-    if (answered) return;
+    if (answered || over) return;
     const targetId = $('pts-target').dataset.target;
+    if (!targetId) return;   // map clicked before Start
     const usps = p.getAttribute('data-usps') || (p.id || '').replace(/^us-/, '');
     if (!usps) return;
     answered = true;
@@ -343,6 +347,8 @@ function __bootGame(){
     return '🗺️ Place the State ' + score + '/' + total + ' ' + filled + ' statedoku.com/play/place-the-state/';
   }
   function finish() {
+    if (over) return;
+    over = true;
     $('pts-result').style.display = 'block';
     const st = stars(score, total);
     const filled = '★'.repeat(st);
@@ -413,7 +419,7 @@ fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/play/state-silhouettes/" data-next="state-silhouettes" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Next: State Silhouettes →</a><a href="/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">Today's Statedoku puzzle</a><a href="/play/" style="color:#0F2147;font-weight:700;">All 21 games</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -433,5 +439,6 @@ fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>

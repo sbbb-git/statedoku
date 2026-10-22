@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/place-the-state/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/place-the-state/">
  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
- <link rel="stylesheet" href="/css/style.css?v=31">
+ <link rel="stylesheet" href="/css/style.css?v=32">
  <meta property="og:type" content="website">
  <meta property="og:title" content="Placer l’État">
  <meta property="og:description" content="Clique sur l’État américain quand on te le demande. 10 manches, 3 vies. Quiz gratuit.">
@@ -128,7 +128,7 @@
   },
   "image": "https://statedoku.com/og/og-play-place-the-state-fr.jpg"
 }</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C’est gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, 100% gratuit, sans inscription, sans pub."}}, {"@type": "Question", "name": "Ma série est-elle sauvegardée ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, ta série est sauvegardée localement dans ton navigateur."}}, {"@type": "Question", "name": "Et les petits États comme Rhode Island ?", "acceptedAnswer": {"@type": "Answer", "text": "Il n'y a pas de marge : le clic doit tomber à l'intérieur du contour de l'État. Si Rhode Island ou le Delaware sont trop petits, zoome dans ton navigateur."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C’est gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, 100% gratuit, sans inscription, sans pub."}}, {"@type": "Question", "name": "Ma série est-elle sauvegardée ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, ta série est sauvegardée localement dans ton navigateur."}}, {"@type": "Question", "name": "Et les petits États comme Rhode Island ?", "acceptedAnswer": {"@type": "Answer", "text": "Sur téléphone, un toucher qui tombe dans l'eau tout près de Rhode Island, du Delaware, du Connecticut ou d'un autre des plus petits États du Nord-Est compte pour cet État. Sur ordinateur, le clic doit tomber à l'intérieur du contour ; zoome dans ton navigateur si un État reste trop petit."}}]}</script>
 <main>
  <section class="hub-hero">
  <span class="hub-chip">📍 MAP CHALLENGE</span>
@@ -174,7 +174,7 @@
  <h2>Questions fréquentes</h2>
  <details><summary><strong>C’est gratuit ?</strong></summary><p>Oui, 100% gratuit, sans inscription, sans pub.</p></details>
  <details><summary><strong>Ma série est-elle sauvegardée ?</strong></summary><p>Oui, ta série est sauvegardée localement dans ton navigateur.</p></details>
- <details><summary><strong>Et les petits États comme Rhode Island ?</strong></summary><p>Il n'y a pas de marge : le clic doit tomber à l'intérieur du contour de l'État. Si Rhode Island ou le Delaware sont trop petits, zoome dans ton navigateur.</p></details>
+ <details><summary><strong>Et les petits États comme Rhode Island ?</strong></summary><p>Sur téléphone, un toucher qui tombe dans l'eau tout près de Rhode Island, du Delaware, du Connecticut ou d'un autre des plus petits États du Nord-Est compte pour cet État. Sur ordinateur, le clic doit tomber à l'intérieur du contour ; zoome dans ton navigateur si un État reste trop petit.</p></details>
  </div>
 
  <!-- xlink-shabbat -->
@@ -215,7 +215,7 @@
     <p>Le mode Difficile puise en priorité dans cette liste : Iowa, Missouri, Kansas, Nebraska, Dakota du Sud, Dakota du Nord, Mississippi, Alabama, Virginie-Occidentale, Nouveau-Hampshire, Vermont, Connecticut, Rhode Island, Delaware et Nouveau-Mexique. Trois familles de problèmes, trois repères.</p>
     <p><strong>La pile des Plaines.</strong> Du nord au sud : Dakota du Nord, Dakota du Sud, Nebraska, Kansas. Le Nebraska est le seul des quatre à présenter une entaille marquée, dans son angle sud-ouest, sous la « queue de poêle » qui s’étire vers l’ouest ; le Kansas est le rectangle propre du bas. L’Iowa est bordé par le Mississippi à l’est et le Missouri à l’ouest ; le Missouri est celui du dessous, avec sa botte pointant vers le sud-est.</p>
     <p><strong>Les paires du Sud.</strong> Mississippi et Alabama se ressemblent, mais l’Alabama est celui de droite, celui qui touche la Géorgie et la queue de la Floride. La Virginie-Occidentale se reconnaît par ce qu’elle n’a pas : aucun accès à l’océan, contrairement à la Virginie qui la borde.</p>
-    <p><strong>Le bloc du Nord-Est.</strong> Vermont et Nouveau-Hampshire forment un couple inversé : le Vermont est à gauche et s’élargit vers le Canada, le Nouveau-Hampshire est à droite avec une courte façade atlantique. Le Rhode Island est le plus petit État du pays, à l’est du Connecticut ; le Delaware est la fine bande sous la Pennsylvanie. La détection de clic reste tolérante sur ces petites surfaces. Reste le Nouveau-Mexique, presque carré comme l’Arizona : c’est celui de droite dans la paire, avec le Texas pour voisin.</p>
+    <p><strong>Le bloc du Nord-Est.</strong> Vermont et Nouveau-Hampshire forment un couple inversé : le Vermont est à gauche et s’élargit vers le Canada, le Nouveau-Hampshire est à droite avec une courte façade atlantique. Le Rhode Island est le plus petit État du pays, à l’est du Connecticut ; le Delaware est la fine bande sous la Pennsylvanie. Sur téléphone, un toucher dans l'eau tout près de ces petits États compte pour eux. Reste le Nouveau-Mexique, presque carré comme l’Arizona : c’est celui de droite dans la paire, avec le Texas pour voisin.</p>
 
     <h2>Les paires que l’on confond le plus</h2>
     <div class="pgx-table-wrap">
@@ -292,14 +292,16 @@ function __bootGame(){
     const easyList = ['CA','TX','FL','NY','AK'];
     const hardList = ['IA','MO','KS','NE','SD','ND','MS','AL','WV','NH','VT','CT','RI','DE','NM'];
     let pool = STATES.map(s => s.id);
-    if (d === 'easy') pool = easyList.concat(STATES.filter(s => !easyList.includes(s.id) && !hardList.includes(s.id)).slice(0,15).map(s=>s.id));
-    if (d === 'hard') pool = hardList.concat(STATES.map(s=>s.id)).filter(Boolean);
+    // Easy is the five well-known states the page names; Hard is the
+    // look-alike list, each state once (concat with all 50 repeated some).
+    if (d === 'easy') pool = easyList.slice();
+    if (d === 'hard') pool = hardList.slice();
     pool = pool.filter(id => STATES.find(s=>s.id===id));
     return shuffle(pool).slice(0, DIFF[d]);
   }
 
   function renderLives() {
-    $('pts-lives').textContent = '❤️'.repeat(lives) + '🤍'.repeat(Math.max(0,3-lives));
+    $('pts-lives').textContent = '❤️'.repeat(Math.max(0,lives)) + '🤍'.repeat(Math.max(0,3-lives));
   }
   function nextRound() {
     answered = false;
@@ -312,9 +314,11 @@ function __bootGame(){
     $('pts-target').dataset.target = id;
     $('pts-feedback').innerHTML = '&nbsp;';
   }
+  let over = false;
   function handleClick(p) {
-    if (answered) return;
+    if (answered || over) return;
     const targetId = $('pts-target').dataset.target;
+    if (!targetId) return;   // map clicked before Start
     const usps = p.getAttribute('data-usps') || (p.id || '').replace(/^us-/, '');
     if (!usps) return;
     answered = true;
@@ -356,6 +360,8 @@ function __bootGame(){
     return '🗺️ Placer l’État ' + score + '/' + total + ' ' + filled + ' statedoku.com/fr/play/place-the-state/';
   }
   function finish() {
+    if (over) return;
+    over = true;
     $('pts-result').style.display = 'block';
     const st = stars(score, total);
     const filled = '★'.repeat(st);
@@ -370,7 +376,7 @@ function __bootGame(){
       try {
         if (navigator.share) { await navigator.share({ text: txt }); return; }
       } catch(e){}
-      try { await navigator.clipboard.writeText(txt); alert('Copied'); } catch(e){ alert(txt); }
+      try { await navigator.clipboard.writeText(txt); alert('Copié'); } catch(e){ alert(txt); }
     });
 
     // Track + persist streak
@@ -410,7 +416,7 @@ var __wrap=document.getElementById('pts-map-wrap');
 if(!__wrap){__bootGame();return;}
 fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status);return r.text();})
  .then(function(svg){__wrap.innerHTML=svg;__bootGame();})
- .catch(function(){__wrap.innerHTML='<p style="padding:20px;text-align:center">Map failed to load. Please refresh.</p>';});
+ .catch(function(){__wrap.innerHTML='<p style="padding:20px;text-align:center">La carte n'a pas pu se charger. Recharge la page.</p>';});
 })();</script>
 <script src="/js/ads.js?v=1"></script>
 <script>
@@ -426,7 +432,7 @@ fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/fr/play/state-silhouettes/" data-next="state-silhouettes" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Jeu suivant : Silhouettes d'États →</a><a href="/fr/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">Le puzzle Statedoku du jour</a><a href="/fr/play/" style="color:#0F2147;font-weight:700;">Les 21 jeux</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -446,5 +452,6 @@ fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>

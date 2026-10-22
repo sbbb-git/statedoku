@@ -145,7 +145,8 @@ const Game = (() => {
     const lang   = I18n.getLang();
     const locale = lang === 'fr' ? 'fr-FR' : lang === 'es' ? 'es-ES' : 'en-US';
     const opts   = { weekday:'long', month:'long', day:'numeric' };
-    el.textContent = d.toLocaleDateString(locale, opts);
+    const txt = d.toLocaleDateString(locale, opts);
+    el.textContent = txt.charAt(0).toUpperCase() + txt.slice(1);
   }
 
   function _showPreviewBanner() {
@@ -328,7 +329,7 @@ const Game = (() => {
             cell.setAttribute('aria-label',
               `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]})${isGolden ? ', 🌟 Golden State' : ''}. ${I18n.t('cell_editable_hint') || 'Activate to change or clear.'}`);
           } else {
-            cell.setAttribute('aria-label', `${state.names[lang]}, wrong`);
+            cell.setAttribute('aria-label', (I18n.t('cell_wrong_label') || '{state}, wrong').replace('{state}', state.names[lang]));
           }
           cell.innerHTML = `
             <span class="cell-abbr">${state.id}</span>
@@ -337,7 +338,8 @@ const Game = (() => {
           `;
         } else {
           cell.classList.add('empty');
-          cell.setAttribute('aria-label', `Empty cell, ${rowLabels[r]} × ${colLabels[c]}. Press Enter to pick a state.`);
+          cell.setAttribute('aria-label', (I18n.t('cell_empty_label') || 'Empty cell, {row} × {col}. Press Enter to pick a state.')
+            .replace('{row}', rowLabels[r]).replace('{col}', colLabels[c]));
         }
       }
     }
@@ -438,15 +440,18 @@ const Game = (() => {
         return;
       }
 
-      const q = trimmed.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-      // French and Spanish players often type the English name (New
-      // Hampshire, not Nouveau-Hampshire), so that matches too.
-      const fold = n => n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+      // Accents, hyphens, dots and repeated spaces fold away on both sides, so
+      // "Nouveau Mexique" finds Nouveau-Mexique and "West  Virginia" finds
+      // West Virginia. French and Spanish players often type the English name
+      // (New Hampshire, not Nouveau-Hampshire), so that matches too.
+      const fold = n => n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+        .replace(/[-‐‑'’.]+/g, ' ').replace(/\s+/g, ' ').trim();
+      const q = fold(trimmed);
       const matches = _states.filter(s => {
         return fold(s.names[lang]).includes(q) || fold(s.names.en).includes(q);
       }).sort((a, b) => {
-        const na = a.names[lang].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-        const nb = b.names[lang].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+        const na = fold(a.names[lang]);
+        const nb = fold(b.names[lang]);
         const aStart = na.startsWith(q) ? 0 : 1;
         const bStart = nb.startsWith(q) ? 0 : 1;
         return aStart - bStart || na.localeCompare(nb);
@@ -473,10 +478,13 @@ const Game = (() => {
 
     newInput.addEventListener('input', e => renderDropdown(e.target.value));
     newInput.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { _closeSearch(); _selectedCell = null; _renderCells(); }
+      if (e.key === 'Escape') { _closeSearch(); _selectedCell = null; _renderCells(); _focusCell(r, c); }
       if (e.key === 'Enter') {
-        const first = dropdown.querySelector('.sp-item:not(.sp-used)');
-        if (first) first.dispatchEvent(new MouseEvent('mousedown'));
+        // The top match only: with Virginia already placed, "Virginia" + Enter
+        // used to submit West Virginia, the first unused match, and cost a mistake.
+        const first = dropdown.querySelector('.sp-item');
+        if (first && first.classList.contains('sp-used')) _announce(I18n.t('already_used') || 'Already used');
+        else if (first) first.dispatchEvent(new MouseEvent('mousedown'));
       }
     });
 
@@ -498,6 +506,7 @@ const Game = (() => {
         _updateScore();
         _saveProgress();
         _announce(I18n.t('cell_cleared') || 'Cell cleared');
+        _focusCell(r, c);
       });
     }
 
@@ -558,6 +567,13 @@ const Game = (() => {
 
   function _closeSearch() {
     document.getElementById('search-panel').classList.remove('open');
+  }
+
+  // Keyboard players land back on the cell they were editing, not on <body>,
+  // which sent the next Tab to the top of the page.
+  function _focusCell(r, c) {
+    const cell = document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
+    if (cell && !(_solved || _gameOver)) { try { cell.focus({ preventScroll: true }); } catch (e) {} }
   }
 
   // Backtracking: given the current _grid + remaining valid cell sets,
@@ -633,7 +649,12 @@ const Game = (() => {
       _renderCells();
       _updateScore();
       _saveProgress();
+      const placed = _stateMap[stateId];
+      const filledCount = _grid.flat().filter(Boolean).length;
+      _announce((I18n.t('cell_placed_label') || '{state} placed, {n} of 9.')
+        .replace('{state}', placed ? placed.names[I18n.getLang()] : stateId).replace('{n}', filledCount));
       _checkSolved();
+      _focusCell(r, c);
       return;
     }
 
@@ -664,6 +685,7 @@ const Game = (() => {
         _renderCells();
         _saveProgress(); // only persist after the wrong state is cleared
         if (_errors >= MAX_ERRORS) _triggerGameOver();
+        else _focusCell(r, c);
       }, 600);
     }
   }
@@ -679,6 +701,7 @@ const Game = (() => {
 
   function _triggerGameOver() {
     _gameOver = true;
+    _announce(I18n.t('game_over'));
     _saveProgress();
     _updateStatsLoss();
     if (typeof Analytics !== 'undefined') {
@@ -727,6 +750,7 @@ const Game = (() => {
     const allValid = _grid.every((row, r) => row.every((s, c) => _isValidForCell(r, c, s)));
     if (!allValid) return;
     _solved = true;
+    _announce(`${I18n.t('solved')} ${I18n.t('solved_msg')}`);
     const elapsed = Math.floor((Date.now() - _startTime) / 1000);
     _solveTime = elapsed;
     _saveProgress();
@@ -853,7 +877,9 @@ const Game = (() => {
       b.type = 'button';
       b.className = 'sr-btn';
       b.style.setProperty('--brand', p.color);
-      b.setAttribute('aria-label', p.id);
+      const names = { whatsapp: 'WhatsApp', twitter: 'X', facebook: 'Facebook',
+        copy: I18n.t('share_copy_label') || 'Copy', more: I18n.t('share_more_label') || 'More' };
+      b.setAttribute('aria-label', names[p.id] || p.id);
       b.dataset.platform = p.id;
       b.innerHTML = p.svg;
       b.addEventListener('click', () => _inlineShareClick(p.id));
@@ -906,7 +932,7 @@ const Game = (() => {
         document.body.appendChild(a); a.click(); a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 5000);
         _showToast(I18n.t('image_downloaded') || 'Image saved');
-      } catch(_) { _showToast('Failed to save image'); }
+      } catch(_) { _showToast(I18n.t('image_failed') || 'Failed to save image'); }
       return;
     }
     let url;
@@ -1092,7 +1118,7 @@ const Game = (() => {
       id: 'twitter', label: 'X / Twitter', color: '#000000',
       icon: '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
       url: (body) => {
-        const tweet = `I just played today's Statedoku 🇺🇸, the daily US states puzzle, like Sudoku with American geography.\n\n${body}\n\n#Statedoku, try it:`;
+        const tweet = `${I18n.t('share_tweet_intro') || "I just played today's Statedoku 🇺🇸, the daily US states puzzle, like Sudoku with American geography."}\n\n${body}\n\n${I18n.t('share_tweet_cta') || '#Statedoku, try it:'}`;
         return `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}&url=${encodeURIComponent(SITE_URL)}`;
       },
     },
@@ -1403,7 +1429,7 @@ const Game = (() => {
     const state = _stateMap[stateId];
     const name = state ? state.names[I18n.getLang()] : stateId;
     // Reuse the announcer for a11y
-    _announce(`🌟 Golden State found: ${name}`);
+    _announce((I18n.t('golden_found') || 'Golden State found: {state}').replace('{state}', name));
     // Visual toast
     let toast = document.getElementById('golden-toast');
     if (!toast) {
@@ -1414,7 +1440,7 @@ const Game = (() => {
       toast.setAttribute('aria-live', 'polite');
       document.body.appendChild(toast);
     }
-    toast.innerHTML = `<span class="gt-star">🌟</span><span class="gt-text"><strong>Golden State!</strong><br><small>${name} satisfies all 3 column criteria</small></span>`;
+    toast.innerHTML = `<span class="gt-star">🌟</span><span class="gt-text"><strong>${I18n.t('golden_toast_title') || 'Golden State!'}</strong><br><small>${(I18n.t('golden_toast_detail') || '{state} satisfies all 3 column criteria').replace('{state}', name)}</small></span>`;
     toast.classList.remove('show');
     // Force reflow so the animation re-triggers
     void toast.offsetWidth;
@@ -1749,6 +1775,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   document.querySelectorAll('.modal-content').forEach(el =>
     el.addEventListener('click', e => e.stopPropagation()));
+
+  // Keyboard: an opened modal takes focus, Escape closes it (and the picker),
+  // and focus goes back to whatever opened it.
+  document.querySelectorAll('.modal').forEach(m => {
+    new MutationObserver(() => {
+      const open = m.classList.contains('open');
+      if (open && !m._opener) {
+        m._opener = document.activeElement;
+        const target = m.querySelector('.modal-close') || m.querySelector('button, a[href], input');
+        if (target) setTimeout(() => { try { target.focus(); } catch (e) {} }, 30);
+      } else if (!open && m._opener) {
+        const back = m._opener; m._opener = null;
+        if (back && document.contains(back)) { try { back.focus({ preventScroll: true }); } catch (e) {} }
+      }
+    }).observe(m, { attributes: true, attributeFilter: ['class'] });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const open = document.querySelectorAll('.modal.open');
+    if (open.length) { open.forEach(m => m.classList.remove('open')); return; }
+    const panel = document.getElementById('search-panel');
+    if (panel && panel.classList.contains('open') && !e.target.closest('#search-panel')) panel.classList.remove('open');
+  });
 
   // Lang switcher
   document.querySelectorAll('.lang-btn').forEach(btn =>

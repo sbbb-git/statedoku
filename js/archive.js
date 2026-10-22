@@ -8,8 +8,9 @@
 (() => {
   const STORAGE_PREFIX = (window.CONFIG && CONFIG.STORAGE_KEY) || 'statedoku_v1';
 
-  // Earliest date the game existed (no puzzles before this point)
-  const EPOCH = new Date('2026-01-01T00:00:00');
+  // Day #1. Earlier dates all showed the same pre-launch preview grid and
+  // were counted as 151 "days available".
+  const EPOCH = new Date('2026-06-01T00:00:00');
 
   // Locale based on URL path
   const path = location.pathname;
@@ -18,9 +19,15 @@
   const homeUrl = lang === 'fr' ? '/fr/' : lang === 'es' ? '/es/' : '/';
 
   const TXT = {
-    en: { today: 'Today', play: 'Play', future: 'Locked' },
-    fr: { today: 'Aujourd\'hui', play: 'Jouer', future: 'Verrouillé' },
-    es: { today: 'Hoy', play: 'Jugar', future: 'Bloqueado' },
+    en: { today: 'Today', play: 'Play', future: 'Locked',
+          status: { solved: 'solved', lost: 'lost', progress: 'in progress', empty: 'not played' },
+          stats: (s, l, p, t) => `<strong>${s}</strong> solved · <strong>${l}</strong> lost · <strong>${p}</strong> played out of <strong>${t}</strong> days available` },
+    fr: { today: 'Aujourd\'hui', play: 'Jouer', future: 'Verrouillé',
+          status: { solved: 'réussi', lost: 'perdu', progress: 'en cours', empty: 'pas joué' },
+          stats: (s, l, p, t) => `<strong>${s}</strong> réussis · <strong>${l}</strong> perdus · <strong>${p}</strong> joués sur <strong>${t}</strong> jours disponibles` },
+    es: { today: 'Hoy', play: 'Jugar', future: 'Bloqueado',
+          status: { solved: 'resuelto', lost: 'perdido', progress: 'en curso', empty: 'sin jugar' },
+          stats: (s, l, p, t) => `<strong>${s}</strong> resueltos · <strong>${l}</strong> perdidos · <strong>${p}</strong> jugados de <strong>${t}</strong> días disponibles` },
   }[lang];
 
   function fmtDate(d) {
@@ -101,7 +108,7 @@
       el.className = `arc-day arc-${status}` + (isToday ? ' arc-today' : '');
       if (isClickable) {
         el.href = `${homeUrl}?date=${dateStr}`;
-        el.setAttribute('aria-label', `${d.toLocaleDateString(locale, { weekday:'long', month:'long', day:'numeric' })}, ${status}`);
+        el.setAttribute('aria-label', `${d.toLocaleDateString(locale, { weekday:'long', month:'long', day:'numeric' })}, ${TXT.status[status] || status}`);
       }
       el.innerHTML = `<span class="arc-num">${day}</span>`;
       cal.appendChild(el);
@@ -121,7 +128,7 @@
     }
     const total = Math.ceil((today - EPOCH) / 86400000) + 1;
     const stats = document.getElementById('arc-stats');
-    if (stats) stats.innerHTML = `<strong>${solved}</strong> solved · <strong>${lost}</strong> lost · <strong>${played}</strong> played out of <strong>${total}</strong> days available`;
+    if (stats) stats.innerHTML = TXT.stats(solved, lost, played, total);
   }
 
   function go(delta) {

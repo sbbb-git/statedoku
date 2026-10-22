@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/state-abbreviations/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/state-abbreviations/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Quiz Abréviations USPS">
   <meta property="og:description" content="Trouve l’abréviation USPS à 2 lettres pour chaque État. 20 manches, QCM.">
@@ -283,7 +283,7 @@
       lives--;
       $('ab-feedback').textContent = '❌';
       $('ab-feedback').className = 'ab-feedback no';
-      $('ab-lives').textContent = '❤️'.repeat(lives)+'🤍'.repeat(3-lives);
+      $('ab-lives').textContent = '❤️'.repeat(Math.max(0,lives))+'🤍'.repeat(3-lives);
       if (lives <= 0) { setTimeout(finish, 800); return; }
     }
     $('ab-score').textContent = score;
@@ -292,6 +292,10 @@
   function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
   function shareText(){const st=stars(score,total);return '✉️ Quiz Abréviations USPS ' + score + '/' + total + ' ' + '⭐'.repeat(st)+'⬜'.repeat(3-st) + ' statedoku.com/fr/play/state-abbreviations/';}
   function finish(){
+    if (finish._done) return;
+    finish._done = true;
+    answered = true;
+    document.querySelectorAll('.ab-choice').forEach(b => { b.disabled = true; });
     $('ab-result').style.display = 'block';
     const st = stars(score, total);
     $('ab-result').innerHTML = '<h2>' + (lives > 0 ? T.wellDone : T.gameOver) + '</h2>' +
@@ -302,7 +306,7 @@
     document.getElementById('ab-share-btn').addEventListener('click', async () => {
       const txt = shareText();
       try { if (navigator.share) { await navigator.share({ text: txt }); return; } } catch(e){}
-      try { await navigator.clipboard.writeText(txt); alert('Copied'); } catch(e){ alert(txt); }
+      try { await navigator.clipboard.writeText(txt); alert('Copié'); } catch(e){ alert(txt); }
     });
     try {
       const key = 'sds_play_state-abbreviations';
@@ -344,7 +348,7 @@
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/fr/play/states-connections/" data-next="states-connections" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Jeu suivant : Connexions d'États →</a><a href="/fr/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">Le puzzle Statedoku du jour</a><a href="/fr/play/" style="color:#0F2147;font-weight:700;">Les 21 jeux</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -364,5 +368,6 @@
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>

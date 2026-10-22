@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/place-the-state/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/place-the-state/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Coloca el Estado">
   <meta property="og:description" content="Haz clic en el estado correcto del mapa EE.UU. cuando te lo pidan. 10 rondas, 3 vidas.">
@@ -128,7 +128,7 @@
   },
   "image": "https://statedoku.com/og/og-play-place-the-state-es.jpg"
 }</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Es gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, 100% gratis, sin registro, sin anuncios."}}, {"@type": "Question", "name": "¿Se guarda mi racha?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, racha guardada localmente en tu navegador."}}, {"@type": "Question", "name": "¿Y los estados pequeños como Rhode Island?", "acceptedAnswer": {"@type": "Answer", "text": "No hay margen extra: el clic tiene que caer dentro del contorno del estado. Si Rhode Island o Delaware son demasiado pequeños, amplía la página en el navegador."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Es gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, 100% gratis, sin registro, sin anuncios."}}, {"@type": "Question", "name": "¿Se guarda mi racha?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, racha guardada localmente en tu navegador."}}, {"@type": "Question", "name": "¿Y los estados pequeños como Rhode Island?", "acceptedAnswer": {"@type": "Answer", "text": "En el móvil, un toque que cae en el agua justo al lado de Rhode Island, Delaware, Connecticut u otro de los estados más pequeños del Noreste cuenta para ese estado. En el ordenador, el clic tiene que caer dentro del contorno; amplía la página en el navegador si un estado sigue siendo demasiado pequeño."}}]}</script>
 <main>
   <section class="hub-hero">
     <span class="hub-chip">📍 MAP CHALLENGE</span>
@@ -152,7 +152,7 @@
 
     <div class="pts-target" id="pts-target">
       <div class="pt-label">Encuentra este estado:</div>
-      <div class="pt-name" id="pts-target-name">,</div>
+      <div class="pt-name" id="pts-target-name"></div>
     </div>
 
     <div class="pts-feedback" id="pts-feedback">&nbsp;</div>
@@ -174,7 +174,7 @@
     <h2>Preguntas frecuentes</h2>
     <details><summary><strong>¿Es gratis?</strong></summary><p>Sí, 100% gratis, sin registro, sin anuncios.</p></details>
     <details><summary><strong>¿Se guarda mi racha?</strong></summary><p>Sí, racha guardada localmente en tu navegador.</p></details>
-    <details><summary><strong>¿Y los estados pequeños como Rhode Island?</strong></summary><p>No hay margen extra: el clic tiene que caer dentro del contorno del estado. Si Rhode Island o Delaware son demasiado pequeños, amplía la página en el navegador.</p></details>
+    <details><summary><strong>¿Y los estados pequeños como Rhode Island?</strong></summary><p>En el móvil, un toque que cae en el agua justo al lado de Rhode Island, Delaware, Connecticut u otro de los estados más pequeños del Noreste cuenta para ese estado. En el ordenador, el clic tiene que caer dentro del contorno; amplía la página en el navegador si un estado sigue siendo demasiado pequeño.</p></details>
   </div>
 <section class="pg">
 <p class="pg-lead">Un mapa mudo, un nombre arriba y un clic. Es el juego que entrena la ubicaci&oacute;n pura de los 50 estados, y una partida en modo Normal son 10 rondas de menos de dos minutos.</p>
@@ -281,14 +281,16 @@ function __bootGame(){
     const easyList = ['CA','TX','FL','NY','AK'];
     const hardList = ['IA','MO','KS','NE','SD','ND','MS','AL','WV','NH','VT','CT','RI','DE','NM'];
     let pool = STATES.map(s => s.id);
-    if (d === 'easy') pool = easyList.concat(STATES.filter(s => !easyList.includes(s.id) && !hardList.includes(s.id)).slice(0,15).map(s=>s.id));
-    if (d === 'hard') pool = hardList.concat(STATES.map(s=>s.id)).filter(Boolean);
+    // Easy is the five well-known states the page names; Hard is the
+    // look-alike list, each state once (concat with all 50 repeated some).
+    if (d === 'easy') pool = easyList.slice();
+    if (d === 'hard') pool = hardList.slice();
     pool = pool.filter(id => STATES.find(s=>s.id===id));
     return shuffle(pool).slice(0, DIFF[d]);
   }
 
   function renderLives() {
-    $('pts-lives').textContent = '❤️'.repeat(lives) + '🤍'.repeat(Math.max(0,3-lives));
+    $('pts-lives').textContent = '❤️'.repeat(Math.max(0,lives)) + '🤍'.repeat(Math.max(0,3-lives));
   }
   function nextRound() {
     answered = false;
@@ -301,9 +303,11 @@ function __bootGame(){
     $('pts-target').dataset.target = id;
     $('pts-feedback').innerHTML = '&nbsp;';
   }
+  let over = false;
   function handleClick(p) {
-    if (answered) return;
+    if (answered || over) return;
     const targetId = $('pts-target').dataset.target;
+    if (!targetId) return;   // map clicked before Start
     const usps = p.getAttribute('data-usps') || (p.id || '').replace(/^us-/, '');
     if (!usps) return;
     answered = true;
@@ -345,6 +349,8 @@ function __bootGame(){
     return '🗺️ Coloca el Estado ' + score + '/' + total + ' ' + filled + ' statedoku.com/es/play/place-the-state/';
   }
   function finish() {
+    if (over) return;
+    over = true;
     $('pts-result').style.display = 'block';
     const st = stars(score, total);
     const filled = '★'.repeat(st);
@@ -359,7 +365,7 @@ function __bootGame(){
       try {
         if (navigator.share) { await navigator.share({ text: txt }); return; }
       } catch(e){}
-      try { await navigator.clipboard.writeText(txt); alert('Copied'); } catch(e){ alert(txt); }
+      try { await navigator.clipboard.writeText(txt); alert('Copiado'); } catch(e){ alert(txt); }
     });
 
     // Track + persist streak
@@ -399,7 +405,7 @@ var __wrap=document.getElementById('pts-map-wrap');
 if(!__wrap){__bootGame();return;}
 fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status);return r.text();})
  .then(function(svg){__wrap.innerHTML=svg;__bootGame();})
- .catch(function(){__wrap.innerHTML='<p style="padding:20px;text-align:center">Map failed to load. Please refresh.</p>';});
+ .catch(function(){__wrap.innerHTML='<p style="padding:20px;text-align:center">No se pudo cargar el mapa. Recarga la página.</p>';});
 })();</script>
 <script src="/js/ads.js?v=1"></script>
 <script>
@@ -415,7 +421,7 @@ fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/es/play/state-silhouettes/" data-next="state-silhouettes" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Siguiente: Siluetas de Estados →</a><a href="/es/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">El puzzle Statedoku de hoy</a><a href="/es/play/" style="color:#0F2147;font-weight:700;">Los 21 juegos</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -435,5 +441,6 @@ fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>

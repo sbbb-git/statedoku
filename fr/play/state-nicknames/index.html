@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/state-nicknames/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/state-nicknames/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=31">
+  <link rel="stylesheet" href="/css/style.css?v=32">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Quiz Surnoms d'États">
   <meta property="og:description" content="Associe chaque surnom à son État : Lone Star, Golden State, Sunshine State. Jeu gratuit dans le navigateur, sans inscription, jouable en une minute.">
@@ -161,7 +161,7 @@
 
     <div class="game-card-hero">
       <div class="qlbl">Quel État porte ce surnom ?</div>
-      <div class="qval small" id="g-prompt">,</div>
+      <div class="qval small" id="g-prompt"></div>
     </div>
 
     <div class="feedback" id="g-feedback">&nbsp;</div>
@@ -180,7 +180,7 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 function stars(s,t){const p=s/t;return p>=0.9?3:p>=0.6?2:p>=0.3?1:0;}
 function persistResult(slug,score,total,st){try{const k='sds_play_'+slug;const today=new Date().toISOString().slice(0,10);const prev=JSON.parse(localStorage.getItem(k)||'{}');const y=new Date(Date.now()-86400000).toISOString().slice(0,10);const streak=(prev.lastPlayed===today)?(prev.streak||0):(prev.lastPlayed===y)?((prev.streak||0)+1):1;localStorage.setItem(k,JSON.stringify({lastPlayed:today,streak:streak,best:Math.max(prev.best||0,score)}));if(window.gtag)window.gtag('event','play_complete',{game:slug,score:score,total:total,stars:st});}catch(e){}}
 async function shareResult(txt){try{if(navigator.share){await navigator.share({text:txt});return;}}catch(e){}try{await navigator.clipboard.writeText(txt);alert("Copié");}catch(e){alert(txt);}}
-function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
+function renderResult(rootEl,score,total,T_,slug,sharePrefix){if(rootEl._done)return;rootEl._done=true;document.querySelectorAll('.ab-choice,.order-controls button,#g-input,#g-submit,#g-skip').forEach(function(el){el.disabled=true;});const st=stars(score,total);const filled='★'.repeat(st);const off='☆'.repeat(3-st);rootEl.style.display='block';rootEl.innerHTML='<h2>'+(score>=total*.3?T_.wellDone:T_.gameOver)+'</h2>'+'<div style="font-size:1.05rem;margin-bottom:6px"><strong>'+score+'/'+total+'</strong> ('+Math.round(score/total*100)+'%)</div>'+'<div class="stars"><span>'+filled+'</span><span class="off">'+off+'</span></div>'+'<div style="margin-top:10px"><button class="gbtn gold" onclick="window.location.reload()">'+T_.tryAgain+'</button> <button class="gbtn" id="_share">'+T_.share+'</button></div>';document.getElementById('_share').addEventListener('click',()=>shareResult(sharePrefix+' '+score+'/'+total+' '+('⭐'.repeat(st)+'⬜'.repeat(3-st))+' statedoku.com'+window.location.pathname));persistResult(slug,score,total,st);}
 
     const ITEMS = [{"prompt":"Yellowhammer State","answer":"AL"},{"prompt":"The Last Frontier","answer":"AK"},{"prompt":"Grand Canyon State","answer":"AZ"},{"prompt":"Natural State","answer":"AR"},{"prompt":"Golden State","answer":"CA"},{"prompt":"Centennial State","answer":"CO"},{"prompt":"Constitution State","answer":"CT"},{"prompt":"First State","answer":"DE"},{"prompt":"Sunshine State","answer":"FL"},{"prompt":"Peach State","answer":"GA"},{"prompt":"Aloha State","answer":"HI"},{"prompt":"Gem State","answer":"ID"},{"prompt":"Prairie State","answer":"IL"},{"prompt":"Hoosier State","answer":"IN"},{"prompt":"Hawkeye State","answer":"IA"},{"prompt":"Sunflower State","answer":"KS"},{"prompt":"Bluegrass State","answer":"KY"},{"prompt":"Pelican State","answer":"LA"},{"prompt":"Pine Tree State","answer":"ME"},{"prompt":"Old Line State","answer":"MD"},{"prompt":"Bay State","answer":"MA"},{"prompt":"Great Lakes State","answer":"MI"},{"prompt":"North Star State","answer":"MN"},{"prompt":"Magnolia State","answer":"MS"},{"prompt":"Show Me State","answer":"MO"},{"prompt":"Treasure State","answer":"MT"},{"prompt":"Cornhusker State","answer":"NE"},{"prompt":"Silver State","answer":"NV"},{"prompt":"Granite State","answer":"NH"},{"prompt":"Garden State","answer":"NJ"},{"prompt":"Land of Enchantment","answer":"NM"},{"prompt":"Empire State","answer":"NY"},{"prompt":"Tar Heel State","answer":"NC"},{"prompt":"Peace Garden State","answer":"ND"},{"prompt":"Buckeye State","answer":"OH"},{"prompt":"Sooner State","answer":"OK"},{"prompt":"Beaver State","answer":"OR"},{"prompt":"Keystone State","answer":"PA"},{"prompt":"Ocean State","answer":"RI"},{"prompt":"Palmetto State","answer":"SC"},{"prompt":"Mount Rushmore State","answer":"SD"},{"prompt":"Volunteer State","answer":"TN"},{"prompt":"Lone Star State","answer":"TX"},{"prompt":"Beehive State","answer":"UT"},{"prompt":"Green Mountain State","answer":"VT"},{"prompt":"Old Dominion","answer":"VA"},{"prompt":"Evergreen State","answer":"WA"},{"prompt":"Mountain State","answer":"WV"},{"prompt":"Badger State","answer":"WI"},{"prompt":"Equality State","answer":"WY"}];
     const NAMES = {"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"Californie","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Floride","GA":"Géorgie","HI":"Hawaï","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiane","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"Nouveau-Hampshire","NJ":"New Jersey","NM":"Nouveau-Mexique","NY":"New York","NC":"Caroline du Nord","ND":"Dakota du Nord","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvanie","RI":"Rhode Island","SC":"Caroline du Sud","SD":"Dakota du Sud","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginie","WA":"Washington","WV":"Virginie-Occidentale","WI":"Wisconsin","WY":"Wyoming"};
@@ -227,7 +227,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
         lives--;
         $('g-feedback').textContent='❌ → '+(NAMES[correctId]||correctId);
         $('g-feedback').className='feedback no';
-        $('g-lives').textContent='❤️'.repeat(lives)+'\u{1F90D}'.repeat(3-lives);
+        $('g-lives').textContent='❤️'.repeat(Math.max(0,lives))+'\u{1F90D}'.repeat(3-lives);
         if(lives<=0){setTimeout(finish,800);return;}
       }
       $('g-score').textContent=score;
@@ -320,7 +320,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   }, true);
 })();
 </script>
-<script src="/config.js?v=11"></script>
+<script src="/config.js?v=12"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/fr/play/state-abbreviations/" data-next="state-abbreviations" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Jeu suivant : Quiz Abréviations USPS →</a><a href="/fr/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">Le puzzle Statedoku du jour</a><a href="/fr/play/" style="color:#0F2147;font-weight:700;">Les 21 jeux</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
@@ -340,5 +340,6 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){const st=stars(sco
   });
 })();
 </script>
+<script src="/js/play-a11y.js?v=1" defer></script>
 </body>
 </html>
