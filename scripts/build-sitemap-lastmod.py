@@ -44,6 +44,11 @@ TEMPLATE = re.compile(r'<template id="next-game-tpl">.*?</template>', re.S)
 PAGE_DATES = re.compile(r'<script type="application/ld\+json" data-page-dates>.*?</script>', re.S)
 PAGE_UPDATED = re.compile(r'<p class="page-updated">.*?</p>', re.S)
 DATE_MODIFIED = re.compile(r'"dateModified"\s*:\s*"[^"]*"')
+# The state abbreviation moved from a span inside the H1 to a data-abbr
+# attribute drawn by CSS on 22 October 2026. The heading reads the same, so
+# both forms reduce to the bare <h1> and the move dates no page.
+H1_BADGE_OLD = re.compile(r'(<h1>)<span class="(?:abbr-badge|badge)"[^>]*>[A-Z]{2}</span>')
+H1_BADGE_NEW = re.compile(r'<h1 data-abbr="[A-Z]{2}"(?: style="--abbr-bg:[^"]*")?>')
 
 
 def reader_text(html):
@@ -57,6 +62,8 @@ def reader_text(html):
     html = PAGE_DATES.sub('', html)
     html = PAGE_UPDATED.sub('', html)
     html = DATE_MODIFIED.sub('', html)
+    html = H1_BADGE_OLD.sub(r'\1', html)
+    html = H1_BADGE_NEW.sub('<h1>', html)
     return re.sub(r'\s+', ' ', html).strip()
 
 
