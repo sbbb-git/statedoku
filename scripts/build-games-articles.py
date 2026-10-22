@@ -472,7 +472,7 @@ def daily_article(L):
                         f'Dans {a("globle", "Globle")}, on propose n\'importe quel pays et il se colore sur un globe : plus la couleur est chaude, plus on est proche, la distance étant mesurée entre frontières terrestres. Aucune limite d\'essais n\'est indiquée ; le but est d\'en faire le moins possible. Nouvelle partie à minuit dans votre fuseau horaire.',
                         'Globle est édité par Trainwreck Labs. Il est gratuit avec publicité, et le Trainwreck Club, à 5 $ par mois en octobre 2026, la retire.']),
                     ('Travle', URL['travle'], [
-                        f'{a("travle", "Travle")} donne deux pays et demande ceux qui se trouvent sur le plus court trajet terrestre entre eux. On a droit à autant d\'essais que le trajet compte de pays, plus 4 à 8, chacun noté selon son utilité, et de trois indices. Il existe un défi hebdomadaire et une {a("travleusa", "version USA")} avec les États.',
+                        f'{a("travle", "Travle")} donne deux pays et demande ceux qui se trouvent sur le plus court trajet terrestre entre eux. On a droit à autant d\'essais que le trajet compte de pays, plus 4 à 8, chacun noté selon son utilité, et à trois indices. Il existe un défi hebdomadaire et une {a("travleusa", "version USA")} avec les États.',
                         'C\'est un jeu Teuteuf créé par Oisin Carroll, gratuit avec publicité ; Premium la retire.']),
                     ('Flagle', URL['flagle'], [
                         f'{a("flagle", "Flagle")} dévoile un drapeau case par case, six essais en tout, avec distance et direction après chacun, puis des manches bonus sur la forme, la capitale et les frontières. C\'est un jeu Teuteuf, gratuit avec publicité.']),
