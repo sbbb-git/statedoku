@@ -82,7 +82,7 @@ const RETIRED = /world-cup|mondial|soccer|azteca|metlife-stadium|crossword|^capi
 // CONCURRENCY at a time. MAX_SEEDS keeps a weekly run near 400 calls. Seeds are
 // added in priority order (core cluster, the 50 states, then learn topics), so
 // if the cap ever bites it trims learn topics, never a state.
-const MAX_SEEDS = 200;
+const MAX_SEEDS = 210;  // 200 until 22 October 2026; +10 for the game intents
 
 async function isIndexable(file) {
   let html;
@@ -121,7 +121,11 @@ async function seeds() {
     'us time zones map', 'time zones by state', 'states with two time zones',
     'regions of the united states', 'us census regions', 'state facts',
     'fun facts about the 50 states', 'us territories', 'how many states are in the us',
-    'how many states in america']) out.add(t);
+    'how many states in america',
+    // Game intents, added 22 October 2026 with the two "best games" articles:
+    // the reading had no seed for them, so their demand was never measured.
+    'games to learn the 50 states', '50 states game', 'us map quiz',
+    'daily geography game', 'geography games like wordle']) out.add(t);
 
   // All 50 states crossed with the intents the site serves.
   for (const s of states) {
