@@ -8,9 +8,11 @@
 // that unsubscribed is never switched back on without a new confirmation, so
 // nobody can sign up a third party.
 //
-// Without a mail provider (RESEND_API_KEY unset) no address can be confirmed,
-// so the endpoint refuses with 503 rather than storing anything: it used to
-// switch a brand new address on directly, which let anyone subscribe anyone.
+// Double opt-in needs RESEND_API_KEY in the Pages environment. On 23 October
+// 2026 it was missing there (the reminder worker has its own key): refusing
+// with 503 turned every sign-up away, so without a key a brand new address is
+// still switched on directly, as before, and nothing is mailed. Setting the
+// key on the Pages project turns confirmation on with no code change.
 //
 // One confirmation mail per address per COOLDOWN_MS. The per-IP limit below
 // does not stop many IPs from mailing one inbox; this does, and the answer is
@@ -50,7 +52,8 @@ const CONFIRM = {
 };
 
 export async function onRequestPost({ request, env, waitUntil }) {
-  if (!env.STATS_DB || !env.RESEND_API_KEY) return _bad('Service unavailable', 503);
+  if (!env.STATS_DB) return _bad('Service unavailable', 503);
+  const canConfirm = !!env.RESEND_API_KEY;
 
   // A JSON content type forces a CORS preflight, so other sites cannot post
   // this form from a visitor's browser.
@@ -76,7 +79,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (!body || typeof body !== 'object') return _bad('Invalid JSON');
 
   // Honeypot: if "website" field exists in payload, silently accept but drop
-  if (body.website) return _pending();
+  if (body.website) return _pending(canConfirm);
 
   const email = (body.email || '').trim().toLowerCase();
   const hour = parseInt(body.hour_utc, 10);
@@ -94,30 +97,35 @@ export async function onRequestPost({ request, env, waitUntil }) {
       .bind(email).first();
     if (existing && existing.active === 1) {
       // Already subscribed: say nothing that would reveal it, change nothing.
-      return _pending();
+      return _pending(canConfirm);
     }
     // A pending address had its confirmation mail less than COOLDOWN_MS ago:
     // same answer, no second mail. subscribed_at holds the time of the last
     // confirmation request for a row that is not active yet.
     if (existing && now - (Number(existing.subscribed_at) || 0) < COOLDOWN_MS) {
-      return _pending();
+      return _pending(canConfirm);
     }
     isNew = !existing;
     token = existing ? existing.token : _rand(24);
+    // Without a mail provider a brand new address goes on directly; one that
+    // already has a row (pending) never does without a confirmation.
+    const activeNow = (!canConfirm && isNew) ? 1 : 0;
     // The WHERE keeps an address that was confirmed in the meantime untouched.
     await env.STATS_DB
       .prepare(`INSERT INTO email_subscribers (email, hour_utc, lang, token, subscribed_at, active, country)
-                VALUES (?, ?, ?, ?, ?, 0, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(email) DO UPDATE SET
                   hour_utc = excluded.hour_utc,
                   lang = excluded.lang,
                   subscribed_at = excluded.subscribed_at
                 WHERE email_subscribers.active = 0`)
-      .bind(email, hour, lang, token, now, country)
+      .bind(email, hour, lang, token, now, activeNow, country)
       .run();
   } catch (e) {
     return _bad('Could not save your subscription. Please try again later.', 500);
   }
+
+  if (!canConfirm) return _pending(false);
 
   const t = CONFIRM[lang];
   const link = `https://statedoku.com/api/confirm?token=${encodeURIComponent(token)}`;
@@ -158,11 +166,11 @@ export async function onRequestPost({ request, env, waitUntil }) {
     if (typeof waitUntil === 'function') waitUntil(notify);
   }
 
-  return _pending();
+  return _pending(true);
 }
 
-function _pending() {
-  return new Response(JSON.stringify({ ok: true, pending: true }), {
+function _pending(pending) {
+  return new Response(JSON.stringify({ ok: true, pending }), {
     headers: { 'content-type': 'application/json' },
   });
 }

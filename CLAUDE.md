@@ -306,7 +306,10 @@ unknown.
   third party. The endpoint only takes `application/json`, which forces a CORS
   preflight. Unsubscribe deletes the row (erasure, not a flag), and both confirm
   and unsubscribe need a POST from a button, because mail scanners follow GET
-  links.
+  links. **Confirmation only happens when `RESEND_API_KEY` is set on the Pages
+  project**, which it was not on 23 October 2026 (the reminder worker has its
+  own key): until it is, a new address is switched on directly and no mail is
+  sent. Refusing instead (503) turned every sign-up away, so do not.
 - **Keys travel in headers, never in a URL.** `/api/stats` and the admin API
   read `x-admin-key`, the two workers read `x-trigger-key`, all compared in
   constant time (`functions/_shared/auth.js`). A key in a query string ends up
