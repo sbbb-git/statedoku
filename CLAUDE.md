@@ -469,7 +469,10 @@ the owner these figures as a report.
 
 Event start dates, so a jump on that day is not mistaken for a trend:
 `play_start`, `puzzle_start/solve/lost` and `classroom_share` from 12 October
-2026; `capitals_teaser_*` and `next_game_click` from 13 October 2026. Before 12
+2026; `capitals_teaser_*` and `next_game_click` from 13 October 2026. `puzzle_first_move` from
+24 October 2026: `puzzle_start` fires when the grid renders, so it counts
+everyone who saw it; the first pick, right or wrong, is what says someone
+played. On 17 to 23 October 207 grids rendered and 48 games ended. Before 12
 October the five map games and States Connections sent `play_complete` once per
 click after a game ended, so earlier finish counts there are inflated.
 

@@ -153,7 +153,7 @@ async function main() {
   await optional('events_by_page', ['eventName', 'pagePath'], ['eventCount'], {
     limit: 3000, orderByMetric: 'eventCount',
     filter: { filter: { fieldName: 'eventName', inListFilter: { values: [
-      'scroll', 'click', 'play_start', 'play_complete', 'puzzle_start', 'puzzle_solve', 'puzzle_lost', 'classroom_share',
+      'scroll', 'click', 'play_start', 'play_complete', 'puzzle_start', 'puzzle_first_move', 'puzzle_solve', 'puzzle_lost', 'classroom_share',
       'next_game_click', 'capitals_teaser_start', 'capitals_teaser_answer', 'capitals_teaser_done',
     ] } } },
   });
