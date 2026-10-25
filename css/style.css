@@ -2837,73 +2837,69 @@ footer a { display: inline-block; padding: 6px 2px; }
 article.pr-main { width: 100%; }   /* main is a flex box and the article has auto margins: it took the table's width */
 main a[href^="mailto:"] { overflow-wrap: anywhere; }
 
-/* Homepage, 25 October 2026: the game alone, after Metrodoku. A light page,
-   the name in lower case, four plain links, the day's title, the grid, and
-   under it the give-up button and the mistakes. No banner, no card list. */
+/* Homepage: the game alone, after Metrodoku (25 October 2026, made lighter
+   the same day: "sur mobile c'est beaucoup trop lourd"). One line of header
+   with the name, two icons and the languages; the day on one line; the grid;
+   a small give-up button and the mistakes; a line of small links. */
 html:has(body.home), body.home { background: #F6F7F9; }
 .home .site-head, .home footer.site-foot { flex-shrink: 0; }   /* body is a flex column of fixed height */
 .home .site-head {
   position: static; height: auto; min-height: 0; background: transparent; border: 0;
-  width: 100%; max-width: 640px; margin: 0 auto;
-  padding: 28px 16px 18px;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 20px;
-  border-bottom: 1px solid #DCE2EA;
+  width: 100%; max-width: 608px; margin: 0 auto;
+  padding: 18px 16px 10px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .wordmark {
-  font-size: clamp(2.1rem, 8vw, 3rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1;
+  font-size: clamp(1.55rem, 6vw, 2.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1;
   color: var(--navy); text-decoration: none;
 }
-.head-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 18px; }
-.head-link {
-  background: none; border: 0; padding: 6px 0; cursor: pointer;
-  font: 600 0.76rem/1 var(--font); letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--navy); text-decoration: none;
+.head-nav { display: flex; align-items: center; gap: 4px; }
+.head-icon {
+  width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; color: var(--navy);
 }
-.head-link:hover { text-decoration: underline; text-underline-offset: 5px; }
-.home .lang-switcher { gap: 6px; }
-.home main { padding: 26px 16px 40px; gap: 18px; }
-.home #game-wrap { max-width: 608px; gap: 16px; }
-.day-head { width: 100%; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
-.day-title {
-  margin: 0; color: var(--navy);
-  font-size: clamp(1.45rem, 5.4vw, 2.35rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08;
-}
-.day-title .day-date { display: block; font-size: 0.62em; letter-spacing: -0.02em; color: var(--text-2); margin-top: 4px; }
-.day-score { margin: 0; white-space: nowrap; font-size: 0.86rem; font-weight: 600; letter-spacing: 0.04em; color: var(--navy); }
-.day-score strong { font-size: 1.05rem; font-variant-numeric: tabular-nums; margin-left: 4px; }
-.home .grid-outer {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: none;
-  gap: 10px;
-}
+.head-icon svg { width: 20px; height: 20px; }
+.head-icon:hover { background: #E6EBF3; }
+.home .lang-switcher { gap: 2px; margin-left: 6px; }
+.home .lang-btn { padding: 6px 4px; font-size: 0.7rem; }
+.home main { padding: 6px 16px 18px; gap: 12px; }
+.home #game-wrap { max-width: 576px; gap: 12px; }
+.day-head { width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.day-title { margin: 0; color: var(--navy); font-size: clamp(1rem, 3.6vw, 1.3rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.day-title .day-date { font-weight: 600; color: var(--text-3); margin-left: 6px; }
+.day-score { margin: 0; white-space: nowrap; font-size: 0.8rem; font-weight: 600; color: var(--text-2); }
+.day-score strong { font-size: 0.95rem; color: var(--navy); font-variant-numeric: tabular-nums; margin-left: 4px; }
+.home .grid-outer { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: none; gap: 8px; }
 .home .grid-corner { background: transparent; }
 .home .grid-corner::after { display: none; }
 .home .col-label, .home .row-label, .home .cell { aspect-ratio: 1; min-height: 0; }
-.home .col-label, .home .row-label { background: #E6EBF3; border-color: transparent; font-size: 0.8rem; padding: 8px 6px; }
-.home .cell { border-color: #1C232D; }
-.under-grid { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.home .col-label, .home .row-label {
+  background: #E6EBF3; border-color: transparent; font-size: 0.78rem; font-weight: 600; padding: 6px 5px;
+  flex-direction: column; gap: 4px;
+}
+.cl-ico { font-size: 1.35em; line-height: 1; }
+.cl-txt { display: block; }
+.home .cell { border-color: #1C232D; padding: 6px 4px; }
+.under-grid { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .giveup-btn {
-  background: #fff; border: 2px solid #1C232D; border-radius: 2px; cursor: pointer;
-  padding: 9px 14px; font: 700 0.86rem/1.2 var(--font); color: #1C232D;
+  background: transparent; border: 1.5px solid #1C232D; border-radius: 2px; cursor: pointer;
+  padding: 6px 10px; font: 600 0.78rem/1.2 var(--font); color: #1C232D;
 }
 .giveup-btn:hover { background: #EEF1F5; }
-.mistakes { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 0.86rem; font-weight: 700; color: #1C232D; }
-.mistakes #error-display { display: inline-flex; gap: 5px; }
-.home .err-dot { width: 13px; height: 13px; background: transparent; border: 2px solid #1C232D; box-shadow: none; }
+.mistakes { margin: 0; display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; color: var(--text-2); }
+.mistakes #error-display { display: inline-flex; gap: 4px; }
+.home .err-dot { width: 11px; height: 11px; background: transparent; border: 1.5px solid #1C232D; box-shadow: none; }
 .home .err-dot.used { background: var(--red); border-color: var(--red); box-shadow: none; }
 .home footer.site-foot {
-  width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16px 40px;
-  text-align: left; background: transparent; border-top: 1px solid #DCE2EA; font-size: 0.82rem;
+  width: 100%; max-width: 608px; margin: 0 auto; padding: 14px 16px 24px;
+  text-align: center; background: transparent; border: 0; font-size: 0.72rem; line-height: 1.9; color: var(--text-3);
 }
 .home footer.site-foot::before { display: none; }
-.foot-about { margin: 0 0 14px; color: var(--text-2); font-size: 0.9rem; line-height: 1.6; }
-.foot-links { display: flex; flex-wrap: wrap; gap: 0 18px; }
 .foot-links a, .foot-links a.gc-share {
-  display: inline-block; color: var(--text-2); font-weight: 600; font-size: inherit; padding: 6px 0;
+  display: inline; color: var(--text-3); font-weight: 500; font-size: inherit; padding: 0;
   background: none; border: 0; border-radius: 0; text-decoration: none;
 }
 .foot-links a:hover, .foot-links a.gc-share:hover { background: none; color: var(--navy); text-decoration: underline; }
-.foot-copy { margin: 12px 0 0; color: var(--text-3); }
 .howto-list { margin: 0 0 12px; padding-left: 20px; line-height: 1.6; }
 .howto-list li { margin: 4px 0; }
 .howto-play {
@@ -2911,9 +2907,11 @@ html:has(body.home), body.home { background: #F6F7F9; }
   background: var(--navy); color: #fff; font: 700 1rem/1 var(--font);
 }
 @media (max-width: 480px) {
-  .home .site-head { padding-top: 18px; }
-  .home .col-label, .home .row-label { font-size: 0.62rem; padding: 6px 4px; }
-  .day-score { font-size: 0.8rem; }
+  .home .site-head { padding: 12px 12px 6px; }
+  .home main { padding: 4px 12px 14px; }
+  .home .grid-outer { gap: 6px; }
+  .home .col-label, .home .row-label { font-size: 0.6rem; padding: 4px 3px; gap: 2px; }
+  .home .cl-help { top: 2px; right: 3px; width: 13px; height: 13px; line-height: 13px; font-size: 0.55rem; }
 }
 .home .cell.empty::after { content: none; }
 /* End of game on the homepage: a plain card under the grid, which stays in

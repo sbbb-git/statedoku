@@ -205,6 +205,34 @@ const Game = (() => {
     if (_solved) _showSolvedBanner();
   }
 
+  // One emoji per clue, on the owner's request (25 October 2026). The label
+  // text stays plain in translations.json; only the grid and the picker
+  // draw the icon, hidden from screen readers.
+  const _NAME = '\u{1F524}';
+  const CLUE_ICON = {
+    region_west: '\u{1F335}', region_south: '\u{1F334}', region_midwest: '\u{1F33D}',
+    region_northeast: '\u{1F342}', sub_new_england: '\u{1F99E}',
+    tz_eastern: '\u{1F552}', tz_central: '\u{1F552}', tz_mountain: '\u{1F552}', tz_pacific: '\u{1F552}',
+    multi_timezone: '\u{1F570}\uFE0F',
+    pop_lt1m: '\u{1F465}', pop_1m5m: '\u{1F465}', pop_5m10m: '\u{1F465}', pop_gt10m: '\u{1F465}',
+    has_million_city: '\u{1F3D9}\uFE0F',
+    coast_atlantic: '\u{1F30A}', coast_pacific: '\u{1F305}', coast_gulf: '\u{1F42C}',
+    coast_great_lakes: '\u2693', landlocked: '\u{1F33E}',
+    border_canada: '\u{1F1E8}\u{1F1E6}', border_mexico: '\u{1F1F2}\u{1F1FD}',
+    on_mississippi: '\u{1F6A2}', on_missouri: '\u{1F6F6}', mt_rockies: '\u26F0\uFE0F', route_66: '\u{1F6E3}\uFE0F',
+    borders_6_plus: '\u{1F9E9}', borders_few: '\u{1F9E9}',
+    largest_state: '\u{1F418}', smallest_state: '\u{1F41C}',
+    original_13: '\u{1F4DC}', confederate: '\u2694\uFE0F',
+    statehood_pre_1800: '\u{1F4C5}', statehood_1800_1850: '\u{1F4C5}', statehood_1851_1899: '\u{1F4C5}', statehood_1900s: '\u{1F4C5}',
+    capital_is_largest: '\u{1F3DB}\uFE0F', capital_starts_with_s: '\u{1F3DB}\uFE0F',
+    capital_named_after_president: '\u{1F3DB}\uFE0F', capital_has_city: '\u{1F3DB}\uFE0F',
+    has_nba: '\u{1F3C0}',
+  };
+  function _clueIcon(cid) {
+    if (CLUE_ICON[cid]) return CLUE_ICON[cid];
+    return /^(starts_|ends_in_|contains_letter_|letters_|vowel_start|two_word|has_new|double_letter|short_name|long_name)/.test(cid) ? _NAME : '';
+  }
+
   function _renderLabels() {
     _puzzle.rows.forEach((rc, i) => _paintLabel(document.getElementById(`row-label-${i}`), rc));
     _puzzle.cols.forEach((cc, j) => _paintLabel(document.getElementById(`col-label-${j}`), cc));
@@ -219,7 +247,19 @@ const Game = (() => {
     // Glosses describe the corrected data; an older grid whose clue had a
     // different answer set then shows none rather than contradict itself.
     const help  = Puzzle.helpFitsDate(cid, _dateStr) ? I18n.constraintHelp(cid) : null;
-    el.textContent = label;
+    el.textContent = '';
+    const icon = _clueIcon(cid);
+    if (icon) {
+      const ico = document.createElement('span');
+      ico.className = 'cl-ico';
+      ico.setAttribute('aria-hidden', 'true');
+      ico.textContent = icon;
+      el.appendChild(ico);
+    }
+    const txt = document.createElement('span');
+    txt.className = 'cl-txt';
+    txt.textContent = label;
+    el.appendChild(txt);
     el.dataset.cid = cid;
     el.classList.toggle('has-help', !!help);
     if (help) {
@@ -412,7 +452,7 @@ const Game = (() => {
     const countEl   = document.getElementById('sp-count');
 
     // Tags
-    tagsEl.innerHTML = `<span class="sp-tag">${I18n.constraint(rowC)}</span><span class="sp-sep">×</span><span class="sp-tag">${I18n.constraint(colC)}</span>`;
+    tagsEl.innerHTML = `<span class="sp-tag">${_clueIcon(rowC)} ${I18n.constraint(rowC)}</span><span class="sp-sep">×</span><span class="sp-tag">${_clueIcon(colC)} ${I18n.constraint(colC)}</span>`;
 
     // Reset input
     input.value = '';

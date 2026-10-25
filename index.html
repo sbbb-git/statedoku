@@ -62,10 +62,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
-  <link rel="preload" href="/data/states.json?v=7" as="fetch" crossorigin="anonymous">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/style.css?v=33">
+  <link rel="stylesheet" href="/css/style.css?v=34">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Statedoku","alternateName":"Statedoku, Daily US States Puzzle","description":"A daily geography puzzle game where players fill a 3×3 grid with US states that satisfy row and column constraints. Sudoku rules meet American geography.","url":"https://statedoku.com/","image":"https://statedoku.com/og-image.png?v=2","genre":["Puzzle","Educational","Geography"],"gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","inLanguage":["en","fr","es"],"isAccessibleForFree":true,"datePublished":"2026-05-13","publisher":{"@type":"Organization","name":"Statedoku","url":"https://statedoku.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
@@ -100,10 +99,8 @@
 <header class="site-head">
   <a href="/" class="wordmark" aria-label="Statedoku home">statedoku</a>
   <nav class="head-nav" aria-label="Main">
-    <button type="button" class="head-link" id="btn-howto">How to play</button>
-    <a class="head-link" href="/archive/">Archive</a>
-    <a class="head-link" href="/play/">Games</a>
-    <button type="button" class="head-link" id="btn-stats">Stats</button>
+    <button type="button" class="head-icon" id="btn-howto" aria-label="How to play" title="How to play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button>
+    <button type="button" class="head-icon" id="btn-stats" aria-label="Stats" title="Stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></button>
     <span class="lang-switcher" role="group" aria-label="Language"><a class="lang-btn active" data-lang="en" href="/" aria-current="true">EN</a><a class="lang-btn" data-lang="fr" href="/fr/">FR</a><a class="lang-btn" data-lang="es" href="/es/">ES</a></span>
   </nav>
 </header>
@@ -165,9 +162,7 @@
 </main>
 
 <footer class="site-foot">
-  <p class="foot-about">One grid a day. Fill each cell with a US state that fits both its row and its column. Free, no account, in English, French and Spanish.</p>
-  <nav class="foot-links" aria-label="Statedoku"><a href="/how-to-play/">How to play</a><a href="/faq/">FAQ</a><a href="/archive/">Archive</a><a href="/play/">Games</a><a href="/learn/">Learn</a><a href="/states/">States</a><a href="/regions/">Regions</a><a href="/cities/">Cities</a><a href="/quiz/">Quiz</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/legal/">Legal notice</a><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2F" target="_blank" rel="noopener">Share with a class</a></nav>
-  <p class="foot-copy">&copy; 2026 Statedoku</p>
+  <nav class="foot-links" aria-label="Statedoku"><a href="/archive/">Archive</a> · <a href="/play/">Games</a> · <a href="/learn/">Learn</a> · <a href="/states/">States</a> · <a href="/regions/">Regions</a> · <a href="/cities/">Cities</a> · <a href="/quiz/">Quiz</a> · <a href="/how-to-play/">How to play</a> · <a href="/faq/">FAQ</a> · <a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/legal/">Legal notice</a> · <a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2F" target="_blank" rel="noopener">Share with a class</a></nav>
 </footer>
 
 <!-- Search panel (bottom sheet) -->
@@ -278,6 +273,6 @@
 })();
 </script>
 <script src="js/puzzle.js?v=20"></script>
-<script src="js/game.js?v=24"></script>
+<script src="js/game.js?v=25"></script>
 </body>
 </html>

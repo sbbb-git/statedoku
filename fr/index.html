@@ -56,9 +56,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
-  <link rel="preload" href="/data/states.json?v=7" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/css/style.css?v=33">
+  <link rel="stylesheet" href="/css/style.css?v=34">
 
   <script type="application/ld+json">
   {
@@ -86,10 +85,8 @@
 <header class="site-head">
   <a href="/fr/" class="wordmark" aria-label="Statedoku accueil">statedoku</a>
   <nav class="head-nav" aria-label="Principal">
-    <button type="button" class="head-link" id="btn-howto">Comment jouer</button>
-    <a class="head-link" href="/fr/archive/">Archives</a>
-    <a class="head-link" href="/fr/play/">Jeux</a>
-    <button type="button" class="head-link" id="btn-stats">Stats</button>
+    <button type="button" class="head-icon" id="btn-howto" aria-label="Comment jouer" title="Comment jouer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button>
+    <button type="button" class="head-icon" id="btn-stats" aria-label="Statistiques" title="Statistiques"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></button>
     <span class="lang-switcher" role="group" aria-label="Langue"><a class="lang-btn" data-lang="en" href="/">EN</a><a class="lang-btn active" data-lang="fr" href="/fr/" aria-current="true">FR</a><a class="lang-btn" data-lang="es" href="/es/">ES</a></span>
   </nav>
 </header>
@@ -151,9 +148,7 @@
 </main>
 
 <footer class="site-foot">
-  <p class="foot-about">Une grille par jour. Remplis chaque case avec un État américain qui respecte sa ligne et sa colonne. Gratuit, sans compte, en français, en anglais et en espagnol.</p>
-  <nav class="foot-links" aria-label="Statedoku"><a href="/fr/how-to-play/">Comment jouer</a><a href="/fr/faq/">FAQ</a><a href="/fr/archive/">Archives</a><a href="/fr/play/">Jeux</a><a href="/fr/learn/">Apprendre</a><a href="/states/">États</a><a href="/regions/">Régions</a><a href="/cities/">Villes</a><a href="/quiz/">Quiz</a><a href="/fr/about/">À propos</a><a href="/fr/privacy/">Confidentialité</a><a href="/fr/terms/">Conditions</a><a href="/fr/mentions-legales/">Mentions légales</a><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2Ffr%2F" target="_blank" rel="noopener">Partager avec une classe</a></nav>
-  <p class="foot-copy">&copy; 2026 Statedoku</p>
+  <nav class="foot-links" aria-label="Statedoku"><a href="/fr/archive/">Archives</a> · <a href="/fr/play/">Jeux</a> · <a href="/fr/learn/">Apprendre</a> · <a href="/states/">États</a> · <a href="/regions/">Régions</a> · <a href="/cities/">Villes</a> · <a href="/quiz/">Quiz</a> · <a href="/fr/how-to-play/">Comment jouer</a> · <a href="/fr/faq/">FAQ</a> · <a href="/fr/about/">À propos</a> · <a href="/fr/privacy/">Confidentialité</a> · <a href="/fr/terms/">Conditions</a> · <a href="/fr/mentions-legales/">Mentions légales</a> · <a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2Ffr%2F" target="_blank" rel="noopener">Partager avec une classe</a></nav>
 </footer>
 
 <!-- Search panel (bottom sheet) -->
@@ -250,6 +245,6 @@
 })();
 </script>
 <script src="../js/puzzle.js?v=20"></script>
-<script src="../js/game.js?v=24"></script>
+<script src="../js/game.js?v=25"></script>
 </body>
 </html>
