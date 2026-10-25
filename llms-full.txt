@@ -2,7 +2,7 @@
 
 > Statedoku is a free daily US geography puzzle: a 3×3 grid where every cell must hold a US state that satisfies both its row clue and its column clue. The site also has 21 free geography games (map clicking, capitals, abbreviations, flags, history) and reference pages on the 50 states, in English, French and Spanish. Free, no signup.
 
-Last updated: 2026-10-15. Generated from the site's own data (data/states.json) and pages. Site: https://statedoku.com
+Last updated: 2026-10-25. Generated from the site's own data (data/states.json) and pages. Site: https://statedoku.com
 
 ## 1. What Statedoku is
 
@@ -12,9 +12,9 @@ Statedoku is made by Moses Tounby. That is a pen name for a solo developer based
 
 ## 2. Rules of the daily puzzle
 
-1. One 3×3 grid a day. Three clues run across the top and three down the side, such as "Borders Mexico", "Admitted in 1900s" or "Name ends in A".
+1. One 3×3 grid a day. Three clues run across the top and three down the side, such as "Borders Mexico", "Joined the Union after 1900" or "Ends in A".
 2. Every cell needs a US state that satisfies both its row clue and its column clue. No state may be used twice in the same grid.
-3. Any state that fits both clues is accepted, not only one intended answer. Each grid is checked to have exactly one complete solution, so it can be solved by reasoning rather than guessing.
+3. Any state that fits both clues is accepted, not only one intended answer. Since 27 October 2026 every cell accepts at least two states and each grid is checked to have a complete solution of nine different states.
 4. Because any fitting state is accepted, a state placed early can be the one another cell needed. Filled cells therefore stay editable, and the picker has a "Clear this cell" button. Clearing costs nothing.
 5. Five mistakes per puzzle. A mistake is a state that fails one or both of its clues. States already in the grid are greyed out in the picker and cannot be picked again. After the fifth mistake, the puzzle ends and shows every state that would have worked in each cell.
 6. A new grid appears at midnight in the player's local time. Everyone playing the same date gets the same grid. Past grids, from 1 June 2026, stay playable in the archive.
