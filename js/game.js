@@ -35,6 +35,7 @@ const Game = (() => {
   let _dateStr    = null;
   let _errors     = 0;
   let _goldenFound = false;
+  let _wrongFlash = null;   // ends the flash after a wrong pick, if one is running
 
   // US flag SVG, official proportions (19:10), 13 stripes, 50 stars in 9 rows (6,5,6,5,6,5,6,5,6)
   function _buildFlagSVG() {
@@ -227,6 +228,18 @@ const Game = (() => {
     capital_is_largest: '\u{1F3DB}\uFE0F', capital_starts_with_s: '\u{1F3DB}\uFE0F',
     capital_named_after_president: '\u{1F3DB}\uFE0F', capital_has_city: '\u{1F3DB}\uFE0F',
     has_nba: '\u{1F3C0}',
+    natl_parks_3: '\u{1F3DE}\uFE0F', peak_14000: '\u{1F3D4}\uFE0F', low_high_point: '\u{1F95E}',
+    yellowstone: '\u{1F9AC}', four_corners: '\u{1F4CD}',
+    ohio_river: '\u26F4\uFE0F', colorado_river: '\u{1F6A3}', rio_grande: '\u{1F3DC}\uFE0F',
+    appalachian_trail: '\u{1F97E}', oregon_trail: '\u{1F402}', pony_express: '\u{1F40E}',
+    in_louisiana_purchase: '\u{1F4B0}', in_mexican_cession: '\u{1F91D}', northwest_territory: '\u{1F9ED}',
+    former_us_capital: '\u{1F985}', border_state_civil_war: '\u2696\uFE0F',
+    hosted_olympics: '\u{1F3C5}', ivy_league: '\u{1F393}', nasa_center: '\u{1F680}',
+    bird_cardinal: '\u{1F426}', bird_meadowlark: '\u{1F426}', bird_mockingbird: '\u{1F426}',
+    larger_than_uk: '\u{1F1EC}\u{1F1E7}', more_cows_than_people: '\u{1F404}',
+    capital_two_words: '\u{1F3DB}\uFE0F', capital_same_initial: '\u{1F3DB}\uFE0F',
+    named_after_person: '\u{1F464}', paired_name: '\u{1F46F}',
+    no_letter_a: _NAME, ends_in_ia: _NAME, same_first_last: _NAME, postal_first_last: _NAME, rare_letter: _NAME,
   };
   function _clueIcon(cid) {
     if (CLUE_ICON[cid]) return CLUE_ICON[cid];
@@ -429,6 +442,10 @@ const Game = (() => {
 
   function _onCellClick(r, c) {
     if (_solved || _gameOver) return;
+    if (_wrongFlash) {
+      if (_errors >= MAX_ERRORS) return;   // the game ends when the flash does
+      _wrongFlash();
+    }
     // Filled cells stay editable on purpose. Now that any answer satisfying
     // both clues is accepted, a player can legitimately fill a cell with a
     // state that another cell also needed, and the only way out of that is to
@@ -763,15 +780,24 @@ const Game = (() => {
     const cell = document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
     if (cell) {
       cell.classList.add('shake');
-      setTimeout(() => {
+      // A tap during the flash used to open the picker, then the timer below
+      // cleared the selection under it and left a picker that picked nothing.
+      // _onCellClick now ends the flash first.
+      const restore = () => {
+        clearTimeout(timer);
+        _wrongFlash = null;
         _grid[r][c] = prev;
         cell.classList.remove('shake');
+        _saveProgress(); // only persist after the wrong state is cleared
+      };
+      const timer = setTimeout(() => {
+        restore();
         _selectedCell = null;
         _renderCells();
-        _saveProgress(); // only persist after the wrong state is cleared
         if (_errors >= MAX_ERRORS) _triggerGameOver();
         else _focusCell(r, c);
       }, 600);
+      _wrongFlash = restore;
     }
   }
 

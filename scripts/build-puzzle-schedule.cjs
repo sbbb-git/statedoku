@@ -104,7 +104,10 @@ function addDays(d, n) { const t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.ge
     chosen.push(six);
   }
 
-  const code = chosen.map(six => six.map(c => V.alphabet[ids.indexOf(c)]).join('')).join('');
+  // Two characters per clue: its index in base 64, so the pool can pass 64.
+  const enc = i => V.alphabet[i >> 6] + V.alphabet[i & 63];
+  if (ids.length > 64 * 64) throw new Error('clue pool too large for the encoding');
+  const code = chosen.map(six => six.map(c => enc(ids.indexOf(c))).join('')).join('');
   src = src.replace(/const V3_SCHEDULE = '[^']*';/, `const V3_SCHEDULE = '${code}';`);
   fs.writeFileSync(PUZZLE, src);
 

@@ -851,7 +851,7 @@ def page(lang):
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; {t["footer"]}</p>
 </footer>
 {VIZ_JS}
-<script src="/config.js?v=13"></script>
+<script src="/config.js?v=14"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 </body>

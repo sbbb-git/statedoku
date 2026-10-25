@@ -291,12 +291,26 @@ every time zone keeps the grid it was shown; from it all zones share one.
 request ("je suis pas fan du puzzle du jour"). The old pool of 150 clues held
 fuzzy ones (Sun Belt, Deep South, swing state), trivia (Taylor Swift tour,
 birthplace of two presidents) and disputed ones (name origins), and 65% of
-cells accepted a single state. `V3_POOL` keeps 61 clues that a map, a list or
+cells accepted a single state. `V3_POOL` keeps clues that a map, a list or
 the name itself settles, in families (regions, time zones, population,
 coasts, borders, rivers, statehood eras, capitals, names), with at most two
 name clues a grid, every cell between two and nine answers, and a full grid of
-nine different states. The grids come from `V3_SCHEDULE`, six characters a
-day for two years, built by `node scripts/build-puzzle-schedule.cjs` with the
+nine different states. On 25 October 2026 the owner asked for as many
+original, Metrodoku-like clues as possible, guessable and educational first:
+33 more joined (national parks, fourteeners, the flattest states, Yellowstone,
+the Ohio, Colorado and Rio Grande, the Appalachian and Oregon trails, the Pony
+Express, the Louisiana Purchase, the Mexican Cession, the Northwest Territory,
+Civil War border states, former US capitals, Olympic hosts, the Ivy League,
+NASA centers, three state birds, larger than the UK, more cows than people,
+capital and name games), 94 in all. Their sets sit in
+`V3_LISTS` with the edge case each gloss settles; every one was checked by a
+second, independent pass ("was once part of another state" was dropped: the
+standard lists disagree on Vermont; "once an independent country" too: no
+column can meet three states with nothing else in common). Re-check the state birds after each
+Florida session (a flamingo bill died in March 2026) and the national park
+count when Congress adds one. The grids come from `V3_SCHEDULE`, twelve
+characters a day (two per clue, an index in base 64, since the pool passed 64)
+for two years, built by `node scripts/build-puzzle-schedule.cjs` with the
 whole history in view: no set of six clues ever repeats, no clue of yesterday
 is in today's grid, every clue's turn comes round. Past the schedule's end
 (26 October 2028) a generator from the date takes over; rebuild before then.
