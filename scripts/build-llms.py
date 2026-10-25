@@ -139,12 +139,12 @@ ABOUT = (
 
 RULES = [
     'One 3×3 grid a day. Three clues run across the top and three down the side, '
-    'such as "Borders Mexico", "Admitted in 1900s" or "Name ends in A".',
+    'such as "Borders Mexico", "Joined the Union after 1900" or "Ends in A".',
     'Every cell needs a US state that satisfies both its row clue and its column '
     'clue. No state may be used twice in the same grid.',
     'Any state that fits both clues is accepted, not only one intended answer. '
-    'Each grid is checked to have exactly one complete solution, so it can be '
-    'solved by reasoning rather than guessing.',
+    'Since 27 October 2026 every cell accepts at least two states and each grid '
+    'is checked to have a complete solution of nine different states.',
     'Because any fitting state is accepted, a state placed early can be the one '
     'another cell needed. Filled cells therefore stay editable, and the picker '
     'has a "Clear this cell" button. Clearing costs nothing.',

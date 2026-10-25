@@ -34,16 +34,20 @@ const I18n = (() => {
     return dict[key] || key;
   }
 
+  // Older pop-culture labels open with an emoji ("🏛️ Capital = largest
+  // city"); archive grids still show them, without it.
+  const _plain = s => String(s).replace(/^[\p{Extended_Pictographic}\uFE0F\u200D\s]+/u, '');
+
   function constraint(id) {
     // 1) Try the translations.json catalog (core constraints)
     const fromCatalog = t('constraints.' + id);
-    if (fromCatalog && fromCatalog !== 'constraints.' + id) return fromCatalog;
+    if (fromCatalog && fromCatalog !== 'constraints.' + id) return _plain(fromCatalog);
 
     // 2) Fall back to PENDING_CONSTRAINTS where labels are embedded per language.
     //    Pending candidates carry .en / .fr / .es directly on the object.
     if (typeof window !== 'undefined' && window.PENDING_MAP && window.PENDING_MAP[id]) {
       const p = window.PENDING_MAP[id];
-      return p[_lang] || p.en || id;
+      return _plain(p[_lang] || p.en || id);
     }
 
     // 3) Last resort: humanize the id so we never show "constraints.pc_xxx" raw.

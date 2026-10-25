@@ -25,8 +25,8 @@ const Puzzle = (() => {
   }
 
   // --- Row groups: every triple is disjoint and has been verified to produce
-  //     at least one globally-unique puzzle. ---
-  // Curated list — all groups tested at ≥20/30 viability rate on real seeds.
+  // at least one globally-unique puzzle. ---
+  // Curated list, all groups tested at ≥20/30 viability rate on real seeds.
   // Dead groups (subregion combos that fail, region/political/coast that have
   // too many states per row to find unique solutions) have been removed.
   const MUTEX_ROW_GROUPS = [
@@ -70,7 +70,7 @@ const Puzzle = (() => {
     ['has_million_city', 'sub_new_england', 'sub_mountain'],
     ['has_million_city', 'sub_new_england', 'sub_plains'],
     ['borders_few', 'sub_mid_atlantic', 'sub_mountain'],
-    // ─── Expanded set (programmatically validated to produce ≥3 unique puzzles each) ───
+    // Expanded set (programmatically validated to produce ≥3 unique puzzles each) 
     ['sun_belt', 'snow_belt', 'rust_belt'],                               // 15× combos
     ['pop_lt1m', 'pop_5m10m', 'pop_gt10m'],                               // 8×
     ['borders_few', 'sub_mountain', 'sub_plains'],                        // 7×
@@ -80,7 +80,7 @@ const Puzzle = (() => {
     ['earthquake_zone', 'sub_deep_south', 'sub_mid_atlantic'],            // 4×
     ['pop_1m5m', 'pop_5m10m', 'pop_gt10m'],                               // 3×
     ['largest_state', 'sub_new_england', 'sub_mid_atlantic'],             // 3×
-    // ─── Added with the 2026 constraint pass ───
+    // Added with the 2026 constraint pass 
     // Both of these carry a constraint whose states sit in one corner of the
     // country. As a column such a constraint cannot reach three disjoint rows,
     // so it is placed on a row instead, the same way desert_state and
@@ -284,7 +284,7 @@ const Puzzle = (() => {
     'has_million_city', 'largest_state', 'smallest_state',
     'capital_named_after_president', 'capital_starts_with_s',
     'borders_6_plus', 'borders_few',
-    // Pro sports — only NBA
+    // Pro sports, only NBA
     'has_nba',
     // Name origin (NEW category)
     'name_native_origin', 'name_spanish_origin', 'name_royalty_origin',
@@ -299,14 +299,14 @@ const Puzzle = (() => {
     'letters_6', 'letters_7', 'letters_8', 'letters_9',
     // Starts with letter
     'starts_a', 'starts_i', 'starts_m', 'starts_n', 'starts_w',
-    // ─── Map reading: true whatever the player knows about the country ───
+    // Map reading: true whatever the player knows about the country 
     'has_islands', 'continental_divide',
     'has_panhandle', 'larger_than_uk', 'smaller_than_portugal',
-    // ─── Names, read against something else rather than letter by letter ───
+    // Names, read against something else rather than letter by letter 
     'name_longer_than_capital', 'postal_code_is_word',
-    // ─── Superlatives that teach something ───
+    // Superlatives that teach something 
     'all_four_leagues', 'more_cows_than_people', 'low_high_point',
-    // ─── Culture that travels ───
+    // Culture that travels 
     'two_presidents_born', 'flag_no_lettering',
   ];
 
@@ -376,13 +376,19 @@ const Puzzle = (() => {
       case 'smallest_state':     return state.areaRank >= 46;
       // Sports
       case 'has_nba': return !!state.nbaTeam;
+      // Clues added with the third generator (DATA_FIX3_FROM)
+      case 'statehood_1800_1850':  return state.admitted >= 1800 && state.admitted <= 1850;
+      case 'statehood_1851_1899':  return state.admitted >= 1851 && state.admitted <= 1899;
+      case 'on_missouri':          return !!state.onMissouri;
+      case 'capital_has_city':     return / City$/.test(state.capital || '');
+      case 'capital_is_largest':   return !!state.capitalIsLargest;
       // Name
       case 'two_word_name':  return state.wordCount === 2;
       case 'double_letter':  return !!state.doubleLetter;
       case 'vowel_start':    return 'AEIOU'.includes(state.startsWith);
       case 'has_new':   return state.names.en.includes('New');
 
-      // ───────── 100 NEW CONSTRAINTS ─────────
+      // 100 NEW CONSTRAINTS 
       // Regional belts / zones
       case 'sun_belt':          return !!state.sunBelt;
       case 'snow_belt':         return !!state.snowBelt;
@@ -424,10 +430,10 @@ const Puzzle = (() => {
       case 'long_name':              return state.letterCount >= 10;
       case 'two_word_starts_n':      return state.wordCount === 2 && state.startsWith === 'N';
 
-      // ───────── Map reading ─────────
+      // Map reading 
       case 'has_islands':         return !!state.hasIslands;
       case 'continental_divide':  return !!state.continentalDivide;
-      // ───────── Names read against something else ─────────
+      // Names read against something else 
       // Letters only, so a name is not penalised for its spaces or hyphens.
       //
       // The margin is 2 rather than 1: at 1 the constraint takes 22 states,
@@ -444,7 +450,7 @@ const Puzzle = (() => {
         return ['en', 'fr', 'es'].every(l =>
           state.names[l].replace(/[\s-]/g, '').length - cap >= 2);
       }
-      // ───────── Superlatives ─────────
+      // Superlatives 
       case 'all_four_leagues':
         return !!(state.nbaTeam && state.nflTeam && state.mlbTeam && state.nhlTeam);
 
@@ -466,7 +472,7 @@ const Puzzle = (() => {
   // many of these can appear in a single solution to avoid them being
   // "the answer" every day. CA/NY/TX each match ~25-30 active constraints
   // while smaller states match ~5. Without this cap, the daily grid would
-  // feel repetitive — like a Paris metro puzzle where Châtelet was a valid
+  // feel repetitive, like a Paris metro puzzle where Châtelet was a valid
   // answer every day.
   const DOMINANT_STATES = new Set(['CA', 'NY', 'TX']);
   const MAX_DOMINANT_PER_PUZZLE = 2;
@@ -582,7 +588,7 @@ const Puzzle = (() => {
           })(0);
 
           // Hard cap: no more than MAX_DOMINANT_PER_PUZZLE of CA/NY/TX in the
-          // solution. Skip combos that violate this — keeps these big states
+          // solution. Skip combos that violate this, keeps these big states
           // from monopolising daily answers.
           if (_countDominant(flat) > MAX_DOMINANT_PER_PUZZLE) continue;
 
@@ -601,7 +607,7 @@ const Puzzle = (() => {
   }
 
   // Score a puzzle: cultural/historical constraints = 2pts, geographic/political = 1pt.
-  // Penalty: each CA/NY/TX cell in the solution subtracts 2 points — among
+  // Penalty: each CA/NY/TX cell in the solution subtracts 2 points, among
   // otherwise-equal puzzles, prefer the ones that don't lean on dominant states.
   function _score(puzzle) {
     let s = 0;
@@ -614,7 +620,7 @@ const Puzzle = (() => {
   }
 
   // Row constraints that are "boring" (pure letter/count properties).
-  // Groups where ALL rows are boring are deprioritised — used only as fallback.
+  // Groups where ALL rows are boring are deprioritised, used only as fallback.
   const BORING_ROW = new Set([
     'letters_6','letters_7','letters_8','letters_9',
     'vowel_start','starts_a','starts_i','starts_m','starts_n','starts_w',
@@ -675,10 +681,9 @@ const Puzzle = (() => {
   }
 
   // Find the "Golden State" for a puzzle: a state in the solution that satisfies
-  // ALL 3 column constraints (a column-wildcard — it could be placed in any of
+  // ALL 3 column constraints (a column-wildcard, it could be placed in any of
   // the 3 cells of its row). Since our row groups are mutex by design, a state
-  // can satisfy at most 1 row constraint, so "all 6 criteria" is impossible —
-  // the meaningful version is "all 3 columns".
+  // can satisfy at most 1 row constraint, so "all 6 criteria" is impossible, // the meaningful version is "all 3 columns".
   // Inspired by Tubedoku's Golden Station Easter egg. Rewards observant players.
   function _findGoldenState(puzzle, states) {
     if (!puzzle || !puzzle.solution || !puzzle.cols) return null;
@@ -693,7 +698,177 @@ const Puzzle = (() => {
   }
 
   function generatePuzzle(dateStr, states) {
+    if (dateStr >= DATA_FIX3_FROM) return _withDataFor(dateStr, states, st => _generateV3(dateStr, st));
     return _withDataFor(dateStr, states, st => _generatePuzzle(dateStr, states, st));
+  }
+
+  // --- Third generator, from DATA_FIX3_FROM ---------------------------------
+  // The first two drew from 150 clues, many of them fuzzy (Sun Belt, Deep
+  // South, swing state), trivia (Taylor Swift tour, two presidents born
+  // there) or disputed (name origins), and shipped only grids with exactly
+  // one solution: 65% of cells accepted a single state, so a player who did
+  // not know one clue had nothing to reason with. From this date a grid uses
+  // only clues a map, a list or the name itself settles, every cell accepts
+  // at least two states, and any valid grid wins as before.
+  const DATA_FIX3_FROM = '2026-10-27';
+  // clue: family. Clues of one family share an axis only when no state fits
+  // both (West, South, Midwest as three rows); otherwise one per axis.
+  const V3_POOL = {
+    region_west: 'region', region_south: 'region', region_midwest: 'region',
+    region_northeast: 'region', sub_new_england: 'region',
+    tz_eastern: 'tz', tz_central: 'tz', tz_mountain: 'tz', tz_pacific: 'tz', multi_timezone: 'tz',
+    pop_lt1m: 'pop', pop_1m5m: 'pop', pop_5m10m: 'pop', pop_gt10m: 'pop', has_million_city: 'city',
+    coast_atlantic: 'coast', coast_pacific: 'coast', coast_gulf: 'coast',
+    coast_great_lakes: 'coast', landlocked: 'coast',
+    border_canada: 'border', border_mexico: 'border',
+    on_mississippi: 'river', on_missouri: 'river', mt_rockies: 'mount', route_66: 'road',
+    borders_6_plus: 'nbr', borders_few: 'nbr', largest_state: 'area', smallest_state: 'area',
+    original_13: 'hist', confederate: 'civil',
+    statehood_pre_1800: 'adm', statehood_1800_1850: 'adm', statehood_1851_1899: 'adm', statehood_1900s: 'adm',
+    capital_is_largest: 'cap', capital_starts_with_s: 'cap',
+    capital_named_after_president: 'cap', capital_has_city: 'cap',
+    has_nba: 'sport',
+    starts_m: 'name', starts_n: 'name', starts_a: 'name', starts_i: 'name', starts_w: 'name',
+    vowel_start: 'name', ends_in_a: 'name', ends_in_o: 'name', ends_in_e: 'name', ends_in_n: 'name',
+    ends_in_s: 'name', two_word_name: 'name', has_new: 'name', double_letter: 'name',
+    contains_letter_k: 'name', contains_letter_w: 'name', contains_letter_v: 'name',
+    contains_letter_y: 'name', short_name: 'name', long_name: 'name',
+  };
+  const V3_MIN = 2, V3_MAX = 9;
+  // The schedule below stores each grid as six indexes into this list, so a
+  // clue is only ever appended, never removed or moved.
+  const V3_IDS = Object.keys(V3_POOL);
+  const V3_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+  // Built by scripts/build-puzzle-schedule.cjs: six characters a day (three
+  // rows, three columns) from DATA_FIX3_FROM. Chosen with the whole history
+  // in view, which a grid computed from its own date alone cannot have: no
+  // set of six clues ever repeats, no clue of yesterday's grid comes back
+  // today, and every clue's turn comes round evenly. Past its end the
+  // generator below takes over.
+  const V3_SCHEDULE = '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';
+
+  function _seedV3(str) {
+    let h = 2166136261;
+    for (const ch of str) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+
+  function _v3Sets(states) {
+    const SET = {};
+    for (const c of V3_IDS) SET[c] = new Set(states.filter(s => matches(s, c)).map(s => s.id));
+    return SET;
+  }
+
+  // Cells, and one full solution of nine different states, for six clues.
+  function _v3Grid(SET, rows, cols, max) {
+    const cells = rows.map(r => cols.map(c => [...SET[r]].filter(x => SET[c].has(x))));
+    if (cells.flat().some(x => x.length < V3_MIN || x.length > max)) return null;
+    const flat = cells.flat(), used = new Set();
+    let sol = null;
+    (function rec(i, acc) {
+      if (sol) return;
+      if (i === 9) { sol = acc.slice(); return; }
+      for (const s of flat[i]) {
+        if (used.has(s)) continue;
+        used.add(s); acc.push(s); rec(i + 1, acc); acc.pop(); used.delete(s);
+      }
+    })(0, []);
+    return sol ? { rows, cols, cells, sol } : null;
+  }
+
+  // Up to `limit` valid grids around an anchor clue (a row) crossed with a
+  // partner clue (a column), each with a quality score. Used at runtime past
+  // the schedule and by the schedule builder.
+  function _v3Candidates(SET, seedStr, anchor, partner, limit) {
+    const ids = V3_IDS;
+    const inter = (a, b) => [...SET[a]].filter(x => SET[b].has(x)).length;
+    const nested = (a, b) => [...SET[a]].every(x => SET[b].has(x)) || [...SET[b]].every(x => SET[a].has(x));
+    // Small sets are drawn more often: left alone, the broad clues fit
+    // everything and crowd out the rest. The few that still crowd in after
+    // that (Canada meets nearly every clue) are damped by hand.
+    const DAMP = { border_canada: 0.35, region_midwest: 0.6, borders_6_plus: 0.6, statehood_1851_1899: 0.7, pop_5m10m: 0.7 };
+    const weight = c => { const n = SET[c].size; return (n <= 5 ? 1.7 : n <= 9 ? 1.4 : n <= 14 ? 1 : 0.45) * (DAMP[c] || 1); };
+    const pick = (rng, list) => {
+      let tot = 0; for (const c of list) tot += weight(c);
+      let r = rng() * tot;
+      for (const c of list) { r -= weight(c); if (r <= 0) return c; }
+      return list[list.length - 1];
+    };
+    const fitsAxis = (axis, c) => axis.every(a => !nested(a, c)
+      && !(V3_POOL[a] === V3_POOL[c] && inter(a, c))
+      && !(V3_POOL[a] === 'name' && V3_POOL[c] === 'name'));
+    const crosses = (a, b, max) => { const k = inter(a, b); return a !== b && k >= V3_MIN && k <= max && !nested(a, b); };
+    const rng = mulberry32(_seedV3(seedStr));
+    const found = [];
+    if (!crosses(anchor, partner, V3_MAX)) return found;
+    for (let att = 0; att < 3000 && found.length < limit; att++) {
+      const max = att < 2000 ? V3_MAX : V3_MAX + 3;
+      const rows = [anchor];
+      while (rows.length < 3) {
+        const cand = ids.filter(c => !rows.includes(c) && fitsAxis(rows, c) && crosses(c, partner, max));
+        if (!cand.length) break;
+        rows.push(pick(rng, cand));
+      }
+      if (rows.length < 3) continue;
+      const cols = [partner];
+      while (cols.length < 3) {
+        const cand = ids.filter(c => !rows.includes(c) && !cols.includes(c) && fitsAxis(cols, c)
+          && rows.every(r => crosses(r, c, max)));
+        if (!cand.length) break;
+        cols.push(pick(rng, cand));
+      }
+      if (cols.length < 3) continue;
+      const six = [...rows, ...cols];
+      if (six.filter(c => V3_POOL[c] === 'name').length > 2) continue;
+      if (six.filter(c => SET[c].size >= 17).length > 1) continue;
+      const g = _v3Grid(SET, rows, cols, max);
+      if (!g) continue;
+      // Prefer cells with three to six answers, few with only two, and a mix
+      // of kinds of clue.
+      const sizes = g.cells.flat().map(x => x.length);
+      g.q = sizes.filter(n => n >= 3 && n <= 6).length - 0.6 * sizes.filter(n => n === 2).length
+        + 0.8 * new Set(six.map(c => V3_POOL[c])).size - 0.7 * six.filter(c => SET[c].size >= 13).length;
+      found.push(g);
+    }
+    return found;
+  }
+
+  function _v3Out(dateStr, states, g, flip) {
+    let { rows, cols, cells, sol } = g;
+    if (flip) {   // the anchor sits on either axis
+      [rows, cols] = [cols, rows];
+      cells = rows.map((r, i) => cols.map((c, j) => g.cells[j][i]));
+      sol = [0, 1, 2].flatMap(i => [0, 1, 2].map(j => g.sol[j * 3 + i]));
+    }
+    const out = { date: dateStr, rows, cols, solution: [sol.slice(0, 3), sol.slice(3, 6), sol.slice(6, 9)], cells };
+    out.goldenState = _findGoldenState(out, states);
+    return out;
+  }
+
+  function _generateV3(dateStr, states) {
+    const SET = _v3Sets(states);
+    const day = Math.round((Date.parse(dateStr + 'T00:00:00Z') - Date.parse(DATA_FIX3_FROM + 'T00:00:00Z')) / 86400000);
+    const code = V3_SCHEDULE.slice(day * 6, day * 6 + 6);
+    if (code.length === 6) {
+      const six = [...code].map(ch => V3_IDS[V3_ALPHABET.indexOf(ch)]);
+      const g = _v3Grid(SET, six.slice(0, 3), six.slice(3), 99);
+      if (g) return _v3Out(dateStr, states, g, false);
+    }
+    // Past the schedule: every clue leads a grid once per cycle, crossed each
+    // time with the next of the clues it can meet.
+    const mod = (a, n) => ((a % n) + n) % n;
+    const cycle = [...V3_IDS].sort((a, b) => _seedV3('o' + a) - _seedV3('o' + b));
+    const anchor = cycle[mod(day, cycle.length)];
+    const partners = [...V3_IDS].sort((a, b) => _seedV3(anchor + a) - _seedV3(anchor + b));
+    const round = Math.floor(day / cycle.length);
+    for (let k = 0; k < partners.length; k++) {
+      const found = _v3Candidates(SET, 'v3:' + dateStr + ':' + k, anchor, partners[mod(round + k, partners.length)], 10);
+      if (!found.length) continue;
+      let best = found[0];
+      for (const f of found) if (f.q > best.q) best = f;
+      return _v3Out(dateStr, states, best, _seedV3('flip' + dateStr) % 2 === 1);
+    }
+    return null;
   }
 
   function _generatePuzzle(dateStr, rawStates, states) {
@@ -722,7 +897,7 @@ const Puzzle = (() => {
       return out;
     }
 
-    // Absolute fallback — should never be reached
+    // Absolute fallback, should never be reached
     const fallback = generatePuzzleRelaxed(dateStr, states, mulberry32(baseSeed));
     if (fallback) fallback.goldenState = _findGoldenState(fallback, states);
     return fallback;
@@ -795,7 +970,7 @@ const Puzzle = (() => {
   let _states = null;
   let _puzzleCache = {};
 
-  // ── Disabled constraints (dev panel) ────────────────────────────────────
+  // Disabled constraints (dev panel) 
   // Stored in localStorage under 'statedoku_disabled_constraints' as JSON array.
   function _getDisabled() {
     try {
@@ -846,7 +1021,7 @@ const Puzzle = (() => {
     } catch(e) {}
   })();
 
-  // ─── PRELAUNCH PREVIEW ────────────────────────────────────────────────
+  // PRELAUNCH PREVIEW 
   // Until launch day, every date returns the same fixed "preview" puzzle.
   // This way the / page still works (something to play with) but doesn't
   // burn through the daily content before the public launch.
@@ -945,7 +1120,7 @@ const Puzzle = (() => {
     return `${y}-${m}-${day}`;
   }
 
-  // ── Pending constraints (approved by admin via /admin/constraints/) ────
+  // Pending constraints (approved by admin via /admin/constraints/) 
   function _getApprovedPending() {
     try { return new Set(JSON.parse(localStorage.getItem('statedoku_approved_pending') || '[]')); }
     catch { return new Set(); }
@@ -962,7 +1137,7 @@ const Puzzle = (() => {
     return PENDING_CONSTRAINTS.filter(c => approved.has(c.id)).map(c => c.id);
   }
 
-  // ── Public API ──────────────────────────────────────────────────────────
+  // Public API 
   function getAllConstraints() {
     // Merge built-in pool with admin-approved pending candidates
     return [...ALL_CONSTRAINTS, ..._approvedPendingList()];
@@ -980,6 +1155,9 @@ const Puzzle = (() => {
     return states.filter(s => matches(s, constraintId)).length;
   }
 
-  return { getPuzzle, getTodayStr, loadStates, matches, helpFitsDate,
+  // For scripts/build-puzzle-schedule.cjs only.
+  const _v3 = { ids: V3_IDS, alphabet: V3_ALPHABET, from: DATA_FIX3_FROM, pool: V3_POOL,
+    sets: _v3Sets, candidates: _v3Candidates, grid: _v3Grid, withData: _withDataFor };
+  return { _v3, getPuzzle, getTodayStr, loadStates, matches, helpFitsDate,
            getAllConstraints, getAllRowGroups, getDisabled, setDisabled, countMatching };
 })();
