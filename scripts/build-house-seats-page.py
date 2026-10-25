@@ -279,7 +279,7 @@ T['en'] = dict(
          ('When will House seats change next?',
           'After the 2030 census. The Census Bureau must deliver the state counts within nine months of census day, and the new seat numbers apply from the 2032 elections, including that year\'s presidential election.')],
     cta_h='Test yourself on the electoral map', cta_p='Which states have the most electoral votes? The quiz takes two minutes.',
-    cta_a='Play the quiz →', cta_url='/play/electoral-college/',
+    cta_a='Play the quiz', cta_url='/play/electoral-college/',
     rel_h='Related guides',
     related=[('/learn/electoral-college/', 'Electoral college votes by state'), ('/learn/states-by-population/', 'States by population'),
              ('/learn/swing-states/', 'Swing states'), ('/learn/us-regions/', 'The 4 US regions'),
@@ -398,7 +398,7 @@ T['fr'] = dict(
          ('Quand les sièges changeront-ils la prochaine fois ?',
           'Après le recensement de 2030. Le Census Bureau doit transmettre les chiffres des États dans les neuf mois suivant le jour du recensement, et les nouveaux sièges s\'appliqueront à partir des élections de 2032, présidentielle comprise.')],
     cta_h='Testez-vous sur la carte électorale', cta_p='Quels États ont le plus de grands électeurs ? Le quiz prend deux minutes.',
-    cta_a='Jouer au quiz →', cta_url='/fr/play/electoral-college/',
+    cta_a='Jouer au quiz', cta_url='/fr/play/electoral-college/',
     rel_h='Guides associés',
     related=[('/fr/learn/college-electoral/', 'Le Collège électoral'), ('/fr/learn/regions-des-etats-unis/', 'Les 4 régions des États-Unis'),
              ('/fr/learn/liste-des-50-etats/', 'La liste des 50 États'), ('/fr/learn/systeme-federal-americain/', 'Le système fédéral américain'),
@@ -516,7 +516,7 @@ T['es'] = dict(
          ('¿Cuándo cambiarán los escaños la próxima vez?',
           'Tras el censo de 2030. El Census Bureau debe entregar las cifras por estado en los nueve meses siguientes al día del censo, y los nuevos escaños regirán desde las elecciones de 2032, incluida la presidencial.')],
     cta_h='Ponte a prueba con el mapa electoral', cta_p='¿Qué estados tienen más votos electorales? El quiz dura dos minutos.',
-    cta_a='Jugar el quiz →', cta_url='/es/play/electoral-college/',
+    cta_a='Jugar el quiz', cta_url='/es/play/electoral-college/',
     rel_h='Guías relacionadas',
     related=[('/es/learn/colegio-electoral/', 'El Colegio Electoral'), ('/es/learn/estados-mas-poblados/', 'Los estados más poblados'),
              ('/es/learn/estados-bisagra/', 'Los estados bisagra'), ('/es/learn/regiones-de-eeuu/', 'Las regiones de EE. UU.'),
@@ -730,7 +730,7 @@ def page(lang):
                           'isBasedOn': {'@type': 'Dataset', 'name': 'Historical Apportionment Data (1910-2020)',
                                         'url': SRC, 'creator': {'@type': 'Organization', 'name': 'U.S. Census Bureau'}},
                           'image': f'{BASE}/og/og-house-seats-{lang}.png'}, ensure_ascii=False)
-    related = ''.join(f'<a href="{u}">→ {esc(n)}</a>' for u, n in t['related'])
+    related = ''.join(f'<a href="{u}">{esc(n)}</a>' for u, n in t['related'])
 
     return f'''<!DOCTYPE html>
 <html lang="{lang}">
@@ -749,14 +749,14 @@ def page(lang):
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0F2147">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="color-scheme" content="light">
   <title>{esc(t["title"])}</title>
   <meta name="description" content="{esc(t["desc"])}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{url}">
 {alts}  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=32">
+  <link rel="stylesheet" href="/css/style.css?v=33">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{esc(t["og_title"])}">
   <meta property="og:description" content="{esc(t["desc"])}">
@@ -777,7 +777,7 @@ def page(lang):
 <body class="legal-body">
 
 <header>
-  <a href="{t["home"]}" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <a href="{t["home"]}" class="logo">State<em>doku</em></a>
   <nav class="nav-actions"><a href="{t["learn"] if lang != "en" else "/"}" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">{t["back"]}</a></nav>
 </header><main>
   <section class="hp-hero">
@@ -848,10 +848,10 @@ def page(lang):
     <div class="related-grid">{related}</div>
   </div>
 </main><footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; {t["footer"]}</p>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; {t["footer"]}</p>
 </footer>
 {VIZ_JS}
-<script src="/config.js?v=12"></script>
+<script src="/config.js?v=13"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 </body>

@@ -662,21 +662,21 @@ def render(kind, L, d):
             secs += f'    <h3>{name}</h3>\n' + ''.join(f'    <p>{p}</p>\n' for p in paras)
     method = ''.join(f'      <li>{m}</li>\n' for m in d['method'])
     faq = ''.join(f'    <details><summary><strong>{q}</strong></summary><p>{ans}</p></details>\n' for q, ans in d['faq'])
-    rel = ''.join(f'      <a href="{u}">→ {t}</a>\n' for u, t in d['related'])
+    rel = ''.join(f'      <a href="{u}">{t}</a>\n' for u, t in d['related'])
     faq_h = {'en': 'Frequently asked questions', 'fr': 'Questions fréquentes', 'es': 'Preguntas frecuentes'}[L]
-    ext = '<script src="/config.js?v=12"></script>\n<script src="/js/admin.js"></script>\n<script src="/js/ads.js?v=1"></script>\n'
+    ext = '<script src="/config.js?v=13"></script>\n<script src="/js/admin.js"></script>\n<script src="/js/ads.js?v=1"></script>\n'
     page = f'''<!DOCTYPE html>
 <html lang="{L}">
 <head>{head_scripts}<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0F2147">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="color-scheme" content="light">
   <title>{html.escape(d['title'], quote=False)} | Statedoku</title>
   <meta name="description" content="{html.escape(d['desc'])}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{url}">
 {alts}  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=32">
+  <link rel="stylesheet" href="/css/style.css?v=33">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{html.escape(d['title'])}">
   <meta property="og:description" content="{html.escape(d['desc'])}">
@@ -716,7 +716,7 @@ def render(kind, L, d):
       <p style="margin:0 0 4px;font-weight:800;color:#0F2147;font-size:1.05rem;">{d['play_h']}</p>
       <p style="margin:0 0 10px;color:var(--text-2);font-size:.95rem;">{d['play_p']}</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <a href="{d['play_cta'][1]}" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:9px 18px;border-radius:999px;font-weight:800;text-decoration:none;font-size:.92rem;">{d['play_cta'][0]} →</a>
+        <a href="{d['play_cta'][1]}" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:9px 18px;border-radius:999px;font-weight:800;text-decoration:none;font-size:.92rem;">{d['play_cta'][0]}</a>
         <a href="{d['daily_cta'][1]}" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:7px 16px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.92rem;">{d['daily_cta'][0]}</a>
       </div>
     </section>

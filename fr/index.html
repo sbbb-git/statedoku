@@ -9,14 +9,14 @@
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
   </script>
-  <!-- Google AdSense — site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
+  <!-- Google AdSense, site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
   <meta name="google-adsense-account" content="ca-pub-1481624152917622">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
        crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0F2147">
+  <meta name="theme-color" content="#F6F7F9">
   <meta name="color-scheme" content="light">
   <meta name="format-detection" content="telephone=no">
 
@@ -58,7 +58,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
   <link rel="preload" href="/data/states.json?v=7" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/css/style.css?v=32">
+  <link rel="stylesheet" href="/css/style.css?v=33">
 
   <script type="application/ld+json">
   {
@@ -79,47 +79,28 @@
   </script>
   <script type="application/ld+json" data-site-schema>{"@context": "https://schema.org", "@type": "WebSite", "name": "Statedoku", "url": "https://statedoku.com/fr/", "inLanguage": "fr", "publisher": {"@type": "Organization", "@id": "https://statedoku.com/#organization", "name": "Statedoku", "url": "https://statedoku.com/", "logo": {"@type": "ImageObject", "url": "https://statedoku.com/apple-touch-icon.png", "width": 180, "height": 180}, "email": "contact@statedoku.com", "sameAs": ["https://www.reddit.com/r/Statedoku/"], "description": "Puzzle quotidien gratuit de géographie des États-Unis et 21 jeux sur les 50 États, en français, anglais et espagnol."}}</script>
 </head>
-<body>
+<body class="home">
 
 <h1 class="sr-only">Statedoku, Le puzzle quotidien des États américains</h1>
 
-<header>
-  <a href="/fr/" class="logo" aria-label="Statedoku accueil">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
-  <div class="score-inline" aria-live="polite">
-    <span class="score-date" id="puzzle-date"></span>
-    <span class="score-sep" aria-hidden="true">·</span>
-    <span id="score-display">0 / 9</span>
-    <span class="score-sep" aria-hidden="true">·</span>
-    <span id="error-display" role="img" aria-label="Erreurs restantes"></span>
-  </div>
-  <nav class="nav-actions" aria-label="Actions de jeu">
-    <div class="lang-switcher" role="group" aria-label="Langue">
-      <button class="lang-btn" data-lang="en" onclick="location.href='/'">EN</button>
-      <button class="lang-btn active" data-lang="fr" aria-current="true">FR</button>
-      <button class="lang-btn" data-lang="es" onclick="location.href='/es/'">ES</button>
-    </div>
-    <button class="icon-btn" id="btn-howto" title="Comment jouer" aria-label="Comment jouer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    </button>
-    <button class="icon-btn" id="btn-stats" title="Statistiques" aria-label="Statistiques">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-    </button>
-    <button class="icon-btn" id="btn-share" title="Partager" aria-label="Partager">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-    </button>
+<header class="site-head">
+  <a href="/fr/" class="wordmark" aria-label="Statedoku accueil">statedoku</a>
+  <nav class="head-nav" aria-label="Principal">
+    <button type="button" class="head-link" id="btn-howto">Comment jouer</button>
+    <a class="head-link" href="/fr/archive/">Archives</a>
+    <a class="head-link" href="/fr/play/">Jeux</a>
+    <button type="button" class="head-link" id="btn-stats">Stats</button>
+    <span class="lang-switcher" role="group" aria-label="Langue"><a class="lang-btn" data-lang="en" href="/">EN</a><a class="lang-btn active" data-lang="fr" href="/fr/" aria-current="true">FR</a><a class="lang-btn" data-lang="es" href="/es/">ES</a></span>
   </nav>
 </header>
 
-<main>
-  <div id="loading">🇺🇸 Chargement du puzzle…</div>
-
+<main class="home-main">
+  <div id="loading">Chargement de la grille…</div>
 
   <div id="game-wrap">
-    <div id="email-cta" hidden>
-      <span class="ec-icon">📧</span>
-      <span class="ec-text" data-i18n="email_cta">Reçois le puzzle quotidien par mail</span>
-      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">Je m'inscris</button>
-      <button class="ec-close" id="ec-dismiss" aria-label="Fermer">✕</button>
+    <div class="day-head">
+      <h2 class="day-title"><span id="day-label">Grille du jour</span> <span class="day-date" id="puzzle-date"></span></h2>
+      <p class="day-score">Score <strong id="score-display">0 / 9</strong></p>
     </div>
 
     <div class="grid-wrapper">
@@ -143,11 +124,15 @@
       </div>
     </div>
 
+    <div class="under-grid">
+      <button type="button" class="giveup-btn" id="btn-giveup">Abandonner et voir les réponses</button>
+      <p class="mistakes">Erreurs <span id="error-display" role="img" aria-label="Erreurs restantes"></span></p>
+    </div>
     <div id="solved-banner">
       <div class="banner-icon banner-icon-success">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h3 data-i18n="solved">Réussi ! 🇺🇸</h3>
+      <h3 data-i18n="solved">Réussi !</h3>
       <div class="result-emoji" id="result-emoji-solved"></div>
       <div class="result-stats" id="result-stats-solved"></div>
       <div class="share-row" data-banner="solved"></div>
@@ -163,71 +148,12 @@
       <p class="banner-sub" data-i18n="come_back">Prochain puzzle à minuit.</p>
     </div>
   </div>
-
-  <div class="gc-share-wrap"><span>Profs : partage le puzzle du jour avec ta classe.</span><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2Ffr%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7l2.5 3H14l-2-2.4L10 20H7.5L10 17H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h16V6H4zm3 2h6v1.6H7V8zm0 3h10v1.6H7V11z"/></svg>Partager sur Google Classroom</a></div>
-
-  <section class="explore-more" aria-labelledby="explore-heading">
-    <h2 id="explore-heading">Après le puzzle, explore les 50 États</h2>
-    <p class="explore-sub">Fiches, quiz et guides, pour les curieux, les profs et les fans de mots-fléchés.</p>
-    <div class="explore-grid">
-      <a href="/states/" class="explore-card">
-        <strong>Les 50 États →</strong>
-        <span>Capitales, populations, faits, cartes. Une page par État.</span>
-      </a>
-      <a href="/fr/play/" class="explore-card">
-        <strong>21 jeux de géographie →</strong>
-        <span>Placer l'État, drapeaux, capitales, silhouettes, fuseaux horaires. Sans inscription.</span>
-      </a>
-      <a href="/fr/learn/" class="explore-card">
-        <strong>Apprendre les 50 États →</strong>
-        <span>Méthodes de mémorisation, découpage région par région, guides détaillés.</span>
-      </a>
-      <a href="/quiz/" class="explore-card">
-        <strong>Quiz États-Unis →</strong>
-        <span>10 questions, 4 modes. Teste ta géo en moins de 2 minutes.</span>
-      </a>
-      <a href="/regions/" class="explore-card">
-        <strong>Les 4 régions américaines →</strong>
-        <span>Nord-Est, Sud, Midwest, Ouest, et leurs 9 sous-régions.</span>
-      </a>
-      <a href="/cities/" class="explore-card">
-        <strong>Les 100 plus grandes villes →</strong>
-        <span>Dans quel État se trouve Charlotte ? Las Vegas ? Réponses et anecdotes.</span>
-      </a>
-      <a href="/facts/" class="explore-card">
-        <strong>Plus de 200 anecdotes (EN) →</strong>
-        <span>Une sélection de faits sur les 50 États.</span>
-      </a>
-      <a href="/fr/learn/states-and-capitals/" class="explore-card">
-        <strong>Mémoriser les 50 capitales →</strong>
-        <span>Trucs, liste, et les 5 pièges qui trompent tout le monde.</span>
-      </a>
-      <a href="/learn/crossword-helper/" class="explore-card">
-        <strong>Aide mots-fléchés →</strong>
-        <span>Filtre les États/capitales par nombre de lettres, code USPS, ou préfixe.</span>
-      </a>
-      <a href="/learn/printable-us-states-map/" class="explore-card">
-        <strong>Carte imprimable gratuite →</strong>
-        <span>Vierge, légendée, tableau. Ctrl+P. Pour profs et parents.</span>
-      </a>
-      <a href="/api/" class="explore-card">
-        <strong>API JSON gratuite →</strong>
-        <span>Publique, sans clé ni inscription, utilisable depuis n'importe quel site. Pour les développeurs.</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="explore-more" aria-labelledby="how-heading">
-    <h2 id="how-heading">Comment fonctionne Statedoku</h2>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Chaque jour apporte une grille de 3×3. Trois indices courent en haut et trois sur le côté, comme « Frontière Mexique », « Admis au XXᵉ siècle » ou « Son nom est un mot espagnol ». Chaque case attend un État américain qui satisfait à la fois l'indice de sa ligne et celui de sa colonne, et aucun État ne peut servir deux fois dans la même grille.</p>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Tout État qui remplit les deux indices est accepté, pas seulement une réponse prévue d'avance. Un État placé tôt peut donc se révéler être celui dont une autre case avait besoin : les cases remplies restent modifiables et peuvent être vidées. Une mauvaise réponse coûte une de tes cinq erreurs ; quand les cinq sont utilisées, la grille affiche tous les États qui convenaient.</p>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Une nouvelle grille apparaît à minuit, heure locale, et tous ceux qui jouent la même date reçoivent la même. Chaque grille est construite à partir de sa date et vérifiée pour n'avoir qu'une seule solution complète : elle se résout toujours par déduction, jamais au hasard. Les grilles passées restent jouables dans les <a href="/fr/archive/" style="color:var(--navy);font-weight:700;">archives</a>, et les <a href="/fr/how-to-play/" style="color:var(--navy);font-weight:700;">règles complètes</a> expliquent chaque type d'indice.</p>
-  </section>
-
 </main>
 
-<footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/how-to-play/">Comment jouer</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">États</a> &nbsp;·&nbsp; <a href="/cities/">Villes</a> &nbsp;·&nbsp; <a href="/regions/">Régions</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/api/">API</a> &nbsp;·&nbsp; <a href="/learn/printable-us-states-map/">Carte à imprimer (EN)</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Anecdotes (EN)</a> &nbsp;·&nbsp; <a href="/fr/archive/">Archives</a> &nbsp;·&nbsp; <a href="/fr/privacy/">Confidentialité</a> &nbsp;·&nbsp; <a href="/fr/terms/">Conditions</a> &nbsp;·&nbsp; <a href="/fr/mentions-legales/">Mentions légales</a></p>
+<footer class="site-foot">
+  <p class="foot-about">Une grille par jour. Remplis chaque case avec un État américain qui respecte sa ligne et sa colonne. Gratuit, sans compte, en français, en anglais et en espagnol.</p>
+  <nav class="foot-links" aria-label="Statedoku"><a href="/fr/how-to-play/">Comment jouer</a><a href="/fr/faq/">FAQ</a><a href="/fr/archive/">Archives</a><a href="/fr/play/">Jeux</a><a href="/fr/learn/">Apprendre</a><a href="/states/">États</a><a href="/regions/">Régions</a><a href="/cities/">Villes</a><a href="/quiz/">Quiz</a><a href="/fr/about/">À propos</a><a href="/fr/privacy/">Confidentialité</a><a href="/fr/terms/">Conditions</a><a href="/fr/mentions-legales/">Mentions légales</a><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2Ffr%2F" target="_blank" rel="noopener">Partager avec une classe</a></nav>
+  <p class="foot-copy">&copy; 2026 Statedoku</p>
 </footer>
 
 <!-- Search panel (bottom sheet) -->
@@ -253,11 +179,7 @@
       <div class="stat-box"><span class="stat-value" id="stat-streak">0</span><span class="stat-label" data-i18n="streak">Série</span></div>
       <div class="stat-box"><span class="stat-value" id="stat-best-time">-</span><span class="stat-label" data-i18n="best_time">Meilleur</span></div>
     </div>
-    <button class="reminder-row stats-email-cta" id="stats-email-cta" type="button">
-      <span class="rec-ico">📧</span>
-      <span class="rec-text" data-i18n="email_modal_title">Get the daily puzzle by email</span>
-      <span class="rec-arr">→</span>
-    </button>
+    <button class="reminder-row stats-email-cta" id="stats-email-cta" type="button"><span class="rec-text">Recevoir la grille du jour par email</span></button>
   </div>
 </div>
 
@@ -270,14 +192,9 @@
       <button class="modal-close" aria-label="Fermer">✕</button>
     </div>
     <div class="howto-content">
-      <p data-i18n="how_to_play_text"></p>
-      <div class="howto-example">
-        <strong>Exemple :</strong> Si la ligne indique <em>« Colonie fondatrice »</em> et la colonne <em>« Côte Atlantique »</em>, la Virginie convient. La Pennsylvanie était une colonie mais n'a pas de côte océanique, et la Floride borde l'Atlantique sans avoir jamais été l'une des treize colonies : aucune des deux ne convient.
-      </div>
-      <p style="margin-top:12px">
-        <strong>Vert ✅</strong> = Placement correct<br>
-        <strong>Rouge ❌</strong> = Mauvais État pour cette case
-      </p>
+      <ul class="howto-list"><li>Remplis les neuf cases avec des États américains. Chaque État doit respecter à la fois l'indice de sa ligne et celui de sa colonne.</li><li>Un État ne peut servir qu’une fois dans la grille.</li><li>Tout État qui respecte les deux indices compte, et tu peux changer ou vider une case à tout moment.</li><li>Tu as droit à cinq erreurs.</li><li>Un indice marqué d’un <b>?</b> a une explication : touche-le.</li><li>Les indices sur les lettres et la longueur lisent le nom anglais de l’État.</li><li>Une nouvelle grille chaque jour à minuit. Les anciennes restent dans les archives.</li></ul>
+      <p class="howto-example"><strong>Exemple :</strong> ligne <em>Une des 13 colonies</em>, colonne <em>Côte atlantique</em> : la Virginie convient. La Pennsylvanie était une colonie mais n’a pas de côte océanique ; la Floride borde l’Atlantique mais n’a jamais été une colonie.</p>
+      <button type="button" class="howto-play" id="howto-play">Jouer</button>
     </div>
   </div>
 </div>
@@ -306,13 +223,13 @@
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 
-<script src="/config.js?v=12"></script>
+<script src="/config.js?v=13"></script>
 <script src="/js/admin.js?v=2"></script>
 <script src="/js/ads.js?v=1"></script>
 <script src="/js/analytics.js?v=4"></script>
 <script src="/js/reminders.js?v=2"></script>
 <script src="../js/email.js?v=5"></script>
-<script src="/js/i18n.js?v=6"></script>
+<script src="/js/i18n.js?v=7"></script>
 <script src="/js/constraints-approved.js?v=3"></script>
 <script>
 // The 57 approved pop-culture constraints: their ids here in 2 KB, their
@@ -332,7 +249,7 @@
   } catch(e){}
 })();
 </script>
-<script src="../js/puzzle.js?v=19"></script>
-<script src="../js/game.js?v=22"></script>
+<script src="../js/puzzle.js?v=20"></script>
+<script src="../js/game.js?v=23"></script>
 </body>
 </html>

@@ -58,7 +58,7 @@
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
 
-/* Screen-reader-only — for SEO h1 + a11y labels not shown visually */
+/* Screen-reader-only, for SEO h1 + a11y labels not shown visually */
 .sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
@@ -85,22 +85,16 @@ body {
   font-feature-settings: 'cv11', 'ss01', 'ss03';
 }
 
-/* ─────────────────── Header ─────────────────── */
+/* Header */
+/* A plain light bar since 25 October 2026: the navy band, the flag and the
+   red and gold accents read as decoration rather than a site. */
 header {
   position: sticky; top: 0; z-index: 20;
-  background: var(--navy);
+  background: var(--surface);
+  border-bottom: 1px solid #DCE2EA;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 16px; height: 56px;
   gap: 12px;
-}
-
-/* Single thin red accent below header */
-header::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -2px;
-  height: 2px;
-  background: var(--red);
 }
 
 /* Inline score (date · X/9 · ●●●) in the header */
@@ -136,80 +130,52 @@ header::after {
 }
 
 .logo {
-  font-size: 1.35rem;
-  font-weight: 900;
-  letter-spacing: -0.025em;
-  color: #fff;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+  color: var(--navy);
   text-decoration: none;
-  display: inline-flex; align-items: center; gap: 9px;
+  display: inline-block;
   line-height: 1;
 }
-.logo::before {
-  content: '';
-  width: 28px; height: 28px;
-  background-image: url('/logo-mark.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  flex-shrink: 0;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
-  transition: transform var(--d-fast) var(--ease);
-}
-.logo:hover::before { transform: rotate(-6deg) scale(1.08); }
-.logo em {
-  color: var(--red);
-  font-style: normal;
-  position: relative;
-}
-.logo em::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -3px;
-  height: 2px;
-  background: var(--gold);
-  border-radius: 2px;
-}
+.logo em { color: inherit; font-style: normal; }
+.logo-flag { display: none; }
+.logo::before, .logo em::after { content: none; display: none; }
 
 .nav-actions { display: flex; gap: 8px; align-items: center; }
 
-.lang-switcher {
-  display: flex; gap: 2px; padding: 3px;
-  background: rgba(255,255,255,0.08);
-  border-radius: var(--r-sm);
-}
+.lang-switcher { display: flex; gap: 2px; }
 .lang-btn {
   border: none; background: transparent; cursor: pointer;
-  padding: 4px 9px; border-radius: 6px;
-  font: 700 0.7rem/1 var(--font);
-  color: rgba(255,255,255,0.55);
+  padding: 6px 6px;
+  font: 600 0.74rem/1 var(--font);
+  color: var(--text-3);
+  text-decoration: none;
   text-transform: uppercase; letter-spacing: 0.08em;
-  transition: background var(--d-fast) var(--ease), color var(--d-fast) var(--ease);
 }
-.lang-btn:hover { color: #fff; }
-.lang-btn.active {
-  background: rgba(255,255,255,0.18);
-  color: #fff;
-}
+.lang-btn:hover { color: var(--navy); }
+.lang-btn.active { color: var(--navy); text-decoration: underline; text-underline-offset: 5px; }
 
 .icon-btn {
   width: 36px; height: 36px;
   border: none;
-  background: rgba(255,255,255,0.08);
+  background: transparent;
   cursor: pointer;
   border-radius: var(--r-sm);
   display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.8);
+  color: var(--navy);
   font-size: 0.95rem; font-weight: 700;
   transition: background var(--d-fast) var(--ease), color var(--d-fast) var(--ease);
 }
 .icon-btn svg { width: 18px; height: 18px; }
-.icon-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.icon-btn:hover { background: var(--surface-2); }
 .icon-btn:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
-/* ─────────────────── Score bar (now inline in header) ─────────────────── */
+/* Score bar (now inline in header) */
 .err-dot {
   width: 8px; height: 8px; border-radius: 50%;
   background: rgba(255,255,255,0.2);
@@ -217,7 +183,7 @@ header::after {
 }
 .err-dot.used { background: var(--red); box-shadow: 0 0 0 2px rgba(220,38,38,0.25); }
 
-/* ─────────────────── Main ─────────────────── */
+/* Main */
 main {
   flex: 1;
   display: flex; flex-direction: column; align-items: center;
@@ -242,7 +208,7 @@ main {
   position: relative;
 }
 
-/* ─────────────────── Grid ─────────────────── */
+/* Grid */
 /* The grid is a set of separated cards, not a bordered table. Each cell and
    each constraint carries its own outline, so the wrapper adds no chrome. */
 .grid-wrapper {
@@ -284,7 +250,7 @@ main {
   pointer-events: none;
 }
 
-/* Constraint labels — flat tinted cards, matching the cells they rule over */
+/* Constraint labels, flat tinted cards, matching the cells they rule over */
 .col-label, .row-label {
   background: #EDF1F9;
   border: 2px solid rgba(15, 33, 71, 0.16);
@@ -436,7 +402,7 @@ main {
   80%  { transform: translateX(4px); }
 }
 
-/* ── Constraint explanation popover ── */
+/* Constraint explanation popover */
 .grid-wrapper { position: relative; }
 #constraint-help {
   position: absolute;
@@ -476,8 +442,8 @@ main {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─────────────────── Search Panel ─────────────────── */
-/* Invisible overlay — captures outside clicks to close the panel, but
+/* Search Panel */
+/* Invisible overlay, captures outside clicks to close the panel, but
    does NOT darken or blur the rest of the page (Metrodoku-style). */
 #sp-overlay {
   display: none;
@@ -630,7 +596,7 @@ main {
   list-style: none;
 }
 
-/* ─────────────────── Solved & Game Over Banners ─────────────────── */
+/* Solved & Game Over Banners */
 #solved-banner, #gameover-banner {
   display: none;
   flex-direction: column;
@@ -822,7 +788,7 @@ main {
 .btn-share:active { transform: translateY(0) scale(0.97); }
 .btn-share svg { width: 16px; height: 16px; }
 
-/* ─────────────────── Modals ─────────────────── */
+/* Modals */
 .modal {
   display: none;
   position: fixed; inset: 0;
@@ -937,7 +903,7 @@ main {
   margin-top: 10px;
 }
 
-/* ─────────────────── Toast ─────────────────── */
+/* Toast */
 #toast {
   position: fixed; bottom: 80px;
   left: 50%;
@@ -960,7 +926,7 @@ main {
   opacity: 1;
 }
 
-/* ─────────────────── Explore-more section (home pages) ─────────────────── */
+/* Explore-more section (home pages) */
 .explore-more {
   max-width: 900px;
   margin: 48px auto 24px;
@@ -1019,7 +985,7 @@ main {
   .explore-grid { grid-template-columns: 1fr; }
 }
 
-/* ─────────────────── Footer ─────────────────── */
+/* Footer */
 footer {
   border-top: 1px solid var(--border);
   padding: 14px 16px;
@@ -1045,7 +1011,7 @@ footer a {
 }
 footer a:hover { color: var(--red); text-decoration: underline; }
 
-/* ─────────────────── Daily reminder row (in stats modal) ─────────────────── */
+/* Daily reminder row (in stats modal) */
 .reminder-row {
   display: flex; align-items: center; justify-content: space-between;
   gap: 12px;
@@ -1084,7 +1050,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   .reminder-controls { justify-content: space-between; }
 }
 
-/* ─────────────────── Confetti celebration ─────────────────── */
+/* Confetti celebration */
 .confetti-container {
   position: fixed;
   inset: 0;
@@ -1113,7 +1079,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   }
 }
 
-/* ─────────────────── Share sheet ─────────────────── */
+/* Share sheet */
 #share-sheet {
   position: fixed; inset: 0;
   z-index: 200;
@@ -1233,7 +1199,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   letter-spacing: 0.01em;
 }
 
-/* ─────────────────── Archive (calendar) ─────────────────── */
+/* Archive (calendar) */
 .archive-main {
   flex: 1;
   display: flex;
@@ -1407,7 +1373,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   .archive-nav button { width: 32px; height: 32px; }
 }
 
-/* ─────────────────── SEO nav (homepage) — compact inline links ─────────────────── */
+/* SEO nav (homepage), compact inline links */
 .seo-intro {
   width: 100%;
   text-align: center;
@@ -1425,7 +1391,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
 }
 .seo-intro a:hover { color: var(--navy); border-bottom-color: var(--gold); }
 
-/* ─────────────────── Legal pages (Privacy / Terms) ─────────────────── */
+/* Legal pages (Privacy / Terms) */
 .legal-body { background: var(--bg); }
 .legal-main {
   flex: 1;
@@ -1517,7 +1483,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   .legal-page h3 { font-size: 0.9rem; }
 }
 
-/* ─────────────────── Dev Panel (superadmin) ─────────────────── */
+/* Dev Panel (superadmin) */
 #dev-fab {
   position: fixed; bottom: 20px; right: 20px; z-index: 300;
   width: 48px; height: 48px;
@@ -1795,7 +1761,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
 }
 .dev-cstr-hint strong { color: var(--gold); }
 
-/* Dev panel — feature flag rows */
+/* Dev panel, feature flag rows */
 .dev-section-title {
   margin-top: 10px;
   padding-top: 12px;
@@ -1840,7 +1806,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   transform: translateX(16px);
 }
 
-/* ─────────────────── Admin password modal ─────────────────── */
+/* Admin password modal */
 #admin-modal {
   position: fixed; inset: 0; z-index: 500;
   display: flex; align-items: center; justify-content: center;
@@ -1939,7 +1905,7 @@ footer a:hover { color: var(--red); text-decoration: underline; }
   min-height: 1em;
 }
 
-/* ─────────────────── Ads ─────────────────── */
+/* Ads */
 /* Hidden by default. Shown only when body has .ads-active (set by ads.js when ADS_ENABLED=true). */
 .ad-container { display: none; }
 body.ads-active .ad-container {
@@ -1996,7 +1962,7 @@ body.ads-active #consent-bar {
   letter-spacing: 0.04em;
 }
 
-/* ─────────────────── Consent banner ─────────────────── */
+/* Consent banner */
 #consent-bar {
   position: fixed; bottom: 0; left: 0; right: 0;
   z-index: 250;
@@ -2101,7 +2067,7 @@ footer, main, .score-bar {
   padding-right: max(14px, env(safe-area-inset-right));
 }
 
-/* ───────── ≤ 480 px (phones) — the primary target ───────── */
+/* ≤ 480 px (phones), the primary target */
 @media (max-width: 480px) {
 
   /* Compact header */
@@ -2118,7 +2084,7 @@ footer, main, .score-bar {
   .nav-actions { gap: 4px; }
   .lang-switcher { padding: 2px; }
 
-  /* Slim score bar — sticky just below header for context-on-scroll */
+  /* Slim score bar, sticky just below header for context-on-scroll */
   .score-bar {
     margin: 0; max-width: none;
     padding: 9px 14px;
@@ -2248,7 +2214,7 @@ footer, main, .score-bar {
   .stat-label { font-size: 0.56rem; }
   .howto-content { padding: 16px; font-size: 0.85rem; }
 
-  /* Footer hidden — gain space for game */
+  /* Footer hidden, gain space for game */
   footer {
     padding: 10px 14px;
     font-size: 0.65rem;
@@ -2263,7 +2229,7 @@ footer, main, .score-bar {
   }
 }
 
-/* ───────── Very narrow phones (≤ 360 px) — extra slim ───────── */
+/* Very narrow phones (≤ 360 px), extra slim */
 @media (max-width: 360px) {
   .grid-outer {
     grid-template-columns: 58px repeat(3, minmax(0, 1fr));
@@ -2277,7 +2243,7 @@ footer, main, .score-bar {
   .grid-outer { gap: 5px; }
 }
 
-/* ───────── Tablet portrait (481–767 px) ───────── */
+/* Tablet portrait (481-767 px) */
 @media (min-width: 481px) and (max-width: 767px) {
   main { padding: 16px 16px 48px; }
   .cell { min-height: 96px; }
@@ -2286,14 +2252,14 @@ footer, main, .score-bar {
   .grid-outer { grid-template-columns: 84px repeat(3, minmax(0, 1fr)); }
 }
 
-/* ───────── Desktop (≥ 768 px) ───────── */
+/* Desktop (≥ 768 px) */
 @media (min-width: 768px) {
   .cell { min-height: 104px; }
   .cell-abbr { font-size: 1.1rem; }
   .cell-name { font-size: 0.66rem; }
 }
 
-/* ───────── Landscape phones ───────── */
+/* Landscape phones */
 @media (max-height: 480px) and (orientation: landscape) {
   main { padding: 8px 12px 32px; }
   .score-bar { padding: 6px 14px; }
@@ -2303,19 +2269,19 @@ footer, main, .score-bar {
   footer { display: none; }
 }
 
-/* ───────── PWA / standalone display ───────── */
+/* PWA / standalone display */
 @media (display-mode: standalone) {
   header { padding-top: env(safe-area-inset-top); height: calc(48px + env(safe-area-inset-top)); }
 }
 
-/* ───────── Pointer-fine (mouse): preserve hover; coarse: no hover ───────── */
+/* Pointer-fine (mouse): preserve hover; coarse: no hover */
 @media (hover: none) {
   .cell:hover { background: var(--surface); }
   .cell.empty:hover::after { opacity: 0.22; transform: none; }
   .sp-item:hover { background: var(--surface); }
 }
 
-/* ─────────────────── Email reminder CTA + modal ─────────────────── */
+/* Email reminder CTA + modal */
 #email-cta {
   width: 100%; max-width: 480px;
   display: flex; align-items: center; gap: 8px;
@@ -2435,19 +2401,9 @@ footer, main, .score-bar {
 }
 .result-email-cta:hover { color: var(--red); }
 
-/* US flag emoji next to logo */
-.logo-flag {
-  font-size: 0.95em;
-  vertical-align: -0.04em;
-  display: inline-block;
-  margin-left: 2px;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
-}
-@media (max-width: 480px) {
-  .logo-flag { font-size: 0.85em; }
-}
 
-/* ─────────────────── Prelaunch preview banner ─────────────────── */
+
+/* Prelaunch preview banner */
 #preview-banner {
   width: 100%; max-width: 540px;
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
@@ -2479,7 +2435,7 @@ footer, main, .score-bar {
   #preview-banner .pb-cta { font-size: 0.72rem; }
 }
 
-/* ─────────────────── Stats modal — email CTA replaces browser-notif ─────────────────── */
+/* Stats modal, email CTA replaces browser-notif */
 .stats-email-cta {
   width: calc(100% - 28px);
   margin: 14px;
@@ -2498,7 +2454,7 @@ footer, main, .score-bar {
 .stats-email-cta .rec-text { flex: 1; }
 .stats-email-cta .rec-arr { color: var(--gold); font-weight: 800; }
 
-/* ─────────────────── Result card — email CTA card-style (more prominent) ─────────────────── */
+/* Result card, email CTA card-style (more prominent) */
 .result-email-cta {
   margin-top: 10px;
   width: 100%;
@@ -2517,7 +2473,7 @@ footer, main, .score-bar {
 .result-email-cta .rec-text { flex: 1; text-align: left; }
 .result-email-cta .rec-arr { color: var(--gold); }
 
-/* ─────────────────── Game-over: show ALL valid states per cell ─────────────────── */
+/* Game-over: show ALL valid states per cell */
 .gos-opts {
   display: flex; flex-wrap: wrap; gap: 3px;
   justify-content: center;
@@ -2536,13 +2492,13 @@ footer, main, .score-bar {
   box-shadow: 0 1px 2px rgba(5,150,105,0.25);
 }
 
-/* ─────────────────── Streak fire emoji tiers ─────────────────── */
+/* Streak fire emoji tiers */
 .stat-value.streak-warm   { color: #C2410C; }
 .stat-value.streak-orange { color: #EA580C; }
 .stat-value.streak-red    { color: var(--red); }
 .stat-value.streak-gold   { color: var(--gold); text-shadow: 0 0 8px rgba(245,158,11,0.35); }
 
-/* ─────────────────── First-time onboarding tooltip ───────────────────
+/* First-time onboarding tooltip 
    Sits BELOW the grid, not over it. At top: 70px it was landing exactly on
    the column header row and hiding the middle constraint entirely, which is
    the one thing a first-time player most needs to read. */
@@ -2573,7 +2529,7 @@ footer, main, .score-bar {
   50%      { transform: translate(-50%, 4px); }
 }
 
-/* ─────────────────── Skeleton loader (replaces #loading) ─────────────────── */
+/* Skeleton loader (replaces #loading) */
 #loading {
   margin-top: 24px;
   width: 100%; max-width: 480px;
@@ -2599,12 +2555,12 @@ footer, main, .score-bar {
   100% { background-position: -200% 0; }
 }
 
-/* ─────────────────── Mobile <380px: collapse lang-switcher into icon-btn ─────────────────── */
+/* Mobile <380px: collapse lang-switcher into icon-btn */
 @media (max-width: 380px) {
   .lang-switcher { display: none; }
 }
 
-/* ─────────────────── Geographic US states SVG map ─────────────────── */
+/* Geographic US states SVG map */
 .us-svgmap-wrap {
   max-width: 900px;
   margin: 12px auto 22px;
@@ -2653,7 +2609,7 @@ footer, main, .score-bar {
   opacity: 0.55;
 }
 
-/* ─────────────────── Golden State (Easter egg) ─────────────────── */
+/* Golden State (Easter egg) */
 .cell.golden {
   background: linear-gradient(135deg, #FEF3C7, #FFFFFF) !important;
   border-color: #F59E0B !important;
@@ -2704,13 +2660,13 @@ footer, main, .score-bar {
 .golden-toast .gt-text { line-height: 1.3; }
 .golden-toast .gt-text small { opacity: 0.92; font-size: 0.78rem; }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   AD SLOTS — reserved space for AdSense (or fallback network) placements.
+/* 
+   AD SLOTS, reserved space for AdSense (or fallback network) placements.
    When CONFIG.ADS_ENABLED is false, ads.js calls hideAllSlots() which sets
-   display:none on every .ad-slot / [data-ad-slot] — so the site looks
+   display:none on every .ad-slot / [data-ad-slot], so the site looks
    identical to its ad-free state. Activate from /config.js (see ads.js
    header for the procedure).
-   ───────────────────────────────────────────────────────────────────────── */
+ */
 .ad-slot{
   display:block;
   margin:18px auto;
@@ -2802,7 +2758,7 @@ footer, main, .score-bar {
   .lang-btn { padding: 4px 5px; }
 }
 
-/* ───────── Fixes from the 6 October game QA ───────── */
+/* Fixes from the 6 October game QA */
 /* Phones and small tablets: the header could not fit logo, score, language switch and three
    buttons on one line, and .score-inline (flex: 1; overflow: hidden) was
    squeezed to 13 px at 390 px, hiding "0 / 9" and every mistake dot (and
@@ -2858,9 +2814,6 @@ h1[data-abbr]::before { content: attr(data-abbr); display: inline-block; backgro
 /* Dates: game.js and archive.js upper-case the first letter only. CSS
    capitalize made "Jeudi 22 Octobre" and "Jueves, 22 De Octubre". */
 
-/* The header back link ("← Home", "← Learn") carries an inline
-   color:var(--text-2), grey on navy at 2.02:1. Light on navy instead. */
-header .nav-actions > a[style*="var(--text-2)"] { color: rgba(255, 255, 255, 0.85) !important; }
 
 /* Keyboard focus on the grid has to be visible: the fill change alone
    measured 1.1 to 1.5:1. */
@@ -2883,3 +2836,96 @@ footer a { display: inline-block; padding: 6px 2px; }
 }
 article.pr-main { width: 100%; }   /* main is a flex box and the article has auto margins: it took the table's width */
 main a[href^="mailto:"] { overflow-wrap: anywhere; }
+
+/* Homepage, 25 October 2026: the game alone, after Metrodoku. A light page,
+   the name in lower case, four plain links, the day's title, the grid, and
+   under it the give-up button and the mistakes. No banner, no card list. */
+html:has(body.home), body.home { background: #F6F7F9; }
+.home .site-head, .home footer.site-foot { flex-shrink: 0; }   /* body is a flex column of fixed height */
+.home .site-head {
+  position: static; height: auto; min-height: 0; background: transparent; border: 0;
+  width: 100%; max-width: 640px; margin: 0 auto;
+  padding: 28px 16px 18px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 20px;
+  border-bottom: 1px solid #DCE2EA;
+}
+.wordmark {
+  font-size: clamp(2.1rem, 8vw, 3rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1;
+  color: var(--navy); text-decoration: none;
+}
+.head-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 18px; }
+.head-link {
+  background: none; border: 0; padding: 6px 0; cursor: pointer;
+  font: 600 0.76rem/1 var(--font); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--navy); text-decoration: none;
+}
+.head-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+.home .lang-switcher { gap: 6px; }
+.home main { padding: 26px 16px 40px; gap: 18px; }
+.home #game-wrap { max-width: 608px; gap: 16px; }
+.day-head { width: 100%; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.day-title {
+  margin: 0; color: var(--navy);
+  font-size: clamp(1.45rem, 5.4vw, 2.35rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08;
+}
+.day-title .day-date { display: block; font-size: 0.62em; letter-spacing: -0.02em; color: var(--text-2); margin-top: 4px; }
+.day-score { margin: 0; white-space: nowrap; font-size: 0.86rem; font-weight: 600; letter-spacing: 0.04em; color: var(--navy); }
+.day-score strong { font-size: 1.05rem; font-variant-numeric: tabular-nums; margin-left: 4px; }
+.home .grid-outer {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: none;
+  gap: 10px;
+}
+.home .grid-corner { background: transparent; }
+.home .grid-corner::after { display: none; }
+.home .col-label, .home .row-label, .home .cell { aspect-ratio: 1; min-height: 0; }
+.home .col-label, .home .row-label { background: #E6EBF3; border-color: transparent; font-size: 0.8rem; padding: 8px 6px; }
+.home .cell { border-color: #1C232D; }
+.under-grid { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.giveup-btn {
+  background: #fff; border: 2px solid #1C232D; border-radius: 2px; cursor: pointer;
+  padding: 9px 14px; font: 700 0.86rem/1.2 var(--font); color: #1C232D;
+}
+.giveup-btn:hover { background: #EEF1F5; }
+.mistakes { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 0.86rem; font-weight: 700; color: #1C232D; }
+.mistakes #error-display { display: inline-flex; gap: 5px; }
+.home .err-dot { width: 13px; height: 13px; background: transparent; border: 2px solid #1C232D; box-shadow: none; }
+.home .err-dot.used { background: var(--red); border-color: var(--red); box-shadow: none; }
+.home footer.site-foot {
+  width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16px 40px;
+  text-align: left; background: transparent; border-top: 1px solid #DCE2EA; font-size: 0.82rem;
+}
+.home footer.site-foot::before { display: none; }
+.foot-about { margin: 0 0 14px; color: var(--text-2); font-size: 0.9rem; line-height: 1.6; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 0 18px; }
+.foot-links a, .foot-links a.gc-share {
+  display: inline-block; color: var(--text-2); font-weight: 600; font-size: inherit; padding: 6px 0;
+  background: none; border: 0; border-radius: 0; text-decoration: none;
+}
+.foot-links a:hover, .foot-links a.gc-share:hover { background: none; color: var(--navy); text-decoration: underline; }
+.foot-copy { margin: 12px 0 0; color: var(--text-3); }
+.howto-list { margin: 0 0 12px; padding-left: 20px; line-height: 1.6; }
+.howto-list li { margin: 4px 0; }
+.howto-play {
+  display: block; width: 100%; margin-top: 16px; padding: 12px; border: 0; border-radius: 2px; cursor: pointer;
+  background: var(--navy); color: #fff; font: 700 1rem/1 var(--font);
+}
+@media (max-width: 480px) {
+  .home .site-head { padding-top: 18px; }
+  .home .col-label, .home .row-label { font-size: 0.62rem; padding: 6px 4px; }
+  .day-score { font-size: 0.8rem; }
+}
+.home .cell.empty::after { content: none; }
+/* End of game on the homepage: a plain card under the grid, which stays in
+   view with its answers, instead of an overlay with stars and confetti. */
+.home #solved-banner, .home #gameover-banner {
+  position: static; inset: auto; overflow: visible; animation: none;
+  background: #fff; box-shadow: none; border-radius: 2px; border: 2px solid #1C232D;
+  padding: 18px 16px;
+}
+.home #solved-banner::before, .home #solved-banner::after { content: none; }
+.home .banner-icon { display: none; }
+.home #solved-banner h3, .home #gameover-banner h3 { color: #1C232D; font-size: 1.3rem; letter-spacing: -0.02em; }
+.home .cell.correct::before, .home .cell-golden-star { display: none; }
+.home .result-email-cta { background: transparent; color: #1C232D; border: 2px solid #1C232D; border-radius: 2px; box-shadow: none; }
+.home .result-email-cta:hover { background: #EEF1F5; color: #1C232D; }

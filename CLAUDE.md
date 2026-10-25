@@ -61,10 +61,12 @@ everywhere for this, and every place that judges correctness must use it:
 scoring, cell rendering, the share grid, the share image, and the reload scrub
 in `_loadProgress`.
 
-This is safe because `js/puzzle.js` only ships grids where `hasUniqueSolution`
-holds, so "keeps the grid solvable" and "equals the canonical answer" are the
-same test. An earlier version ran a solvability gate and rejected valid answers
-with a "conflicts elsewhere" toast that could never be true. It refused 24.9% of
+Grids dated before 27 October 2026 have exactly one solution. From that date
+(`DATA_FIX3_FROM`, see Facts on the page) every cell accepts at least two
+states and a grid has at least one full solution, so several complete grids
+can win. Either way the test is the same: both clues, nine different states.
+An earlier version ran a solvability gate and rejected valid answers with a
+"conflicts elsewhere" toast that could never be true. It refused 24.9% of
 valid answers. Do not reintroduce it.
 
 Because any valid answer is accepted, a player can spend a state another cell
@@ -285,7 +287,21 @@ Minnesota joined "double letter", and the day before a grid, whose row group
 is avoided, is computed in UTC. It used to be local midnight, so east of UTC
 (France, Spain) 23 of 304 grids differed from the Americas'. Before the date
 every time zone keeps the grid it was shown; from it all zones share one.
-The next correction needs a third cut-over date, not an edit to these two:
+`DATA_FIX3_FROM` (2026-10-27) changed how grids are made, at the owner's
+request ("je suis pas fan du puzzle du jour"). The old pool of 150 clues held
+fuzzy ones (Sun Belt, Deep South, swing state), trivia (Taylor Swift tour,
+birthplace of two presidents) and disputed ones (name origins), and 65% of
+cells accepted a single state. `V3_POOL` keeps 61 clues that a map, a list or
+the name itself settles, in families (regions, time zones, population,
+coasts, borders, rivers, statehood eras, capitals, names), with at most two
+name clues a grid, every cell between two and nine answers, and a full grid of
+nine different states. The grids come from `V3_SCHEDULE`, six characters a
+day for two years, built by `node scripts/build-puzzle-schedule.cjs` with the
+whole history in view: no set of six clues ever repeats, no clue of yesterday
+is in today's grid, every clue's turn comes round. Past the schedule's end
+(26 October 2028) a generator from the date takes over; rebuild before then.
+Clues are only ever appended to `V3_POOL`: the schedule indexes it.
+The next correction needs a fourth cut-over date, not an edit to these:
 any change to states.json, `LIST_CONSTRAINTS` or constraints-live.js without
 recording the old value for earlier dates rewrites grids people have played.
 
@@ -349,6 +365,21 @@ Navy `#0F2147`, red `#DC2626`, gold `#F59E0B`, green `#059669`, Inter
 throughout. The grid follows Metrodoku: separated cards with a 10px gap and a
 2px border each, flat fills rather than gradients, state carried on the border.
 Not a bordered table.
+
+On 25 October 2026 the owner found the site "trop AI slop" and asked for the
+homepage to hold the game only, after metrodoku.fr. So: the three homepages
+are a light page (`body.home`), the name in lower case, four plain links
+(how to play, archive, games, stats) and the languages, the day's title and
+date, the grid with square cards, and under it "Give up and see the answers"
+and the mistakes as five circles. The rules open once on a first visit. The
+end of a game is a plain card under the grid, no confetti. Below, one sentence
+about the game and a row of links (they also keep every hub one click from
+the homepage, which the click-depth audit needs). No email banner, no card
+list, no "how it works" essay: do not bring them back.
+Site-wide the header is a white bar with the lower-case name, no navy band,
+no flag; decorative emoji in labels and arrows at the ends of links were taken
+out of every page (`reader_text` ignores them, so that dated no page). Keep it
+that way: no emoji to decorate a heading, a chip or a link.
 
 Constraints that do not explain themselves carry a `?` opening a plain-language
 gloss, from `constraint_help` in `translations.json`. Constraints like "Starts

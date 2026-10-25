@@ -2,7 +2,7 @@ const CONFIG = {
   // Cache-buster for the JSON files under /data/. Those are fetched at runtime,
   // so without a version query a returning player keeps the copy their browser
   // cached and never sees updated translations or state data. Bump on edit.
-  DATA_VERSION: '8',
+  DATA_VERSION: '9',
 
   // Global feature flags
   ADS_ENABLED: false,                // false → no ads rendered. Toggle to true once AdSense approves + slot IDs are pasted into placeholders. See /ADS-ACTIVATION.md
@@ -13,12 +13,12 @@ const CONFIG = {
   // Paste the token from data-cf-beacon='{"token":"XXX"}' here, then commit + push.
   CF_ANALYTICS_TOKEN: '9aaf696fd1464b2191238f4787ceca5c',
 
-  // Ahrefs Web Analytics — free, complements CF Analytics with SEO referrer data
+  // Ahrefs Web Analytics, free, complements CF Analytics with SEO referrer data
   // (Google query keywords, backlink-driven traffic, etc.).
   // Get the data-key at https://app.ahrefs.com/web-analytics
   AHREFS_KEY: '2EFX1+9bkFd8gDk9CVLD4A',
 
-  // Microsoft Clarity — free session replays + heatmaps + scroll maps.
+  // Microsoft Clarity, free session replays + heatmaps + scroll maps.
   // Shows WHERE users click/rage-click and how far they scroll. Get the ID
   // at https://clarity.microsoft.com (project settings → tracking code).
   CLARITY_ID: 'wxvtsnx9h8',
@@ -37,16 +37,16 @@ const CONFIG = {
   STORAGE_KEY: 'statedoku_v1',
 };
 
-// ─────────────────────────────────────────────────────────────────────────
+// 
 // Cloudflare Web Analytics auto-loader.
 // Injects the beacon only if a valid token is set.
 // Skips /admin/* paths (internal dashboard pollutes stats) and localhost dev.
-// ─────────────────────────────────────────────────────────────────────────
+// 
 (function() {
   const tok = CONFIG.CF_ANALYTICS_TOKEN;
   if (!tok || tok.startsWith('INSERT_')) return;
 
-  // Skip admin pages — they're internal tooling, not real traffic.
+  // Skip admin pages, they're internal tooling, not real traffic.
   if (location.pathname.startsWith('/admin/') || location.pathname.startsWith('/admin')) return;
 
   // Skip local dev (localhost / 127.0.0.1 / *.local / file://).
@@ -60,16 +60,16 @@ const CONFIG = {
   (document.head || document.documentElement).appendChild(s);
 })();
 
-// ─────────────────────────────────────────────────────────────────────────
+// 
 // Ahrefs Web Analytics auto-loader.
 // Provides search-referrer + backlink-driven traffic data that CF doesn't.
 // Same skip rules: no admin, no localhost.
-// ─────────────────────────────────────────────────────────────────────────
+// 
 (function() {
   const key = CONFIG.AHREFS_KEY;
   if (!key || key.startsWith('INSERT_')) return;
 
-  // Skip admin pages — internal tooling, shouldn't inflate SEO stats.
+  // Skip admin pages, internal tooling, shouldn't inflate SEO stats.
   if (location.pathname.startsWith('/admin/') || location.pathname.startsWith('/admin')) return;
 
   // Skip local dev.
@@ -87,15 +87,15 @@ const CONFIG = {
   (document.head || document.documentElement).appendChild(s);
 })();
 
-// ─────────────────────────────────────────────────────────────────────────
+// 
 // Microsoft Clarity auto-loader (session replays + heatmaps).
 // Same skip rules: no admin, no localhost.
-// ─────────────────────────────────────────────────────────────────────────
+// 
 (function(c, l, a, r, i) {
   const id = CONFIG.CLARITY_ID;
   if (!id || id.startsWith('INSERT_')) return;
 
-  // Skip admin pages — don't record internal tooling sessions.
+  // Skip admin pages, don't record internal tooling sessions.
   if (location.pathname.startsWith('/admin/') || location.pathname.startsWith('/admin')) return;
 
   // Skip local dev.
@@ -107,12 +107,12 @@ const CONFIG = {
   const y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
 })(window, document, 'clarity', 'script', CONFIG.CLARITY_ID);
 
-// ─────────────────────────────────────────────────────────────────────────
+// 
 // Helper: send a custom event to Cloudflare Web Analytics.
 // Usage: window.cfTrack('puzzle_completed', { won: true, mistakes: 1 });
 // Properties are stringified into a single label for CF's custom event slot.
 // Safe to call even if the beacon hasn't loaded (no-ops).
-// ─────────────────────────────────────────────────────────────────────────
+// 
 window.cfTrack = function cfTrack(name, props) {
   try {
     if (location.pathname.startsWith('/admin/')) return; // never track admin

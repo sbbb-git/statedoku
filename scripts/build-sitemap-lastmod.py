@@ -49,6 +49,14 @@ DATE_MODIFIED = re.compile(r'"dateModified"\s*:\s*"[^"]*"')
 # both forms reduce to the bare <h1> and the move dates no page.
 H1_BADGE_OLD = re.compile(r'(<h1>)<span class="(?:abbr-badge|badge)"[^>]*>[A-Z]{2}</span>')
 H1_BADGE_NEW = re.compile(r'<h1 data-abbr="[A-Z]{2}"(?: style="--abbr-bg:[^"]*")?>')
+# Neither an HTML comment nor the browser-bar colour is read by anyone: the
+# comments lost their long dashes and the bar turned light on 25 October 2026.
+COMMENT = re.compile(r'<!--.*?-->', re.S)
+THEME = re.compile(r'<meta name="theme-color"[^>]*>')
+# Decoration taken out on 25 October 2026, not content: the flag after the
+# name, emoji in front of a label, arrows at the end of a link.
+LOGO_FLAG = re.compile(r'\s*<span class="logo-flag">[^<]*</span>')
+DECOR = re.compile('[\u2190\u2192\U0001F300-\U0001FAFF\u2600-\u26FF\u2700-\u27BF\uFE0F]')
 
 
 def reader_text(html):
@@ -64,7 +72,12 @@ def reader_text(html):
     html = DATE_MODIFIED.sub('', html)
     html = H1_BADGE_OLD.sub(r'\1', html)
     html = H1_BADGE_NEW.sub('<h1>', html)
-    return re.sub(r'\s+', ' ', html).strip()
+    html = COMMENT.sub('', html)
+    html = THEME.sub('', html)
+    html = LOGO_FLAG.sub('', html)
+    html = DECOR.sub(' ', html)
+    # Spaces next to a tag left behind by the decoration go too, on both sides.
+    return re.sub(r'\s*(<[^>]+>)\s*', r'\1', re.sub(r'\s+', ' ', html)).strip()
 
 
 def git(*args):

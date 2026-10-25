@@ -9,16 +9,16 @@
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
   </script>
-  <!-- Google AdSense — site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
+  <!-- Google AdSense, site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
   <meta name="google-adsense-account" content="ca-pub-1481624152917622">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
        crossorigin="anonymous"></script>
 
-  <!-- ─── Primary Meta ─── -->
+  <!-- Primary Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0F2147" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0F2147" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F6F7F9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#F6F7F9" media="(prefers-color-scheme: dark)">
   <meta name="color-scheme" content="light">
   <meta name="format-detection" content="telephone=no">
 
@@ -28,7 +28,7 @@
   <meta name="author" content="Statedoku">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
-  <!-- ─── Canonical + Hreflang ─── -->
+  <!-- Canonical + Hreflang -->
   <link rel="canonical" href="https://statedoku.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Statedoku">
@@ -48,7 +48,7 @@
   <link rel="alternate" hreflang="fr" href="https://statedoku.com/fr/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/">
 
-  <!-- ─── PWA ─── -->
+  <!-- PWA -->
   <link rel="manifest" href="/manifest.json">
 
   <!-- Ahrefs Web Analytics (inline so install verifier picks it up; config.js also injects it for sub-pages) -->
@@ -57,17 +57,17 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Statedoku">
 
-  <!-- ─── Performance ─── -->
+  <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
   <link rel="preload" href="/data/states.json?v=7" as="fetch" crossorigin="anonymous">
 
-  <!-- ─── Styles ─── -->
-  <link rel="stylesheet" href="/css/style.css?v=32">
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css?v=33">
 
-  <!-- ─── Structured Data (JSON-LD) ─── -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Statedoku","alternateName":"Statedoku, Daily US States Puzzle","description":"A daily geography puzzle game where players fill a 3×3 grid with US states that satisfy row and column constraints. Sudoku rules meet American geography.","url":"https://statedoku.com/","image":"https://statedoku.com/og-image.png?v=2","genre":["Puzzle","Educational","Geography"],"gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","inLanguage":["en","fr","es"],"isAccessibleForFree":true,"datePublished":"2026-05-13","publisher":{"@type":"Organization","name":"Statedoku","url":"https://statedoku.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">
   {
@@ -93,47 +93,28 @@
   }
   </script>
 </head>
-<body>
+<body class="home">
 
 <h1 class="sr-only">Statedoku, Daily US States Puzzle Game</h1>
 
-<header>
-  <a href="/" class="logo" aria-label="Statedoku home">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
-  <div class="score-inline" aria-live="polite">
-    <span class="score-date" id="puzzle-date"></span>
-    <span class="score-sep" aria-hidden="true">·</span>
-    <span id="score-display">0 / 9</span>
-    <span class="score-sep" aria-hidden="true">·</span>
-    <span id="error-display" role="img" aria-label="Mistakes remaining"></span>
-  </div>
-  <nav class="nav-actions" aria-label="Game actions">
-    <div class="lang-switcher" role="group" aria-label="Language">
-      <button class="lang-btn active" data-lang="en" aria-current="true">EN</button>
-      <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/'">FR</button>
-      <button class="lang-btn" data-lang="es" onclick="location.href='/es/'">ES</button>
-    </div>
-    <button class="icon-btn" id="btn-howto" title="How to play" aria-label="How to play">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    </button>
-    <button class="icon-btn" id="btn-stats" title="Stats" aria-label="Stats">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-    </button>
-    <button class="icon-btn" id="btn-share" title="Share" aria-label="Share">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-    </button>
+<header class="site-head">
+  <a href="/" class="wordmark" aria-label="Statedoku home">statedoku</a>
+  <nav class="head-nav" aria-label="Main">
+    <button type="button" class="head-link" id="btn-howto">How to play</button>
+    <a class="head-link" href="/archive/">Archive</a>
+    <a class="head-link" href="/play/">Games</a>
+    <button type="button" class="head-link" id="btn-stats">Stats</button>
+    <span class="lang-switcher" role="group" aria-label="Language"><a class="lang-btn active" data-lang="en" href="/" aria-current="true">EN</a><a class="lang-btn" data-lang="fr" href="/fr/">FR</a><a class="lang-btn" data-lang="es" href="/es/">ES</a></span>
   </nav>
 </header>
 
-<main>
-  <div id="loading">🇺🇸 Loading puzzle…</div>
+<main class="home-main">
+  <div id="loading">Loading the grid…</div>
 
-<div id="game-wrap">
-    <!-- Email reminder CTA (dismissable) -->
-    <div id="email-cta" hidden>
-      <span class="ec-icon">📧</span>
-      <span class="ec-text" data-i18n="email_cta">Don't miss tomorrow's puzzle, get it by email</span>
-      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">Subscribe</button>
-      <button class="ec-close" id="ec-dismiss" aria-label="Dismiss">✕</button>
+  <div id="game-wrap">
+    <div class="day-head">
+      <h2 class="day-title"><span id="day-label">Today's grid</span> <span class="day-date" id="puzzle-date"></span></h2>
+      <p class="day-score">Score <strong id="score-display">0 / 9</strong></p>
     </div>
 
     <div class="grid-wrapper">
@@ -157,11 +138,15 @@
       </div>
     </div>
 
+    <div class="under-grid">
+      <button type="button" class="giveup-btn" id="btn-giveup">Give up and see the answers</button>
+      <p class="mistakes">Mistakes <span id="error-display" role="img" aria-label="Mistakes remaining"></span></p>
+    </div>
     <div id="solved-banner">
       <div class="banner-icon banner-icon-success">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h3 data-i18n="solved">Solved! 🇺🇸</h3>
+      <h3 data-i18n="solved">Solved!</h3>
       <div class="result-emoji" id="result-emoji-solved"></div>
       <div class="result-stats" id="result-stats-solved"></div>
       <div class="share-row" data-banner="solved"></div>
@@ -177,72 +162,12 @@
       <p class="banner-sub" data-i18n="come_back">New one drops at midnight.</p>
     </div>
   </div>
-
-  <!-- Explore section: drives pages/visit, internal SEO, post-game discovery -->
-  <div class="gc-share-wrap"><span>Teachers: post today's puzzle to your class.</span><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7l2.5 3H14l-2-2.4L10 20H7.5L10 17H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h16V6H4zm3 2h6v1.6H7V8zm0 3h10v1.6H7V11z"/></svg>Share to Google Classroom</a></div>
-
-  <section class="explore-more" aria-labelledby="explore-heading">
-    <h2 id="explore-heading">After today's puzzle, explore the 50 states</h2>
-    <p class="explore-sub">Reference data, quizzes, and deep-dives, for curious solvers, teachers, and crossword fans.</p>
-    <div class="explore-grid">
-      <a href="/states/" class="explore-card">
-        <strong>All 50 states →</strong>
-        <span>Capitals, populations, facts, maps. One page per state.</span>
-      </a>
-      <a href="/play/" class="explore-card">
-        <strong>21 free geography games →</strong>
-        <span>Place the state, flags, capitals, silhouettes, time zones. No sign-up.</span>
-      </a>
-      <a href="/learn/" class="explore-card">
-        <strong>Learn the 50 states →</strong>
-        <span>Memorize methods, region-by-region breakdown, 35+ deep-dive guides.</span>
-      </a>
-      <a href="/quiz/" class="explore-card">
-        <strong>Quick US states quiz →</strong>
-        <span>10 questions, 4 modes. Test your geography in under 2 minutes.</span>
-      </a>
-      <a href="/regions/" class="explore-card">
-        <strong>The 4 US regions →</strong>
-        <span>Northeast, South, Midwest, West, and their 9 subregions.</span>
-      </a>
-      <a href="/cities/" class="explore-card">
-        <strong>100 biggest cities →</strong>
-        <span>Which state is Charlotte in? Las Vegas? Get the answer + facts.</span>
-      </a>
-      <a href="/facts/" class="explore-card">
-        <strong>200+ fun facts →</strong>
-        <span>One curated fact archive across all 50 states.</span>
-      </a>
-      <a href="/learn/state-capitals/" class="explore-card">
-        <strong>Memorize the 50 capitals →</strong>
-        <span>Tricks, list, and the 5 traps that fool everyone.</span>
-      </a>
-      <a href="/learn/crossword-helper/" class="explore-card">
-        <strong>Crossword helper →</strong>
-        <span>Filter states/capitals by letter count, USPS code, or capital prefix.</span>
-      </a>
-      <a href="/learn/printable-us-states-map/" class="explore-card">
-        <strong>Free printable US map →</strong>
-        <span>Blank, labeled, table. Press Ctrl+P. For teachers and parents.</span>
-      </a>
-      <a href="/api/" class="explore-card">
-        <strong>Free JSON API →</strong>
-        <span>Public, CORS-enabled, no auth. For developers building on top.</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="explore-more" aria-labelledby="how-heading">
-    <h2 id="how-heading">How Statedoku works</h2>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Each day brings one 3×3 grid. Three clues run along the top and three down the side, such as "Borders Mexico", "Admitted in 1900s" or "Its name is a Spanish word". Every cell needs a US state that satisfies both its row clue and its column clue, and no state can be used twice in the same grid.</p>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Any state that fits both clues is accepted, not only one answer the puzzle had in mind. That means a state you place early can turn out to be the one another cell needed, so filled cells stay editable and can be cleared. A wrong pick costs one of your five mistakes; when all five are gone, the grid shows every state that would have worked.</p>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">A new grid appears at midnight your local time, and everyone playing the same date gets the same one. Each grid is built from its date and checked to have exactly one complete solution, so it can always be solved by reasoning rather than guessing. Past grids stay playable in the <a href="/archive/" style="color:var(--navy);font-weight:700;">archive</a>, and the <a href="/how-to-play/" style="color:var(--navy);font-weight:700;">full rules</a> explain every type of clue.</p>
-  </section>
-
 </main>
 
-<footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/archive/">Archive</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/cities/">Cities</a> &nbsp;·&nbsp; <a href="/regions/">Regions</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/api/">API</a> &nbsp;·&nbsp; <a href="/learn/printable-us-states-map/">Printable map</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
+<footer class="site-foot">
+  <p class="foot-about">One grid a day. Fill each cell with a US state that fits both its row and its column. Free, no account, in English, French and Spanish.</p>
+  <nav class="foot-links" aria-label="Statedoku"><a href="/how-to-play/">How to play</a><a href="/faq/">FAQ</a><a href="/archive/">Archive</a><a href="/play/">Games</a><a href="/learn/">Learn</a><a href="/states/">States</a><a href="/regions/">Regions</a><a href="/cities/">Cities</a><a href="/quiz/">Quiz</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/legal/">Legal notice</a><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2F" target="_blank" rel="noopener">Share with a class</a></nav>
+  <p class="foot-copy">&copy; 2026 Statedoku</p>
 </footer>
 
 <!-- Search panel (bottom sheet) -->
@@ -280,11 +205,7 @@
         <span class="stat-label" data-i18n="best_time">Best</span>
       </div>
     </div>
-    <button class="reminder-row stats-email-cta" id="stats-email-cta" type="button">
-      <span class="rec-ico">📧</span>
-      <span class="rec-text" data-i18n="email_modal_title">Get the daily puzzle by email</span>
-      <span class="rec-arr">→</span>
-    </button>
+    <button class="reminder-row stats-email-cta" id="stats-email-cta" type="button"><span class="rec-text">Get the daily grid by email</span></button>
   </div>
 </div>
 
@@ -297,14 +218,9 @@
       <button class="modal-close" aria-label="Close">✕</button>
     </div>
     <div class="howto-content">
-      <p data-i18n="how_to_play_text">Fill each cell with a US state that satisfies both the row and column constraints. Each state can only be used once. Any state that fits both clues is accepted, so you can change a cell if you need that state elsewhere.</p>
-      <div class="howto-example">
-        <strong>Example:</strong> If the row says <em>"Original Colony"</em> and the column says <em>"Atlantic coast"</em>, Virginia fits both. Pennsylvania was a colony but has no ocean coast, and Florida is on the Atlantic but was never one of the thirteen colonies, so neither of those fits.
-      </div>
-      <p style="margin-top:12px">
-        <strong>Green ✅</strong> = Correct placement<br>
-        <strong>Red ❌</strong> = Wrong state for this cell
-      </p>
+      <ul class="howto-list"><li>Fill the nine cells with US states. Each state has to fit both its row clue and its column clue.</li><li>A state can be used only once in the grid.</li><li>Any state that fits both clues counts, and you can change or clear a cell at any time.</li><li>You have five mistakes.</li><li>A clue with a <b>?</b> has an explanation: tap it.</li><li>A new grid every day at midnight. Past grids stay in the archive.</li></ul>
+      <p class="howto-example"><strong>Example:</strong> row <em>One of the 13 colonies</em>, column <em>Atlantic coast</em>: Virginia fits both. Pennsylvania was a colony but has no ocean coast; Florida is on the Atlantic but was never a colony.</p>
+      <button type="button" class="howto-play" id="howto-play">Play</button>
     </div>
   </div>
 </div>
@@ -334,13 +250,13 @@
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 
-<script src="/config.js?v=12"></script>
+<script src="/config.js?v=13"></script>
 <script src="/js/admin.js?v=2"></script>
 <script src="/js/ads.js?v=1"></script>
 <script src="/js/analytics.js?v=4"></script>
 <script src="/js/reminders.js?v=2"></script>
 <script src="js/email.js?v=5"></script>
-<script src="/js/i18n.js?v=6"></script>
+<script src="/js/i18n.js?v=7"></script>
 <script src="/js/constraints-approved.js?v=3"></script>
 <script>
 // The 57 approved pop-culture constraints: their ids here in 2 KB, their
@@ -361,7 +277,7 @@
   } catch(e){}
 })();
 </script>
-<script src="js/puzzle.js?v=19"></script>
-<script src="js/game.js?v=22"></script>
+<script src="js/puzzle.js?v=20"></script>
+<script src="js/game.js?v=23"></script>
 </body>
 </html>

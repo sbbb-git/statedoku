@@ -9,14 +9,14 @@
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
   </script>
-  <!-- Google AdSense — site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
+  <!-- Google AdSense, site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
   <meta name="google-adsense-account" content="ca-pub-1481624152917622">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
        crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0F2147">
+  <meta name="theme-color" content="#F6F7F9">
   <meta name="color-scheme" content="light">
   <meta name="format-detection" content="telephone=no">
 
@@ -58,7 +58,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
   <link rel="preload" href="/data/states.json?v=7" as="fetch" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/css/style.css?v=32">
+  <link rel="stylesheet" href="/css/style.css?v=33">
 
   <script type="application/ld+json">
   {
@@ -79,47 +79,28 @@
   </script>
   <script type="application/ld+json" data-site-schema>{"@context": "https://schema.org", "@type": "WebSite", "name": "Statedoku", "url": "https://statedoku.com/es/", "inLanguage": "es", "publisher": {"@type": "Organization", "@id": "https://statedoku.com/#organization", "name": "Statedoku", "url": "https://statedoku.com/", "logo": {"@type": "ImageObject", "url": "https://statedoku.com/apple-touch-icon.png", "width": 180, "height": 180}, "email": "contact@statedoku.com", "sameAs": ["https://www.reddit.com/r/Statedoku/"], "description": "Puzzle diario gratuito de geografía de EE.UU. y 21 juegos sobre los 50 estados, en español, inglés y francés."}}</script>
 </head>
-<body>
+<body class="home">
 
 <h1 class="sr-only">Statedoku, Puzzle diario de estados de EE.UU.</h1>
 
-<header>
-  <a href="/es/" class="logo" aria-label="Statedoku inicio">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
-  <div class="score-inline" aria-live="polite">
-    <span class="score-date" id="puzzle-date"></span>
-    <span class="score-sep" aria-hidden="true">·</span>
-    <span id="score-display">0 / 9</span>
-    <span class="score-sep" aria-hidden="true">·</span>
-    <span id="error-display" role="img" aria-label="Errores restantes"></span>
-  </div>
-  <nav class="nav-actions" aria-label="Acciones de juego">
-    <div class="lang-switcher" role="group" aria-label="Idioma">
-      <button class="lang-btn" data-lang="en" onclick="location.href='/'">EN</button>
-      <button class="lang-btn" data-lang="fr" onclick="location.href='/fr/'">FR</button>
-      <button class="lang-btn active" data-lang="es" aria-current="true">ES</button>
-    </div>
-    <button class="icon-btn" id="btn-howto" title="Cómo jugar" aria-label="Cómo jugar">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    </button>
-    <button class="icon-btn" id="btn-stats" title="Estadísticas" aria-label="Estadísticas">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-    </button>
-    <button class="icon-btn" id="btn-share" title="Compartir" aria-label="Compartir">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-    </button>
+<header class="site-head">
+  <a href="/es/" class="wordmark" aria-label="Statedoku inicio">statedoku</a>
+  <nav class="head-nav" aria-label="Principal">
+    <button type="button" class="head-link" id="btn-howto">Cómo jugar</button>
+    <a class="head-link" href="/es/archive/">Archivo</a>
+    <a class="head-link" href="/es/play/">Juegos</a>
+    <button type="button" class="head-link" id="btn-stats">Estadísticas</button>
+    <span class="lang-switcher" role="group" aria-label="Idioma"><a class="lang-btn" data-lang="en" href="/">EN</a><a class="lang-btn" data-lang="fr" href="/fr/">FR</a><a class="lang-btn active" data-lang="es" href="/es/" aria-current="true">ES</a></span>
   </nav>
 </header>
 
-<main>
-  <div id="loading">🇺🇸 Cargando puzzle…</div>
-
+<main class="home-main">
+  <div id="loading">Cargando la cuadrícula…</div>
 
   <div id="game-wrap">
-    <div id="email-cta" hidden>
-      <span class="ec-icon">📧</span>
-      <span class="ec-text" data-i18n="email_cta">No te pierdas el puzzle de mañana, recíbelo por email</span>
-      <button class="ec-cta" id="ec-subscribe" data-i18n="subscribe">Apúntame</button>
-      <button class="ec-close" id="ec-dismiss" aria-label="Cerrar">✕</button>
+    <div class="day-head">
+      <h2 class="day-title"><span id="day-label">Cuadrícula del día</span> <span class="day-date" id="puzzle-date"></span></h2>
+      <p class="day-score">Puntos <strong id="score-display">0 / 9</strong></p>
     </div>
 
     <div class="grid-wrapper">
@@ -143,11 +124,15 @@
       </div>
     </div>
 
+    <div class="under-grid">
+      <button type="button" class="giveup-btn" id="btn-giveup">Rendirse y ver las respuestas</button>
+      <p class="mistakes">Errores <span id="error-display" role="img" aria-label="Errores restantes"></span></p>
+    </div>
     <div id="solved-banner">
       <div class="banner-icon banner-icon-success">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h3 data-i18n="solved">¡Resuelto! 🇺🇸</h3>
+      <h3 data-i18n="solved">¡Resuelto!</h3>
       <div class="result-emoji" id="result-emoji-solved"></div>
       <div class="result-stats" id="result-stats-solved"></div>
       <div class="share-row" data-banner="solved"></div>
@@ -163,71 +148,12 @@
       <p class="banner-sub" data-i18n="come_back">Nuevo puzzle a medianoche.</p>
     </div>
   </div>
-
-  <div class="gc-share-wrap"><span>Profes: comparte el puzzle de hoy con tu clase.</span><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2Fes%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7l2.5 3H14l-2-2.4L10 20H7.5L10 17H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h16V6H4zm3 2h6v1.6H7V8zm0 3h10v1.6H7V11z"/></svg>Compartir en Google Classroom</a></div>
-
-  <section class="explore-more" aria-labelledby="explore-heading">
-    <h2 id="explore-heading">Después del puzzle, explora los 50 estados</h2>
-    <p class="explore-sub">Fichas, quiz y guías, para curiosos, profes y aficionados a los crucigramas.</p>
-    <div class="explore-grid">
-      <a href="/es/states/" class="explore-card">
-        <strong>Los 50 estados →</strong>
-        <span>Capitales, población, datos, mapas. Una página por estado.</span>
-      </a>
-      <a href="/es/play/" class="explore-card">
-        <strong>21 juegos de geografía →</strong>
-        <span>Coloca el estado, banderas, capitales, siluetas, husos horarios. Sin registro.</span>
-      </a>
-      <a href="/es/learn/" class="explore-card">
-        <strong>Aprender los 50 estados →</strong>
-        <span>Métodos de memorización, desglose por región, guías detalladas.</span>
-      </a>
-      <a href="/quiz/" class="explore-card">
-        <strong>Quiz de EE.UU. →</strong>
-        <span>10 preguntas, 4 modos. Pon a prueba tu geografía en 2 minutos.</span>
-      </a>
-      <a href="/regions/" class="explore-card">
-        <strong>Las 4 regiones de EE.UU. →</strong>
-        <span>Noreste, Sur, Medio Oeste, Oeste, y sus 9 subregiones.</span>
-      </a>
-      <a href="/cities/" class="explore-card">
-        <strong>Las 100 ciudades más grandes →</strong>
-        <span>¿En qué estado está Charlotte? ¿Las Vegas? Respuestas y datos.</span>
-      </a>
-      <a href="/facts/" class="explore-card">
-        <strong>Más de 200 curiosidades (EN) →</strong>
-        <span>Selección de datos sobre los 50 estados.</span>
-      </a>
-      <a href="/es/learn/capitales-de-estados/" class="explore-card">
-        <strong>Las 50 capitales →</strong>
-        <span>Tabla completa, respuestas para "¿Cuál es la capital de X?".</span>
-      </a>
-      <a href="/es/learn/crucigrama-estados/" class="explore-card">
-        <strong>Ayuda para crucigramas →</strong>
-        <span>Filtra estados/capitales por número de letras, USPS, o prefijo.</span>
-      </a>
-      <a href="/learn/printable-us-states-map/" class="explore-card">
-        <strong>Mapa imprimible gratuito →</strong>
-        <span>En blanco, con etiquetas, tabla. Ctrl+P. Para profes y padres.</span>
-      </a>
-      <a href="/api/" class="explore-card">
-        <strong>API JSON gratis →</strong>
-        <span>Pública, sin clave ni registro, se puede usar desde cualquier web. Para desarrolladores.</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="explore-more" aria-labelledby="how-heading">
-    <h2 id="how-heading">Cómo funciona Statedoku</h2>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Cada día trae una cuadrícula de 3×3. Tres pistas van arriba y tres al costado, como «Frontera con México», «Admitido en el siglo XX» o «Su nombre es palabra española». Cada celda necesita un estado de EE.UU. que cumpla a la vez la pista de su fila y la de su columna, y ningún estado puede repetirse en la misma cuadrícula.</p>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Se acepta cualquier estado que cumpla las dos pistas, no solo una respuesta prevista. Por eso un estado colocado al principio puede resultar ser el que otra celda necesitaba, así que las celdas llenas se pueden cambiar o vaciar. Un error cuesta uno de tus cinco errores disponibles; cuando se agotan los cinco, la cuadrícula muestra todos los estados que servían.</p>
-    <p style="max-width:680px;margin:0 auto 14px;color:var(--text-2);line-height:1.65;font-size:.95rem;">Una cuadrícula nueva aparece a medianoche, hora local, y todos los que juegan la misma fecha reciben la misma. Cada cuadrícula se genera a partir de su fecha y se comprueba que tenga una sola solución completa, así que siempre se resuelve razonando y nunca adivinando. Las cuadrículas anteriores siguen disponibles en el <a href="/es/archive/" style="color:var(--navy);font-weight:700;">archivo</a>, y las <a href="/es/how-to-play/" style="color:var(--navy);font-weight:700;">reglas completas</a> explican cada tipo de pista.</p>
-  </section>
-
 </main>
 
-<footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/how-to-play/">Cómo jugar</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/states/">Estados</a> &nbsp;·&nbsp; <a href="/cities/">Ciudades</a> &nbsp;·&nbsp; <a href="/regions/">Regiones</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/api/">API</a> &nbsp;·&nbsp; <a href="/learn/printable-us-states-map/">Mapa imprimible (EN)</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Curiosidades (EN)</a> &nbsp;·&nbsp; <a href="/es/archive/">Archivo</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a></p>
+<footer class="site-foot">
+  <p class="foot-about">Una cuadrícula al día. Llena cada casilla con un estado de EE.UU. que cumpla su fila y su columna. Gratis, sin cuenta, en español, inglés y francés.</p>
+  <nav class="foot-links" aria-label="Statedoku"><a href="/es/how-to-play/">Cómo jugar</a><a href="/es/faq/">FAQ</a><a href="/es/archive/">Archivo</a><a href="/es/play/">Juegos</a><a href="/es/learn/">Aprender</a><a href="/es/states/">Estados</a><a href="/regions/">Regiones</a><a href="/cities/">Ciudades</a><a href="/quiz/">Quiz</a><a href="/es/about/">Acerca</a><a href="/es/privacy/">Privacidad</a><a href="/es/terms/">Condiciones</a><a href="/es/aviso-legal/">Aviso legal</a><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2Fes%2F" target="_blank" rel="noopener">Compartir con una clase</a></nav>
+  <p class="foot-copy">&copy; 2026 Statedoku</p>
 </footer>
 
 <!-- Search panel (bottom sheet) -->
@@ -253,11 +179,7 @@
       <div class="stat-box"><span class="stat-value" id="stat-streak">0</span><span class="stat-label" data-i18n="streak">Racha</span></div>
       <div class="stat-box"><span class="stat-value" id="stat-best-time">-</span><span class="stat-label" data-i18n="best_time">Mejor</span></div>
     </div>
-    <button class="reminder-row stats-email-cta" id="stats-email-cta" type="button">
-      <span class="rec-ico">📧</span>
-      <span class="rec-text" data-i18n="email_modal_title">Get the daily puzzle by email</span>
-      <span class="rec-arr">→</span>
-    </button>
+    <button class="reminder-row stats-email-cta" id="stats-email-cta" type="button"><span class="rec-text">Recibir la cuadrícula del día por email</span></button>
   </div>
 </div>
 
@@ -270,14 +192,9 @@
       <button class="modal-close" aria-label="Cerrar">✕</button>
     </div>
     <div class="howto-content">
-      <p data-i18n="how_to_play_text"></p>
-      <div class="howto-example">
-        <strong>Ejemplo:</strong> Si la fila dice <em>"Colonia original"</em> y la columna <em>"Costa Atlántica"</em>, Virginia sirve. Pensilvania fue colonia pero no tiene costa oceánica, y Florida está en el Atlántico pero nunca fue una de las trece colonias, así que ninguna de las dos sirve.
-      </div>
-      <p style="margin-top:12px">
-        <strong>Verde ✅</strong> = Colocación correcta<br>
-        <strong>Rojo ❌</strong> = Estado incorrecto para esta celda
-      </p>
+      <ul class="howto-list"><li>Llena las nueve casillas con estados de EE.UU. Cada estado tiene que cumplir la pista de su fila y la de su columna.</li><li>Cada estado se usa una sola vez en la cuadrícula.</li><li>Vale cualquier estado que cumpla las dos pistas, y puedes cambiar o vaciar una casilla cuando quieras.</li><li>Tienes cinco errores.</li><li>Una pista con <b>?</b> tiene una explicación: tócala.</li><li>Las pistas sobre letras y longitud leen el nombre en inglés del estado.</li><li>Una cuadrícula nueva cada día a medianoche. Las anteriores siguen en el archivo.</li></ul>
+      <p class="howto-example"><strong>Ejemplo:</strong> fila <em>Una de las 13 colonias</em>, columna <em>Costa atlántica</em>: Virginia cumple las dos. Pensilvania fue colonia pero no tiene costa oceánica; Florida está en el Atlántico pero nunca fue colonia.</p>
+      <button type="button" class="howto-play" id="howto-play">Jugar</button>
     </div>
   </div>
 </div>
@@ -306,13 +223,13 @@
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 
-<script src="/config.js?v=12"></script>
+<script src="/config.js?v=13"></script>
 <script src="/js/admin.js?v=2"></script>
 <script src="/js/ads.js?v=1"></script>
 <script src="/js/analytics.js?v=4"></script>
 <script src="/js/reminders.js?v=2"></script>
 <script src="../js/email.js?v=5"></script>
-<script src="/js/i18n.js?v=6"></script>
+<script src="/js/i18n.js?v=7"></script>
 <script src="/js/constraints-approved.js?v=3"></script>
 <script>
 // The 57 approved pop-culture constraints: their ids here in 2 KB, their
@@ -332,7 +249,7 @@
   } catch(e){}
 })();
 </script>
-<script src="../js/puzzle.js?v=19"></script>
-<script src="../js/game.js?v=22"></script>
+<script src="../js/puzzle.js?v=20"></script>
+<script src="../js/game.js?v=23"></script>
 </body>
 </html>

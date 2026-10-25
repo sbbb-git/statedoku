@@ -36,7 +36,7 @@ const Game = (() => {
   let _errors     = 0;
   let _goldenFound = false;
 
-  // US flag SVG — official proportions (19:10), 13 stripes, 50 stars in 9 rows (6,5,6,5,6,5,6,5,6)
+  // US flag SVG, official proportions (19:10), 13 stripes, 50 stars in 9 rows (6,5,6,5,6,5,6,5,6)
   function _buildFlagSVG() {
     const CANTON_W = 7.6, CANTON_H = 5.385;
     let stars = '';
@@ -75,15 +75,11 @@ const Game = (() => {
     </svg>`;
   }
 
-  // ── Init ──────────────────────────────────────────────────────────────────
+  // Init 
   async function init(dateStr) {
     _dateStr = dateStr || Puzzle.getTodayStr();
     _states  = await Puzzle.loadStates();
     _states.forEach(s => { _stateMap[s.id] = s; });
-
-    // Inject US flag into grid corner (once)
-    const corner = document.querySelector('.grid-corner');
-    if (corner && !corner.querySelector('.us-flag')) corner.innerHTML = _buildFlagSVG();
 
     _puzzle = await Puzzle.getPuzzle(_dateStr);
     if (!_puzzle) {
@@ -110,25 +106,13 @@ const Game = (() => {
     _maybeShowFirstTimeTooltip();
   }
 
+  // First visit: the rules open once, the way Metrodoku greets a new player,
+  // instead of a floating "tap a cell" hint.
   function _maybeShowFirstTimeTooltip() {
     const KEY = 'statedoku_onboarded_v1';
-    if (localStorage.getItem(KEY)) return;
-    if (_solved || _gameOver) { localStorage.setItem(KEY, '1'); return; }
-    const lang = I18n.getLang();
-    const txt = lang === 'fr' ? '👆 Tape sur une case pour commencer'
-              : lang === 'es' ? '👆 Toca una celda para empezar'
-              : '👆 Tap a cell to start';
-    const tip = document.createElement('div');
-    tip.id = 'first-tip';
-    tip.textContent = txt;
-    document.querySelector('#game-wrap')?.appendChild(tip);
-    const dismiss = () => {
-      localStorage.setItem(KEY, '1');
-      tip.remove();
-      document.querySelector('.grid-outer')?.removeEventListener('click', dismiss);
-    };
-    setTimeout(() => document.querySelector('.grid-outer')?.addEventListener('click', dismiss, { once: true }), 100);
-    setTimeout(dismiss, 8000);
+    try { if (localStorage.getItem(KEY)) return; localStorage.setItem(KEY, '1'); } catch (e) { return; }
+    if (_solved || _gameOver) return;
+    showHowToPlay();
   }
 
   function _updateDateDisplay() {
@@ -136,7 +120,7 @@ const Game = (() => {
     if (!el) return;
     if (_puzzle && _puzzle._preview) {
       // Banner above grid already says "Preview: Day #1 drops Monday June 1".
-      // Score bar stays clean — hide the date label entirely during preview.
+      // Score bar stays clean, hide the date label entirely during preview.
       el.textContent = '';
       _showPreviewBanner();
       return;
@@ -147,6 +131,28 @@ const Game = (() => {
     const opts   = { weekday:'long', month:'long', day:'numeric' };
     const txt = d.toLocaleDateString(locale, opts);
     el.textContent = txt.charAt(0).toUpperCase() + txt.slice(1);
+    const label = document.getElementById('day-label');
+    if (label) label.textContent = I18n.t(_dateStr === Puzzle.getTodayStr() ? 'todays_grid' : 'archive_grid');
+  }
+
+  function _syncGiveUp() {
+    const gu = document.getElementById('btn-giveup');
+    if (gu) gu.hidden = _solved || _gameOver;
+  }
+
+  // Giving up ends the game as a loss and shows every answer, as running out
+  // of mistakes does.
+  function giveUp() {
+    if (_solved || _gameOver || !_puzzle) return;
+    if (!window.confirm(I18n.t('give_up_confirm'))) return;
+    _errors = MAX_ERRORS;
+    _closeSearch();
+    _selectedCell = null;
+    _renderCells();
+    _updateScore();
+    _triggerGameOver();
+    const h = document.querySelector('#gameover-banner h3');
+    if (h) h.textContent = I18n.t('gave_up');
   }
 
   function _showPreviewBanner() {
@@ -176,6 +182,7 @@ const Game = (() => {
     }).length;
     const el = document.getElementById('score-display');
     if (el) el.textContent = `${correct} / 9`;
+    _syncGiveUp();
     const errEl = document.getElementById('error-display');
     if (errEl) {
       // The dots are empty spans, so the label is all a screen reader gets:
@@ -191,7 +198,7 @@ const Game = (() => {
     }
   }
 
-  // ── Rendering ─────────────────────────────────────────────────────────────
+  // Rendering 
   function _render() {
     _renderLabels();
     _renderCells();
@@ -231,7 +238,7 @@ const Game = (() => {
     }
   }
 
-  // ── Constraint explanation popover ──────────────────────────────
+  // Constraint explanation popover 
   function _closeConstraintHelp() {
     const open = document.getElementById('constraint-help');
     if (open) open.remove();
@@ -345,7 +352,7 @@ const Game = (() => {
     }
   }
 
-  // ── Grid delegation ───────────────────────────────────────────────────────
+  // Grid delegation 
   function _setupDelegation() {
     const grid = document.querySelector('.grid-outer');
     if (!grid || grid._delegated) return;
@@ -392,7 +399,7 @@ const Game = (() => {
     _openSearch(r, c);
   }
 
-  // ── Autocomplete Search ────────────────────────────────────────────────────
+  // Autocomplete Search 
   function _openSearch(r, c) {
     const rowC = _puzzle.rows[r];
     const colC = _puzzle.cols[c];
@@ -450,7 +457,7 @@ const Game = (() => {
       if (!trimmed) { dropdown.style.display = 'none'; return; }
 
       // Anti-spoiler: require at least MIN_QUERY_LEN chars before revealing
-      // states. NAME ONLY — state abbreviations are never matched, otherwise
+      // states. NAME ONLY, state abbreviations are never matched, otherwise
       // typing "CA" would instantly reveal California which kills the game.
       if (trimmed.length < MIN_QUERY_LEN) {
         const need = MIN_QUERY_LEN - trimmed.length;
@@ -629,7 +636,7 @@ const Game = (() => {
   }
 
   // Returns true if `stateId` satisfies BOTH the row and column constraints
-  // for the cell (r,c) — i.e. the player's pick is a legitimate answer to the
+  // for the cell (r,c), i.e. the player's pick is a legitimate answer to the
   // visible clues, regardless of whether it matches the canonical solution.
   function _isValidForCell(r, c, stateId) {
     const valid = (_puzzle.cells && _puzzle.cells[r] && _puzzle.cells[r][c]) || [_puzzle.solution[r][c]];
@@ -690,7 +697,7 @@ const Game = (() => {
     }
 
     // 5. Hard-wrong: state does NOT satisfy clues (or it's a duplicate).
-    //    Penalize as before — flash, count a mistake, clear after 600ms.
+    // Penalize as before, flash, count a mistake, clear after 600ms.
     _errors = Math.min(_errors + 1, MAX_ERRORS);
     // A wrong pick over a correct state puts that state back afterwards. The
     // mistake is saved now, so a reload during the flash cannot undo it.
@@ -721,7 +728,7 @@ const Game = (() => {
     }
   }
 
-  // ── Live region announcer (a11y) ─────────────────────────────────────────
+  // Live region announcer (a11y) 
   function _announce(msg) {
     const el = document.getElementById('a11y-live');
     if (!el) return;
@@ -732,6 +739,7 @@ const Game = (() => {
 
   function _triggerGameOver() {
     _gameOver = true;
+    _syncGiveUp();
     _announce(I18n.t('game_over'));
     _saveProgress();
     _updateStatsLoss();
@@ -766,13 +774,13 @@ const Game = (() => {
     _injectResultEmailCTA('gameover');
   }
 
-  // ── Win ───────────────────────────────────────────────────────────────────
+  // Win 
   function _checkSolved() {
     // Grid is "solved" if every cell holds a state that satisfies both its
     // row and column constraint AND all 9 states are distinct.
-    // (We no longer require matching the canonical solution — any
-    //  row+col-valid combination with unique states wins. This matches the
-    //  user's mental model: "I answered the visible clues correctly".)
+    // (We no longer require matching the canonical solution, any
+    // row+col-valid combination with unique states wins. This matches the
+    // user's mental model: "I answered the visible clues correctly".)
     const allFilled = _grid.every(row => row.every(s => !!s));
     if (!allFilled) return;
     const ids = _grid.flat();
@@ -781,6 +789,7 @@ const Game = (() => {
     const allValid = _grid.every((row, r) => row.every((s, c) => _isValidForCell(r, c, s)));
     if (!allValid) return;
     _solved = true;
+    _syncGiveUp();
     _announce(`${I18n.t('solved')} ${I18n.t('solved_msg')}`);
     const elapsed = Math.floor((Date.now() - _startTime) / 1000);
     _solveTime = elapsed;
@@ -827,7 +836,7 @@ const Game = (() => {
     } catch (_) { /* never block the win banner */ }
   }
 
-  // After-solve / after-gameover email CTA — prominent card below share row
+  // After-solve / after-gameover email CTA, prominent card below share row
   function _injectResultEmailCTA(which = 'solved') {
     if (typeof EmailReminder === 'undefined') return;
     if (localStorage.getItem('statedoku_email_subscribed')) return;
@@ -839,12 +848,12 @@ const Game = (() => {
     const txt = (typeof I18n !== 'undefined' && I18n.t)
       ? (I18n.t('email_get_tomorrow') !== 'email_get_tomorrow' ? I18n.t('email_get_tomorrow') : null)
       : null;
-    cta.innerHTML = `<span class="rec-ico">📧</span><span class="rec-text">${txt || "Tomorrow's puzzle in your inbox"}</span><span class="rec-arr">→</span>`;
+    cta.innerHTML = `<span class="rec-text">${txt || "Tomorrow's puzzle in your inbox"}</span>`;
     cta.addEventListener('click', () => EmailReminder.openModal());
     banner.appendChild(cta);
   }
 
-  // ── Compact result helpers (mini emoji grid, inline stats, inline share row) ──
+  // Compact result helpers (mini emoji grid, inline stats, inline share row) 
   function _renderResultEmojiGrid() {
     const host = document.getElementById('result-emoji-solved');
     if (!host) return;
@@ -919,7 +928,7 @@ const Game = (() => {
   }
 
   async function _inlineShareClick(id) {
-    // Track share intent in CF Web Analytics (D1 not needed — just channel counts)
+    // Track share intent in CF Web Analytics (D1 not needed, just channel counts)
     try {
       if (typeof window !== 'undefined' && typeof window.cfTrack === 'function') {
         window.cfTrack('share_clicked', {
@@ -973,10 +982,12 @@ const Game = (() => {
     if (url) window.open(url, '_blank', 'noopener,noreferrer,width=620,height=560');
   }
 
-  // ── Confetti celebration (lightweight, pure CSS particles) ───────────────
+  // Confetti celebration (lightweight, pure CSS particles) 
   function _fireConfetti() {
-    // Respect prefers-reduced-motion
+    // Respect prefers-reduced-motion. The homepage has none since 25 October
+    // 2026: the grid stays plain to the end.
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (document.body.classList.contains('home')) return;
 
     const colors = ['#DC2626', '#FFFFFF', '#0F2147', '#F59E0B', '#1E3A8A'];
     const container = document.createElement('div');
@@ -1002,7 +1013,7 @@ const Game = (() => {
     setTimeout(() => container.remove(), 4500);
   }
 
-  // ── Share ─────────────────────────────────────────────────────────────────
+  // Share 
   const SITE_URL = 'https://statedoku.com';
 
   function getShareBody() {
@@ -1023,7 +1034,7 @@ const Game = (() => {
   // Backwards-compat: full share text (body + URL)
   function getShareText() { return `${getShareBody()}\n${SITE_URL}`; }
 
-  // ── Wordle-style share PNG via Canvas ─────────────────────────────────────
+  // Wordle-style share PNG via Canvas 
   // Renders an 800×800 image of the result grid + branding for visual sharing.
   // Used by the Web Share API (files: [...]) when supported, and as a
   // "download image" fallback.
@@ -1138,7 +1149,7 @@ const Game = (() => {
   // expose for share-sheet use
   window.__statedoku_shareImage = getShareImageBlob;
 
-  // ── Share sheet (multi-platform) ──────────────────────────────────────────
+  // Share sheet (multi-platform) 
   const SHARE_PLATFORMS = [
     {
       id: 'whatsapp', label: 'WhatsApp', color: '#25D366',
@@ -1265,7 +1276,7 @@ const Game = (() => {
     setTimeout(() => t.classList.remove('show'), 2200);
   }
 
-  // ── Stats ─────────────────────────────────────────────────────────────────
+  // Stats 
   function _getStats() {
     const raw = localStorage.getItem(CONFIG.STORAGE_KEY + '_stats');
     return raw ? JSON.parse(raw) : { played:0, won:0, streak:0, maxStreak:0, bestTime:null, lastDate:null };
@@ -1338,7 +1349,7 @@ const Game = (() => {
 
   function _fmt(s) { return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; }
 
-  // ── Persistence ───────────────────────────────────────────────────────────
+  // Persistence 
   function _saveProgress() {
     localStorage.setItem(CONFIG.STORAGE_KEY+'_progress_'+_dateStr,
       JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, startTime:_startTime, errors:_errors, solveTime:_solveTime, goldenFound:_goldenFound }));
@@ -1357,7 +1368,7 @@ const Game = (() => {
       _solveTime = d.solveTime || null;
       _goldenFound = !!d.goldenFound;
 
-      // ── Defensive: detect corrupt progress (states visible but game not won/lost)
+      // Defensive: detect corrupt progress (states visible but game not won/lost)
       // This can happen after a dev panel "Solve" run, or a stale wrong-flash save.
       // Any non-locked (i.e. not a correct placement) state in the grid is a leak.
       if (!_solved && !_gameOver) {
@@ -1379,7 +1390,7 @@ const Game = (() => {
     } catch(e) { _startTime = Date.now(); }
   }
 
-  // ── Reminder toggle (inside stats modal) ─────────────────────────────────
+  // Reminder toggle (inside stats modal) 
   function _refreshReminderUI() {
     const row = document.getElementById('reminder-row');
     if (!row || typeof Reminders === 'undefined') return;
@@ -1419,19 +1430,19 @@ const Game = (() => {
     _refreshReminderUI();
   }
 
-  // ── Public ────────────────────────────────────────────────────────────────
+  // Public 
   function showStats()     { _renderStats(); document.getElementById('stats-modal').classList.add('open'); _refreshReminderUI(); }
   function showHowToPlay() { document.getElementById('howto-modal').classList.add('open'); }
   function rerender()      { if (_puzzle) { _render(); _updateDateDisplay(); } }
 
-  // ── Dev helpers (exposed for /superadmin panel) ─────────────────────────
+  // Dev helpers (exposed for /superadmin panel) 
   function _devGetPuzzle()  { return _puzzle; }
   function _devGetGrid()    { return _grid; }
   function _devSolve()      {
     if (!_puzzle) return;
     _grid = _puzzle.solution.map(r => r.slice());
     _solved = true; _gameOver = false; _errors = 0;
-    // NOTE: do NOT call _saveProgress() — dev solves should not pollute the
+    // NOTE: do NOT call _saveProgress(), dev solves should not pollute the
     // player's localStorage. On reload, the grid will be blank again.
     _renderCells(); _updateScore();
     setTimeout(() => _showSolvedBanner(), 100);
@@ -1448,7 +1459,7 @@ const Game = (() => {
     location.reload();
   }
 
-  // ── Golden State helpers ──────────────────────────────────────────────
+  // Golden State helpers 
   function _bumpStat(key, delta) {
     try {
       const cur = parseInt(localStorage.getItem(CONFIG.STORAGE_KEY + '_' + key) || '0', 10);
@@ -1482,11 +1493,11 @@ const Game = (() => {
     if (navigator.vibrate) { try { navigator.vibrate([20, 30, 20]); } catch {} }
   }
 
-  return { init, share, showStats, showHowToPlay, rerender, _toggleReminder,
+  return { init, share, showStats, showHowToPlay, giveUp, rerender, _toggleReminder,
            _dev: { getPuzzle:_devGetPuzzle, getGrid:_devGetGrid, solve:_devSolve, revealRow:_devRevealRow, resetCurrent:_devResetCurrent } };
 })();
 
-// ──────────────────────── SUPERADMIN DEV PANEL ────────────────────────────
+// SUPERADMIN DEV PANEL 
 const DevPanel = (() => {
   let _open = false;
   let _activeTab = 'tools'; // 'tools' | 'constraints'
@@ -1744,7 +1755,7 @@ const DevPanel = (() => {
   }
 
   function _randomDate() {
-    // Random date in 2025–2027 range
+    // Random date in 2025-2027 range
     const start = new Date(2025, 0, 1).getTime();
     const end   = new Date(2027, 11, 31).getTime();
     const dt = new Date(start + Math.random() * (end - start));
@@ -1781,7 +1792,7 @@ const DevPanel = (() => {
   return { check: () => { if (_enabled()) _enable(); }, enable: _enable };
 })();
 
-// ── DOM wiring ───────────────────────────────────────────────────────────────
+// DOM wiring 
 document.addEventListener('DOMContentLoaded', async () => {
   const path        = location.pathname;
   const langFromPath = path.includes('/fr/') ? 'fr' : path.includes('/es/') ? 'es' : null;
@@ -1790,13 +1801,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   const dateStr = _dateParam() || Puzzle.getTodayStr();
   await Game.init(dateStr);
 
-  // Dev panel — auto-mounts if ?dev=1 in URL, or if previously enabled
+  // Dev panel, auto-mounts if ?dev=1 in URL, or if previously enabled
   DevPanel.check();
 
   // Close search panel on overlay click or Escape
   document.getElementById('sp-overlay')?.addEventListener('click', () => {
     document.getElementById('search-panel').classList.remove('open');
-    // don't deselect — let user click elsewhere
+    // don't deselect, let user click elsewhere
   });
 
   // Close modals
@@ -1836,6 +1847,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Buttons
   document.getElementById('btn-share')?.addEventListener('click', () => Game.share());
+  document.getElementById('btn-giveup')?.addEventListener('click', () => Game.giveUp());
+  document.getElementById('howto-play')?.addEventListener('click', () =>
+    document.getElementById('howto-modal')?.classList.remove('open'));
   document.getElementById('btn-stats')?.addEventListener('click', () => Game.showStats());
   document.getElementById('btn-howto')?.addEventListener('click', () => Game.showHowToPlay());
   document.getElementById('btn-share-banner')?.addEventListener('click', () => Game.share());
