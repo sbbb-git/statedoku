@@ -200,10 +200,10 @@ def build(snapshot):
             return str(entries[p]) if p in views else 'n/a'
         daily = [(p, c) for p, c in per.items() if p in ('/', '/fr/', '/es/')]
         if daily:
-            out.append('| Daily game | Entries | Started | Won | Lost | Shared to Classroom |')
-            out.append('|---|---|---|---|---|---|')
+            out.append('| Daily game | Entries | Started | Played a move | Won | Lost | Shared to Classroom |')
+            out.append('|---|---|---|---|---|---|---|')
             for p, c in sorted(daily):
-                out.append(f"| `{p}` | {ent(p)} | {c['puzzle_start']} | {c['puzzle_solve']} | {c['puzzle_lost']} | {c['classroom_share']} |")
+                out.append(f"| `{p}` | {ent(p)} | {c['puzzle_start']} | {c['puzzle_first_move']} | {c['puzzle_solve']} | {c['puzzle_lost']} | {c['classroom_share']} |")
             out.append('')
         games = [(p, c) for p, c in per.items() if '/play/' in p and (c['play_start'] or c['play_complete'])]
         if games:

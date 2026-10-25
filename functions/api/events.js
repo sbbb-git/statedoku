@@ -8,7 +8,7 @@ import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
 
 // The three names js/game.js sends through js/analytics.js, and the only
 // three the events table accepts (CHECK constraint in bot/d1-schema.sql).
-const ALLOWED_EVENTS = ['puzzle_start', 'puzzle_solve', 'puzzle_lost'];
+const ALLOWED_EVENTS = ['puzzle_start', 'puzzle_first_move', 'puzzle_solve', 'puzzle_lost'];
 const LANGS = ['en', 'fr', 'es'];
 const MAX_BODY = 1024;            // a real payload is about 120 bytes
 const MAX_SECONDS = 7 * 86400;    // a tab left open for a week, no more

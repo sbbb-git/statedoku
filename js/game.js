@@ -647,6 +647,13 @@ const Game = (() => {
     if (!_selectedCell) return;
     const { r, c } = _selectedCell;
 
+    // puzzle_start fires when the grid renders, so it counts everyone who saw
+    // it. The first pick, right or wrong, is what says someone played. Deduped
+    // per device and date like puzzle_start.
+    if (typeof Analytics !== 'undefined') {
+      Analytics.track('puzzle_first_move', { puzzle_date: _dateStr });
+    }
+
     // 1. Does the picked state satisfy BOTH row + col constraints?
     const validForCell = _isValidForCell(r, c, stateId);
 
