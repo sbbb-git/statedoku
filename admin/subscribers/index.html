@@ -6,7 +6,7 @@
 <title>Email Subscribers, Statedoku Admin</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-<link rel="stylesheet" href="/css/style.css?v=32">
+<link rel="stylesheet" href="/css/style.css?v=33">
 <style>
   body { background: var(--bg); min-height: 100dvh; }
   .a-shell { max-width: 1100px; margin: 0 auto; padding: 28px 18px 80px; }
@@ -161,7 +161,7 @@
   </div>
 </div>
 
-<script src="/config.js?v=12"></script>
+<script src="/config.js?v=13"></script>
 <script src="/js/admin.js?v=4"></script>
 <script src="/js/ads.js?v=1"></script>
 <script>
@@ -174,7 +174,7 @@
     return;
   }
 
-  // 2) Check we have an API key (separate from password — a server-side secret)
+  // 2) Check we have an API key (separate from password, a server-side secret)
   // The key lives in sessionStorage only: it is gone when the tab closes, and
   // a copy left in localStorage by an earlier version is erased.
   const KEY_STORAGE = 'statedoku_admin_api_key';

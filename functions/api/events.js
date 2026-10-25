@@ -1,8 +1,8 @@
-// Statedoku — POST /api/events
+// Statedoku, POST /api/events
 // Receives game events from the client (puzzle_start, puzzle_solve, puzzle_lost).
-// Anonymous — no IP stored, only the cf-ipcountry header (country-level).
+// Anonymous, no IP stored, only the cf-ipcountry header (country-level).
 // Bindings required (set in Cloudflare Pages → Settings → Functions):
-//   - STATS_DB (D1 database)
+// - STATS_DB (D1 database)
 
 import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
 
@@ -32,7 +32,7 @@ export async function onRequestPost({ request, env }) {
     return new Response('Service unavailable', { status: 503 });
   }
 
-  // Rate limit: 60 events per IP per minute (generous — covers a normal day of play)
+  // Rate limit: 60 events per IP per minute (generous, covers a normal day of play)
   const ip = getClientIp(request);
   const rl = rateLimit('events:' + ip, 60, 60_000);
   if (!rl.ok) {

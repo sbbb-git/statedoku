@@ -37,7 +37,7 @@
         else if (dim && highlightSet.size > 0) path.classList.add('is-dimmed');
       });
     } catch (e) {
-      // Fail silently — fallback content (tilemap or text) remains
+      // Fail silently, fallback content (tilemap or text) remains
       container.setAttribute('data-load-failed', '1');
     }
   }

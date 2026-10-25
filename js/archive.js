@@ -1,9 +1,9 @@
-// ─────────────────────────────────────────────────────────────────────────
-// Statedoku — Archive calendar
+// 
+// Statedoku, Archive calendar
 // Renders a month-by-month calendar. Each cell shows the date's status
 // (solved / lost / in progress / not played) and links to ?date=YYYY-MM-DD.
 // Reads progress from localStorage. No server roundtrip.
-// ─────────────────────────────────────────────────────────────────────────
+// 
 
 (() => {
   const STORAGE_PREFIX = (window.CONFIG && CONFIG.STORAGE_KEY) || 'statedoku_v1';
@@ -61,7 +61,7 @@
     return 'progress';
   }
 
-  // ── Calendar renderer ────────────────────────────────────────────────────
+  // Calendar renderer 
   let viewYear, viewMonth;
 
   function renderMonth() {

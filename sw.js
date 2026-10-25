@@ -1,4 +1,4 @@
-// Statedoku — minimal service worker
+// Statedoku, minimal service worker
 // Handles notification clicks and basic offline-friendly behavior.
 
 self.addEventListener('install', (e) => self.skipWaiting());

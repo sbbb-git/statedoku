@@ -43,7 +43,7 @@ export async function onRequestGet({ request, env }) {
 
   const dest = _b64decode(d) || 'https://statedoku.com/';
 
-  // Always redirect — even if the recording fails. UX > telemetry.
+  // Always redirect, even if the recording fails. UX > telemetry.
   const fallbackRedirect = _isAllowedDest(dest)
     ? dest
     : 'https://statedoku.com/';
@@ -69,7 +69,7 @@ export async function onRequestGet({ request, env }) {
       .bind(email, Date.now(), _todayIso(), ua.slice(0, 240), country, lang, dest)
       .run();
   } catch (e) {
-    // swallow — never block the redirect
+    // swallow, never block the redirect
   }
 
   return Response.redirect(fallbackRedirect, 302);

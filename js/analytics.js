@@ -1,4 +1,4 @@
-// Statedoku — client-side analytics
+// Statedoku, client-side analytics
 // Sends events to /api/events (anonymous, no PII).
 // Skips firing when admin is authenticated.
 

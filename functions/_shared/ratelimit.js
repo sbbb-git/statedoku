@@ -1,6 +1,6 @@
 // In-memory rate-limiter shared by Pages Functions.
 // Each Cloudflare Worker isolate has its own Map (eventual consistency across
-// regions), so this is a best-effort guardrail against naive flooding — not a
+// regions), so this is a best-effort guardrail against naive flooding, not a
 // fortress. For tighter limits, use Cloudflare KV or a dedicated Rate Limit rule.
 
 const _buckets = new Map(); // key -> { count, resetAt }

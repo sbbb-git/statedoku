@@ -1,21 +1,21 @@
-// ─────────────────────────────────────────────────────────────────────────
-// Statedoku — Superadmin gate
+// 
+// Statedoku, Superadmin gate
 // Hidden entry: visit any page with #admin in the URL → password modal.
 // On success → admin mode persists for 30 days in localStorage.
-// ─────────────────────────────────────────────────────────────────────────
+// 
 
 const Admin = (() => {
   const TOKEN_KEY = 'statedoku_admin_token';
   const TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
-  // ── SHA-256 via SubtleCrypto ────────────────────────────────────────────
+  // SHA-256 via SubtleCrypto 
   async function _sha256(text) {
     const buf = new TextEncoder().encode(text);
     const hash = await crypto.subtle.digest('SHA-256', buf);
     return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  // ── Token management ────────────────────────────────────────────────────
+  // Token management 
   function _saveToken() {
     const payload = { exp: Date.now() + TTL_MS };
     localStorage.setItem(TOKEN_KEY, JSON.stringify(payload));
@@ -43,7 +43,7 @@ const Admin = (() => {
     location.reload();
   }
 
-  // ── Password modal ──────────────────────────────────────────────────────
+  // Password modal 
   function _showPasswordModal() {
     if (document.getElementById('admin-modal')) return;
 
@@ -100,7 +100,7 @@ const Admin = (() => {
     setTimeout(() => input.focus(), 50);
   }
 
-  // ── Init ────────────────────────────────────────────────────────────────
+  // Init 
   function init() {
     // Migrate legacy ?dev=1 flag → require re-auth
     if (localStorage.getItem('statedoku_dev')) {

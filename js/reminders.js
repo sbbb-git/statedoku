@@ -1,7 +1,7 @@
-// Statedoku — daily reminder via browser notifications
+// Statedoku, daily reminder via browser notifications
 // Strategy: when user opts in + picks a time, we save preference in localStorage.
 // On every page load we check if we should show a "next puzzle is ready" notification
-// (lazy reminding — works only when they have a browser open).
+// (lazy reminding, works only when they have a browser open).
 // For real scheduled push: would need backend with VAPID + Web Push API.
 
 const Reminders = (() => {
@@ -93,7 +93,7 @@ const Reminders = (() => {
         showTrigger: typeof TimestampTrigger !== 'undefined' ? new TimestampTrigger(next.getTime()) : undefined,
       });
     } catch (e) {
-      // Triggers API not supported on most browsers — that's OK
+      // Triggers API not supported on most browsers, that's OK
     }
   }
 

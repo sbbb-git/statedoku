@@ -1,5 +1,5 @@
-// ─────────────────────────────────────────────────────────────────────────
-// Statedoku — Approved pending constraints (committed to the repo)
+// 
+// Statedoku, Approved pending constraints (committed to the repo)
 //
 // These are pending-constraint IDs that have been admin-reviewed in
 // /admin/constraints/ and accepted as part of the live pool. Promoted here
@@ -7,9 +7,9 @@
 // pool of column constraints.
 //
 // To update: in Safari console on /admin/constraints/, run
-//   prompt('copy:', localStorage.statedoku_approved_pending)
+// prompt('copy:', localStorage.statedoku_approved_pending)
 // Then replace the array below.
-// ─────────────────────────────────────────────────────────────────────────
+// 
 
 const APPROVED_PENDING = [
   "pc_super_bowl_host",

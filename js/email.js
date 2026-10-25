@@ -1,7 +1,7 @@
-// ─────────────────────────────────────────────────────────────────────────
-// Statedoku — Email reminders subscribe flow
+// 
+// Statedoku, Email reminders subscribe flow
 // In-game CTA banner + subscribe modal. Posts to /api/subscribe (D1).
-// ─────────────────────────────────────────────────────────────────────────
+// 
 
 const EmailReminder = (() => {
   const LS_DISMISSED = 'statedoku_email_cta_dismissed';

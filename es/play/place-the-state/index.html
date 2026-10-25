@@ -11,7 +11,7 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0F2147">
+  <meta name="theme-color" content="#FFFFFF">
   <title>Coloca el Estado en el Mapa, Quiz Mapa EE.UU. | Statedoku</title>
   <meta name="description" content="Haz clic en el estado correcto del mapa EE.UU. cuando te lo pidan. 10 rondas, 3 vidas. Juego gratuito en el navegador, sin registro, jugable en un minuto.">
   <meta name="keywords" content="mapa estados unidos quiz, juego coloca los estados, juego mapa eeuu">
@@ -28,7 +28,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/place-the-state/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/place-the-state/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=32">
+  <link rel="stylesheet" href="/css/style.css?v=33">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Coloca el Estado">
   <meta property="og:description" content="Haz clic en el estado correcto del mapa EE.UU. cuando te lo pidan. 10 rondas, 3 vidas.">
@@ -106,7 +106,7 @@
 </head>
 <body class="legal-body">
 <header>
-  <a href="/es/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <a href="/es/" class="logo">State<em>doku</em></a>
   <nav class="nav-actions"><a href="/es/play/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem">← Todos los juegos</a></nav>
 </header>
 <script type="application/ld+json">
@@ -131,7 +131,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Es gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, 100% gratis, sin registro, sin anuncios."}}, {"@type": "Question", "name": "¿Se guarda mi racha?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, racha guardada localmente en tu navegador."}}, {"@type": "Question", "name": "¿Y los estados pequeños como Rhode Island?", "acceptedAnswer": {"@type": "Answer", "text": "En el móvil, un toque que cae en el agua justo al lado de Rhode Island, Delaware, Connecticut u otro de los estados más pequeños del Noreste cuenta para ese estado. En el ordenador, el clic tiene que caer dentro del contorno; amplía la página en el navegador si un estado sigue siendo demasiado pequeño."}}]}</script>
 <main>
   <section class="hub-hero">
-    <span class="hub-chip">📍 MAP CHALLENGE</span>
+    <span class="hub-chip">MAP CHALLENGE</span>
     <h1>Coloca el Estado</h1>
     <p class="sub">Haz clic en el estado correcto del mapa EE.UU. cuando te lo pidan. 10 rondas, 3 vidas.</p>
     <div class="gc-share-wrap"><span>Profes: comparte este juego con tu clase.</span><a class="gc-share" href="https://classroom.google.com/share?url=https%3A%2F%2Fstatedoku.com%2Fes%2Fplay%2Fplace-the-state%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7l2.5 3H14l-2-2.4L10 20H7.5L10 17H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h16V6H4zm3 2h6v1.6H7V8zm0 3h10v1.6H7V11z"/></svg>Compartir en Google Classroom</a></div>
@@ -233,7 +233,7 @@
     <!-- xlink-shabbat -->
     <div style="max-width:760px;margin:20px auto;padding:0 14px">
       <h2 style="font-size:1.05rem;font-weight:800;color:#0F2147;letter-spacing:-.01em;margin:14px 0 8px">Leer más sobre este tema</h2>
-      <a href="/es/learn/largest-states/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ Estados de EE.UU. más grandes y más pequeños (por superficie)</a><a href="/es/learn/landlocked-states/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">→ Los 20 estados de EE.UU. sin salida al mar</a>
+      <a href="/es/learn/largest-states/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">Estados de EE.UU. más grandes y más pequeños (por superficie)</a><a href="/es/learn/landlocked-states/" style="display:block;padding:10px 12px;border:1px solid #E2E8F0;border-radius:8px;color:#0F2147;text-decoration:none;font-weight:600;font-size:.88rem;margin-bottom:6px">Los 20 estados de EE.UU. sin salida al mar</a>
     </div>
 
   <p class="page-updated">Actualizado el <time datetime="2026-10-22">22 de octubre de 2026</time></p>
@@ -421,8 +421,8 @@ fetch('/data/us-map.svg?v=1').then(function(r){if(!r.ok)throw new Error(r.status
   }, true);
 })();
 </script>
-<script src="/config.js?v=12"></script>
-<template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/es/play/state-silhouettes/" data-next="state-silhouettes" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Siguiente: Siluetas de Estados →</a><a href="/es/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">El puzzle Statedoku de hoy</a><a href="/es/play/" style="color:#0F2147;font-weight:700;">Los 21 juegos</a></div></template>
+<script src="/config.js?v=13"></script>
+<template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/es/play/state-silhouettes/" data-next="state-silhouettes" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Siguiente: Siluetas de Estados</a><a href="/es/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">El puzzle Statedoku de hoy</a><a href="/es/play/" style="color:#0F2147;font-weight:700;">Los 21 juegos</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result
 // card. 99% of Place the State players left after one game (GA4, Oct 2026).

@@ -95,8 +95,8 @@ export async function onRequestGet({ request }) {
   // /fun-facts/ 7.5%, so those two are in.
   //
   // Measured overlap after the Aug rewrite, was 55-62% before:
-  //   geography 4.0%   people 3.9%   history 3.6%
-  //   symbols   7.9%   fun-facts 7.5%
+  // geography 4.0%   people 3.9%   history 3.6%
+  // symbols   7.9%   fun-facts 7.5%
   // Geography is the highest-value of these: "minnesota geography" alone is
   // 987 AI citations plus 797 impressions at position 6.6.
   //
@@ -190,7 +190,7 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/meilleurs-jeux-de-geographie-quotidiens/`, { priority: 0.8 }],
     [`${BASE}/es/learn/mejores-juegos-diarios-de-geografia/`, { priority: 0.8 }],
     [`${BASE}/fr/learn/surnoms-des-etats/`, { priority: 0.85 }],
-    // Batch 2 (June 4) — 2 EN + 5 ES + 5 FR
+    // Batch 2 (June 4), 2 EN + 5 ES + 5 FR
     [`${BASE}/learn/state-nicknames-complete/`, { priority: 0.85 }],
     [`${BASE}/learn/us-cultural-belts/`, { priority: 0.85 }],
     [`${BASE}/es/learn/sistema-federal-eeuu/`, { priority: 0.85 }],
@@ -203,20 +203,20 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/fleuves-des-etats-unis/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/montagnes-des-etats-unis/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/presidents-par-etat/`, { priority: 0.85 }],
-    // Batch 3 (June 4) — National parks + populous states trio
+    // Batch 3 (June 4), National parks + populous states trio
     [`${BASE}/learn/national-parks-by-state/`, { priority: 0.9 }],
     [`${BASE}/learn/most-populous-states/`, { priority: 0.9 }],
     [`${BASE}/es/learn/parques-nacionales-eeuu/`, { priority: 0.9 }],
     [`${BASE}/es/learn/estados-mas-poblados/`, { priority: 0.9 }],
     [`${BASE}/fr/learn/parcs-nationaux-americains/`, { priority: 0.9 }],
-    // World Cup 2026 mega-batch (June 4) — peak search-volume opportunity
+    // World Cup 2026 mega-batch (June 4), peak search-volume opportunity
     // Tournament starts June 11, 2026, final July 19 at MetLife Stadium.
-    // Priority 0.95 for hubs (highest in entire sitemap) — these are the
+    // Priority 0.95 for hubs (highest in entire sitemap), these are the
     // most time-sensitive pages on the site for the next ~50 days.
-    // WC mega-batch 2 (June 4) — country & state pages (huge query volume)
-    // WC mega-batch 3 (June 4) — players, base camps, ceremonies, history
-    // WC mega-batch 4 (June 4) — more teams, players, stadium guides
-    // GSC-driven mega-batch (June 19) — 50 capital-de-X + 15 crossword answer pages
+    // WC mega-batch 2 (June 4), country & state pages (huge query volume)
+    // WC mega-batch 3 (June 4), players, base camps, ceremonies, history
+    // WC mega-batch 4 (June 4), more teams, players, stadium guides
+    // GSC-driven mega-batch (June 19), 50 capital-de-X + 15 crossword answer pages
     [`${BASE}/es/learn/ciudad-arizona-cabecera-condado-pima/`, { priority: 0.9, changefreq: 'weekly' }],
     [`${BASE}/es/learn/estado-eeuu-2-letras-nc/`, { priority: 0.9, changefreq: 'weekly' }],
     [`${BASE}/es/learn/estado-eeuu-2-letras-sc/`, { priority: 0.9, changefreq: 'weekly' }],
@@ -225,7 +225,7 @@ export async function onRequestGet({ request }) {
     [`${BASE}/es/learn/estado-eeuu-abreviatura-ma/`, { priority: 0.9, changefreq: 'weekly' }],
     [`${BASE}/es/learn/estado-eeuu-abreviatura-mi/`, { priority: 0.9, changefreq: 'weekly' }],
     [`${BASE}/es/learn/estado-eeuu-abreviatura-mn/`, { priority: 0.9, changefreq: 'weekly' }],
-    // /play/ hub + games (Wave 1, June 19) — 66 pages
+    // /play/ hub + games (Wave 1, June 19), 66 pages
     [`${BASE}/play/`, { priority: 0.95, changefreq: 'weekly' }],
     [`${BASE}/fr/play/`, { priority: 0.95, changefreq: 'weekly' }],
     [`${BASE}/es/play/`, { priority: 0.95, changefreq: 'weekly' }],
@@ -294,12 +294,12 @@ export async function onRequestGet({ request }) {
     [`${BASE}/es/play/no-income-tax-states/`, { priority: 0.7, changefreq: 'weekly' }],
   ];
 
-  // Disambiguation pages — "is {city} a state?" and "capital of {city}?"
+  // Disambiguation pages, "is {city} a state?" and "capital of {city}?"
   const IS_A_STATE = ['las-vegas','boston','atlanta','miami','minneapolis','philadelphia','charlotte','seattle','portland','phoenix'];
   for (const city of IS_A_STATE) extras.push([`${BASE}/learn/is-${city}-a-state/`, { priority: 0.75 }]);
   // learn/capital-of-<city> retired 5 Oct 2026 (AdSense low-value content): noindexed, not listed.
 
-  // Press kit + FR/ES legal pages (were missing — flagged by Bing Webmaster Tools)
+  // Press kit + FR/ES legal pages (were missing, flagged by Bing Webmaster Tools)
   extras.push([`${BASE}/press/`, { priority: 0.6 }]);
   extras.push([`${BASE}/fr/privacy/`, { priority: 0.3 }]);
   extras.push([`${BASE}/fr/terms/`, { priority: 0.3 }]);
@@ -323,7 +323,7 @@ export async function onRequestGet({ request }) {
 
   // NOTE: per-state launcher pages (/play/<game>/state/<slug>/) and printable
   // worksheet pages (/play/<game>/printable/) are intentionally EXCLUDED from
-  // the sitemap. They are noindex,follow — internal utility pages, not
+  // the sitemap. They are noindex,follow, internal utility pages, not
   // content pages. AdSense flagged the original launcher set as 'low-value
   // content' because 750 template-generated pages tripped Google's doorway
   // detection. Kept accessible via internal navigation for user UX.

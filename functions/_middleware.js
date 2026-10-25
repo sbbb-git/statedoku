@@ -1,11 +1,11 @@
-// Root middleware — runs on every request including static assets.
+// Root middleware, runs on every request including static assets.
 //
 // Three jobs: send stray hosts (www., the bare pages.dev project host) to
 // statedoku.com; give /api/* responses the security headers that _headers
 // cannot add (Pages applies _headers to static assets, not to Functions); and
 // rewrite the Content-Security-Policy header for /play/* routes so the page
 // can be embedded in third-party iframes (teacher blogs, classroom LMS, news
-// sites). _headers cannot do the last one either — CF Pages CONCATENATES
+// sites). _headers cannot do the last one either, CF Pages CONCATENATES
 // duplicate CSP values across rules instead of replacing, and browsers
 // enforce the strictest policy when multiple CSP headers are present.
 //
@@ -71,7 +71,7 @@ export const onRequest = async (context) => {
     return Response.redirect('https://statedoku.com' + url.pathname + url.search, 301);
   }
 
-  // Pass through — get whatever response the static asset / function returned.
+  // Pass through, get whatever response the static asset / function returned.
   const response = await next();
 
   if (url.pathname.startsWith('/api/')) return withApiHeaders(response);

@@ -15,7 +15,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0F2147">
+  <meta name="theme-color" content="#FFFFFF">
   <title>Free Printable US States Map, Blank &amp; Labeled PDFs</title>
   <meta name="description" content="Free printable US states maps for teachers and parents. Blank map for quizzes, labeled map with state codes, plus a reference table. Press Ctrl+P.">
   <meta name="keywords" content="printable us states map, blank us map printable, us states map pdf, free us map for teachers, us geography worksheet, blank states map quiz">
@@ -29,7 +29,7 @@
   <link rel="alternate" hreflang="en-AU" href="https://statedoku.com/learn/printable-us-states-map/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/learn/printable-us-states-map/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=32">
+  <link rel="stylesheet" href="/css/style.css?v=33">
 
   <meta property="og:title" content="Free Printable US States Map (Blank + Labeled)">
   <meta property="og:description" content="Print a blank or labeled US states map. Free, no signup, teacher-friendly.">
@@ -74,7 +74,7 @@
     table.sc th { background: #F8FAFC; font-weight: 700; color: var(--navy); font-size: .78rem; text-transform: uppercase; }
     .legend-note { background: #FFF7ED; border-left: 3px solid var(--gold); padding: 10px 14px; margin: 12px 0; font-size: .9rem; border-radius: 0 8px 8px 0; }
 
-    /* PRINT STYLES — hide everything except the maps */
+    /* PRINT STYLES, hide everything except the maps */
     @media print {
       header, footer, .pr-hero .sub, .print-row, .pr-main > h2:not(.print-section), .legend-note, .cta-card, nav, .related-links { display: none !important; }
       body { background: #fff !important; }
@@ -101,7 +101,7 @@
 <body class="legal-body">
 
 <header>
-  <a href="/" class="logo">State<em>doku</em> <span class="logo-flag">🇺🇸</span></a>
+  <a href="/" class="logo">State<em>doku</em></a>
   <nav class="nav-actions"><a href="/learn/" style="color:var(--text-2);text-decoration:none;font-weight:700;font-size:.88rem;">← Learn</a></nav>
 </header>
 
@@ -110,7 +110,7 @@
     <h1>Free Printable US States Map</h1>
     <p class="sub">Three maps for classroom or home use: a blank map for quizzes, a labeled map for reference, and a states-and-capitals table. Optimized for letter size and A4 printing.</p>
     <div class="print-row">
-      <button onclick="window.print()">🖨️ Print all 3 pages</button>
+      <button onclick="window.print()">Print all 3 pages</button>
       <button onclick="document.body.classList.toggle('print-blank-only')">Print blank only</button>
     </div>
   </section>
@@ -165,19 +165,19 @@
     <div class="cta-card">
       <h3>Add a daily 5-minute practice habit</h3>
       <p>The printable map is great for testing. The daily Statedoku puzzle is great for ongoing practice. Together they cover everything.</p>
-      <a href="/">Try today's free puzzle →</a>
+      <a href="/">Try today's free puzzle</a>
     </div>
 
     <h2>Related resources</h2>
     <div class="related-links">
-      <a href="/learn/states-and-capitals/">→ Full states & capitals list</a>
-      <a href="/learn/state-capitals/">→ Memorize all 50 capitals</a>
-      <a href="/learn/us-regions/">→ The 4 US regions explained</a>
-      <a href="/learn/state-abbreviations/">→ State abbreviations guide</a>
-      <a href="/learn/">→ How to learn the 50 states (method)</a>
-      <a href="/quiz/">→ Quick states quiz</a>
-      <a href="/states/">→ All 50 state pages</a>
-      <a href="/api/">→ Free states JSON API for developers</a>
+      <a href="/learn/states-and-capitals/">Full states & capitals list</a>
+      <a href="/learn/state-capitals/">Memorize all 50 capitals</a>
+      <a href="/learn/us-regions/">The 4 US regions explained</a>
+      <a href="/learn/state-abbreviations/">State abbreviations guide</a>
+      <a href="/learn/">How to learn the 50 states (method)</a>
+      <a href="/quiz/">Quick states quiz</a>
+      <a href="/states/">All 50 state pages</a>
+      <a href="/api/">Free states JSON API for developers</a>
     </div>
   </article>
     <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
@@ -207,7 +207,7 @@
 </main>
 
 <footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/api/">API</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/api/">API</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
 </footer>
 
 <script>
@@ -253,7 +253,7 @@
   });
   document.querySelector('[data-us-map-labeled]').appendChild(labeledSvg);
 
-  // Need getBBox to work — temporarily add to DOM, then reparent
+  // Need getBBox to work, temporarily add to DOM, then reparent
   // (Already done above via direct append.)
 
   // States + capitals table
@@ -267,6 +267,6 @@
 })();
 </script>
 
-<script src="/config.js?v=12"></script>
+<script src="/config.js?v=13"></script>
 </body>
 </html>
