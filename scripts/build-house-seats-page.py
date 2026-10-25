@@ -756,7 +756,7 @@ def page(lang):
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{url}">
 {alts}  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=34">
+  <link rel="stylesheet" href="/css/style.css?v=35">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{esc(t["og_title"])}">
   <meta property="og:description" content="{esc(t["desc"])}">

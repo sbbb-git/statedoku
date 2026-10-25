@@ -241,9 +241,41 @@ const Game = (() => {
     named_after_person: '\u{1F464}', paired_name: '\u{1F46F}',
     no_letter_a: _NAME, ends_in_ia: _NAME, same_first_last: _NAME, postal_first_last: _NAME, rare_letter: _NAME,
   };
+  // The clues of grids before 27 October 2026, so today's grid and the
+  // archive are drawn the same way.
+  Object.assign(CLUE_ICON, {
+    all_four_leagues: '\u{1F3DF}\uFE0F', continental_divide: '\u{1F5FB}', desert_state: '\u{1F3DC}\uFE0F',
+    earthquake_zone: '\u26A0\uFE0F', great_plains: '\u{1F33E}', has_glaciers: '\u{1F9CA}',
+    has_islands: '\u{1F3DD}\uFE0F', has_panhandle: '\u{1F373}', has_volcano: '\u{1F30B}',
+    hurricane_zone: '\u{1F300}', tornado_alley: '\u{1F32A}\uFE0F', smaller_than_portugal: '\u{1F41C}',
+    name_native_origin: '\u{1F4D6}', name_royalty_origin: '\u{1F451}', name_spanish_origin: '\u{1F4D6}',
+    french_heritage: '\u{1F4D6}', spanish_heritage: '\u{1F4D6}', name_longer_than_capital: _NAME,
+    political_red: '\u{1F5F3}\uFE0F', political_blue: '\u{1F5F3}\uFE0F', political_swing: '\u{1F5F3}\uFE0F',
+    flipped_2024: '\u{1F5F3}\uFE0F', obama_2008: '\u{1F5F3}\uFE0F', obama_2012: '\u{1F5F3}\uFE0F',
+    trump_2016: '\u{1F5F3}\uFE0F', trump_2020: '\u{1F5F3}\uFE0F',
+    postal_code_is_word: '\u{1F4EE}', rust_belt: '\u{1F3ED}', snow_belt: '\u2744\uFE0F', sun_belt: '\u2600\uFE0F',
+    wheat_belt: '\u{1F33E}', corn_belt: '\u{1F33D}', bible_belt: '\u26EA', cotton_belt: '\u{1F33E}',
+    sub_deep_south: '\u{1F334}', sub_mid_atlantic: '\u{1F5FD}', sub_mountain: '\u26F0\uFE0F', sub_plains: '\u{1F33E}',
+    sub_pacific: '\u{1F305}', sub_southwest: '\u{1F335}', sub_upland_south: '\u26F0\uFE0F', sub_midwest_rust: '\u{1F3ED}',
+    new_england: '\u{1F99E}', mt_cascades: '\u26F0\uFE0F', mt_sierra: '\u26F0\uFE0F', has_top_ten_city: '\u{1F3D9}\uFE0F',
+    two_presidents_born: '\u{1F3A9}', agricultural: '\u{1F69C}', oil_producer: '\u{1F6E2}\uFE0F',
+    tourism_hub: '\u{1F4F8}', no_income_tax: '\u{1F4B5}', no_sales_tax: '\u{1F4B5}', flag_no_lettering: '\u{1F3F3}\uFE0F',
+    era_founding: '\u{1F4C5}', era_expansion: '\u{1F4C5}', era_civil_war: '\u{1F4C5}', era_frontier: '\u{1F4C5}',
+    era_gold: '\u{1F4C5}', era_dakotas: '\u{1F4C5}', has_west: _NAME,
+    pc_admitted_before_1800: '\u{1F4C5}', pc_big12_school: '\u{1F393}', pc_borders_canada: '\u{1F1E8}\u{1F1E6}',
+    pc_born_president_post60: '\u{1F3A9}', pc_capital_is_largest: '\u{1F3DB}\uFE0F', pc_central_time: '\u{1F552}',
+    pc_mountain_time: '\u{1F552}', pc_cop_show_setting: '\u{1F693}', pc_iconic_cocktail: '\u{1F378}',
+    pc_largest_state_area: '\u{1F418}', pc_long_river_state: '\u{1F6F6}', pc_major_cruise_port: '\u{1F6F3}\uFE0F',
+    pc_medical_drama_set: '\u{1F3E5}', pc_olympics_host_any: '\u{1F3C5}', pc_pro_team_animal_name: '\u{1F43B}',
+    pc_real_housewives_franchise: '\u{1F4FA}', pc_state_capital_small: '\u{1F3DB}\uFE0F', pc_stephen_king_setting: '\u{1F4DA}',
+    pc_super_bowl_host: '\u{1F3C8}', pc_underground_subway: '\u{1F687}', pc_volcano_active: '\u{1F30B}',
+  });
   function _clueIcon(cid) {
     if (CLUE_ICON[cid]) return CLUE_ICON[cid];
-    return /^(starts_|ends_in_|contains_letter_|letters_|vowel_start|two_word|has_new|double_letter|short_name|long_name)/.test(cid) ? _NAME : '';
+    if (/^pc_(movie_|tv_)|_(setting|set)$/.test(cid)) return '\u{1F3AC}';
+    if (/^pc_music_/.test(cid)) return '\u{1F3A4}';
+    if (/^pc_(named_|french_origin)/.test(cid)) return '\u{1F4D6}';
+    return /^(pc_letters_|pc_two_syllables|starts_|ends_in_|contains_letter_|letters_|vowel_start|two_word|has_new|double_letter|short_name|long_name)/.test(cid) ? _NAME : '';
   }
 
   function _renderLabels() {

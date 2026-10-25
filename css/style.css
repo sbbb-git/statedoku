@@ -129,19 +129,27 @@ header {
   .score-inline .score-sep:first-of-type { display: none; }
 }
 
+/* The brand, back on the owner's request (25 October 2026, "ajoute des
+   drapeaux US, le logo Statedoku"): the S filled with the flag, then State in
+   navy and doku in red, as on the social card. CSS only, so the 2,000 pages
+   keep their markup. */
 .logo {
   font-size: 1.45rem;
   font-weight: 800;
   letter-spacing: -0.04em;
-  text-transform: lowercase;
   color: var(--navy);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   line-height: 1;
 }
-.logo em { color: inherit; font-style: normal; }
+.logo em { color: var(--red); font-style: normal; }
 .logo-flag { display: none; }
-.logo::before, .logo em::after { content: none; display: none; }
+.logo::before, .wordmark::before {
+  content: ""; flex: 0 0 auto; width: 1.2em; height: 1.2em; border-radius: 22%; margin-right: 0.3em;
+  background: url(/logo-mark-192.png) center / contain no-repeat;
+}
+.logo em::after { content: none; display: none; }
 
 .nav-actions { display: flex; gap: 8px; align-items: center; }
 
@@ -2076,7 +2084,7 @@ footer, main, .score-bar {
     padding-top: 0; padding-bottom: 0;
   }
   header::after { bottom: -2px; height: 2px; }
-  .logo { font-size: 1.15rem; gap: 7px; }
+  .logo { font-size: 1.15rem; }
   .logo::before { width: 24px; height: 24px; }
   .lang-btn { padding: 4px 7px; font-size: 0.65rem; }
   .icon-btn { width: 32px; height: 32px; }
@@ -2850,9 +2858,11 @@ html:has(body.home), body.home { background: #F6F7F9; }
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .wordmark {
-  font-size: clamp(1.55rem, 6vw, 2.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1;
+  font-size: clamp(1.4rem, 6vw, 2.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1;
   color: var(--navy); text-decoration: none;
+  display: inline-flex; align-items: center; white-space: nowrap;
 }
+.wordmark em { color: var(--red); font-style: normal; }
 .head-nav { display: flex; align-items: center; gap: 4px; }
 .head-icon {
   width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; cursor: pointer;
@@ -2870,7 +2880,7 @@ html:has(body.home), body.home { background: #F6F7F9; }
 .day-score { margin: 0; white-space: nowrap; font-size: 0.8rem; font-weight: 600; color: var(--text-2); }
 .day-score strong { font-size: 0.95rem; color: var(--navy); font-variant-numeric: tabular-nums; margin-left: 4px; }
 .home .grid-outer { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: none; gap: 8px; }
-.home .grid-corner { background: transparent; }
+.home .grid-corner { background: url(/flag-us.svg) center / 78% auto no-repeat; }
 .home .grid-corner::after { display: none; }
 .home .col-label, .home .row-label, .home .cell { aspect-ratio: 1; min-height: 0; }
 .home .col-label, .home .row-label {
@@ -2924,6 +2934,10 @@ html:has(body.home), body.home { background: #F6F7F9; }
 .home #solved-banner::before, .home #solved-banner::after { content: none; }
 .home .banner-icon { display: none; }
 .home #solved-banner h3, .home #gameover-banner h3 { color: #1C232D; font-size: 1.3rem; letter-spacing: -0.02em; }
+.home #solved-banner h3::before {
+  content: ""; display: inline-block; width: 1.5em; height: 0.79em; margin-right: 0.4em; vertical-align: -0.02em;
+  background: url(/flag-us.svg) center / contain no-repeat;
+}
 .home .cell.correct::before, .home .cell-golden-star { display: none; }
 .home .result-email-cta { background: transparent; color: #1C232D; border: 2px solid #1C232D; border-radius: 2px; box-shadow: none; }
 .home .result-email-cta:hover { background: #EEF1F5; color: #1C232D; }

@@ -383,8 +383,8 @@ Not a bordered table.
 On 25 October 2026 the owner found the site "trop AI slop" and asked for the
 homepage to hold the game only, after metrodoku.fr. So: the three homepages
 are a light page (`body.home`). Later the same day, "uniquement le jeu" and
-"sur mobile c'est beaucoup trop lourd": one header line (the name in lower
-case, a how-to-play icon, a stats icon, the languages), the day on one line,
+"sur mobile c'est beaucoup trop lourd": one header line (the logo, a how-to-play
+icon, a stats icon, the languages), the day on one line,
 the grid with square cards, a small "give up" button and the mistakes as five
 circles, then a single line of small links at the foot of the page (they keep
 every hub one click from the homepage, which the click-depth audit needs).
@@ -394,12 +394,18 @@ bring them back. On a 390px phone the whole game fits one screen.
 Each clue card shows one emoji above its label, at the owner's request
 ("mets des emoji dans les critères"): `CLUE_ICON` in game.js, drawn by the
 grid and the picker only, hidden from screen readers; the labels themselves
-stay plain text.
-Site-wide the header is a white bar with the lower-case name, no navy band,
-no flag; decorative emoji in labels and arrows at the ends of links were taken
-out of every page (`reader_text` ignores them, so that dated no page). Keep it
-that way: no emoji to decorate a heading, a chip or a link (the clue cards
-are the one exception).
+stay plain text. Every clue a grid has ever used has one, the clues of the
+grids before 27 October included, so the archive looks the same.
+Site-wide the header is a white bar, no navy band. The owner then asked for the
+brand back ("ajoute des drapeaux US, le logo Statedoku"): every header shows
+the S filled with the flag (`logo-mark-192.png`, drawn by CSS as `::before` of
+`.logo` and `.wordmark`, so no page's markup changed), then State in navy and
+doku in red, as on the social card. On the homepages the empty top-left grid
+card holds the US flag (`flag-us.svg`, 50 stars, official proportions) and the
+win card shows it before its title. Decorative emoji in labels and arrows at
+the ends of links were taken out of every page (`reader_text` ignores them,
+so that dated no page). Keep it that way: no emoji to decorate a heading, a
+chip or a link (the clue cards are the one exception); the flag is an image.
 
 About 390 KB of the homepage's 808 KB on a phone (25 October 2026) is the
 AdSense script and what it pulls in, kept for site verification during the
