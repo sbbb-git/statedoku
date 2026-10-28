@@ -200,3 +200,6 @@ Relance : jamais avant trois semaines, une seule fois.
 - [ ] Réponses honnêtes (IA, créateur, gratuité)
 - [ ] Confirmation lue sur la capture `sent-`
 - [ ] Journal mis à jour
+- [ ] E-mails : l'agent prépare les brouillons, le propriétaire les envoie
+      **à la main**, depuis l'adresse du projet, quelques-uns par jour.
+      L'agent n'envoie jamais un e-mail lui-même
