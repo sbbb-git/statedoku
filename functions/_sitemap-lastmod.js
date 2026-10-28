@@ -331,7 +331,7 @@ export const LASTMOD = {
   "/play/swing-states/": "2026-10-22",
   "/play/thirteen-colonies/": "2026-10-22",
   "/play/time-zones/": "2026-10-22",
-  "/press/": "2026-10-25",
+  "/press/": "2026-10-28",
   "/privacy/": "2026-09-20",
   "/quiz/": "2026-10-22",
   "/regions/": "2026-10-07",
