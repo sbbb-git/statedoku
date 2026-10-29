@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS events (
   country TEXT,
   lang TEXT,
   time_seconds INTEGER,
-  mistakes INTEGER
+  mistakes INTEGER,
+  src TEXT,       -- where the visit came from, a coarse class (functions/api/events.js)
+  streak TEXT     -- streak band at the end of a grid
 );
 
 CREATE INDEX IF NOT EXISTS idx_events_date ON events(puzzle_date);

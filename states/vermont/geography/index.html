@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <!-- adsense-head -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
      crossorigin="anonymous"></script>
@@ -11,6 +10,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try { var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); } } catch (e) {}
   </script>
 
   <meta charset="UTF-8">
@@ -173,7 +177,7 @@
 <footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/cities/">Cities</a> &nbsp;·&nbsp; <a href="/regions/">Regions</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
 </footer>
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who owns the Connecticut River between Vermont and New Hampshire?", "acceptedAnswer": {"@type": "Answer", "text": "New Hampshire owns all of it. The boundary sits at the low water mark on the Vermont bank rather than in mid channel, a rule that traces back to a 1764 order of King George III and that the Supreme Court confirmed in 1933."}}, {"@type": "Question", "name": "What is the highest point in Vermont?", "acceptedAnswer": {"@type": "Answer", "text": "Mount Mansfield, 4,393 feet. Seen from the east its ridgeline resembles a face lying on its back, so its features are called the Forehead, the Nose, the Chin and the Adam's Apple. The Chin is the summit."}}, {"@type": "Question", "name": "Where does Vermont's water drain to?", "acceptedAnswer": {"@type": "Answer", "text": "Three places. West of the Green Mountains the rivers feed Lake Champlain and flow north to the St. Lawrence. East of the range they feed the Connecticut River and reach Long Island Sound. In the northeast corner they run into Lake Memphremagog and on to the St. Lawrence through Quebec."}}, {"@type": "Question", "name": "Why was a whale skeleton found in Vermont?", "acceptedAnswer": {"@type": "Answer", "text": "The ice sheet pushed the St. Lawrence lowland below sea level, and when it melted the Atlantic flooded in to form the Champlain Sea, roughly 13,000 to 10,000 years ago. A beluga skeleton from that sea was dug up at Charlotte in 1849, about 150 miles from the ocean."}}, {"@type": "Question", "name": "Why is Vermont's border with Canada not exactly on the 45th parallel?", "acceptedAnswer": {"@type": "Answer", "text": "The surveyors who marked it between 1771 and 1774 drifted as much as three quarters of a mile north of the true latitude. The Webster-Ashburton Treaty of 1842 kept the existing marks rather than re-running the line, so Vermont keeps a strip that the parallel would place in Quebec."}}]}</script>

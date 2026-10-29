@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try { var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); } } catch (e) {}
   </script>
   <!-- Google AdSense, site ownership verification (does not render ads until ADS_ENABLED in config.js). -->
   <meta name="google-adsense-account" content="ca-pub-1481624152917622">
@@ -245,10 +249,10 @@
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js?v=2"></script>
 <script src="/js/ads.js?v=1"></script>
-<script src="/js/analytics.js?v=4"></script>
+<script src="/js/analytics.js?v=5"></script>
 <script src="/js/reminders.js?v=2"></script>
 <script src="js/email.js?v=5"></script>
 <script src="/js/i18n.js?v=7"></script>
@@ -273,6 +277,6 @@
 })();
 </script>
 <script src="js/puzzle.js?v=21"></script>
-<script src="js/game.js?v=27"></script>
+<script src="js/game.js?v=28"></script>
 </body>
 </html>

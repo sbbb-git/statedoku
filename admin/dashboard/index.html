@@ -97,7 +97,7 @@
         <li><strong>Design / CSS</strong> → <code>/css/style.css</code></li>
         <li><strong>Logo</strong> → <code>/logo-mark.svg</code> + <code>/favicon.svg</code></li>
         <li><strong>Global feature flags</strong> → <code>/config.js</code> (ads on/off, admin hash)</li>
-        <li><strong>Admin password</strong> → run <code>node bin/set-admin-password.mjs</code> locally</li>
+        <li><strong>Admin access</strong> → the <code>ADMIN_API_KEY</code> secret of the Pages project (the #admin panel checks it on the server)</li>
         <li><strong>Twitter bot</strong> → <code>/bot/src/worker.js</code> (deploy with wrangler)</li>
         <li><strong>SEO sitemap</strong> → <code>/sitemap.xml</code></li>
       </ul>
@@ -132,7 +132,7 @@
   </div>
 </div>
 
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 <script>

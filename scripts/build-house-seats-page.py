@@ -736,7 +736,6 @@ def page(lang):
 <html lang="{lang}">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <!-- adsense-head -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
      crossorigin="anonymous"></script>
@@ -745,6 +744,11 @@ def page(lang):
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try {{ var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {{
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); }} }} catch (e) {{}}
   </script>
 
   <meta charset="UTF-8">
@@ -851,7 +855,7 @@ def page(lang):
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; {t["footer"]}</p>
 </footer>
 {VIZ_JS}
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 </body>

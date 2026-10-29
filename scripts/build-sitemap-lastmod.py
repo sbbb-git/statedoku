@@ -52,6 +52,9 @@ H1_BADGE_NEW = re.compile(r'<h1 data-abbr="[A-Z]{2}"(?: style="--abbr-bg:[^"]*")
 # Neither an HTML comment nor the browser-bar colour is read by anyone: the
 # comments lost their long dashes and the bar turned light on 25 October 2026.
 COMMENT = re.compile(r'<!--.*?-->', re.S)
+# The Google Analytics block in <head>, before and after it was made to wait
+# for consent (29 October 2026): plumbing, not something a reader reads.
+GA_BLOCK = re.compile(r'<script>\s*window\.dataLayer = window\.dataLayer.*?</script>', re.S)
 THEME = re.compile(r'<meta name="theme-color"[^>]*>')
 # Decoration taken out on 25 October 2026, not content: the flag after the
 # name, emoji in front of a label, arrows at the end of a link.
@@ -73,6 +76,7 @@ def reader_text(html):
     html = H1_BADGE_OLD.sub(r'\1', html)
     html = H1_BADGE_NEW.sub('<h1>', html)
     html = COMMENT.sub('', html)
+    html = GA_BLOCK.sub('', html)
     html = THEME.sub('', html)
     html = LOGO_FLAG.sub('', html)
     html = DECOR.sub(' ', html)

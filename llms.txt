@@ -2,7 +2,7 @@
 
 > Statedoku is a free daily US geography puzzle: a 3×3 grid where every cell must hold a US state that satisfies both its row clue and its column clue. The site also has 21 free geography games (map clicking, capitals, abbreviations, flags, history) and reference pages on the 50 states, in English, French and Spanish. Free, no signup.
 
-Last updated: 2026-10-22. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
+Last updated: 2026-10-29. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
 
 ## Answers
 
@@ -62,7 +62,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 
 - [Embeddable US States Quizzes](https://statedoku.com/widgets/): Free embeddable US-states quizzes you can drop into any classroom blog, LMS or learning site. Copy the iframe code, no signup, no fee.
 - [Free Printable US States Map, Blank & Labeled PDFs](https://statedoku.com/learn/printable-us-states-map/): Free printable US states maps for teachers and parents. Blank map for quizzes, labeled map with state codes, plus a reference table. Press Ctrl+P.
-- [US States Quiz, Quick Test of All 50 States & Capitals](https://statedoku.com/quiz/): Free 10-question US states quiz. Test your knowledge of all 50 state names, capitals, and regions. Mobile-friendly, no signup, instant scoring.
+- [50 States Quiz: Capitals, Regions and Abbreviations](https://statedoku.com/quiz/): Free 50 states quiz: 10 questions on US state capitals, regions and two-letter abbreviations. Play mixed or one topic at a time, no signup, instant score.
 
 ## Reference pages
 
@@ -78,7 +78,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [Electoral College Votes by State (Updated)](https://statedoku.com/learn/electoral-college/): How many electoral college votes each US state has, why it matters, and how it shaped recent elections.
 - [The 11 Confederate States in Order of Secession](https://statedoku.com/learn/states-confederate/): The 11 states that left the Union in 1860-61 to form the Confederacy. South Carolina went first, North Carolina last, exact dates and what triggered each.
 - [The 4 US Regions Explained, Census Map](https://statedoku.com/learn/us-regions/): The official US Census Bureau divides the country into 4 regions and 9 subregions. Learn which states are in each, why the divisions matter, and memory tricks.
-- [Largest & Smallest US States by Area (Ranked 1 to 50)](https://statedoku.com/learn/largest-states/): All 50 US states ranked by area. Alaska is biggest (#1, 665k sq mi), Rhode Island is smallest (#50). Includes top 10 + bottom 10 tables and an interactive map.
+- [US States by Size: The 10 Largest and 10 Smallest](https://statedoku.com/learn/largest-states/): Alaska is the largest US state by area at 665,384 sq mi and Rhode Island the smallest at 1,545. The 10 largest and 10 smallest states, ranked.
 - [The 13 US states that border Canada](https://statedoku.com/learn/states-bordering-canada/): The 13 US states that share a border with Canada. Alaska has the longest at 1,538 mi, Michigan the longest in the lower 48, Pennsylvania the shortest.
 - [The 4 US states that border Mexico](https://statedoku.com/learn/states-bordering-mexico/): Just 4 US states border Mexico, California, Arizona, New Mexico, Texas. Border miles per state, busiest crossings, and the cities you'd never expect.
 - [20 Landlocked US States and the Doubly Landlocked Ones](https://statedoku.com/learn/landlocked-states/): The 20 landlocked US states, with no ocean coast and no Great Lakes shore. Full list with capitals and regions, a map, and what doubly landlocked means.

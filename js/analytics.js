@@ -6,6 +6,33 @@ const Analytics = (() => {
   const ENDPOINT = '/api/events';
   const SENT_KEY = 'statedoku_analytics_sent';
 
+  // Where this visit came from, as one coarse class and never a URL, sent with
+  // the game events so plays can be read by source in the first-party count
+  // (29 October 2026). 'guide' is a page of the site other than a homepage or
+  // the archive, the funnel from the learn pages to a first move.
+  const SRC = (() => {
+    try {
+      const u = (new URLSearchParams(location.search).get('utm_source') || '').toLowerCase();
+      if (u === 'share') return 'share';
+      if (u.startsWith('pwa')) return 'pwa';
+      if (u === 'x' || u === 'bluesky' || u === 'mastodon') return 'social';
+      if (u) return 'other';
+      if (!document.referrer) return 'direct';
+      const r = new URL(document.referrer);
+      if (r.hostname === location.hostname) {
+        if (/^\/((fr|es)\/)?(archive\/)?$/.test(r.pathname)) return /archive\/$/.test(r.pathname) ? 'archive' : 'site';
+        return 'guide';
+      }
+      const h = r.hostname.replace(/^www\./, '');
+      if (/(^|\.)(chatgpt\.com|openai\.com|perplexity\.ai|claude\.ai)$|^(copilot\.microsoft\.com|gemini\.google\.com)$/.test(h)) return 'ai';
+      if (h === 'classroom.google.com') return 'classroom';
+      if (/(listdle|alldle|dles|dailydle|playlin|dlelist|bestdle|dailygame|wordleverse|mapgame|seekdle|dlehunt)/.test(h)) return 'directory';
+      if (/(^|\.)(google|bing|duckduckgo|yahoo|ecosia|qwant|yandex|baidu|brave|startpage)\.[a-z.]+$/.test(h)) return 'search';
+      if (/(^|\.)(t\.co|x\.com|twitter\.com|facebook\.com|instagram\.com|reddit\.com|tiktok\.com|bsky\.app|linkedin\.com|threads\.net|pinterest\.com)$/.test(h)) return 'social';
+      return 'other';
+    } catch (e) { return 'other'; }
+  })();
+
   function _shouldSkip() {
     // Admin sessions don't count toward public stats
     return typeof Admin !== 'undefined' && Admin.isAuthenticated();
@@ -68,6 +95,8 @@ const Analytics = (() => {
           puzzle_date: data.puzzle_date,
           mistakes: data.mistakes ?? undefined,
           time_seconds: data.time_seconds ?? undefined,
+          streak: data.streak ?? undefined,
+          src: SRC,
         });
       }
     } catch (_) {}
@@ -78,6 +107,8 @@ const Analytics = (() => {
       lang: document.documentElement.lang || 'en',
       time_seconds: data.time_seconds ?? null,
       mistakes: data.mistakes ?? null,
+      streak: data.streak ?? null,
+      src: SRC,
     };
 
     try {

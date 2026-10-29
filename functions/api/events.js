@@ -10,6 +10,10 @@ import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
 // three the events table accepts (CHECK constraint in bot/d1-schema.sql).
 const ALLOWED_EVENTS = ['puzzle_start', 'puzzle_first_move', 'puzzle_solve', 'puzzle_lost'];
 const LANGS = ['en', 'fr', 'es'];
+// Coarse classes only (js/analytics.js), never a URL: where the visit came
+// from and the streak band at the end of a grid (29 October 2026).
+const SOURCES = ['direct', 'search', 'ai', 'social', 'share', 'classroom', 'directory', 'guide', 'site', 'archive', 'pwa', 'other'];
+const STREAKS = ['0', '1', '2-3', '4-7', '8-30', '31+', 'archive'];
 const MAX_BODY = 1024;            // a real payload is about 120 bytes
 const MAX_SECONDS = 7 * 86400;    // a tab left open for a week, no more
 const MAX_MISTAKES = 10;          // the game stops at 5
@@ -64,14 +68,27 @@ export async function onRequestPost({ request, env }) {
   const lang = LANGS.includes(l) ? l : 'en';
   const timeSec = _int(body.time_seconds, MAX_SECONDS);
   const mistakes = _int(body.mistakes, MAX_MISTAKES);
+  const src = SOURCES.includes(body.src) ? body.src : null;
+  const streak = STREAKS.includes(body.streak) ? body.streak : null;
 
+  const insert = () => env.STATS_DB.prepare(
+    `INSERT INTO events (event_type, puzzle_date, timestamp, country, lang, time_seconds, mistakes, src, streak)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  ).bind(body.event_type, body.puzzle_date, Date.now(), country, lang, timeSec, mistakes, src, streak).run();
   try {
-    await env.STATS_DB.prepare(
-      `INSERT INTO events (event_type, puzzle_date, timestamp, country, lang, time_seconds, mistakes)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`
-    ).bind(body.event_type, body.puzzle_date, Date.now(), country, lang, timeSec, mistakes).run();
+    await insert();
   } catch (e) {
-    return new Response('Internal error', { status: 500 });
+    // The src and streak columns arrived on 29 October 2026. A table created
+    // before has neither: add them once, then insert again.
+    if (!/no column named|no such column/i.test(String(e && e.message))) return new Response('Internal error', { status: 500 });
+    try {
+      for (const col of ['src', 'streak']) {
+        await env.STATS_DB.prepare(`ALTER TABLE events ADD COLUMN ${col} TEXT`).run().catch(() => {});
+      }
+      await insert();
+    } catch (e2) {
+      return new Response('Internal error', { status: 500 });
+    }
   }
 
   return new Response(null, { status: 204 });

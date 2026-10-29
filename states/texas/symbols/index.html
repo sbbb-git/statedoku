@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <!-- adsense-head -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
      crossorigin="anonymous"></script>
@@ -11,6 +10,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try { var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); } } catch (e) {}
   </script>
 
   <meta charset="UTF-8">
@@ -187,7 +191,7 @@
 <footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
 </footer>
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the state bird of Texas?","acceptedAnswer":{"@type":"Answer","text":"The northern mockingbird, adopted in 1927 after the Texas Federation of Women's Clubs campaigned for it. Tennessee, Arkansas, Mississippi and Florida also claim the same bird."}},{"@type":"Question","name":"What is on the Texas state flag?","acceptedAnswer":{"@type":"Answer","text":"A vertical blue stripe along the hoist with a single white five-pointed star, and two horizontal bars on the fly, white above and red below. Blue stands for loyalty, white for purity, red for bravery, and the lone star for all of Texas united. The Republic of Texas adopted the design in 1839."}},{"@type":"Question","name":"What is the Texas state motto?","acceptedAnswer":{"@type":"Answer","text":"Friendship, adopted in 1930. It translates tejas, the Caddo word for friends or allies that Spanish explorers used for the local peoples and eventually for the territory."}},{"@type":"Question","name":"What is the state flower of Texas?","acceptedAnswer":{"@type":"Answer","text":"The bluebonnet, adopted in 1901 over rival campaigns for the cotton boll and the prickly pear cactus bloom. A 1971 amendment extended the designation to every bluebonnet species found in Texas."}},{"@type":"Question","name":"What is the state dish of Texas?","acceptedAnswer":{"@type":"Answer","text":"Chili, made official in 1977. Texas also names tortilla chips and salsa as the state snack and pan de campo as the state bread."}}]}</script>

@@ -75,6 +75,32 @@ export async function onRequestGet({ request, env }) {
   ).bind(since).first();
   all.unique_puzzles_30d = uniq.n;
 
+  // From 29 October 2026: plays by source of the visit, and the streak band at
+  // the end of a grid, last 7 days against the 7 before. Null until the
+  // columns exist (events.js adds them on the first event that carries them).
+  const week = Date.now() - 7 * 86400000, prevWeek = Date.now() - 14 * 86400000;
+  try {
+    const bySrc = await env.STATS_DB.prepare(
+      `SELECT COALESCE(src, 'unknown') AS src, event_type,
+              SUM(CASE WHEN timestamp > ? THEN 1 ELSE 0 END) AS last_7d,
+              SUM(CASE WHEN timestamp <= ? THEN 1 ELSE 0 END) AS prev_7d
+         FROM events WHERE timestamp > ?
+         GROUP BY src, event_type ORDER BY src, event_type`
+    ).bind(week, week, prevWeek).all();
+    all.by_source = bySrc.results;
+    const byStreak = await env.STATS_DB.prepare(
+      `SELECT COALESCE(streak, 'unknown') AS streak, event_type,
+              SUM(CASE WHEN timestamp > ? THEN 1 ELSE 0 END) AS last_7d,
+              SUM(CASE WHEN timestamp <= ? THEN 1 ELSE 0 END) AS prev_7d
+         FROM events WHERE timestamp > ? AND event_type IN ('puzzle_solve', 'puzzle_lost')
+         GROUP BY streak, event_type ORDER BY streak, event_type`
+    ).bind(week, week, prevWeek).all();
+    all.by_streak = byStreak.results;
+  } catch (e) {
+    all.by_source = null;
+    all.by_streak = null;
+  }
+
   return new Response(JSON.stringify(all, null, 2), {
     headers: {
       'content-type': 'application/json',

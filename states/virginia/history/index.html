@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <!-- adsense-head -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
      crossorigin="anonymous"></script>
@@ -11,6 +10,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try { var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); } } catch (e) {}
   </script>
 
   <meta charset="UTF-8">
@@ -176,7 +180,7 @@
 <footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/cities/">Cities</a> &nbsp;·&nbsp; <a href="/regions/">Regions</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
 </footer>
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When did Virginia become a state?", "acceptedAnswer": {"@type": "Answer", "text": "Virginia ratified the United States Constitution on June 25, 1788, by a vote of 89 to 79 at the Richmond convention, becoming the tenth state. It had been an English colony since the founding of Jamestown in 1607 and a royal colony since 1624."}}, {"@type": "Question", "name": "Why did West Virginia separate from Virginia?", "acceptedAnswer": {"@type": "Answer", "text": "Virginia's convention voted to secede on April 17, 1861. The counties west of the Alleghenies, which had few enslaved people and long-standing grievances about representation and taxation, refused to go. Delegates met at Wheeling, formed a restored loyal government of Virginia, and used it to consent to their own division. West Virginia was admitted on June 20, 1863."}}, {"@type": "Question", "name": "Was Jamestown the first English settlement in America?", "acceptedAnswer": {"@type": "Answer", "text": "Jamestown, founded in May 1607, was the first permanent English settlement in North America. The earlier Roanoke colony on the Outer Banks, settled in 1585 and again in 1587, was abandoned or lost by 1590."}}, {"@type": "Question", "name": "Why were so many Civil War battles fought in Virginia?", "acceptedAnswer": {"@type": "Answer", "text": "The Confederacy moved its capital to Richmond in May 1861, roughly 100 miles from Washington. That put the two capitals in the same theatre and made Virginia the ground for Manassas, Fredericksburg, Chancellorsville, the Wilderness, Spotsylvania, Cold Harbor and the Petersburg siege. More engagements were fought in Virginia than in any other state."}}, {"@type": "Question", "name": "How many presidents were born in Virginia?", "acceptedAnswer": {"@type": "Answer", "text": "Eight, more than any other state: George Washington, Thomas Jefferson, James Madison, James Monroe, William Henry Harrison, John Tyler, Zachary Taylor and Woodrow Wilson."}}]}</script>

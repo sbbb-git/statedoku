@@ -664,7 +664,7 @@ def render(kind, L, d):
     faq = ''.join(f'    <details><summary><strong>{q}</strong></summary><p>{ans}</p></details>\n' for q, ans in d['faq'])
     rel = ''.join(f'      <a href="{u}">{t}</a>\n' for u, t in d['related'])
     faq_h = {'en': 'Frequently asked questions', 'fr': 'Questions fréquentes', 'es': 'Preguntas frecuentes'}[L]
-    ext = '<script src="/config.js?v=14"></script>\n<script src="/js/admin.js"></script>\n<script src="/js/ads.js?v=1"></script>\n'
+    ext = '<script src="/config.js?v=15"></script>\n<script src="/js/admin.js"></script>\n<script src="/js/ads.js?v=1"></script>\n'
     page = f'''<!DOCTYPE html>
 <html lang="{L}">
 <head>{head_scripts}<meta charset="UTF-8">

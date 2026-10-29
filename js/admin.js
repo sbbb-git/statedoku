@@ -8,11 +8,13 @@ const Admin = (() => {
   const TOKEN_KEY = 'statedoku_admin_token';
   const TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
-  // SHA-256 via SubtleCrypto 
-  async function _sha256(text) {
-    const buf = new TextEncoder().encode(text);
-    const hash = await crypto.subtle.digest('SHA-256', buf);
-    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+  // The key is checked by the server (/api/admin/verify), never against a
+  // hash shipped to every visitor.
+  async function _keyAccepted(key) {
+    try {
+      const r = await fetch('/api/admin/verify', { headers: { 'x-admin-key': key }, cache: 'no-store' });
+      return r.status === 204;
+    } catch (e) { return false; }
   }
 
   // Token management 
@@ -82,8 +84,7 @@ const Admin = (() => {
       e.preventDefault();
       const pwd = input.value;
       if (!pwd) return;
-      const hash = await _sha256(pwd);
-      if (hash === CONFIG.ADMIN_HASH) {
+      if (await _keyAccepted(pwd)) {
         _saveToken();
         modal.remove();
         location.hash = '';

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <!-- adsense-head -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
      crossorigin="anonymous"></script>
@@ -11,6 +10,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try { var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); } } catch (e) {}
   </script>
 
   <meta charset="UTF-8">
@@ -173,7 +177,7 @@
 <footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
 </footer>
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Nebraska known for?","acceptedAnswer":{"@type":"Answer","text":"The only unicameral state legislature in the country, Cornhusker football, the Sandhills, Warren Buffett's Berkshire Hathaway in Omaha, and being the birthplace of Arbor Day, Kool-Aid and the Reuben sandwich. It also splits its electoral votes by congressional district, a practice it shares only with Maine."}},{"@type":"Question","name":"Why does Nebraska have only one legislative chamber?","acceptedAnswer":{"@type":"Answer","text":"Voters approved it in a 1934 ballot measure championed by US Senator George Norris, who argued a second chamber added cost and let lawmakers hide behind conference committees. The single chamber has met since 1937, its members are called senators, and they run on a nonpartisan ballot."}},{"@type":"Question","name":"What is the weirdest law in Nebraska?","acceptedAnswer":{"@type":"Answer","text":"Nebraska bars investor owned electric utilities from operating in the state. It is the only state where every customer, residential and industrial, buys power from a public district, municipal utility or cooperative. Rates are set by elected boards rather than a private company."}},{"@type":"Question","name":"Where does the name Nebraska come from?","acceptedAnswer":{"@type":"Answer","text":"From an Otoe and Omaha phrase meaning flat water, a description of the Platte River. French traders had named the same river la riviere Plate, using the French word for flat, so the state name and the river name mean the same thing in two different languages."}},{"@type":"Question","name":"What is the highest point in Nebraska?","acceptedAnswer":{"@type":"Answer","text":"Panorama Point, 5,424 feet, in the far southwestern corner near the Colorado and Wyoming lines. It is higher than the tallest point in any New England state except Mount Washington, even though it looks like a gentle rise in a pasture."}}]}</script>

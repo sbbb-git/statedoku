@@ -22,6 +22,9 @@ from collections import Counter
 ROOT = pathlib.Path('.')
 BANK = ROOT / 'data' / 'tweets.json'
 SITE = 'https://statedoku.com'
+# Every posted link says it came from X, so visits from the account can be
+# counted (29 October 2026). The 'url' field keeps the bare page.
+UTM = '?utm_source=x&utm_medium=social'
 
 GAME_ANGLES = {'puzzle-cta', 'engagement-questions', 'teacher-classroom', 'seasonal-timely'}
 
@@ -170,7 +173,7 @@ def main():
             continue
 
         if t['angle'] in GAME_ANGLES:
-            text = f'{body}\n\n{SITE}'
+            text = f'{body}\n\n{SITE}/{UTM}'
             if tweet_length(text) > 280:
                 skipped.append((t['i'], f'too long: {tweet_length(text)}'))
                 continue
@@ -179,7 +182,7 @@ def main():
             p, kind = match_page(body, t['angle'])
             how[kind] += 1
             url = targets[p]
-            text = f'{body}\n\n{url}'
+            text = f'{body}\n\n{url}{UTM}'
             if tweet_length(text) > 280:
                 skipped.append((t['i'], f'too long: {tweet_length(text)}'))
                 continue

@@ -12,6 +12,19 @@ Solo project. Ship carefully, there is no staging and no one else to catch it.
 Cloudflare is **not** connected to the repo directly; the workflow is the
 pipeline. Live about a minute after the push.
 
+Two gates, added on 29 October 2026 from the Coincheur review. Before the
+upload, `node scripts/test-puzzles.cjs` must pass or nothing ships: grids
+already played unchanged in four time zones (hashes in
+`scripts/fixtures/past-grids.json`; rewrite it with `--write-fixture` only
+after a deliberate cut-over), every grid from DATA_FIX3_FROM to 30 days past
+the schedule with two answers or more per cell and a valid stored solution,
+the same grid in five zones over the next 60 days, and a label in three
+languages for every clue. After the upload, `node scripts/verify-production.mjs`
+checks every sitemap URL in 200, the http and www redirects, a real 404, the
+security headers, the asset versions of the commit live, `/api/events`, the
+manifest, `states.json` and the IndexNow key; red there means the site went
+live broken. Both print how many things they checked.
+
 The Twitter bot in `bot/` is **not** in the site deploy. It is deployed from
 the Actions tab, workflow "Posting bot (Buffer)" (`.github/workflows/bot.yml`):
 `check` validates the `BUFFER_TOKEN` GitHub secret against Buffer, finds the X
@@ -259,7 +272,9 @@ the HTML, and re-run it after the 2030 census.
 On 5 October about 300 errors were corrected on the state subpages and 333 in
 the learn articles, each one confirmed by a second, independent check before
 it was applied. New copy gets the same treatment: a claim of "the only" or
-"the first" is the most common way these pages were wrong.
+"the first" is the most common way these pages were wrong. The agent in
+`.claude/agents/fact-checker.md` is that second check: run it on the diff of
+any content or clue change; it reports one verdict per claim with its source.
 
 `data/states.json` drives the game. On 5 October an audit of every clue against
 its label found about 50 wrong values (Salt Lake City missing from "capital
@@ -349,8 +364,11 @@ unknown.
 - **Click tracking names nobody in code.** The addresses whose email clicks are
   recorded come from the `CLICK_TRACK_EMAILS` secret (comma separated), in both
   the email worker and `/api/track/email-click`. Unset means none.
-- **`ADMIN_HASH` in config.js is public.** It only toggles the dev panel in the
-  browser; the password behind it must never be reused anywhere.
+- **No secret ships to the browser.** Until 29 October 2026 `config.js` held
+  `ADMIN_HASH`, an unsalted SHA-256 of the dev-panel password that any visitor
+  could brute-force offline. The `#admin` panel now sends the key to
+  `/api/admin/verify` (rate limited, constant-time, `ADMIN_API_KEY` or
+  `STATS_ADMIN_KEY`), and the hash and `bin/set-admin-password.mjs` are gone.
 - **Error bodies are generic.** Never return `e.message` from a function.
 - **Workflow actions are pinned to a commit SHA**, with the tag in a comment.
 
@@ -499,7 +517,24 @@ summarised every Saturday in `audience-snapshots/behavior-*.md` by
 `scripts/report-behavior.py`; the README there says how exits are estimated.
 Microsoft Clarity (session replays, heatmaps) loads from `config.js`, now on
 every page except the 63 print versions, the 3 widget pages, `admin/constraints`,
-`api/` and `logos/`.
+`api/` and `logos/`, **and only after consent** (below).
+
+**Consent, since 30 October 2026.** Google Analytics and Clarity set cookies,
+and the publisher is in France, so under the CNIL rules they load only after
+the visitor clicks Accept in the banner `config.js` shows (FR/EN/ES, Accept
+and Decline equally visible, the choice kept six months, a "Cookies" link
+added to every footer to change it, cookies cleared on a withdrawal). The
+inline GA block in each page's `<head>` no longer loads `gtag.js` itself; it
+loads it only when `localStorage.statedoku_consent` says yes. Cloudflare Web
+Analytics, Ahrefs Web Analytics and `/api/events` set no cookie and run for
+everyone: they are the complete count. **From 30 October GA4 and Clarity see
+only the visitors who accept** (Coincheur measured GA4 at about a quarter of
+its cookieless count), so every GA4 figure drops that week: compare GA4 with
+GA4 from that date only, and read volumes from D1 and Cloudflare. The banner
+script is boilerplate for `reader_text` (the GA block is excluded there), so
+it dated no page. The AdSense tag is untouched during the review; before ads
+are switched on, the EEA and UK need a Google-certified consent platform
+(TCF), not this banner.
 
 The behaviour report counts entries, not views: every game's "Play again"
 reloads the page, which GA4 records as a view whose referrer is the page
@@ -536,6 +571,18 @@ everyone who saw it; the first pick, right or wrong, is what says someone
 played. On 17 to 23 October 207 grids rendered and 48 games ended. Before 12
 October the five map games and States Connections sent `play_complete` once per
 click after a game ended, so earlier finish counts there are inflated.
+From 30 October 2026 the D1 events also carry `src`, a coarse class of where
+the visit came from (direct, search, ai, social, share, classroom, directory,
+guide, site, archive, pwa, other: `js/analytics.js`), and `puzzle_solve` and
+`puzzle_lost` carry `streak`, the player's streak band (0, 1, 2-3, 4-7, 8-30,
+31+, or archive). `/api/stats` returns `by_source` and `by_streak`, last 7
+days against the 7 before; `guide` is the funnel from the learn pages to a
+first move. The columns add themselves on the first event that carries them
+(`functions/api/events.js`). A shared result now links to the same grid with
+`?date=` plus `utm_source=share&utm_medium=<channel>`, and every link the X
+bot posts carries `utm_source=x&utm_medium=social` (`data/tweets.json`, and
+`scripts/rebuild-tweet-bank.py` writes it): arrivals from a share and from X
+were invisible before.
 
 Search data cannot say whether anyone played. A click on a reference page and a
 solved puzzle are the same row to Search Console, which is how the site reached

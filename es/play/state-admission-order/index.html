@@ -2,12 +2,16 @@
 <html lang="es">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try { var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); } } catch (e) {}
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -330,7 +334,7 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){if(rootEl._done)re
   }, true);
 })();
 </script>
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <template id="next-game-tpl"><div class="next-game" style="margin:16px 0 0;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;"><a href="/es/play/time-zones/" data-next="time-zones" style="display:inline-block;background:#F59E0B;color:#0F2147;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none;">Siguiente: Quiz Zonas Horarias</a><a href="/es/" style="display:inline-block;border:2px solid #0F2147;color:#0F2147;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;">El puzzle Statedoku de hoy</a><a href="/es/play/" style="color:#0F2147;font-weight:700;">Los 21 juegos</a></div></template>
 <script>
 // End of a game: offer the next game and the daily puzzle inside the result

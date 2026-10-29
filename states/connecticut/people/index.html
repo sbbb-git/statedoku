@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4"></script>
   <!-- adsense-head -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1481624152917622"
      crossorigin="anonymous"></script>
@@ -11,6 +10,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-P7ZBQNYLS4');
+    // gtag.js only after consent (config.js asks; CNIL rules for a publisher in France).
+    try { var sdc = JSON.parse(localStorage.getItem('statedoku_consent') || 'null');
+      if (sdc && sdc.v === 'yes' && Date.now() - sdc.t < 15724800000) {
+        var sdg = document.createElement('script'); sdg.async = true;
+        sdg.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7ZBQNYLS4'; document.head.appendChild(sdg); } } catch (e) {}
   </script>
 
   <meta charset="UTF-8">
@@ -154,7 +158,7 @@
 <footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/cities/">Cities</a> &nbsp;·&nbsp; <a href="/regions/">Regions</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
 </footer>
-<script src="/config.js?v=14"></script>
+<script src="/config.js?v=15"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/ads.js?v=1"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which president was born in Connecticut?", "acceptedAnswer": {"@type": "Answer", "text": "George W. Bush, born in New Haven on 6 July 1946 while his father studied at Yale. He is the only president born in the state, and he was raised in Texas."}}, {"@type": "Question", "name": "Who is Connecticut's best known native?", "acceptedAnswer": {"@type": "Answer", "text": "Katharine Hepburn of Hartford, with four Best Actress Oscars, and Noah Webster of West Hartford, whose 1828 dictionary set American spelling. Nathan Hale of Coventry is the official state hero."}}, {"@type": "Question", "name": "Did Mark Twain come from Connecticut?", "acceptedAnswer": {"@type": "Answer", "text": "No. He was born in Florida, Missouri, but lived in Hartford from 1874 to 1891 and wrote Tom Sawyer and Huckleberry Finn there. His house on Farmington Avenue is now a museum."}}, {"@type": "Question", "name": "Which famous inventors were from Connecticut?", "acceptedAnswer": {"@type": "Answer", "text": "Charles Goodyear of New Haven, who discovered vulcanised rubber in 1839, and Samuel Colt of Hartford, who patented the revolver in 1836. Eli Whitney was born in Massachusetts but built his armory outside New Haven."}}, {"@type": "Question", "name": "Who was Ella Grasso?", "acceptedAnswer": {"@type": "Answer", "text": "A Windsor Locks native who became governor in January 1975, the first woman elected governor of a US state in her own right rather than succeeding a husband."}}]}</script>

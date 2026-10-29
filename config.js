@@ -23,11 +23,8 @@ const CONFIG = {
   // at https://clarity.microsoft.com (project settings → tracking code).
   CLARITY_ID: 'wxvtsnx9h8',
 
-  // Superadmin: SHA-256 hash of the admin password.
-  // ⚠️ Change immediately with: node bin/set-admin-password.mjs
-  // UI toggle only (dev panel, analytics opt-out); server endpoints use their own keys.
-  // The hash is public, so this password must never be reused anywhere else.
-  ADMIN_HASH: '26eb84f4a05045e38616b565f17c64185fd92f109ffa69930377ba5eebf3a0b9',
+  // The dev panel (#admin) asks /api/admin/verify, which checks the admin API
+  // key on the server. No password hash ships to the browser any more.
 
   // i18n + storage
   DEFAULT_LANG: 'en',
@@ -87,25 +84,152 @@ const CONFIG = {
   (document.head || document.documentElement).appendChild(s);
 })();
 
-// 
-// Microsoft Clarity auto-loader (session replays + heatmaps).
-// Same skip rules: no admin, no localhost.
-// 
-(function(c, l, a, r, i) {
-  const id = CONFIG.CLARITY_ID;
-  if (!id || id.startsWith('INSERT_')) return;
+//
+// Consent (29 October 2026). Google Analytics and Microsoft Clarity set
+// cookies, so under the CNIL rules that bind a publisher based in France they
+// load only after the visitor accepts. Cloudflare Web Analytics, Ahrefs Web
+// Analytics and the game's own counts (/api/events) set none and run for
+// everyone: they are the complete count, GA4 only sees those who accepted.
+// The choice is kept six months, then asked again. Refusing is one click, as
+// is accepting, and the "Cookies" link added to every footer reopens it.
+// The inline GA block in each page's <head> reads the same key and loads
+// gtag.js only when it says yes.
+//
+const Consent = (() => {
+  const KEY = 'statedoku_consent';
+  const TTL = 182 * 86400000;
+  const GA_ID = 'G-P7ZBQNYLS4';
+  const TEXT = {
+    en: { msg: 'Statedoku would like to use Google Analytics and Microsoft Clarity to see how the site is used. Both set cookies. Everything works the same either way.',
+          yes: 'Accept', no: 'Decline', more: 'Privacy', link: 'Cookies', priv: '/privacy/' },
+    fr: { msg: "Statedoku aimerait utiliser Google Analytics et Microsoft Clarity pour voir comment le site est utilisé. Tous deux déposent des cookies. Tout fonctionne pareil dans les deux cas.",
+          yes: 'Accepter', no: 'Refuser', more: 'Confidentialité', link: 'Cookies', priv: '/fr/privacy/' },
+    es: { msg: 'A Statedoku le gustaría usar Google Analytics y Microsoft Clarity para ver cómo se usa el sitio. Ambos usan cookies. Todo funciona igual en los dos casos.',
+          yes: 'Aceptar', no: 'Rechazar', more: 'Privacidad', link: 'Cookies', priv: '/es/privacy/' },
+  };
 
-  // Skip admin pages, don't record internal tooling sessions.
-  if (location.pathname.startsWith('/admin/') || location.pathname.startsWith('/admin')) return;
+  function _skip() {
+    const host = location.hostname;
+    return location.pathname.startsWith('/admin') || host === 'localhost' || host === '127.0.0.1' ||
+      host.endsWith('.local') || location.protocol === 'file:';
+  }
+  function get() {
+    try {
+      const c = JSON.parse(localStorage.getItem(KEY) || 'null');
+      return c && (c.v === 'yes' || c.v === 'no') && Date.now() - c.t < TTL ? c.v : null;
+    } catch (e) { return null; }
+  }
+  function _save(v) {
+    try { localStorage.setItem(KEY, JSON.stringify({ v, t: Date.now() })); } catch (e) {}
+  }
 
-  // Skip local dev.
-  const host = location.hostname;
-  if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local') || location.protocol === 'file:') return;
+  function _loadAnalytics() {
+    if (_skip()) return;
+    if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]') && typeof window.gtag === 'function') {
+      const g = document.createElement('script');
+      g.async = true;
+      g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(g);
+    }
+    const id = CONFIG.CLARITY_ID;
+    if (id && !window.clarity) {
+      (function (c, l, a, r) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+        const t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + id + '?ref=bwt';
+        const y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, 'clarity', 'script');
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+  }
 
-  c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-  const t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + id + '?ref=bwt';
-  const y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-})(window, document, 'clarity', 'script', CONFIG.CLARITY_ID);
+  // Cookies already set by a past acceptance go with a refusal.
+  function _clearCookies() {
+    const host = location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').map(c => c.split('=')[0].trim())
+      .filter(n => /^(_ga|_gid|_gat|_clck|_clsk|CLID|MUID)/.test(n))
+      .forEach(n => {
+        ['', '; domain=' + host, '; domain=.' + host].forEach(d => {
+          document.cookie = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + d;
+        });
+      });
+  }
+
+  function _style() {
+    if (document.getElementById('consent-style')) return;
+    const s = document.createElement('style');
+    s.id = 'consent-style';
+    s.textContent =
+      '#consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483000;max-width:560px;margin:0 auto;' +
+      'background:#fff;color:#1C232D;border:2px solid #1C232D;border-radius:4px;padding:12px 14px;' +
+      'font:500 0.82rem/1.45 Inter,system-ui,sans-serif;box-shadow:0 6px 24px rgba(15,33,71,.18)}' +
+      '#consent p{margin:0 0 10px}#consent .cs-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}' +
+      '#consent button{font:700 0.85rem/1 Inter,system-ui,sans-serif;padding:10px 16px;border-radius:2px;cursor:pointer;' +
+      'border:1.5px solid #0F2147;background:#fff;color:#0F2147;min-width:96px}' +
+      '#consent button.cs-yes{background:#0F2147;color:#fff}' +
+      '#consent a{color:#0F2147;margin-left:auto;font-size:0.8rem}' +
+      '#consent button:focus-visible,#consent a:focus-visible{outline:3px solid #F59E0B;outline-offset:2px}';
+    document.head.appendChild(s);
+  }
+
+  function open() {
+    if (_skip() || document.getElementById('consent')) return;
+    const lang = (document.documentElement.lang || 'en').slice(0, 2);
+    const T = TEXT[lang] || TEXT.en;
+    _style();
+    const box = document.createElement('div');
+    box.id = 'consent';
+    box.setAttribute('role', 'region');
+    box.setAttribute('aria-label', T.link);
+    const p = document.createElement('p');
+    p.textContent = T.msg;
+    const row = document.createElement('div');
+    row.className = 'cs-row';
+    const no = document.createElement('button');
+    no.type = 'button'; no.className = 'cs-no'; no.textContent = T.no;
+    const yes = document.createElement('button');
+    yes.type = 'button'; yes.className = 'cs-yes'; yes.textContent = T.yes;
+    const more = document.createElement('a');
+    more.href = T.priv; more.textContent = T.more;
+    row.append(no, yes, more);
+    box.append(p, row);
+    document.body.appendChild(box);
+    const was = get();
+    no.addEventListener('click', () => {
+      _save('no'); box.remove(); _clearCookies();
+      if (was === 'yes') location.reload();   // unloads the scripts already running
+    });
+    yes.addEventListener('click', () => { _save('yes'); box.remove(); _loadAnalytics(); });
+  }
+
+  // A "Cookies" link at the end of every footer reopens the choice.
+  function _footerLink() {
+    const foot = document.querySelector('footer');
+    if (!foot || foot.querySelector('.consent-link')) return;
+    const lang = (document.documentElement.lang || 'en').slice(0, 2);
+    const a = document.createElement('a');
+    a.href = '#cookies'; a.className = 'consent-link'; a.textContent = (TEXT[lang] || TEXT.en).link;
+    a.addEventListener('click', e => { e.preventDefault(); open(); });
+    const line = foot.querySelector('.foot-links');
+    if (line) { line.append(' · ', a); return; }
+    const p = document.createElement('p');
+    p.style.margin = '8px 0 0';
+    p.appendChild(a);
+    foot.appendChild(p);
+  }
+
+  function init() {
+    if (_skip()) return;
+    const v = get();
+    if (v === 'yes') _loadAnalytics();
+    else if (v === null) open();
+    _footerLink();
+    if (location.hash === '#cookies') open();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+
+  return { get, open };
+})();
 
 // 
 // Helper: send a custom event to Cloudflare Web Analytics.
