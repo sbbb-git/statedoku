@@ -2,7 +2,7 @@
 
 > Statedoku is a free daily US geography puzzle: a 3×3 grid where every cell must hold a US state that satisfies both its row clue and its column clue. The site also has 21 free geography games (map clicking, capitals, abbreviations, flags, history) and reference pages on the 50 states, in English, French and Spanish. Free, no signup.
 
-Last updated: 2026-10-29. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
+Last updated: 2026-10-30. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
 
 ## Answers
 
@@ -89,6 +89,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [US Presidents and the States Where They Were Born](https://statedoku.com/learn/states-presidents-born/): All 45 US presidents (47 presidencies) and their birth states. Virginia leads with 8 presidents. Learn US geography step by step with maps, lists, and trivia.
 - [Every State Flower and the Meaning Behind It](https://statedoku.com/learn/state-flowers/): The official flower of all 50 US states, when each was adopted, what it symbolizes, and the surprising stories behind the picks (yes, even the cactus).
 - [Which 8 States Touch the Great Lakes?](https://statedoku.com/learn/states-with-great-lakes/): Eight US states share shoreline with the Great Lakes, Superior, Michigan, Huron, Erie, Ontario. Mapped by lake, with miles of coastline per state.
+- [US Territories: 5 Inhabited and 9 Uninhabited, Full List](https://statedoku.com/learn/us-territories/): The US has 14 territories: Puerto Rico, Guam, the US Virgin Islands, American Samoa, the Northern Marianas and 9 uninhabited islands. Codes, status, votes.
 - [Best Free Games to Learn the 50 US States (2026)](https://statedoku.com/learn/best-games-to-learn-the-50-states/): Free games and quizzes to learn the 50 US states and capitals, compared: Seterra, Sporcle, Lizard Point, Sheppard Software and more.
 - [Best Daily Geography Games Like Wordle (2026)](https://statedoku.com/learn/best-daily-geography-games/): Daily geography games like Wordle, compared: Worldle, Globle, Travle, Flagle, GeoGrid and US-states dailies such as Statele. Rules, tries, cost.
 
@@ -105,6 +106,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [Les 4 régions des États-Unis](https://statedoku.com/fr/learn/regions-des-etats-unis/): Les 4 régions des États-Unis selon le Bureau du Recensement : Nord-Est (9 États), Sud (16), Midwest (12), Ouest (13).
 - [Sièges à la Chambre par État, 1910 à 2020](https://statedoku.com/fr/learn/sieges-chambre-par-etat-1910-2020/): Les sièges de chaque État à la Chambre des représentants à chaque recensement de 1910 à 2020, d'après le Census Bureau : gains, pertes et bascule vers le Sud.
 - [Meilleurs jeux gratuits pour apprendre les 50 États](https://statedoku.com/fr/learn/meilleurs-jeux-pour-apprendre-les-etats/): Jeux et quiz gratuits pour apprendre les 50 États américains et leurs capitales, comparés : Seterra, Sporcle, Lizard Point, Sheppard Software et plus.
+- [Territoires américains : Porto Rico, Guam, la liste des 14](https://statedoku.com/fr/learn/territoires-americains/): Les États-Unis ont 14 territoires : Porto Rico, Guam, les Îles Vierges, les Samoa, les Mariannes du Nord et 9 îles inhabitées. Codes, statut, droit de vote.
 
 ## En español
 
@@ -119,6 +121,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 - [Las 4 regiones de EE.UU. y sus estados](https://statedoku.com/es/learn/regiones-de-eeuu/): Las 4 regiones de Estados Unidos según la Oficina del Censo: Noreste (9 estados), Sur (16), Medio Oeste (12), Oeste (13).
 - [Escaños de la Cámara por estado, 1910 a 2020](https://statedoku.com/es/learn/escanos-camara-por-estado-1910-2020/): Los escaños de cada estado en la Cámara de Representantes en cada censo de 1910 a 2020, según el Census Bureau: quién ganó, quién perdió y el giro al Sur.
 - [Mejores juegos gratis para aprender los 50 estados](https://statedoku.com/es/learn/mejores-juegos-para-aprender-los-estados/): Juegos y quizzes gratis para aprender los 50 estados de EE.UU. y sus capitales, comparados: Seterra, Sporcle, Lizard Point, Sheppard Software y más.
+- [Territorios de EE.UU., Puerto Rico, Guam](https://statedoku.com/es/learn/territorios-eeuu/): Los 5 territorios habitados de Estados Unidos: Puerto Rico (3,3 M hab.), Guam, Islas Vírgenes EE.UU., Samoa Americana y las Islas Marianas del Norte.
 
 ## Quick facts
 
