@@ -173,6 +173,7 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/regions-des-etats-unis/`, { priority: 0.9 }],
     [`${BASE}/fr/learn/drapeaux-des-etats/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/college-electoral/`, { priority: 0.85 }],
+    [`${BASE}/fr/learn/territoires-americains/`, { priority: 0.85 }],
     // Legal notice (LCEN art. 1-1), linked from every footer
     [`${BASE}/legal/`, { priority: 0.3, alternates: [['en', `${BASE}/legal/`], ['fr', `${BASE}/fr/mentions-legales/`], ['es', `${BASE}/es/aviso-legal/`]] }],
     [`${BASE}/fr/mentions-legales/`, { priority: 0.3 }],
