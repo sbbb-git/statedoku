@@ -568,7 +568,11 @@ Event start dates, so a jump on that day is not mistaken for a trend:
 2026; `capitals_teaser_*` and `next_game_click` from 13 October 2026. `puzzle_first_move` from
 24 October 2026: `puzzle_start` fires when the grid renders, so it counts
 everyone who saw it; the first pick, right or wrong, is what says someone
-played. On 17 to 23 October 207 grids rendered and 48 games ended. Before 12
+played. On 17 to 23 October 207 grids rendered and 48 games ended.
+D1 holds no `puzzle_first_move` before 31 October 2026: the events table
+still carried a CHECK on three event names and refused it with a 500;
+`functions/api/events.js` drops that CHECK on the first refusal. GA4 has
+the event from 24 October (after consent only, from 30 October). Before 12
 October the five map games and States Connections sent `play_complete` once per
 click after a game ended, so earlier finish counts there are inflated.
 From 30 October 2026 the D1 events also carry `src`, a coarse class of where

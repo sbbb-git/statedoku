@@ -3,7 +3,7 @@
 
 CREATE TABLE IF NOT EXISTS events (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  event_type TEXT NOT NULL CHECK(event_type IN ('puzzle_start','puzzle_solve','puzzle_lost')),
+  event_type TEXT NOT NULL,   -- no CHECK: ALLOWED_EVENTS in functions/api/events.js is the gate
   puzzle_date TEXT NOT NULL,
   timestamp INTEGER NOT NULL,
   country TEXT,
