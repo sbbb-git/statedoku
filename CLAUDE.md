@@ -462,6 +462,16 @@ later, running on Opus 5.5 in a persistent host session that carries the repo
 appends a line to `seo-snapshots/JOURNAL.md` every week: the scheduler reports
 success on delivery of the wake-up, not on the work, so the journal is the proof.
 
+A **daily content session** (from 5 November 2026, at the owner's request)
+runs Sunday to Friday in its own persistent session and ships one content
+unit a day: a page that measured demand calls for, or a real deepening of a
+page that already ranks. It follows `scripts/content/DAILY.md` and takes the
+next item of `scripts/content/QUEUE.md`; at most three new pages a week, never
+a family of template pages, nothing shipped when the fact-check or an audit
+fails. Its journal lines are tagged `(daily content)`: read them on Saturday
+before choosing the week's change, so the two sessions do not redo or undo
+each other's work.
+
 ### The order of priorities
 
 Without this order in mind you will build something that measures very well what

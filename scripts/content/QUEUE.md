@@ -1,0 +1,80 @@
+# Content queue
+
+Read by the daily content session (`scripts/content/DAILY.md`), first `todo`
+first. Evidence is Bing (weekly impressions from `bing-keywords-2026-10-31.json`,
+page figures from `bing-2026-10-31.json`), the only engine sending traffic:
+Bing, Yahoo, DuckDuckGo and Ecosia, all on Bing's index, made 4,120 of the
+4,509 organic sessions in the 28 days to 30 October; Google made 57.
+
+Status: `todo`, `done YYYY-MM-DD <commit>`, `dropped (<reason>)`.
+
+## Maps the titles already promise
+
+Three ranking pages say "map" in their title and carry none. These come first:
+the pages are already shown, the queries already exist, nothing new competes.
+
+1. `todo` **13 colonies map** on `/learn/13-colonies/`, then `/fr/learn/13-colonies/`
+   and `/es/learn/13-colonies/`. Title "13 Original Colonies in Order: Full List,
+   Map, Dates", no map on the page. Demand: "13 colonies" 12,411, "13 colonies
+   map" 10,035. Page: 3,231 impressions a week, position 6, 31 clicks. Map of the
+   13 on modern outlines, with a plain note on what differs (Maine inside
+   Massachusetts, Vermont claimed by New York and New Hampshire, the western
+   claims), and the three regional groups (New England, Middle, Southern).
+2. `todo` **US time zone map** on `/learn/states-by-time-zone/`, then
+   `/fr/learn/fuseaux-horaires-etats-unis/` and `/es/learn/zonas-horarias-eeuu/`.
+   Demand: "time zone map" 28,598, "time zones" 27,197, "us time zones" 12,538,
+   "us time zone map" 7,954, "time zone map usa" 7,146, and per state "arizona
+   time zone" 10,238, "california" 9,919, "texas" 9,912, "central time zone"
+   9,350, "eastern time zone" 9,243, "chicago" 8,425, "ohio" 7,702, "michigan"
+   6,743, "colorado" 6,291, "indiana" 6,174, "pacific" 5,679, "florida" 5,420,
+   "hawaii" 5,386, "utah" 5,271. Map coloured by zone with the 14 split states
+   marked, and one table row per state answering "what time zone is X in"
+   (split states named with the part on each side). One page, not 50.
+3. `todo` **Interactive map of the 50 states** on `/states/` (and `/es/states/`).
+   Title "All 50 States in the USA (Map, Capitals, Facts)", 322 words, no map.
+   Demand: "us map" 139,654, "us map of states" 49,989, "interactive us map"
+   14,861, "us state map" 11,946, "map of us states" 7,398, "50 states map"
+   5,340. The hub is weak on Bing (2,769 impressions, 8 clicks in 4 weeks). A
+   map where each state links to its page, with name, code and capital, plus
+   a lead that answers "how many states" and the regions. The head terms are
+   out of reach; the long tail ("us map with states", "interactive") is not.
+
+## New pages with demand and no page
+
+4. `todo` **Mississippi River states**, new, EN then FR and ES. "Which states
+   does the Mississippi River border?" The ten states (Minnesota, Wisconsin,
+   Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi,
+   Louisiana), which bank each is on, source and mouth, length, the main
+   tributaries, the river as a state border. Demand: "mississippi river" 11,485.
+   It is also a clue of the daily grid (`on_mississippi`): link the game.
+   Check `/learn/longest-rivers-in-each-state/` first; it has one section on the
+   river and must link to the new page, not compete with it.
+5. `todo` **The US flag**, new, EN then FR and ES. Why 50 stars and 13 stripes,
+   the 27 versions and the state whose admission added each star, the 1818
+   Flag Act, the current flag since 4 July 1960. Demand: "us flag" 9,986,
+   "flag of the united states" 6,994. `/learn/state-flags/` covers the 50 state
+   flags; link both ways, do not repeat it.
+6. `todo` **Colorado River states**, new, EN. The seven basin states, the upper
+   and lower basins, the 1922 compact, Hoover and Glen Canyon dams, the river
+   reaching Mexico. Demand: "colorado river" 5,708. Same check against the
+   rivers page as item 4.
+
+## Deepen what already ranks
+
+7. `todo` **Great Lakes map** on `/learn/states-with-great-lakes/`: the eight
+   states and which lakes each touches, on a map. Demand: "great lakes map" 6,572.
+8. `todo` **National parks map** on `/learn/national-parks-by-state/`: parks per
+   state on a map. Demand: "national parks map" 5,336.
+9. `todo` **French pages Google crawled and refused.** Google indexes 4 of the 33
+   indexable `fr/learn/` pages (gsc-index-2026-10-31). Take the French pages
+   marked "Crawled, currently not indexed", most impressions first, and give
+   each a direct answer in its first paragraph and a section the English page
+   does not have. One page per unit.
+10. `todo` **Next step from `/es/learn/state-abbreviations/`**: 269 entrances in
+    28 days, 7% go on to a second page (behavior-2026-10-31). Put the matching
+    Spanish game and the daily grid before the first table, as was done on the
+    four English articles on 17 October.
+
+## Done
+
+(none yet)
