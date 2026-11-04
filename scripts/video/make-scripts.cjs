@@ -17,6 +17,21 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 const pick = a => a[Math.floor(rnd() * a.length)];
 const ord = n => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] || 'th');
 const join = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+const TAGS = ['#geography #USA', '#geography', '#USA #quiz', '#mapchallenge', '#trivia #geography', '#50states'];
+const SHAPE_POSTS = [
+  'Guess the state from its shape, round {n}: five outlines, three seconds each. Comment your score. #geography',
+  'Shape quiz {n}: can you name all five states from their outline alone? #USA #quiz',
+  'Five state outlines, no names, three seconds each. Round {n}, how many did you get? #geography #USA',
+  'Round {n} of guess the state: some shapes are easy, one is not. #50states',
+  'Can you recognise these five states by their borders? Shape quiz number {n}. #mapchallenge',
+  'Name the state from its silhouette, round {n}. Five shapes, one reveal each. #trivia #geography',
+];
+const ODD_POSTS = [
+  'Odd one out, round {n}: in each set of four states, one does not belong. Can you spot it? #geography',
+  'Three states share something, one does not. Odd one out number {n}, three rounds. #USA #quiz',
+  'Spot the state that does not fit, odd one out {n}. Rivers, trails, borders and more. #trivia #geography',
+  'Odd one out {n}: four states, one impostor, three seconds. #50states',
+];
 const URL = medium => `https://statedoku.com/?utm_source=x&utm_medium=${medium}`;
 const OUTRO = { kind: 'say', tag: '', voice: 'How many did you get? Play the daily US map puzzle at State doku dot com.',
   caption: 'How many did you get? Play the daily puzzle at statedoku.com', visual: { type: 'outro', title: 'One map puzzle a day', sub: 'Nine cells, two clues each, every answer a US state.' } };
@@ -88,7 +103,7 @@ const CLUES = {
       segs.push({ kind: 'say', tag, voice: `Number ${i + 1}. Which state is this?`, caption: `#${i + 1}: which state is this?`, visual: q }, ...count(3, tag, q),
         { kind: 'say', tag, voice: `It's ${name(id)}. Capital: ${S[id].capital}.`, caption: `${name(id)}, capital ${S[id].capital}`, visual: { type: 'silhouette', id, reveal: true, name: name(id) } });
     });
-    add('Guess the state', `Guess the state from its shape #${v + 1}`, segs, `Guess the state from its shape, 5 rounds, 3 seconds each. Comment your score. #geography #USA`);
+    add('Guess the state', `Guess the state from its shape #${v + 1}`, segs, SHAPE_POSTS[v % SHAPE_POSTS.length].replace('{n}', v + 1));
   }
 
   // 2. Name the capital (15)
@@ -107,7 +122,7 @@ const CLUES = {
       segs.push({ kind: 'say', tag, voice: `What is the capital of ${s.names.en}?`, caption: `Capital of ${s.names.en}?`, visual: q }, ...count(3, tag, q),
         { kind: 'say', tag, voice: `${s.capital}.${extra}`, caption: `${s.capital}.${extra}`, visual: { ...q, correct: o.indexOf(s.capital) } });
     });
-    add('Name the capital', `Name the capital #${v + 1}`, segs, `Five states, five capitals, four choices each. How many can you get? #geography #USA`);
+    add('Name the capital', `Name the capital #${v + 1}`, segs, `Capitals quiz #${v + 1}: ${join(five.map(name))}. Can you name all five capitals? ${TAGS[v % TAGS.length]}`);
   }
 
   // 3. The capital is not the biggest city (6)
@@ -123,7 +138,7 @@ const CLUES = {
       segs.push({ kind: 'say', tag, voice: `The largest city in ${s.names.en} is ${s.largestCity}. But what is the capital?`, caption: `${s.names.en}: biggest city ${s.largestCity}. Capital?`, visual: q }, ...count(3, tag, q),
         { kind: 'say', tag, voice: `${s.capital}.`, caption: `${s.capital}`, visual: { ...q, correct: o.indexOf(s.capital) } });
     });
-    add('Tricky capitals', `The capital is not the biggest city #${v + 1}`, segs, `In ${notLargest.length} US states the capital is not the biggest city. Can you name these five? #geography #trivia`);
+    add('Tricky capitals', `The capital is not the biggest city #${v + 1}`, segs, `${join(five.map(name))}: the biggest city is not the capital. Can you name the five capitals? ${TAGS[(v + 2) % TAGS.length]}`);
   }
 
   // 4. Name the states on the map (14 videos, two rounds each)
@@ -155,7 +170,7 @@ const CLUES = {
       segs.push({ kind: 'say', tag, voice: `Which of these states ${neg}?`, caption: `Which one ${neg}?`, visual: qv }, ...count(3, tag, qv),
         { kind: 'say', tag, voice: `${name(out)}. The other three all ${all}.`, caption: `${name(out)}! The other three all ${all}.`, visual: { ...qv, correct: o.indexOf(out) } });
     }
-    add('Odd one out', `Odd one out #${v + 1}`, segs, `Odd one out: one state in each round does not belong. Three rounds. #geography #quiz`);
+    add('Odd one out', `Odd one out #${v + 1}`, segs, ODD_POSTS[v % ODD_POSTS.length].replace('{n}', v + 1));
   }
 
   // 6. Which joined the Union first? (10), five pairs each
@@ -170,7 +185,7 @@ const CLUES = {
         { kind: 'say', tag, voice: `${name(first)}, in ${S[first].admitted}. ${name(later)} followed in ${S[later].admitted}.`, caption: `${name(first)} ${S[first].admitted}, ${name(later)} ${S[later].admitted}`,
           visual: { ...qv, win: first === a ? 0 : 1, a: { ...qv.a, val: String(S[a].admitted) }, b: { ...qv.b, val: String(S[b].admitted) } } });
     }
-    add('Which came first', `Which joined the Union first? #${v + 1}`, segs, `Which state joined the Union first? Four pairs, some are surprising. #history #USA`);
+    add('Which came first', `Which joined the Union first? #${v + 1}`, segs, `${segs[1].caption.replace('?', '')}: which joined the Union first? Four pairs in this one. ${['#history #USA', '#ushistory', '#history #trivia'][v % 3]}`);
   }
 
   // 7. Which is bigger? (10), five pairs each, by area rank among the 50
@@ -186,7 +201,7 @@ const CLUES = {
           caption: `${name(big)}: ${ord(S[big].areaRank)} by area. ${name(small)}: ${ord(S[small].areaRank)}.`,
           visual: { ...qv, win: big === a ? 0 : 1, a: { ...qv.a, val: ord(S[a].areaRank) + ' by area' }, b: { ...qv.b, val: ord(S[b].areaRank) + ' by area' } } });
     }
-    add('Bigger or smaller', `Which state is bigger? #${v + 1}`, segs, `Which state is bigger? Five pairs, ranked by area among the 50. #geography #USA`);
+    add('Bigger or smaller', `Which state is bigger? #${v + 1}`, segs, `${segs[1].caption.replace('?', '')}: which one is bigger? Five pairs, ranked by area. ${TAGS[(v + 1) % TAGS.length]}`);
   }
 
   // 8. Postal codes (6), five codes each, four choices with the same initial
@@ -201,7 +216,7 @@ const CLUES = {
       segs.push({ kind: 'say', tag, voice: `Which state is ${code.split('').join(' ')}?`, caption: `Which state is ${code}?`, visual: qv }, ...count(3, tag, qv),
         { kind: 'say', tag, voice: `${name(code)}.`, caption: `${code} = ${name(code)}`, visual: { ...qv, correct: o.indexOf(code) } });
     });
-    add('Postal codes', `Which state is it? Postal codes #${v + 1}`, segs, `MI, MS, MO, MN... Can you decode these five state postal codes? #geography #trivia`);
+    add('Postal codes', `Which state is it? Postal codes #${v + 1}`, segs, `${five.join(', ')}: can you decode these five state postal codes? ${TAGS[(v + 3) % TAGS.length]}`);
   }
 
   // 9. Lists and rankings (5)

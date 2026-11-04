@@ -37,6 +37,14 @@ const BANK_EPOCH = '2026-08-09';
 // run posts the content link, so every day goes out exactly one of each.
 const PAGE_SLOT_FROM_UTC_HOUR = 15;
 
+// The third run of the day (17:00 UTC, noon in New York) posts one short video
+// from /data/videos.json, through Buffer only: the file is hosted on the site
+// and Buffer fetches it from its URL. Day 0 of that list is its own "epoch";
+// once the list is used up the slot posts nothing rather than repeat a video,
+// since X forbids duplicate posts. Added on 4 November 2026.
+const VIDEO_BANK_URL = SITE_URL + '/data/videos.json';
+const VIDEO_SLOT_UTC_HOURS = [16, 20];   // a run in [16:00, 20:00) is the video run
+
 // ⚙️ FLIP THIS WHEN YOU LAUNCH THE PUZZLE
 // "prelaunch" → 2 tweets/day, no statedoku.com link, no #Statedoku hashtag (yet)
 // "launch"    → 1 tweet/day, promoting the daily puzzle with link
@@ -110,17 +118,19 @@ async function bufferGraphQL(query, env) {
   return { ok: resp.ok, status: resp.status, json, body: body.slice(0, 600) };
 }
 
-async function postBuffer(text, env, nowMs) {
+async function postBuffer(text, env, nowMs, videoUrl = null) {
   const dueAt = new Date(nowMs + BUFFER_LEAD_MS).toISOString();
   // GraphQL strings need their quotes and newlines escaped; the tweets contain both.
   const safe = JSON.stringify(text);
+  // Buffer takes no upload: a video goes in as a public URL it fetches at post time.
+  const assets = videoUrl ? `,\n      assets: [{ video: { url: ${JSON.stringify(videoUrl)} } }]` : '';
   const q = `mutation {
     createPost(input: {
       text: ${safe},
       channelId: ${JSON.stringify(env.BUFFER_CHANNEL_ID)},
       schedulingType: automatic,
       mode: customScheduled,
-      dueAt: ${JSON.stringify(dueAt)}
+      dueAt: ${JSON.stringify(dueAt)}${assets}
     }) {
       ... on PostActionSuccess { post { id dueAt } }
       ... on MutationError { message }
@@ -300,8 +310,21 @@ function humanize(text) {
 function _daySlot(nowMs) {
   const epoch = Date.parse(BANK_EPOCH + 'T00:00:00Z');
   const day = Math.max(0, Math.floor((nowMs - epoch) / 86400000));
-  const slot = new Date(nowMs).getUTCHours() >= PAGE_SLOT_FROM_UTC_HOUR ? 'page' : 'game';
+  const h = new Date(nowMs).getUTCHours();
+  const slot = h >= VIDEO_SLOT_UTC_HOURS[0] && h < VIDEO_SLOT_UTC_HOURS[1] ? 'video'
+    : h >= PAGE_SLOT_FROM_UTC_HOUR ? 'page' : 'game';
   return { day, slot };
+}
+
+// The video of the day, or null when the list has not started or is used up.
+async function pickVideo(nowMs) {
+  const resp = await fetch(VIDEO_BANK_URL, { cf: { cacheTtl: 3600, cacheEverything: true } });
+  if (!resp.ok) throw new Error('video bank fetch ' + resp.status);
+  const bank = await resp.json();
+  const epoch = Date.parse(bank.epoch + 'T00:00:00Z');
+  const idx = Math.floor((nowMs - epoch) / 86400000);
+  const v = idx >= 0 ? (bank.videos || [])[idx] : null;
+  return v ? { text: v.text, url: v.url, meta: { slot: 'video', idx, of: bank.videos.length, slug: v.slug } } : null;
 }
 
 async function pickFromBank(env, nowMs) {
@@ -327,6 +350,19 @@ async function _runOnce(env, { dryRun = false, customText = null, now = Date.now
   let tweet;
   let source = 'bank';
   let meta = null;
+
+  if (!customText && _daySlot(now).slot === 'video') {
+    const v = await pickVideo(now);
+    if (!v) return { phase: PHASE, source: 'video', meta: { slot: 'video' }, tweet: '', skipped: 'no video for today' };
+    const text = humanize(v.text);
+    if (dryRun) return { dry_run: true, phase: PHASE, source: 'video', meta: v.meta, tweet: text, video: v.url };
+    const results = {};
+    if (env.BUFFER_TOKEN && env.BUFFER_CHANNEL_ID) {
+      try { results.buffer = await postBuffer(text, env, now, v.url); }
+      catch (e) { results.buffer = { ok: false, status: 0, body: e.message }; }
+    }
+    return { phase: PHASE, source: 'video', meta: v.meta, tweet: text, video: v.url, networks: Object.keys(results), results };
+  }
 
   if (customText) {
     tweet = humanize(customText);
@@ -402,7 +438,7 @@ export default {
       const r = await _runOnce(env);
       const line = Object.entries(r.results || {})
         .map(([net, res]) => `${net}:${res.ok ? 'ok' : 'FAIL ' + res.status}`).join(' ');
-      console.log('[Statedoku Bot]', r.meta?.slot || '?', line || 'no network configured', '|', r.tweet.split('\n')[0]);
+      console.log('[Statedoku Bot]', r.meta?.slot || '?', r.skipped || line || 'no network configured', '|', (r.tweet || '').split('\n')[0]);
     } catch (e) {
       console.error('[Statedoku Bot] Exception:', e.message);
     }
@@ -425,7 +461,9 @@ export default {
 
     const dryRun = url.searchParams.get('dry') === '1';
     const customText = url.searchParams.get('text') || null;
-    const result = await _runOnce(env, { dryRun, customText });
+    // ?at=<ISO time> previews what a run at that time would post (dry runs only).
+    const at = dryRun && url.searchParams.get('at') ? Date.parse(url.searchParams.get('at')) : NaN;
+    const result = await _runOnce(env, { dryRun, customText, now: Number.isFinite(at) ? at : Date.now() });
 
     return new Response(JSON.stringify(result, null, 2), {
       headers: { 'content-type': 'application/json' }

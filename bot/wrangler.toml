@@ -8,10 +8,11 @@ compatibility_date = "2024-09-23"
 #
 # The 13:00 run posts from the "game" slot and links to the puzzle; the 23:00
 # run posts from the "page" slot and links to the page that tweet is about.
+#   17:00 UTC = 12:00 ET / 18:00 Paris  -> one short video from /data/videos.json (Buffer only)
 # The split is by UTC hour in worker.js (PAGE_SLOT_FROM_UTC_HOUR), so moving
 # these times means checking that threshold still puts one run either side.
 [triggers]
-crons = ["0 13 * * *", "0 23 * * *"]
+crons = ["0 13 * * *", "0 17 * * *", "0 23 * * *"]
 
 # ─────────────────────────────────────────────────────────────────────────
 # Secrets to set (NEVER commit these to git).

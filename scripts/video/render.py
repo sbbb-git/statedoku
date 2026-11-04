@@ -67,8 +67,8 @@ for v in videos:
         wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(RATE); wf.writeframes(bytes(audio))
     with open(d / 'frames.txt', 'w') as f:
         for i, t in enumerate(durs):
-            f.write(f"file 'f{i:03d}.png'\nduration {t:.3f}\n")
-        f.write(f"file 'f{len(durs) - 1:03d}.png'\n")
+            f.write(f"file 'f{i:03d}.jpg'\nduration {t:.3f}\n")
+        f.write(f"file 'f{len(durs) - 1:03d}.jpg'\n")
     v['_dur'] = sum(durs)
     report.append((v['slug'], round(v['_dur'], 1)))
 
@@ -77,7 +77,7 @@ def encode(v):
     d = OUT / v['slug']
     out = OUT / 'mp4' / f"{v['slug']}.mp4"
     cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', str(d / 'frames.txt'), '-i', str(d / 'audio.wav'),
-           '-vf', 'fps=30,format=yuv420p', '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '27',
+           '-vf', 'scale=720:1280,fps=30,format=yuv420p', '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '27',
            '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', str(out)]
     subprocess.run(cmd, check=True)
     return out
