@@ -76,7 +76,10 @@ jobs:
           BUFFER_TOKEN: ${{ secrets.BUFFER_TOKEN }}
           # BUFFER_CHANNEL_ID comes from the first step, through GITHUB_ENV.
         run: |
-          npx --yes wrangler@3.114.17 deploy > "$RUNNER_TEMP/deploy.log" 2>&1 || { echo "::error::wrangler deploy failed (output kept out of the public log)"; exit 1; }
+          npx --yes wrangler@3.114.17 deploy > "$RUNNER_TEMP/deploy.log" 2>&1 || {
+            # Only wrangler's error lines, with addresses, hosts and ids masked.
+            grep -E 'ERROR|rror:' "$RUNNER_TEMP/deploy.log" | sed -E 's/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+/<email>/g; s/[A-Za-z0-9-]+\.workers\.dev/<host>/g; s/[0-9a-f]{32}/<id>/g' | head -5
+            echo "::error::wrangler deploy failed (error lines above, the rest kept out of the public log)"; exit 1; }
           printf '%s' "$BUFFER_TOKEN" | npx --yes wrangler@3.114.17 secret put BUFFER_TOKEN > "$RUNNER_TEMP/s1.log" 2>&1 || { echo "::error::could not set BUFFER_TOKEN"; exit 1; }
           printf '%s' "$BUFFER_CHANNEL_ID" | npx --yes wrangler@3.114.17 secret put BUFFER_CHANNEL_ID > "$RUNNER_TEMP/s2.log" 2>&1 || { echo "::error::could not set BUFFER_CHANNEL_ID"; exit 1; }
           echo "::notice title=Bot deployed::worker deployed, BUFFER_TOKEN and BUFFER_CHANNEL_ID set"

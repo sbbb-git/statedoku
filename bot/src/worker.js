@@ -37,13 +37,13 @@ const BANK_EPOCH = '2026-08-09';
 // run posts the content link, so every day goes out exactly one of each.
 const PAGE_SLOT_FROM_UTC_HOUR = 15;
 
-// The third run of the day (17:00 UTC, noon in New York) posts one short video
-// from /data/videos.json, through Buffer only: the file is hosted on the site
-// and Buffer fetches it from its URL. Day 0 of that list is its own "epoch";
-// once the list is used up the slot posts nothing rather than repeat a video,
-// since X forbids duplicate posts. Added on 4 November 2026.
+// On a day that has one, the 13:00 UTC run posts a short video from
+// /data/videos.json instead of the game tweet, through Buffer only: the file
+// is hosted on the site and Buffer fetches it from its URL. The account keeps
+// two posts a day and no third cron is needed. Day 0 of that list is its own
+// "epoch"; once the list is used up the run posts the game tweet again rather
+// than repeat a video, since X forbids duplicate posts. Added 4 November 2026.
 const VIDEO_BANK_URL = SITE_URL + '/data/videos.json';
-const VIDEO_SLOT_UTC_HOURS = [16, 20];   // a run in [16:00, 20:00) is the video run
 
 // ⚙️ FLIP THIS WHEN YOU LAUNCH THE PUZZLE
 // "prelaunch" → 2 tweets/day, no statedoku.com link, no #Statedoku hashtag (yet)
@@ -310,9 +310,7 @@ function humanize(text) {
 function _daySlot(nowMs) {
   const epoch = Date.parse(BANK_EPOCH + 'T00:00:00Z');
   const day = Math.max(0, Math.floor((nowMs - epoch) / 86400000));
-  const h = new Date(nowMs).getUTCHours();
-  const slot = h >= VIDEO_SLOT_UTC_HOURS[0] && h < VIDEO_SLOT_UTC_HOURS[1] ? 'video'
-    : h >= PAGE_SLOT_FROM_UTC_HOUR ? 'page' : 'game';
+  const slot = new Date(nowMs).getUTCHours() >= PAGE_SLOT_FROM_UTC_HOUR ? 'page' : 'game';
   return { day, slot };
 }
 
@@ -351,9 +349,11 @@ async function _runOnce(env, { dryRun = false, customText = null, now = Date.now
   let source = 'bank';
   let meta = null;
 
-  if (!customText && _daySlot(now).slot === 'video') {
-    const v = await pickVideo(now);
-    if (!v) return { phase: PHASE, source: 'video', meta: { slot: 'video' }, tweet: '', skipped: 'no video for today' };
+  // The game run posts the day's video when there is one and Buffer is set up.
+  const v = !customText && _daySlot(now).slot === 'game' && env.BUFFER_TOKEN && env.BUFFER_CHANNEL_ID
+    ? await pickVideo(now).catch(e => { console.error('[Statedoku Bot] video list unavailable:', e.message); return null; })
+    : null;
+  if (v) {
     const text = humanize(v.text);
     if (dryRun) return { dry_run: true, phase: PHASE, source: 'video', meta: v.meta, tweet: text, video: v.url };
     const results = {};

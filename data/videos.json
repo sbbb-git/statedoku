@@ -1,7 +1,7 @@
 {
  "version": 1,
  "epoch": "2026-11-05",
- "note": "One video a day at 17:00 UTC from epoch; built by scripts/video/build-bank.cjs.",
+ "note": "One video a day in the 13:00 UTC run from epoch; built by scripts/video/build-bank.cjs.",
  "videos": [
   {
    "n": 1,
