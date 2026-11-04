@@ -403,7 +403,7 @@ T['fr'] = dict(
     related=[('/fr/learn/college-electoral/', 'Le Collège électoral'), ('/fr/learn/regions-des-etats-unis/', 'Les 4 régions des États-Unis'),
              ('/fr/learn/liste-des-50-etats/', 'La liste des 50 États'), ('/fr/learn/systeme-federal-americain/', 'Le système fédéral américain'),
              ('/fr/learn/13-colonies/', 'Les 13 colonies'), ('/fr/learn/', 'Apprendre les 50 États')],
-    footer='<a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">Tous les états</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/fr/privacy/">Confidentialité</a> &nbsp;·&nbsp; <a href="/fr/terms/">Conditions</a> &nbsp;·&nbsp; <a href="/fr/mentions-legales/">Mentions légales</a>',
+    footer='<a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">Tous les États</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/fr/privacy/">Confidentialité</a> &nbsp;·&nbsp; <a href="/fr/terms/">Conditions</a> &nbsp;·&nbsp; <a href="/fr/mentions-legales/">Mentions légales</a>',
     state_link=None,
 )
 

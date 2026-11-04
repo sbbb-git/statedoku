@@ -162,7 +162,7 @@ T = {
                  ('/fr/learn/sieges-chambre-par-etat-1910-2020/', 'Les sièges à la Chambre par État'), ('/fr/learn/liste-des-50-etats/', 'La liste des 50 États'),
                  ('/fr/learn/territoires-americains/', 'Les territoires américains')],
         cta_h='Vous connaissez les 50 États ?', cta_p='Une grille par jour, chaque case un État qui répond à deux indices.', cta_a='Jouer la grille du jour', cta_url='/fr/',
-        footer='<a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">Tous les états</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/fr/privacy/">Confidentialité</a> &nbsp;·&nbsp; <a href="/fr/terms/">Conditions</a> &nbsp;·&nbsp; <a href="/fr/mentions-legales/">Mentions légales</a>',
+        footer='<a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">Tous les États</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/fr/privacy/">Confidentialité</a> &nbsp;·&nbsp; <a href="/fr/terms/">Conditions</a> &nbsp;·&nbsp; <a href="/fr/mentions-legales/">Mentions légales</a>',
         src_h='Sources',
         src_body='Résultats annoncés par l\'agence Associated Press : le statut de chaque élection dans les tableaux renvoie à sa page de résultats AP. Chaque annonce a été recoupée avec au moins un autre média (NBC News, CNN ou CBS News). Les résultats certifiés viennent du bureau électoral de chaque État.',
     ),
