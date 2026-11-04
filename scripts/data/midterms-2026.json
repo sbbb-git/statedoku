@@ -1,6 +1,6 @@
 {
- "as_of_utc": "2026-11-04T08:10:55Z",
- "note": "Only AP race calls count as called; every called row is cross-checked with at least one other outlet (sources). Update with scripts/content/DAILY.md, Current events.",
+ "as_of_utc": "2026-11-04T08:27:00Z",
+ "note": "Only AP race calls count as called; every called row is cross-checked with at least one other outlet (sources). Update with scripts/content/DAILY.md, Current events. Checked by a second, independent pass at 08:27 UTC on 4 November (118 claims).",
  "senate_before": {
   "R": 53,
   "D": 45,
@@ -692,14 +692,20 @@
    "state": "Arizona",
    "usps": "AZ",
    "prev_party": "D",
-   "status": "not_called",
+   "status": "called",
    "ap_url": "https://apnews.com/projects/elections-2026/arizona-results/",
    "sources": [
     "https://apnews.com/projects/elections-2026/arizona-results/",
     "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
     "https://www.nbcnews.com/politics/2026-elections/arizona-governor-results",
-    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
-   ]
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://apps.npr.org/2026-election-results/data/gov.json",
+    "https://www.nbcnews.com/politics/2026-elections/governor-results"
+   ],
+   "winner": "Katie Hobbs",
+   "winner_party": "D",
+   "flip": false,
+   "note": "AP called at 08:20:43 UTC on 4 November (AP winnerDateTime, via NPR); NBC had already called it."
   },
   {
    "state": "Arkansas",

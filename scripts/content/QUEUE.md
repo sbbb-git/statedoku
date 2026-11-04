@@ -22,8 +22,10 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     reported by AP articles, NBC News, CNN or the state's election office, read
     normally, see DAILY.md), change only rows AP has called, with a second
     outlet in `sources`, move `as_of_utc`, rebuild, run the fact-checker on the
-    changed rows. On 4 November at 08:10 UTC: Senate AK, MS, NE and governors
-    AK, AZ, KS, NV, OR not called; House 81 seats not called.
+    changed rows. On 4 November at 08:27 UTC: Senate AK, MS, NE and governors
+    AK, KS, NV, OR not called; House 81 seats not called (80 counting, Louisiana
+    5th to a runoff). An independent winner (Osborn, Nebraska) is counted apart
+    from both caucuses until he says which one he joins.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and `/learn/most-populous-states/` and their

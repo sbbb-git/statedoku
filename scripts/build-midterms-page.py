@@ -101,10 +101,10 @@ T = {
         cols=['State', 'Winner', 'Party', 'Seat', 'Status'],
         flip='changed party', hold='kept', called='called', pending='counting', special='special',
         house_h='The House of Representatives',
-        house_body='All 435 seats were elected, as in every even year. How many each state holds was set by the 2020 census, from 52 for California to one for each of the six least populated states (see <a href="/learn/house-seats-by-state-1910-2020/">House seats by state since 1910</a>). A majority is 218 seats.',
-        hist_h='Why midterms usually go against the president',
+        house_body='All 435 seats were up for election, as in every even year. How many each state holds was set by the 2020 census, from 52 for California to one for each of the six least populated states (see <a href="/learn/house-seats-by-state-1910-2020/">House seats by state since 1910</a>). A majority is 218 seats.',
+        hist_h='How the president\'s party usually fares in midterms',
         next_h='What happens next',
-        next_body='States count the remaining ballots, then certify their results over the following weeks, each on its own calendar. Close races can go to a recount. The new Congress is sworn in on 3 January 2027, and most new governors take office in January.',
+        next_body='States count the remaining ballots, then certify their results over the following weeks, each on its own calendar. Close races can go to a recount, and Louisiana holds runoffs. The terms of the new Congress begin at noon on 3 January 2027, and most new governors take office in January.',
         pending_h='Races not called yet',
         pending_none='Every Senate and governor race has been called.',
         faq_h='Frequently asked questions',
@@ -123,25 +123,25 @@ T = {
         h1='Élections de mi-mandat 2026 : les résultats État par État',
         crumb='Élections de mi-mandat 2026',
         sub='Sénat, gouverneurs et Chambre des représentants, État par État, après le vote du 3 novembre 2026.',
-        desc='Les midterms du 3 novembre 2026 État par État : les 35 sièges du Sénat, les 36 gouverneurs et la Chambre, sur une carte. Mis à jour au fil des résultats.',
+        desc='Les midterms du 3 novembre 2026 État par État : Sénat, 36 gouverneurs et contrôle de la Chambre, sur une carte. Mis à jour au fil des résultats.',
         asof='Résultats au {t}, selon les annonces de l\'agence AP.',
-        n_senate='Sièges du Sénat attribués', n_gov='Postes de gouverneur attribués', n_flip_s='Sièges du Sénat qui changent de parti', n_flip_g='Postes de gouverneur qui changent de parti',
+        n_senate='Élections au Sénat avec un vainqueur annoncé', n_gov='Élections de gouverneur avec un vainqueur annoncé', n_flip_s='Sièges du Sénat qui changent de parti', n_flip_g='Postes de gouverneur qui changent de parti',
         map_h='La carte', tab_s='Sénat', tab_g='Gouverneurs',
-        leg=dict(D='Victoire démocrate', R='Victoire républicaine', I='Victoire indépendante', P='Pas encore attribué', N='Pas d\'élection'),
+        leg=dict(D='Victoire démocrate', R='Victoire républicaine', I='Victoire indépendante', P='Pas encore annoncé', N='Pas d\'élection'),
         map_note='La couleur indique le parti du vainqueur dans chaque État qui votait pour ce poste. En gris, les États sans élection pour ce poste ou dont le résultat n\'est pas encore annoncé.',
         sen_h='Les 35 élections au Sénat',
         sen_intro='Un tiers du Sénat est renouvelé tous les deux ans. En 2026, les 33 sièges de la classe 2 étaient en jeu, plus deux élections partielles, dans l\'Ohio et en Floride, pour les sièges que JD Vance et Marco Rubio ont quittés en janvier 2025.',
         gov_h='Les 36 élections de gouverneur',
-        gov_intro='Trente-six États élisaient leur gouverneur, dont le Vermont et le New Hampshire, qui le font tous les deux ans. Parmi les 14 autres, le New Jersey et la Virginie ont voté en 2025, le Kentucky, la Louisiane et le Mississippi votent en 2027 et les neuf derniers en 2028.',
+        gov_intro='Trente-six États élisaient leur gouverneur, dont le Vermont et le Nouveau-Hampshire, qui le font tous les deux ans. Parmi les 14 autres, le New Jersey et la Virginie ont voté en 2025, le Kentucky, la Louisiane et le Mississippi votent en 2027 et les neuf derniers en 2028.',
         cols=['État', 'Élu', 'Parti', 'Siège', 'Statut'],
-        flip='change de parti', hold='conservé', called='attribué', pending='dépouillement', special='partielle',
+        flip='change de parti', hold='conservé', called='annoncé', pending='dépouillement', special='partielle',
         house_h='La Chambre des représentants',
         house_body='Les 435 sièges étaient en jeu, comme chaque année paire. Leur répartition entre États découle du recensement de 2020, de 52 pour la Californie à un seul pour chacun des six États les moins peuplés (voir <a href="/fr/learn/sieges-chambre-par-etat-1910-2020/">les sièges à la Chambre par État depuis 1910</a>). La majorité est de 218 sièges.',
-        hist_h='Pourquoi les midterms tournent souvent contre le président',
+        hist_h='Le parti du président aux élections de mi-mandat',
         next_h='La suite',
-        next_body='Les États finissent de compter les bulletins puis certifient leurs résultats dans les semaines qui suivent, chacun selon son propre calendrier. Les courses serrées peuvent donner lieu à un recomptage. Le nouveau Congrès prête serment le 3 janvier 2027, et la plupart des nouveaux gouverneurs prennent leurs fonctions en janvier.',
-        pending_h='Élections pas encore attribuées',
-        pending_none='Toutes les élections au Sénat et de gouverneur ont été attribuées.',
+        next_body='Les États finissent de compter les bulletins puis certifient leurs résultats dans les semaines qui suivent, chacun selon son propre calendrier. Les courses serrées peuvent donner lieu à un recomptage. La Louisiane organise des seconds tours. Le mandat du nouveau Congrès commence le 3 janvier 2027 à midi, et la plupart des nouveaux gouverneurs prennent leurs fonctions en janvier.',
+        pending_h='Élections sans vainqueur annoncé',
+        pending_none='Toutes les élections au Sénat et de gouverneur ont un vainqueur annoncé.',
         faq_h='Questions fréquentes',
         rel_h='Guides associés',
         related=[('/fr/learn/college-electoral/', 'Le Collège électoral'), ('/fr/learn/systeme-federal-americain/', 'Le système fédéral américain'),
@@ -158,25 +158,25 @@ T = {
         h1='Elecciones intermedias de EE.UU. 2026: resultados por estado',
         crumb='Elecciones intermedias 2026',
         sub='Senado, gobernadores y Cámara de Representantes, estado por estado, tras la votación del 3 de noviembre de 2026.',
-        desc='Las elecciones intermedias de EE.UU. del 3 de noviembre de 2026 por estado: los 35 escaños del Senado, los 36 gobernadores y la Cámara, en un mapa.',
-        asof='Resultados al {t}, según las proyecciones de la agencia AP.',
-        n_senate='Escaños del Senado proyectados', n_gov='Gobernaciones proyectadas', n_flip_s='Escaños del Senado que cambian de partido', n_flip_g='Gobernaciones que cambian de partido',
+        desc='Elecciones intermedias de EE.UU. del 3 de noviembre de 2026 por estado: Senado, 36 gobernadores y control de la Cámara, en un mapa. Se actualiza.',
+        asof='Resultados al {t}, según los ganadores declarados por la agencia AP.',
+        n_senate='Contiendas al Senado con ganador declarado', n_gov='Gobernaciones con ganador declarado', n_flip_s='Escaños del Senado que cambian de partido', n_flip_g='Gobernaciones que cambian de partido',
         map_h='El mapa', tab_s='Senado', tab_g='Gobernadores',
-        leg=dict(D='Ganó el demócrata', R='Ganó el republicano', I='Ganó el independiente', P='Sin proyección aún', N='Sin elección'),
-        map_note='El color indica el partido del ganador en cada estado que votaba ese cargo. En gris, los estados sin esa elección o cuyo resultado aún no se ha proyectado.',
+        leg=dict(D='Ganó el demócrata', R='Ganó el republicano', I='Ganó el independiente', P='Sin ganador declarado aún', N='Sin elección'),
+        map_note='El color indica el partido del ganador en cada estado que votaba ese cargo. En gris, los estados sin esa elección o cuyo ganador aún no se ha declarado.',
         sen_h='Las 35 elecciones al Senado',
         sen_intro='Un tercio del Senado se renueva cada dos años. En 2026 estaban en juego los 33 escaños de la clase 2, más dos elecciones especiales, en Ohio y Florida, por los escaños que JD Vance y Marco Rubio dejaron en enero de 2025.',
         gov_h='Las 36 elecciones a gobernador',
-        gov_intro='Treinta y seis estados elegían gobernador, entre ellos Vermont y New Hampshire, que lo hacen cada dos años. De los otros 14, Nueva Jersey y Virginia votaron en 2025, Kentucky, Luisiana y Misisipi votan en 2027 y los nueve restantes en 2028.',
+        gov_intro='Treinta y seis estados elegían gobernador, entre ellos Vermont y Nuevo Hampshire, que lo hacen cada dos años. De los otros 14, Nueva Jersey y Virginia votaron en 2025, Kentucky, Luisiana y Misisipi votan en 2027 y los nueve restantes en 2028.',
         cols=['Estado', 'Ganador', 'Partido', 'Escaño', 'Estado del conteo'],
-        flip='cambia de partido', hold='se mantiene', called='proyectado', pending='en conteo', special='especial',
+        flip='cambia de partido', hold='se mantiene', called='declarado', pending='en conteo', special='especial',
         house_h='La Cámara de Representantes',
-        house_body='Se eligieron los 435 escaños, como cada año par. Cuántos tiene cada estado lo fijó el censo de 2020, desde 52 para California hasta uno para cada uno de los seis estados menos poblados (ver <a href="/es/learn/escanos-camara-por-estado-1910-2020/">los escaños de la Cámara por estado desde 1910</a>). La mayoría es de 218 escaños.',
-        hist_h='Por qué las intermedias suelen ir contra el presidente',
+        house_body='Los 435 escaños estaban en juego, como cada año par. Cuántos tiene cada estado lo fijó el censo de 2020, desde 52 para California hasta uno para cada uno de los seis estados menos poblados (ver <a href="/es/learn/escanos-camara-por-estado-1910-2020/">los escaños de la Cámara por estado desde 1910</a>). La mayoría es de 218 escaños.',
+        hist_h='Cómo le va al partido del presidente en las intermedias',
         next_h='Lo que viene',
-        next_body='Los estados terminan de contar las papeletas y certifican sus resultados en las semanas siguientes, cada uno con su propio calendario. Las contiendas reñidas pueden ir a un recuento. El nuevo Congreso jura el 3 de enero de 2027 y la mayoría de los nuevos gobernadores asumen en enero.',
-        pending_h='Contiendas aún sin proyección',
-        pending_none='Todas las elecciones al Senado y a gobernador ya tienen proyección.',
+        next_body='Los estados terminan de contar las papeletas y certifican sus resultados en las semanas siguientes, cada uno con su propio calendario. Las contiendas reñidas pueden ir a un recuento, y Luisiana celebra segundas vueltas. El mandato del nuevo Congreso empieza al mediodía del 3 de enero de 2027 y la mayoría de los nuevos gobernadores asumen en enero.',
+        pending_h='Contiendas aún sin ganador declarado',
+        pending_none='Todas las elecciones al Senado y a gobernador ya tienen ganador declarado.',
         faq_h='Preguntas frecuentes',
         rel_h='Guías relacionadas',
         related=[('/es/learn/colegio-electoral/', 'El Colegio Electoral'), ('/es/learn/estados-bisagra/', 'Los estados bisagra'),
@@ -185,7 +185,7 @@ T = {
         cta_h='¿Conoces los 50 estados?', cta_p='Una cuadrícula al día, cada casilla un estado que cumple dos pistas.', cta_a='Jugar el puzzle de hoy', cta_url='/es/',
         footer='<a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/states/">Todos los estados</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a>',
         src_h='Fuentes',
-        src_body='Proyecciones de la agencia Associated Press: el estado de cada contienda en las tablas enlaza a su página de resultados de AP. Cada proyección se contrastó con al menos otro medio (NBC News, CNN o CBS News). Los resultados certificados vienen de la oficina electoral de cada estado.',
+        src_body='Ganadores declarados por la agencia Associated Press: el estado de cada contienda en las tablas enlaza a su página de resultados de AP. Cada resultado se contrastó con al menos otro medio (NBC News, CNN o CBS News). Los resultados certificados vienen de la oficina electoral de cada estado.',
     ),
 }
 
@@ -312,7 +312,9 @@ def prose(lang):
     to = lambda fl: {r['winner_party'] for r in fl}
     sb, nu = D['senate_before'], D['senate_not_up']
     need = 51 - (sb['D'] + sb['I_caucus_D'])
-    dtot, rtot, sU = nu['D_caucus'] + sD + sI, nu['R'] + sR, 35 - sC
+    # An independent winner is not counted in either caucus until he or she says
+    # which one to join (Osborn in Nebraska said neither).
+    dtot, rtot, sU = nu['D_caucus'] + sD, nu['R'] + sR, 35 - sC
     H = D['house_control']
     hD, hR, hU = H['seats_called']['D'], H['seats_called']['R'], H['uncalled']
     sc = D['senate_control']
@@ -321,25 +323,25 @@ def prose(lang):
     if lang == 'en':
         name = {'D': 'Democrats', 'R': 'Republicans'}
         adj = {'D': 'Democratic', 'R': 'Republican'}
-        ctrl = (f'<strong>{name[P]} won control of both the House and the Senate</strong> in the midterm elections of 3 November 2026, according to Associated Press projections.'
+        ctrl = (f'<strong>{name[P]} won control of both the House and the Senate</strong> in the midterm elections of 3 November 2026, according to Associated Press race calls.'
                 if both else 'Control of Congress after the midterm elections of 3 November 2026: ' +
-                ('; '.join(f'AP projects {adj[c["party"]]} control of the {n}' if c['status'] == 'projected' else f'the {n} is not decided yet'
+                ('; '.join(f'AP has called the {n} for {name[c["party"]]}' if c['status'] == 'projected' else f'the {n} is not decided yet'
                            for n, c in (('Senate', sc), ('House', H)))) + '.')
         flip_s = f'{len(fS)} of them changed party' + (f', all to {name[next(iter(to(fS)))]}' if len(to(fS)) == 1 else '') if fS else 'None of them changed party'
         flip_g = f'{len(fG)} governorships changed party' + (f', all to {name[next(iter(to(fG)))]}' if len(to(fG)) == 1 else '') if fG else 'no governorship changed party'
         lead = (f'<p>{ctrl}</p>'
                 f'<p>In the Senate, AP has called {sC} of the 35 races: {sD} won by Democrats and {sR} by Republicans. {flip_s}. '
-                f'With the 65 seats that were not on the ballot, the Democratic caucus has {dtot} seats and Republicans {rtot}, with {sU} races still to be called.</p>'
+                f'With the 65 seats that were not on the ballot, the Democratic caucus has {dtot} seats and Republicans {rtot}' + (f', with {sI} independent' + ('s' if sI > 1 else '') if sI else '') + f', and {sU} races are still to be called.</p>'
                 f'<p>Of the 36 governor races, AP has called {gC}: {gD} won by Democrats and {gR} by Republicans, and {flip_g}. '
-                f'In the House, AP has called {hD} seats for Democrats and {hR} for Republicans; {hU} are still being counted, and a majority is 218.</p>')
+                f'In the House, AP has called {hD} seats for Democrats and {hR} for Republicans; {hU} have not been called yet, and a majority is 218.</p>')
         sen_control = (f'Before the vote Republicans held {sb["R"]} seats and Democrats {sb["D"] + sb["I_caucus_D"]}, {sb["I_caucus_D"]} of them independents who caucus with the Democrats. '
                        f'With the vice president breaking ties, Democrats needed a net gain of {need} seats to take the majority.')
-        house_control = (f'AP has projected that {name[H["party"]]} won the majority.' if H['status'] == 'projected' else 'AP has not yet projected which party won the majority.')
+        house_control = (f'AP has called the House majority for {name[H["party"]]}.' if H['status'] == 'projected' else 'AP has not yet called the House majority.')
         history = ('<p>In the 23 midterm elections from 1934 to 2022, the president\'s party gained House seats only three times: in 1934, 1998 and 2002 '
                    '(American Presidency Project, University of California, Santa Barbara). In every other one it lost seats. In 2026 the president, Donald Trump, '
                    'is a Republican, and Republicans held both the House and the Senate before the vote.</p>')
         faq = [
-            ('Who won the 2026 midterm elections?', re.sub('<[^>]+>', '', ctrl) + f' AP has called {sC} of the 35 Senate races and {gC} of the 36 governor races; the rest are still being counted.'),
+            ('Who won the 2026 midterm elections?', re.sub('<[^>]+>', '', ctrl) + f' AP has called {sC} of the 35 Senate races and {gC} of the 36 governor races; the rest have not been called yet.'),
             ('When were the 2026 midterms?', 'On Tuesday 3 November 2026. Many states opened early or mail voting weeks before.'),
             ('How many Senate seats were up in 2026?', '35: the 33 seats of class 2 and special elections in Ohio and Florida, for the seats JD Vance and Marco Rubio left in January 2025.'),
             ('How many governors were elected in 2026?', 'Thirty-six, in 36 states, plus the governors of three territories: Guam, the Northern Mariana Islands and the US Virgin Islands.'),
@@ -350,25 +352,25 @@ def prose(lang):
         name = {'D': 'les démocrates', 'R': 'les républicains'}
         cap = {'D': 'Les démocrates', 'R': 'Les républicains'}
         adj = {'D': 'démocrate', 'R': 'républicaine'}
-        ctrl = (f'<strong>{cap[P]} ont remporté le contrôle de la Chambre des représentants et du Sénat</strong> lors des élections de mi-mandat du 3 novembre 2026, selon les projections de l\'agence Associated Press.'
+        ctrl = (f'<strong>{cap[P]} ont remporté le contrôle de la Chambre des représentants et du Sénat</strong> lors des élections de mi-mandat du 3 novembre 2026, selon les résultats annoncés par l\'agence Associated Press.'
                 if both else 'Le contrôle du Congrès après les élections de mi-mandat du 3 novembre 2026 : ' +
-                ('; '.join(f'AP projette une majorité {adj[c["party"]]} {n}' if c['status'] == 'projected' else f'la majorité {n} n\'est pas encore décidée'
+                ('; '.join(f'AP annonce une majorité {adj[c["party"]]} {n}' if c['status'] == 'projected' else f'la majorité {n} n\'est pas encore décidée'
                            for n, c in (('au Sénat', sc), ('à la Chambre', H)))) + '.')
-        flip_s = f'Parmi eux, {len(fS)} changent de parti' + (f', tous au profit des {name[next(iter(to(fS)))].split()[1]}' if len(to(fS)) == 1 else '') if fS else 'Aucun ne change de parti'
+        flip_s = f'Parmi ces sièges, {len(fS)} changent de parti' + (f', tous au profit des {name[next(iter(to(fS)))].split()[1]}' if len(to(fS)) == 1 else '') if fS else 'Aucun ne change de parti'
         flip_g = f'{len(fG)} postes de gouverneur changent de parti' + (f', tous au profit des {name[next(iter(to(fG)))].split()[1]}' if len(to(fG)) == 1 else '') if fG else 'aucun poste de gouverneur ne change de parti'
         lead = (f'<p>{ctrl}</p>'
-                f'<p>Au Sénat, AP a attribué {sC} des 35 sièges en jeu : {sD} aux démocrates et {sR} aux républicains. {flip_s}. '
-                f'Avec les 65 sièges qui n\'étaient pas renouvelés, le groupe démocrate compte {dtot} sièges et les républicains {rtot}, {sU} élections restant à attribuer.</p>'
-                f'<p>Sur les 36 élections de gouverneur, AP en a attribué {gC} : {gD} aux démocrates et {gR} aux républicains, et {flip_g}. '
-                f'À la Chambre, AP a attribué {hD} sièges aux démocrates et {hR} aux républicains ; {hU} sont encore en cours de dépouillement, et la majorité est de 218.</p>')
+                f'<p>Au Sénat, AP a désigné le vainqueur de {sC} des 35 élections : {sD} démocrates et {sR} républicains. {flip_s}. '
+                f'Avec les 65 sièges qui n\'étaient pas renouvelés, le groupe démocrate compte {dtot} sièges et les républicains {rtot}' + (f', plus {sI} indépendant' + ('s' if sI > 1 else '') if sI else '') + f', et {sU} élections n\'ont pas encore de vainqueur annoncé.</p>'
+                f'<p>Sur les 36 élections de gouverneur, AP a désigné le vainqueur de {gC} : {gD} démocrates et {gR} républicains, et {flip_g}. '
+                f'À la Chambre, AP a désigné {hD} élus démocrates et {hR} républicains ; {hU} sièges n\'ont pas encore de vainqueur annoncé, et la majorité est de 218.</p>')
         sen_control = (f'Avant le vote, les républicains détenaient {sb["R"]} sièges et les démocrates {sb["D"] + sb["I_caucus_D"]}, dont {sb["I_caucus_D"]} indépendants qui siègent avec eux. '
                        f'Le vice-président départageant les égalités, les démocrates avaient besoin d\'un gain net de {need} sièges pour prendre la majorité.')
-        house_control = (f'AP projette que {name[H["party"]]} ont remporté la majorité.' if H['status'] == 'projected' else 'AP n\'a pas encore projeté quel parti a remporté la majorité.')
+        house_control = (f'AP a annoncé que {name[H["party"]]} ont remporté la majorité.' if H['status'] == 'projected' else 'AP n\'a pas encore annoncé quel parti a remporté la majorité.')
         history = ('<p>Sur les 23 élections de mi-mandat de 1934 à 2022, le parti du président n\'a gagné des sièges à la Chambre que trois fois : en 1934, 1998 et 2002 '
                    '(American Presidency Project, université de Californie à Santa Barbara). Il en a perdu à toutes les autres. En 2026, le président, Donald Trump, '
                    'est républicain, et les républicains contrôlaient la Chambre et le Sénat avant le vote.</p>')
         faq = [
-            ('Qui a gagné les élections de mi-mandat 2026 ?', re.sub('<[^>]+>', '', ctrl) + f' AP a attribué {sC} des 35 sièges du Sénat et {gC} des 36 postes de gouverneur ; le reste est encore en cours de dépouillement.'),
+            ('Qui a gagné les élections de mi-mandat 2026 ?', re.sub('<[^>]+>', '', ctrl) + f' AP a désigné le vainqueur de {sC} des 35 élections au Sénat et de {gC} des 36 élections de gouverneur ; les autres n\'ont pas encore de vainqueur annoncé.'),
             ('Quand ont eu lieu les midterms 2026 ?', 'Le mardi 3 novembre 2026. Beaucoup d\'États avaient ouvert le vote anticipé ou par correspondance des semaines avant.'),
             ('Combien de sièges du Sénat étaient en jeu en 2026 ?', '35 : les 33 sièges de la classe 2 et deux élections partielles, dans l\'Ohio et en Floride, pour les sièges que JD Vance et Marco Rubio ont quittés en janvier 2025.'),
             ('Combien de gouverneurs ont été élus en 2026 ?', 'Trente-six, dans 36 États, plus les gouverneurs de trois territoires : Guam, les Îles Mariannes du Nord et les Îles Vierges des États-Unis.'),
@@ -379,25 +381,25 @@ def prose(lang):
         name = {'D': 'los demócratas', 'R': 'los republicanos'}
         cap = {'D': 'Los demócratas', 'R': 'Los republicanos'}
         adj = {'D': 'demócrata', 'R': 'republicano'}
-        ctrl = (f'<strong>{cap[P]} ganaron el control de la Cámara de Representantes y del Senado</strong> en las elecciones intermedias del 3 de noviembre de 2026, según las proyecciones de la agencia Associated Press.'
+        ctrl = (f'<strong>{cap[P]} ganaron el control de la Cámara de Representantes y del Senado</strong> en las elecciones intermedias del 3 de noviembre de 2026, según los ganadores declarados por la agencia Associated Press.'
                 if both else 'El control del Congreso tras las elecciones intermedias del 3 de noviembre de 2026: ' +
-                ('; '.join(f'AP proyecta control {adj[c["party"]]} {n}' if c['status'] == 'projected' else f'el control {n} aún no está decidido'
+                ('; '.join(f'AP declara el control {adj[c["party"]]} {n}' if c['status'] == 'projected' else f'el control {n} aún no está decidido'
                            for n, c in (('del Senado', sc), ('de la Cámara', H)))) + '.')
-        flip_s = f'De ellos, {len(fS)} cambian de partido' + (f', todos a favor de {name[next(iter(to(fS)))]}' if len(to(fS)) == 1 else '') if fS else 'Ninguno cambia de partido'
+        flip_s = f'De ellas, {len(fS)} cambian de partido' + (f', todas a favor de {name[next(iter(to(fS)))]}' if len(to(fS)) == 1 else '') if fS else 'Ninguna cambia de partido'
         flip_g = f'{len(fG)} gobernaciones cambian de partido' + (f', todas a favor de {name[next(iter(to(fG)))]}' if len(to(fG)) == 1 else '') if fG else 'ninguna gobernación cambia de partido'
         lead = (f'<p>{ctrl}</p>'
-                f'<p>En el Senado, AP ha proyectado {sC} de las 35 contiendas: {sD} para los demócratas y {sR} para los republicanos. {flip_s}. '
-                f'Con los 65 escaños que no se renovaban, el grupo demócrata tiene {dtot} escaños y los republicanos {rtot}, con {sU} contiendas aún por proyectar.</p>'
-                f'<p>De las 36 elecciones a gobernador, AP ha proyectado {gC}: {gD} para los demócratas y {gR} para los republicanos, y {flip_g}. '
-                f'En la Cámara, AP ha proyectado {hD} escaños para los demócratas y {hR} para los republicanos; {hU} siguen en conteo, y la mayoría es de 218.</p>')
-        sen_control = (f'Antes de la votación los republicanos tenían {sb["R"]} escaños y los demócratas {sb["D"] + sb["I_caucus_D"]}, {sb["I_caucus_D"]} de ellos independientes que votan con los demócratas. '
+                f'<p>En el Senado, AP ha declarado ganador en {sC} de las 35 contiendas: {sD} demócratas y {sR} republicanos. {flip_s}. '
+                f'Con los 65 escaños que no se renovaban, el grupo demócrata tiene {dtot} escaños y los republicanos {rtot}' + (f', más {sI} independiente' + ('s' if sI > 1 else '') if sI else '') + f', y {sU} contiendas siguen sin ganador declarado.</p>'
+                f'<p>De las 36 elecciones a gobernador, AP ha declarado ganador en {gC}: {gD} demócratas y {gR} republicanos, y {flip_g}. '
+                f'En la Cámara, AP ha declarado {hD} escaños para los demócratas y {hR} para los republicanos; {hU} siguen sin ganador declarado, y la mayoría es de 218.</p>')
+        sen_control = (f'Antes de la votación los republicanos tenían {sb["R"]} escaños y los demócratas {sb["D"] + sb["I_caucus_D"]}, {sb["I_caucus_D"]} de ellos independientes que forman parte del grupo demócrata. '
                        f'Como el vicepresidente desempata, los demócratas necesitaban una ganancia neta de {need} escaños para tomar la mayoría.')
-        house_control = (f'AP ha proyectado que {name[H["party"]]} ganaron la mayoría.' if H['status'] == 'projected' else 'AP aún no ha proyectado qué partido ganó la mayoría.')
+        house_control = (f'AP ha declarado que {name[H["party"]]} ganaron la mayoría.' if H['status'] == 'projected' else 'AP aún no ha declarado qué partido ganó la mayoría.')
         history = ('<p>En las 23 elecciones intermedias de 1934 a 2022, el partido del presidente ganó escaños en la Cámara solo tres veces: en 1934, 1998 y 2002 '
                    '(American Presidency Project, Universidad de California en Santa Bárbara). En todas las demás perdió escaños. En 2026 el presidente, Donald Trump, '
                    'es republicano, y los republicanos controlaban la Cámara y el Senado antes de la votación.</p>')
         faq = [
-            ('¿Quién ganó las elecciones intermedias de 2026?', re.sub('<[^>]+>', '', ctrl) + f' AP ha proyectado {sC} de las 35 contiendas al Senado y {gC} de las 36 a gobernador; el resto sigue en conteo.'),
+            ('¿Quién ganó las elecciones intermedias de 2026?', re.sub('<[^>]+>', '', ctrl) + f' AP ha declarado ganador en {sC} de las 35 contiendas al Senado y en {gC} de las 36 a gobernador; el resto sigue sin ganador declarado.'),
             ('¿Cuándo fueron las elecciones intermedias de 2026?', 'El martes 3 de noviembre de 2026. Muchos estados abrieron el voto anticipado o por correo semanas antes.'),
             ('¿Cuántos escaños del Senado estaban en juego en 2026?', '35: los 33 escaños de la clase 2 y dos elecciones especiales, en Ohio y Florida, por los escaños que JD Vance y Marco Rubio dejaron en enero de 2025.'),
             ('¿Cuántos gobernadores se eligieron en 2026?', 'Treinta y seis, en 36 estados, más los gobernadores de tres territorios: Guam, las Islas Marianas del Norte y las Islas Vírgenes de EE.UU.'),
