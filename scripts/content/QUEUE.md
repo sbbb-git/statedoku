@@ -122,7 +122,12 @@ fixed the same day (Las Vegas, French Electoral College heading, Texas state
 tree, Wyoming women's vote, Lake of the Woods, the Jackson marker sentence).
 Take these as deepening units, one a day, fact-checker on each:
 
-R1. `todo` **Highpoint elevations disagree between pages**: Mount Hood 11,239
+R1. `todo, prepared` (4 November: one NAVD 88 figure per peak in
+    `scripts/data/highpoints/`, 271 figures in 107 files plus 21 relief figures;
+    apply with `python3 scripts/apply-highpoints.py scripts/data/highpoints/overrides.json`
+    once the fact-checker confirms the 29 rows sourced from the Wikipedia list,
+    then fix the French table caption that says "chiffres officiels USGS")
+    **Highpoint elevations disagree between pages**: Mount Hood 11,239
     vs 11,249 ft, Borah Peak 12,668 vs 12,662, Humphreys 12,633 vs 12,637,
     Wheeler 13,167 vs 13,161, Black Mesa 4,975 vs 4,973, Mansfield 4,395 vs
     4,393, Hawkeye Point 1,671 vs 1,670, Boundary Peak and Black Elk Peak in

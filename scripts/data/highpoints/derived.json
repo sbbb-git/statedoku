@@ -1,0 +1,149 @@
+[
+ {
+  "file": "states/kentucky/geography/index.html",
+  "line": 148,
+  "old": "3,888 feet",
+  "new": "3,882 feet",
+  "note": "KY relief 4,139 - 257"
+ },
+ {
+  "file": "states/kentucky/geography/index.html",
+  "line": 154,
+  "old": "3,888 feet",
+  "new": "3,882 feet",
+  "note": "KY relief 4,139 - 257"
+ },
+ {
+  "file": "states/ohio/geography/index.html",
+  "line": 123,
+  "old": "1,094 feet",
+  "new": "1,093 feet",
+  "note": "OH relief 1,548 - 455"
+ },
+ {
+  "file": "states/ohio/geography/index.html",
+  "line": 125,
+  "old": "1,094 foot",
+  "new": "1,093 foot",
+  "note": "OH relief 1,548 - 455"
+ },
+ {
+  "file": "states/ohio/index.html",
+  "line": 267,
+  "old": "1,094 feet",
+  "new": "1,093 feet",
+  "note": "OH relief 1,548 - 455"
+ },
+ {
+  "file": "es/states/ohio/index.html",
+  "line": 118,
+  "old": "1.094 pies",
+  "new": "1.093 pies",
+  "note": "OH relief 1,548 - 455"
+ },
+ {
+  "file": "states/iowa/geography/index.html",
+  "line": 140,
+  "old": "1,190 foot",
+  "new": "1,191 foot",
+  "note": "IA relief 1,671 - 480"
+ },
+ {
+  "file": "states/iowa/geography/index.html",
+  "line": 162,
+  "old": "1,190 feet",
+  "new": "1,191 feet",
+  "note": "IA relief 1,671 - 480"
+ },
+ {
+  "file": "states/iowa/geography/index.html",
+  "line": 174,
+  "old": "1,190 feet",
+  "new": "1,191 feet",
+  "note": "IA relief 1,671 - 480"
+ },
+ {
+  "file": "states/connecticut/geography/index.html",
+  "line": 117,
+  "old": "64 feet lower",
+  "new": "70 feet lower",
+  "note": "CT 2,386 - Bear Mountain 2,316"
+ },
+ {
+  "file": "states/kansas/geography/index.html",
+  "line": 118,
+  "old": "3,360-foot",
+  "new": "3,362-foot",
+  "note": "KS relief 4,041 - 679"
+ },
+ {
+  "file": "states/kansas/geography/index.html",
+  "line": 120,
+  "old": "3,360-foot",
+  "new": "3,362-foot",
+  "note": "KS relief 4,041 - 679"
+ },
+ {
+  "file": "states/kansas/geography/index.html",
+  "line": 151,
+  "old": "3,360 feet",
+  "new": "3,362 feet",
+  "note": "KS relief 4,041 - 679"
+ },
+ {
+  "file": "states/kansas/geography/index.html",
+  "line": 161,
+  "old": "3,360 feet",
+  "new": "3,362 feet",
+  "note": "KS relief 4,041 - 679"
+ },
+ {
+  "file": "states/kansas/index.html",
+  "line": 267,
+  "old": "3,360 feet",
+  "new": "3,362 feet",
+  "note": "KS relief 4,041 - 679"
+ },
+ {
+  "file": "es/states/kansas/index.html",
+  "line": 118,
+  "old": "3.360 pies",
+  "new": "3.362 pies",
+  "note": "KS relief 4,041 - 679"
+ },
+ {
+  "file": "states/south-dakota/geography/index.html",
+  "line": 131,
+  "old": "6,276 feet",
+  "new": "6,278 feet",
+  "note": "SD relief 7,244 - 966"
+ },
+ {
+  "file": "states/utah/geography/index.html",
+  "line": 131,
+  "old": "11,348 feet",
+  "new": "11,354 feet",
+  "note": "UT 13,534 - 2,180"
+ },
+ {
+  "file": "states/utah/geography/index.html",
+  "line": 158,
+  "old": "11,348 feet",
+  "new": "11,354 feet",
+  "note": "UT 13,534 - 2,180"
+ },
+ {
+  "file": "states/utah/geography/index.html",
+  "line": 183,
+  "old": "11,348 feet",
+  "new": "11,354 feet",
+  "note": "UT 13,534 - 2,180"
+ },
+ {
+  "file": "states/oklahoma/geography/index.html",
+  "line": 126,
+  "old": "4,684-foot",
+  "new": "4,686-foot",
+  "note": "OK relief 4,975 - 289"
+ }
+]

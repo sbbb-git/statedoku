@@ -1,0 +1,402 @@
+[
+ {
+  "usps": "AL",
+  "state": "Alabama",
+  "peak": "Cheaha Mountain",
+  "ft": 2413,
+  "m": 735,
+  "source": "NGS datasheet DG3595 (CHEEHAHAW), NAVD 88 ortho height 735.5 m / 2413 ft, retrieved 2026-11-04; metres from 2,413 ft = 735.48 m; the Wikipedia list's 733 m is stale"
+ },
+ {
+  "usps": "AK",
+  "state": "Alaska",
+  "peak": "Denali",
+  "ft": 20310,
+  "m": 6190,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 6,190.5 m (USGS 2015 survey); 20,310 ft = 6,190.49 m"
+ },
+ {
+  "usps": "AZ",
+  "state": "Arizona",
+  "peak": "Humphreys Peak",
+  "ft": 12637,
+  "m": 3852,
+  "source": "NGS datasheet FQ0624 (FRISCO), NAVD 88 ortho height 3851.9 m / 12637 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "AR",
+  "state": "Arkansas",
+  "peak": "Mount Magazine (Signal Hill)",
+  "ft": 2753,
+  "m": 839,
+  "source": "NGS datasheet FG1888 (MAG), NAVD 88 ortho height 839 m / 2753 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "CA",
+  "state": "California",
+  "peak": "Mount Whitney",
+  "ft": 14505,
+  "m": 4421,
+  "source": "NGS datasheet GT1811 (WHITNEY), NAVD 88 ortho height 4421.1 m / 14505 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "CO",
+  "state": "Colorado",
+  "peak": "Mount Elbert",
+  "ft": 14440,
+  "m": 4401,
+  "source": "NGS datasheet KL0637 (MOUNT ELBERT), NAVD 88 ortho height 4401.2 m / 14440 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "CT",
+  "state": "Connecticut",
+  "peak": "Mount Frissell (south slope, at the Massachusetts line)",
+  "ft": 2386,
+  "m": 727,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 727.2 m"
+ },
+ {
+  "usps": "DE",
+  "state": "Delaware",
+  "peak": "Ebright Azimuth",
+  "ft": 449,
+  "m": 137,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 136.9 m"
+ },
+ {
+  "usps": "FL",
+  "state": "Florida",
+  "peak": "Britton Hill",
+  "ft": 345,
+  "m": 105,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 105.2 m"
+ },
+ {
+  "usps": "GA",
+  "state": "Georgia",
+  "peak": "Brasstown Bald",
+  "ft": 4784,
+  "m": 1458,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,458.2 m"
+ },
+ {
+  "usps": "HI",
+  "state": "Hawaii",
+  "peak": "Mauna Kea",
+  "ft": 13803,
+  "m": 4207,
+  "source": "NGS datasheet TU2314 (SUMMIT), NAVD 88 ortho height 4207.3 m / 13803 ft, retrieved 2026-11-04; Hawaii is not on NAVD 88, height is local mean sea level"
+ },
+ {
+  "usps": "ID",
+  "state": "Idaho",
+  "peak": "Borah Peak",
+  "ft": 12668,
+  "m": 3861,
+  "source": "NGS datasheet PZ0770 (BEAUTY RESET), NAVD 88 ortho height 3861.1 m / 12668 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "IL",
+  "state": "Illinois",
+  "peak": "Charles Mound",
+  "ft": 1235,
+  "m": 376,
+  "source": "NGS datasheet NJ0855 (CHARLES), NAVD 88 ortho height 376.4 m / 1235 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "IN",
+  "state": "Indiana",
+  "peak": "Hoosier Hill",
+  "ft": 1257,
+  "m": 383,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 383.13 m"
+ },
+ {
+  "usps": "IA",
+  "state": "Iowa",
+  "peak": "Hawkeye Point",
+  "ft": 1671,
+  "m": 509,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 509.3 m"
+ },
+ {
+  "usps": "KS",
+  "state": "Kansas",
+  "peak": "Mount Sunflower",
+  "ft": 4041,
+  "m": 1232,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,231.7 m"
+ },
+ {
+  "usps": "KY",
+  "state": "Kentucky",
+  "peak": "Black Mountain",
+  "ft": 4139,
+  "m": 1262,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,261.6 m"
+ },
+ {
+  "usps": "LA",
+  "state": "Louisiana",
+  "peak": "Driskill Mountain",
+  "ft": 535,
+  "m": 163,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 163.1 m"
+ },
+ {
+  "usps": "ME",
+  "state": "Maine",
+  "peak": "Mount Katahdin",
+  "ft": 5270,
+  "m": 1606,
+  "source": "NGS datasheet QG1451 (KATAHDIN 2), NAVD 88 ortho height 1606.4 m / 5270 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "MD",
+  "state": "Maryland",
+  "peak": "Hoye-Crest (Backbone Mountain)",
+  "ft": 3370,
+  "m": 1027,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,027.2 m"
+ },
+ {
+  "usps": "MA",
+  "state": "Massachusetts",
+  "peak": "Mount Greylock",
+  "ft": 3489,
+  "m": 1063,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,063.4 m (= NGS MZ1957, GPS)"
+ },
+ {
+  "usps": "MI",
+  "state": "Michigan",
+  "peak": "Mount Arvon",
+  "ft": 1979,
+  "m": 603,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 603.2 m"
+ },
+ {
+  "usps": "MN",
+  "state": "Minnesota",
+  "peak": "Eagle Mountain",
+  "ft": 2302,
+  "m": 702,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 701.6 m"
+ },
+ {
+  "usps": "MS",
+  "state": "Mississippi",
+  "peak": "Woodall Mountain",
+  "ft": 807,
+  "m": 246,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 246.0 m (= NGS EG1487)"
+ },
+ {
+  "usps": "MO",
+  "state": "Missouri",
+  "peak": "Taum Sauk Mountain",
+  "ft": 1772,
+  "m": 540,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 540.1 m"
+ },
+ {
+  "usps": "MT",
+  "state": "Montana",
+  "peak": "Granite Peak",
+  "ft": 12807,
+  "m": 3904,
+  "source": "NGS datasheet QW0616 (GRANITE PEAK), NAVD 88 ortho height 3903.5 m / 12807 ft, retrieved 2026-11-04; metres from 12,807 ft = 3,903.57 m"
+ },
+ {
+  "usps": "NE",
+  "state": "Nebraska",
+  "peak": "Panorama Point",
+  "ft": 5432,
+  "m": 1656,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,655.7 m"
+ },
+ {
+  "usps": "NV",
+  "state": "Nevada",
+  "peak": "Boundary Peak",
+  "ft": 13147,
+  "m": 4007,
+  "source": "NGS datasheet HR2576 (BOUNDARY), NAVD 88 ortho height 4007.1 m / 13147 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "NH",
+  "state": "New Hampshire",
+  "peak": "Mount Washington",
+  "ft": 6288,
+  "m": 1917,
+  "source": "NGS datasheet PF0950 (MT WASHINGTON RESET), NAVD 88 ortho height 1915.74 m / 6285.2 ft, retrieved 2026-11-04; the disk sits 2.5 ft below the highest rock per its description, so summit = 6,287.7 ft; metres from 6,288 ft"
+ },
+ {
+  "usps": "NJ",
+  "state": "New Jersey",
+  "peak": "High Point",
+  "ft": 1802,
+  "m": 549,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 549.2 m"
+ },
+ {
+  "usps": "NM",
+  "state": "New Mexico",
+  "peak": "Wheeler Peak",
+  "ft": 13167,
+  "m": 4013,
+  "source": "NGS datasheet GM0779 (WHEELER), NAVD 88 ortho height 4013.4 m / 13167 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "NY",
+  "state": "New York",
+  "peak": "Mount Marcy",
+  "ft": 5343,
+  "m": 1629,
+  "source": "NGS datasheet PG2096 (MARCY), NAVD 88 ortho height 1628.58 m / 5343.1 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "NC",
+  "state": "North Carolina",
+  "peak": "Mount Mitchell",
+  "ft": 6684,
+  "m": 2037,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 2,037.3 m"
+ },
+ {
+  "usps": "ND",
+  "state": "North Dakota",
+  "peak": "White Butte",
+  "ft": 3506,
+  "m": 1069,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,068.6 m"
+ },
+ {
+  "usps": "OH",
+  "state": "Ohio",
+  "peak": "Campbell Hill",
+  "ft": 1548,
+  "m": 472,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 471.8 m"
+ },
+ {
+  "usps": "OK",
+  "state": "Oklahoma",
+  "peak": "Black Mesa",
+  "ft": 4975,
+  "m": 1516,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,516.4 m"
+ },
+ {
+  "usps": "OR",
+  "state": "Oregon",
+  "peak": "Mount Hood",
+  "ft": 11250,
+  "m": 3429,
+  "source": "NGS datasheet RC2244 (MOUNT HOOD HIGHEST POINT), NAVD 88 ortho height 3428.9 m / 11250 ft, retrieved 2026-11-04; the Wikipedia list's 3,428.8 m / 11,249 ft predates VERTCON3"
+ },
+ {
+  "usps": "PA",
+  "state": "Pennsylvania",
+  "peak": "Mount Davis",
+  "ft": 3213,
+  "m": 979,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 979.3 m"
+ },
+ {
+  "usps": "RI",
+  "state": "Rhode Island",
+  "peak": "Jerimoth Hill",
+  "ft": 811,
+  "m": 247,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 247.2 m"
+ },
+ {
+  "usps": "SC",
+  "state": "South Carolina",
+  "peak": "Sassafras Mountain",
+  "ft": 3554,
+  "m": 1083,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 1,083.3 m"
+ },
+ {
+  "usps": "SD",
+  "state": "South Dakota",
+  "peak": "Black Elk Peak",
+  "ft": 7244,
+  "m": 2208,
+  "source": "NGS datasheet OT0810 (HARNEY), NAVD 88 ortho height 2208 m / 7244 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "TN",
+  "state": "Tennessee",
+  "peak": "Kuwohi (Clingmans Dome)",
+  "ft": 6643,
+  "m": 2025,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 2,024.79 m"
+ },
+ {
+  "usps": "TX",
+  "state": "Texas",
+  "peak": "Guadalupe Peak",
+  "ft": 8751,
+  "m": 2667,
+  "source": "NGS datasheet CD0994 (EL CAPITAN), NAVD 88 ortho height 2667.4 m / 8751 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "UT",
+  "state": "Utah",
+  "peak": "Kings Peak",
+  "ft": 13534,
+  "m": 4125,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 4,125.2 m"
+ },
+ {
+  "usps": "VT",
+  "state": "Vermont",
+  "peak": "Mount Mansfield",
+  "ft": 4395,
+  "m": 1340,
+  "source": "NGS datasheet AE3691 (MT MANSFIELD HIGHEST POINT), NAVD 88 ortho height 1339.69 m / 4395.3 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "VA",
+  "state": "Virginia",
+  "peak": "Mount Rogers",
+  "ft": 5729,
+  "m": 1746,
+  "source": "USGS / GNIS 1485637, 5,729 ft; NGS FZ2155 (ROGERS RESET, 65 ft N of the highest point) shows NAVD 88 = NGVD 29 there (shift 0.0 m), so the summit figure stands in NAVD 88; the Wikipedia list's 5,711 ft is that mark, not the summit; retrieved 2026-11-04"
+ },
+ {
+  "usps": "WA",
+  "state": "Washington",
+  "peak": "Mount Rainier",
+  "ft": 14400,
+  "m": 4389,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 4,389.0 m (2024 survey after the summit ice cap thinned; earlier figure 14,411 ft)"
+ },
+ {
+  "usps": "WV",
+  "state": "West Virginia",
+  "peak": "Spruce Knob",
+  "ft": 4862,
+  "m": 1482,
+  "source": "NGS datasheet HW3570 (SPRUCE KNOB CAIRN 1956), NAVD 88 ortho height 1482 (scaled) m / 4862 ft, retrieved 2026-11-04"
+ },
+ {
+  "usps": "WI",
+  "state": "Wisconsin",
+  "peak": "Timms Hill",
+  "ft": 1951,
+  "m": 595,
+  "source": "Wikipedia, List of U.S. states and territories by elevation, highest point (NAVD 88), retrieved 2026-11-04, 594.66 m"
+ },
+ {
+  "usps": "WY",
+  "state": "Wyoming",
+  "peak": "Gannett Peak",
+  "ft": 13810,
+  "m": 4209,
+  "source": "NGS datasheet OW0356 (GANNETT PEAK CAIRN), NAVD 88 ortho height 4209.2 m / 13810 ft, retrieved 2026-11-04; the Wikipedia list's 4,209.1 m / 13,809 ft predates VERTCON3"
+ }
+]
