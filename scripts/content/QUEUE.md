@@ -115,6 +115,47 @@ the pages are already shown, the queries already exist, nothing new competes.
     Spanish game and the daily grid before the first table, as was done on the
     four English articles on 17 October.
 
+## From the full review of 4 November 2026
+
+Verified by the three review passes of that day; the clear factual errors were
+fixed the same day (Las Vegas, French Electoral College heading, Texas state
+tree, Wyoming women's vote, Lake of the Woods, the Jackson marker sentence).
+Take these as deepening units, one a day, fact-checker on each:
+
+R1. `todo` **Highpoint elevations disagree between pages**: Mount Hood 11,239
+    vs 11,249 ft, Borah Peak 12,668 vs 12,662, Humphreys 12,633 vs 12,637,
+    Wheeler 13,167 vs 13,161, Black Mesa 4,975 vs 4,973, Mansfield 4,395 vs
+    4,393, Hawkeye Point 1,671 vs 1,670, Boundary Peak and Black Elk Peak in
+    metres. One survey (USGS / NGS), one figure per peak, on every page and in
+    the three languages (`learn/highest-mountain-in-each-state/`,
+    `learn/states-with-mountains/`, the state pages, FR and ES equivalents).
+R2. `todo` **Andrew Jackson's birth state**: the FR and ES presidents pages count
+    him for North Carolina as settled; make all three say it is disputed, as
+    `/states/south-carolina/people/` does, and check the counts that follow.
+R3. `todo` **Thin hubs Google has indexed**: `/quiz/` (166 words), `/states/`
+    (316) and `/es/states/` (246). A real intro that leads with the answer
+    (the 50 states by region, how many, what each page holds). Pair with Q3.
+R4. `todo` **French and Spanish copy a native reader would notice**: "Tous les
+    états" (18 pages, États), "streak conservé entre les jours" (18 play pages),
+    "Mid-Atlantic" and "au lieu de Mountain" left in English, "3 branches"
+    (trois pouvoirs), "Un grizzly (espèce éteinte)" (sous-espèce disparue),
+    straight quotes; Spanish "en lugar de Mountain", "Guerra Revolucionaria"
+    (Guerra de Independencia), "3 ramas" (3 poderes), "oso pardo (extinguido)";
+    "New Hampshire" against "Nouveau-Hampshire" / "Nuevo Hampshire".
+R5. `todo` **Duplicates Google crawled and refused**: `fr/learn/fleuves-des-etats-unis/`
+    (duplicates `fleuves-par-etat-americain`), `fr/learn/montagnes-des-etats-unis/`,
+    `es/learn/montanas-mas-altas-eeuu/`, `learn/most-populous-states/` (same
+    intent as `states-by-population`): noindex and point their links to the
+    page that covers the intent, the way the 5 October retirements were done.
+R6. `todo` **The public API serves the raw data**: `/api/states` reads
+    `data/states.json`, which keeps the pre-correction values for old grids
+    (CLAUDE.md, Facts on the page). Apply the `STATE_FIXES` corrections there,
+    or document that it is the game's raw file.
+R7. `todo` (security, small) Rate-limit `/api/stats` and the admin endpoints
+    like `/api/admin/verify`; send the address in the body when deleting a
+    subscriber (it is in the URL); clamp `limit`; refuse cross-origin posts to
+    `/api/events`.
+
 ## Done
 
 (none yet)
