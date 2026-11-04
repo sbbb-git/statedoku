@@ -1,0 +1,607 @@
+{
+ "version": 1,
+ "epoch": "2026-11-05",
+ "note": "One video a day at 17:00 UTC from epoch; built by scripts/video/build-bank.cjs.",
+ "videos": [
+  {
+   "n": 1,
+   "slug": "001-guess-the-state-from-its-shape-1",
+   "text": "Guess the state from its shape, round 1: five outlines, three seconds each. Comment your score. #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/001-guess-the-state-from-its-shape-1.mp4"
+  },
+  {
+   "n": 2,
+   "slug": "002-name-the-capital-1",
+   "text": "Capitals quiz #1: Kentucky, Florida, Colorado, Mississippi and New Jersey. Can you name all five capitals? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/002-name-the-capital-1.mp4"
+  },
+  {
+   "n": 3,
+   "slug": "003-the-capital-is-not-the-biggest-city-1",
+   "text": "South Dakota, Vermont, Alabama, Illinois and Missouri: the biggest city is not the capital. Can you name the five capitals? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/003-the-capital-is-not-the-biggest-city-1.mp4"
+  },
+  {
+   "n": 4,
+   "slug": "004-map-challenge-the-5-states-that-have-hosted-the-ol",
+   "text": "Map challenge: can you name the 5 states that have hosted the Olympics, then the 6 states on the Ohio River? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/004-map-challenge-the-5-states-that-have-hosted-the-ol.mp4"
+  },
+  {
+   "n": 5,
+   "slug": "005-odd-one-out-1",
+   "text": "Odd one out, round 1: in each set of four states, one does not belong. Can you spot it? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/005-odd-one-out-1.mp4"
+  },
+  {
+   "n": 6,
+   "slug": "006-which-joined-the-union-first-1",
+   "text": "Nevada or Pennsylvania: which joined the Union first? Four pairs in this one. #history #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/006-which-joined-the-union-first-1.mp4"
+  },
+  {
+   "n": 7,
+   "slug": "007-which-state-is-bigger-1",
+   "text": "North Carolina or California: which one is bigger? Five pairs, ranked by area. #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/007-which-state-is-bigger-1.mp4"
+  },
+  {
+   "n": 8,
+   "slug": "008-which-state-is-it-postal-codes-1",
+   "text": "NM, AZ, OK, WA, NV: can you decode these five state postal codes? #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/008-which-state-is-it-postal-codes-1.mp4"
+  },
+  {
+   "n": 9,
+   "slug": "009-the-5-largest-states-by-area",
+   "text": "Can you name the five largest states by area, in order? Answer in the video. #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/009-the-5-largest-states-by-area.mp4"
+  },
+  {
+   "n": 10,
+   "slug": "010-guess-the-state-from-its-shape-2",
+   "text": "Shape quiz 2: can you name all five states from their outline alone? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/010-guess-the-state-from-its-shape-2.mp4"
+  },
+  {
+   "n": 11,
+   "slug": "011-name-the-capital-2",
+   "text": "Capitals quiz #2: Delaware, Hawaii, Texas, Minnesota and Alabama. Can you name all five capitals? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/011-name-the-capital-2.mp4"
+  },
+  {
+   "n": 12,
+   "slug": "012-the-capital-is-not-the-biggest-city-2",
+   "text": "Nebraska, Maine, Texas, Oregon and Virginia: the biggest city is not the capital. Can you name the five capitals? #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/012-the-capital-is-not-the-biggest-city-2.mp4"
+  },
+  {
+   "n": 13,
+   "slug": "013-map-challenge-the-5-states-on-the-gulf-of-mexico",
+   "text": "Map challenge: can you name the 5 states on the Gulf of Mexico, then the 5 states on the Pacific Ocean? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/013-map-challenge-the-5-states-on-the-gulf-of-mexico.mp4"
+  },
+  {
+   "n": 14,
+   "slug": "014-odd-one-out-2",
+   "text": "Three states share something, one does not. Odd one out number 2, three rounds. #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/014-odd-one-out-2.mp4"
+  },
+  {
+   "n": 15,
+   "slug": "015-which-joined-the-union-first-2",
+   "text": "Wisconsin or Montana: which joined the Union first? Four pairs in this one. #ushistory https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/015-which-joined-the-union-first-2.mp4"
+  },
+  {
+   "n": 16,
+   "slug": "016-which-state-is-bigger-2",
+   "text": "Kansas or Wisconsin: which one is bigger? Five pairs, ranked by area. #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/016-which-state-is-bigger-2.mp4"
+  },
+  {
+   "n": 17,
+   "slug": "017-which-state-is-it-postal-codes-2",
+   "text": "MN, OR, ND, MT, IA: can you decode these five state postal codes? #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/017-which-state-is-it-postal-codes-2.mp4"
+  },
+  {
+   "n": 18,
+   "slug": "018-the-5-smallest-states-by-area",
+   "text": "Can you name the five smallest states by area, starting with the smallest? Answer in the video. #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/018-the-5-smallest-states-by-area.mp4"
+  },
+  {
+   "n": 19,
+   "slug": "019-guess-the-state-from-its-shape-3",
+   "text": "Five state outlines, no names, three seconds each. Round 3, how many did you get? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/019-guess-the-state-from-its-shape-3.mp4"
+  },
+  {
+   "n": 20,
+   "slug": "020-name-the-capital-3",
+   "text": "Capitals quiz #3: New Hampshire, Maryland, Iowa, West Virginia and Idaho. Can you name all five capitals? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/020-name-the-capital-3.mp4"
+  },
+  {
+   "n": 21,
+   "slug": "021-the-capital-is-not-the-biggest-city-3",
+   "text": "New Jersey, North Dakota, New York, California and Florida: the biggest city is not the capital. Can you name the five capitals? #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/021-the-capital-is-not-the-biggest-city-3.mp4"
+  },
+  {
+   "n": 22,
+   "slug": "022-map-challenge-the-7-states-with-an-ivy-league-univ",
+   "text": "Map challenge: can you name the 7 states with an Ivy League university, then the 4 states with a J, Q, X or Z in their name? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/022-map-challenge-the-7-states-with-an-ivy-league-univ.mp4"
+  },
+  {
+   "n": 23,
+   "slug": "023-odd-one-out-3",
+   "text": "Spot the state that does not fit, odd one out 3. Rivers, trails, borders and more. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/023-odd-one-out-3.mp4"
+  },
+  {
+   "n": 24,
+   "slug": "024-which-joined-the-union-first-3",
+   "text": "Wisconsin or Kentucky: which joined the Union first? Four pairs in this one. #history #trivia https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/024-which-joined-the-union-first-3.mp4"
+  },
+  {
+   "n": 25,
+   "slug": "025-which-state-is-bigger-3",
+   "text": "Connecticut or Colorado: which one is bigger? Five pairs, ranked by area. #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/025-which-state-is-bigger-3.mp4"
+  },
+  {
+   "n": 26,
+   "slug": "026-which-state-is-it-postal-codes-3",
+   "text": "NH, NY, WY, AK, NE: can you decode these five state postal codes? #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/026-which-state-is-it-postal-codes-3.mp4"
+  },
+  {
+   "n": 27,
+   "slug": "027-the-5-states-that-joined-after-1900",
+   "text": "Only five states joined the Union after 1900. Can you name them? Answer in the video. #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/027-the-5-states-that-joined-after-1900.mp4"
+  },
+  {
+   "n": 28,
+   "slug": "028-guess-the-state-from-its-shape-4",
+   "text": "Round 4 of guess the state: some shapes are easy, one is not. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/028-guess-the-state-from-its-shape-4.mp4"
+  },
+  {
+   "n": 29,
+   "slug": "029-name-the-capital-4",
+   "text": "Capitals quiz #4: Virginia, Arkansas, South Dakota, Utah and Oklahoma. Can you name all five capitals? #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/029-name-the-capital-4.mp4"
+  },
+  {
+   "n": 30,
+   "slug": "030-the-capital-is-not-the-biggest-city-4",
+   "text": "Alaska, Pennsylvania, Nevada, Connecticut and Louisiana: the biggest city is not the capital. Can you name the five capitals? #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/030-the-capital-is-not-the-biggest-city-4.mp4"
+  },
+  {
+   "n": 31,
+   "slug": "031-map-challenge-the-11-states-larger-than-the-united",
+   "text": "Map challenge: can you name the 11 states larger than the United Kingdom, then the 7 states on the Oregon Trail? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/031-map-challenge-the-11-states-larger-than-the-united.mp4"
+  },
+  {
+   "n": 32,
+   "slug": "032-odd-one-out-4",
+   "text": "Odd one out 4: four states, one impostor, three seconds. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/032-odd-one-out-4.mp4"
+  },
+  {
+   "n": 33,
+   "slug": "033-which-joined-the-union-first-4",
+   "text": "Tennessee or South Carolina: which joined the Union first? Four pairs in this one. #history #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/033-which-joined-the-union-first-4.mp4"
+  },
+  {
+   "n": 34,
+   "slug": "034-which-state-is-bigger-4",
+   "text": "South Carolina or Montana: which one is bigger? Five pairs, ranked by area. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/034-which-state-is-bigger-4.mp4"
+  },
+  {
+   "n": 35,
+   "slug": "035-which-state-is-it-postal-codes-4",
+   "text": "CA, IL, NJ, ME, AL: can you decode these five state postal codes? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/035-which-state-is-it-postal-codes-4.mp4"
+  },
+  {
+   "n": 36,
+   "slug": "036-capitals-named-after-presidents",
+   "text": "Four state capitals are named after a US president. Can you name them? Answer in the video. #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/036-capitals-named-after-presidents.mp4"
+  },
+  {
+   "n": 37,
+   "slug": "037-guess-the-state-from-its-shape-5",
+   "text": "Can you recognise these five states by their borders? Shape quiz number 5. #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/037-guess-the-state-from-its-shape-5.mp4"
+  },
+  {
+   "n": 38,
+   "slug": "038-name-the-capital-5",
+   "text": "Capitals quiz #5: Ohio, Illinois, Alaska, North Carolina and Rhode Island. Can you name all five capitals? #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/038-name-the-capital-5.mp4"
+  },
+  {
+   "n": 39,
+   "slug": "039-the-capital-is-not-the-biggest-city-5",
+   "text": "Kansas, Maryland, Washington, Michigan and New Hampshire: the biggest city is not the capital. Can you name the five capitals? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/039-the-capital-is-not-the-biggest-city-5.mp4"
+  },
+  {
+   "n": 40,
+   "slug": "040-map-challenge-the-14-states-on-the-appalachian-tra",
+   "text": "Map challenge: can you name the 14 states on the Appalachian Trail, then the 4 states whose capital is named after a president? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/040-map-challenge-the-14-states-on-the-appalachian-tra.mp4"
+  },
+  {
+   "n": 41,
+   "slug": "041-odd-one-out-5",
+   "text": "Odd one out, round 5: in each set of four states, one does not belong. Can you spot it? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/041-odd-one-out-5.mp4"
+  },
+  {
+   "n": 42,
+   "slug": "042-which-joined-the-union-first-5",
+   "text": "New Jersey or Indiana: which joined the Union first? Four pairs in this one. #ushistory https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/042-which-joined-the-union-first-5.mp4"
+  },
+  {
+   "n": 43,
+   "slug": "043-which-state-is-bigger-5",
+   "text": "Florida or Vermont: which one is bigger? Five pairs, ranked by area. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/043-which-state-is-bigger-5.mp4"
+  },
+  {
+   "n": 44,
+   "slug": "044-which-state-is-it-postal-codes-5",
+   "text": "WV, CO, IN, MS, WI: can you decode these five state postal codes? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/044-which-state-is-it-postal-codes-5.mp4"
+  },
+  {
+   "n": 45,
+   "slug": "045-capitals-that-end-in-city",
+   "text": "Four state capitals end in the word City. Can you name them? Answer in the video. #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/045-capitals-that-end-in-city.mp4"
+  },
+  {
+   "n": 46,
+   "slug": "046-guess-the-state-from-its-shape-6",
+   "text": "Name the state from its silhouette, round 6. Five shapes, one reveal each. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/046-guess-the-state-from-its-shape-6.mp4"
+  },
+  {
+   "n": 47,
+   "slug": "047-name-the-capital-6",
+   "text": "Capitals quiz #6: Kansas, Missouri, North Dakota, Vermont and Maine. Can you name all five capitals? #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/047-name-the-capital-6.mp4"
+  },
+  {
+   "n": 48,
+   "slug": "048-the-capital-is-not-the-biggest-city-6",
+   "text": "Wisconsin, North Carolina, South Carolina, Delaware and Minnesota: the biggest city is not the capital. Can you name the five capitals? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/048-the-capital-is-not-the-biggest-city-6.mp4"
+  },
+  {
+   "n": 49,
+   "slug": "049-map-challenge-the-7-states-with-three-or-more-nati",
+   "text": "Map challenge: can you name the 7 states with three or more national parks, then the 6 states in New England? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/049-map-challenge-the-7-states-with-three-or-more-nati.mp4"
+  },
+  {
+   "n": 50,
+   "slug": "050-odd-one-out-6",
+   "text": "Three states share something, one does not. Odd one out number 6, three rounds. #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/050-odd-one-out-6.mp4"
+  },
+  {
+   "n": 51,
+   "slug": "051-which-joined-the-union-first-6",
+   "text": "California or Washington: which joined the Union first? Four pairs in this one. #history #trivia https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/051-which-joined-the-union-first-6.mp4"
+  },
+  {
+   "n": 52,
+   "slug": "052-which-state-is-bigger-6",
+   "text": "North Carolina or Virginia: which one is bigger? Five pairs, ranked by area. #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/052-which-state-is-bigger-6.mp4"
+  },
+  {
+   "n": 53,
+   "slug": "053-which-state-is-it-postal-codes-6",
+   "text": "CT, MD, MO, ID, AR: can you decode these five state postal codes? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/053-which-state-is-it-postal-codes-6.mp4"
+  },
+  {
+   "n": 54,
+   "slug": "054-guess-the-state-from-its-shape-7",
+   "text": "Guess the state from its shape, round 7: five outlines, three seconds each. Comment your score. #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/054-guess-the-state-from-its-shape-7.mp4"
+  },
+  {
+   "n": 55,
+   "slug": "055-name-the-capital-7",
+   "text": "Capitals quiz #7: California, Connecticut, Nevada, Tennessee and Arizona. Can you name all five capitals? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/055-name-the-capital-7.mp4"
+  },
+  {
+   "n": 56,
+   "slug": "056-map-challenge-the-4-states-with-a-peak-over-14-000",
+   "text": "Map challenge: can you name the 4 states with a peak over 14,000 feet, then the 3 states on the Rio Grande? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/056-map-challenge-the-4-states-with-a-peak-over-14-000.mp4"
+  },
+  {
+   "n": 57,
+   "slug": "057-odd-one-out-7",
+   "text": "Spot the state that does not fit, odd one out 7. Rivers, trails, borders and more. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/057-odd-one-out-7.mp4"
+  },
+  {
+   "n": 58,
+   "slug": "058-which-joined-the-union-first-7",
+   "text": "West Virginia or Iowa: which joined the Union first? Four pairs in this one. #history #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/058-which-joined-the-union-first-7.mp4"
+  },
+  {
+   "n": 59,
+   "slug": "059-which-state-is-bigger-7",
+   "text": "Kentucky or Texas: which one is bigger? Five pairs, ranked by area. #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/059-which-state-is-bigger-7.mp4"
+  },
+  {
+   "n": 60,
+   "slug": "060-guess-the-state-from-its-shape-8",
+   "text": "Shape quiz 8: can you name all five states from their outline alone? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/060-guess-the-state-from-its-shape-8.mp4"
+  },
+  {
+   "n": 61,
+   "slug": "061-name-the-capital-8",
+   "text": "Capitals quiz #8: Pennsylvania, Nebraska, Washington, Wyoming and Indiana. Can you name all five capitals? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/061-name-the-capital-8.mp4"
+  },
+  {
+   "n": 62,
+   "slug": "062-map-challenge-the-5-states-that-were-civil-war-bor",
+   "text": "Map challenge: can you name the 5 states that were Civil War border states, then the 8 states on the Pony Express route? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/062-map-challenge-the-5-states-that-were-civil-war-bor.mp4"
+  },
+  {
+   "n": 63,
+   "slug": "063-odd-one-out-8",
+   "text": "Odd one out 8: four states, one impostor, three seconds. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/063-odd-one-out-8.mp4"
+  },
+  {
+   "n": 64,
+   "slug": "064-which-joined-the-union-first-8",
+   "text": "Alaska or West Virginia: which joined the Union first? Four pairs in this one. #ushistory https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/064-which-joined-the-union-first-8.mp4"
+  },
+  {
+   "n": 65,
+   "slug": "065-which-state-is-bigger-8",
+   "text": "West Virginia or Minnesota: which one is bigger? Five pairs, ranked by area. #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/065-which-state-is-bigger-8.mp4"
+  },
+  {
+   "n": 66,
+   "slug": "066-guess-the-state-from-its-shape-9",
+   "text": "Five state outlines, no names, three seconds each. Round 9, how many did you get? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/066-guess-the-state-from-its-shape-9.mp4"
+  },
+  {
+   "n": 67,
+   "slug": "067-name-the-capital-9",
+   "text": "Capitals quiz #9: Oregon, Montana, South Carolina, New Mexico and Wisconsin. Can you name all five capitals? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/067-name-the-capital-9.mp4"
+  },
+  {
+   "n": 68,
+   "slug": "068-map-challenge-the-13-states-that-border-canada",
+   "text": "Map challenge: can you name the 13 states that border Canada, then the 8 states on a Great Lake? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/068-map-challenge-the-13-states-that-border-canada.mp4"
+  },
+  {
+   "n": 69,
+   "slug": "069-odd-one-out-9",
+   "text": "Odd one out, round 9: in each set of four states, one does not belong. Can you spot it? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/069-odd-one-out-9.mp4"
+  },
+  {
+   "n": 70,
+   "slug": "070-which-joined-the-union-first-9",
+   "text": "Illinois or South Dakota: which joined the Union first? Four pairs in this one. #history #trivia https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/070-which-joined-the-union-first-9.mp4"
+  },
+  {
+   "n": 71,
+   "slug": "071-which-state-is-bigger-9",
+   "text": "Massachusetts or Utah: which one is bigger? Five pairs, ranked by area. #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/071-which-state-is-bigger-9.mp4"
+  },
+  {
+   "n": 72,
+   "slug": "072-guess-the-state-from-its-shape-10",
+   "text": "Round 10 of guess the state: some shapes are easy, one is not. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/072-guess-the-state-from-its-shape-10.mp4"
+  },
+  {
+   "n": 73,
+   "slug": "073-name-the-capital-10",
+   "text": "Capitals quiz #10: Massachusetts, Michigan, Louisiana, New York and Georgia. Can you name all five capitals? #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/073-name-the-capital-10.mp4"
+  },
+  {
+   "n": 74,
+   "slug": "074-map-challenge-the-3-states-that-hold-part-of-yello",
+   "text": "Map challenge: can you name the 3 states that hold part of Yellowstone National Park, then the 4 states that start and end with the same letter? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/074-map-challenge-the-3-states-that-hold-part-of-yello.mp4"
+  },
+  {
+   "n": 75,
+   "slug": "075-odd-one-out-10",
+   "text": "Three states share something, one does not. Odd one out number 10, three rounds. #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/075-odd-one-out-10.mp4"
+  },
+  {
+   "n": 76,
+   "slug": "076-which-joined-the-union-first-10",
+   "text": "Mississippi or Nebraska: which joined the Union first? Four pairs in this one. #history #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/076-which-joined-the-union-first-10.mp4"
+  },
+  {
+   "n": 77,
+   "slug": "077-which-state-is-bigger-10",
+   "text": "Vermont or Wisconsin: which one is bigger? Five pairs, ranked by area. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/077-which-state-is-bigger-10.mp4"
+  },
+  {
+   "n": 78,
+   "slug": "078-guess-the-state-from-its-shape-11",
+   "text": "Can you recognise these five states by their borders? Shape quiz number 11. #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/078-guess-the-state-from-its-shape-11.mp4"
+  },
+  {
+   "n": 79,
+   "slug": "079-name-the-capital-11",
+   "text": "Capitals quiz #11: Mississippi, California, Maryland, Iowa and Alaska. Can you name all five capitals? #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/079-name-the-capital-11.mp4"
+  },
+  {
+   "n": 80,
+   "slug": "080-map-challenge-the-13-states-that-were-among-the-13",
+   "text": "Map challenge: can you name the 13 states that were among the 13 original colonies, then the 5 states that joined the Union after 1900? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/080-map-challenge-the-13-states-that-were-among-the-13.mp4"
+  },
+  {
+   "n": 81,
+   "slug": "081-odd-one-out-11",
+   "text": "Spot the state that does not fit, odd one out 11. Rivers, trails, borders and more. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/081-odd-one-out-11.mp4"
+  },
+  {
+   "n": 82,
+   "slug": "082-guess-the-state-from-its-shape-12",
+   "text": "Name the state from its silhouette, round 12. Five shapes, one reveal each. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/082-guess-the-state-from-its-shape-12.mp4"
+  },
+  {
+   "n": 83,
+   "slug": "083-name-the-capital-12",
+   "text": "Capitals quiz #12: Pennsylvania, Florida, Delaware, Rhode Island and Arizona. Can you name all five capitals? #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/083-name-the-capital-12.mp4"
+  },
+  {
+   "n": 84,
+   "slug": "084-map-challenge-the-7-states-with-a-city-of-over-one",
+   "text": "Map challenge: can you name the 7 states with a city of over one million people, then the 8 states on the Missouri River? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/084-map-challenge-the-7-states-with-a-city-of-over-one.mp4"
+  },
+  {
+   "n": 85,
+   "slug": "085-odd-one-out-12",
+   "text": "Odd one out 12: four states, one impostor, three seconds. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/085-odd-one-out-12.mp4"
+  },
+  {
+   "n": 86,
+   "slug": "086-guess-the-state-from-its-shape-13",
+   "text": "Guess the state from its shape, round 13: five outlines, three seconds each. Comment your score. #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/086-guess-the-state-from-its-shape-13.mp4"
+  },
+  {
+   "n": 87,
+   "slug": "087-name-the-capital-13",
+   "text": "Capitals quiz #13: Texas, Tennessee, Utah, New Hampshire and Nebraska. Can you name all five capitals? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/087-name-the-capital-13.mp4"
+  },
+  {
+   "n": 88,
+   "slug": "088-map-challenge-the-8-states-that-route-66-crosses",
+   "text": "Map challenge: can you name the 8 states that Route 66 crosses, then the 4 states that meet at the Four Corners? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/088-map-challenge-the-8-states-that-route-66-crosses.mp4"
+  },
+  {
+   "n": 89,
+   "slug": "089-guess-the-state-from-its-shape-14",
+   "text": "Shape quiz 14: can you name all five states from their outline alone? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/089-guess-the-state-from-its-shape-14.mp4"
+  },
+  {
+   "n": 90,
+   "slug": "090-name-the-capital-14",
+   "text": "Capitals quiz #14: Hawaii, Alabama, Illinois, Connecticut and New Jersey. Can you name all five capitals? #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/090-name-the-capital-14.mp4"
+  },
+  {
+   "n": 91,
+   "slug": "091-map-challenge-the-7-states-whose-state-bird-is-the",
+   "text": "Map challenge: can you name the 7 states whose state bird is the cardinal, then the 8 states whose highest point is under 1,600 feet? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/091-map-challenge-the-7-states-whose-state-bird-is-the.mp4"
+  },
+  {
+   "n": 92,
+   "slug": "092-guess-the-state-from-its-shape-15",
+   "text": "Five state outlines, no names, three seconds each. Round 15, how many did you get? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/092-guess-the-state-from-its-shape-15.mp4"
+  },
+  {
+   "n": 93,
+   "slug": "093-name-the-capital-15",
+   "text": "Capitals quiz #15: Vermont, South Dakota, South Carolina, Colorado and Kentucky. Can you name all five capitals? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/093-name-the-capital-15.mp4"
+  },
+  {
+   "n": 94,
+   "slug": "094-guess-the-state-from-its-shape-16",
+   "text": "Round 16 of guess the state: some shapes are easy, one is not. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/094-guess-the-state-from-its-shape-16.mp4"
+  },
+  {
+   "n": 95,
+   "slug": "095-guess-the-state-from-its-shape-17",
+   "text": "Can you recognise these five states by their borders? Shape quiz number 17. #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/095-guess-the-state-from-its-shape-17.mp4"
+  },
+  {
+   "n": 96,
+   "slug": "096-guess-the-state-from-its-shape-18",
+   "text": "Name the state from its silhouette, round 18. Five shapes, one reveal each. #trivia #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/096-guess-the-state-from-its-shape-18.mp4"
+  },
+  {
+   "n": 97,
+   "slug": "097-guess-the-state-from-its-shape-19",
+   "text": "Guess the state from its shape, round 19: five outlines, three seconds each. Comment your score. #geography https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/097-guess-the-state-from-its-shape-19.mp4"
+  },
+  {
+   "n": 98,
+   "slug": "098-guess-the-state-from-its-shape-20",
+   "text": "Shape quiz 20: can you name all five states from their outline alone? #USA #quiz https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/098-guess-the-state-from-its-shape-20.mp4"
+  },
+  {
+   "n": 99,
+   "slug": "099-guess-the-state-from-its-shape-21",
+   "text": "Five state outlines, no names, three seconds each. Round 21, how many did you get? #geography #USA https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/099-guess-the-state-from-its-shape-21.mp4"
+  },
+  {
+   "n": 100,
+   "slug": "100-guess-the-state-from-its-shape-22",
+   "text": "Round 22 of guess the state: some shapes are easy, one is not. #50states https://statedoku.com/?utm_source=x&utm_medium=video",
+   "url": "https://statedoku.com/media/videos/100-guess-the-state-from-its-shape-22.mp4"
+  }
+ ]
+}
