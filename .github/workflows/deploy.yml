@@ -38,6 +38,11 @@ jobs:
       - name: Test the daily grids
         run: node scripts/test-puzzles.cjs
 
+      # One unescaped quote kills a whole game script (six French map games,
+      # 22 October to 4 November 2026). Every inline script must parse.
+      - name: Parse every inline script
+        run: node scripts/check-inline-scripts.cjs
+
       - name: Stage the site without the repo-only directories
         run: |
           mkdir -p /tmp/dist

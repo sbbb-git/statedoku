@@ -167,7 +167,10 @@ const Consent = (() => {
       'border:1.5px solid #0F2147;background:#fff;color:#0F2147;min-width:96px}' +
       '#consent button.cs-yes{background:#0F2147;color:#fff}' +
       '#consent a{color:#0F2147;margin-left:auto;font-size:0.8rem}' +
-      '#consent button:focus-visible,#consent a:focus-visible{outline:3px solid #F59E0B;outline-offset:2px}';
+      '#consent button:focus-visible,#consent a:focus-visible{outline:3px solid #F59E0B;outline-offset:2px}' +
+      // The daily game's state picker is fixed at the bottom too: while it is
+      // open the banner steps aside, or a new visitor types into a hidden box.
+      'body:has(#search-panel.open) #consent{display:none}';
     document.head.appendChild(s);
   }
 
@@ -229,6 +232,18 @@ const Consent = (() => {
   else init();
 
   return { get, open };
+})();
+
+// A shared or archive grid (?date=) keeps its date when the player switches
+// language: the homepages' language links are plain /, /fr/ and /es/.
+(function () {
+  const q = new URLSearchParams(location.search).get('date');
+  if (!q || !/^\d{4}-\d{2}-\d{2}$/.test(q)) return;
+  const go = () => document.querySelectorAll('a.lang-btn[href]').forEach(a => {
+    const u = new URL(a.getAttribute('href'), location.origin);
+    if (u.origin === location.origin && /^\/(fr\/|es\/)?$/.test(u.pathname)) { u.searchParams.set('date', q); a.setAttribute('href', u.pathname + u.search); }
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
 
 // 

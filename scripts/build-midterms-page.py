@@ -559,7 +559,7 @@ def page(lang):
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; {t["footer"]}</p>
 </footer>
 {MAP_JS % json.dumps(map_data(), separators=(',', ':'))}
-<script src="/config.js?v=15"></script>
+<script src="/config.js?v=16"></script>
 <script src="/js/admin.js?v=5"></script>
 <script src="/js/ads.js?v=1"></script>
 </body>
