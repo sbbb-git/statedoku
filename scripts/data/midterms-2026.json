@@ -1,6 +1,6 @@
 {
- "as_of_utc": "2026-11-04T08:27:00Z",
- "note": "Only AP race calls count as called; every called row is cross-checked with at least one other outlet (sources). Update with scripts/content/DAILY.md, Current events. Checked by a second, independent pass at 08:27 UTC on 4 November (118 claims).",
+ "as_of_utc": "2026-11-04T09:18:00Z",
+ "note": "Only AP race calls count as called; every called row is cross-checked with at least one other outlet (sources). Update with scripts/content/DAILY.md, Current events. Checked by a second, independent pass at 08:27 UTC on 4 November (118 claims). Updated with data read at 09:18 UTC on 4 November: Nebraska Senate (AP call 3:27 a.m. EST) and Oregon governor (AP call 3:49 a.m. EST), each read in AP's own wire copy and confirmed by CNN and NBC News; House tally unchanged from 08:27 UTC, no AP count readable. Second pass: 19 claims, 17 confirmed, 2 unverifiable (Alaska Senate and governor still uncalled, kept not_called).",
  "senate_before": {
   "R": 53,
   "D": 45,
@@ -42,7 +42,8 @@
    "https://clerk.house.gov/Members/ViewVacancies",
    "https://pressgallery.house.gov/member-data/party-breakdown",
    "https://clerk.house.gov/xml/lists/MemberData.xml"
-  ]
+  ],
+  "as_of_utc": "2026-11-04T08:27:00Z"
  },
  "senate": [
   {
@@ -381,13 +382,18 @@
    "usps": "NE",
    "special": false,
    "prev_party": "R",
-   "status": "not_called",
+   "status": "called",
+   "winner": "Pete Ricketts",
+   "winner_party": "R",
+   "flip": false,
    "ap_url": "https://apnews.com/projects/elections-2026/nebraska-results/",
    "sources": [
     "https://apnews.com/projects/elections-2026/nebraska-results/",
     "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
     "https://www.nbcnews.com/politics/2026-elections/nebraska-senate-results",
-    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.ksla.com/2026/11/04/republican-pete-ricketts-wins-reelection-us-senate-over-independent-challenger-nebraska/",
+    "https://www.nbcnews.com/politics/2026-election/pete-ricketts-nebraska-senator-gop-win-dan-osborn-election-rcna603328"
    ]
   },
   {
@@ -1080,14 +1086,20 @@
    "state": "Oregon",
    "usps": "OR",
    "prev_party": "D",
-   "status": "not_called",
+   "status": "called",
+   "winner": "Tina Kotek",
+   "winner_party": "D",
+   "flip": false,
    "ap_url": "https://apnews.com/projects/elections-2026/oregon-results/",
    "sources": [
     "https://apnews.com/projects/elections-2026/oregon-results/",
     "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
     "https://www.nbcnews.com/politics/2026-elections/oregon-governor-results",
     "https://politics.api.cnn.io/results/national-races/2026-GG.json",
-    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+    "https://panow.com/2026/11/04/democrat-tina-kotek-wins-reelection-for-governor-in-oregon/",
+    "https://www.nbcnews.com/politics/2026-election/tina-kotek-oregon-governor-election-win-democrats-gop-christine-drazan-rcna603357",
+    "https://www.cbsnews.com/news/orgeon-governors-race-tina-kotek/"
    ]
   },
   {
