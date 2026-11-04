@@ -36,8 +36,8 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     then the five open races.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
-    `/learn/states-by-population/` and `/learn/most-populous-states/` and their
-    translations the week the release is out. Check the date on census.gov.
+    `/learn/states-by-population/` and its translations
+    (`/learn/most-populous-states/` is retired, noindex, since 4 November) the week the release is out. Check the date on census.gov.
 C3. `todo` (3 January 2027) **The 120th Congress**: the House and Senate
     delegations by state as sworn in, on the midterms pages.
 C4. `todo` (January 2027) **New governors take office**: inauguration dates

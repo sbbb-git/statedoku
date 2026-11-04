@@ -210,7 +210,11 @@ passed on the earlier version, and 79 pages went unreachable for a day.
   to point at, drop the anchor and keep the text rather than inventing a page.
 - **Meta descriptions 70 to 160 characters**, balanced parentheses and quotes.
 
-640 pages are indexable and 1,450 are deliberately noindexed. Thin or
+646 pages are indexable and 1,454 are deliberately noindexed (4 November 2026:
+four "top 10" pages Google had crawled and refused, whose intent a deeper page
+already covers, were retired the 5 October way: `fr/learn/fleuves-des-etats-unis`,
+`fr/learn/montagnes-des-etats-unis`, `es/learn/montanas-mas-altas-eeuu`,
+`learn/most-populous-states`). Thin or
 near-duplicate pages are noindexed on purpose, not deleted. Adding thin pages to
 fix a broken link is a bad trade while AdSense is judging the site.
 
