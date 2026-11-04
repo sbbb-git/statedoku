@@ -122,11 +122,17 @@ fixed the same day (Las Vegas, French Electoral College heading, Texas state
 tree, Wyoming women's vote, Lake of the Woods, the Jackson marker sentence).
 Take these as deepening units, one a day, fact-checker on each:
 
-R1. `todo, prepared` (4 November: one NAVD 88 figure per peak in
-    `scripts/data/highpoints/`, 271 figures in 107 files plus 21 relief figures;
-    apply with `python3 scripts/apply-highpoints.py scripts/data/highpoints/overrides.json`
-    once the fact-checker confirms the 29 rows sourced from the Wikipedia list,
-    then fix the French table caption that says "chiffres officiels USGS")
+R1. `todo, table verified` (4 November: `scripts/data/highpoints/highpoints.json`
+    is one figure per peak, every row checked by a second, independent pass
+    against NGS datasheets, USGS 3DEP lidar and NCAT; 10 rows of the first
+    draft were wrong and are corrected there: AL, CT, DE, ME, MN, NE, ND, SC,
+    VA, WV). Before applying: `inventory.json` lists only the figures that
+    differed from the first draft, so re-scan the pages for the 10 corrected
+    states (e.g. Mount Rogers 5,729 is on pages and is wrong, 5,711), recompute
+    the relief figures in `derived.json`, write Delaware as "about 450 feet"
+    with the marker a few feet lower, and reword the French table caption
+    ("chiffres officiels USGS"). Then `python3 scripts/apply-highpoints.py`,
+    fact-checker on the diff.
     **Highpoint elevations disagree between pages**: Mount Hood 11,239
     vs 11,249 ft, Borah Peak 12,668 vs 12,662, Humphreys 12,633 vs 12,637,
     Wheeler 13,167 vs 13,161, Black Mesa 4,975 vs 4,973, Mansfield 4,395 vs
