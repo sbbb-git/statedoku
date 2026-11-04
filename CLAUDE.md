@@ -445,6 +445,17 @@ independently so a missed run cannot desynchronise them. Rebuild with
 
 X forbids duplicative posts, which is why the bank has no repeated text.
 
+A third run, at 17:00 UTC (from 5 November 2026), posts one short video a day
+through Buffer: `data/videos.json` lists them from its `epoch`, each with its
+post text and the URL of its MP4 under `/media/videos/` (Buffer takes no
+upload, it fetches the file from that URL when it posts, so the files must
+stay deployed). The list is 100 videos long and the slot posts nothing once it
+is used up rather than repeat one. The videos are built by `scripts/video/`
+(README there) from the game's corrected data only; every post text is unique.
+Build a new batch, append it to the list with a later epoch or extend it, and
+redeploy the bot only if `bot/` changed (workflow "Posting bot (Buffer)", mode
+deploy).
+
 Every tweet carries one or two hashtags, in a rotation per angle rather than one
 fixed block, which X reads as a spam signal when it repeats across hundreds of
 scheduled posts. `scripts/add-tweet-hashtags.py` is idempotent and must be

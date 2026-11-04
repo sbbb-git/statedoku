@@ -41,6 +41,13 @@ jobs:
           echo "tweets.json live: version $v"
           case "$v" in 2*) ;; *) echo "::error::the site does not serve the two-slot bank (version 2)"; exit 1;; esac
 
+      - name: Check the video list served by the site
+        run: |
+          v=$(curl -s https://statedoku.com/data/videos.json | python3 -c "import json,sys; b=json.load(sys.stdin); print(b.get('epoch'), len(b.get('videos', [])))" 2>/dev/null || echo "none")
+          echo "videos.json live: epoch and count $v"
+          first=$(curl -s https://statedoku.com/data/videos.json | python3 -c "import json,sys; print(json.load(sys.stdin)['videos'][0]['url'])" 2>/dev/null || true)
+          [ -z "$first" ] || { code=$(curl -s -o /dev/null -w '%{http_code}' "$first"); echo "first video answers $code"; [ "$code" = 200 ] || echo "::warning::the first video URL does not answer 200"; }
+
       # Wrangler's own output names the Cloudflare account owner and the
       # workers.dev host, and these logs are public: on 16 October 2026 the
       # deployments list put the owner's address in three runs, since deleted.
