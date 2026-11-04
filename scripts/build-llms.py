@@ -167,7 +167,7 @@ EN_REFERENCE = [
     '/learn/states-bordering-mexico/', '/learn/landlocked-states/', '/learn/no-income-tax/',
     '/learn/states-by-gdp-ranking/', '/learn/house-seats-by-state-1910-2020/',
     '/learn/state-nicknames-complete/', '/learn/states-presidents-born/',
-    '/learn/state-flowers/', '/learn/states-with-great-lakes/', '/learn/us-territories/',
+    '/learn/state-flowers/', '/learn/states-with-great-lakes/', '/learn/us-territories/', '/learn/2026-midterm-elections/',
     '/learn/best-games-to-learn-the-50-states/', '/learn/best-daily-geography-games/',
 ]
 FR_PAGES = [
@@ -176,6 +176,7 @@ FR_PAGES = [
     '/fr/learn/surnoms-des-etats/', '/fr/learn/13-colonies/',
     '/fr/learn/regions-des-etats-unis/', '/fr/learn/sieges-chambre-par-etat-1910-2020/',
     '/fr/learn/meilleurs-jeux-pour-apprendre-les-etats/', '/fr/learn/territoires-americains/',
+    '/fr/learn/elections-mi-mandat-2026/',
 ]
 ES_PAGES = [
     '/es/', '/es/play/', '/es/learn/', '/es/learn/capitales-de-estados/',
@@ -183,6 +184,7 @@ ES_PAGES = [
     '/es/learn/zonas-horarias-eeuu/', '/es/learn/estados-por-pib/',
     '/es/learn/regiones-de-eeuu/', '/es/learn/escanos-camara-por-estado-1910-2020/',
     '/es/learn/mejores-juegos-para-aprender-los-estados/', '/es/learn/territorios-eeuu/',
+    '/es/learn/elecciones-intermedias-2026/',
 ]
 
 
