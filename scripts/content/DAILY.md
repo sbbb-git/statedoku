@@ -44,6 +44,28 @@ answers in a box (the 18 `what-state-is-*` pages had 35,094 impressions and
 27 clicks in four weeks), and anything on `/privacy/`, `/about/`, `/terms/`,
 `/legal/` or ad code.
 
+### Current events (owner's request of 4 November 2026)
+
+"Essaie d'avoir du contenu actuel régulièrement": at least one unit a week is
+timely, from the "Current" section of `QUEUE.md`. Current means a fact about
+the 50 states that changed or is being decided now (elections, a census
+release, a new national park, a state law or symbol taking effect, a time
+change), never news for its own sake and never off the subject.
+
+- Facts only from primary or reference sources (AP race calls, state election
+  offices, Census Bureau, NPS, state legislatures), each dated. Every page says
+  "as of" when its facts can still move.
+- Neutral: results and rules, no adjective about a party, a candidate or an
+  outcome, no forecast.
+- A timely page is built to stay true after the event: results by state, not
+  "tonight". The midterms pages are generated from
+  `scripts/data/midterms-2026.json` by `scripts/build-midterms-page.py`;
+  update the JSON (only races AP has called, each with a second source), never
+  the HTML, and re-run.
+- Maintenance comes before novelty: while a "Current" item says "update until",
+  its update is that day's unit (it counts as a deepening, not a new page).
+  When the event is settled, the item moves to Done with its final date.
+
 ## 2. Write
 
 - Lead with the answer: the first paragraph settles the query.

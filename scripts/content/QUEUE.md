@@ -8,6 +8,33 @@ Bing, Yahoo, DuckDuckGo and Ecosia, all on Bing's index, made 4,120 of the
 
 Status: `todo`, `done YYYY-MM-DD <commit>`, `dropped (<reason>)`.
 
+## Current
+
+Timely units (DAILY.md, "Current events"). An "update until" item takes
+priority over the rest of the queue while it runs.
+
+C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
+    `/fr/learn/elections-mi-mandat-2026/`, `/es/learn/elecciones-intermedias-2026/`,
+    published 4 November 2026 the day after the vote. Update until every Senate
+    and governor race is called, then once more after the states certify
+    (December) and when the new Congress is sworn in (3 January 2027). Each
+    update: re-check every `not_called` row against AP, change only rows AP has
+    called, with a second outlet in `sources`, move `as_of_utc`, rebuild, run
+    the fact-checker on the changed rows.
+C2. `todo` (late December 2026) **Census Bureau state population estimates
+    (Vintage 2026)**: update the population rankings on
+    `/learn/states-by-population/` and `/learn/most-populous-states/` and their
+    translations the week the release is out. Check the date on census.gov.
+C3. `todo` (3 January 2027) **The 120th Congress**: the House and Senate
+    delegations by state as sworn in, on the midterms pages.
+C4. `todo` (January 2027) **New governors take office**: inauguration dates
+    by state on the midterms pages.
+C5. `todo` (before 14 March 2027) **Daylight saving time starts**: the states
+    and territories that do not change, on the time zone pages.
+
+Refill this section from the calendar: a dated official release or event
+about the states, two to four weeks ahead, one at a time.
+
 ## Maps the titles already promise
 
 Three ranking pages say "map" in their title and carry none. These come first:
