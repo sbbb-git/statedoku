@@ -483,9 +483,9 @@ main {
    the grid's measured position. See --sp-top in js/game.js. */
 @media (min-width: 580px) {
   #search-panel {
-    left: 50%; right: auto;
-    transform: translateX(-50%);
-    width: 480px;
+    left: var(--sp-left, 50%); right: auto;
+    transform: var(--sp-tx, translateX(-50%));
+    width: var(--sp-w, 480px);
     border-radius: var(--r-lg);
     top: var(--sp-top, auto);
     bottom: var(--sp-bottom, 24px);

@@ -32,7 +32,7 @@
   <link rel="alternate" hreflang="fr-fr" href="https://statedoku.com/fr/play/state-capitals-typing/">
   <link rel="alternate" hreflang="x-default" href="https://statedoku.com/play/state-capitals-typing/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=35">
+  <link rel="stylesheet" href="/css/style.css?v=36">
   <meta property="og:type" content="website">
   <meta property="og:title" content="State Capitals Quiz">
   <meta property="og:description" content="Type the capital of each US state.">
@@ -276,9 +276,9 @@ function renderResult(rootEl,score,total,T_,slug,sharePrefix){if(rootEl._done)re
   </ul>
 
   <h2>Spelling traps that eat lives</h2>
-  <p>The checker strips punctuation but it does not expand abbreviations, so a shortened form fails even when you knew the answer.</p>
+  <p>The checker strips punctuation and reads St as Saint, but it expands no other abbreviation, so a shortened form such as SLC fails even when you knew the answer.</p>
   <ul>
-    <li><strong>Saint Paul</strong> has to be typed in full. "St. Paul" and "St Paul" are both marked wrong.</li>
+    <li><strong>Saint Paul</strong> can be typed "Saint Paul", "St. Paul" or "St Paul": the checker reads St as Saint.</li>
     <li><strong>Tallahassee</strong> carries a double L, a double S and a double E.</li>
     <li><strong>Montpelier</strong> takes one L. The double L spelling belongs to a city in France.</li>
     <li><strong>Bismarck</strong> ends in CK, <strong>Frankfort</strong> ends in ORT, and <strong>Pierre</strong> ends in RRE.</li>

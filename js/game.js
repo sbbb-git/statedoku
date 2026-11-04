@@ -34,6 +34,7 @@ const Game = (() => {
   let _solveTime  = null;
   let _dateStr    = null;
   let _errors     = 0;
+  let _gaveUp     = false;   // ended by Give up, not by five mistakes
   let _goldenFound = false;
   let _wrongFlash = null;   // ends the flash after a wrong pick, if one is running
 
@@ -146,14 +147,13 @@ const Game = (() => {
   function giveUp() {
     if (_solved || _gameOver || !_puzzle) return;
     if (!window.confirm(I18n.t('give_up_confirm'))) return;
-    _errors = MAX_ERRORS;
+    // The mistakes made so far stay as they were: giving up is not five errors.
+    _gaveUp = true;
     _closeSearch();
     _selectedCell = null;
+    _triggerGameOver();
     _renderCells();
     _updateScore();
-    _triggerGameOver();
-    const h = document.querySelector('#gameover-banner h3');
-    if (h) h.textContent = I18n.t('gave_up');
   }
 
   function _showPreviewBanner() {
@@ -663,6 +663,7 @@ const Game = (() => {
 
     const rect = grid.getBoundingClientRect();
     const gap = 14;
+    ['--sp-left', '--sp-tx', '--sp-w'].forEach(v => root.removeProperty(v));
     const panelH = panel.offsetHeight || 240;
     const below = rect.bottom + gap;
 
@@ -687,6 +688,21 @@ const Game = (() => {
       root.setProperty('--sp-top', (rect.top - gap - panelH) + 'px');
       root.setProperty('--sp-bottom', 'auto');
     } else {
+      // Neither fits (a 1280x800 laptop): beside the grid, narrower if need
+      // be, so it never covers the row being filled. The sheet stays the last
+      // resort when there is no room on either side either.
+      const vw = window.innerWidth || document.documentElement.clientWidth || 0;
+      const right = vw - rect.right - gap - 12, left = rect.left - gap - 12;
+      const w = Math.min(480, Math.max(right, left));
+      if (w >= 320) {
+        const top = Math.max(12, Math.min(rect.top, vh - panelH - 12));
+        root.setProperty('--sp-top', top + 'px');
+        root.setProperty('--sp-bottom', 'auto');
+        root.setProperty('--sp-left', (right >= left ? rect.right + gap : rect.left - gap - w) + 'px');
+        root.setProperty('--sp-tx', 'none');
+        root.setProperty('--sp-w', w + 'px');
+        return;
+      }
       root.removeProperty('--sp-top');
       root.setProperty('--sp-bottom', '24px');
     }
@@ -844,12 +860,13 @@ const Game = (() => {
 
   function _triggerGameOver() {
     _gameOver = true;
+    _renderCells();   // the cells drop their 'Enter to pick' state and tab stop
     _syncGiveUp();
     _announce(I18n.t('game_over'));
     _saveProgress();
     _updateStatsLoss();
     if (typeof Analytics !== 'undefined') {
-      Analytics.track('puzzle_lost', { puzzle_date: _dateStr, mistakes: MAX_ERRORS, streak: _streakBand() });
+      Analytics.track('puzzle_lost', { puzzle_date: _dateStr, mistakes: _gaveUp ? _errors : MAX_ERRORS, streak: _streakBand() });
     }
     setTimeout(() => _showGameOverBanner(), 350);
   }
@@ -857,6 +874,8 @@ const Game = (() => {
   function _showGameOverBanner() {
     const el = document.getElementById('gameover-banner');
     if (el) el.style.display = 'flex';
+    const h = el && el.querySelector('h3');
+    if (h) h.textContent = I18n.t(_gaveUp ? 'gave_up' : 'game_over');
     const solEl = document.getElementById('gameover-solution');
     if (solEl) {
       solEl.innerHTML = '';
@@ -993,7 +1012,7 @@ const Game = (() => {
     host.innerHTML = `
       <span><b>${_fmtTime(elapsed)}</b>${L.time}</span>
       <span class="rs-sep"></span>
-      <span><b>${stats.streak || 1}</b>${L.streak}</span>
+      <span><b>${_isToday() ? (stats.streak || 1) : 0}</b>${L.streak}</span>
       <span class="rs-sep"></span>
       <span><b>${_errors}/${MAX_ERRORS}</b>${L.err}</span>
     `;
@@ -1201,7 +1220,7 @@ const Game = (() => {
     }[lang] || { won: 'Solved!', lost: 'Game over', streak: 'streak', tried: 'Tried for' };
     const elapsed = _solveTime || 0;
     const time = _fmtTime(elapsed);
-    const streak = stats.streak || 1;
+    const streak = _isToday() ? (stats.streak || 1) : 0;
     const errCount = _errors;
     const won = _solved;
 
@@ -1330,7 +1349,7 @@ const Game = (() => {
         <div class="share-grid">
           ${SHARE_PLATFORMS.map(p => `
             <button class="share-btn" data-share="${p.id}" type="button" style="--brand:${p.color}">
-              <span class="share-ico"><svg viewBox="0 0 24 24">${p.icon}</svg></span>
+              <span class="share-ico"><svg viewBox="0 0 24 24" fill="currentColor">${p.icon}</svg></span>
               <span class="share-label">${p.label}</span>
             </button>
           `).join('')}
@@ -1396,8 +1415,10 @@ const Game = (() => {
   // Stats 
   // A coarse streak band sent with the end of a grid, so loyalty can be
   // followed without identifying anyone. Archive grids do not touch streaks.
+  function _isToday() { return _dateStr === Puzzle.getTodayStr(); }
+
   function _streakBand() {
-    if (_dateStr !== Puzzle.getTodayStr()) return 'archive';
+    if (!_isToday()) return 'archive';
     const n = _getStats().streak || 0;
     return n <= 0 ? '0' : n === 1 ? '1' : n <= 3 ? '2-3' : n <= 7 ? '4-7' : n <= 30 ? '8-30' : '31+';
   }
@@ -1477,7 +1498,7 @@ const Game = (() => {
   // Persistence 
   function _saveProgress() {
     localStorage.setItem(CONFIG.STORAGE_KEY+'_progress_'+_dateStr,
-      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, startTime:_startTime, errors:_errors, solveTime:_solveTime, goldenFound:_goldenFound }));
+      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, gaveUp:_gaveUp, startTime:_startTime, errors:_errors, solveTime:_solveTime, goldenFound:_goldenFound }));
   }
 
   function _loadProgress() {
@@ -1490,6 +1511,7 @@ const Game = (() => {
       _gameOver  = d.gameOver  || false;
       _startTime = d.startTime || Date.now();
       _errors    = d.errors    || 0;
+      _gaveUp    = !!d.gaveUp;
       _solveTime = d.solveTime || null;
       _goldenFound = !!d.goldenFound;
 
@@ -1957,6 +1979,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (back && document.contains(back)) { try { back.focus({ preventScroll: true }); } catch (e) {} }
       }
     }).observe(m, { attributes: true, attributeFilter: ['class'] });
+    // The rules open on a first visit during Game.init, before this observer
+    // exists: give that dialog the focus too.
+    if (m.classList.contains('open') && !m._opener) {
+      m._opener = document.body;
+      const t = m.querySelector('.modal-close') || m.querySelector('button, a[href], input');
+      if (t) setTimeout(() => { try { t.focus(); } catch (e) {} }, 30);
+    }
   });
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
