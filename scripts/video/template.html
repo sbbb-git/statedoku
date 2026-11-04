@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family: Inter; src: local('Inter'); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body { font-family: Inter, system-ui, sans-serif; background: #0F2147; color: #fff; position: relative; }
+  .bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, #1B3366 0%, #0F2147 55%, #0A1733 100%); }
+  .stripe { position: absolute; left: 0; right: 0; top: 0; height: 14px; background: linear-gradient(90deg, #DC2626 0 33%, #fff 33% 66%, #2563EB 66%); }
+  header { position: absolute; top: 70px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 18px; }
+  header img { width: 84px; height: 84px; border-radius: 18px; }
+  header .w { font-size: 64px; font-weight: 900; letter-spacing: -0.02em; }
+  header .w em { font-style: normal; color: #F87171; }
+  .tag { position: absolute; top: 200px; left: 50%; transform: translateX(-50%); background: #F59E0B; color: #0F2147; font-weight: 900;
+         font-size: 38px; padding: 14px 34px; border-radius: 999px; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+  .stage { position: absolute; top: 300px; left: 60px; right: 60px; height: 1060px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .card { background: #fff; color: #0F2147; border-radius: 40px; width: 100%; padding: 50px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+  .hook h1 { font-size: 108px; line-height: 1.05; font-weight: 900; letter-spacing: -0.03em; text-align: center; }
+  .hook p { font-size: 50px; line-height: 1.25; text-align: center; color: #CBD5E1; margin-top: 36px; font-weight: 600; }
+  .title { font-size: 62px; font-weight: 900; text-align: center; line-height: 1.15; margin-bottom: 30px; letter-spacing: -0.02em; }
+  .map svg { width: 100%; height: auto; display: block; }
+  .map path { stroke: #fff; stroke-width: 1.2; fill: #CBD5E1; }
+  .shape { width: 100%; height: 760px; display: flex; align-items: center; justify-content: center; }
+  .shape svg { max-width: 860px; max-height: 720px; width: 100%; height: 100%; }
+  .shape path { fill: #0F2147; stroke: none; }
+  .shape.reveal path { fill: #059669; }
+  .q { font-size: 150px; font-weight: 900; color: #0F2147; text-align: center; }
+  .name { font-size: 84px; font-weight: 900; text-align: center; color: #059669; margin-top: 18px; letter-spacing: -0.02em; }
+  .opts { display: grid; grid-template-columns: 1fr; gap: 18px; width: 100%; }
+  .opt { background: #fff; color: #0F2147; border-radius: 26px; padding: 22px 34px; font-size: 52px; font-weight: 800; display: flex; gap: 26px; align-items: center; border: 6px solid #fff; }
+  .opt b { background: #0F2147; color: #fff; border-radius: 16px; width: 80px; height: 80px; display: inline-flex; align-items: center; justify-content: center; font-size: 46px; flex: none; }
+  .opt.ok { background: #059669; color: #fff; border-color: #059669; } .opt.ok b { background: #fff; color: #059669; }
+  .opt.dim { opacity: .45; }
+  .big { font-size: 210px; font-weight: 900; color: #fff; text-align: center; line-height: 1; }
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; width: 100%; }
+  .vs .side { background: #fff; color: #0F2147; border-radius: 32px; padding: 30px 22px; text-align: center; border: 8px solid #fff; }
+  .vs .side.win { border-color: #059669; }
+  .vs .side svg { width: 100%; height: 360px; } .vs .side path { fill: #0F2147; } .vs .side.win path { fill: #059669; }
+  .vs .nm { font-size: 54px; font-weight: 900; margin-top: 14px; line-height: 1.1; }
+  .vs .val { font-size: 40px; font-weight: 700; color: #475569; margin-top: 10px; min-height: 50px; }
+  .vs .side.win .val { color: #059669; }
+  .vsx { font-size: 70px; font-weight: 900; color: #F59E0B; text-align: center; margin: 18px 0; }
+  .names { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 14px; margin-top: 26px; }
+  .names span { background: #0F2147; color: #fff; font-weight: 800; font-size: 36px; padding: 10px 20px; border-radius: 14px; }
+  .note { font-size: 34px; color: #475569; text-align: center; margin-top: 22px; line-height: 1.3; font-weight: 600; }
+  .list { width: 100%; } .list li { list-style: none; display: flex; gap: 24px; align-items: center; font-size: 60px; font-weight: 800; padding: 18px 0; border-bottom: 3px solid #E2E8F0; }
+  .list li b { width: 90px; color: #F59E0B; font-size: 64px; }
+  .cap { position: absolute; left: 60px; right: 60px; top: 1400px; height: 330px; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .cap span.num { font-size: 190px; padding: 6px 60px; color: #F59E0B; line-height: 1; }
+  .cap span { font-size: 58px; line-height: 1.22; font-weight: 800; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.6); background: rgba(10,23,51,.72); padding: 22px 34px; border-radius: 26px; }
+  footer { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; font-size: 46px; font-weight: 800; color: #F59E0B; letter-spacing: .02em; }
+  .outro h1 { font-size: 92px; text-align: center; font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; }
+  .outro p { font-size: 50px; text-align: center; color: #CBD5E1; margin-top: 30px; font-weight: 600; line-height: 1.3; }
+  .outro .url { display: inline-block; margin-top: 50px; background: #F59E0B; color: #0F2147; font-size: 70px; font-weight: 900; padding: 26px 50px; border-radius: 999px; }
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="stripe"></div>
+<header><img src="LOGO" alt=""><div class="w">State<em>doku</em></div></header>
+<div class="tag" id="tag"></div>
+<div class="stage" id="stage"></div>
+<div class="cap" id="cap"><span></span></div>
+<footer>statedoku.com</footer>
+<div id="mapsrc" style="display:none">MAPSVG</div>
+<script>
+const SRC = document.querySelector('#mapsrc svg');
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function shapeSvg(id, cls) {
+  const p = SRC.querySelector('#us-' + id);
+  const tmp = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  tmp.setAttribute('viewBox', '0 0 975 610'); tmp.style.position = 'absolute'; tmp.style.visibility = 'hidden';
+  const c = p.cloneNode(true); tmp.appendChild(c); document.body.appendChild(tmp);
+  const b = c.getBBox(); tmp.remove();
+  const pad = Math.max(b.width, b.height) * 0.08;
+  return '<svg class="' + (cls || '') + '" viewBox="' + (b.x - pad) + ' ' + (b.y - pad) + ' ' + (b.width + 2 * pad) + ' ' + (b.height + 2 * pad) + '" preserveAspectRatio="xMidYMid meet"><path d="' + p.getAttribute('d') + '"/></svg>';
+}
+function mapSvg(hl) {
+  const s = SRC.cloneNode(true);
+  s.removeAttribute('class'); s.setAttribute('aria-hidden', 'true');
+  s.querySelectorAll('path[data-usps]').forEach(p => { const c = hl[p.getAttribute('data-usps')]; if (c) p.style.fill = c; });
+  return s.outerHTML;
+}
+window.render = function (seg) {
+  const v = seg.visual || {}, st = document.getElementById('stage');
+  document.getElementById('tag').textContent = seg.tag || '';
+  document.getElementById('tag').style.display = seg.tag ? '' : 'none';
+  const cap = document.querySelector('#cap span');
+  cap.textContent = seg.caption || ''; cap.className = seg.kind === 'count' ? 'num' : ''; document.getElementById('cap').style.display = seg.caption ? '' : 'none';
+  let h = '';
+  if (v.type === 'hook') h = '<div class="hook"><h1>' + esc(v.title) + '</h1>' + (v.sub ? '<p>' + esc(v.sub) + '</p>' : '') + '</div>';
+  else if (v.type === 'silhouette') h = '<div class="card"><div class="shape' + (v.reveal ? ' reveal' : '') + '">' + shapeSvg(v.id) + '</div>' +
+      (v.reveal ? '<div class="name">' + esc(v.name) + '</div>' : '<div class="q">?</div>') + '</div>';
+  else if (v.type === 'map') h = '<div class="card map">' + (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + mapSvg(v.hl || {}) +
+      (v.names ? '<div class="names">' + v.names.map(n => '<span>' + esc(n) + '</span>').join('') + '</div>' : '') +
+      (v.note ? '<div class="note">' + esc(v.note) + '</div>' : '') + '</div>';
+  else if (v.type === 'options') h = (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + (v.shape ? '<div class="card" style="margin-bottom:22px;padding:16px"><div class="shape" style="height:250px">' + shapeSvg(v.shape) + '</div></div>' : '') +
+      '<div class="opts">' + v.opts.map((o, i) => '<div class="opt' + (v.correct == null ? '' : i === v.correct ? ' ok' : ' dim') + '"><b>' + 'ABCD'[i] + '</b>' + esc(o) + '</div>').join('') + '</div>';
+  else if (v.type === 'vs') h = (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + '<div class="vs">' + [v.a, v.b].map((x, i) =>
+      '<div class="side' + (v.win === i ? ' win' : '') + '">' + shapeSvg(x.id) + '<div class="nm">' + esc(x.name) + '</div><div class="val">' + esc(x.val || '') + '</div></div>').join('') + '</div>';
+  else if (v.type === 'count') h = '<div class="big">' + esc(v.n) + '</div>';
+  else if (v.type === 'list') h = '<div class="card">' + (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + '<ul class="list">' +
+      v.items.map((x, i) => '<li><b>' + (i + 1) + '</b>' + esc(x) + '</li>').join('') + '</ul>' + (v.note ? '<div class="note">' + esc(v.note) + '</div>' : '') + '</div>';
+  else if (v.type === 'outro') h = '<div class="outro"><h1>' + esc(v.title) + '</h1><p>' + esc(v.sub) + '</p><div style="text-align:center"><span class="url">statedoku.com</span></div></div>';
+  st.innerHTML = h;
+};
+</script>
+</body>
+</html>
