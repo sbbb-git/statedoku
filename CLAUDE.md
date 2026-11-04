@@ -268,6 +268,16 @@ Rankings "of the 50 states" are computed over the 50 states. The Census files
 also rank DC and Puerto Rico, and a density rank taken straight from them once
 told readers Alaska was "the 52nd most densely populated" of 50.
 
+State highpoint elevations have one figure per peak, in
+`scripts/data/highpoints/highpoints.json` (NAVD 88, Mauna Kea on local mean
+sea level; every row checked on 4 November 2026 by an independent pass against
+NGS datasheets, USGS 3DEP lidar and NCAT, which caught ten wrong rows in the
+first draft, most of them from Wikipedia footnotes citing Peakbagger). Delaware
+is "about 450 feet", beside the Ebright Azimuth marker, which is a few feet
+lower. Mount Rainier stays 14,411 ft (USGS); the 2024 independent survey is not
+adopted. `python3 scripts/check-highpoints.py` reads every page and data file
+and must report 0 differences; run it after any edit that quotes a highpoint.
+
 Data articles are generated, not hand-typed. `scripts/build-house-seats-page.py`
 builds the three House-seats pages from the Census apportionment file in
 `scripts/data/` and asserts every figure its prose quotes; edit the script, not
