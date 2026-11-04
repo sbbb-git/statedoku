@@ -66,6 +66,13 @@ export async function onRequestPost({ request, env }) {
     return new Response('Service unavailable', { status: 503 });
   }
 
+  // Only the site's own pages may write: another site could otherwise post rows
+  // from its visitors' browsers, and these counts are read as the complete ones.
+  const origin = request.headers.get('origin');
+  if ((origin && !/^https:\/\/(www\.)?statedoku\.com$/.test(origin)) || request.headers.get('sec-fetch-site') === 'cross-site') {
+    return new Response(null, { status: 403 });
+  }
+
   // Rate limit: 60 events per IP per minute (generous, covers a normal day of play)
   const ip = getClientIp(request);
   const rl = rateLimit('events:' + ip, 60, 60_000);

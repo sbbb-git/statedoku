@@ -6,8 +6,12 @@
 //   - STATS_ADMIN_KEY (env var)
 
 import { keyMatches, adminKey } from '../_shared/auth.js';
+import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
 
 export async function onRequestGet({ request, env }) {
+  // Same per-IP limit as /api/admin/verify: the keys are the same.
+  const rl = rateLimit('admin:' + getClientIp(request), 30, 60_000);
+  if (!rl.ok) return new Response(null, { status: 429 });
   if (!keyMatches(adminKey(request), env.STATS_ADMIN_KEY)) {
     return new Response('Forbidden', { status: 403 });
   }

@@ -2,6 +2,8 @@
 //   Returns the full email_clicks log (most recent first).
 //   Auth: requires header `X-Admin-Key: <env.ADMIN_API_KEY>`.
 
+import { rateLimit, getClientIp } from '../../_shared/ratelimit.js';
+
 const JSON_HEADERS = { 'content-type': 'application/json', 'cache-control': 'no-store' };
 
 function _unauthorized() {
@@ -22,12 +24,15 @@ function _checkAuth(request, env) {
 }
 
 export async function onRequestGet({ request, env }) {
+  const rl = rateLimit('admin:' + getClientIp(request), 30, 60_000);
+  if (!rl.ok) return new Response(null, { status: 429 });
   if (!_checkAuth(request, env)) return _unauthorized();
   if (!env.STATS_DB) return new Response(JSON.stringify({ ok: false, error: 'db_not_configured' }), { status: 500, headers: JSON_HEADERS });
 
   const url = new URL(request.url);
   const email = url.searchParams.get('email');
-  const limit = Math.min(parseInt(url.searchParams.get('limit') || '200', 10), 5000);
+  const n = parseInt(url.searchParams.get('limit') || '', 10);
+  const limit = Number.isFinite(n) && n > 0 ? Math.min(n, 5000) : 200;   // 'abc' and -1 fell through to everything
 
   try {
     let stmt;

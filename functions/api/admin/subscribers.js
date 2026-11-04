@@ -2,13 +2,19 @@
 //   Returns the full email_subscribers table for admin display.
 //   Auth: requires header `X-Admin-Key: <env.ADMIN_API_KEY>`.
 //
-// DELETE /api/admin/subscribers?email=<email>
-//   Deletes a subscriber's row (erasure, as the privacy policy promises).
+// DELETE /api/admin/subscribers with a JSON body {"email": ...}
+//   Deletes a subscriber's row (erasure, as the privacy policy promises). The
+//   address travels in the body, not the URL, which lands in logs.
+//
+// Both are rate limited per IP, like /api/admin/verify, so a key cannot be
+// guessed here faster than there.
 //
 // Set the secret with:
 //   wrangler pages secret put ADMIN_API_KEY --project-name statedoku
 // then paste a long random string at the prompt. Use the same string from
 // the admin page when prompted.
+
+import { rateLimit, getClientIp } from '../../_shared/ratelimit.js';
 
 const JSON_HEADERS = { 'content-type': 'application/json', 'cache-control': 'no-store' };
 
@@ -31,11 +37,14 @@ function _checkAuth(request, env) {
 }
 
 export async function onRequestGet({ request, env }) {
+  const rl = rateLimit('admin:' + getClientIp(request), 30, 60_000);
+  if (!rl.ok) return new Response(null, { status: 429 });
   if (!_checkAuth(request, env)) return _unauthorized();
   if (!env.STATS_DB) return new Response(JSON.stringify({ ok: false, error: 'db_not_configured' }), { status: 500, headers: JSON_HEADERS });
 
   const url = new URL(request.url);
-  const limit = Math.min(parseInt(url.searchParams.get('limit') || '500', 10), 5000);
+  const n = parseInt(url.searchParams.get('limit') || '', 10);
+  const limit = Number.isFinite(n) && n > 0 ? Math.min(n, 5000) : 500;   // 'abc' and -1 fell through to everything
 
   try {
     const stmt = env.STATS_DB.prepare(`
@@ -92,11 +101,14 @@ export async function onRequestGet({ request, env }) {
 }
 
 export async function onRequestDelete({ request, env }) {
+  const rl = rateLimit('admin:' + getClientIp(request), 30, 60_000);
+  if (!rl.ok) return new Response(null, { status: 429 });
   if (!_checkAuth(request, env)) return _unauthorized();
   if (!env.STATS_DB) return new Response(JSON.stringify({ ok: false, error: 'db_not_configured' }), { status: 500, headers: JSON_HEADERS });
 
-  const url = new URL(request.url);
-  const email = (url.searchParams.get('email') || '').toLowerCase().trim();
+  let body = {};
+  try { body = await request.json(); } catch (e) { body = {}; }
+  const email = String(body.email || '').toLowerCase().trim();
   if (!email) return new Response(JSON.stringify({ ok: false, error: 'missing_email' }), { status: 400, headers: JSON_HEADERS });
 
   try {
