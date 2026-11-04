@@ -24,8 +24,16 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     outlet in `sources`, move `as_of_utc`, rebuild, run the fact-checker on the
     changed rows. On 4 November at 08:27 UTC: Senate AK, MS, NE and governors
     AK, KS, NV, OR not called; House 81 seats not called (80 counting, Louisiana
-    5th to a runoff). An independent winner (Osborn, Nebraska) is counted apart
-    from both caucuses until he says which one he joins.
+    5th to a runoff). An independent winner would be counted apart from both
+    caucuses until he or she says which one to join.
+    Update 4 November, data read 09:18 UTC (736f50d2c): Nebraska Senate
+    (Ricketts, R) and Oregon governor (Kotek, D) called by AP. Still not called:
+    Senate AK, MS; governors AK, KS, NV (Alaska goes to ranked-choice tabulation
+    on 18 November). The House tally stays dated 08:27 UTC: AP's JSON refuses
+    automated reads (403) and no other page gave AP's count; the builder now
+    prints the House date apart (`house_control.as_of_utc`). Next update: find an
+    AP House count (AP wire copy, or NBC/CNN pages that state AP's numbers),
+    then the five open races.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and `/learn/most-populous-states/` and their
