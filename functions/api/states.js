@@ -22,39 +22,36 @@ export async function onRequestGet({ request }) {
     // Apply filters
     if (regionFilter) states = states.filter(s => s.region === regionFilter);
 
-    // Trim to requested fields if specified
+    // A curated set of clean public-facing fields (the raw data file has 137,
+    // many internal to Statedoku). ?fields= picks among these, so the "name"
+    // the /api/ page's examples ask for exists (it is "names" in the raw file).
+    states = states.map(s => ({
+      id: s.id,
+      name: s.names?.en,
+      names: s.names,
+      capital: s.capital,
+      largestCity: s.largestCity,
+      region: s.region,
+      subregion: s.subregion,
+      population: s.population,
+      areaRank: s.areaRank,
+      admitted: s.admitted,
+      timezone: s.timezone,
+      coastline: s.coastline,
+      landlocked: s.landlocked,
+      bordersCanada: s.bordersCanada,
+      bordersMexico: s.bordersMexico,
+      original13: s.original13 || false,
+      confederate: s.confederate || false,
+      presidentBirthplace: s.presidentBirthplace || false,
+      noIncomeTax: s.noIncomeTax || false,
+    }));
     if (fields?.length) {
       states = states.map(s => {
         const out = {};
-        for (const f of fields) {
-          if (f in s) out[f] = s[f];
-        }
+        for (const f of fields) if (f in s) out[f] = s[f];
         return out;
       });
-    } else {
-      // Default: return a curated set of clean public-facing fields
-      // (the raw data file has 137 fields, many internal to Statedoku)
-      states = states.map(s => ({
-        id: s.id,
-        name: s.names?.en,
-        names: s.names,
-        capital: s.capital,
-        largestCity: s.largestCity,
-        region: s.region,
-        subregion: s.subregion,
-        population: s.population,
-        areaRank: s.areaRank,
-        admitted: s.admitted,
-        timezone: s.timezone,
-        coastline: s.coastline,
-        landlocked: s.landlocked,
-        bordersCanada: s.bordersCanada,
-        bordersMexico: s.bordersMexico,
-        original13: s.original13 || false,
-        confederate: s.confederate || false,
-        presidentBirthplace: s.presidentBirthplace || false,
-        noIncomeTax: s.noIncomeTax || false,
-      }));
     }
 
     const body = pretty ? JSON.stringify(states, null, 2) : JSON.stringify(states);

@@ -560,7 +560,7 @@ def page(lang):
 </footer>
 {MAP_JS % json.dumps(map_data(), separators=(',', ':'))}
 <script src="/config.js?v=15"></script>
-<script src="/js/admin.js"></script>
+<script src="/js/admin.js?v=5"></script>
 <script src="/js/ads.js?v=1"></script>
 </body>
 </html>
