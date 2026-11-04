@@ -284,7 +284,7 @@ T['en'] = dict(
     related=[('/learn/electoral-college/', 'Electoral college votes by state'), ('/learn/states-by-population/', 'States by population'),
              ('/learn/swing-states/', 'Swing states'), ('/learn/us-regions/', 'The 4 US regions'),
              ('/learn/states-by-statehood-year/', 'States by statehood year'), ('/states/', 'All 50 state pages')],
-    footer='<a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a>',
+    footer='<a href="/about/">About</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/states/">States</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a>',
     state_link=lambda n: f'/states/{SLUG[n]}/',
 )
 
@@ -403,7 +403,7 @@ T['fr'] = dict(
     related=[('/fr/learn/college-electoral/', 'Le Collège électoral'), ('/fr/learn/regions-des-etats-unis/', 'Les 4 régions des États-Unis'),
              ('/fr/learn/liste-des-50-etats/', 'La liste des 50 États'), ('/fr/learn/systeme-federal-americain/', 'Le système fédéral américain'),
              ('/fr/learn/13-colonies/', 'Les 13 colonies'), ('/fr/learn/', 'Apprendre les 50 États')],
-    footer='<a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">Tous les états</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a>',
+    footer='<a href="/fr/about/">À propos</a> &nbsp;·&nbsp; <a href="/fr/learn/">Apprendre</a> &nbsp;·&nbsp; <a href="/states/">Tous les états</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/fr/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/fr/privacy/">Confidentialité</a> &nbsp;·&nbsp; <a href="/fr/terms/">Conditions</a> &nbsp;·&nbsp; <a href="/fr/mentions-legales/">Mentions légales</a>',
     state_link=None,
 )
 
@@ -521,7 +521,7 @@ T['es'] = dict(
     related=[('/es/learn/colegio-electoral/', 'El Colegio Electoral'), ('/es/learn/estados-mas-poblados/', 'Los estados más poblados'),
              ('/es/learn/estados-bisagra/', 'Los estados bisagra'), ('/es/learn/regiones-de-eeuu/', 'Las regiones de EE. UU.'),
              ('/es/learn/sistema-federal-eeuu/', 'El sistema federal'), ('/es/learn/', 'Aprender los 50 estados')],
-    footer='<a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/states/">Todos los estados</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a>',
+    footer='<a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/states/">Todos los estados</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a>',
     state_link=lambda n: f'/es/states/{SLUG[n]}/',
 )
 
