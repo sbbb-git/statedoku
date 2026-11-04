@@ -174,6 +174,10 @@ export async function onRequestGet({ request }) {
     [`${BASE}/fr/learn/drapeaux-des-etats/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/college-electoral/`, { priority: 0.85 }],
     [`${BASE}/fr/learn/territoires-americains/`, { priority: 0.85 }],
+    // 2026 midterms, 4 November 2026, built by scripts/build-midterms-page.py
+    [`${BASE}/learn/2026-midterm-elections/`, { priority: 0.9, changefreq: 'daily' }],
+    [`${BASE}/fr/learn/elections-mi-mandat-2026/`, { priority: 0.85, changefreq: 'daily' }],
+    [`${BASE}/es/learn/elecciones-intermedias-2026/`, { priority: 0.85, changefreq: 'daily' }],
     // Legal notice (LCEN art. 1-1), linked from every footer
     [`${BASE}/legal/`, { priority: 0.3, alternates: [['en', `${BASE}/legal/`], ['fr', `${BASE}/fr/mentions-legales/`], ['es', `${BASE}/es/aviso-legal/`]] }],
     [`${BASE}/fr/mentions-legales/`, { priority: 0.3 }],

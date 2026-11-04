@@ -18,9 +18,12 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     published 4 November 2026 the day after the vote. Update until every Senate
     and governor race is called, then once more after the states certify
     (December) and when the new Congress is sworn in (3 January 2027). Each
-    update: re-check every `not_called` row against AP, change only rows AP has
-    called, with a second outlet in `sources`, move `as_of_utc`, rebuild, run
-    the fact-checker on the changed rows.
+    update: re-check every `not_called` row and the House counts (AP calls as
+    reported by AP articles, NBC News, CNN or the state's election office, read
+    normally, see DAILY.md), change only rows AP has called, with a second
+    outlet in `sources`, move `as_of_utc`, rebuild, run the fact-checker on the
+    changed rows. On 4 November at 08:10 UTC: Senate AK, MS, NE and governors
+    AK, AZ, KS, NV, OR not called; House 81 seats not called.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and `/learn/most-populous-states/` and their

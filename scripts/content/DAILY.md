@@ -62,6 +62,10 @@ change), never news for its own sake and never off the subject.
   `scripts/data/midterms-2026.json` by `scripts/build-midterms-page.py`;
   update the JSON (only races AP has called, each with a second source), never
   the HTML, and re-run.
+- Read sources the normal way. Never spoof a user agent or a referer, never
+  get around a block or a paywall: when a site refuses automated reads (AP's
+  pages do), use one that does not (NBC News, CNN, CBS News results pages,
+  AP articles found by search, the state's own election office).
 - Maintenance comes before novelty: while a "Current" item says "update until",
   its update is that day's unit (it counts as a deepening, not a new page).
   When the event is settled, the item moves to Done with its final date.

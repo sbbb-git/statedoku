@@ -1,0 +1,1234 @@
+{
+ "as_of_utc": "2026-11-04T08:10:55Z",
+ "note": "Only AP race calls count as called; every called row is cross-checked with at least one other outlet (sources). Update with scripts/content/DAILY.md, Current events.",
+ "senate_before": {
+  "R": 53,
+  "D": 45,
+  "I_caucus_D": 2,
+  "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+ },
+ "senate_not_up": {
+  "D_caucus": 34,
+  "R": 31
+ },
+ "senate_control": {
+  "status": "projected",
+  "party": "D",
+  "called_by": "AP",
+  "sources": [
+   "https://interactives.apelections.org/election-results/data-live/2026-11-03/miniblog.json",
+   "https://apnews.com/projects/elections-2026/us-senate-results/",
+   "https://www.nbcnews.com/politics/2026-elections/senate-results",
+   "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+   "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+  ]
+ },
+ "house_control": {
+  "status": "projected",
+  "party": "D",
+  "called_by": "AP",
+  "seats_called": {
+   "D": 219,
+   "R": 135
+  },
+  "uncalled": 81,
+  "sources": [
+   "https://interactives.apelections.org/election-results/data-live/2026-11-03/miniblog.json",
+   "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+   "https://apnews.com/projects/elections-2026/us-house-results/",
+   "https://www.nbcnews.com/politics/2026-elections/house-results",
+   "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+   "https://clerk.house.gov/",
+   "https://clerk.house.gov/Members/ViewVacancies",
+   "https://pressgallery.house.gov/member-data/party-breakdown",
+   "https://clerk.house.gov/xml/lists/MemberData.xml"
+  ]
+ },
+ "senate": [
+  {
+   "state": "Alabama",
+   "usps": "AL",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Barry Moore",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/alabama-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/alabama-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/alabama-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Alaska",
+   "usps": "AK",
+   "special": false,
+   "prev_party": "R",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/alaska-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/alaska-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/alaska-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Arkansas",
+   "usps": "AR",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Tom Cotton",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/arkansas-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/arkansas-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/arkansas-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Colorado",
+   "usps": "CO",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "John Hickenlooper",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/colorado-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/colorado-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/colorado-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Delaware",
+   "usps": "DE",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Chris Coons",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/delaware-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/delaware-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/delaware-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Florida",
+   "usps": "FL",
+   "special": true,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Ashley Moody",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/florida-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/florida-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-special-elections/florida-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+    "https://ballotpedia.org/United_States_Senate_elections,_2026"
+   ]
+  },
+  {
+   "state": "Georgia",
+   "usps": "GA",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Jon Ossoff",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/georgia-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/georgia-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/georgia-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Idaho",
+   "usps": "ID",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Jim Risch",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/idaho-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/idaho-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/idaho-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Illinois",
+   "usps": "IL",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Juliana Stratton",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/illinois-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/illinois-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/illinois-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Iowa",
+   "usps": "IA",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Josh Turek",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/iowa-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/iowa-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/iowa-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/miniblog.json"
+   ]
+  },
+  {
+   "state": "Kansas",
+   "usps": "KS",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Adam Hamilton",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/kansas-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/kansas-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/kansas-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+    "https://en.wikipedia.org/wiki/List_of_United_States_senators_from_Kansas",
+    "https://www.npr.org/2026/11/03/g-s1-151587/kansas-senate-race-hamilton-marshall",
+    "https://www.axios.com/2026/11/04/kansas-senate-results-marshall-adam-hamilton"
+   ]
+  },
+  {
+   "state": "Kentucky",
+   "usps": "KY",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Andy Barr",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/kentucky-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/kentucky-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/kentucky-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Louisiana",
+   "usps": "LA",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Julia Letlow",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/louisiana-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/louisiana-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/louisiana-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Maine",
+   "usps": "ME",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Troy Jackson",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/maine-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/maine-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/maine-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Massachusetts",
+   "usps": "MA",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Ed Markey",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/massachusetts-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/massachusetts-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/massachusetts-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Michigan",
+   "usps": "MI",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Abdul El-Sayed",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/michigan-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/michigan-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/michigan-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Minnesota",
+   "usps": "MN",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Peggy Flanagan",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/minnesota-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/minnesota-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/minnesota-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Mississippi",
+   "usps": "MS",
+   "special": false,
+   "prev_party": "R",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/mississippi-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/mississippi-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/mississippi-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Montana",
+   "usps": "MT",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Kurt Alme",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/montana-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/montana-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/montana-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://flatheadbeacon.com/2026/03/04/daines-withdraws-from-u-s-senate-race/"
+   ]
+  },
+  {
+   "state": "Nebraska",
+   "usps": "NE",
+   "special": false,
+   "prev_party": "R",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/nebraska-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/nebraska-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/nebraska-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "New Hampshire",
+   "usps": "NH",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Chris Pappas",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/new-hampshire-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/new-hampshire-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/new-hampshire-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "New Jersey",
+   "usps": "NJ",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Cory Booker",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/new-jersey-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/new-jersey-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/new-jersey-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "New Mexico",
+   "usps": "NM",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Ben Ray Luján",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/new-mexico-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/new-mexico-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/new-mexico-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "North Carolina",
+   "usps": "NC",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Roy Cooper",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/north-carolina-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/north-carolina-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/north-carolina-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Ohio",
+   "usps": "OH",
+   "special": true,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Sherrod Brown",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/ohio-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/ohio-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-special-elections/ohio-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+    "https://ballotpedia.org/United_States_Senate_elections,_2026"
+   ]
+  },
+  {
+   "state": "Oklahoma",
+   "usps": "OK",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Kevin Hern",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/oklahoma-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/oklahoma-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/oklahoma-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/news/alan-armstrong-oklahoma-senator-markwayne-mullin/",
+    "https://www.washingtonpost.com/politics/2026/03/24/mullins-senate-replacement-armstrong/"
+   ]
+  },
+  {
+   "state": "Oregon",
+   "usps": "OR",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Jeff Merkley",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/oregon-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/oregon-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/oregon-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Rhode Island",
+   "usps": "RI",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Jack Reed",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/rhode-island-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/rhode-island-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/rhode-island-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "South Carolina",
+   "usps": "SC",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Annie Andrews",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/south-carolina-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/south-carolina-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/south-carolina-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/",
+    "https://www.ksl.com/article/news/politics/sen-lindsey-graham-dies-after-a-brief-and-unexpected-illness-his-office-says/51596783",
+    "https://www.tmj4.com/politics/south-carolina-governor-appoints-lindsey-grahams-sister-to-serve-out-his-term",
+    "https://www.npr.org/2026/08/25/nx-s1-5943041/south-carolina-senate-runoff-graham-norman-trump-endorsement"
+   ]
+  },
+  {
+   "state": "South Dakota",
+   "usps": "SD",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Mike Rounds",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/south-dakota-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/south-dakota-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/south-dakota-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Tennessee",
+   "usps": "TN",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Bill Hagerty",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/tennessee-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/tennessee-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/tennessee-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Texas",
+   "usps": "TX",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "James Talarico",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/texas-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/texas-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/texas-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Virginia",
+   "usps": "VA",
+   "special": false,
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Mark Warner",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/virginia-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/virginia-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/virginia-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "West Virginia",
+   "usps": "WV",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Shelley Moore Capito",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/west-virginia-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/west-virginia-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/west-virginia-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  },
+  {
+   "state": "Wyoming",
+   "usps": "WY",
+   "special": false,
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Harriet Hageman",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/wyoming-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/wyoming-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/wyoming-senate-results",
+    "https://politics.api.cnn.io/results/national-races/2026-SG.json"
+   ]
+  }
+ ],
+ "governors": [
+  {
+   "state": "Alabama",
+   "usps": "AL",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Tommy Tuberville",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/alabama-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/alabama-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/alabama-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Alaska",
+   "usps": "AK",
+   "prev_party": "R",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/alaska-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/alaska-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/alaska-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Arizona",
+   "usps": "AZ",
+   "prev_party": "D",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/arizona-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/arizona-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/arizona-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Arkansas",
+   "usps": "AR",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Sarah Huckabee Sanders",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/arkansas-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/arkansas-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/arkansas-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "California",
+   "usps": "CA",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Xavier Becerra",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/california-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/california-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/california-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Colorado",
+   "usps": "CO",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Phil Weiser",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/colorado-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/colorado-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/colorado-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Connecticut",
+   "usps": "CT",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Ned Lamont",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/connecticut-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/connecticut-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/connecticut-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Florida",
+   "usps": "FL",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Byron Donalds",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/florida-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/florida-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/florida-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Georgia",
+   "usps": "GA",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Keisha Lance Bottoms",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/georgia-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/georgia-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/georgia-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Hawaii",
+   "usps": "HI",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Josh Green",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/hawaii-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/hawaii-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/hawaii-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Idaho",
+   "usps": "ID",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Brad Little",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/idaho-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/idaho-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/idaho-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Illinois",
+   "usps": "IL",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "JB Pritzker",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/illinois-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/illinois-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/illinois-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Iowa",
+   "usps": "IA",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Rob Sand",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/iowa-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/iowa-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/iowa-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Kansas",
+   "usps": "KS",
+   "prev_party": "D",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/kansas-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/kansas-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/kansas-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Maine",
+   "usps": "ME",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Hannah Pingree",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/maine-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/maine-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/maine-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Maryland",
+   "usps": "MD",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Wes Moore",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/maryland-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/maryland-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/maryland-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Massachusetts",
+   "usps": "MA",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Maura Healey",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/massachusetts-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/massachusetts-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/massachusetts-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Michigan",
+   "usps": "MI",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Jocelyn Benson",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/michigan-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/michigan-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/michigan-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Minnesota",
+   "usps": "MN",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Amy Klobuchar",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/minnesota-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/minnesota-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/minnesota-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+   ]
+  },
+  {
+   "state": "Nebraska",
+   "usps": "NE",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Jim Pillen",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/nebraska-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/nebraska-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/nebraska-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Nevada",
+   "usps": "NV",
+   "prev_party": "R",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/nevada-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/nevada-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/nevada-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://thenevadaindependent.com/article/nevada-2026-election-live-updates-what-were-watching",
+    "https://www.2news.com/news/local/nevada-polls-close-vote-tabulation-begins-those-in-line-can-still-cast-ballots/article_a9f78daf-930f-4cb1-89a6-50acac13efb7.html"
+   ]
+  },
+  {
+   "state": "New Hampshire",
+   "usps": "NH",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Kelly Ayotte",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/new-hampshire-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/new-hampshire-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/new-hampshire-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "New Mexico",
+   "usps": "NM",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Deb Haaland",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/new-mexico-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/new-mexico-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/new-mexico-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "New York",
+   "usps": "NY",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Kathy Hochul",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/new-york-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/new-york-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/new-york-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Ohio",
+   "usps": "OH",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Amy Acton",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/ohio-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/ohio-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/ohio-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Oklahoma",
+   "usps": "OK",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Mike Mazzei",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/oklahoma-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/oklahoma-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/oklahoma-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Oregon",
+   "usps": "OR",
+   "prev_party": "D",
+   "status": "not_called",
+   "ap_url": "https://apnews.com/projects/elections-2026/oregon-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/oregon-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/oregon-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Pennsylvania",
+   "usps": "PA",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Josh Shapiro",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/pennsylvania-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/pennsylvania-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/pennsylvania-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Rhode Island",
+   "usps": "RI",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "Helena Foulkes",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/rhode-island-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/rhode-island-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/rhode-island-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "South Carolina",
+   "usps": "SC",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Alan Wilson",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/south-carolina-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/south-carolina-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/south-carolina-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "South Dakota",
+   "usps": "SD",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Larry Rhoden",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/south-dakota-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/south-dakota-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/south-dakota-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Tennessee",
+   "usps": "TN",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Marsha Blackburn",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/tennessee-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/tennessee-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/tennessee-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+   ]
+  },
+  {
+   "state": "Texas",
+   "usps": "TX",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Gina Hinojosa",
+   "winner_party": "D",
+   "flip": true,
+   "ap_url": "https://apnews.com/projects/elections-2026/texas-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/texas-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/texas-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json",
+    "https://www.cbsnews.com/live-updates/election-day-2026-midterms/"
+   ]
+  },
+  {
+   "state": "Vermont",
+   "usps": "VT",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Phil Scott",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/vermont-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/vermont-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/vermont-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Wisconsin",
+   "usps": "WI",
+   "prev_party": "D",
+   "status": "called",
+   "winner": "David Crowley",
+   "winner_party": "D",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/wisconsin-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/wisconsin-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/wisconsin-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  },
+  {
+   "state": "Wyoming",
+   "usps": "WY",
+   "prev_party": "R",
+   "status": "called",
+   "winner": "Eric Barlow",
+   "winner_party": "R",
+   "flip": false,
+   "ap_url": "https://apnews.com/projects/elections-2026/wyoming-results/",
+   "sources": [
+    "https://apnews.com/projects/elections-2026/wyoming-results/",
+    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
+    "https://www.nbcnews.com/politics/2026-elections/wyoming-governor-results",
+    "https://politics.api.cnn.io/results/national-races/2026-GG.json"
+   ]
+  }
+ ]
+}
