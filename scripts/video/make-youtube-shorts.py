@@ -45,6 +45,14 @@ for v in bank:
     if len(desc) > 5000 or len(tags) > 500: sys.exit(f'video {v["n"]}: description or tags too long')
     rows.append({'n': v['n'], 'playlist': playlist, 'title': title, 'description': desc, 'tags': tags,
                  'video': v['url'].replace('/media/videos/', '/media/videos/tiktok/')})
+# The bot reads the title and description from data/videos.json.
+bank_path = os.path.join(ROOT, 'data/videos.json')
+full = json.load(open(bank_path, encoding='utf-8'))
+by_n = {r['n']: r for r in rows}
+for v in full['videos']:
+    v['youtube'] = {'title': by_n[v['n']]['title'], 'description': by_n[v['n']]['description']}
+json.dump(full, open(bank_path, 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
+open(bank_path, 'a').write('\n')
 out = os.path.join(HERE, 'youtube', 'shorts.csv')
 with open(out, 'w', newline='', encoding='utf-8') as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)

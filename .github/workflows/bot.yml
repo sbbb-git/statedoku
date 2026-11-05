@@ -6,8 +6,13 @@ name: Posting bot (Buffer)
 #
 #   check   validates BUFFER_TOKEN against Buffer, finds the X channel, and
 #           lists the names of the worker's current secrets. Changes nothing.
-#   deploy  the same checks, then deploys bot/ and sets BUFFER_TOKEN and
-#           BUFFER_CHANNEL_ID on the worker. From then on it posts on its crons.
+#   deploy  the same checks, then deploys bot/ and sets BUFFER_TOKEN,
+#           BUFFER_CHANNEL_ID and, when those channels are connected,
+#           BUFFER_TIKTOK_CHANNEL_ID and BUFFER_YOUTUBE_CHANNEL_ID on the
+#           worker. From then on it posts on its crons.
+#   post    one post now through Buffer (bot/buffer-post.mjs): target x with
+#           text, or target shorts / tiktok / youtube with a video number of
+#           data/videos.json. Changes nothing on the worker.
 #
 # The repo is public and so are these logs: nothing here prints a key or an id.
 
@@ -15,10 +20,23 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'check changes nothing; deploy turns posting on'
+        description: 'check changes nothing; deploy turns posting on; post sends one post now'
         type: choice
-        options: [check, deploy]
+        options: [check, deploy, post]
         default: check
+      target:
+        description: 'post only: x (with text), shorts, tiktok or youtube (with video)'
+        type: choice
+        options: [x, shorts, tiktok, youtube]
+        default: x
+      text:
+        description: 'post to x only: the text'
+        type: string
+        default: ''
+      video:
+        description: 'post to shorts, tiktok or youtube only: video number in data/videos.json'
+        type: string
+        default: '1'
 
 permissions:
   contents: read
@@ -34,6 +52,15 @@ jobs:
         env:
           BUFFER_TOKEN: ${{ secrets.BUFFER_TOKEN }}
         run: node bot/buffer-check.mjs
+
+      - name: Post once through Buffer
+        if: inputs.mode == 'post'
+        env:
+          BUFFER_TOKEN: ${{ secrets.BUFFER_TOKEN }}
+          POST_TARGET: ${{ inputs.target }}
+          POST_TEXT: ${{ inputs.text }}
+          POST_VIDEO: ${{ inputs.video }}
+        run: node bot/buffer-post.mjs
 
       - name: Check the tweet bank served by the site
         run: |
@@ -82,4 +109,12 @@ jobs:
             echo "::error::wrangler deploy failed (error lines above, the rest kept out of the public log)"; exit 1; }
           printf '%s' "$BUFFER_TOKEN" | npx --yes wrangler@3.114.17 secret put BUFFER_TOKEN > "$RUNNER_TEMP/s1.log" 2>&1 || { echo "::error::could not set BUFFER_TOKEN"; exit 1; }
           printf '%s' "$BUFFER_CHANNEL_ID" | npx --yes wrangler@3.114.17 secret put BUFFER_CHANNEL_ID > "$RUNNER_TEMP/s2.log" 2>&1 || { echo "::error::could not set BUFFER_CHANNEL_ID"; exit 1; }
-          echo "::notice title=Bot deployed::worker deployed, BUFFER_TOKEN and BUFFER_CHANNEL_ID set"
+          set_list="BUFFER_TOKEN, BUFFER_CHANNEL_ID"
+          # The video channels, when buffer-check found them (TikTok and YouTube Shorts in the evening run).
+          for name in BUFFER_TIKTOK_CHANNEL_ID BUFFER_YOUTUBE_CHANNEL_ID; do
+            val="${!name:-}"
+            [ -n "$val" ] || continue
+            printf '%s' "$val" | npx --yes wrangler@3.114.17 secret put "$name" > "$RUNNER_TEMP/s-$name.log" 2>&1 || { echo "::error::could not set $name"; exit 1; }
+            set_list="$set_list, $name"
+          done
+          echo "::notice title=Bot deployed::worker deployed, $set_list set"

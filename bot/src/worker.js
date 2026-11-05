@@ -118,8 +118,13 @@ async function bufferGraphQL(query, env) {
   return { ok: resp.ok, status: resp.status, json, body: body.slice(0, 600) };
 }
 
-async function postBuffer(text, env, nowMs, videoUrl = null) {
+// opts.channelId posts to another Buffer channel than the X one, and
+// opts.metadata is the service block of createPost, already in GraphQL syntax
+// (see shortsMetadata).
+async function postBuffer(text, env, nowMs, videoUrl = null, opts = {}) {
   const dueAt = new Date(nowMs + BUFFER_LEAD_MS).toISOString();
+  const channelId = opts.channelId || env.BUFFER_CHANNEL_ID;
+  const metadata = opts.metadata ? `,\n      metadata: ${opts.metadata}` : '';
   // GraphQL strings need their quotes and newlines escaped; the tweets contain both.
   const safe = JSON.stringify(text);
   // Buffer takes no upload: a video goes in as a public URL it fetches at post time.
@@ -127,10 +132,10 @@ async function postBuffer(text, env, nowMs, videoUrl = null) {
   const q = `mutation {
     createPost(input: {
       text: ${safe},
-      channelId: ${JSON.stringify(env.BUFFER_CHANNEL_ID)},
+      channelId: ${JSON.stringify(channelId)},
       schedulingType: automatic,
       mode: customScheduled,
-      dueAt: ${JSON.stringify(dueAt)}${assets}
+      dueAt: ${JSON.stringify(dueAt)}${assets}${metadata}
     }) {
       ... on PostActionSuccess { post { id dueAt } }
       ... on MutationError { message }
@@ -325,6 +330,46 @@ async function pickVideo(nowMs) {
   return v ? { text: v.text, url: v.url, meta: { slot: 'video', idx, of: bank.videos.length, slug: v.slug } } : null;
 }
 
+// TikTok and YouTube Shorts (from 5 November 2026). The evening run, 23:00 UTC,
+// the end of the afternoon in the US, posts one video a day there, counted from
+// the list's shorts_epoch, in the safe-zone version (vertical_url) whose
+// subtitles stay clear of the platforms' overlays, with each platform's own
+// text: a TikTok caption with no link (not clickable there), a YouTube title
+// and description. Category 27 is Education; madeForKids false (general
+// audience, see scripts/video/youtube/README.md); TikTok gets the AI-generated
+// label, the voice being synthetic. Each platform is on only when its channel
+// id is set, and one failing never stops the other or the X post.
+async function pickShort(nowMs) {
+  const resp = await fetch(VIDEO_BANK_URL, { cf: { cacheTtl: 3600, cacheEverything: true } });
+  if (!resp.ok) throw new Error('video bank fetch ' + resp.status);
+  const bank = await resp.json();
+  if (!bank.shorts_epoch) return null;
+  const idx = Math.floor((nowMs - Date.parse(bank.shorts_epoch + 'T00:00:00Z')) / 86400000);
+  const v = idx >= 0 ? (bank.videos || [])[idx] : null;
+  if (!v || !v.vertical_url || !v.tiktok || !v.youtube) return null;
+  return { v, meta: { slot: 'shorts', idx, of: bank.videos.length, slug: v.slug } };
+}
+
+function shortsMetadata(service, v) {
+  if (service === 'tiktok') return '{ tiktok: { isAiGenerated: true } }';
+  return `{ youtube: { title: ${JSON.stringify(v.youtube.title)}, categoryId: "27", madeForKids: false, notifySubscribers: true } }`;
+}
+
+async function postShorts(env, now, dryRun) {
+  const targets = [['tiktok', env.BUFFER_TIKTOK_CHANNEL_ID], ['youtube', env.BUFFER_YOUTUBE_CHANNEL_ID]].filter(([, id]) => id);
+  if (!targets.length || !env.BUFFER_TOKEN) return null;
+  const s = await pickShort(now).catch(e => { console.error('[Statedoku Bot] shorts list unavailable:', e.message); return null; });
+  if (!s) return { skipped: 'no short for this day' };
+  const out = { meta: s.meta, video: s.v.vertical_url, results: {} };
+  for (const [service, channelId] of targets) {
+    const text = service === 'tiktok' ? s.v.tiktok : s.v.youtube.description;
+    if (dryRun) { out.results[service] = { dry_run: true, text, metadata: shortsMetadata(service, s.v) }; continue; }
+    try { out.results[service] = await postBuffer(text, env, now, s.v.vertical_url, { channelId, metadata: shortsMetadata(service, s.v) }); }
+    catch (e) { out.results[service] = { ok: false, status: 0, body: e.message }; }
+  }
+  return out;
+}
+
 async function pickFromBank(env, nowMs) {
   const resp = await fetch(TWEET_BANK_URL, { cf: { cacheTtl: 3600, cacheEverything: true } });
   if (!resp.ok) throw new Error('bank fetch ' + resp.status);
@@ -381,7 +426,8 @@ async function _runOnce(env, { dryRun = false, customText = null, now = Date.now
     }
   }
 
-  if (dryRun) return { dry_run: true, phase: PHASE, source, meta, tweet, networks: _enabledNetworks(env) };
+  const shorts = !customText && _daySlot(now).slot === 'page' ? await postShorts(env, now, dryRun) : null;
+  if (dryRun) return { dry_run: true, phase: PHASE, source, meta, tweet, networks: _enabledNetworks(env), shorts };
 
   // Post to every network that has credentials configured. One network failing
   // must not stop the others, so each is settled independently.
@@ -397,7 +443,8 @@ async function _runOnce(env, { dryRun = false, customText = null, now = Date.now
       results[net] = { ok: false, status: 0, body: e.message };
     }
   }
-  return { phase: PHASE, source, meta, tweet, networks: nets, results };
+  if (shorts?.results) for (const [service, res] of Object.entries(shorts.results)) results[service] = res;
+  return { phase: PHASE, source, meta, tweet, networks: nets, results, shorts: shorts?.meta || shorts?.skipped || null };
 }
 
 // A network is on when its secrets are present, so switching route is a matter

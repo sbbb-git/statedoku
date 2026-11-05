@@ -38,6 +38,15 @@ for v in bank:
     if re.search('[‒–—]', cap): sys.exit(f'unicode dash in caption {v["n"]}')
     if len(cap) > 2200: sys.exit(f'caption {v["n"]} too long')
     rows.append({'n': v['n'], 'series': s['series'], 'title': s['title'], 'caption': cap, 'video': v['url']})
+# The bot reads the caption and the safe-zone URL from data/videos.json.
+bank_path = os.path.join(ROOT, 'data/videos.json')
+full = json.load(open(bank_path, encoding='utf-8'))
+by_n = {r['n']: r for r in rows}
+for v in full['videos']:
+    v['tiktok'] = by_n[v['n']]['caption']
+    v['vertical_url'] = v['url'].replace('/media/videos/', '/media/videos/tiktok/')
+json.dump(full, open(bank_path, 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
+open(bank_path, 'a').write('\n')
 out = os.path.join(HERE, 'tiktok', 'captions.csv')
 with open(out, 'w', newline='', encoding='utf-8') as f:
     w = csv.DictWriter(f, fieldnames=['n', 'series', 'title', 'caption', 'video']); w.writeheader(); w.writerows(rows)

@@ -9,6 +9,11 @@
 // Exits 1 with a plain reason when the key is missing or refused, or when no
 // single X channel can be picked (one channel, or the one named BUFFER_X_HANDLE,
 // default "statedoku").
+//
+// Since 5 November 2026 it also looks for one TikTok and one YouTube channel.
+// Each one found is masked and passed on as BUFFER_TIKTOK_CHANNEL_ID or
+// BUFFER_YOUTUBE_CHANNEL_ID, and the bot posts the day's video there. Neither
+// is required: a missing one is reported, not an error.
 import fs from 'node:fs';
 
 const token = (process.env.BUFFER_TOKEN || '').trim();
@@ -46,6 +51,7 @@ const orgs = (await gql('query { account { organizations { id name } } }'))?.acc
 let total = 0;
 const services = {};
 const xChannels = [];
+const videoChannels = { tiktok: [], youtube: [] };
 for (const org of orgs) {
   const channels = (await gql(
     `query { channels(input: { organizationId: ${JSON.stringify(org.id)} }) { id name service } }`
@@ -54,6 +60,8 @@ for (const org of orgs) {
     total++;
     services[c.service] = (services[c.service] || 0) + 1;
     if (/twitter|^x$/i.test(c.service || '')) xChannels.push(c);
+    if (/tiktok/i.test(c.service || '')) videoChannels.tiktok.push(c);
+    if (/youtube/i.test(c.service || '')) videoChannels.youtube.push(c);
   }
 }
 
@@ -78,3 +86,15 @@ const id = picked[0].id;
 console.log(`::add-mask::${id}`);
 console.log('One X channel found, its id is passed on as BUFFER_CHANNEL_ID.');
 if (process.env.GITHUB_ENV) fs.appendFileSync(process.env.GITHUB_ENV, `BUFFER_CHANNEL_ID=${id}\n`);
+
+// Video channels: exactly one each, or none (then the bot skips that platform).
+for (const [svc, list] of Object.entries(videoChannels)) {
+  const env = `BUFFER_${svc.toUpperCase()}_CHANNEL_ID`;
+  if (list.length === 1) {
+    console.log(`::add-mask::${list[0].id}`);
+    console.log(`One ${svc} channel found, its id is passed on as ${env}.`);
+    if (process.env.GITHUB_ENV) fs.appendFileSync(process.env.GITHUB_ENV, `${env}=${list[0].id}\n`);
+  } else {
+    console.log(`${list.length} ${svc} channel(s) in Buffer: ${env} not set, the bot will not post the video there.`);
+  }
+}
