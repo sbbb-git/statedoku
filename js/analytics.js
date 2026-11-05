@@ -15,7 +15,7 @@ const Analytics = (() => {
       const u = (new URLSearchParams(location.search).get('utm_source') || '').toLowerCase();
       if (u === 'share') return 'share';
       if (u.startsWith('pwa')) return 'pwa';
-      if (u === 'x' || u === 'bluesky' || u === 'mastodon') return 'social';
+      if (u === 'x' || u === 'tiktok' || u === 'bluesky' || u === 'mastodon') return 'social';
       if (u) return 'other';
       if (!document.referrer) return 'direct';
       const r = new URL(document.referrer);
