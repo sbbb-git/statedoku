@@ -14,6 +14,7 @@ Créer la chaîne depuis un compte Google ouvert avec `contact@statedoku.com`
 | Identifiant | `@statedoku` (sinon `@statedokugame`) |
 | Photo | `scripts/video/tiktok/profile-photo.png` (1080 x 1080, YouTube la réduit) |
 | Bannière | `scripts/video/youtube/banner.png` (2560 x 1440 ; logo, nom et accroche tiennent dans la zone visible sur mobile, 1546 x 423) |
+| Filigrane | `scripts/video/youtube/watermark.png` (150 x 150, PNG ; Personnalisation, Branding, Filigrane vidéo, affichage « Toute la vidéo ») |
 | Lien | `Play the daily puzzle` vers `https://statedoku.com/?utm_source=youtube&utm_medium=social` |
 | Pays | France (là où est l'éditeur) |
 | Langue des vidéos | Anglais |
