@@ -1,6 +1,6 @@
 {
- "as_of_utc": "2026-11-04T09:18:00Z",
- "note": "Only AP race calls count as called; every called row is cross-checked with at least one other outlet (sources). Update with scripts/content/DAILY.md, Current events. Checked by a second, independent pass at 08:27 UTC on 4 November (118 claims). Updated with data read at 09:18 UTC on 4 November: Nebraska Senate (AP call 3:27 a.m. EST) and Oregon governor (AP call 3:49 a.m. EST), each read in AP's own wire copy and confirmed by CNN and NBC News; House tally unchanged from 08:27 UTC, no AP count readable. Second pass: 19 claims, 17 confirmed, 2 unverifiable (Alaska Senate and governor still uncalled, kept not_called).",
+ "as_of_utc": "2026-11-05T09:15:00Z",
+ "note": "Only AP race calls count as called; every called row is cross-checked with at least one other outlet (sources). Update with scripts/content/DAILY.md, Current events. Checked by a second, independent pass at 08:27 UTC on 4 November (118 claims). Updated with data read at 09:18 UTC on 4 November: Nebraska Senate (AP call 3:27 a.m. EST) and Oregon governor (AP call 3:49 a.m. EST), each read in AP's own wire copy and confirmed by CNN and NBC News; House tally unchanged from 08:27 UTC, no AP count readable. Second pass: 19 claims, 17 confirmed, 2 unverifiable (Alaska Senate and governor still uncalled, kept not_called). Updated with data read at 09:15 UTC on 5 November: Nevada governor (Ford, D, a flip; AP call 4:46 a.m. EST on 4 November) from AP's wire copy, confirmed by CNN and NPR; AP's list of uncalled races (4 p.m. ET, 4 November) still names Alaska and Mississippi Senate and Alaska and Kansas governor. House tally still from 08:27 UTC on 4 November: AP gave 59 uncalled House races where party control of the seat is at stake (AP wording) at 4 p.m. ET, with no party split. Second pass: 21 claims, 0 wrong.",
  "senate_before": {
   "R": 53,
   "D": 45,
@@ -990,7 +990,10 @@
    "state": "Nevada",
    "usps": "NV",
    "prev_party": "R",
-   "status": "not_called",
+   "status": "called",
+   "winner": "Aaron Ford",
+   "winner_party": "D",
+   "flip": true,
    "ap_url": "https://apnews.com/projects/elections-2026/nevada-results/",
    "sources": [
     "https://apnews.com/projects/elections-2026/nevada-results/",
@@ -998,7 +1001,9 @@
     "https://www.nbcnews.com/politics/2026-elections/nevada-governor-results",
     "https://politics.api.cnn.io/results/national-races/2026-GG.json",
     "https://thenevadaindependent.com/article/nevada-2026-election-live-updates-what-were-watching",
-    "https://www.2news.com/news/local/nevada-polls-close-vote-tabulation-begins-those-in-line-can-still-cast-ballots/article_a9f78daf-930f-4cb1-89a6-50acac13efb7.html"
+    "https://www.2news.com/news/local/nevada-polls-close-vote-tabulation-begins-those-in-line-can-still-cast-ballots/article_a9f78daf-930f-4cb1-89a6-50acac13efb7.html",
+    "https://www.duboiscountyherald.com/ap/ap_national_news/democrat-aaron-ford-wins-election-for-governor-in-nevada/article_612377f1-1f95-5265-b5dd-d87c3ad163af.html",
+    "https://www.npr.org/2026/11/04/g-s1-151138/midterms-ford-nevada-governor-lombardo"
    ]
   },
   {
