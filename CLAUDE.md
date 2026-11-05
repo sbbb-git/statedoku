@@ -471,6 +471,28 @@ Build a new batch, append it to the list with a later epoch or extend it, and
 redeploy the bot only if `bot/` changed (workflow "Posting bot (Buffer)", mode
 deploy).
 
+From 5 November 2026 the same 100 videos also go to **TikTok (@statedoku) and
+YouTube Shorts (@Statedoku)**, one a day in the 23:00 UTC run (late afternoon
+in the US), counted from `shorts_epoch` in `data/videos.json` (video 1 was
+posted by hand that day). They use the safe-zone versions under
+`media/videos/tiktok/` (subtitles raised above the platforms' overlay, built by
+`scripts/video/make-tiktok-videos.sh`) and each platform's own text, stored in
+`data/videos.json` by `scripts/video/make-tiktok-captions.py` (no link, TikTok
+does not make it clickable; AI-generated label, the voice is synthetic) and
+`scripts/video/make-youtube-shorts.py` (title, description, category
+Education, not made for kids). Re-run both after `build-bank.cjs`, which would
+drop those fields. The Buffer account is Statedoku's alone since 5 November
+(X, TikTok, YouTube; Coincheur has its own): `bot/buffer-check.mjs` finds the
+three channels and the deploy mode sets their ids on the worker. Mode `post`
+of the bot workflow sends one post now (`bot/buffer-post.mjs`): text to X, or
+a video of the list to TikTok and YouTube. The packs (profile, bio, banner,
+settings) are in `scripts/video/tiktok/` and `scripts/video/youtube/`.
+
+Every footer links the three accounts (X, TikTok, YouTube, `rel="me"`) next to
+the Reddit community, except about, privacy and terms (untouched during the
+AdSense review) and the widget screens; the homepages list them in `sameAs`.
+The footer is boilerplate for `reader_text`, so this dated no page.
+
 Every tweet carries one or two hashtags, in a rotation per angle rather than one
 fixed block, which X reads as a spam signal when it repeats across hundreds of
 scheduled posts. `scripts/add-tweet-hashtags.py` is idempotent and must be
