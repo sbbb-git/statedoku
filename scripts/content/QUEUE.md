@@ -34,6 +34,11 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     prints the House date apart (`house_control.as_of_utc`). Next update: find an
     AP House count (AP wire copy, or NBC/CNN pages that state AP's numbers),
     then the five open races.
+    Update 5 November, data read 09:15 UTC (8d676bae7): Nevada governor (Ford,
+    D, a flip) called by AP. Still not called: Senate AK, MS; governors AK, KS
+    (AP's list at 4 p.m. ET on 4 November). The House tally is still the one of
+    4 November 08:27 UTC: AP's article gave 59 uncalled seats where control is at
+    stake, with no party split. Next update: an AP House count by party, first.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
