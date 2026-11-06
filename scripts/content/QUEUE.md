@@ -39,6 +39,10 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     (AP's list at 4 p.m. ET on 4 November). The House tally is still the one of
     4 November 08:27 UTC: AP's article gave 59 uncalled seats where control is at
     stake, with no party split. Next update: an AP House count by party, first.
+    6 November, 09:13 UTC: no change. CNN still shows the four races open (AK
+    Senate and governor, MS Senate, KS governor); no AP House count by party
+    could be read (search results gave conflicting second-hand tallies), so
+    nothing was edited and the day's unit went to item 1.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
@@ -58,7 +62,7 @@ about the states, two to four weeks ahead, one at a time.
 Three ranking pages say "map" in their title and carry none. These come first:
 the pages are already shown, the queries already exist, nothing new competes.
 
-1. `todo` **13 colonies map** on `/learn/13-colonies/`, then `/fr/learn/13-colonies/`
+1. `done 2026-11-06 54306fac7` (the pages already drew the 13 on a JS map of the whole country, which the "no map" check had missed: it greps for `<svg`; added a regional East Coast map, `img/maps/13-colonies-regions.svg` from `scripts/build-13-colonies-map.py`, legend per language, a note on the borders that differ; fact-checker 15 claims, 0 wrong) **13 colonies map** on `/learn/13-colonies/`, then `/fr/learn/13-colonies/`
    and `/es/learn/13-colonies/`. Title "13 Original Colonies in Order: Full List,
    Map, Dates", no map on the page. Demand: "13 colonies" 12,411, "13 colonies
    map" 10,035. Page: 3,231 impressions a week, position 6, 31 clicks. Map of the
