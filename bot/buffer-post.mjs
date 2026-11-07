@@ -4,6 +4,11 @@
 //                shorts   video POST_VIDEO of data/videos.json goes to TikTok and
 //                         YouTube, as the bot's evening run would post it
 //                tiktok / youtube   the same, one platform
+//   POST_VIDEO   one number, or several separated by commas
+//   POST_AT      optional, as many ISO times as videos (UTC, e.g.
+//                2026-11-08T15:00:00Z): each video is scheduled in Buffer at its
+//                time instead of two minutes from now. The free plan keeps 10
+//                posts in a channel's queue.
 //
 // Channel ids come from bot/buffer-check.mjs through GITHUB_ENV. The repo and
 // its Actions logs are public: this prints the platform, the due time and
@@ -25,9 +30,9 @@ async function gql(query) {
   try { return JSON.parse(text); } catch { return { errors: [{ message: `HTTP ${r.status}, body not JSON` }] }; }
 }
 
-async function post(label, channelId, text, videoUrl, metadata) {
+async function post(label, channelId, text, videoUrl, metadata, at = null) {
   if (!channelId) { console.log(`::error::no ${label} channel id (is the channel connected in Buffer?)`); return false; }
-  const dueAt = new Date(Date.now() + 2 * 60 * 1000).toISOString();
+  const dueAt = at || new Date(Date.now() + 2 * 60 * 1000).toISOString();
   // Text-only posts leave assets out, as the worker's working X posts do.
   const assets = videoUrl ? `assets: [{ video: { url: ${JSON.stringify(videoUrl)} } }],` : '';
   const meta = metadata ? `metadata: ${metadata},` : '';
@@ -50,17 +55,28 @@ if (target === 'x') {
   if (/[‒–—]/.test(text)) { console.log('::error::no unicode dash in a post (CLAUDE.md)'); process.exit(1); }
   ok = await post('X', process.env.BUFFER_CHANNEL_ID, text, null, null);
 } else if (['shorts', 'tiktok', 'youtube'].includes(target)) {
-  const n = Number(process.env.POST_VIDEO || '1');
+  const ns = String(process.env.POST_VIDEO || '1').split(',').map((x) => Number(x.trim())).filter(Boolean);
+  const ats = String(process.env.POST_AT || '').split(',').map((x) => x.trim()).filter(Boolean);
+  if (ats.length && ats.length !== ns.length) { console.log(`::error::${ns.length} videos but ${ats.length} times`); process.exit(1); }
+  for (const a of ats) {
+    if (!Number.isFinite(Date.parse(a)) || Date.parse(a) < Date.now() + 2 * 60 * 1000) { console.log(`::error::time ${a} is not a future ISO time`); process.exit(1); }
+  }
   const bank = JSON.parse(fs.readFileSync(new URL('../data/videos.json', import.meta.url), 'utf8'));
-  const v = (bank.videos || []).find((x) => x.n === n);
-  if (!v || !v.vertical_url || !v.tiktok || !v.youtube) { console.log(`::error::video ${n} has no vertical_url, tiktok or youtube field`); process.exit(1); }
-  const code = (await fetch(v.vertical_url, { method: 'HEAD' })).status;
-  if (code !== 200) { console.log(`::error::video ${n} answers ${code}, Buffer could not fetch it`); process.exit(1); }
-  console.log(`Video ${n} (${v.slug}) answers 200.`);
-  if (target !== 'youtube') ok = (await post('TikTok', process.env.BUFFER_TIKTOK_CHANNEL_ID, v.tiktok, v.vertical_url,
-    '{ tiktok: { isAiGenerated: true } }')) && ok;
-  if (target !== 'tiktok') ok = (await post('YouTube', process.env.BUFFER_YOUTUBE_CHANNEL_ID, v.youtube.description, v.vertical_url,
-    `{ youtube: { title: ${JSON.stringify(v.youtube.title)}, categoryId: "27", madeForKids: false, notifySubscribers: true } }`)) && ok;
+  const videos = ns.map((n) => (bank.videos || []).find((x) => x.n === n));
+  for (const [i, v] of videos.entries()) {
+    if (!v || !v.vertical_url || !v.tiktok || !v.youtube) { console.log(`::error::video ${ns[i]} has no vertical_url, tiktok or youtube field`); process.exit(1); }
+    const code = (await fetch(v.vertical_url, { method: 'HEAD' })).status;
+    if (code !== 200) { console.log(`::error::video ${ns[i]} answers ${code}, Buffer could not fetch it`); process.exit(1); }
+  }
+  console.log(`${videos.length} video(s) checked, each answers 200.`);
+  for (const [i, v] of videos.entries()) {
+    const at = ats[i] ? new Date(ats[i]).toISOString() : null;
+    const label = `video ${v.n} (${v.slug})`;
+    if (target !== 'youtube') ok = (await post(`TikTok ${label}`, process.env.BUFFER_TIKTOK_CHANNEL_ID, v.tiktok, v.vertical_url,
+      '{ tiktok: { isAiGenerated: true } }', at)) && ok;
+    if (target !== 'tiktok') ok = (await post(`YouTube ${label}`, process.env.BUFFER_YOUTUBE_CHANNEL_ID, v.youtube.description, v.vertical_url,
+      `{ youtube: { title: ${JSON.stringify(v.youtube.title)}, categoryId: "27", madeForKids: false, notifySubscribers: true } }`, at)) && ok;
+  }
 } else {
   console.log('::error::POST_TARGET must be x, shorts, tiktok or youtube'); process.exit(1);
 }

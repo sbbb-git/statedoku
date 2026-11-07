@@ -1,8 +1,9 @@
 {
  "version": 1,
  "epoch": "2026-11-05",
- "shorts_epoch": "2026-11-04",
- "note": "X: one video a day in the 13:00 UTC run from epoch. TikTok and YouTube Shorts: one a day in the 23:00 UTC run from shorts_epoch (video 1 posted by hand on 5 November 2026), safe-zone version vertical_url, texts tiktok and youtube. Built by scripts/video/build-bank.cjs, then make-tiktok-captions.py and make-youtube-shorts.py add the platform fields.",
+ "shorts_epoch": "2026-10-30",
+ "shorts_from": "2026-11-09",
+ "note": "X: one video a day in the 13:00 UTC run from epoch. TikTok and YouTube Shorts: one a day in the 23:00 UTC run, video idx+1 where idx counts days from shorts_epoch, not before shorts_from. Video 1 was posted by hand on 5 November 2026, 2 and 3 by the bot, 4 to 10 scheduled by hand in Buffer on 7 and 8 November (owner: the accounts looked empty); from 9 November the bot posts 11, 12... Safe-zone version vertical_url, texts tiktok and youtube. Built by scripts/video/build-bank.cjs, then make-tiktok-captions.py and make-youtube-shorts.py add the platform fields.",
  "videos": [
   {
    "n": 1,

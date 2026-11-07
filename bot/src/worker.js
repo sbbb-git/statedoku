@@ -344,6 +344,9 @@ async function pickShort(nowMs) {
   if (!resp.ok) throw new Error('video bank fetch ' + resp.status);
   const bank = await resp.json();
   if (!bank.shorts_epoch) return null;
+  // shorts_from pauses the evening shorts until that day, for the days whose
+  // videos were scheduled in Buffer by hand (bot/buffer-post.mjs with POST_AT).
+  if (bank.shorts_from && nowMs < Date.parse(bank.shorts_from + 'T00:00:00Z')) return null;
   const idx = Math.floor((nowMs - Date.parse(bank.shorts_epoch + 'T00:00:00Z')) / 86400000);
   const v = idx >= 0 ? (bank.videos || [])[idx] : null;
   if (!v || !v.vertical_url || !v.tiktok || !v.youtube) return null;

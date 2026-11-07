@@ -473,8 +473,11 @@ deploy).
 
 From 5 November 2026 the same 100 videos also go to **TikTok (@statedoku) and
 YouTube Shorts (@Statedoku)**, one a day in the 23:00 UTC run (late afternoon
-in the US), counted from `shorts_epoch` in `data/videos.json` (video 1 was
-posted by hand that day). They use the safe-zone versions under
+in the US), counted from `shorts_epoch` in `data/videos.json` and not before
+`shorts_from` (video 1 was posted by hand that day; 4 to 10 were scheduled by
+hand in Buffer on 7 and 8 November, at the owner's request, with the epoch
+moved back so the bot resumes with 11 on 9 November; `POST_AT` in the post
+mode schedules a batch at given times). They use the safe-zone versions under
 `media/videos/tiktok/` (subtitles raised above the platforms' overlay, built by
 `scripts/video/make-tiktok-videos.sh`) and each platform's own text, stored in
 `data/videos.json` by `scripts/video/make-tiktok-captions.py` (no link, TikTok

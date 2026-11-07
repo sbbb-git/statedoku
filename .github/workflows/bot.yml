@@ -34,9 +34,13 @@ on:
         type: string
         default: ''
       video:
-        description: 'post to shorts, tiktok or youtube only: video number in data/videos.json'
+        description: 'post to shorts, tiktok or youtube only: video number(s) in data/videos.json, comma separated'
         type: string
         default: '1'
+      at:
+        description: 'optional: as many ISO UTC times as videos, comma separated, to schedule them instead of posting now'
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -60,6 +64,7 @@ jobs:
           POST_TARGET: ${{ inputs.target }}
           POST_TEXT: ${{ inputs.text }}
           POST_VIDEO: ${{ inputs.video }}
+          POST_AT: ${{ inputs.at }}
         run: node bot/buffer-post.mjs
 
       - name: Check the tweet bank served by the site
