@@ -269,7 +269,7 @@ export const LASTMOD = {
   "/learn/states-by-population/": "2026-10-07",
   "/learn/states-by-region-list/": "2026-10-28",
   "/learn/states-by-statehood-year/": "2026-10-07",
-  "/learn/states-by-time-zone/": "2026-10-30",
+  "/learn/states-by-time-zone/": "2026-11-08",
   "/learn/states-confederate/": "2026-11-07",
   "/learn/states-largest-cities/": "2026-10-05",
   "/learn/states-most-natural-disasters/": "2026-10-22",
