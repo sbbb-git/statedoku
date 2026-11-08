@@ -43,6 +43,8 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     Senate and governor, MS Senate, KS governor); no AP House count by party
     could be read (search results gave conflicting second-hand tallies), so
     nothing was edited and the day's unit went to item 1.
+    8 November, 09:13 UTC: no change (four races still open on CNN; Kansas
+    reported uncalled by local outlets on 6 November).
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
@@ -69,7 +71,7 @@ the pages are already shown, the queries already exist, nothing new competes.
    13 on modern outlines, with a plain note on what differs (Maine inside
    Massachusetts, Vermont claimed by New York and New Hampshire, the western
    claims), and the three regional groups (New England, Middle, Southern).
-2. `todo` **US time zone map** on `/learn/states-by-time-zone/`, then
+2. `running` (EN `done 2026-11-08 7404d3680`: `img/maps/us-time-zones.svg` from `scripts/build-time-zone-map.py`, a 50-row "what time zone is each state in" table, Nebraska, Tennessee and Idaho wording fixed against 49 CFR 71; FR and ES are the next units, same SVG, legend and table translated; their "south-east corner" for Malheur County is loose) **US time zone map** on `/learn/states-by-time-zone/`, then
    `/fr/learn/fuseaux-horaires-etats-unis/` and `/es/learn/zonas-horarias-eeuu/`.
    Demand: "time zone map" 28,598, "time zones" 27,197, "us time zones" 12,538,
    "us time zone map" 7,954, "time zone map usa" 7,146, and per state "arizona
@@ -119,7 +121,7 @@ the pages are already shown, the queries already exist, nothing new competes.
    marked "Crawled, currently not indexed", most impressions first, and give
    each a direct answer in its first paragraph and a section the English page
    does not have. One page per unit.
-10. `todo` **Next step from `/es/learn/state-abbreviations/`**: 269 entrances in
+10. `dropped 2026-11-08` (the 7 November reading found the game block before the first table used by nobody on the four English articles and on this very page; the Saturday session took the blocks off, 18c08ec6a) **Next step from `/es/learn/state-abbreviations/`**: 269 entrances in
     28 days, 7% go on to a second page (behavior-2026-10-31). Put the matching
     Spanish game and the daily grid before the first table, as was done on the
     four English articles on 17 October.
