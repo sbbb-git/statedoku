@@ -170,7 +170,7 @@ export const LASTMOD = {
   "/fr/learn/etats-par-pib/": "2026-11-04",
   "/fr/learn/etats-plus-d-immigrants/": "2026-11-04",
   "/fr/learn/fleuves-par-etat-americain/": "2026-11-04",
-  "/fr/learn/fuseaux-horaires-etats-unis/": "2026-11-04",
+  "/fr/learn/fuseaux-horaires-etats-unis/": "2026-11-09",
   "/fr/learn/landlocked-states/": "2026-11-04",
   "/fr/learn/largest-states/": "2026-11-04",
   "/fr/learn/liste-des-50-etats/": "2026-11-04",
