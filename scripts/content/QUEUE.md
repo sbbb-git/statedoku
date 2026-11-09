@@ -45,6 +45,7 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     nothing was edited and the day's unit went to item 1.
     8 November, 09:13 UTC: no change (four races still open on CNN; Kansas
     reported uncalled by local outlets on 6 November).
+    9 November, 09:14 UTC: no change on CNN for the four open races.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
@@ -71,7 +72,7 @@ the pages are already shown, the queries already exist, nothing new competes.
    13 on modern outlines, with a plain note on what differs (Maine inside
    Massachusetts, Vermont claimed by New York and New Hampshire, the western
    claims), and the three regional groups (New England, Middle, Southern).
-2. `running` (EN `done 2026-11-08 7404d3680`: `img/maps/us-time-zones.svg` from `scripts/build-time-zone-map.py`, a 50-row "what time zone is each state in" table, Nebraska, Tennessee and Idaho wording fixed against 49 CFR 71; FR and ES are the next units, same SVG, legend and table translated; their "south-east corner" for Malheur County is loose) **US time zone map** on `/learn/states-by-time-zone/`, then
+2. `running` (FR `done 2026-11-09 1be46c3bd`, same SVG, French legend and 50-row table, the Idaho, Oregon and Kentucky/Tennessee lines of the old split list corrected; ES left. EN `done 2026-11-08 7404d3680`: `img/maps/us-time-zones.svg` from `scripts/build-time-zone-map.py`, a 50-row "what time zone is each state in" table, Nebraska, Tennessee and Idaho wording fixed against 49 CFR 71; FR and ES are the next units, same SVG, legend and table translated; their "south-east corner" for Malheur County is loose) **US time zone map** on `/learn/states-by-time-zone/`, then
    `/fr/learn/fuseaux-horaires-etats-unis/` and `/es/learn/zonas-horarias-eeuu/`.
    Demand: "time zone map" 28,598, "time zones" 27,197, "us time zones" 12,538,
    "us time zone map" 7,954, "time zone map usa" 7,146, and per state "arizona
