@@ -7,14 +7,15 @@ prospection » du Drive, jamais dans le dépôt.
 
 ## Demain matin (11 novembre) : les 10 actions, 30 minutes en tout
 
-1. [ ] **Brancher l'envoi automatique** (15 minutes, une fois) : compte Google
-       avec validation en deux étapes et mot de passe d'application ; Gmail,
-       « Envoyer des e-mails en tant que » contact@statedoku.com par
-       `smtp.gmail.com` (section 1 ci-dessous) ; ouvrir la feuille « Statedoku,
-       prospection », Extensions, Apps Script, coller
+1. [ ] **Lancer l'envoi automatique** (5 minutes, une fois). L'alias
+       contact@statedoku.com est en place depuis le 10 novembre (un test est
+       bien parti de « Statedoku <contact@statedoku.com> »). Connecté au compte
+       Gmail qui porte cet alias, ouvrir la feuille « Statedoku, prospection »
+       (elle lui est partagée), Extensions, Apps Script, coller
        `scripts/outreach/envoi-statedoku.gs`, exécuter `essai` puis `demarrer`.
-       40 e-mails partent ensuite chaque jour vers 15 h, sans rien faire. Un
-       compte Google dédié à Statedoku protège ton compte principal.
+       20 e-mails partent tout de suite, puis 20 chaque heure entre 13 h et
+       22 h (heure de Paris), jusqu'à 100 par jour, le plafond de Google pour un
+       compte gratuit : les 754 partent en 8 jours environ, sans rien faire.
 2. [ ] OAGEE, professeurs de géographie de l'Ontario : https://oagee.org/contact-us/
 3. [ ] Canadian Geographic Education : https://cangeoeducation.ca/en/contact-us/
 4. [ ] TeachersFirst : https://teachersfirst.org/contact.cfm
@@ -51,25 +52,23 @@ fais.
 ## 2. Les e-mails
 
 - Envoi normal : automatique, par la feuille Google « Statedoku, prospection »
-  et le script `envoi-statedoku.gs` (action 1 ci-dessus), 40 par jour, dans
-  l'ordre des lots, en sautant les lignes marquées « stop » ou « attente
-  adresse postale ».
+  et le script `envoi-statedoku.gs` (action 1 ci-dessus), jusqu'à 100 par jour,
+  dans l'ordre des lots, en sautant les lignes dont le Statut n'est pas vide
+  (« stop », « attente adresse postale », « à vérifier »).
 - À la main si besoin : `outbox.html`. Pour chaque message : « Ouvrir dans
   Gmail » (tout est rempli), choisir **De : contact@statedoku.com**, Envoyer,
   cocher « envoyé ». E-mails personnalisés, en anglais, français ou espagnol,
-  avec emoji, en 5 lots :
-  - [ ] Lot 1, États-Unis (45) : en premier, d'ici le 12 novembre, car ils
-        annoncent la Geography Awareness Week (16 au 20 novembre) pour « la
-        semaine prochaine ».
-  - [ ] Lot 2, Mexique, Amérique latine, Espagne (112).
+  avec emoji, signés « Statedoku🇺🇸 », en 5 lots :
+  - [ ] Lot 1, États-Unis (240) : en premier, car ils annoncent la Geography
+        Awareness Week (16 au 20 novembre) pour « la semaine prochaine ».
+  - [ ] Lot 2, Mexique, Amérique latine, Espagne (419).
   - [ ] Lot 3, France, Suisse, Belgique (47).
   - [ ] Lot 4, médias et annuaires (22) : les brouillons du 28 octobre, corrigés,
         plus DleNow et une demande de correction à DlesList.
-  - [ ] Lot 5, Canada (24) : la loi canadienne anti-pourriel demande une adresse
+  - [ ] Lot 5, Canada (26) : la loi canadienne anti-pourriel demande une adresse
         postale dans ce type de message. À envoyer seulement avec une adresse
         (une domiciliation suffit) sous la signature.
-- [ ] Rythme : 30 à 40 par jour. Une seule relance, pas avant le 18 novembre, et
-      seulement sans réponse.
+- [ ] Une seule relance, pas avant le 18 novembre, et seulement sans réponse.
 - Les 23 brouillons Gmail du 28 octobre ont été supprimés le 10 novembre : leurs
   liens étaient enregistrés sous forme de redirection Google
   (`google.com/url?q=...`), ce que fait le connecteur Gmail à chaque brouillon
