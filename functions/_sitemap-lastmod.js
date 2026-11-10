@@ -73,7 +73,7 @@ export const LASTMOD = {
   "/es/learn/states-bordering-canada/": "2026-11-04",
   "/es/learn/states-bordering-mexico/": "2026-11-04",
   "/es/learn/territorios-eeuu/": "2026-10-30",
-  "/es/learn/zonas-horarias-eeuu/": "2026-11-04",
+  "/es/learn/zonas-horarias-eeuu/": "2026-11-10",
   "/es/play/": "2026-10-15",
   "/es/play/biggest-cities/": "2026-10-22",
   "/es/play/border-states/": "2026-10-22",
