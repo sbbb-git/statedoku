@@ -185,7 +185,27 @@ téléphone personnel.
 
 ## Déjà fait
 
-- **10 novembre 2026, formulaires envoyés et confirmés par le site** (16) :
+- **10 novembre 2026, bilan** : 31 formulaires envoyés et confirmés par le
+  site (ci-dessous), 2 probables (HG Corse, Hillel Academy en Jamaïque), et
+  754 e-mails personnalisés dans la feuille « Statedoku, prospection » (États-Unis
+  240, Amérique latine et Espagne 419, France, Suisse et Belgique 47, médias et
+  annuaires 22, Canada 26 en attente d'une adresse postale). Familles couvertes :
+  alliances géographiques et councils for the social studies, départements de
+  l'éducation (responsables sciences sociales), 129 grands districts scolaires,
+  associations de homeschooling, écoles américaines d'Amérique latine et des
+  Caraïbes et leurs associations (AMISA, Tri-Association, ASOMEX), centres
+  binationaux et American Spaces, associations de professeurs d'anglais (TESOL),
+  sites académiques et régionales de l'APHG, centres de formation des
+  professeurs en Espagne, écoles normales mexicaines, instituts argentins de
+  formation des professeurs, olympiades et sociétés de géographie.
+- **10 novembre, 2e et 3e vagues, formulaires confirmés** (15) : Illinois
+  Christian Home Educators, Homeschoolers of Maine, MassHOPE, Vermont Home
+  Education Network, West Virginia Home Educators Association, Homeschool
+  Alabama, Homeschool South Dakota, Tri-State Homeschool (Delaware), East Idaho
+  Home Educators, Colegio de Geógrafos (Andalousie), Carol Morgan School
+  (République dominicaine), Union School (Haïti), Las Morochas et International
+  School of Monagas (Venezuela), Escuela Normal Superior de Querétaro.
+- **10 novembre 2026, 1re vague, formulaires envoyés et confirmés par le site** (16) :
   Arizona Geographic Alliance, California Geographic Alliance, Oklahoma Alliance
   for Geographic Education, Washington State Council for the Social Studies,
   Terre Ouverte (HG Aix-Marseille), site d'anglais de l'académie d'Aix-Marseille,
