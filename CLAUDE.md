@@ -505,6 +505,10 @@ animation at 30 frames a second (`make-anim.cjs`, `anim.html`,
 bouncing balls eliminating state tiles, the map assembling itself in
 statehood order as a loop, a pen drawing a border. `add-experiments.cjs`
 places them and must be re-run after `build-bank.cjs`.
+The owner liked the animations and asked for thirty more the same day
+(w05 to w34, two more scenes: a spinning outline, a missing state): they
+follow in the list, TikTok and YouTube from 24 November to 23 December, X a
+day later.
 `scripts/video/EXPERIMENTS.md` holds the calendar and how to read the result;
 read it on 24 November and build more of what worked. Photos are NASA's only
 (public domain, credits in `scripts/video/photos/CREDITS.md`).

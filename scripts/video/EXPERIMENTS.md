@@ -26,6 +26,53 @@ ordinary.
 | 13 | Letter challenge (no letter A) | x09-letter-challenge | 22 Nov | 23 Nov |
 | 14 | One cell of the daily grid | x10-grid-cell | 23 Nov | 24 Nov |
 
+## The batch of 30 animations (10 November)
+
+The owner liked the four animations and asked for thirty more before any
+result was in. They follow the fourteen tests in the list, one a day, in an
+order that alternates the six scenes: eight more elimination chains (eight
+different survivors), six bounce rounds (six different winners), six line
+drawings, four map builds (biggest first, A to Z, left to right, newest
+first) and two new scenes, the spinning outline and the missing state (three
+each).
+
+| Slug | TikTok and YouTube (23:00 UTC) | X (13:00 UTC) |
+| --- | --- | --- |
+| w05-last-state-standing-2 | 24 Nov | 25 Nov |
+| w06-bounce-out-2 | 25 Nov | 26 Nov |
+| w07-line-closes-2 | 26 Nov | 27 Nov |
+| w08-map-builds-itself-2 | 27 Nov | 28 Nov |
+| w09-spinning-state-1 | 28 Nov | 29 Nov |
+| w10-missing-state-1 | 29 Nov | 30 Nov |
+| w11-last-state-standing-3 | 30 Nov | 1 Dec |
+| w12-bounce-out-3 | 1 Dec | 2 Dec |
+| w13-line-closes-3 | 2 Dec | 3 Dec |
+| w14-map-builds-itself-3 | 3 Dec | 4 Dec |
+| w15-spinning-state-2 | 4 Dec | 5 Dec |
+| w16-missing-state-2 | 5 Dec | 6 Dec |
+| w17-last-state-standing-4 | 6 Dec | 7 Dec |
+| w18-bounce-out-4 | 7 Dec | 8 Dec |
+| w19-line-closes-4 | 8 Dec | 9 Dec |
+| w20-map-builds-itself-4 | 9 Dec | 10 Dec |
+| w21-spinning-state-3 | 10 Dec | 11 Dec |
+| w22-missing-state-3 | 11 Dec | 12 Dec |
+| w23-last-state-standing-5 | 12 Dec | 13 Dec |
+| w24-bounce-out-5 | 13 Dec | 14 Dec |
+| w25-line-closes-5 | 14 Dec | 15 Dec |
+| w26-map-builds-itself-5 | 15 Dec | 16 Dec |
+| w27-last-state-standing-6 | 16 Dec | 17 Dec |
+| w28-bounce-out-6 | 17 Dec | 18 Dec |
+| w29-line-closes-6 | 18 Dec | 19 Dec |
+| w30-last-state-standing-7 | 19 Dec | 20 Dec |
+| w31-bounce-out-7 | 20 Dec | 21 Dec |
+| w32-line-closes-7 | 21 Dec | 22 Dec |
+| w33-last-state-standing-8 | 22 Dec | 23 Dec |
+| w34-last-state-standing-9 | 23 Dec | 24 Dec |
+
+If the reading of 24 November shows a scene that does nothing, take its
+videos out of `experiments-anim.json` order (or drop them) and re-run
+`add-experiments.cjs`: the list is rebuilt from the two files every time.
+
 ## How to read the result
 
 - **YouTube**: the view count of each Short on the channel page is public.
