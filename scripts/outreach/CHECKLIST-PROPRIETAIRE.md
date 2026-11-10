@@ -7,15 +7,10 @@ prospection » du Drive, jamais dans le dépôt.
 
 ## Demain matin (11 novembre) : les 10 actions, 30 minutes en tout
 
-1. [ ] **Lancer l'envoi automatique** (5 minutes, une fois). L'alias
-       contact@statedoku.com est en place depuis le 10 novembre (un test est
-       bien parti de « Statedoku <contact@statedoku.com> »). Connecté au compte
-       Gmail qui porte cet alias, ouvrir la feuille « Statedoku, prospection »
-       (elle lui est partagée), Extensions, Apps Script, coller
-       `scripts/outreach/envoi-statedoku.gs`, exécuter `essai` puis `demarrer`.
-       20 e-mails partent tout de suite, puis 20 chaque heure entre 13 h et
-       22 h (heure de Paris), jusqu'à 100 par jour, le plafond de Google pour un
-       compte gratuit : les 754 partent en 8 jours environ, sans rien faire.
+1. [x] ~~Lancer l'envoi automatique~~ : **abandonné le 10 novembre**, à ta
+       demande, tout envoi d'e-mail est arrêté (25 partis ce jour-là). Resend
+       reste exclu pour la prospection (son règlement l'interdit). Il reste
+       la prospection par formulaires, que je fais (vague 4 ci-dessous).
 2. [ ] OAGEE, professeurs de géographie de l'Ontario : https://oagee.org/contact-us/
 3. [ ] Canadian Geographic Education : https://cangeoeducation.ca/en/contact-us/
 4. [ ] TeachersFirst : https://teachersfirst.org/contact.cfm
@@ -32,6 +27,29 @@ prospection » du Drive, jamais dans le dépôt.
 Les textes des formulaires 2 à 8 sont prêts à copier dans le lot 6 de la page
 d'envoi. Tout le reste (envois de formulaires sans captcha, rédaction), je le
 fais.
+
+## Vague 4 (10 novembre) : formulaires de contact uniquement
+
+229 formulaires préparés, sans captcha au chargement (126 aux États-Unis :
+bibliothèques, groupes d'école à la maison, conseils des humanités ; 70 à
+l'international ; 13 annuaires de jeux ; 27 sites de la vague 3 qui avaient
+un formulaire). Test à blanc : 176 remplis correctement, puis envoyés.
+
+- **66 reçus, confirmés par la réponse du serveur.**
+- **13 probablement reçus** (le site a affiché sa page de confirmation).
+- 29 ont demandé un captcha au moment d'envoyer (surtout des sites Wix) :
+  non contournés, donc non envoyés.
+- 20 en erreur serveur (surtout les écoles normales de l'État de Mexico, dont
+  le formulaire est cassé), 16 refusés par le formulaire, 1 bloqué par
+  Cloudflare, 19 sans bouton d'envoi utilisable, une douzaine incertains.
+- Écarté exprès : Coolmath Games (question obligatoire sur l'usage de l'IA,
+  à toi de répondre si tu veux y être).
+- Déjà présents sans qu'on le sache : wordlelike.games, dledex.com,
+  dledirectory.com, dlegames.gg, everydailygame.com.
+
+Reçus : ANILS, AQPDE, Académie Providence Sœurs Antonines, Alabama Virtual Library, American School of Recife, Ann Arbor District Library, Apache Junction Public Library, CNFG, COR Community Co-op, Calloway County Homeschool Co-op, Centre de services scolaire des Îles, Clarksville-Montgomery County Public Library, Cleveland Public Library, Colegio Karl C. Parrish, Colegio de Licenciados y Profesores en Letras, Filosofía, Ciencias y Artes, Crossroads Area Home School Association, Cult of Pedagogy, DleHub, Durham County Library, Educación 2020, Forbes Library, Forsyth Home Educators, Framingham Public Library, Gadsden Public Library, Greenwood Public Library, HELTA TESOL, Holy Family Catholic Homeschoolers, Home Educators of Greater Little Rock, Homeschool Share, IBEU-CE, INGED, Institución Benemérita y Centenaria Escuela Normal del Estado de Chihuahua "Profr. Luis Urías Belderráin", Kansas Home Educators, Kenton County Public Library, Kentucky Humanities, LEAP Co-op, LEARN Home Education Network, Liceo Francés de San Salvador, Ludo de Romanel, Ludothèque de Martigny, Ludothèque de la Basse-Areuse, Lycée Frédéric Mistral, Maricopa County Library District, Marshall Public Library, Menomonee Falls Public Library, Nassau County Public Library System, Northern Virginia Secular Co-Op, PlayPile, Plymouth Public Library, REACH, Renfrew County Catholic District School Board, Ridgefield Library, Spokane Public Library, St. Joseph Public Library, TEACH, TESOL Society of Bangladesh, Tampa-Hillsborough County Public Library, Teach Mama, TeachThought, Tennessee Historical Society, The Homeschool Resource Room, Tippecanoe County Public Library, University City Public Library, Washington-Centerville Public Library, Yavapai County Free Library District, puzzled.online.
+
+Probablement reçus : Ashtabula County District Library, BadgerLink, Cape Girardeau Public Library, Centre de services scolaire des Hautes-Rivières, Colegio Americano del Sur, Colegio Internacional Puerto La Cruz, Enoch Pratt Free Library, KidzSearch, SSPES / VSG, San Diego Public Library, State Historical Society of North Dakota, Utica Public Library, Westfield Washington Public Library.
 
 ## 1. Brancher contact@statedoku.com dans Gmail (une seule fois)
 
