@@ -51,6 +51,18 @@ Reçus : ANILS, AQPDE, Académie Providence Sœurs Antonines, Alabama Virtual Li
 
 Probablement reçus : Ashtabula County District Library, BadgerLink, Cape Girardeau Public Library, Centre de services scolaire des Hautes-Rivières, Colegio Americano del Sur, Colegio Internacional Puerto La Cruz, Enoch Pratt Free Library, KidzSearch, SSPES / VSG, San Diego Public Library, State Historical Society of North Dakota, Utica Public Library, Westfield Washington Public Library.
 
+## Vague 5 (10 novembre) : bibliothèques et école à la maison, Canada, Mexique, Amérique latine
+
+34 formulaires trouvés sur environ 1 080 sites examinés : la plupart des
+groupes d'école à la maison n'existent que sur Facebook ou WhatsApp, et
+beaucoup de bibliothèques ont un captcha. 5 entrées faibles et 15 sites Wix
+écartés (Wix a demandé un captcha à l'envoi pendant la vague 4). Sur les 29
+restants, 24 remplis correctement au test à blanc.
+
+- **17 reçus** : Ajax Public Library, Sault Ste. Marie Public Library, Cavan Monaghan Libraries, Elgin County Library, Merrickville Public Library, Dollard-des-Ormeaux Public Library, Edmonton Public Library, Bibliothèque de Moonbeam, Petawawa Public Library, Trail & District Public Library, Perth East Public Library, Renfrew Public Library, AQED (école à la maison, Québec), IBBY México, Biblioteca Pedagógica Eudoro Díaz (Argentine), Biblioteca Pública Departamental Eduardo Carranza (Colombie), FAEDUSP (école à la maison, São Paulo).
+- 1 refusé (Flin Flon), 3 non envoyés (pas de bouton utilisable), 3
+  incertains (Midland, Pitalito, Nuestros Hijos).
+
 ## 1. Brancher contact@statedoku.com dans Gmail (une seule fois)
 
 - [ ] Compte Google : activer la validation en deux étapes, puis créer un
