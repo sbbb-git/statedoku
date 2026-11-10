@@ -2,7 +2,35 @@
 
 État au 10 novembre 2026. Les adresses des destinataires ne sont pas recopiées
 ici (dépôt public) : elles sont dans la page d'envoi `outbox.html`, un fichier
-local transmis dans la conversation, jamais versé dans le dépôt.
+local transmis dans la conversation, et dans la feuille Google « Statedoku,
+prospection » du Drive, jamais dans le dépôt.
+
+## Demain matin (11 novembre) : les 10 actions, 30 minutes en tout
+
+1. [ ] **Brancher l'envoi automatique** (15 minutes, une fois) : compte Google
+       avec validation en deux étapes et mot de passe d'application ; Gmail,
+       « Envoyer des e-mails en tant que » contact@statedoku.com par
+       `smtp.gmail.com` (section 1 ci-dessous) ; ouvrir la feuille « Statedoku,
+       prospection », Extensions, Apps Script, coller
+       `scripts/outreach/envoi-statedoku.gs`, exécuter `essai` puis `demarrer`.
+       40 e-mails partent ensuite chaque jour vers 15 h, sans rien faire. Un
+       compte Google dédié à Statedoku protège ton compte principal.
+2. [ ] OAGEE, professeurs de géographie de l'Ontario : https://oagee.org/contact-us/
+3. [ ] Canadian Geographic Education : https://cangeoeducation.ca/en/contact-us/
+4. [ ] TeachersFirst : https://teachersfirst.org/contact.cfm
+5. [ ] TESOL-SPAIN : https://www.tesol-spain.org/en/contact.html
+6. [ ] APHG nationale : https://www.aphg.fr/contact/
+7. [ ] Can@bae, académie de Lyon : https://canabae.enseigne.ac-lyon.fr/spip/spip.php?page=contact
+8. [ ] Goldles : https://www.goldles.com/suggest (« Submit for free », question anti-spam : 42)
+9. [ ] GitHub, Awesome Daily Minigames (section 5 ci-dessous)
+10. [ ] Adresse postale : si tu as une domiciliation, me la donner ; je l'ajoute
+        sous la signature (lois américaine et canadienne sur la prospection). Le
+        lot Canada de la feuille attend cette adresse (Statut « attente adresse
+        postale »).
+
+Les textes des formulaires 2 à 8 sont prêts à copier dans le lot 6 de la page
+d'envoi. Tout le reste (envois de formulaires sans captcha, rédaction), je le
+fais.
 
 ## 1. Brancher contact@statedoku.com dans Gmail (une seule fois)
 
@@ -20,12 +48,16 @@ local transmis dans la conversation, jamais versé dans le dépôt.
   quotidiens. La consigne du 28 octobre qui disait l'inverse était fausse.
   Le SPF de statedoku.com autorise déjà Google.
 
-## 2. Envoyer les e-mails depuis la page d'envoi
+## 2. Les e-mails
 
-- [ ] Ouvrir `outbox.html`. Pour chaque message : « Ouvrir dans Gmail » (tout
-      est rempli), choisir **De : contact@statedoku.com**, Envoyer, cocher
-      « envoyé ». 250 e-mails personnalisés, en anglais, français ou espagnol,
-      avec emoji, en 5 lots :
+- Envoi normal : automatique, par la feuille Google « Statedoku, prospection »
+  et le script `envoi-statedoku.gs` (action 1 ci-dessus), 40 par jour, dans
+  l'ordre des lots, en sautant les lignes marquées « stop » ou « attente
+  adresse postale ».
+- À la main si besoin : `outbox.html`. Pour chaque message : « Ouvrir dans
+  Gmail » (tout est rempli), choisir **De : contact@statedoku.com**, Envoyer,
+  cocher « envoyé ». E-mails personnalisés, en anglais, français ou espagnol,
+  avec emoji, en 5 lots :
   - [ ] Lot 1, États-Unis (45) : en premier, d'ici le 12 novembre, car ils
         annoncent la Geography Awareness Week (16 au 20 novembre) pour « la
         semaine prochaine ».
