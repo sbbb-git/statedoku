@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Animated scenes (real motion, 30 frames a second) for make-anim.cjs.
+     setup(name, params) builds a deterministic timeline and returns
+     { dur, events, voice }; frame(t) draws the picture at t seconds. -->
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body { font-family: Inter, system-ui, sans-serif; background: #0A1733; color: #fff; position: relative; }
+  .bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, #1B3366 0%, #0F2147 55%, #0A1733 100%); }
+  .stripe { position: absolute; left: 0; right: 0; top: 0; height: 14px; background: linear-gradient(90deg, #DC2626 0 33%, #fff 33% 66%, #2563EB 66%); z-index: 7; }
+  header { position: absolute; top: 56px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 7; }
+  header img { width: 72px; height: 72px; border-radius: 16px; }
+  header .w { font-size: 56px; font-weight: 900; letter-spacing: -0.02em; }
+  header .w em { font-style: normal; color: #F87171; }
+  #top { position: absolute; top: 160px; left: 40px; right: 40px; height: 290px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+         font-size: 88px; font-weight: 900; line-height: 1.03; letter-spacing: -0.03em; z-index: 6; white-space: pre-line; text-shadow: 0 6px 24px rgba(10,23,51,.9); }
+  #top small { display: block; font-size: 40px; letter-spacing: .08em; color: #F59E0B; margin-bottom: 10px; }
+  #top.red { color: #FCA5A5; } #top.green { color: #6EE7B7; } #top.year { font-size: 190px; color: #F59E0B; }
+  #stage { position: absolute; inset: 0; z-index: 2; }
+  #bottom { position: absolute; top: 1440px; left: 40px; right: 40px; height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 6; }
+  #bottom .b1 { font-size: 112px; font-weight: 900; color: #F59E0B; line-height: 1.05; letter-spacing: -0.02em; }
+  #bottom .b2 { font-size: 48px; font-weight: 800; color: #CBD5E1; margin-top: 10px; }
+  footer { position: absolute; bottom: 60px; left: 0; right: 0; text-align: center; font-size: 44px; font-weight: 800; color: #F59E0B; z-index: 6; }
+  .tile { position: absolute; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 900; color: #fff; }
+  .ball { position: absolute; width: 34px; height: 34px; border-radius: 50%; background: #fff; box-shadow: 0 0 22px 8px rgba(255,255,255,.55); }
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="stripe"></div>
+<header><img src="LOGO" alt=""><div class="w">State<em>doku</em></div></header>
+<div id="top"></div>
+<div id="stage"></div>
+<div id="bottom"></div>
+<footer>statedoku.com</footer>
+<div id="mapsrc" style="display:none">MAPSVG</div>
+<script>
+const SRC = document.querySelector('#mapsrc svg'), NS = 'http://www.w3.org/2000/svg', $ = id => document.getElementById(id);
+function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const eBack = x => { x = clamp(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const eIO = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const est = s => s.replace(/\d/g, 'xxxx').length * 0.072 + 0.45;                      // seconds the voice needs for a line, with a margin
+const PENTA = [261.63, 293.66, 329.63, 392, 440], note = i => PENTA[i % 5] * Math.pow(2, Math.floor(i / 5) % 3);
+let top_ = null, bot_ = null, draw = () => {};
+function setTop(h, cls) { const k = h + '|' + (cls || ''); if (k !== top_) { top_ = k; $('top').innerHTML = h; $('top').className = cls || ''; } }
+function bottom(a, b) { const k = a + '|' + b; if (k !== bot_) { bot_ = k; $('bottom').innerHTML = '<div class="b1">' + a + '</div><div class="b2">' + (b || '') + '</div>'; } }
+function mountMap() {
+  $('stage').innerHTML = '';
+  const s = SRC.cloneNode(true); s.removeAttribute('class'); s.setAttribute('style', 'position:absolute;left:30px;top:600px;width:1020px;height:auto;overflow:visible');
+  s.querySelectorAll('title').forEach(e => e.remove()); $('stage').appendChild(s);
+  const M = {};
+  s.querySelectorAll('path[data-usps]').forEach(p => { const b = p.getBBox(); p.style.stroke = '#0F2147'; p.style.strokeWidth = '1.2'; p.style.strokeLinejoin = 'round';
+    M[p.getAttribute('data-usps')] = { p, cx: b.x + b.width / 2, cy: b.y + b.height / 2 }; });
+  return M;
+}
+const SCENES = {};
+
+// Last state standing: each round a rule knocks states off the map.
+SCENES.royale = function (P) {
+  const M = mountMap(), R = rng(7), ev = [], vo = [{ t: 0.15, text: P.hookVoice }], st = {};
+  let T = est(P.hookVoice) + 0.2;
+  const rounds = P.rounds.map((r, k) => {
+    const t0 = T; vo.push({ t: t0, text: r.voice });
+    const flash = t0 + Math.min(1.2, est(r.voice) * 0.5), fall = flash + 0.55; let last = fall;
+    ev.push({ t: flash, kind: 'tone', f: 196 });
+    r.out.forEach(id => { const d = R() * Math.min(0.75, 0.1 * r.out.length); st[id] = { flash, fall: fall + d, ang: (R() - .5) * 170 };
+      ev.push({ t: fall + d, kind: 'pop', f: 380 + R() * 260 }); last = Math.max(last, fall + d); });
+    T = Math.max(t0 + est(r.voice), last + 0.85) + 0.15;
+    return { t0, label: r.label, n: k + 1 };
+  });
+  const tw = T, ids = Object.keys(M); vo.push({ t: tw + 0.1, text: P.winVoice });
+  [0, 1, 2, 3].forEach(i => ev.push({ t: tw + i * 0.13, kind: 'tone', f: note(5 + i * 2) }));
+  const win = M[P.winner]; win.p.parentNode.appendChild(win.p);
+  draw = function (t) {
+    let alive = 0;
+    for (const id of ids) {
+      const m = M[id], s = st[id]; let fill = '#fff', tr = '', op = 1;
+      if (s && t >= s.fall) { const u = t - s.fall; fill = '#DC2626'; op = u > 1.1 ? 0 : 1 - u / 1.1; tr = `translate(0 ${760 * u * u}) rotate(${s.ang * u} ${m.cx} ${m.cy})`; }
+      else { alive++; if (s && t >= s.flash) fill = Math.floor((t - s.flash) * 10) % 2 ? '#FCA5A5' : '#DC2626';
+        if (!s && t >= tw) { const e = eBack((t - tw) / 0.8); fill = '#059669';
+          tr = `translate(${(487 - m.cx) * e} ${(300 - m.cy) * e}) translate(${m.cx} ${m.cy}) scale(${1 + 3.4 * e}) translate(${-m.cx} ${-m.cy})`; } }
+      m.p.style.fill = fill; m.p.style.opacity = op; m.p.setAttribute('transform', tr);
+    }
+    const r = rounds.slice().reverse().find(r => t >= r.t0);
+    if (t >= tw) { setTop(P.winTop, 'green'); bottom(P.winBottom, P.winSub); }
+    else { if (r) setTop('<small>ROUND ' + r.n + ' OF ' + rounds.length + '</small>OUT: ' + r.label, 'red'); else setTop(P.hookTop); bottom(alive + ' LEFT', 'Is your state still alive?'); }
+  };
+  return { dur: tw + Math.max(3.6, est(P.winVoice) + 0.8), events: ev, voice: vo };
+};
+
+// The map builds itself in the order the states joined, then bursts apart: the last frame is the first, so it loops.
+SCENES.assemble = function (P) {
+  const M = mountMap(), R = rng(11), ev = [], vo = [{ t: 0.15, text: P.hookVoice }];
+  const PAL = ['#DC2626', '#F59E0B', '#059669', '#3B82F6', '#FFFFFF'], t1 = 0.7, gap = 0.2, fly = 0.65;
+  const S = P.order.map((o, i) => { const m = M[o.id]; ev.push({ t: t1 + i * gap + fly - 0.08, kind: 'tone', f: note(i % 15) });
+    return { m, year: o.year, sx: 60 + R() * 855, sy: -150 + R() * 960, rot: (R() - .5) * 300, col: PAL[i % 5], t0: t1 + i * gap }; });
+  const tHold = t1 + (S.length - 1) * gap + fly, tEx = tHold + 1.6;
+  vo.push({ t: tHold - 1.3, text: P.endVoice }); ev.push({ t: tEx, kind: 'pop', f: 240 });
+  draw = function (t) {
+    let n = 0, year = S[0].year;
+    for (const s of S) {
+      const e = t < tEx ? (t < s.t0 ? 0 : eBack((t - s.t0) / fly)) : 1 - eIO((t - tEx) / 0.85), m = s.m;
+      if (t >= s.t0 && t < tEx) { n++; year = s.year; }
+      m.p.style.fill = s.col;
+      m.p.setAttribute('transform', `translate(${(s.sx - m.cx) * (1 - e)} ${(s.sy - m.cy) * (1 - e)}) rotate(${s.rot * (1 - e)} ${m.cx} ${m.cy}) translate(${m.cx} ${m.cy}) scale(${0.7 + 0.3 * e}) translate(${-m.cx} ${-m.cy})`);
+    }
+    if (n) { setTop(String(year), 'year'); bottom(n + ' / 50', n >= 50 ? P.endSub : P.sub); } else { setTop(P.hookTop); bottom('0 / 50', P.sub); }
+  };
+  return { dur: tEx + 0.9, events: ev, voice: vo };
+};
+
+// A pen draws the border; name the state before the line closes.
+SCENES.draw = function (P) {
+  $('stage').innerHTML = '<div style="position:absolute;left:60px;top:480px;width:960px;height:930px;background:#fff;border-radius:44px;box-shadow:0 24px 60px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center"><svg id="ds" style="width:840px;height:810px;overflow:visible"></svg></div>';
+  const svg = $('ds'), path = document.createElementNS(NS, 'path'), dot = document.createElementNS(NS, 'circle'); svg.appendChild(path); svg.appendChild(dot);
+  path.style.strokeLinejoin = 'round'; path.style.strokeLinecap = 'round'; dot.style.fill = '#F59E0B'; dot.style.stroke = '#0F2147';
+  const ev = [], vo = [{ t: 0.15, text: P.hookVoice }], D = 4.8, RV = 1.7; let T = 0.5, cur = -1, len = 0;
+  const items = P.states.map(s => { const t0 = T; for (let k = 1; k < 10; k++) ev.push({ t: t0 + k * D / 10, kind: 'tick', f: 330 + k * 45 });
+    ev.push({ t: t0 + D, kind: 'tone', f: 880 }); vo.push({ t: t0 + D + 0.15, text: s.name + '.' }); T = t0 + D + RV;
+    return { ...s, t0, d: SRC.querySelector('#us-' + s.id).getAttribute('d') }; });
+  vo.push({ t: T + 0.1, text: P.endVoice });
+  draw = function (t) {
+    let i = items.findIndex(it => t < it.t0 + D + RV); if (i < 0) i = items.length - 1;
+    const it = items[i];
+    if (i !== cur) { cur = i; path.setAttribute('d', it.d); const b = path.getBBox(), big = Math.max(b.width, b.height), pad = big * .08;
+      svg.setAttribute('viewBox', [b.x - pad, b.y - pad, b.width + 2 * pad, b.height + 2 * pad].join(' ')); len = path.getTotalLength();
+      path.style.strokeWidth = big * 0.016; path.style.strokeDasharray = len + ' ' + len; dot.setAttribute('r', big * 0.024); dot.style.strokeWidth = big * 0.006; }
+    const p = clamp((t - it.t0) / D), done = t >= it.t0 + D, pt = path.getPointAtLength(len * p);
+    path.style.strokeDashoffset = len * (1 - p); path.style.fill = done ? '#059669' : 'none'; path.style.stroke = done ? '#059669' : '#0F2147';
+    dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y); dot.style.display = done ? 'none' : '';
+    setTop(P.hookTop);
+    if (t >= T) bottom(P.endBottom, P.endSub); else bottom(done ? it.name : Math.round(p * 100) + '%', 'State ' + (i + 1) + ' of ' + items.length);
+  };
+  return { dur: T + est(P.endVoice) + 0.7, events: ev, voice: vo };
+};
+
+// Fifty tiles, bouncing balls: a tile that is hit is out, the last one wins. Simulated once, then replayed.
+SCENES.bounce = function (P) {
+  const AX = 40, AY = 470, AW = 1000, AH = 950, COLS = 8, ROWS = 7, CW = AW / COLS, CH = AH / ROWS, G = 10, SP = 1250, RAD = 17, START = 1.0;
+  const slots = []; for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) if (!(r === 3 && c >= 1 && c <= 6)) slots.push([c, r]);
+  function sim(seed) {
+    const R = rng(seed), tiles = P.tiles.map((s, i) => ({ x: slots[i][0] * CW + G / 2, y: slots[i][1] * CH + G / 2, w: CW - G, h: CH - G, dead: -1 }));
+    const balls = [], frames = [], more = [40, 30, 20, 10, 5]; let t = 0, left = tiles.length, nf = 0;
+    const add = (x, y) => { const a = R() * Math.PI * 2; balls.push({ x, y, vx: Math.cos(a) * SP, vy: Math.sin(a) * SP }); };
+    add(AW * 0.3, AH / 2); add(AW * 0.7, AH / 2);
+    while (left > 1 && t < 40) {
+      if (t >= START) for (const b of balls.slice()) {
+        b.x += b.vx / 240; b.y += b.vy / 240;
+        if (b.x < RAD) { b.x = RAD; b.vx = Math.abs(b.vx); } if (b.x > AW - RAD) { b.x = AW - RAD; b.vx = -Math.abs(b.vx); }
+        if (b.y < RAD) { b.y = RAD; b.vy = Math.abs(b.vy); } if (b.y > AH - RAD) { b.y = AH - RAD; b.vy = -Math.abs(b.vy); }
+        for (const q of tiles) {
+          if (q.dead >= 0 || left <= 1) continue;
+          const dx = b.x - clamp(b.x, q.x, q.x + q.w), dy = b.y - clamp(b.y, q.y, q.y + q.h);
+          if (dx * dx + dy * dy >= RAD * RAD) continue;
+          q.dead = t; left--;
+          if (Math.abs(dx) > Math.abs(dy)) b.vx = (dx > 0 ? 1 : -1) * Math.abs(b.vx); else b.vy = (dy > 0 ? 1 : dy < 0 ? -1 : -Math.sign(b.vy)) * Math.abs(b.vy);
+          const a = Math.atan2(b.vy, b.vx) + (R() - .5) * 0.3; b.vx = Math.cos(a) * SP; b.vy = Math.sin(a) * SP;
+          if (more.includes(left)) add(q.x + q.w / 2, q.y + q.h / 2);
+          break;
+        }
+      }
+      if (t >= nf / 30) { frames.push(balls.map(b => [b.x, b.y])); nf++; }
+      t += 1 / 240;
+    }
+    return { tiles, frames, end: t, left };
+  }
+  let S = null; for (let seed = P.seed; seed < P.seed + 500 && !S; seed++) { const s = sim(seed); if (s.left === 1 && s.end >= 15 && s.end <= 21) S = s; }
+  if (!S) throw new Error('no run of the right length');
+  const COL = { west: '#D97706', south: '#DC2626', midwest: '#059669', northeast: '#2563EB' }, wi = S.tiles.findIndex(q => q.dead < 0), W = P.tiles[wi], te = S.end + 0.45;
+  $('stage').innerHTML = '<div id="arena" style="position:absolute;left:' + AX + 'px;top:' + AY + 'px;width:' + AW + 'px;height:' + AH + 'px;border:5px solid rgba(255,255,255,.28);border-radius:26px"></div>';
+  const els = S.tiles.map((q, i) => { const d = document.createElement('div'); d.className = 'tile'; d.textContent = P.tiles[i].id;
+    d.style.cssText = `left:${q.x}px;top:${q.y}px;width:${q.w}px;height:${q.h}px;background:${COL[P.tiles[i].region]}`; $('arena').appendChild(d); return d; });
+  const bl = Array.from({ length: 7 }, () => { const d = document.createElement('div'); d.className = 'ball'; $('arena').appendChild(d); return d; });
+  els[wi].style.zIndex = 5;
+  const R2 = rng(3), ev = S.tiles.filter(q => q.dead >= 0).map(q => ({ t: q.dead, kind: 'pop', f: note(Math.floor(R2() * 12)) }));
+  [0, 1, 2, 3].forEach(i => ev.push({ t: te + i * 0.13, kind: 'tone', f: note(5 + i * 2) }));
+  const winVoice = W.name + ' wins. ' + P.winVoice;
+  draw = function (t) {
+    const fr = S.frames[Math.min(Math.floor(t * 30), S.frames.length - 1)]; let left = 0;
+    bl.forEach((d, i) => { const p = fr[i]; if (!p || t >= S.end) d.style.display = 'none'; else { d.style.display = ''; d.style.transform = `translate(${p[0] - 17}px, ${p[1] - 17}px)`; } });
+    S.tiles.forEach((q, i) => { const d = els[i];
+      if (q.dead < 0) { left++; const e = t >= te ? eBack((t - te) / 0.7) : 0;
+        d.style.transform = `translate(${(AW / 2 - q.x - q.w / 2) * e}px, ${(AH / 2 - q.y - q.h / 2) * e}px) scale(${1 + 2.6 * e})`; }
+      else if (t < q.dead) { left++; d.style.opacity = 1; d.style.transform = ''; d.style.display = ''; }
+      else { const u = (t - q.dead) / 0.25; if (u > 1) d.style.display = 'none'; else { d.style.display = ''; d.style.opacity = 1 - u; d.style.transform = `scale(${1 + 0.6 * u})`; } } });
+    if (t >= te) { setTop(W.name.toUpperCase() + '\nWINS', 'green'); bottom('<span style="font-size:76px">Capital: ' + W.capital + '</span>', P.winSub); }
+    else { setTop(P.hookTop); bottom(left + ' LEFT', P.sub); }
+  };
+  return { dur: te + Math.max(3.6, est(winVoice) + 0.8), events: ev, voice: [{ t: 0.15, text: P.hookVoice }, { t: te + 0.1, text: winVoice }], winner: W.id };
+};
+
+window.setup = (name, P) => { top_ = bot_ = null; const r = SCENES[name](P); draw(0); return r; };
+window.frame = t => draw(t);
+</script>
+</body>
+</html>

@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-// Puts the ten format tests of experiments.json into data/videos.json, at the
-// place the bot reads next, so that ten different formats go out on ten
-// consecutive days: TikTok and YouTube Shorts in the 23:00 UTC run (index
+// Puts the format tests of experiments.json and experiments-anim.json into data/videos.json, at the
+// place the bot reads next, so that a different format goes out every day: TikTok and YouTube Shorts in the 23:00 UTC run (index
 // counted from shorts_epoch), X in the 13:00 UTC run (index from epoch, set
 // here so that X starts the tests the day after the shorts). Idempotent.
 // Re-run after build-bank.cjs, which rebuilds the list without them.
@@ -10,8 +9,9 @@ const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..'), P = path.join(ROOT, 'data/videos.json');
 const AT = +(process.argv[2] || 11), X_EPOCH = process.argv[3] || '2026-10-31';
 // Posting order: the formats furthest from the old quizzes first.
-const ORDER = ['from-space', 'state-puns', 'time-lapse', 'blind-ranking', 'three-clues', 'upside-down', 'zoom-out', 'spot-the-mistake', 'letter-challenge', 'grid-cell'];
-const exp = JSON.parse(fs.readFileSync(path.join(__dirname, 'experiments.json'), 'utf8'));
+const ORDER = ['last-state-standing', 'bounce-out', 'from-space', 'map-builds-itself', 'state-puns', 'line-closes', 'time-lapse', 'blind-ranking', 'three-clues', 'upside-down', 'zoom-out', 'spot-the-mistake', 'letter-challenge', 'grid-cell'];
+// The still-slide tests (make-experiments.cjs) and the animated ones (make-anim.cjs).
+const exp = ['experiments.json', 'experiments-anim.json'].flatMap(f => JSON.parse(fs.readFileSync(path.join(__dirname, f), 'utf8')));
 const bank = JSON.parse(fs.readFileSync(P, 'utf8'));
 bank.videos = bank.videos.filter(v => !v.exp);
 const rows = ORDER.map((f, i) => {

@@ -140,6 +140,34 @@
   {
    "n": 101,
    "exp": true,
+   "format": "Last state standing",
+   "slug": "w01-last-state-standing",
+   "text": "50 states, 7 rules, one survivor. Every round knocks states off the map: oceans, Canada, the Mississippi. Which round took yours out? #geography #maps https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=last-state-standing",
+   "url": "https://statedoku.com/media/videos/w01-last-state-standing.mp4",
+   "tiktok": "50 states enter, one survives. Comment the round that took your state out.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #maps",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/w01-last-state-standing.mp4",
+   "youtube": {
+    "title": "50 states, 7 rules, 1 survivor: is your state still alive?",
+    "description": "50 states enter, one survives. Comment the round that took your state out.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #maps"
+   }
+  },
+  {
+   "n": 102,
+   "exp": true,
+   "format": "Bounce out",
+   "slug": "w02-bounce-out",
+   "text": "Fifty state tiles, a few bouncing balls, and the last tile standing wins. Pure chance, oddly tense. Did yours make the final ten? #geography #usa https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=bounce-out",
+   "url": "https://statedoku.com/media/videos/w02-bounce-out.mp4",
+   "tiktok": "50 states, last one standing wins. Find your state and comment how long it lasted.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #maps",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/w02-bounce-out.mp4",
+   "youtube": {
+    "title": "50 states, last one standing wins: find your state",
+    "description": "50 states, last one standing wins. Find your state and comment how long it lasted.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #usa"
+   }
+  },
+  {
+   "n": 103,
+   "exp": true,
    "format": "From space",
    "slug": "x03-from-space",
    "text": "Three real NASA photos, three states seen from orbit. The night one is easier than it looks. How many did you get? #geography #space https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=from-space",
@@ -152,7 +180,21 @@
    }
   },
   {
-   "n": 102,
+   "n": 104,
+   "exp": true,
+   "format": "Map builds itself",
+   "slug": "w03-map-builds-itself",
+   "text": "The US map building itself: all 50 states fly into place in the order they joined the Union, then it loops. Which one arrived later than you thought? #ushistory #maps https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=map-builds-itself",
+   "url": "https://statedoku.com/media/videos/w03-map-builds-itself.mp4",
+   "tiktok": "The US map building itself, state by state, in the order they joined the Union. Which one arrived later than you thought?\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #maps",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/w03-map-builds-itself.mp4",
+   "youtube": {
+    "title": "The US map builds itself in statehood order (satisfying loop)",
+    "description": "The US map building itself, state by state, in the order they joined the Union. Which one arrived later than you thought?\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #ushistory #maps"
+   }
+  },
+  {
+   "n": 105,
    "exp": true,
    "format": "State puns",
    "slug": "x02-state-puns",
@@ -166,7 +208,21 @@
    }
   },
   {
-   "n": 103,
+   "n": 106,
+   "exp": true,
+   "format": "Line closes",
+   "slug": "w04-line-closes",
+   "text": "A pen draws a state border and you have to name it before the line closes. Three states, and the third one is hard. How far did the pen get? #geography #quiz https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=line-closes",
+   "url": "https://statedoku.com/media/videos/w04-line-closes.mp4",
+   "tiktok": "Name the state before the line closes. Comment how far the pen got when you knew.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #maps",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/w04-line-closes.mp4",
+   "youtube": {
+    "title": "Name the state before the line closes",
+    "description": "Name the state before the line closes. Comment how far the pen got when you knew.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #quiz"
+   }
+  },
+  {
+   "n": 107,
    "exp": true,
    "format": "Time-lapse",
    "slug": "x04-time-lapse",
@@ -180,7 +236,7 @@
    }
   },
   {
-   "n": 104,
+   "n": 108,
    "exp": true,
    "format": "Blind ranking",
    "slug": "x08-blind-ranking",
@@ -194,7 +250,7 @@
    }
   },
   {
-   "n": 105,
+   "n": 109,
    "exp": true,
    "format": "Three clues",
    "slug": "x01-three-clues",
@@ -208,7 +264,7 @@
    }
   },
   {
-   "n": 106,
+   "n": 110,
    "exp": true,
    "format": "Upside down",
    "slug": "x05-upside-down",
@@ -222,7 +278,7 @@
    }
   },
   {
-   "n": 107,
+   "n": 111,
    "exp": true,
    "format": "Zoom out",
    "slug": "x06-zoom-out",
@@ -236,7 +292,7 @@
    }
   },
   {
-   "n": 108,
+   "n": 112,
    "exp": true,
    "format": "Spot the mistake",
    "slug": "x07-spot-the-mistake",
@@ -250,7 +306,7 @@
    }
   },
   {
-   "n": 109,
+   "n": 113,
    "exp": true,
    "format": "Letter challenge",
    "slug": "x09-letter-challenge",
@@ -264,7 +320,7 @@
    }
   },
   {
-   "n": 110,
+   "n": 114,
    "exp": true,
    "format": "Grid cell",
    "slug": "x10-grid-cell",
