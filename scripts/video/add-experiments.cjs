@@ -14,8 +14,9 @@ const ORDER = ['last-state-standing', 'bounce-out', 'from-space', 'map-builds-it
 const exp = ['experiments.json', 'experiments-anim.json'].flatMap(f => JSON.parse(fs.readFileSync(path.join(__dirname, f), 'utf8')));
 const bank = JSON.parse(fs.readFileSync(P, 'utf8'));
 bank.videos = bank.videos.filter(v => !v.exp);
-const rows = ORDER.map((f, i) => {
-  const v = exp.find(x => x.slug.slice(4) === f); if (!v) throw new Error('no test video ' + f);
+// The 14 first tests in ORDER, then the batch of 30 animations (w05 to w34) in the order make-anim.cjs wrote them.
+const first = ORDER.map(f => { const v = exp.find(x => x.slug.slice(4) === f); if (!v) throw new Error('no test video ' + f); return v; });
+const rows = [...first, ...exp.filter(x => !first.includes(x))].map((v, i) => {
   for (const d of ['media/videos', 'media/videos/tiktok']) if (!fs.existsSync(path.join(ROOT, d, v.slug + '.mp4'))) throw new Error('missing ' + d + '/' + v.slug + '.mp4');
   return { n: 101 + i, exp: true, format: v.format, slug: v.slug, text: v.post, url: `https://statedoku.com/media/videos/${v.slug}.mp4`, tiktok: v.tiktok,
     vertical_url: `https://statedoku.com/media/videos/tiktok/${v.slug}.mp4`, youtube: v.youtube };
@@ -25,5 +26,5 @@ bank.epoch = X_EPOCH;
 bank.note_tests = 'Entries with exp:true are the ten format tests of 10 November 2026 (scripts/video/make-experiments.cjs, add-experiments.cjs); results in scripts/video/EXPERIMENTS.md.';
 fs.writeFileSync(P, JSON.stringify(bank, null, 1) + '\n');
 const day = (e, i) => new Date(Date.parse(e + 'T00:00:00Z') + i * 86400000).toISOString().slice(0, 10);
-rows.forEach((r, i) => console.log(r.slug.padEnd(22), 'TikTok/YouTube', day(bank.shorts_epoch, AT + i), '| X', day(bank.epoch, AT + i)));
+rows.forEach((r, i) => console.log(r.slug.padEnd(28), 'TikTok/YouTube', day(bank.shorts_epoch, AT + i), '| X', day(bank.epoch, AT + i)));
 console.log(bank.videos.length, 'videos in the list');

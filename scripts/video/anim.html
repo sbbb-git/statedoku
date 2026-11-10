@@ -41,6 +41,7 @@ const SRC = document.querySelector('#mapsrc svg'), NS = 'http://www.w3.org/2000/
 function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
 const eBack = x => { x = clamp(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const eBounce = x => { x = clamp(x); const n = 7.5625, d = 2.75; return x < 1 / d ? n * x * x : x < 2 / d ? n * (x -= 1.5 / d) * x + .75 : x < 2.5 / d ? n * (x -= 2.25 / d) * x + .9375 : n * (x -= 2.625 / d) * x + .984375; };
 const eIO = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
 const est = s => s.replace(/\d/g, 'xxxx').length * 0.072 + 0.45;                      // seconds the voice needs for a line, with a margin
 const PENTA = [261.63, 293.66, 329.63, 392, 440], note = i => PENTA[i % 5] * Math.pow(2, Math.floor(i / 5) % 3);
@@ -53,7 +54,7 @@ function mountMap() {
   s.querySelectorAll('title').forEach(e => e.remove()); $('stage').appendChild(s);
   const M = {};
   s.querySelectorAll('path[data-usps]').forEach(p => { const b = p.getBBox(); p.style.stroke = '#0F2147'; p.style.strokeWidth = '1.2'; p.style.strokeLinejoin = 'round';
-    M[p.getAttribute('data-usps')] = { p, cx: b.x + b.width / 2, cy: b.y + b.height / 2 }; });
+    M[p.getAttribute('data-usps')] = { p, cx: b.x + b.width / 2, cy: b.y + b.height / 2, r: Math.max(b.width, b.height) / 2 }; });
   return M;
 }
 const SCENES = {};
@@ -95,19 +96,19 @@ SCENES.royale = function (P) {
 SCENES.assemble = function (P) {
   const M = mountMap(), R = rng(11), ev = [], vo = [{ t: 0.15, text: P.hookVoice }];
   const PAL = ['#DC2626', '#F59E0B', '#059669', '#3B82F6', '#FFFFFF'], t1 = 0.7, gap = 0.2, fly = 0.65;
-  const S = P.order.map((o, i) => { const m = M[o.id]; ev.push({ t: t1 + i * gap + fly - 0.08, kind: 'tone', f: note(i % 15) });
-    return { m, year: o.year, sx: 60 + R() * 855, sy: -150 + R() * 960, rot: (R() - .5) * 300, col: PAL[i % 5], t0: t1 + i * gap }; });
+  const S = (P.byX ? P.order.slice().sort((a, b) => M[a.id].cx - M[b.id].cx) : P.order).map((o, i) => { const m = M[o.id]; ev.push({ t: t1 + i * gap + fly - 0.08, kind: 'tone', f: note(i % 15) });
+    return { m, label: o.label, sx: 60 + R() * 855, sy: -150 + R() * 960, rot: (R() - .5) * 300, col: PAL[i % 5], t0: t1 + i * gap }; });
   const tHold = t1 + (S.length - 1) * gap + fly, tEx = tHold + 1.6;
   vo.push({ t: tHold - 1.3, text: P.endVoice }); ev.push({ t: tEx, kind: 'pop', f: 240 });
   draw = function (t) {
-    let n = 0, year = S[0].year;
+    let n = 0, label = '';
     for (const s of S) {
       const e = t < tEx ? (t < s.t0 ? 0 : eBack((t - s.t0) / fly)) : 1 - eIO((t - tEx) / 0.85), m = s.m;
-      if (t >= s.t0 && t < tEx) { n++; year = s.year; }
+      if (t >= s.t0 && t < tEx) { n++; label = s.label; }
       m.p.style.fill = s.col;
       m.p.setAttribute('transform', `translate(${(s.sx - m.cx) * (1 - e)} ${(s.sy - m.cy) * (1 - e)}) rotate(${s.rot * (1 - e)} ${m.cx} ${m.cy}) translate(${m.cx} ${m.cy}) scale(${0.7 + 0.3 * e}) translate(${-m.cx} ${-m.cy})`);
     }
-    if (n) { setTop(String(year), 'year'); bottom(n + ' / 50', n >= 50 ? P.endSub : P.sub); } else { setTop(P.hookTop); bottom('0 / 50', P.sub); }
+    if (n) { setTop(label, P.labelCls || ''); bottom(n + ' / 50', n >= 50 ? P.endSub : P.sub); } else { setTop(P.hookTop); bottom('0 / 50', P.sub); }
   };
   return { dur: tEx + 0.9, events: ev, voice: vo };
 };
@@ -168,6 +169,7 @@ SCENES.bounce = function (P) {
     return { tiles, frames, end: t, left };
   }
   let S = null; for (let seed = P.seed; seed < P.seed + 500 && !S; seed++) { const s = sim(seed); if (s.left === 1 && s.end >= 15 && s.end <= 21) S = s; }
+  if (P.probe) return { winner: P.tiles[S.tiles.findIndex(q => q.dead < 0)].id };
   if (!S) throw new Error('no run of the right length');
   const COL = { west: '#D97706', south: '#DC2626', midwest: '#059669', northeast: '#2563EB' }, wi = S.tiles.findIndex(q => q.dead < 0), W = P.tiles[wi], te = S.end + 0.45;
   $('stage').innerHTML = '<div id="arena" style="position:absolute;left:' + AX + 'px;top:' + AY + 'px;width:' + AW + 'px;height:' + AH + 'px;border:5px solid rgba(255,255,255,.28);border-radius:26px"></div>';
@@ -190,6 +192,50 @@ SCENES.bounce = function (P) {
     else { setTop(P.hookTop); bottom(left + ' LEFT', P.sub); }
   };
   return { dur: te + Math.max(3.6, est(winVoice) + 0.8), events: ev, voice: [{ t: 0.15, text: P.hookVoice }, { t: te + 0.1, text: winVoice }], winner: W.id };
+};
+
+// A spinning outline that slows down and stops upright.
+SCENES.spin = function (P) {
+  $('stage').innerHTML = '<div style="position:absolute;left:60px;top:480px;width:960px;height:930px;background:#fff;border-radius:44px;box-shadow:0 24px 60px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;overflow:hidden"><svg id="ds" style="width:620px;height:620px;overflow:visible"></svg></div>';
+  const svg = $('ds'), path = document.createElementNS(NS, 'path'); svg.appendChild(path);
+  const ev = [], vo = [{ t: 0.15, text: P.hookVoice }], D = 4.6, RV = 1.6; let T = 0.5, cur = -1;
+  const items = P.states.map((s, k) => { const t0 = T; for (let j = 1; j < 10; j++) ev.push({ t: t0 + j * D / 10, kind: 'tick', f: 300 + j * 40 });
+    ev.push({ t: t0 + D, kind: 'tone', f: 880 }); vo.push({ t: t0 + D + 0.15, text: s.name + '.' }); T = t0 + D + RV;
+    return { ...s, t0, turn: (k % 2 ? -1 : 1) * (540 + k * 180), d: SRC.querySelector('#us-' + s.id).getAttribute('d') }; });
+  vo.push({ t: T + 0.1, text: P.endVoice });
+  draw = function (t) {
+    let i = items.findIndex(it => t < it.t0 + D + RV); if (i < 0) i = items.length - 1;
+    const it = items[i];
+    if (i !== cur) { cur = i; path.setAttribute('d', it.d); const b = path.getBBox(), pad = Math.max(b.width, b.height) * .05;
+      svg.setAttribute('viewBox', [b.x - pad, b.y - pad, b.width + 2 * pad, b.height + 2 * pad].join(' ')); }
+    const p = clamp((t - it.t0) / D), done = t >= it.t0 + D;
+    svg.style.transform = 'rotate(' + it.turn * Math.pow(1 - p, 2) + 'deg)'; path.style.fill = done ? '#059669' : '#0F2147';
+    setTop(P.hookTop);
+    if (t >= T) bottom(P.endBottom, P.endSub); else bottom(done ? it.name : '?', 'State ' + (i + 1) + ' of ' + items.length);
+  };
+  return { dur: T + est(P.endVoice) + 0.7, events: ev, voice: vo };
+};
+
+// A state is missing from the map; after the countdown it drops back in.
+SCENES.missing = function (P) {
+  const M = mountMap(), ev = [], vo = [{ t: 0.15, text: P.hookVoice }], Q = 3.4, DROP = 0.9, RV = 1.5; let T = 0.4, cur = -1;
+  const svg = $('stage').querySelector('svg'), ring = document.createElementNS(NS, 'circle'); ring.style.fill = 'none'; ring.style.stroke = '#F59E0B'; ring.style.strokeWidth = '5'; svg.appendChild(ring);
+  const items = P.states.map(s => { const t0 = T; [0, 1, 2].forEach(j => ev.push({ t: t0 + 0.4 + j, kind: 'tick', f: 880 }));
+    ev.push({ t: t0 + Q + DROP * 0.36, kind: 'pop', f: 200 }); ev.push({ t: t0 + Q + DROP, kind: 'tone', f: 660 }); vo.push({ t: t0 + Q + 0.25, text: s.name + '.' }); T = t0 + Q + DROP + RV; return { ...s, t0 }; });
+  vo.push({ t: T + 0.1, text: P.endVoice });
+  draw = function (t) {
+    let i = items.findIndex(it => t < it.t0 + Q + DROP + RV); if (i < 0) i = items.length - 1;
+    const it = items[i], m = M[it.id], u = t - it.t0;
+    if (i !== cur) { cur = i; m.p.parentNode.insertBefore(m.p, ring); }
+    for (const id in M) { const x = M[id]; x.p.style.fill = '#fff'; x.p.setAttribute('transform', ''); x.p.style.stroke = '#0F2147'; x.p.style.strokeWidth = '1.2'; }
+    items.slice(0, i).forEach(o => { M[o.id].p.style.fill = '#059669'; });
+    if (u < Q) { m.p.style.fill = '#0A1733'; m.p.style.stroke = '#F59E0B'; m.p.style.strokeWidth = '2.5';
+      ring.style.display = ''; ring.setAttribute('cx', m.cx); ring.setAttribute('cy', m.cy); ring.setAttribute('r', (m.r + 16) * (1 + 0.1 * Math.sin(u * 7))); }
+    else { ring.style.display = 'none'; m.p.style.fill = '#059669'; m.p.setAttribute('transform', `translate(0 ${-720 * (1 - eBounce((u - Q) / DROP))})`); }
+    setTop(P.hookTop);
+    if (t >= T) bottom(P.endBottom, P.endSub); else bottom(u < Q ? String(clamp(Math.ceil(Q - 0.3 - u), 1, 3)) : it.name, 'State ' + (i + 1) + ' of ' + items.length);
+  };
+  return { dur: T + est(P.endVoice) + 0.7, events: ev, voice: vo };
 };
 
 window.setup = (name, P) => { top_ = bot_ = null; const r = SCENES[name](P); draw(0); return r; };
