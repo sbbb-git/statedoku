@@ -15,7 +15,8 @@ import csv, json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-bank = json.load(open(os.path.join(ROOT, 'data/videos.json'), encoding='utf-8'))['videos']
+# The format tests (exp) carry their own texts, written by make-experiments.cjs.
+bank = [v for v in json.load(open(os.path.join(ROOT, 'data/videos.json'), encoding='utf-8'))['videos'] if not v.get('exp')]
 scripts = {s['slug']: s for s in json.load(open(os.path.join(HERE, 'videos.json'), encoding='utf-8'))}
 SERIES = {  # playlist, hashtags shown above the title (3), extra tags
     'Guess the state': ('Guess the State by Its Shape', '#shorts #geography #50states', 'guess the state, state shapes quiz, us map quiz'),
@@ -50,6 +51,7 @@ bank_path = os.path.join(ROOT, 'data/videos.json')
 full = json.load(open(bank_path, encoding='utf-8'))
 by_n = {r['n']: r for r in rows}
 for v in full['videos']:
+    if v.get('exp'): continue
     v['youtube'] = {'title': by_n[v['n']]['title'], 'description': by_n[v['n']]['description']}
 json.dump(full, open(bank_path, 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
 open(bank_path, 'a').write('\n')

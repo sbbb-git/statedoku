@@ -11,6 +11,7 @@ tick. The caption burned into each frame is the line being spoken.
 """
 import json
 import math
+import os
 import struct
 import subprocess
 import sys
@@ -24,7 +25,7 @@ HERE = Path(__file__).resolve().parent
 OUT = Path(sys.argv[1])
 VOICE = sys.argv[2]
 A, B = (int(sys.argv[3]), int(sys.argv[4])) if len(sys.argv) > 4 else (0, None)
-videos = json.load(open(HERE / 'videos.json', encoding='utf-8'))[A:B]
+videos = json.load(open(HERE / os.environ.get('VIDEOS', 'videos.json'), encoding='utf-8'))[A:B]
 voice = PiperVoice.load(VOICE)
 RATE = voice.config.sample_rate
 PAD = 0.35
@@ -57,7 +58,9 @@ for v in videos:
     d = OUT / v['slug']
     audio, durs = bytearray(), []
     for i, s in enumerate(v['segments']):
-        if s['kind'] == 'count':
+        if s['kind'] == 'beat':  # a silent step of s['dur'] seconds, with a short beep when s['freq'] is set
+            pcm = tone(s['dur'], s.get('freq'), 0.07)
+        elif s['kind'] == 'count':
             pcm = TICK if s['caption'] != '1' else GO
         else:
             pcm = speak(s['voice'], d / f'a{i:03d}.wav') + tone(PAD)

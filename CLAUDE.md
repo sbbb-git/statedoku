@@ -491,6 +491,20 @@ of the bot workflow sends one post now (`bot/buffer-post.mjs`): text to X, or
 a video of the list to TikTok and YouTube. The packs (profile, bio, banner,
 settings) are in `scripts/video/tiktok/` and `scripts/video/youtube/`.
 
+**Format tests, from 10 November 2026.** The quiz videos did not take off
+(500 to 1,000 views a Short, next to nothing on TikTok) and the owner asked
+for very different kinds of video, on TikTok and on X alike. Ten formats, one
+video each (NASA photos, puns, a statehood time-lapse, blind ranking, three
+clues, upside-down outlines, zoom out, spot the wrong label, a letter
+challenge, one cell of the grid), sit in `data/videos.json` with `exp: true`
+at the place the bot reads next: TikTok and YouTube from 10 to 19 November, X
+from 11 to 20 November (its `epoch` was moved for that). They are built by
+`scripts/video/make-experiments.cjs` and placed by `add-experiments.cjs`,
+which must be re-run after `build-bank.cjs`. `scripts/video/EXPERIMENTS.md`
+holds the calendar and how to read the result; read it on 20 November and
+build more of what worked. Photos are NASA's only (public domain, credits in
+`scripts/video/photos/CREDITS.md`).
+
 Every footer links the three accounts (X, TikTok, YouTube, `rel="me"`) next to
 the Reddit community, except about, privacy and terms (untouched during the
 AdSense review) and the widget screens; the homepages list them in `sameAs`.

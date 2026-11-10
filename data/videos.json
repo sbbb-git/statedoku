@@ -1,6 +1,6 @@
 {
  "version": 1,
- "epoch": "2026-11-05",
+ "epoch": "2026-10-31",
  "shorts_epoch": "2026-10-30",
  "shorts_from": "2026-11-09",
  "note": "X: one video a day in the 13:00 UTC run from epoch. TikTok and YouTube Shorts: one a day in the 23:00 UTC run, video idx+1 where idx counts days from shorts_epoch, not before shorts_from. Video 1 was posted by hand on 5 November 2026, 2 and 3 by the bot, 4 to 10 scheduled by hand in Buffer on 7 and 8 November (owner: the accounts looked empty); from 9 November the bot posts 11, 12... Safe-zone version vertical_url, texts tiktok and youtube. Built by scripts/video/build-bank.cjs, then make-tiktok-captions.py and make-youtube-shorts.py add the platform fields.",
@@ -135,6 +135,146 @@
    "youtube": {
     "title": "Name the capital #2 | US geography quiz",
     "description": "Capitals quiz: Delaware, Hawaii, Texas, Minnesota and Alabama. Can you name all five capitals?\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #capitals"
+   }
+  },
+  {
+   "n": 101,
+   "exp": true,
+   "format": "From space",
+   "slug": "x03-from-space",
+   "text": "Three real NASA photos, three states seen from orbit. The night one is easier than it looks. How many did you get? #geography #space https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=from-space",
+   "url": "https://statedoku.com/media/videos/x03-from-space.mp4",
+   "tiktok": "Can you name a state from orbit? Three real NASA photos, three seconds each. Comment your score.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #fromspace",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x03-from-space.mp4",
+   "youtube": {
+    "title": "Guess the US state from space (real NASA photos)",
+    "description": "Can you name a state from orbit? Three real NASA photos, three seconds each. Comment your score.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #space"
+   }
+  },
+  {
+   "n": 102,
+   "exp": true,
+   "format": "State puns",
+   "slug": "x02-state-puns",
+   "text": "Three US state puns, each one worse than the last. What did Delaware? Reply with yours. #geography #dadjokes https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=state-puns",
+   "url": "https://statedoku.com/media/videos/x02-state-puns.mp4",
+   "tiktok": "What did Delaware? Three state puns, rate them out of 10 and comment a worse one.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #statepuns",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x02-state-puns.mp4",
+   "youtube": {
+    "title": "What did Delaware? 3 US state puns",
+    "description": "What did Delaware? Three state puns, rate them out of 10 and comment a worse one.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #dadjokes"
+   }
+  },
+  {
+   "n": 103,
+   "exp": true,
+   "format": "Time-lapse",
+   "slug": "x04-time-lapse",
+   "text": "From the first states to fifty in twenty seconds: the map fills in the order the states joined. Which two came last? #ushistory #maps https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=time-lapse",
+   "url": "https://statedoku.com/media/videos/x04-time-lapse.mp4",
+   "tiktok": "The whole map filling up in the order the states joined the Union. Which year surprised you?\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #timelapse",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x04-time-lapse.mp4",
+   "youtube": {
+    "title": "Watch the USA grow to 50 states in 20 seconds",
+    "description": "The whole map filling up in the order the states joined the Union. Which year surprised you?\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #ushistory #maps"
+   }
+  },
+  {
+   "n": 104,
+   "exp": true,
+   "format": "Blind ranking",
+   "slug": "x08-blind-ranking",
+   "text": "Blind ranking: five states, biggest to smallest, and you place each one before seeing the next. Michigan is where it goes wrong. #geography #blindranking https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=blind-ranking",
+   "url": "https://statedoku.com/media/videos/x08-blind-ranking.mp4",
+   "tiktok": "Blind ranking, states edition: place each one from biggest to smallest before you see the next. Comment how many you got.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #blindranking",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x08-blind-ranking.mp4",
+   "youtube": {
+    "title": "Blind ranking: 5 US states by size",
+    "description": "Blind ranking, states edition: place each one from biggest to smallest before you see the next. Comment how many you got.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #blindranking"
+   }
+  },
+  {
+   "n": 105,
+   "exp": true,
+   "format": "Three clues",
+   "slug": "x01-three-clues",
+   "text": "Three clues, one state, and the map narrows with each clue. Did you get both before the third? #geography #quiz https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=three-clues",
+   "url": "https://statedoku.com/media/videos/x01-three-clues.mp4",
+   "tiktok": "Three clues, one state. Watch the map narrow down and comment which clue gave it away.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #threeclues",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x01-three-clues.mp4",
+   "youtube": {
+    "title": "Three clues, one state: can you beat the third clue?",
+    "description": "Three clues, one state. Watch the map narrow down and comment which clue gave it away.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #quiz"
+   }
+  },
+  {
+   "n": 106,
+   "exp": true,
+   "format": "Upside down",
+   "slug": "x05-upside-down",
+   "text": "Three state outlines flipped upside down. The first is easy, the third is not. How many can you still name? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=upside-down",
+   "url": "https://statedoku.com/media/videos/x05-upside-down.mp4",
+   "tiktok": "Three states, flipped upside down. The last one gets almost everyone. Comment your score out of 3.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #upsidedown",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x05-upside-down.mp4",
+   "youtube": {
+    "title": "Can you name these states upside down?",
+    "description": "Three states, flipped upside down. The last one gets almost everyone. Comment your score out of 3.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #quiz"
+   }
+  },
+  {
+   "n": 107,
+   "exp": true,
+   "format": "Zoom out",
+   "slug": "x06-zoom-out",
+   "text": "We start zoomed in on one stretch of border and pull back five times. On which zoom do you recognise the state? #geography #maps https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=zoom-out",
+   "url": "https://statedoku.com/media/videos/x06-zoom-out.mp4",
+   "tiktok": "Zoom out challenge: one piece of border, five zoom levels. Comment the zoom you got it on.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #zoomout",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x06-zoom-out.mp4",
+   "youtube": {
+    "title": "Zoom out challenge: name the state from its border",
+    "description": "Zoom out challenge: one piece of border, five zoom levels. Comment the zoom you got it on.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #maps"
+   }
+  },
+  {
+   "n": 108,
+   "exp": true,
+   "format": "Spot the mistake",
+   "slug": "x07-spot-the-mistake",
+   "text": "One label on each map is on the wrong state. Four seconds to find it, and the second map is the one people miss. #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=spot-the-mistake",
+   "url": "https://statedoku.com/media/videos/x07-spot-the-mistake.mp4",
+   "tiktok": "Spot the mistake: one label is on the wrong state. Did you catch both maps in time?\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #spotthemistake",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x07-spot-the-mistake.mp4",
+   "youtube": {
+    "title": "Spot the mistake on the US map",
+    "description": "Spot the mistake: one label is on the wrong state. Did you catch both maps in time?\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #maps"
+   }
+  },
+  {
+   "n": 109,
+   "exp": true,
+   "format": "Letter challenge",
+   "slug": "x09-letter-challenge",
+   "text": "Name a US state with no letter A in it. Harder than it sounds: only 14 of the 50 qualify. Which one came to you first? #geography #trivia https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=letter-challenge",
+   "url": "https://statedoku.com/media/videos/x09-letter-challenge.mp4",
+   "tiktok": "Name a state with NO letter A in 5 seconds. Most people freeze. Comment the first one you thought of.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #letterchallenge",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x09-letter-challenge.mp4",
+   "youtube": {
+    "title": "Name a US state with no letter A (only 14 exist)",
+    "description": "Name a state with NO letter A in 5 seconds. Most people freeze. Comment the first one you thought of.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #trivia"
+   }
+  },
+  {
+   "n": 110,
+   "exp": true,
+   "format": "Grid cell",
+   "slug": "x10-grid-cell",
+   "text": "One cell, two clues, and any state that fits both is right. Three cells here, nine in the daily grid. Which one stopped you? #geography #puzzle https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=grid-cell",
+   "url": "https://statedoku.com/media/videos/x10-grid-cell.mp4",
+   "tiktok": "Two clues, one state that fits both. Three cells to solve, comment which one stopped you.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #gridcell",
+   "vertical_url": "https://statedoku.com/media/videos/tiktok/x10-grid-cell.mp4",
+   "youtube": {
+    "title": "Can you solve these 3 US state puzzle cells?",
+    "description": "Two clues, one state that fits both. Three cells to solve, comment which one stopped you.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #puzzle"
    }
   },
   {
@@ -1205,5 +1345,6 @@
     "description": "Round 22 of guess the state: some shapes are easy, one is not.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #50states"
    }
   }
- ]
+ ],
+ "note_tests": "Entries with exp:true are the ten format tests of 10 November 2026 (scripts/video/make-experiments.cjs, add-experiments.cjs); results in scripts/video/EXPERIMENTS.md."
 }

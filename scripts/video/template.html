@@ -51,6 +51,23 @@
   .cap span.num { font-size: 190px; padding: 6px 60px; color: #F59E0B; line-height: 1; }
   .cap span { font-size: 58px; line-height: 1.22; font-weight: 800; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.6); background: rgba(10,23,51,.72); padding: 22px 34px; border-radius: 26px; }
   footer { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; font-size: 46px; font-weight: 800; color: #F59E0B; letter-spacing: .02em; }
+  .shape svg.rot { transform: rotate(180deg); }
+  .name.plain { color: #0F2147; }
+  .bigyear { font-size: 150px; font-weight: 900; text-align: center; line-height: 1; color: #0F2147; letter-spacing: -0.03em; }
+  .bigsub { font-size: 46px; font-weight: 800; text-align: center; color: #059669; margin: 6px 0 18px; }
+  .punch { font-size: 76px; font-weight: 900; text-align: center; color: #DC2626; margin-top: 26px; line-height: 1.1; letter-spacing: -0.02em; min-height: 84px; }
+  .map text { font: 800 36px Inter, system-ui, sans-serif; text-anchor: middle; dominant-baseline: central; fill: #0F2147; }
+  .map rect.lb { fill: #fff; stroke: #0F2147; stroke-width: 2; }
+  .map rect.lb.bad { fill: #DC2626; stroke: #DC2626; } .map text.bad { fill: #fff; }
+  .map rect.lb.ok { fill: #059669; stroke: #059669; } .map text.ok { fill: #fff; }
+  .photo { padding: 22px; } .photo img { width: 100%; height: 800px; object-fit: cover; border-radius: 26px; display: block; }
+  .photo .credit { font-size: 28px; color: #64748B; text-align: right; margin-top: 8px; font-weight: 600; }
+  .cellgrid { display: grid; grid-template-columns: 1fr 1.25fr; grid-template-rows: auto auto; gap: 20px; width: 100%; }
+  .cellgrid > div { border-radius: 30px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 26px; min-height: 330px; }
+  .cellgrid .blank { background: transparent; }
+  .cellgrid .clue { background: #0F2147; border: 5px solid #F59E0B; color: #fff; font-size: 54px; font-weight: 900; line-height: 1.15; }
+  .cellgrid .ans { background: #fff; border: 8px solid #CBD5E1; color: #0F2147; font-size: 190px; font-weight: 900; }
+  .cellgrid .ans.ok { border-color: #059669; color: #059669; font-size: 62px; line-height: 1.2; }
   .outro h1 { font-size: 92px; text-align: center; font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; }
   .outro p { font-size: 50px; text-align: center; color: #CBD5E1; margin-top: 30px; font-weight: 600; line-height: 1.3; }
   .outro .url { display: inline-block; margin-top: 50px; background: #F59E0B; color: #0F2147; font-size: 70px; font-weight: 900; padding: 26px 50px; border-radius: 999px; }
@@ -67,14 +84,17 @@
 <script>
 const SRC = document.querySelector('#mapsrc svg');
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-function shapeSvg(id, cls) {
+function shapeSvg(id, cls, zoom) {
   const p = SRC.querySelector('#us-' + id);
   const tmp = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   tmp.setAttribute('viewBox', '0 0 975 610'); tmp.style.position = 'absolute'; tmp.style.visibility = 'hidden';
   const c = p.cloneNode(true); tmp.appendChild(c); document.body.appendChild(tmp);
   const b = c.getBBox(); tmp.remove();
   const pad = Math.max(b.width, b.height) * 0.08;
-  return '<svg class="' + (cls || '') + '" viewBox="' + (b.x - pad) + ' ' + (b.y - pad) + ' ' + (b.width + 2 * pad) + ' ' + (b.height + 2 * pad) + '" preserveAspectRatio="xMidYMid meet"><path d="' + p.getAttribute('d') + '"/></svg>';
+  let vb = [b.x - pad, b.y - pad, b.width + 2 * pad, b.height + 2 * pad];
+  // zoom: a square window of side f x the larger dimension, centred on the point (cx, cy) of the bounding box
+  if (zoom && zoom.f < 1) { const w = Math.max(b.width, b.height) * zoom.f; vb = [b.x + zoom.cx * b.width - w / 2, b.y + zoom.cy * b.height - w / 2, w, w]; }
+  return '<svg class="' + (cls || '') + '" viewBox="' + vb.join(' ') + '" preserveAspectRatio="xMidYMid meet"><path d="' + p.getAttribute('d') + '"/></svg>';
 }
 function mapSvg(hl) {
   const s = SRC.cloneNode(true);
@@ -90,10 +110,11 @@ window.render = function (seg) {
   cap.textContent = seg.caption || ''; cap.className = seg.kind === 'count' ? 'num' : ''; document.getElementById('cap').style.display = seg.caption ? '' : 'none';
   let h = '';
   if (v.type === 'hook') h = '<div class="hook"><h1>' + esc(v.title) + '</h1>' + (v.sub ? '<p>' + esc(v.sub) + '</p>' : '') + '</div>';
-  else if (v.type === 'silhouette') h = '<div class="card"><div class="shape' + (v.reveal ? ' reveal' : '') + '">' + shapeSvg(v.id) + '</div>' +
-      (v.reveal ? '<div class="name">' + esc(v.name) + '</div>' : '<div class="q">?</div>') + '</div>';
-  else if (v.type === 'map') h = '<div class="card map">' + (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + mapSvg(v.hl || {}) +
-      (v.names ? '<div class="names">' + v.names.map(n => '<span>' + esc(n) + '</span>').join('') + '</div>' : '') +
+  else if (v.type === 'silhouette') h = '<div class="card"><div class="shape' + (v.reveal ? ' reveal' : '') + '">' + shapeSvg(v.id, v.rot ? 'rot' : '', v.zoom) + '</div>' +
+      (v.reveal ? '<div class="name">' + esc(v.name) + '</div>' : v.name ? '<div class="name plain">' + esc(v.name) + '</div>' : '<div class="q">?</div>') + '</div>';
+  else if (v.type === 'map') h = '<div class="card map">' + (v.big ? '<div class="bigyear">' + esc(v.big) + '</div><div class="bigsub">' + esc(v.bigsub || '') + '</div>' : '') +
+      (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + mapSvg(v.hl || {}) + ('punch' in v ? '<div class="punch">' + esc(v.punch) + '</div>' : '') +
+      (v.names ? '<div class="names"' + (v.names.length > 10 ? ' style="font-size:0;zoom:.82"' : '') + '>' + v.names.map(n => '<span>' + esc(n) + '</span>').join('') + '</div>' : '') +
       (v.note ? '<div class="note">' + esc(v.note) + '</div>' : '') + '</div>';
   else if (v.type === 'options') h = (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + (v.shape ? '<div class="card" style="margin-bottom:22px;padding:16px"><div class="shape" style="height:250px">' + shapeSvg(v.shape) + '</div></div>' : '') +
       '<div class="opts">' + v.opts.map((o, i) => '<div class="opt' + (v.correct == null ? '' : i === v.correct ? ' ok' : ' dim') + '"><b>' + 'ABCD'[i] + '</b>' + esc(o) + '</div>').join('') + '</div>';
@@ -102,8 +123,17 @@ window.render = function (seg) {
   else if (v.type === 'count') h = '<div class="big">' + esc(v.n) + '</div>';
   else if (v.type === 'list') h = '<div class="card">' + (v.title ? '<div class="title">' + esc(v.title) + '</div>' : '') + '<ul class="list">' +
       v.items.map((x, i) => '<li><b>' + (i + 1) + '</b>' + esc(x) + '</li>').join('') + '</ul>' + (v.note ? '<div class="note">' + esc(v.note) + '</div>' : '') + '</div>';
+  else if (v.type === 'photo') h = '<div class="card photo"><img src="' + v.src + '" style="object-position:' + (v.pos || '50% 50%') + '"><div class="credit">' + esc(v.credit) + '</div>' +
+      (v.name ? '<div class="name">' + esc(v.name) + '</div>' : '') + '</div>';
+  else if (v.type === 'cell') h = (v.title ? '<div class="title" style="color:#fff">' + esc(v.title) + '</div>' : '') + '<div class="cellgrid"><div class="blank"></div><div class="clue">' + esc(v.col) +
+      '</div><div class="clue">' + esc(v.row) + '</div><div class="ans' + (v.answer ? ' ok' : '') + '">' + (v.answer ? v.answer.map(esc).join('<br>') : '?') + '</div></div>';
   else if (v.type === 'outro') h = '<div class="outro"><h1>' + esc(v.title) + '</h1><p>' + esc(v.sub) + '</p><div style="text-align:center"><span class="url">statedoku.com</span></div></div>';
   st.innerHTML = h;
+  // labels on the map: a pill at the centre of each named state
+  if (v.type === 'map' && v.labels) { const svg = st.querySelector('.map svg'), NS = 'http://www.w3.org/2000/svg';
+    for (const l of v.labels) { const b = svg.querySelector('path[data-usps="' + l.id + '"]').getBBox(), x = b.x + b.width / 2, y = b.y + b.height / 2, w = l.text.length * 21 + 30;
+      const r = document.createElementNS(NS, 'rect'); r.setAttribute('class', 'lb ' + (l.state || '')); r.setAttribute('x', x - w / 2); r.setAttribute('y', y - 27); r.setAttribute('width', w); r.setAttribute('height', 54); r.setAttribute('rx', 14);
+      const t = document.createElementNS(NS, 'text'); t.setAttribute('class', l.state || ''); t.setAttribute('x', x); t.setAttribute('y', y + 1); t.textContent = l.text; svg.appendChild(r); svg.appendChild(t); } }
 };
 </script>
 </body>

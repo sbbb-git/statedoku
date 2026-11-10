@@ -5,7 +5,9 @@ const fs = require('fs'), path = require('path');
 const { chromium } = require('/opt/node-tools/node_modules/playwright');
 const ROOT = path.resolve(__dirname, '..', '..');
 const OUT = process.argv[2], N = +process.argv[3] || 1e9, SCALE = +(process.env.SCALE || 2 / 3);
-const videos = JSON.parse(fs.readFileSync(path.join(__dirname, 'videos.json'), 'utf8')).slice(0, N);
+// VIDEOS=experiments.json renders another list of the same shape (the format tests).
+const videos = JSON.parse(fs.readFileSync(path.join(__dirname, process.env.VIDEOS || 'videos.json'), 'utf8')).slice(0, N);
+const photo = f => 'data:image/jpeg;base64,' + fs.readFileSync(path.join(__dirname, f)).toString('base64');
 const logo = 'data:image/png;base64,' + fs.readFileSync(path.join(ROOT, 'logo-mark-192.png')).toString('base64');
 const html = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8')
   .replace('LOGO', logo).replace('MAPSVG', fs.readFileSync(path.join(ROOT, 'data/us-map.svg'), 'utf8'));
@@ -23,7 +25,9 @@ const html = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8')
       for (let i = 0; i < v.segments.length; i++) {
         const f = path.join(dir, `f${String(i).padStart(3, '0')}.jpg`);
         if (fs.existsSync(f)) continue;
-        await p.evaluate(seg => window.render(seg), v.segments[i]);
+        const seg = v.segments[i], vis = seg.visual || {};
+        await p.evaluate(seg => window.render(seg), vis.img ? { ...seg, visual: { ...vis, src: photo(vis.img) } } : seg);
+        if (vis.img) await p.waitForFunction(() => [...document.images].every(im => im.complete && im.naturalWidth));
         await p.screenshot({ path: f, type: 'jpeg', quality: 90 });
       }
       done++; if (done % 10 === 0) console.log('frames', done, '/', videos.length);

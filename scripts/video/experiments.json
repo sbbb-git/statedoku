@@ -1,0 +1,3906 @@
+[
+ {
+  "format": "Three clues",
+  "series": "Three clues",
+  "title": "Three clues, one state",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "State 1 of 2",
+    "voice": "Three clues, one state. Clue one. It borders Canada.",
+    "caption": "Clue 1: It borders Canada.",
+    "visual": {
+     "type": "map",
+     "title": "13 states left",
+     "hl": {
+      "AK": "#F59E0B",
+      "ID": "#F59E0B",
+      "ME": "#F59E0B",
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "MT": "#F59E0B",
+      "NH": "#F59E0B",
+      "NY": "#F59E0B",
+      "ND": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B",
+      "VT": "#F59E0B",
+      "WA": "#F59E0B"
+     }
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "State 1 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "13 states left",
+     "hl": {
+      "AK": "#F59E0B",
+      "ID": "#F59E0B",
+      "ME": "#F59E0B",
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "MT": "#F59E0B",
+      "NH": "#F59E0B",
+      "NY": "#F59E0B",
+      "ND": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B",
+      "VT": "#F59E0B",
+      "WA": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 1 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "13 states left",
+     "hl": {
+      "AK": "#F59E0B",
+      "ID": "#F59E0B",
+      "ME": "#F59E0B",
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "MT": "#F59E0B",
+      "NH": "#F59E0B",
+      "NY": "#F59E0B",
+      "ND": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B",
+      "VT": "#F59E0B",
+      "WA": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "State 1 of 2",
+    "voice": "Clue two. It touches a Great Lake.",
+    "caption": "Clue 2: It touches a Great Lake.",
+    "visual": {
+     "type": "map",
+     "title": "5 states left",
+     "hl": {
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "NY": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "State 1 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "5 states left",
+     "hl": {
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "NY": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 1 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "5 states left",
+     "hl": {
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "NY": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "State 1 of 2",
+    "voice": "Clue three. It is on the Mississippi River.",
+    "caption": "Clue 3: It is on the Mississippi River.",
+    "visual": {
+     "type": "map",
+     "title": "5 states left",
+     "hl": {
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "NY": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "State 1 of 2",
+    "caption": "3",
+    "visual": {
+     "type": "map",
+     "title": "5 states left",
+     "hl": {
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "NY": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 1 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "5 states left",
+     "hl": {
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "NY": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 1 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "5 states left",
+     "hl": {
+      "MI": "#F59E0B",
+      "MN": "#F59E0B",
+      "NY": "#F59E0B",
+      "OH": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "State 1 of 2",
+    "voice": "It's Minnesota.",
+    "caption": "Minnesota, capital Saint Paul",
+    "visual": {
+     "type": "map",
+     "title": "Minnesota",
+     "hl": {
+      "MN": "#059669"
+     }
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "State 2 of 2",
+    "voice": "Next state. Clue one. The Missouri River runs through it or along it.",
+    "caption": "Clue 1: The Missouri River runs through it or along it.",
+    "visual": {
+     "type": "map",
+     "title": "8 states left",
+     "hl": {
+      "IA": "#F59E0B",
+      "KS": "#F59E0B",
+      "MO": "#F59E0B",
+      "MT": "#F59E0B",
+      "NE": "#F59E0B",
+      "ND": "#F59E0B",
+      "SD": "#F59E0B",
+      "WY": "#F59E0B"
+     }
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "State 2 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "8 states left",
+     "hl": {
+      "IA": "#F59E0B",
+      "KS": "#F59E0B",
+      "MO": "#F59E0B",
+      "MT": "#F59E0B",
+      "NE": "#F59E0B",
+      "ND": "#F59E0B",
+      "SD": "#F59E0B",
+      "WY": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 2 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "8 states left",
+     "hl": {
+      "IA": "#F59E0B",
+      "KS": "#F59E0B",
+      "MO": "#F59E0B",
+      "MT": "#F59E0B",
+      "NE": "#F59E0B",
+      "ND": "#F59E0B",
+      "SD": "#F59E0B",
+      "WY": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "State 2 of 2",
+    "voice": "Clue two. It borders Canada.",
+    "caption": "Clue 2: It borders Canada.",
+    "visual": {
+     "type": "map",
+     "title": "2 states left",
+     "hl": {
+      "MT": "#F59E0B",
+      "ND": "#F59E0B"
+     }
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "State 2 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "2 states left",
+     "hl": {
+      "MT": "#F59E0B",
+      "ND": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 2 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "2 states left",
+     "hl": {
+      "MT": "#F59E0B",
+      "ND": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "State 2 of 2",
+    "voice": "Clue three. Part of Yellowstone National Park is inside it.",
+    "caption": "Clue 3: Part of Yellowstone National Park is inside it.",
+    "visual": {
+     "type": "map",
+     "title": "2 states left",
+     "hl": {
+      "MT": "#F59E0B",
+      "ND": "#F59E0B"
+     }
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "State 2 of 2",
+    "caption": "3",
+    "visual": {
+     "type": "map",
+     "title": "2 states left",
+     "hl": {
+      "MT": "#F59E0B",
+      "ND": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 2 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "2 states left",
+     "hl": {
+      "MT": "#F59E0B",
+      "ND": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "State 2 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "2 states left",
+     "hl": {
+      "MT": "#F59E0B",
+      "ND": "#F59E0B"
+     }
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "State 2 of 2",
+    "voice": "It's Montana.",
+    "caption": "Montana, capital Helena",
+    "visual": {
+     "type": "map",
+     "title": "Montana",
+     "hl": {
+      "MT": "#059669"
+     }
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Did you get both before the third clue? Play the daily puzzle at State doku dot com.",
+    "caption": "Got both before clue 3? Daily puzzle at statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "Three clues, one state, and the map narrows with each clue. Did you get both before the third? #geography #quiz https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=three-clues",
+  "tiktok": "Three clues, one state. Watch the map narrow down and comment which clue gave it away.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #threeclues",
+  "youtube": {
+   "title": "Three clues, one state: can you beat the third clue?",
+   "description": "Three clues, one state. Watch the map narrow down and comment which clue gave it away.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #quiz"
+  },
+  "n": 1,
+  "slug": "x01-three-clues"
+ },
+ {
+  "format": "State puns",
+  "series": "State puns",
+  "title": "Three US state jokes",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "Joke 1 of 3",
+    "voice": "Three map jokes. Rate them out of ten. What did Delaware?",
+    "caption": "What did Delaware?",
+    "visual": {
+     "type": "map",
+     "title": "What did Delaware?",
+     "hl": {
+      "DE": "#F59E0B"
+     },
+     "punch": ""
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "Joke 1 of 3",
+    "caption": "What did Delaware?",
+    "visual": {
+     "type": "map",
+     "title": "What did Delaware?",
+     "hl": {
+      "DE": "#F59E0B"
+     },
+     "punch": ""
+    },
+    "dur": 0.8
+   },
+   {
+    "kind": "say",
+    "tag": "Joke 1 of 3",
+    "voice": "Her New Jersey.",
+    "caption": "Her New Jersey.",
+    "visual": {
+     "type": "map",
+     "title": "What did Delaware?",
+     "hl": {
+      "DE": "#F59E0B",
+      "NJ": "#DC2626"
+     },
+     "punch": "Her New Jersey."
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "Joke 1 of 3",
+    "caption": "Her New Jersey.",
+    "visual": {
+     "type": "map",
+     "title": "What did Delaware?",
+     "hl": {
+      "DE": "#F59E0B",
+      "NJ": "#DC2626"
+     },
+     "punch": "Her New Jersey."
+    },
+    "dur": 0.9
+   },
+   {
+    "kind": "say",
+    "tag": "Joke 2 of 3",
+    "voice": "Where has Oregon?",
+    "caption": "Where has Oregon?",
+    "visual": {
+     "type": "map",
+     "title": "Where has Oregon?",
+     "hl": {
+      "OR": "#F59E0B"
+     },
+     "punch": ""
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "Joke 2 of 3",
+    "caption": "Where has Oregon?",
+    "visual": {
+     "type": "map",
+     "title": "Where has Oregon?",
+     "hl": {
+      "OR": "#F59E0B"
+     },
+     "punch": ""
+    },
+    "dur": 0.8
+   },
+   {
+    "kind": "say",
+    "tag": "Joke 2 of 3",
+    "voice": "I don't know. Alaska.",
+    "caption": "I don't know. Alaska.",
+    "visual": {
+     "type": "map",
+     "title": "Where has Oregon?",
+     "hl": {
+      "OR": "#F59E0B",
+      "AK": "#DC2626"
+     },
+     "punch": "I don't know. Alaska."
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "Joke 2 of 3",
+    "caption": "I don't know. Alaska.",
+    "visual": {
+     "type": "map",
+     "title": "Where has Oregon?",
+     "hl": {
+      "OR": "#F59E0B",
+      "AK": "#DC2626"
+     },
+     "punch": "I don't know. Alaska."
+    },
+    "dur": 0.9
+   },
+   {
+    "kind": "say",
+    "tag": "Joke 3 of 3",
+    "voice": "What did Tennessee?",
+    "caption": "What did Tennessee?",
+    "visual": {
+     "type": "map",
+     "title": "What did Tennessee?",
+     "hl": {
+      "TN": "#F59E0B"
+     },
+     "punch": ""
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "Joke 3 of 3",
+    "caption": "What did Tennessee?",
+    "visual": {
+     "type": "map",
+     "title": "What did Tennessee?",
+     "hl": {
+      "TN": "#F59E0B"
+     },
+     "punch": ""
+    },
+    "dur": 0.8
+   },
+   {
+    "kind": "say",
+    "tag": "Joke 3 of 3",
+    "voice": "The same thing Arkansas.",
+    "caption": "The same thing Arkansas.",
+    "visual": {
+     "type": "map",
+     "title": "What did Tennessee?",
+     "hl": {
+      "TN": "#F59E0B",
+      "AR": "#DC2626"
+     },
+     "punch": "The same thing Arkansas."
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "Joke 3 of 3",
+    "caption": "The same thing Arkansas.",
+    "visual": {
+     "type": "map",
+     "title": "What did Tennessee?",
+     "hl": {
+      "TN": "#F59E0B",
+      "AR": "#DC2626"
+     },
+     "punch": "The same thing Arkansas."
+    },
+    "dur": 0.9
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Comment a worse one. Then play the daily puzzle at State doku dot com.",
+    "caption": "Comment a worse one. Daily puzzle at statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "Three US state puns, each one worse than the last. What did Delaware? Reply with yours. #geography #dadjokes https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=state-puns",
+  "tiktok": "What did Delaware? Three state puns, rate them out of 10 and comment a worse one.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #statepuns",
+  "youtube": {
+   "title": "What did Delaware? 3 US state puns",
+   "description": "What did Delaware? Three state puns, rate them out of 10 and comment a worse one.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #dadjokes"
+  },
+  "n": 2,
+  "slug": "x02-state-puns"
+ },
+ {
+  "format": "From space",
+  "series": "From space",
+  "title": "Guess the state from space",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "Photo 1 of 3",
+    "voice": "Which state is this, seen from space at night?",
+    "caption": "Which state is this, from space at night?",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss072e891004.jpg",
+     "pos": "45% 30%",
+     "credit": "Photo: NASA, International Space Station, 2025"
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 1 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss072e891004.jpg",
+     "pos": "45% 30%",
+     "credit": "Photo: NASA, International Space Station, 2025"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 1 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss072e891004.jpg",
+     "pos": "45% 30%",
+     "credit": "Photo: NASA, International Space Station, 2025"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 1 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss072e891004.jpg",
+     "pos": "45% 30%",
+     "credit": "Photo: NASA, International Space Station, 2025"
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Photo 1 of 3",
+    "voice": "Florida, lit up at night.",
+    "caption": "Florida, lit up at night.",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss072e891004.jpg",
+     "pos": "45% 30%",
+     "credit": "Photo: NASA, International Space Station, 2025",
+     "name": "Florida"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "Photo 2 of 3",
+    "voice": "Which state does this hook of land belong to?",
+    "caption": "Which state owns this hook of land?",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss074e0671775.jpg",
+     "pos": "100% 60%",
+     "credit": "Photo: NASA / Chris Williams, 2026"
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 2 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss074e0671775.jpg",
+     "pos": "100% 60%",
+     "credit": "Photo: NASA / Chris Williams, 2026"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 2 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss074e0671775.jpg",
+     "pos": "100% 60%",
+     "credit": "Photo: NASA / Chris Williams, 2026"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 2 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss074e0671775.jpg",
+     "pos": "100% 60%",
+     "credit": "Photo: NASA / Chris Williams, 2026"
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Photo 2 of 3",
+    "voice": "Massachusetts. That hook is Cape Cod.",
+    "caption": "Massachusetts. That hook is Cape Cod.",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-iss074e0671775.jpg",
+     "pos": "100% 60%",
+     "credit": "Photo: NASA / Chris Williams, 2026",
+     "name": "Massachusetts"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "Photo 3 of 3",
+    "voice": "This lake has the same name as the state on its right. Which state?",
+    "caption": "The lake and the state on its right share a name",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-s40-77-045.jpg",
+     "pos": "70% 100%",
+     "credit": "Photo: NASA, space shuttle Columbia, 1991"
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 3 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-s40-77-045.jpg",
+     "pos": "70% 100%",
+     "credit": "Photo: NASA, space shuttle Columbia, 1991"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 3 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-s40-77-045.jpg",
+     "pos": "70% 100%",
+     "credit": "Photo: NASA, space shuttle Columbia, 1991"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Photo 3 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-s40-77-045.jpg",
+     "pos": "70% 100%",
+     "credit": "Photo: NASA, space shuttle Columbia, 1991"
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Photo 3 of 3",
+    "voice": "Michigan, seen from the space shuttle in 1991.",
+    "caption": "Michigan, seen from the space shuttle in 1991.",
+    "visual": {
+     "type": "photo",
+     "img": "photos/nasa-s40-77-045.jpg",
+     "pos": "70% 100%",
+     "credit": "Photo: NASA, space shuttle Columbia, 1991",
+     "name": "Michigan"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Play the daily map puzzle at State doku dot com.",
+    "caption": "A new map puzzle every day at statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "Three real NASA photos, three states seen from orbit. The night one is easier than it looks. How many did you get? #geography #space https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=from-space",
+  "tiktok": "Can you name a state from orbit? Three real NASA photos, three seconds each. Comment your score.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #fromspace",
+  "youtube": {
+   "title": "Guess the US state from space (real NASA photos)",
+   "description": "Can you name a state from orbit? Three real NASA photos, three seconds each. Comment your score.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #space"
+  },
+  "n": 3,
+  "slug": "x03-from-space"
+ },
+ {
+  "format": "Time-lapse",
+  "series": "Time-lapse",
+  "title": "The USA from 13 to 50 states",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "Time-lapse",
+    "voice": "Watch the United States grow to fifty states. Which two came last?",
+    "caption": "Watch the USA grow to 50 states",
+    "visual": {
+     "type": "map",
+     "big": "1787",
+     "bigsub": "3 states",
+     "hl": {
+      "DE": "#F59E0B",
+      "NJ": "#F59E0B",
+      "PA": "#F59E0B"
+     }
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1788",
+     "bigsub": "11 states",
+     "hl": {
+      "DE": "#059669",
+      "NJ": "#059669",
+      "PA": "#059669",
+      "CT": "#F59E0B",
+      "GA": "#F59E0B",
+      "MD": "#F59E0B",
+      "MA": "#F59E0B",
+      "NH": "#F59E0B",
+      "NY": "#F59E0B",
+      "SC": "#F59E0B",
+      "VA": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 434
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1789",
+     "bigsub": "12 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "PA": "#059669",
+      "SC": "#059669",
+      "VA": "#059669",
+      "NC": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 448
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1790",
+     "bigsub": "13 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "PA": "#059669",
+      "SC": "#059669",
+      "VA": "#059669",
+      "RI": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 462
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1791",
+     "bigsub": "14 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "VA": "#059669",
+      "VT": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 476
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1792",
+     "bigsub": "15 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "KY": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 490
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1796",
+     "bigsub": "16 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "KY": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "TN": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 504
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1803",
+     "bigsub": "17 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "KY": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "OH": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 518
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1812",
+     "bigsub": "18 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "KY": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "LA": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 532
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1816",
+     "bigsub": "19 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "IN": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 546
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1817",
+     "bigsub": "20 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "MS": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 560
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1818",
+     "bigsub": "21 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MS": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "IL": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 574
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1819",
+     "bigsub": "22 states",
+     "hl": {
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MS": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "AL": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 588
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1820",
+     "bigsub": "23 states",
+     "hl": {
+      "AL": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MS": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "ME": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 602
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1821",
+     "bigsub": "24 states",
+     "hl": {
+      "AL": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MS": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "MO": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 616
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1836",
+     "bigsub": "25 states",
+     "hl": {
+      "AL": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "AR": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 630
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1837",
+     "bigsub": "26 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "MI": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 644
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1845",
+     "bigsub": "28 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "FL": "#F59E0B",
+      "TX": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 658
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1846",
+     "bigsub": "29 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "IA": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 672
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1848",
+     "bigsub": "30 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WI": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 686
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1850",
+     "bigsub": "31 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WI": "#059669",
+      "CA": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 700
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1858",
+     "bigsub": "32 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WI": "#059669",
+      "MN": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 714
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1859",
+     "bigsub": "33 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WI": "#059669",
+      "OR": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 728
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1861",
+     "bigsub": "34 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WI": "#059669",
+      "KS": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 742
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1863",
+     "bigsub": "35 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WI": "#059669",
+      "WV": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 756
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1864",
+     "bigsub": "36 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "NV": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 770
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1867",
+     "bigsub": "37 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "NE": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 784
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1876",
+     "bigsub": "38 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "CO": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 798
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1889",
+     "bigsub": "42 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CO": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "MT": "#F59E0B",
+      "ND": "#F59E0B",
+      "SD": "#F59E0B",
+      "WA": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 812
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1890",
+     "bigsub": "44 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CO": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "MT": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "ND": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "SD": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "ID": "#F59E0B",
+      "WY": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 826
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1896",
+     "bigsub": "45 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CO": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "ID": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "MT": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "ND": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "SD": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "WY": "#059669",
+      "UT": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 840
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1907",
+     "bigsub": "46 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CO": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "ID": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "MT": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "ND": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "SD": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "UT": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "WY": "#059669",
+      "OK": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 854
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1912",
+     "bigsub": "48 states",
+     "hl": {
+      "AL": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CO": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "ID": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "MT": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "ND": "#059669",
+      "OH": "#059669",
+      "OK": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "SD": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "UT": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "WY": "#059669",
+      "AZ": "#F59E0B",
+      "NM": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 868
+   },
+   {
+    "kind": "beat",
+    "tag": "Time-lapse",
+    "caption": "",
+    "visual": {
+     "type": "map",
+     "big": "1959",
+     "bigsub": "50 states",
+     "hl": {
+      "AL": "#059669",
+      "AZ": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CO": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "ID": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "MT": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NM": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "ND": "#059669",
+      "OH": "#059669",
+      "OK": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "SD": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "UT": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "WY": "#059669",
+      "AK": "#F59E0B",
+      "HI": "#F59E0B"
+     }
+    },
+    "dur": 0.42,
+    "freq": 882
+   },
+   {
+    "kind": "say",
+    "tag": "Time-lapse",
+    "voice": "Alaska and Hawaii, in 1959.",
+    "caption": "Alaska and Hawaii, 1959",
+    "visual": {
+     "type": "map",
+     "big": "1959",
+     "bigsub": "50 states",
+     "hl": {
+      "AL": "#059669",
+      "AK": "#F59E0B",
+      "AZ": "#059669",
+      "AR": "#059669",
+      "CA": "#059669",
+      "CO": "#059669",
+      "CT": "#059669",
+      "DE": "#059669",
+      "FL": "#059669",
+      "GA": "#059669",
+      "HI": "#F59E0B",
+      "ID": "#059669",
+      "IL": "#059669",
+      "IN": "#059669",
+      "IA": "#059669",
+      "KS": "#059669",
+      "KY": "#059669",
+      "LA": "#059669",
+      "ME": "#059669",
+      "MD": "#059669",
+      "MA": "#059669",
+      "MI": "#059669",
+      "MN": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "MT": "#059669",
+      "NE": "#059669",
+      "NV": "#059669",
+      "NH": "#059669",
+      "NJ": "#059669",
+      "NM": "#059669",
+      "NY": "#059669",
+      "NC": "#059669",
+      "ND": "#059669",
+      "OH": "#059669",
+      "OK": "#059669",
+      "OR": "#059669",
+      "PA": "#059669",
+      "RI": "#059669",
+      "SC": "#059669",
+      "SD": "#059669",
+      "TN": "#059669",
+      "TX": "#059669",
+      "UT": "#059669",
+      "VT": "#059669",
+      "VA": "#059669",
+      "WA": "#059669",
+      "WV": "#059669",
+      "WI": "#059669",
+      "WY": "#059669"
+     }
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Play the daily map puzzle at State doku dot com.",
+    "caption": "A new map puzzle every day at statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "From the first states to fifty in twenty seconds: the map fills in the order the states joined. Which two came last? #ushistory #maps https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=time-lapse",
+  "tiktok": "The whole map filling up in the order the states joined the Union. Which year surprised you?\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #timelapse",
+  "youtube": {
+   "title": "Watch the USA grow to 50 states in 20 seconds",
+   "description": "The whole map filling up in the order the states joined the Union. Which year surprised you?\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #ushistory #maps"
+  },
+  "n": 4,
+  "slug": "x04-time-lapse"
+ },
+ {
+  "format": "Upside down",
+  "series": "Upside down",
+  "title": "Upside down states",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "Shape 1 of 3",
+    "voice": "These three states are upside down. Can you still name them? Number one.",
+    "caption": "Upside down: can you still name them?",
+    "visual": {
+     "type": "silhouette",
+     "id": "OK",
+     "rot": true
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 1 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "silhouette",
+     "id": "OK",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 1 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "silhouette",
+     "id": "OK",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 1 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "silhouette",
+     "id": "OK",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Shape 1 of 3",
+    "voice": "Oklahoma.",
+    "caption": "Oklahoma",
+    "visual": {
+     "type": "silhouette",
+     "id": "OK",
+     "reveal": true,
+     "name": "Oklahoma"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "Shape 2 of 3",
+    "voice": "Number 2.",
+    "caption": "#2: which state, upside down?",
+    "visual": {
+     "type": "silhouette",
+     "id": "ID",
+     "rot": true
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 2 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "silhouette",
+     "id": "ID",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 2 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "silhouette",
+     "id": "ID",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 2 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "silhouette",
+     "id": "ID",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Shape 2 of 3",
+    "voice": "Idaho.",
+    "caption": "Idaho",
+    "visual": {
+     "type": "silhouette",
+     "id": "ID",
+     "reveal": true,
+     "name": "Idaho"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "Shape 3 of 3",
+    "voice": "Number 3.",
+    "caption": "#3: which state, upside down?",
+    "visual": {
+     "type": "silhouette",
+     "id": "MD",
+     "rot": true
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 3 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "silhouette",
+     "id": "MD",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 3 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "silhouette",
+     "id": "MD",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Shape 3 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "silhouette",
+     "id": "MD",
+     "rot": true
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Shape 3 of 3",
+    "voice": "Maryland.",
+    "caption": "Maryland",
+    "visual": {
+     "type": "silhouette",
+     "id": "MD",
+     "reveal": true,
+     "name": "Maryland"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Play the daily map puzzle at State doku dot com.",
+    "caption": "A new map puzzle every day at statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "Three state outlines flipped upside down. The first is easy, the third is not. How many can you still name? #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=upside-down",
+  "tiktok": "Three states, flipped upside down. The last one gets almost everyone. Comment your score out of 3.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #upsidedown",
+  "youtube": {
+   "title": "Can you name these states upside down?",
+   "description": "Three states, flipped upside down. The last one gets almost everyone. Comment your score out of 3.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #quiz"
+  },
+  "n": 5,
+  "slug": "x05-upside-down"
+ },
+ {
+  "format": "Zoom out",
+  "series": "Zoom out",
+  "title": "Zoom out: name the state",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "State 1 of 2",
+    "voice": "Zoom out challenge. Name the state as early as you can.",
+    "caption": "Name the state as early as you can",
+    "visual": {
+     "type": "silhouette",
+     "id": "TX",
+     "zoom": {
+      "f": 0.16,
+      "cx": 0.36,
+      "cy": 0.02
+     }
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "State 1 of 2",
+    "caption": "Zoom 1 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "TX",
+     "zoom": {
+      "f": 0.16,
+      "cx": 0.36,
+      "cy": 0.02
+     }
+    },
+    "dur": 1.1,
+    "freq": 520
+   },
+   {
+    "kind": "beat",
+    "tag": "State 1 of 2",
+    "caption": "Zoom 2 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "TX",
+     "zoom": {
+      "f": 0.24,
+      "cx": 0.36,
+      "cy": 0.02
+     }
+    },
+    "dur": 1.1,
+    "freq": 580
+   },
+   {
+    "kind": "beat",
+    "tag": "State 1 of 2",
+    "caption": "Zoom 3 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "TX",
+     "zoom": {
+      "f": 0.38,
+      "cx": 0.36,
+      "cy": 0.02
+     }
+    },
+    "dur": 1.1,
+    "freq": 640
+   },
+   {
+    "kind": "beat",
+    "tag": "State 1 of 2",
+    "caption": "Zoom 4 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "TX",
+     "zoom": {
+      "f": 0.6,
+      "cx": 0.36,
+      "cy": 0.02
+     }
+    },
+    "dur": 1.1,
+    "freq": 700
+   },
+   {
+    "kind": "beat",
+    "tag": "State 1 of 2",
+    "caption": "Zoom 5 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "TX",
+     "zoom": {
+      "f": 1,
+      "cx": 0.36,
+      "cy": 0.02
+     }
+    },
+    "dur": 1.1,
+    "freq": 760
+   },
+   {
+    "kind": "say",
+    "tag": "State 1 of 2",
+    "voice": "Texas.",
+    "caption": "Texas",
+    "visual": {
+     "type": "silhouette",
+     "id": "TX",
+     "reveal": true,
+     "name": "Texas"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "State 2 of 2",
+    "voice": "One more. Which state?",
+    "caption": "One more: which state?",
+    "visual": {
+     "type": "silhouette",
+     "id": "KY",
+     "zoom": {
+      "f": 0.16,
+      "cx": 0.03,
+      "cy": 0.86
+     }
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "State 2 of 2",
+    "caption": "Zoom 1 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "KY",
+     "zoom": {
+      "f": 0.16,
+      "cx": 0.03,
+      "cy": 0.86
+     }
+    },
+    "dur": 1.1,
+    "freq": 520
+   },
+   {
+    "kind": "beat",
+    "tag": "State 2 of 2",
+    "caption": "Zoom 2 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "KY",
+     "zoom": {
+      "f": 0.24,
+      "cx": 0.03,
+      "cy": 0.86
+     }
+    },
+    "dur": 1.1,
+    "freq": 580
+   },
+   {
+    "kind": "beat",
+    "tag": "State 2 of 2",
+    "caption": "Zoom 3 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "KY",
+     "zoom": {
+      "f": 0.38,
+      "cx": 0.03,
+      "cy": 0.86
+     }
+    },
+    "dur": 1.1,
+    "freq": 640
+   },
+   {
+    "kind": "beat",
+    "tag": "State 2 of 2",
+    "caption": "Zoom 4 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "KY",
+     "zoom": {
+      "f": 0.6,
+      "cx": 0.03,
+      "cy": 0.86
+     }
+    },
+    "dur": 1.1,
+    "freq": 700
+   },
+   {
+    "kind": "beat",
+    "tag": "State 2 of 2",
+    "caption": "Zoom 5 of 5",
+    "visual": {
+     "type": "silhouette",
+     "id": "KY",
+     "zoom": {
+      "f": 1,
+      "cx": 0.03,
+      "cy": 0.86
+     }
+    },
+    "dur": 1.1,
+    "freq": 760
+   },
+   {
+    "kind": "say",
+    "tag": "State 2 of 2",
+    "voice": "Kentucky.",
+    "caption": "Kentucky",
+    "visual": {
+     "type": "silhouette",
+     "id": "KY",
+     "reveal": true,
+     "name": "Kentucky"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Which zoom did you get it on? Play the daily puzzle at State doku dot com.",
+    "caption": "Which zoom did you get it on? statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "We start zoomed in on one stretch of border and pull back five times. On which zoom do you recognise the state? #geography #maps https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=zoom-out",
+  "tiktok": "Zoom out challenge: one piece of border, five zoom levels. Comment the zoom you got it on.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #zoomout",
+  "youtube": {
+   "title": "Zoom out challenge: name the state from its border",
+   "description": "Zoom out challenge: one piece of border, five zoom levels. Comment the zoom you got it on.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #maps"
+  },
+  "n": 6,
+  "slug": "x06-zoom-out"
+ },
+ {
+  "format": "Spot the mistake",
+  "series": "Spot the mistake",
+  "title": "Spot the wrong label on the map",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "Map 1 of 2",
+    "voice": "One of these five labels is on the wrong state. Find it.",
+    "caption": "One label is on the wrong state. Find it.",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "MT": "#93C5FD",
+      "TX": "#93C5FD",
+      "KS": "#93C5FD",
+      "FL": "#93C5FD",
+      "NV": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "MT",
+       "text": "Montana"
+      },
+      {
+       "id": "TX",
+       "text": "Texas"
+      },
+      {
+       "id": "KS",
+       "text": "Nebraska"
+      },
+      {
+       "id": "FL",
+       "text": "Florida"
+      },
+      {
+       "id": "NV",
+       "text": "Nevada"
+      }
+     ]
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Map 1 of 2",
+    "caption": "4",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "MT": "#93C5FD",
+      "TX": "#93C5FD",
+      "KS": "#93C5FD",
+      "FL": "#93C5FD",
+      "NV": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "MT",
+       "text": "Montana"
+      },
+      {
+       "id": "TX",
+       "text": "Texas"
+      },
+      {
+       "id": "KS",
+       "text": "Nebraska"
+      },
+      {
+       "id": "FL",
+       "text": "Florida"
+      },
+      {
+       "id": "NV",
+       "text": "Nevada"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Map 1 of 2",
+    "caption": "3",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "MT": "#93C5FD",
+      "TX": "#93C5FD",
+      "KS": "#93C5FD",
+      "FL": "#93C5FD",
+      "NV": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "MT",
+       "text": "Montana"
+      },
+      {
+       "id": "TX",
+       "text": "Texas"
+      },
+      {
+       "id": "KS",
+       "text": "Nebraska"
+      },
+      {
+       "id": "FL",
+       "text": "Florida"
+      },
+      {
+       "id": "NV",
+       "text": "Nevada"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Map 1 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "MT": "#93C5FD",
+      "TX": "#93C5FD",
+      "KS": "#93C5FD",
+      "FL": "#93C5FD",
+      "NV": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "MT",
+       "text": "Montana"
+      },
+      {
+       "id": "TX",
+       "text": "Texas"
+      },
+      {
+       "id": "KS",
+       "text": "Nebraska"
+      },
+      {
+       "id": "FL",
+       "text": "Florida"
+      },
+      {
+       "id": "NV",
+       "text": "Nevada"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Map 1 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "MT": "#93C5FD",
+      "TX": "#93C5FD",
+      "KS": "#93C5FD",
+      "FL": "#93C5FD",
+      "NV": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "MT",
+       "text": "Montana"
+      },
+      {
+       "id": "TX",
+       "text": "Texas"
+      },
+      {
+       "id": "KS",
+       "text": "Nebraska"
+      },
+      {
+       "id": "FL",
+       "text": "Florida"
+      },
+      {
+       "id": "NV",
+       "text": "Nevada"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Map 1 of 2",
+    "voice": "That state is Kansas. Nebraska is its neighbor to the north.",
+    "caption": "Nebraska? No: Kansas",
+    "visual": {
+     "type": "map",
+     "title": "Not Nebraska: Kansas",
+     "hl": {
+      "MT": "#93C5FD",
+      "TX": "#93C5FD",
+      "KS": "#DC2626",
+      "FL": "#93C5FD",
+      "NV": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "MT",
+       "text": "Montana",
+       "state": ""
+      },
+      {
+       "id": "TX",
+       "text": "Texas",
+       "state": ""
+      },
+      {
+       "id": "KS",
+       "text": "Kansas",
+       "state": "ok"
+      },
+      {
+       "id": "FL",
+       "text": "Florida",
+       "state": ""
+      },
+      {
+       "id": "NV",
+       "text": "Nevada",
+       "state": ""
+      }
+     ]
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "Map 2 of 2",
+    "voice": "Second map, a harder one.",
+    "caption": "Map 2: which label is wrong?",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "OR": "#93C5FD",
+      "CO": "#93C5FD",
+      "AZ": "#93C5FD",
+      "IA": "#93C5FD",
+      "GA": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "OR",
+       "text": "Oregon"
+      },
+      {
+       "id": "CO",
+       "text": "Wyoming"
+      },
+      {
+       "id": "AZ",
+       "text": "Arizona"
+      },
+      {
+       "id": "IA",
+       "text": "Iowa"
+      },
+      {
+       "id": "GA",
+       "text": "Georgia"
+      }
+     ]
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Map 2 of 2",
+    "caption": "4",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "OR": "#93C5FD",
+      "CO": "#93C5FD",
+      "AZ": "#93C5FD",
+      "IA": "#93C5FD",
+      "GA": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "OR",
+       "text": "Oregon"
+      },
+      {
+       "id": "CO",
+       "text": "Wyoming"
+      },
+      {
+       "id": "AZ",
+       "text": "Arizona"
+      },
+      {
+       "id": "IA",
+       "text": "Iowa"
+      },
+      {
+       "id": "GA",
+       "text": "Georgia"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Map 2 of 2",
+    "caption": "3",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "OR": "#93C5FD",
+      "CO": "#93C5FD",
+      "AZ": "#93C5FD",
+      "IA": "#93C5FD",
+      "GA": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "OR",
+       "text": "Oregon"
+      },
+      {
+       "id": "CO",
+       "text": "Wyoming"
+      },
+      {
+       "id": "AZ",
+       "text": "Arizona"
+      },
+      {
+       "id": "IA",
+       "text": "Iowa"
+      },
+      {
+       "id": "GA",
+       "text": "Georgia"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Map 2 of 2",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "OR": "#93C5FD",
+      "CO": "#93C5FD",
+      "AZ": "#93C5FD",
+      "IA": "#93C5FD",
+      "GA": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "OR",
+       "text": "Oregon"
+      },
+      {
+       "id": "CO",
+       "text": "Wyoming"
+      },
+      {
+       "id": "AZ",
+       "text": "Arizona"
+      },
+      {
+       "id": "IA",
+       "text": "Iowa"
+      },
+      {
+       "id": "GA",
+       "text": "Georgia"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Map 2 of 2",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "Which label is wrong?",
+     "hl": {
+      "OR": "#93C5FD",
+      "CO": "#93C5FD",
+      "AZ": "#93C5FD",
+      "IA": "#93C5FD",
+      "GA": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "OR",
+       "text": "Oregon"
+      },
+      {
+       "id": "CO",
+       "text": "Wyoming"
+      },
+      {
+       "id": "AZ",
+       "text": "Arizona"
+      },
+      {
+       "id": "IA",
+       "text": "Iowa"
+      },
+      {
+       "id": "GA",
+       "text": "Georgia"
+      }
+     ]
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Map 2 of 2",
+    "voice": "That state is Colorado. Wyoming is the rectangle right above it.",
+    "caption": "Wyoming? No: Colorado",
+    "visual": {
+     "type": "map",
+     "title": "Not Wyoming: Colorado",
+     "hl": {
+      "OR": "#93C5FD",
+      "CO": "#DC2626",
+      "AZ": "#93C5FD",
+      "IA": "#93C5FD",
+      "GA": "#93C5FD"
+     },
+     "labels": [
+      {
+       "id": "OR",
+       "text": "Oregon",
+       "state": ""
+      },
+      {
+       "id": "CO",
+       "text": "Colorado",
+       "state": "ok"
+      },
+      {
+       "id": "AZ",
+       "text": "Arizona",
+       "state": ""
+      },
+      {
+       "id": "IA",
+       "text": "Iowa",
+       "state": ""
+      },
+      {
+       "id": "GA",
+       "text": "Georgia",
+       "state": ""
+      }
+     ]
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Play the daily map puzzle at State doku dot com.",
+    "caption": "A new map puzzle every day at statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "One label on each map is on the wrong state. Four seconds to find it, and the second map is the one people miss. #geography #mapchallenge https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=spot-the-mistake",
+  "tiktok": "Spot the mistake: one label is on the wrong state. Did you catch both maps in time?\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #spotthemistake",
+  "youtube": {
+   "title": "Spot the mistake on the US map",
+   "description": "Spot the mistake: one label is on the wrong state. Did you catch both maps in time?\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #maps"
+  },
+  "n": 7,
+  "slug": "x07-spot-the-mistake"
+ },
+ {
+  "format": "Blind ranking",
+  "series": "Blind ranking",
+  "title": "Blind ranking: five states by size",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "Blind ranking",
+    "voice": "Blind ranking. Five states, from biggest to smallest. Place each one before you see the next.",
+    "caption": "Place each state before you see the next",
+    "visual": {
+     "type": "hook",
+     "title": "Blind ranking: 5 states by size",
+     "sub": "Slot 1 = biggest, slot 5 = smallest"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "State 1 of 5",
+    "voice": "Georgia. Which slot?",
+    "caption": "Georgia: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "GA",
+     "name": "Georgia"
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "State 1 of 5",
+    "caption": "Georgia: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "GA",
+     "name": "Georgia"
+    },
+    "dur": 1.6,
+    "freq": 600
+   },
+   {
+    "kind": "say",
+    "tag": "State 2 of 5",
+    "voice": "Nevada. Which slot?",
+    "caption": "Nevada: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "NV",
+     "name": "Nevada"
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "State 2 of 5",
+    "caption": "Nevada: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "NV",
+     "name": "Nevada"
+    },
+    "dur": 1.6,
+    "freq": 600
+   },
+   {
+    "kind": "say",
+    "tag": "State 3 of 5",
+    "voice": "Florida. Which slot?",
+    "caption": "Florida: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "FL",
+     "name": "Florida"
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "State 3 of 5",
+    "caption": "Florida: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "FL",
+     "name": "Florida"
+    },
+    "dur": 1.6,
+    "freq": 600
+   },
+   {
+    "kind": "say",
+    "tag": "State 4 of 5",
+    "voice": "Michigan. Which slot?",
+    "caption": "Michigan: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "MI",
+     "name": "Michigan"
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "State 4 of 5",
+    "caption": "Michigan: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "MI",
+     "name": "Michigan"
+    },
+    "dur": 1.6,
+    "freq": 600
+   },
+   {
+    "kind": "say",
+    "tag": "State 5 of 5",
+    "voice": "Colorado. Which slot?",
+    "caption": "Colorado: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "CO",
+     "name": "Colorado"
+    }
+   },
+   {
+    "kind": "beat",
+    "tag": "State 5 of 5",
+    "caption": "Colorado: slot 1, 2, 3, 4 or 5?",
+    "visual": {
+     "type": "silhouette",
+     "id": "CO",
+     "name": "Colorado"
+    },
+    "dur": 1.6,
+    "freq": 600
+   },
+   {
+    "kind": "say",
+    "tag": "The real order",
+    "voice": "The real order: Nevada, Colorado, Michigan, Florida and Georgia.",
+    "caption": "The real order, by total area",
+    "visual": {
+     "type": "list",
+     "title": "Biggest to smallest",
+     "items": [
+      "Nevada, 7th",
+      "Colorado, 8th",
+      "Michigan, 11th",
+      "Florida, 22nd",
+      "Georgia, 24th"
+     ],
+     "note": "Rank among the 50 states, total area"
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "How many did you place right? Play the daily puzzle at State doku dot com.",
+    "caption": "How many did you place right? statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "Blind ranking: five states, biggest to smallest, and you place each one before seeing the next. Michigan is where it goes wrong. #geography #blindranking https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=blind-ranking",
+  "tiktok": "Blind ranking, states edition: place each one from biggest to smallest before you see the next. Comment how many you got.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #blindranking",
+  "youtube": {
+   "title": "Blind ranking: 5 US states by size",
+   "description": "Blind ranking, states edition: place each one from biggest to smallest before you see the next. Comment how many you got.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #blindranking"
+  },
+  "n": 8,
+  "slug": "x08-blind-ranking"
+ },
+ {
+  "format": "Letter challenge",
+  "series": "Letter challenge",
+  "title": "Name a state with no letter A",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "5 seconds",
+    "voice": "Name a state with no letter A in its name. Five seconds.",
+    "caption": "Name a state with NO letter A",
+    "visual": {
+     "type": "map",
+     "title": "A state with no letter A",
+     "hl": {}
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "5",
+    "visual": {
+     "type": "map",
+     "title": "A state with no letter A",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "4",
+    "visual": {
+     "type": "map",
+     "title": "A state with no letter A",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "3",
+    "visual": {
+     "type": "map",
+     "title": "A state with no letter A",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "A state with no letter A",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "A state with no letter A",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "No letter A",
+    "voice": "Only 14 of the fifty states have no A. Did you find one?",
+    "caption": "Only 14 of 50 have no A",
+    "visual": {
+     "type": "map",
+     "title": "14 states with no letter A",
+     "hl": {
+      "CT": "#059669",
+      "IL": "#059669",
+      "KY": "#059669",
+      "MS": "#059669",
+      "MO": "#059669",
+      "NJ": "#059669",
+      "NM": "#059669",
+      "NY": "#059669",
+      "OH": "#059669",
+      "OR": "#059669",
+      "TN": "#059669",
+      "VT": "#059669",
+      "WI": "#059669",
+      "WY": "#059669"
+     },
+     "names": [
+      "Connecticut",
+      "Illinois",
+      "Kentucky",
+      "Mississippi",
+      "Missouri",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "Ohio",
+      "Oregon",
+      "Tennessee",
+      "Vermont",
+      "Wisconsin",
+      "Wyoming"
+     ]
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "5 seconds",
+    "voice": "Harder. A state that starts and ends with the same letter.",
+    "caption": "Starts and ends with the same letter",
+    "visual": {
+     "type": "map",
+     "title": "Starts and ends with the same letter",
+     "hl": {}
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "5",
+    "visual": {
+     "type": "map",
+     "title": "Starts and ends with the same letter",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "4",
+    "visual": {
+     "type": "map",
+     "title": "Starts and ends with the same letter",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "3",
+    "visual": {
+     "type": "map",
+     "title": "Starts and ends with the same letter",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "2",
+    "visual": {
+     "type": "map",
+     "title": "Starts and ends with the same letter",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "5 seconds",
+    "caption": "1",
+    "visual": {
+     "type": "map",
+     "title": "Starts and ends with the same letter",
+     "hl": {}
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Same letter",
+    "voice": "There are only 4: Alabama, Alaska, Arizona and Ohio.",
+    "caption": "Alabama, Alaska, Arizona and Ohio",
+    "visual": {
+     "type": "map",
+     "title": "Only 4 states",
+     "hl": {
+      "AL": "#059669",
+      "AK": "#059669",
+      "AZ": "#059669",
+      "OH": "#059669"
+     },
+     "names": [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Ohio"
+     ]
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "Play the daily map puzzle at State doku dot com.",
+    "caption": "A new map puzzle every day at statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "Name a US state with no letter A in it. Harder than it sounds: only 14 of the 50 qualify. Which one came to you first? #geography #trivia https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=letter-challenge",
+  "tiktok": "Name a state with NO letter A in 5 seconds. Most people freeze. Comment the first one you thought of.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #letterchallenge",
+  "youtube": {
+   "title": "Name a US state with no letter A (only 14 exist)",
+   "description": "Name a state with NO letter A in 5 seconds. Most people freeze. Comment the first one you thought of.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #trivia"
+  },
+  "n": 9,
+  "slug": "x09-letter-challenge"
+ },
+ {
+  "format": "Grid cell",
+  "series": "Grid cell",
+  "title": "Solve one cell of the grid",
+  "segments": [
+   {
+    "kind": "say",
+    "tag": "Cell 1 of 3",
+    "voice": "Can you solve this cell? Name one state that fits both clues. Borders Canada, and on the Pacific.",
+    "caption": "Borders Canada + On the Pacific",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Borders Canada",
+     "col": "On the Pacific"
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 1 of 3",
+    "caption": "4",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Borders Canada",
+     "col": "On the Pacific"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 1 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Borders Canada",
+     "col": "On the Pacific"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 1 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Borders Canada",
+     "col": "On the Pacific"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 1 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Borders Canada",
+     "col": "On the Pacific"
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Cell 1 of 3",
+    "voice": "Alaska and Washington.",
+    "caption": "Alaska and Washington",
+    "visual": {
+     "type": "map",
+     "title": "Borders Canada + On the Pacific",
+     "hl": {
+      "AK": "#059669",
+      "WA": "#059669"
+     },
+     "names": [
+      "Alaska",
+      "Washington"
+     ]
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "Cell 2 of 3",
+    "voice": "Four Corners state, and on the Rio Grande.",
+    "caption": "Four Corners state + On the Rio Grande",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Four Corners state",
+     "col": "On the Rio Grande"
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 2 of 3",
+    "caption": "4",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Four Corners state",
+     "col": "On the Rio Grande"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 2 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Four Corners state",
+     "col": "On the Rio Grande"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 2 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Four Corners state",
+     "col": "On the Rio Grande"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 2 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "Four Corners state",
+     "col": "On the Rio Grande"
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Cell 2 of 3",
+    "voice": "Colorado and New Mexico.",
+    "caption": "Colorado and New Mexico",
+    "visual": {
+     "type": "map",
+     "title": "Four Corners state + On the Rio Grande",
+     "hl": {
+      "CO": "#059669",
+      "NM": "#059669"
+     },
+     "names": [
+      "Colorado",
+      "New Mexico"
+     ]
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "Cell 3 of 3",
+    "voice": "One of the 13 colonies, and on a Great Lake.",
+    "caption": "One of the 13 colonies + On a Great Lake",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "One of the 13 colonies",
+     "col": "On a Great Lake"
+    }
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 3 of 3",
+    "caption": "4",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "One of the 13 colonies",
+     "col": "On a Great Lake"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 3 of 3",
+    "caption": "3",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "One of the 13 colonies",
+     "col": "On a Great Lake"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 3 of 3",
+    "caption": "2",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "One of the 13 colonies",
+     "col": "On a Great Lake"
+    },
+    "tick": true
+   },
+   {
+    "kind": "count",
+    "tag": "Cell 3 of 3",
+    "caption": "1",
+    "visual": {
+     "type": "cell",
+     "title": "One state, both clues",
+     "row": "One of the 13 colonies",
+     "col": "On a Great Lake"
+    },
+    "tick": true
+   },
+   {
+    "kind": "say",
+    "tag": "Cell 3 of 3",
+    "voice": "New York and Pennsylvania.",
+    "caption": "New York and Pennsylvania",
+    "visual": {
+     "type": "map",
+     "title": "One of the 13 colonies + On a Great Lake",
+     "hl": {
+      "NY": "#059669",
+      "PA": "#059669"
+     },
+     "names": [
+      "New York",
+      "Pennsylvania"
+     ]
+    }
+   },
+   {
+    "kind": "say",
+    "tag": "",
+    "voice": "The real grid has nine cells like these. Play today's at State doku dot com.",
+    "caption": "The real grid has 9 cells. Play today's: statedoku.com",
+    "visual": {
+     "type": "outro",
+     "title": "One map puzzle a day",
+     "sub": "Nine cells, two clues each, every answer a US state."
+    }
+   }
+  ],
+  "post": "One cell, two clues, and any state that fits both is right. Three cells here, nine in the daily grid. Which one stopped you? #geography #puzzle https://statedoku.com/?utm_source=x&utm_medium=video&utm_campaign=grid-cell",
+  "tiktok": "Two clues, one state that fits both. Three cells to solve, comment which one stopped you.\n\nA new US map puzzle every day, free: link in bio.\n\n#geography #usa #50states #gridcell",
+  "youtube": {
+   "title": "Can you solve these 3 US state puzzle cells?",
+   "description": "Two clues, one state that fits both. Three cells to solve, comment which one stopped you.\n\nA new US map puzzle every day, free, no sign-up: statedoku.com (link on the channel page).\n\n#shorts #geography #puzzle"
+  },
+  "n": 10,
+  "slug": "x10-grid-cell"
+ }
+]
