@@ -1,80 +1,137 @@
-# Checklist du propriétaire : référencement Statedoku
+# Checklist du propriétaire : référencement et prospection Statedoku
 
-Ce qui reste à faire à la main après la passe du 28 octobre 2026. Les adresses
-des destinataires ne sont pas recopiées ici (dépôt public) : elles sont dans les
-brouillons Gmail.
+État au 10 novembre 2026. Les adresses des destinataires ne sont pas recopiées
+ici (dépôt public) : elles sont dans la page d'envoi `outbox.html`, un fichier
+local transmis dans la conversation, jamais versé dans le dépôt.
 
-## 1. Envoyer les e-mails à la main
+## 1. Brancher contact@statedoku.com dans Gmail (une seule fois)
 
-- [ ] Dans Gmail (compte shiftplanner.eu), ajouter contact@statedoku.com comme
-      adresse d'envoi : Paramètres, Comptes, « Envoyer des e-mails en tant que »,
-      avec le SMTP de Resend.
-- [ ] Ouvrir chaque brouillon, le relire, choisir contact@statedoku.com comme
-      expéditeur, puis l'envoyer **à la main**. Trois à cinq par jour, pas tout d'un coup.
-- [ ] En priorité, avant le 10 novembre (la semaine de la géographie,
-      Geography Awareness Week, a lieu du 16 au 20 novembre) :
-  - [ ] Texas Alliance for Geographic Education
-  - [ ] Educators Technology
-  - [ ] Free Homeschool Deals
-  - [ ] Kids Search
-  - [ ] Colorín Colorado
-  - [ ] USAHello
-- [ ] Annuaires de jeux quotidiens et presse jeux :
-  - [ ] Daily Game Index
-  - [ ] Daily Game List
-  - [ ] Gamedev.js Weekly
-  - [ ] Jeux-du-Jour.fr
-- [ ] Enseignants, en français :
-  - [ ] PortailEduc
-  - [ ] Les Outils Tice
-  - [ ] Ludomag
-  - [ ] Café pédagogique
-- [ ] Québec :
-  - [ ] École branchée (texte prêt pour leurs Édubrèves)
-  - [ ] RÉCIT univers social
-- [ ] Passionnés de géographie :
-  - [ ] Geography Realm
-  - [ ] The Map Room
-  - [ ] Les Cafés Géo
-- [ ] En espagnol :
-  - [ ] Educación 3.0
-  - [ ] WWWhatsnew
-  - [ ] Genbeta
-  - [ ] Observatorio IFE (Tec de Monterrey, Mexique)
-- [ ] Une seule relance, pas avant le 18 novembre, et seulement sans réponse.
+- [ ] Compte Google : activer la validation en deux étapes, puis créer un
+      « mot de passe d'application » (Sécurité, Mots de passe des applications).
+- [ ] Gmail, Paramètres, Comptes, « Envoyer des e-mails en tant que »,
+      Ajouter une adresse : nom **Statedoku** (jamais ton nom), adresse
+      contact@statedoku.com. Serveur SMTP `smtp.gmail.com`, port 587, TLS,
+      identifiant = l'adresse Gmail, mot de passe = le mot de passe d'application.
+      Gmail envoie un code à contact@statedoku.com (renvoyé vers ta boîte par le
+      routage d'e-mails de Cloudflare) : le saisir.
+- **Pas le SMTP de Resend.** Le règlement de Resend interdit la prospection
+  (« unsolicited messages of any kind, including cold outreach ») et prévoit la
+  fermeture du compte sans préavis, ce qui couperait aussi les rappels
+  quotidiens. La consigne du 28 octobre qui disait l'inverse était fausse.
+  Le SPF de statedoku.com autorise déjà Google.
 
-## 2. Formulaires avec captcha (2 minutes chacun)
+## 2. Envoyer les e-mails depuis la page d'envoi
 
-Texte à coller : section 2 de `PROCEDURE-FORMULAIRES.md`. Nom « Statedoku »,
-e-mail contact@statedoku.com, jamais de nom ni de téléphone personnel.
+- [ ] Ouvrir `outbox.html`. Pour chaque message : « Ouvrir dans Gmail » (tout
+      est rempli), choisir **De : contact@statedoku.com**, Envoyer, cocher
+      « envoyé ». 250 e-mails personnalisés, en anglais, français ou espagnol,
+      avec emoji, en 5 lots :
+  - [ ] Lot 1, États-Unis (45) : en premier, d'ici le 12 novembre, car ils
+        annoncent la Geography Awareness Week (16 au 20 novembre) pour « la
+        semaine prochaine ».
+  - [ ] Lot 2, Mexique, Amérique latine, Espagne (112).
+  - [ ] Lot 3, France, Suisse, Belgique (47).
+  - [ ] Lot 4, médias et annuaires (22) : les brouillons du 28 octobre, corrigés,
+        plus DleNow et une demande de correction à DlesList.
+  - [ ] Lot 5, Canada (24) : la loi canadienne anti-pourriel demande une adresse
+        postale dans ce type de message. À envoyer seulement avec une adresse
+        (une domiciliation suffit) sous la signature.
+- [ ] Rythme : 30 à 40 par jour. Une seule relance, pas avant le 18 novembre, et
+      seulement sans réponse.
+- Les 23 brouillons Gmail du 28 octobre ont été supprimés le 10 novembre : leurs
+  liens étaient enregistrés sous forme de redirection Google
+  (`google.com/url?q=...`), ce que fait le connecteur Gmail à chaque brouillon
+  créé. Leur texte corrigé est dans le lot 4.
 
-- [ ] DLES.gg : https://dles.gg/submit-game (catégorie Geography, « I'm the maker »)
-- [ ] Indielisted : https://indielisted.com/submit/
-- [ ] Brilliant Maps : https://brilliantmaps.com/contact/
-- [ ] Freedom Homeschooling : https://www.freedomhomeschooling.com/submit-free-resource/
-      (ils demandent si l'IA a été utilisée : répondre honnêtement)
-- [ ] Xataka México : https://www.xataka.com.mx/contacto (en espagnol)
-- [ ] Larry Ferlazzo, Websites of the Day (enseignants d'anglais langue seconde) :
-      https://larryferlazzo.edublogs.org/contact-me/
-- [ ] Les Clionautes : https://www.clionautes.org/contactez-vous (destinataire Clio-Carto)
-- [ ] OTAN (California adult education) : https://otan.us/AboutUs/Contact
-- [ ] Spanish Playground : https://www.spanishplayground.net/contact/
+## 3. Formulaires avec captcha (2 minutes chacun)
 
-## 3. Sites qui demandent un compte (gratuit)
+Le texte de chacun est prêt dans le lot 6 de la page d'envoi (objet et message
+à copier). Nom « Statedoku », e-mail contact@statedoku.com, jamais de nom ni de
+téléphone personnel.
+
+- Annuaires de jeux :
+  - [ ] Goldles : https://www.goldles.com/suggest (« Submit for free », pas
+        l'option payante ; la question anti-spam attend « 42 »)
+  - [ ] DLE Arena : https://dlearena.com/submit-a-game/ (gratuit pendant leur
+        lancement ; catégorie « Geography games »)
+  - [ ] BestDle : l'envoi du 28 octobre n'a jamais été confirmé et le jeu n'y
+        figure pas ; le renvoyer à la main si le formulaire est revenu
+  - [ ] DLES.gg : https://dles.gg/submit-game (catégorie Geography, « I'm the maker »)
+  - [ ] Indielisted : https://indielisted.com/submit/
+- États-Unis :
+  - [ ] TeachersFirst : https://teachersfirst.org/contact.cfm
+  - [ ] Arizona Council for the Social Studies : https://acssaz.org/about-acss-2/contact-us/
+  - [ ] Indiana Council for the Social Studies : https://indianasocialstudies.com/contact-us/
+  - [ ] North Carolina Council for the Social Studies : https://nccss.squarespace.com/contact
+  - [ ] Pennsylvania Council for the Social Studies : https://pcssonline.org/contact/
+  - [ ] ATLAS ABE (Minnesota) : https://atlasabe.org/contact/
+  - [ ] We Are Teachers : https://www.weareteachers.com/contact-weareteachers/
+  - [ ] Cathy Duffy Reviews : https://cathyduffyreviews.com/contact-us
+  - [ ] LINCS (U.S. Department of Education) : https://lincs.ed.gov/node/add/resource_request
+  - [ ] Brilliant Maps : https://brilliantmaps.com/contact/
+  - [ ] Freedom Homeschooling : https://www.freedomhomeschooling.com/submit-free-resource/
+        (ils demandent si l'IA a été utilisée : répondre honnêtement)
+  - [ ] Larry Ferlazzo, Websites of the Day : https://larryferlazzo.edublogs.org/contact-me/
+  - [ ] OTAN (California adult education) : https://otan.us/AboutUs/Contact
+  - [ ] Spanish Playground : https://www.spanishplayground.net/contact/
+- France, Belgique, Suisse :
+  - [ ] Can@bae, HG académie de Lyon (rubrique « Jeux sérieux ») :
+        https://canabae.enseigne.ac-lyon.fr/spip/spip.php?page=contact ; notre envoi
+        automatique a été refusé trois fois par le site, essayer depuis ton navigateur
+  - [ ] HG académie de Besançon : https://hg.ac-besancon.fr/contact/
+  - [ ] HG académie de Lille : https://pedagogie.ac-lille.fr/histoire-geographie/
+        (lien « Contacter le webmestre » du menu ; le site bloque nos serveurs)
+  - [ ] HG-EMC académie de Toulouse : https://pedagogie.ac-toulouse.fr/hgemc/contact
+  - [ ] Portail Langues (anglais), académie de Besançon : https://langues.ac-besancon.fr/contact/
+  - [ ] APHG nationale : https://www.aphg.fr/contact/
+  - [ ] FEGEPRO (Belgique) : https://www.fegepro.be/contact/
+  - [ ] Tice-education : https://www.tice-education.fr/nous-ecrire/contact
+  - [ ] VousNousIls : https://www.vousnousils.fr/contact
+  - [ ] VSGG-ASEG-ASIG (Suisse) : https://vsgg-aseg-asig.ch/fr/contact/
+  - [ ] Géoconfluences : https://geoconfluences.ens-lyon.fr/geoconfluences/contact-info
+  - [ ] Cahiers pédagogiques : https://www.cahiers-pedagogiques.com/nous-contacter
+  - [ ] Les Clionautes : https://www.clionautes.org/contactez-vous (destinataire Clio-Carto)
+- Canada (même réserve que le lot 5) :
+  - [ ] OAGEE, professeurs de géographie de l'Ontario (page « Call for Lessons
+        and Resources ») : https://oagee.org/contact-us/
+  - [ ] Canadian Geographic Education : https://cangeoeducation.ca/en/contact-us/
+  - [ ] OHASSTA-AESHO (Ontario) : https://ohassta-aesho.education/contact-us/
+  - [ ] SKTEAL (Saskatchewan) : https://www.skteal.com/contact-us/
+- Amérique latine, Espagne :
+  - [ ] TESOL-SPAIN : https://www.tesol-spain.org/en/contact.html
+  - [ ] SURICANA (Argentine) : http://suricana.com.ar/contacto/
+  - [ ] Centro Colombo Americano Pereira : https://www.colombopereira.com/es/formulario-de-contacto
+  - [ ] El Cultural, Trujillo (Pérou) : https://www.elcultural.com.pe/american_spaces/
+  - [ ] CCBEU Franca (Brésil) : https://www.ccbeufranca.com.br/contato
+  - [ ] educarchile (Chili) : https://www.educarchile.cl/contact
+  - [ ] Xataka México : https://www.xataka.com.mx/contacto
+
+## 4. Sites qui demandent un compte (gratuit)
 
 - [ ] DLEs.io : https://dles.io/submit-game
+- [ ] dle.games : https://dle.games/submit (inscription : utiliser le nom du
+      projet, jamais ton nom)
 - [ ] 1 Jour 1 Jeu : https://1jour1jeu.com/proposer
 - [ ] browse.games : https://browse.games/submit
 - [ ] AlternativeTo : proposer Statedoku comme alternative à Metrodoku et Seterra
 - [ ] MERLOT : https://www.merlot.org/merlot/addMaterial.htm
+- [ ] INTEF Procomún (Espagne) : https://procomun.intef.es/
+- [ ] IGDB (alimente BrowserCraft) : connexion par Twitch
 
-## 4. GitHub, depuis ton compte
+## 5. GitHub, depuis ton compte
 
 - [ ] Awesome Daily Games (github.com/taquanx1/awesome-daily-games) : une issue
       ou une pull request, selon leur CONTRIBUTING.md
 - [ ] WordleWeb (github.com/rarelygoeshere/WordleWeb) : une pull request
+- [ ] Awesome Daily Minigames (github.com/guilyx/awesome-daily-minigames) :
+      une entrée dans `data/games.yml`, et seulement ce fichier :
+      `name: Statedoku`, `url: https://statedoku.com/`, `category: geography`,
+      `platform: web`, description : `Fill a 3x3 grid with US states that match both their row clue and their column clue.`
+- [ ] Awesome Browser Games (github.com/typekcz/awesome-browser-games) : une
+      ligne, à sa place alphabétique :
+      ``[Statedoku](https://statedoku.com/) `Puzzle` `Geography` `Daily` - Daily 3x3 grid of US states, each matching its row and column clue.``
 
-## 5. Plus long
+## 6. Plus long
 
 - [ ] Prix AASL Best Digital Tools (bibliothécaires scolaires américains),
       formulaire https://forms.gle/yHd2dtfuHVJg61n38, **avant le 1er février 2027**.
@@ -83,17 +140,36 @@ e-mail contact@statedoku.com, jamais de nom ni de téléphone personnel.
 - [ ] Listdle (premier site qui envoie des visiteurs) : demander à figurer dans
       leur newsletter du lundi.
 
-## 6. Côté site
+## 7. Côté site
 
 - [ ] Bing Webmaster Tools : outil « Site Move » de www.statedoku.com vers
       statedoku.com (70 % des clics Bing vont encore aux anciennes adresses www).
 - [ ] Après la décision AdSense : corriger la page À propos (EN, FR, ES), qui
       décrit encore des grilles à solution unique.
+- [ ] Optionnel : secret `RESEND_API_KEY` sur le projet Cloudflare Pages
+      (Workers & Pages, statedoku, Settings, Variables and Secrets), de
+      préférence une clé à part de celle du worker des rappels. Il active l'e-mail
+      de confirmation à l'inscription aux rappels. Puis redéployer.
 
-## Déjà fait (28 octobre 2026)
+## Déjà fait
 
-- Formulaires envoyés et confirmés : The Dles, Alldle, Playlin, Daily Dles,
-  dailydle, Daily Game Central, DleList, 0x9 dles. Envoyé sans confirmation
-  visible : BestDle.
-- Déjà listé avant : Dle Hunt, MapGame, DlesList, Dailies.games, Seekdle,
-  Listdle, Wordleverse.
+- **10 novembre 2026, formulaires envoyés et confirmés par le site** (16) :
+  Arizona Geographic Alliance, California Geographic Alliance, Oklahoma Alliance
+  for Geographic Education, Washington State Council for the Social Studies,
+  Terre Ouverte (HG Aix-Marseille), site d'anglais de l'académie d'Aix-Marseille,
+  groupe Jeux numériques de la DRANE Aix-Marseille et Nice, Lexilogos, BDRP
+  (HEP Vaud), SATE (Suisse), ARICANA (Rosario), ALICANA (Argentine), FAAPI
+  (Argentine), CCBEU Sorocaba (Brésil), Instituto Chileno Norteamericano Curicó,
+  Best Daily Games (annuaire). Probable, sans message de confirmation : HG
+  académie de Corse.
+- **Annuaires, état au 10 novembre** : listé chez Alldle, 0x9 dles, Dle Hunt,
+  MapGame, DlesList (sa fiche dit encore « single solution », correction
+  demandée dans le lot 4), Dailies.games, Seekdle, Listdle, Wordleverse et
+  Today's Dailies. En attente : Playlin (file gratuite lente, jusqu'en
+  décembre), Daily Dles, dailydle, DleList. The Dles n'ajoute pas les jeux
+  « avec du contenu généré par IA ». Daily Game Central : à vérifier à la main,
+  le site bloque les vérifications automatiques.
+- **28 octobre 2026** : formulaires envoyés et confirmés chez The Dles, Alldle,
+  Playlin, Daily Dles, dailydle, Daily Game Central, DleList et 0x9 dles ;
+  envoyé sans confirmation visible : BestDle. Déjà listé avant : Dle Hunt,
+  MapGame, DlesList, Dailies.games, Seekdle, Listdle, Wordleverse.
