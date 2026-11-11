@@ -47,6 +47,7 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     reported uncalled by local outlets on 6 November).
     9 November, 09:14 UTC: no change on CNN for the four open races.
     10 November, 09:13 UTC: no change.
+    11 November, 09:13 UTC: no change.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
@@ -83,7 +84,7 @@ the pages are already shown, the queries already exist, nothing new competes.
    "hawaii" 5,386, "utah" 5,271. Map coloured by zone with the 14 split states
    marked, and one table row per state answering "what time zone is X in"
    (split states named with the part on each side). One page, not 50.
-3. `todo` **Interactive map of the 50 states** on `/states/` (and `/es/states/`).
+3. `done 2026-11-11 b532e7be3` (the hubs already drew a JS map that left the page on the first tap and, on `/es/states/`, sent readers to the English pages; `js/us-map.js` now takes `data-base` and `data-info`: a tap, click or Enter shows name, code, capital and a link under the map, keyboard reachable, Spanish links to `/es/states/`; the lead and the region lists came with R3 on 4 November; fact-checker 303 claims, 0 wrong) **Interactive map of the 50 states** on `/states/` (and `/es/states/`).
    Title "All 50 States in the USA (Map, Capitals, Facts)", 322 words, no map.
    Demand: "us map" 139,654, "us map of states" 49,989, "interactive us map"
    14,861, "us state map" 11,946, "map of us states" 7,398, "50 states map"
