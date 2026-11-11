@@ -509,6 +509,12 @@ The owner liked the animations and asked for thirty more the same day
 (w05 to w34, two more scenes: a spinning outline, a missing state): they
 follow in the list, TikTok and YouTube from 24 November to 23 December, X a
 day later.
+**One video a day from 11 November 2026** (owner: "1 vidéo par jour"): the
+23:00 UTC run posts the day's video to TikTok, YouTube and X at once
+(`postShorts` in `bot/src/worker.js`; on X the video replaces that evening's
+page tweet), and the 13:00 run is the game tweet again. The `epoch` of
+`data/videos.json` no longer drives anything; `shorts_epoch` does, so X now
+gets the same video on the same day as the other two.
 `scripts/video/EXPERIMENTS.md` holds the calendar and how to read the result;
 read it on 24 November and build more of what worked. Photos are NASA's only
 (public domain, credits in `scripts/video/photos/CREDITS.md`).

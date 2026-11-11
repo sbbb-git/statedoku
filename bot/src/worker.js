@@ -359,15 +359,17 @@ function shortsMetadata(service, v) {
 }
 
 async function postShorts(env, now, dryRun) {
-  const targets = [['tiktok', env.BUFFER_TIKTOK_CHANNEL_ID], ['youtube', env.BUFFER_YOUTUBE_CHANNEL_ID]].filter(([, id]) => id);
+  const targets = [['tiktok', env.BUFFER_TIKTOK_CHANNEL_ID], ['youtube', env.BUFFER_YOUTUBE_CHANNEL_ID], ['x', env.BUFFER_CHANNEL_ID]].filter(([, id]) => id);
   if (!targets.length || !env.BUFFER_TOKEN) return null;
   const s = await pickShort(now).catch(e => { console.error('[Statedoku Bot] shorts list unavailable:', e.message); return null; });
   if (!s) return { skipped: 'no short for this day' };
   const out = { meta: s.meta, video: s.v.vertical_url, results: {} };
   for (const [service, channelId] of targets) {
-    const text = service === 'tiktok' ? s.v.tiktok : s.v.youtube.description;
-    if (dryRun) { out.results[service] = { dry_run: true, text, metadata: shortsMetadata(service, s.v) }; continue; }
-    try { out.results[service] = await postBuffer(text, env, now, s.v.vertical_url, { channelId, metadata: shortsMetadata(service, s.v) }); }
+    // X gets the video's own post text (with its link) and the plain 9:16 version.
+    const text = service === 'tiktok' ? s.v.tiktok : service === 'youtube' ? s.v.youtube.description : humanize(s.v.text);
+    if (dryRun) { out.results[service] = { dry_run: true, text, metadata: service === 'x' ? null : shortsMetadata(service, s.v) }; continue; }
+    try { out.results[service] = service === 'x' ? await postBuffer(text, env, now, s.v.url)
+      : await postBuffer(text, env, now, s.v.vertical_url, { channelId, metadata: shortsMetadata(service, s.v) }); }
     catch (e) { out.results[service] = { ok: false, status: 0, body: e.message }; }
   }
   return out;
@@ -397,10 +399,10 @@ async function _runOnce(env, { dryRun = false, customText = null, now = Date.now
   let source = 'bank';
   let meta = null;
 
-  // The game run posts the day's video when there is one and Buffer is set up.
-  const v = !customText && _daySlot(now).slot === 'game' && env.BUFFER_TOKEN && env.BUFFER_CHANNEL_ID
-    ? await pickVideo(now).catch(e => { console.error('[Statedoku Bot] video list unavailable:', e.message); return null; })
-    : null;
+  // Until 11 November 2026 the game run posted a video to X. Since then the
+  // owner wants one video a day: the evening run posts it to TikTok, YouTube
+  // and X at once (postShorts) and the game run is the game tweet again.
+  const v = null;
   if (v) {
     const text = humanize(v.text);
     if (dryRun) return { dry_run: true, phase: PHASE, source: 'video', meta: v.meta, tweet: text, video: v.url };
@@ -438,7 +440,8 @@ async function _runOnce(env, { dryRun = false, customText = null, now = Date.now
   const results = {};
   for (const net of nets) {
     try {
-      if (net === 'buffer')   results.buffer = await postBuffer(tweet, env, now);
+      // The evening page tweet gives way to the day's video on X.
+      if (net === 'buffer' && !shorts?.results?.x?.ok) results.buffer = await postBuffer(tweet, env, now);
       if (net === 'x')        results.x = await postTweet(tweet, env);
       if (net === 'bluesky')  results.bluesky = await postBluesky(tweet, env);
       if (net === 'mastodon') results.mastodon = await postMastodon(tweet, env);
