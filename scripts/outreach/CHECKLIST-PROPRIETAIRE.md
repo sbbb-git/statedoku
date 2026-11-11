@@ -51,6 +51,21 @@ Reçus : ANILS, AQPDE, Académie Providence Sœurs Antonines, Alabama Virtual Li
 
 Probablement reçus : Ashtabula County District Library, BadgerLink, Cape Girardeau Public Library, Centre de services scolaire des Hautes-Rivières, Colegio Americano del Sur, Colegio Internacional Puerto La Cruz, Enoch Pratt Free Library, KidzSearch, SSPES / VSG, San Diego Public Library, State Historical Society of North Dakota, Utica Public Library, Westfield Washington Public Library.
 
+## Vague 6 (11 novembre) : le Mexique à fond
+
+1 209 sites mexicains examinés dans les 32 États ; 114 formulaires sans
+captcha (76 écoles, 21 écoles normales et unités UPN, 7 associations, 6
+instituts de langues, 3 musées, 1 bibliothèque). Les sections de MEXTESOL
+n'ont pas de site propre (MEXTESOL et ANUPI étaient déjà contactés). 100
+retenus après relecture, 96 remplis correctement au test à blanc.
+
+- **49 reçus** (confirmés par le serveur ou page de confirmation).
+- 19 incertains (envoyés, aucune confirmation lisible), 12 refusés par le
+  formulaire, 14 sans bouton d'envoi utilisable, quelques pages mortes.
+- Écartés : 88 sites Wix, 124 captchas, 86 téléphones obligatoires.
+
+Reçus : Benemérita Escuela Normal Urbana Federal Fronteriza de Mexicali, Centro Cultural Bilingüe Green-Hill, Centro Educativo Bilingüe Louis Pasteur, Centro Educativo CECAC, Centro Educativo Humboldt, Centro de Actualización del Magisterio de Tlaxcala, Centro de Estudios Superiores La Salle, Centro de Idiomas, Universidad Autónoma de Sinaloa, Colegio Alemán de Guadalajara, Colegio Antonio L. Rodríguez, Colegio Bosques del Alba, Colegio Colonial, Colegio Gandhi, Colegio Juan Duns Escoto, Colegio Justo Sierra Cancún, Colegio Laura Vicuña, Colegio Madrid, Colegio Mexicano Bilingüe, Colegio Rogers Hall, Colegio Salesiano de Querétaro, Colegio Tijuana, Comunidad Educativa Mayabek, Dream School Playa del Carmen, Escuela Normal de Atizapán de Zaragoza, Escuela Normal para Educadoras de Arandas, Escuela Normal para Educadoras de Guadalajara, Escuela Summerhill Azcapotzalco, Fundación La Salle México Norte, Instituto Educativo Panamericano, Instituto Educativo de Tabasco Carlos Pellicer Cámara, Instituto Laurens, Instituto Pacelli, Instituto Panamericano de Tampico, Instituto Peninsular, Instituto Pierre Faure Morelia, Instituto de Ciencias, Instituto de Educación Naciones Unidas, Kids Valley School, Lang-Lab, Leer Contigo, Maple Collège Saltillo, Modern Academy Cancún, Museo Nacional de Energía y Tecnología, Museo-Observatorio Interactivo OIHFRA, Oaks Montessori, Universidad Pedagógica Nacional Unidad 03A La Paz, Universidad Pedagógica Nacional Unidad 143 Autlán, Universidad Pedagógica Nacional Unidad 19A Monterrey, Universidad Pedagógica Nacional Unidad 242.
+
 ## Vague 5 (10 novembre) : bibliothèques et école à la maison, Canada, Mexique, Amérique latine
 
 34 formulaires trouvés sur environ 1 080 sites examinés : la plupart des
