@@ -48,6 +48,12 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     9 November, 09:14 UTC: no change on CNN for the four open races.
     10 November, 09:13 UTC: no change.
     11 November, 09:13 UTC: no change.
+    12 November, data read 09:15 UTC (f6d89fd18): Mississippi Senate (Colom,
+    D, a flip) called by AP on 11 November (NPR, Time, CNBC; CNN agrees).
+    Still not called: Senate AK; governors AK, KS (Alaska ranked-choice
+    tabulation on 18 November; Kansas: MultiState and Poliwave show a call,
+    AP-based reports and CNN, NBC do not, kept uncalled). The builder now
+    writes the singular when one race is left.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
