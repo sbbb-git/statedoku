@@ -345,8 +345,8 @@ def prose(lang):
         flip_g = f'{len(fG)} governorships changed party' + (f', all to {name[next(iter(to(fG)))]}' if len(to(fG)) == 1 else '') if fG else 'no governorship changed party'
         lead = (f'<p>{ctrl}</p>'
                 f'<p>In the Senate, AP has called {sC} of the 35 races: {sD} won by Democrats and {sR} by Republicans. {flip_s}. '
-                f'With the 65 seats that were not on the ballot, the Democratic caucus has {dtot} seats and Republicans {rtot}' + (f', with {sI} independent' + ('s' if sI > 1 else '') if sI else '') + f', and {sU} races are still to be called.</p>'
-                f'<p>Of the 36 governor races, AP has called {gC}: {gD} won by Democrats and {gR} by Republicans, and {flip_g}. '
+                f'With the 65 seats that were not on the ballot, the Democratic caucus has {dtot} seats and Republicans {rtot}' + (f', with {sI} independent' + ('s' if sI > 1 else '') if sI else '') + (f', and {sU} races are still to be called.</p>' if sU > 1 else (', and one race is still to be called.</p>' if sU == 1 else ', and every race has been called.</p>'))
+                + f'<p>Of the 36 governor races, AP has called {gC}: {gD} won by Democrats and {gR} by Republicans, and {flip_g}. '
                 f'In the House, AP has called {hD} seats for Democrats and {hR} for Republicans; {hU} have not been called yet' + house_when('en') + ', and a majority is 218.</p>')
         sen_control = (f'Before the vote Republicans held {sb["R"]} seats and Democrats {sb["D"] + sb["I_caucus_D"]}, {sb["I_caucus_D"]} of them independents who caucus with the Democrats. '
                        f'With the vice president breaking ties, Democrats needed a net gain of {need} seats to take the majority.')
@@ -374,8 +374,8 @@ def prose(lang):
         flip_g = f'{len(fG)} postes de gouverneur changent de parti' + (f', tous au profit des {name[next(iter(to(fG)))].split()[1]}' if len(to(fG)) == 1 else '') if fG else 'aucun poste de gouverneur ne change de parti'
         lead = (f'<p>{ctrl}</p>'
                 f'<p>Au Sénat, AP a désigné le vainqueur de {sC} des 35 élections : {sD} démocrates et {sR} républicains. {flip_s}. '
-                f'Avec les 65 sièges qui n\'étaient pas renouvelés, le groupe démocrate compte {dtot} sièges et les républicains {rtot}' + (f', plus {sI} indépendant' + ('s' if sI > 1 else '') if sI else '') + f', et {sU} élections n\'ont pas encore de vainqueur annoncé.</p>'
-                f'<p>Sur les 36 élections de gouverneur, AP a désigné le vainqueur de {gC} : {gD} démocrates et {gR} républicains, et {flip_g}. '
+                f'Avec les 65 sièges qui n\'étaient pas renouvelés, le groupe démocrate compte {dtot} sièges et les républicains {rtot}' + (f', plus {sI} indépendant' + ('s' if sI > 1 else '') if sI else '') + (f', et {sU} élections n\'ont pas encore de vainqueur annoncé.</p>' if sU > 1 else (', et une élection n\'a pas encore de vainqueur annoncé.</p>' if sU == 1 else ', et toutes les élections ont un vainqueur annoncé.</p>'))
+                + f'<p>Sur les 36 élections de gouverneur, AP a désigné le vainqueur de {gC} : {gD} démocrates et {gR} républicains, et {flip_g}. '
                 f'À la Chambre, AP a désigné {hD} élus démocrates et {hR} républicains ; {hU} sièges n\'ont pas encore de vainqueur annoncé' + house_when('fr') + ', et la majorité est de 218.</p>')
         sen_control = (f'Avant le vote, les républicains détenaient {sb["R"]} sièges et les démocrates {sb["D"] + sb["I_caucus_D"]}, dont {sb["I_caucus_D"]} indépendants qui siègent avec eux. '
                        f'Le vice-président départageant les égalités, les démocrates avaient besoin d\'un gain net de {need} sièges pour prendre la majorité.')
@@ -403,8 +403,8 @@ def prose(lang):
         flip_g = f'{len(fG)} gobernaciones cambian de partido' + (f', todas a favor de {name[next(iter(to(fG)))]}' if len(to(fG)) == 1 else '') if fG else 'ninguna gobernación cambia de partido'
         lead = (f'<p>{ctrl}</p>'
                 f'<p>En el Senado, AP ha declarado ganador en {sC} de las 35 contiendas: {sD} demócratas y {sR} republicanos. {flip_s}. '
-                f'Con los 65 escaños que no se renovaban, el grupo demócrata tiene {dtot} escaños y los republicanos {rtot}' + (f', más {sI} independiente' + ('s' if sI > 1 else '') if sI else '') + f', y {sU} contiendas siguen sin ganador declarado.</p>'
-                f'<p>De las 36 elecciones a gobernador, AP ha declarado ganador en {gC}: {gD} demócratas y {gR} republicanos, y {flip_g}. '
+                f'Con los 65 escaños que no se renovaban, el grupo demócrata tiene {dtot} escaños y los republicanos {rtot}' + (f', más {sI} independiente' + ('s' if sI > 1 else '') if sI else '') + (f', y {sU} contiendas siguen sin ganador declarado.</p>' if sU > 1 else (', y una contienda sigue sin ganador declarado.</p>' if sU == 1 else ', y todas las contiendas tienen ganador declarado.</p>'))
+                + f'<p>De las 36 elecciones a gobernador, AP ha declarado ganador en {gC}: {gD} demócratas y {gR} republicanos, y {flip_g}. '
                 f'En la Cámara, AP ha declarado {hD} escaños para los demócratas y {hR} para los republicanos; {hU} siguen sin ganador declarado' + house_when('es') + ', y la mayoría es de 218.</p>')
         sen_control = (f'Antes de la votación los republicanos tenían {sb["R"]} escaños y los demócratas {sb["D"] + sb["I_caucus_D"]}, {sb["I_caucus_D"]} de ellos independientes que forman parte del grupo demócrata. '
                        f'Como el vicepresidente desempata, los demócratas necesitaban una ganancia neta de {need} escaños para tomar la mayoría.')
