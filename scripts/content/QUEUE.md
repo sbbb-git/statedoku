@@ -54,6 +54,12 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     tabulation on 18 November; Kansas: MultiState and Poliwave show a call,
     AP-based reports and CNN, NBC do not, kept uncalled). The builder now
     writes the singular when one race is left.
+    13 November, data read 09:15 UTC (479ca5b66): Kansas governor (Holscher,
+    D, kept) called by AP on 12 November (AP wire copy, CNN agrees). Still not
+    called: Senate AK, governor AK (CNN's own desk and MultiState call it for
+    Kreiss-Tomkins, above 50% of first choices; no AP call read, Alaska Public
+    Media said none at 04:21 UTC on 13 November). Next: Alaska, then the House
+    count by party, then certification in December.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
