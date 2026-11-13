@@ -11,8 +11,8 @@
     es: { ev: 'votos electorales', pv: 'Voto popular', dem: 'Demócrata', rep: 'Republicano', oth: 'Otros', notState: 'Aún no era estado', noVote: 'No participó', prev: 'Elección anterior', next: 'Elección siguiente', play: 'Reproducir', pause: 'Pausa', won: 'ganó', split: 'repartió sus votos electorales', click: 'Toca un estado para ver su resultado y su historial.', hist: 'Todas las elecciones en', dc: 'Distrito de Columbia (desde 1964)', year: 'Año de la elección' }
   };
   var PARTY = {
-    fr: { 'Democratic': 'démocrate', 'Republican': 'républicain', 'Whig': 'whig', 'Federalist': 'fédéraliste', 'Democratic-Republican': 'démocrate-républicain', 'National Republican': 'national-républicain', 'Southern Democratic': 'démocrate du Sud', 'Constitutional Union': 'Union constitutionnelle', 'Progressive': 'progressiste', 'Populist': 'populiste', "States' Rights Democratic": "démocrate des droits des États", 'American Independent': 'indépendant américain', 'Unpledged electors': 'électeurs non engagés', 'Nullifier': 'nullificateur', 'Anti-Masonic': 'antimaçonnique', 'Liberal Republican': 'républicain libéral' },
-    es: { 'Democratic': 'demócrata', 'Republican': 'republicano', 'Whig': 'whig', 'Federalist': 'federalista', 'Democratic-Republican': 'demócrata-republicano', 'National Republican': 'nacional republicano', 'Southern Democratic': 'demócrata del Sur', 'Constitutional Union': 'Unión Constitucional', 'Progressive': 'progresista', 'Populist': 'populista', "States' Rights Democratic": 'demócrata por los derechos de los estados', 'American Independent': 'independiente estadounidense', 'Unpledged electors': 'electores no comprometidos', 'Nullifier': 'anulacionista', 'Anti-Masonic': 'antimasónico', 'Liberal Republican': 'republicano liberal' }
+    fr: { 'Democratic': 'démocrate', 'Republican': 'républicain', 'Whig': 'whig', 'Federalist': 'fédéraliste', 'Democratic-Republican': 'démocrate-républicain', 'National Republican': 'national-républicain', 'Southern Democratic': 'démocrate du Sud', 'Constitutional Union': 'Union constitutionnelle', 'Progressive': 'progressiste', 'Populist': 'populiste', "States' Rights Democratic": "démocrate des droits des États", 'American Independent': 'indépendant américain', 'Unpledged electors and one faithless elector': 'électeurs non engagés et un grand électeur infidèle', 'Nullifier': 'nullificateur', 'Anti-Masonic': 'antimaçonnique', 'Liberal Republican': 'républicain libéral' },
+    es: { 'Democratic': 'demócrata', 'Republican': 'republicano', 'Whig': 'whig', 'Federalist': 'federalista', 'Democratic-Republican': 'demócrata-republicano', 'National Republican': 'nacional republicano', 'Southern Democratic': 'demócrata del Sur', 'Constitutional Union': 'Unión Constitucional', 'Progressive': 'progresista', 'Populist': 'populista', "States' Rights Democratic": 'demócrata por los derechos de los estados', 'American Independent': 'independiente estadounidense', 'Unpledged electors and one faithless elector': 'electores no comprometidos y un elector infiel', 'Nullifier': 'anulacionista', 'Anti-Masonic': 'antimasónico', 'Liberal Republican': 'republicano liberal' }
   };
   var GREY = '#E2E8F0', NOVOTE = '#CBD5E1';
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -21,7 +21,7 @@
   function cand(y, name) { for (var i = 0; i < y.candidates.length; i++) if (y.candidates[i].name === name) return y.candidates[i]; return null; }
   function load() {
     if (!load.p) load.p = Promise.all([
-      fetch('/data/elections/president.json?v=1').then(function (r) { return r.json(); }),
+      fetch('/data/elections/president.json?v=2').then(function (r) { return r.json(); }),
       fetch('/data/us-map.svg').then(function (r) { return r.text(); })
     ]);
     return load.p;

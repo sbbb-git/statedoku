@@ -47,8 +47,8 @@ flips = [c for c in codes if win(R00[-2], c) != win(R00[-1], c)]
 last = YS[-1]
 assert (len(YS), YS[0], last) == (56, '1804', '2024')
 assert bell[0] == (12, 'OH') and bell[1][0] < 12, bell[:3]
-assert same76.get('MN') == 'Democratic'
-F = {'n': len(YS), 'n76': len(R76), 'same76': len(same76), 'same76_d': sorted(c for c, p in same76.items() if p == 'Democratic'),
+assert same76.get('MN') == 'Democratic' and 'DC' in same76
+F = {'n': len(YS), 'n76': len(R76), 'same76': len([c for c in same76 if c != 'DC']), 'same76_d': sorted(c for c, p in same76.items() if p == 'Democratic'),
      'same00': len(same00), 'flips': flips, 'last': last, 'prev': R00[-2], 'dc': dc_first}
 
 
@@ -87,7 +87,7 @@ T = {
    lead=f'<p>This map shows all {F["n"]} presidential elections from 1804 to {F["last"]}, state by state: each state takes the colour of the candidate who won its electoral votes. From 1976 it also gives the share of the popular vote each state gave the Democratic and Republican candidates.</p>',
    map_h='The map, election by election',
    facts_h='What the maps show',
-   facts=[f'Since 1976 ({F["n76"]} elections), {F["same76"]} of the 50 states and DC have voted for the same party every time. Two of them always went Democratic: {names("en", F["same76_d"])}, which has backed every Democratic candidate since 1976, Walter Mondale in 1984 included. The others all went Republican every time.',
+   facts=[f'Since 1976 ({F["n76"]} elections), {F["same76"]} of the 50 states, and DC, have voted for the same party every time. Two always went Democratic: {names("en", F["same76_d"])}, which has backed every Democratic candidate since 1976, Walter Mondale in 1984 included. The others all went Republican every time.',
           f'From 2000 to {F["last"]}, {F["same00"]} of the 51 voted for the same party in all seven elections. The presidency was decided in the rest.',
           f'Ohio voted for the winner in 12 of the {F["n76"]} elections since 1976, more often than any other state; it missed in 2020.',
           f'Between {F["prev"]} and {F["last"]}, {len(F["flips"])} states changed sides: {names("en", F["flips"])}.',
@@ -102,7 +102,7 @@ T = {
    src='Electoral votes by state: the National Archives, Office of the Federal Register, which publishes the certified results of every election. Popular vote by state since 1976: MIT Election Data and Science Lab, U.S. President 1976 to 2024 (public domain, CC0).',
    rel_h='Related', related=[('/learn/electoral-college/', 'Electoral college votes by state'), ('/learn/swing-states/', 'US swing states'), ('/learn/2026-midterm-elections/', '2026 midterm election results'), ('/learn/house-seats-by-state-1910-2020/', 'House seats by state, 1910 to 2020'), ('/states/', 'All 50 states')],
    faq_h='Questions', faq=[
-     ('Which states have voted the same way in every election since 1976?', f'{F["same76"]} of the 50 states and DC: {names("en", sorted(same76))}. {names("en", F["same76_d"])} went Democratic every time, the others Republican.'),
+     ('Which states have voted the same way in every election since 1976?', f'{F["same76"]} of the 50 states, and DC: {names("en", sorted(same76))}. {names("en", F["same76_d"])} went Democratic every time, the others Republican.'),
      ('Which state has picked the winner most often since 1976?', f'Ohio, in 12 of the {F["n76"]} elections; the only miss was 2020.'),
      (f'Which states changed sides between {F["prev"]} and {F["last"]}?', f'{names("en", F["flips"])}, all from the Democratic to the Republican candidate.')]),
  'fr': dict(
@@ -112,7 +112,7 @@ T = {
    sub="Choisissez une année pour voir qui a gagné chaque État, et touchez un État pour tout son historique.",
    lead=f"<p>Cette carte montre les {F['n']} élections présidentielles américaines de 1804 à {F['last']}, État par État : chaque État prend la couleur du candidat qui a remporté ses grands électeurs. Depuis 1976, elle donne aussi la part du vote populaire de chaque État pour les candidats démocrate et républicain.</p>",
    map_h='La carte, élection par élection', facts_h='Ce que montrent les cartes',
-   facts=[f"Depuis 1976 ({F['n76']} élections), {F['same76']} des 50 États et le district de Columbia ont voté pour le même parti à chaque fois. Deux ont toujours voté démocrate : {names('fr', F['same76_d'])}, fidèle à chaque candidat démocrate depuis 1976, Walter Mondale en 1984 compris. Tous les autres ont toujours voté républicain.",
+   facts=[f"Depuis 1976 ({F['n76']} élections), {F['same76']} des 50 États, et le district de Columbia, ont voté pour le même parti à chaque fois. Deux ont toujours voté démocrate : {names('fr', F['same76_d'])}, fidèle à chaque candidat démocrate depuis 1976, Walter Mondale en 1984 compris. Tous les autres ont toujours voté républicain.",
           f"De 2000 à {F['last']}, {F['same00']} des 51 ont voté pour le même parti aux sept élections. La présidence s'est jouée dans les autres.",
           f"L'Ohio a voté pour le vainqueur à 12 des {F['n76']} élections depuis 1976, plus souvent que tout autre État ; il s'est trompé en 2020.",
           f"Entre {F['prev']} et {F['last']}, {len(F['flips'])} États ont changé de camp : {names('fr', F['flips'])}.",
@@ -127,7 +127,7 @@ T = {
    src="Grands électeurs par État : Archives nationales américaines (Office of the Federal Register), qui publient les résultats certifiés de chaque élection. Vote populaire par État depuis 1976 : MIT Election Data and Science Lab, U.S. President 1976 to 2024 (domaine public, CC0).",
    rel_h='À lire aussi', related=[('/fr/learn/college-electoral/', 'Le collège électoral'), ('/fr/learn/elections-mi-mandat-2026/', 'Élections de mi-mandat 2026'), ('/fr/learn/sieges-chambre-par-etat-1910-2020/', 'Sièges à la Chambre par État, 1910 à 2020'), ('/fr/learn/', 'Apprendre')],
    faq_h='Questions', faq=[
-     ('Quels États ont voté de la même façon à chaque élection depuis 1976 ?', f"{F['same76']} des 50 États et le district de Columbia : {names('fr', sorted(same76))}. {names('fr', F['same76_d'])} ont toujours voté démocrate, les autres républicain."),
+     ('Quels États ont voté de la même façon à chaque élection depuis 1976 ?', f"{F['same76']} des 50 États, et le district de Columbia : {names('fr', sorted(same76))}. {names('fr', F['same76_d'])} ont toujours voté démocrate, les autres républicain."),
      ('Quel État a le plus souvent voté pour le vainqueur depuis 1976 ?', f"L'Ohio, à 12 des {F['n76']} élections ; la seule erreur est 2020."),
      (f"Quels États ont changé de camp entre {F['prev']} et {F['last']} ?", f"{names('fr', F['flips'])}, tous passés du candidat démocrate au candidat républicain.")]),
  'es': dict(
@@ -137,7 +137,7 @@ T = {
    sub='Elige un año para ver quién ganó cada estado y toca un estado para ver todo su historial.',
    lead=f"<p>Este mapa muestra las {F['n']} elecciones presidenciales de 1804 a {F['last']}, estado por estado: cada estado toma el color del candidato que ganó sus votos electorales. Desde 1976 también da el porcentaje del voto popular de cada estado para los candidatos demócrata y republicano.</p>",
    map_h='El mapa, elección por elección', facts_h='Lo que muestran los mapas',
-   facts=[f"Desde 1976 ({F['n76']} elecciones), {F['same76']} de los 50 estados y el Distrito de Columbia votaron siempre por el mismo partido. Dos votaron siempre demócrata: {names('es', F['same76_d'])}, fiel a cada candidato demócrata desde 1976, incluido Walter Mondale en 1984. Todos los demás votaron siempre republicano.",
+   facts=[f"Desde 1976 ({F['n76']} elecciones), {F['same76']} de los 50 estados, y el Distrito de Columbia, votaron siempre por el mismo partido. Dos votaron siempre demócrata: {names('es', F['same76_d'])}, fiel a cada candidato demócrata desde 1976, incluido Walter Mondale en 1984. Todos los demás votaron siempre republicano.",
           f"De 2000 a {F['last']}, {F['same00']} de los 51 votaron por el mismo partido en las siete elecciones. La presidencia se decidió en el resto.",
           f"Ohio votó por el ganador en 12 de las {F['n76']} elecciones desde 1976, más que ningún otro estado; falló en 2020.",
           f"Entre {F['prev']} y {F['last']}, {len(F['flips'])} estados cambiaron de bando: {names('es', F['flips'])}.",
@@ -152,7 +152,7 @@ T = {
    src='Votos electorales por estado: Archivos Nacionales de EE. UU. (Office of the Federal Register), que publican los resultados certificados de cada elección. Voto popular por estado desde 1976: MIT Election Data and Science Lab, U.S. President 1976 to 2024 (dominio público, CC0).',
    rel_h='Más para leer', related=[('/es/learn/colegio-electoral/', 'El Colegio Electoral'), ('/es/learn/escanos-camara-por-estado-1910-2020/', 'Escaños en la Cámara por estado, 1910 a 2020'), ('/es/states/', 'Los 50 estados'), ('/es/learn/', 'Aprender')],
    faq_h='Preguntas', faq=[
-     ('¿Qué estados votaron igual en todas las elecciones desde 1976?', f"{F['same76']} de los 50 estados y el Distrito de Columbia: {names('es', sorted(same76))}. {names('es', F['same76_d'])} votaron siempre demócrata; los demás, republicano."),
+     ('¿Qué estados votaron igual en todas las elecciones desde 1976?', f"{F['same76']} de los 50 estados, y el Distrito de Columbia: {names('es', sorted(same76))}. {names('es', F['same76_d'])} votaron siempre demócrata; los demás, republicano."),
      ('¿Qué estado acertó más veces con el ganador desde 1976?', f"Ohio, en 12 de las {F['n76']} elecciones; solo falló en 2020."),
      (f"¿Qué estados cambiaron de bando entre {F['prev']} y {F['last']}?", f"{names('es', F['flips'])}, todos del candidato demócrata al republicano.")]),
 }
@@ -270,7 +270,7 @@ def page(lang):
     <div class="related-grid">{rel}</div>
   </div>
   <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
-</main>{footer.replace("</body>", '<script src="/js/election-map.js?v=1" defer></script>' + chr(10) + "</body>", 1)}'''
+</main>{footer.replace("</body>", '<script src="/js/election-map.js?v=2" defer></script>' + chr(10) + "</body>", 1)}'''
 
 
 DASHES = re.compile('[‐-―−]')

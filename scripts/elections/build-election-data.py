@@ -44,7 +44,7 @@ THIRD = {
     (1860, 'Breckinridge'): 'Southern Democratic', (1860, 'Bell'): 'Constitutional Union',
     (1872, 'Hendricks'): 'Democratic', (1872, 'Brown'): 'Liberal Republican',
     (1892, 'Weaver'): 'Populist', (1912, 'Taft'): 'Republican', (1924, 'Follette'): 'Progressive',
-    (1948, 'Thurmond'): "States' Rights Democratic", (1960, 'Byrd'): 'Unpledged electors',
+    (1948, 'Thurmond'): "States' Rights Democratic", (1960, 'Byrd'): 'Unpledged electors and one faithless elector',
     (1968, 'Wallace'): 'American Independent',
 }
 ABBR = {'D': 'Democratic', 'R': 'Republican', 'F': 'Federalist', 'P': 'Progressive', 'D-R': 'Democratic-Republican', 'D-P': 'Democratic'}
@@ -149,7 +149,7 @@ for y in sorted(pv):
 # Colours: one per party, stable across the years.
 COLOR = {'Democratic': '#2563EB', 'Republican': '#DC2626', 'Whig': '#D97706', 'Federalist': '#7C3AED', 'Democratic-Republican': '#059669',
          'National Republican': '#EA580C', 'Southern Democratic': '#0891B2', 'Constitutional Union': '#A16207', 'Progressive': '#16A34A',
-         'Populist': '#65A30D', "States' Rights Democratic": '#0E7490', 'American Independent': '#9333EA', 'Unpledged electors': '#64748B',
+         'Populist': '#65A30D', "States' Rights Democratic": '#0E7490', 'American Independent': '#9333EA', 'Unpledged electors and one faithless elector': '#64748B',
          'Nullifier': '#BE185D', 'Anti-Masonic': '#78716C', 'Liberal Republican': '#B45309', 'Whig-American': '#CA8A04', 'Independent': '#64748B',
          'Independent D-R': '#0D9488', 'Federalist/Independent D-R': '#7C3AED'}
 used = set()

@@ -74,7 +74,7 @@ for lang, prefix in (('en', 'states'), ('es', 'es/states')):
         assert i > 0, p
         h = h[:i] + section(lang, s) + h[i:]
         if 'js/election-map.js' not in h:
-            h = h.replace('</body>', '<script src="/js/election-map.js?v=1" defer></script>\n</body>', 1)
+            h = h.replace('</body>', '<script src="/js/election-map.js?v=2" defer></script>\n</body>', 1)
         assert not re.search('[‐-―−]', re.sub(r'<(script|style)\b.*?</\1>', '', h, flags=re.S)), p
         p.write_text(h, encoding='utf-8'); n += 1
 print(n, 'state pages updated')
