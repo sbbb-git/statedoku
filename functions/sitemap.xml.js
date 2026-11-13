@@ -182,6 +182,10 @@ export async function onRequestGet({ request }) {
     [`${BASE}/legal/`, { priority: 0.3, alternates: [['en', `${BASE}/legal/`], ['fr', `${BASE}/fr/mentions-legales/`], ['es', `${BASE}/es/aviso-legal/`]] }],
     [`${BASE}/fr/mentions-legales/`, { priority: 0.3 }],
     [`${BASE}/es/aviso-legal/`, { priority: 0.3 }],
+    // Presidential election maps 1804-2024, built by scripts/elections/build-election-pages.py
+    [`${BASE}/learn/presidential-election-maps/`, { priority: 0.9 }],
+    [`${BASE}/fr/learn/cartes-elections-presidentielles/`, { priority: 0.85 }],
+    [`${BASE}/es/learn/mapas-elecciones-presidenciales/`, { priority: 0.85 }],
     // House seats by state 1910-2020, built from Census apportionment data by scripts/build-house-seats-page.py
     [`${BASE}/learn/house-seats-by-state-1910-2020/`, { priority: 0.85, alternates: [['en', `${BASE}/learn/house-seats-by-state-1910-2020/`], ['fr', `${BASE}/fr/learn/sieges-chambre-par-etat-1910-2020/`], ['es', `${BASE}/es/learn/escanos-camara-por-estado-1910-2020/`]] }],
     [`${BASE}/fr/learn/sieges-chambre-par-etat-1910-2020/`, { priority: 0.85 }],

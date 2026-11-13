@@ -348,6 +348,23 @@ The next correction needs a fourth cut-over date, not an edit to these:
 any change to states.json, `LIST_CONSTRAINTS` or constraints-live.js without
 recording the old value for earlier dates rewrites grids people have played.
 
+**Presidential election maps, from 13 November 2026** (owner: "une electoral
+map des US... remonter plusieurs années en arrière"). `learn/presidential-election-maps/`
+and its FR and ES versions show every election from 1804 (the first under the
+12th Amendment; before it electors cast two votes for President) to 2024, each
+state coloured by the candidate who won its electoral votes, with the popular
+vote by state from 1976. The 50 English and 50 Spanish state pages carry a
+"How <state> voted" section before their FAQ. Data: `data/elections/president.json`,
+built by `scripts/elections/build-election-data.py` from the National Archives
+pages (parsed by `parse-nara.py`, public domain) and MIT Election Lab's file
+(CC0), both kept in `scripts/elections/sources/`; it asserts every state's
+popular-vote winner against its electoral votes and the national totals. Pages:
+`build-election-pages.py` (every figure in the prose computed and asserted)
+and `add-state-voting.py` (idempotent, between `<!-- state-voting -->`
+markers); the map is `js/election-map.js`. After the 2028 election: add the
+year to the sources, re-run the three scripts. Step 2, agreed with the owner,
+is a county view from 2000 (MIT Election Lab county file, CC0).
+
 Name clues (starts with, letter counts, "New", double letter...) read the
 English name, so their French and Spanish labels say "(en anglais)" /
 "(en inglés)": read on "Dakota du Nord" or "Nueva York", 29 of 55 French and
