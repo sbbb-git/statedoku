@@ -435,8 +435,9 @@ def page(lang):
     pend_g = [(sname(lang, r['usps']), r) for r in GOV if r['status'] != 'called']
     sep = ' : ' if lang == 'fr' else ': '
     if pend or pend_g:
-        pend_html = ('<ul>' + f'<li><b>{esc(t["tab_s"])}</b>{sep}{esc(", ".join(n for n, _ in pend) or "0")}</li>'
-                     + f'<li><b>{esc(t["tab_g"])}</b>{sep}{esc(", ".join(n for n, _ in pend_g) or "0")}</li></ul>')
+        # Only the chambers that still have an open race are listed.
+        pend_html = ('<ul>' + (f'<li><b>{esc(t["tab_s"])}</b>{sep}{esc(", ".join(n for n, _ in pend))}</li>' if pend else '')
+                     + (f'<li><b>{esc(t["tab_g"])}</b>{sep}{esc(", ".join(n for n, _ in pend_g))}</li>' if pend_g else '') + '</ul>')
     else:
         pend_html = f'<p>{esc(t["pending_none"])}</p>'
     leg = ''.join(f'<li><span class="dot p{k}"></span>{esc(v)}</li>' for k, v in t['leg'].items())
