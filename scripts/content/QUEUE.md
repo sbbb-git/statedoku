@@ -60,6 +60,11 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     Kreiss-Tomkins, above 50% of first choices; no AP call read, Alaska Public
     Media said none at 04:21 UTC on 13 November). Next: Alaska, then the House
     count by party, then certification in December.
+    15 November, data read 09:15 UTC (26b6140bd): Alaska governor
+    (Kreiss-Tomkins, D, a flip) called by AP on 13 November (Alaska Public
+    Media, NPR; CNN agrees). All 36 governor races called. Only the Alaska
+    Senate race is open (ranked-choice tabulation on 18 November if no one
+    passes 50%). Then the House count by party.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
