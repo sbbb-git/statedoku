@@ -263,7 +263,7 @@ export const LASTMOD = {
   "/learn/state-songs/": "2026-10-07",
   "/learn/state-sport/": "2026-10-05",
   "/learn/state-trees/": "2026-11-04",
-  "/learn/states-and-capitals/": "2026-11-04",
+  "/learn/states-and-capitals/": "2026-11-15",
   "/learn/states-bordering-canada/": "2026-10-22",
   "/learn/states-bordering-mexico/": "2026-10-22",
   "/learn/states-by-college-attainment/": "2026-10-22",
