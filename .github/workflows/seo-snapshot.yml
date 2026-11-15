@@ -97,6 +97,12 @@ jobs:
       # inspecting 757 URLs, and sharing a workflow meant nobody could ask how
       # many people played without waiting for a crawl answering another question.
 
+      # Long questions (7 words or more, or phrased as a question) with their
+      # impressions, clicks and the page shown, from the readings just taken.
+      # No API call: it reads the files above. Never fails the run.
+      - name: Long questions
+        run: python3 scripts/seo/long-queries.py || echo "long questions: skipped"
+
       - name: Commit the readings
         run: |
           if [ -z "$(git status --porcelain seo-snapshots)" ]; then

@@ -26,6 +26,15 @@ Read `CLAUDE.md` in full, every time. It wins over this file.
 
 ## 1. Pick the unit
 
+First look at the newest `seo-snapshots/long-queries-<date>.md` (from 15
+November 2026). A long question with many impressions and few clicks, whose
+page already covers the subject, is a unit of its own: answer it in one to
+three sentences at the top of that page (a heading repeating the question
+when it reads naturally), fact-checked like any copy. Skip a question already
+answered, and say in the journal which question the unit answered. Otherwise
+take the queue as below.
+
+
 Open `QUEUE.md` and take the first item marked `todo`. Before writing:
 
 - Check its demand still holds in the newest `seo-snapshots/bing-keywords-*.json`

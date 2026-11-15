@@ -721,6 +721,17 @@ purpose: a red cross every week stops being read.
   moves anything. Past 30, position is noise.
 - **A chosen canonical differing from the declared one.**
 - **Bing crawl anomalies.**
+- **The long questions** (`seo-snapshots/long-queries-<date>.md`, written each
+  Saturday by `scripts/seo/long-queries.py` from the readings, from 15 November
+  2026, after Coincheur): searches of 7 words or more, or phrased as a
+  question, with impressions, clicks and the page Google served. Take one to
+  three with impressions and few clicks. If the page shown (for Bing, the page
+  that targets the query) already covers the subject, answer the question in
+  one to three sentences at the top of it, under a heading that repeats the
+  question when that reads naturally; if no page answers it, add it to
+  `scripts/content/QUEUE.md`. A real answer, never keyword stuffing, and
+  checked like any other copy. Bing's impressions are loose: weigh them by
+  position and clicks.
 - **The keyword reading**, to decide what to write from measured demand rather
   than intuition.
 - **The visitor-path report** (`audience-snapshots/behavior-*.md`), to decide
