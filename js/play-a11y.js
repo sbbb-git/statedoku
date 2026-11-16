@@ -37,6 +37,11 @@
     var paths = svg.querySelectorAll('path[data-usps]');
     for (var i = 0; i < paths.length; i++) {
       // No accessible name on purpose: a name would give the answer away.
+      // us-map.svg gives every state a <title>, which browsers show as a
+      // tooltip on hover and screen readers read out: removed, so the map
+      // games really play on a blank map (fact-check, 17 November 2026).
+      var t = paths[i].querySelectorAll('title');
+      for (var j = 0; j < t.length; j++) t[j].remove();
       paths[i].setAttribute('tabindex', '0');
     }
     svg.addEventListener('keydown', function (e) {
