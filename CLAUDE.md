@@ -210,7 +210,16 @@ passed on the earlier version, and 79 pages went unreachable for a day.
   to point at, drop the anchor and keep the text rather than inventing a page.
 - **Meta descriptions 70 to 160 characters**, balanced parentheses and quotes.
 
-646 pages are indexable and 1,454 are deliberately noindexed (4 November 2026:
+On 17 November 2026, with the owner's agreement after the analysis in
+`seo-snapshots/thin-pages-2026-11-17.md`, 1,000 noindexed pages nobody had
+reached in six months were deleted (404): the 750 game-by-state launchers
+(`play/<game>/state/<state>/`, EN, FR, ES; 0 Bing clicks since May) and the
+250 state subpages travel, food, elections, weather and economy (1 click).
+No page linked to them from the index side. Do not regenerate them. The rest
+of the noindexed set (retired learn articles, cities, state maps and sports,
+printables, admin) was kept.
+
+646 pages are indexable and 1,454 were deliberately noindexed before that (4 November 2026:
 four "top 10" pages Google had crawled and refused, whose intent a deeper page
 already covers, were retired the 5 October way: `fr/learn/fleuves-des-etats-unis`,
 `fr/learn/montagnes-des-etats-unis`, `es/learn/montanas-mas-altas-eeuu`,
@@ -412,7 +421,7 @@ build their game once it lands. That took them from 243 KB to 25 KB each.
 ## Layout
 
 - `index.html`, `fr/`, `es/` are the three homepages, each running the daily game.
-- `states/` 651 pages, `learn/` 147, `play/` 298, `cities/` 102, `regions/` 14.
+- `states/` 401 pages, `learn/` 152, `play/` 48 (plus 22 each under `fr/play/` and `es/play/`), `cities/` 102, `regions/` 14 (17 November 2026, after the deletion).
 - `js/` game logic: `game.js` loop, `puzzle.js` generation, `i18n.js`,
   `constraints-pending.js` and `constraints-approved.js` for the pop-culture pool,
   `play-a11y.js` shared by the 63 game pages (keyboard access to map states and
