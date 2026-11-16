@@ -5,6 +5,7 @@
 //
 //   - every URL of the live sitemap answers 200, with no redirect;
 //   - http:// and www. redirect with a 301 to https://statedoku.com/;
+//   - every rule of _redirects answers a 301 to its target;
 //   - an unknown path answers a real 404;
 //   - the security headers are on the homepage;
 //   - the homepage serves the asset versions of this commit, and they load;
@@ -66,6 +67,30 @@ for (const [from, to] of redirects) {
   } catch (e) { fail(`${from} did not answer`); }
 }
 console.log(`redirects: ${redirects.length} checked`);
+
+// 2b. Every rule of _redirects answers a 301 to its target. A rule Cloudflare
+// skips is silent: on 17 November 2026, 822 of 924 answered 404 because the
+// dynamic rules came first. Placeholders are filled with a sample value.
+const SAMPLE = { game: 'state-flags', state: 'ohio' };
+const rules = readFileSync(new URL('../_redirects', import.meta.url), 'utf8').split('\n')
+  .filter(l => l.trim() && !l.startsWith('#')).map(l => l.trim().split(/\s+/))
+  .filter(([from, , code]) => code === '301' && !from.includes('*'))
+  .map(([from, to]) => [from, to].map(p => p.replace(/:(\w+)/g, (_, k) => SAMPLE[k] || 'x')));
+let ruleOk = 0, ri = 0;
+async function ruleWorker() {
+  while (ri < rules.length) {
+    const [from, to] = rules[ri++];
+    try {
+      const r = await get(BASE + from);
+      const loc = r.headers.get('location') || '';
+      if (r.status === 301 && new URL(loc, BASE).pathname === to) ruleOk++;
+      else fail(`${from} answered ${r.status} ${loc}, expected 301 to ${to}`);
+      await r.arrayBuffer().catch(() => {});
+    } catch (e) { fail(`${from} did not answer`); }
+  }
+}
+await Promise.all(Array.from({ length: 8 }, ruleWorker));
+console.log(`_redirects: ${rules.length} rules checked, ${ruleOk} answered 301 to their target`);
 
 // 3. Real 404
 const missing = await get(`${BASE}/no-such-page-${Date.now()}/`);

@@ -112,9 +112,13 @@ for root, _, files in os.walk('.'):
 # 3. The redirects.
 lines = ['', '# 17 November 2026: thin noindexed pages folded into their best indexable equivalent',
          '# (scripts/consolidate-thin-pages.py). Both spellings, with and without the trailing slash.']
-for a, b in DYNAMIC:
-    lines += [f'{a} {b} 301', f'{a.rstrip("/")} {b} 301']
+# Static rules first: Cloudflare counts every rule after a dynamic one as dynamic
+# and skips past 100 (the first run wrote the dynamic ones first and 822 rules
+# answered 404 until they were moved to the end of the file).
 for a, b in sorted(plan.items()):
+    lines += [f'{a} {b} 301', f'{a.rstrip("/")} {b} 301']
+lines += ['']
+for a, b in DYNAMIC:
     lines += [f'{a} {b} 301', f'{a.rstrip("/")} {b} 301']
 open('_redirects', 'a').write('\n'.join(lines) + '\n')
 static = sum(1 for l in open('_redirects') if l.strip() and not l.startswith('#') and ':' not in l.split()[0] and '*' not in l)

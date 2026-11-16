@@ -12,8 +12,18 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 SKIP = tuple('./' + d for d in open('.deployignore').read().split() if d and not d.startswith('#')) + ('./.git', './node_modules')
 FUNCS = ('/api/', '/sitemap.xml')
-redir = {l.split()[0] for l in open('_redirects') if l.strip() and not l.startswith('#')}
+rules = [l.split()[0] for l in open('_redirects') if l.strip() and not l.startswith('#')]
+redir = set(rules)
 dyn = [re.compile('^' + re.sub(r':\w+', '[^/]+', s.rstrip('/')) + '/?$') for s in redir if ':' in s]
+# Cloudflare Pages counts every rule after the first dynamic one (a :placeholder
+# or a *) as dynamic, and skips everything past 100 dynamic rules. On 17 November
+# 2026 that silently dropped 822 rules, which answered 404. So: static first.
+first_dyn = next((i for i, s in enumerate(rules) if re.search(r'[:*]', s)), len(rules))
+late = [s for s in rules[first_dyn:] if not re.search(r'[:*]', s)]
+n_dyn = len(rules) - first_dyn
+print(f'_redirects: {len(rules)} rules, {first_dyn} static, {n_dyn} counted as dynamic (limits 2000 and 100)')
+if late or first_dyn > 2000 or n_dyn > 100:
+    sys.exit(f'_redirects: {len(late)} static rules after a dynamic one (first: {late[:3]}); Cloudflare would skip rules')
 links = broken = via = 0
 bad, red = [], []
 for root, _, files in os.walk('.'):

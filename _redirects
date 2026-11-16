@@ -16,22 +16,6 @@
 
 # 17 November 2026: thin noindexed pages folded into their best indexable equivalent
 # (scripts/consolidate-thin-pages.py). Both spellings, with and without the trailing slash.
-/play/:game/state/:state/ /play/:game/ 301
-/play/:game/state/:state /play/:game/ 301
-/fr/play/:game/state/:state/ /fr/play/:game/ 301
-/fr/play/:game/state/:state /fr/play/:game/ 301
-/es/play/:game/state/:state/ /es/play/:game/ 301
-/es/play/:game/state/:state /es/play/:game/ 301
-/states/:state/travel/ /states/:state/ 301
-/states/:state/travel /states/:state/ 301
-/states/:state/food/ /states/:state/ 301
-/states/:state/food /states/:state/ 301
-/states/:state/elections/ /states/:state/ 301
-/states/:state/elections /states/:state/ 301
-/states/:state/weather/ /states/:state/ 301
-/states/:state/weather /states/:state/ 301
-/states/:state/economy/ /states/:state/ 301
-/states/:state/economy /states/:state/ 301
 /cities/albuquerque/ /states/new-mexico/ 301
 /cities/albuquerque /states/new-mexico/ 301
 /cities/anaheim/ /states/california/ 301
@@ -938,3 +922,24 @@
 /states/wyoming/map /states/wyoming/ 301
 /states/wyoming/sports/ /states/wyoming/ 301
 /states/wyoming/sports /states/wyoming/ 301
+
+# Pattern rules for the 1,000 pages deleted on 17 November 2026. They MUST stay at the
+# end of the file: Cloudflare counts every rule that follows a dynamic one as dynamic,
+# and stops at 100 dynamic rules. With these first, 822 later rules were skipped and
+# answered 404. scripts/check-internal-links.py fails on a static rule after a dynamic one.
+/play/:game/state/:state/ /play/:game/ 301
+/play/:game/state/:state /play/:game/ 301
+/fr/play/:game/state/:state/ /fr/play/:game/ 301
+/fr/play/:game/state/:state /fr/play/:game/ 301
+/es/play/:game/state/:state/ /es/play/:game/ 301
+/es/play/:game/state/:state /es/play/:game/ 301
+/states/:state/travel/ /states/:state/ 301
+/states/:state/travel /states/:state/ 301
+/states/:state/food/ /states/:state/ 301
+/states/:state/food /states/:state/ 301
+/states/:state/elections/ /states/:state/ 301
+/states/:state/elections /states/:state/ 301
+/states/:state/weather/ /states/:state/ 301
+/states/:state/weather /states/:state/ 301
+/states/:state/economy/ /states/:state/ 301
+/states/:state/economy /states/:state/ 301

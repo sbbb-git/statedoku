@@ -230,7 +230,13 @@ to the game or state page. The site now holds 650 indexable pages and five
 noindexed admin screens and logos; nothing thin is left. Every internal link
 must reach a shipped file: `python3 scripts/check-internal-links.py` (12,049
 links on 17 November, 0 broken) joins the three audits. Keep `_redirects`
-under Cloudflare's limits (2,000 static, 100 dynamic rules).
+under Cloudflare's limits (2,000 static, 100 dynamic rules), **static rules
+first**: Cloudflare counts every rule after the first dynamic one (`:name` or
+`*`) as dynamic and silently skips everything past 100. The first version put
+16 pattern rules on top, and 822 of 924 rules answered 404 for a night. The
+link checker now fails on that order and runs in the deploy before the upload;
+`verify-production.mjs` requests every rule after it and expects a 301 to the
+target.
 
 646 pages were indexable and 1,454 deliberately noindexed before that (4 November 2026:
 four "top 10" pages Google had crawled and refused, whose intent a deeper page
