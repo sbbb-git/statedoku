@@ -215,11 +215,24 @@ On 17 November 2026, with the owner's agreement after the analysis in
 reached in six months were deleted (404): the 750 game-by-state launchers
 (`play/<game>/state/<state>/`, EN, FR, ES; 0 Bing clicks since May) and the
 250 state subpages travel, food, elections, weather and economy (1 click).
-No page linked to them from the index side. Do not regenerate them. The rest
-of the noindexed set (retired learn articles, cities, state maps and sports,
-printables, admin) was kept.
+No page linked to them from the index side. Do not regenerate them.
 
-646 pages are indexable and 1,454 were deliberately noindexed before that (4 November 2026:
+The same night, with the owner's go-ahead ("supprime et adapte tout ce que tu
+veux, juste vérifie bien qu'il n'y ait pas de 404"), the remaining 453 thin
+pages were folded into their best indexable equivalent by
+`scripts/consolidate-thin-pages.py`: each deleted and given a 301 in
+`_redirects` (state maps and sports pages to the state page, city stubs to
+their state, printables to their game, the Spanish capital pages to the
+Spanish state page, crossword answers to the crossword page, the World Cup
+and soccer pages to their language's learn hub, the four retired top-10s to
+the page that covers them), and pattern rules send the 1,000 deleted earlier
+to the game or state page. The site now holds 650 indexable pages and five
+noindexed admin screens and logos; nothing thin is left. Every internal link
+must reach a shipped file: `python3 scripts/check-internal-links.py` (12,049
+links on 17 November, 0 broken) joins the three audits. Keep `_redirects`
+under Cloudflare's limits (2,000 static, 100 dynamic rules).
+
+646 pages were indexable and 1,454 deliberately noindexed before that (4 November 2026:
 four "top 10" pages Google had crawled and refused, whose intent a deeper page
 already covers, were retired the 5 October way: `fr/learn/fleuves-des-etats-unis`,
 `fr/learn/montagnes-des-etats-unis`, `es/learn/montanas-mas-altas-eeuu`,
@@ -428,7 +441,7 @@ build their game once it lands. That took them from 243 KB to 25 KB each.
 ## Layout
 
 - `index.html`, `fr/`, `es/` are the three homepages, each running the daily game.
-- `states/` 401 pages, `learn/` 152, `play/` 48 (plus 22 each under `fr/play/` and `es/play/`), `cities/` 102, `regions/` 14 (17 November 2026, after the deletion).
+- `states/` 301 pages, `learn/` 88, `play/` 27 (plus 22 each under `fr/play/` and `es/play/`), `cities/` 1 (the hub), `regions/` 14 (17 November 2026, after the consolidation).
 - `js/` game logic: `game.js` loop, `puzzle.js` generation, `i18n.js`,
   `constraints-pending.js` and `constraints-approved.js` for the pop-culture pool,
   `play-a11y.js` shared by the 63 game pages (keyboard access to map states and
