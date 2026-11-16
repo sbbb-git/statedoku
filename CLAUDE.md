@@ -267,6 +267,13 @@ index, so what Bing knows is what they can cite.
   map games) and `scripts/set-game-og.py` points og:image, twitter:image and
   the Game JSON-LD at it. Re-run both after renaming a game or changing its
   answer set.
+- **The game right after the table.** On 16 November 2026 the capitals page,
+  which offers its capitals games right after its list, kept 19% of its
+  visitors; the 13 colonies, Confederate states and abbreviations articles,
+  whose game link sat near the foot, lost 89 to 98% (3% of visitors reach 90%
+  of a long page). Since 17 November each of them (EN, FR, ES where they
+  exist) carries an `after-table-cta` line after its first table. A new
+  reference page with a matching game does the same.
 - **Lead with the answer.** The pages that earn clicks open with a direct,
   checkable answer (states and capitals, 13 colonies, electoral college,
   abbreviations). A new reference page does the same.
