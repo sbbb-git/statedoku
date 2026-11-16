@@ -101,7 +101,7 @@ jobs:
       # impressions, clicks and the page shown, from the readings just taken.
       # No API call: it reads the files above. Never fails the run.
       - name: Long questions
-        run: python3 scripts/seo/long-queries.py || echo "long questions: skipped"
+        run: python3 scripts/seo/long-queries.py || echo "long questions skipped"
 
       - name: Commit the readings
         run: |
