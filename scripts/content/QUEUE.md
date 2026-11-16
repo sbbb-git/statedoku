@@ -65,6 +65,7 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     Media, NPR; CNN agrees). All 36 governor races called. Only the Alaska
     Senate race is open (ranked-choice tabulation on 18 November if no one
     passes 50%). Then the House count by party.
+    16 November: no change (Alaska Senate still uncalled on CNN).
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
@@ -112,7 +113,7 @@ the pages are already shown, the queries already exist, nothing new competes.
 
 ## New pages with demand and no page
 
-4. `todo` **Mississippi River states**, new, EN then FR and ES. "Which states
+4. `running` (EN `done 2026-11-16 0ac320165`: `/learn/mississippi-river-states/`, map `img/maps/mississippi-river-states.svg`, linked from the learn hub and the rivers page; fact-checker 63 claims, 3 wrong fixed before push, then 1 more on re-check; FR and ES next) **Mississippi River states**, new, EN then FR and ES. "Which states
    does the Mississippi River border?" The ten states (Minnesota, Wisconsin,
    Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi,
    Louisiana), which bank each is on, source and mouth, length, the main
