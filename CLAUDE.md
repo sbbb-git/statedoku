@@ -532,6 +532,13 @@ day later.
 page tweet), and the 13:00 run is the game tweet again. The `epoch` of
 `data/videos.json` no longer drives anything; `shorts_epoch` does, so X now
 gets the same video on the same day as the other two.
+**Reordered on 16 November 2026** from the YouTube views (owner: "sélectionne
+mieux, n'en génère pas de nouvelles"): `scripts/video/reorder-queue.py` keeps
+the posted videos in place and puts the animations first (the map building
+itself leads, 1.8K views), an untested slide format every fourth day, the old
+quizzes last (from 24 December). Re-run it after `add-experiments.cjs`, and
+after a new reading changes the ranking (its `SCENES` list); the calendar in
+EXPERIMENTS.md no longer gives the dates.
 `scripts/video/EXPERIMENTS.md` holds the calendar and how to read the result;
 read it on 24 November and build more of what worked. Photos are NASA's only
 (public domain, credits in `scripts/video/photos/CREDITS.md`).
