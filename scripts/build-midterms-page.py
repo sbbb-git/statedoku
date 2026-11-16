@@ -482,7 +482,7 @@ def page(lang):
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{url}">
 {alts}  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=36">
+  <link rel="stylesheet" href="/css/style.css?v=37">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{esc(t["h1"])}">
   <meta property="og:description" content="{esc(t["desc"])}">
@@ -565,7 +565,7 @@ def page(lang):
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="https://x.com/statedoku" rel="me noopener" target="_blank">X</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@statedoku" rel="me noopener" target="_blank">TikTok</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@Statedoku" rel="me noopener" target="_blank">YouTube</a> &nbsp;·&nbsp; {t["footer"]}</p>
 </footer>
 {MAP_JS % json.dumps(map_data(), separators=(',', ':'))}
-<script src="/config.js?v=16"></script>
+<script src="/config.js?v=17"></script>
 <script src="/js/admin.js?v=5"></script>
 <script src="/js/ads.js?v=1"></script>
 </body>

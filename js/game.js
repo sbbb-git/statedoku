@@ -36,6 +36,9 @@ const Game = (() => {
   let _errors     = 0;
   let _gaveUp     = false;   // ended by Give up, not by five mistakes
   let _goldenFound = false;
+  // One hint per grid (from 17 November 2026, owner's request after the 26% win
+  // rate of early November): {r, c, id} of the cell it filled, or null.
+  let _hint = null;
   let _wrongFlash = null;   // ends the flash after a wrong pick, if one is running
 
   // US flag SVG, official proportions (19:10), 13 stripes, 50 stars in 9 rows (6,5,6,5,6,5,6,5,6)
@@ -418,6 +421,7 @@ const Game = (() => {
             // focusable and describe it as editable rather than locked.
             const isGolden = _puzzle.goldenState && placed === _puzzle.goldenState;
             if (isGolden) cell.classList.add('golden');
+            if (_hint && _hint.r === r && _hint.c === c && (!_hint.id || _hint.id === placed)) cell.classList.add('hinted');
             cell.setAttribute('aria-label',
               `${state.names[lang]} (${rowLabels[r]} × ${colLabels[c]})${isGolden ? ', 🌟 Golden State' : ''}. ${I18n.t('cell_editable_hint') || 'Activate to change or clear.'}`);
           } else {
@@ -535,7 +539,7 @@ const Game = (() => {
       return s && !(row === r && col === c);
     }));
 
-    const MIN_QUERY_LEN = 4;
+    const MIN_QUERY_LEN = 3;
 
     function renderDropdown(query) {
       dropdown.innerHTML = '';
@@ -637,9 +641,59 @@ const Game = (() => {
       });
     }
 
+    // Hint: once per grid, on an empty cell or one holding a wrong state. It
+    // places a state that fits both clues, is not used elsewhere and, when one
+    // exists, still lets the grid be completed. It never says how many states
+    // a cell accepts.
+    const hintBtn = document.getElementById('sp-hint');
+    if (hintBtn) {
+      const fresh = hintBtn.cloneNode(true);
+      hintBtn.parentNode.replaceChild(fresh, hintBtn);
+      const cellOk = _grid[r][c] && _isValidForCell(r, c, _grid[r][c]);
+      fresh.hidden = !!cellOk || _solved || _gameOver;
+      fresh.disabled = !!_hint;
+      fresh.textContent = _hint ? I18n.t('hint_used') : I18n.t('hint_btn');
+      if (!_hint) fresh.addEventListener('click', () => _useHint(r, c));
+    }
+
     _positionSearchPanel();
     panel.classList.add('open');
     setTimeout(() => newInput.focus(), 80);
+  }
+
+  function _hintFor(r, c) {
+    const opts = (_puzzle.cells && _puzzle.cells[r] && _puzzle.cells[r][c]) || [_puzzle.solution[r][c]];
+    const used = new Set(_grid.flat().filter((s, i) => s && !(Math.floor(i / 3) === r && i % 3 === c)));
+    const free = opts.filter(id => !used.has(id));
+    if (!free.length) return null;
+    // The stored solution first, then any state that keeps the grid completable.
+    const order = [_puzzle.solution[r][c], ...free].filter((id, i, a) => free.includes(id) && a.indexOf(id) === i);
+    if (_puzzle.cells) for (const id of order) {
+      const g = _grid.map(row => row.slice()); g[r][c] = id;
+      if (_isStillSolvable(g)) return id;
+    }
+    return order[0];
+  }
+
+  function _useHint(r, c) {
+    if (_hint || _solved || _gameOver) return;
+    const id = _hintFor(r, c);
+    if (!id) { _announce(I18n.t('hint_used')); return; }
+    _hint = { r, c, id };
+    _grid[r][c] = id;
+    if (typeof Analytics !== 'undefined') {
+      Analytics.track('puzzle_first_move', { puzzle_date: _dateStr });
+      Analytics.track('puzzle_hint', { puzzle_date: _dateStr });
+    }
+    _closeSearch();
+    _selectedCell = null;
+    _renderCells();
+    _updateScore();
+    _saveProgress();
+    const st = _stateMap[id];
+    _announce((I18n.t('hint_placed') || '{state}').replace('{state}', st ? st.names[I18n.getLang()] : id));
+    _checkSolved();
+    _focusCell(r, c);
   }
 
   // Put the picker directly under the grid on desktop instead of pinned to the
@@ -1165,7 +1219,8 @@ const Game = (() => {
     }
     const gold = (_goldenFound && _puzzle.goldenState) ? ' 🌟' : '';
     const tally = _gameOver && !_solved ? ` ❌ ${_errors}/${MAX_ERRORS}` : '';
-    return `Statedoku 🗺️ ${ds}${gold}${tally}\n${grid.trim()}`;
+    const hint = _hint ? ' 💡' : '';
+    return `Statedoku 🗺️ ${ds}${gold}${hint}${tally}\n${grid.trim()}`;
   }
   // Backwards-compat: full share text (body + URL)
   function getShareText() { return `${getShareBody()}\n${_shareUrl('text')}`; }
@@ -1498,7 +1553,7 @@ const Game = (() => {
   // Persistence 
   function _saveProgress() {
     localStorage.setItem(CONFIG.STORAGE_KEY+'_progress_'+_dateStr,
-      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, gaveUp:_gaveUp, startTime:_startTime, errors:_errors, solveTime:_solveTime, goldenFound:_goldenFound }));
+      JSON.stringify({ grid:_grid, solved:_solved, gameOver:_gameOver, gaveUp:_gaveUp, startTime:_startTime, errors:_errors, solveTime:_solveTime, goldenFound:_goldenFound, hint:_hint }));
   }
 
   function _loadProgress() {
@@ -1514,6 +1569,7 @@ const Game = (() => {
       _gaveUp    = !!d.gaveUp;
       _solveTime = d.solveTime || null;
       _goldenFound = !!d.goldenFound;
+      _hint = d.hint && Number.isInteger(d.hint.r) && Number.isInteger(d.hint.c) ? d.hint : null;
 
       // Defensive: detect corrupt progress (states visible but game not won/lost)
       // This can happen after a dev panel "Solve" run, or a stale wrong-flash save.

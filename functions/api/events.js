@@ -1,6 +1,6 @@
 // Statedoku, POST /api/events
 // Receives game events from the client (puzzle_start, puzzle_first_move,
-// puzzle_solve, puzzle_lost).
+// puzzle_hint, puzzle_solve, puzzle_lost).
 // Anonymous, no IP stored, only the cf-ipcountry header (country-level).
 // Bindings required (set in Cloudflare Pages → Settings → Functions):
 // - STATS_DB (D1 database)
@@ -11,7 +11,7 @@ import { rateLimit, getClientIp } from '../_shared/ratelimit.js';
 // gate: the table used to carry its own CHECK on three names, so from 24 to
 // 31 October 2026 every puzzle_first_move failed on it with a 500 and D1
 // counted none. _dropEventTypeCheck removes that CHECK once.
-const ALLOWED_EVENTS = ['puzzle_start', 'puzzle_first_move', 'puzzle_solve', 'puzzle_lost'];
+const ALLOWED_EVENTS = ['puzzle_start', 'puzzle_first_move', 'puzzle_hint', 'puzzle_solve', 'puzzle_lost'];  // puzzle_hint from 17 November 2026
 const LANGS = ['en', 'fr', 'es'];
 // Coarse classes only (js/analytics.js), never a URL: where the visit came
 // from and the streak band at the end of a grid (29 October 2026).

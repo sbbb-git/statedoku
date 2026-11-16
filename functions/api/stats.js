@@ -31,6 +31,7 @@ export async function onRequestGet({ request, env }) {
     `SELECT puzzle_date,
             SUM(CASE WHEN event_type='puzzle_start' THEN 1 ELSE 0 END) AS starts,
             SUM(CASE WHEN event_type='puzzle_first_move' THEN 1 ELSE 0 END) AS first_moves,
+            SUM(CASE WHEN event_type='puzzle_hint' THEN 1 ELSE 0 END) AS hints,
             SUM(CASE WHEN event_type='puzzle_solve' THEN 1 ELSE 0 END) AS solves,
             SUM(CASE WHEN event_type='puzzle_lost'  THEN 1 ELSE 0 END) AS losses,
             ROUND(AVG(CASE WHEN event_type='puzzle_solve' THEN time_seconds END)) AS avg_solve_sec

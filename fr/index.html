@@ -61,7 +61,7 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
 
-  <link rel="stylesheet" href="/css/style.css?v=36">
+  <link rel="stylesheet" href="/css/style.css?v=37">
 
   <script type="application/ld+json">
   {
@@ -158,8 +158,9 @@
 <!-- Search panel (bottom sheet) -->
 <div id="search-panel">
   <div id="sp-tags"></div>
-  <input type="text" id="sp-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Tape au moins 4 lettres…">
+  <input type="text" id="sp-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Tape au moins 3 lettres…">
   <ul id="sp-dropdown"></ul>
+  <button id="sp-hint" type="button" hidden>Indice : un État qui va dans cette case</button>
   <button id="sp-clear" type="button" hidden>Vider cette case</button>
 </div>
 <div id="sp-overlay"></div>
@@ -191,7 +192,7 @@
       <button class="modal-close" aria-label="Fermer">✕</button>
     </div>
     <div class="howto-content">
-      <ul class="howto-list"><li>Remplis les neuf cases avec des États américains. Chaque État doit respecter à la fois l'indice de sa ligne et celui de sa colonne.</li><li>Un État ne peut servir qu’une fois dans la grille.</li><li>Tout État qui respecte les deux indices compte, et tu peux changer ou vider une case à tout moment.</li><li>Tu as droit à cinq erreurs.</li><li>Un indice marqué d’un <b>?</b> a une explication : touche-le.</li><li>Les indices sur les lettres et la longueur lisent le nom anglais de l’État.</li><li>Une nouvelle grille chaque jour à minuit. Les anciennes restent dans les archives.</li></ul>
+      <ul class="howto-list"><li>Remplis les neuf cases avec des États américains. Chaque État doit respecter à la fois l'indice de sa ligne et celui de sa colonne.</li><li>Un État ne peut servir qu’une fois dans la grille.</li><li>Tout État qui respecte les deux indices compte, et tu peux changer ou vider une case à tout moment.</li><li>Tu as droit à cinq erreurs.</li><li>Un indice marqué d’un <b>?</b> a une explication : touche-le.</li><li>Les indices sur les lettres et la longueur lisent le nom anglais de l’État.</li><li>Une nouvelle grille chaque jour à minuit. Les anciennes restent dans les archives.</li><li>Un indice par grille : ouvre une case et touche Indice pour voir un État qui y va.</li></ul>
       <p class="howto-example"><strong>Exemple :</strong> ligne <em>Une des 13 colonies</em>, colonne <em>Côte atlantique</em> : la Virginie convient. La Pennsylvanie était une colonie mais n’a pas de côte océanique ; la Floride borde l’Atlantique mais n’a jamais été une colonie.</p>
       <button type="button" class="howto-play" id="howto-play">Jouer</button>
     </div>
@@ -222,7 +223,7 @@
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 
-<script src="/config.js?v=16"></script>
+<script src="/config.js?v=17"></script>
 <script src="/js/admin.js?v=5"></script>
 <script src="/js/ads.js?v=1"></script>
 <script src="/js/analytics.js?v=7"></script>
@@ -249,6 +250,6 @@
 })();
 </script>
 <script src="../js/puzzle.js?v=21"></script>
-<script src="../js/game.js?v=29"></script>
+<script src="../js/game.js?v=30"></script>
 </body>
 </html>

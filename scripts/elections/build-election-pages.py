@@ -218,7 +218,7 @@ def page(lang):
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{url}">
 {alts}  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
-  <link rel="stylesheet" href="/css/style.css?v=36">
+  <link rel="stylesheet" href="/css/style.css?v=37">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{esc(t["h1"])}">
   <meta property="og:description" content="{esc(t["desc"])}">

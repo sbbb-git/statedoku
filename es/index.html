@@ -61,7 +61,7 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap">
 
-  <link rel="stylesheet" href="/css/style.css?v=36">
+  <link rel="stylesheet" href="/css/style.css?v=37">
 
   <script type="application/ld+json">
   {
@@ -158,8 +158,9 @@
 <!-- Search panel (bottom sheet) -->
 <div id="search-panel">
   <div id="sp-tags"></div>
-  <input type="text" id="sp-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Escribe al menos 4 letras…">
+  <input type="text" id="sp-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Escribe al menos 3 letras…">
   <ul id="sp-dropdown"></ul>
+  <button id="sp-hint" type="button" hidden>Pista: un estado que va en esta casilla</button>
   <button id="sp-clear" type="button" hidden>Vaciar esta casilla</button>
 </div>
 <div id="sp-overlay"></div>
@@ -191,7 +192,7 @@
       <button class="modal-close" aria-label="Cerrar">✕</button>
     </div>
     <div class="howto-content">
-      <ul class="howto-list"><li>Llena las nueve casillas con estados de EE.UU. Cada estado tiene que cumplir la pista de su fila y la de su columna.</li><li>Cada estado se usa una sola vez en la cuadrícula.</li><li>Vale cualquier estado que cumpla las dos pistas, y puedes cambiar o vaciar una casilla cuando quieras.</li><li>Tienes cinco errores.</li><li>Una pista con <b>?</b> tiene una explicación: tócala.</li><li>Las pistas sobre letras y longitud leen el nombre en inglés del estado.</li><li>Una cuadrícula nueva cada día a medianoche. Las anteriores siguen en el archivo.</li></ul>
+      <ul class="howto-list"><li>Llena las nueve casillas con estados de EE.UU. Cada estado tiene que cumplir la pista de su fila y la de su columna.</li><li>Cada estado se usa una sola vez en la cuadrícula.</li><li>Vale cualquier estado que cumpla las dos pistas, y puedes cambiar o vaciar una casilla cuando quieras.</li><li>Tienes cinco errores.</li><li>Una pista con <b>?</b> tiene una explicación: tócala.</li><li>Las pistas sobre letras y longitud leen el nombre en inglés del estado.</li><li>Una cuadrícula nueva cada día a medianoche. Las anteriores siguen en el archivo.</li><li>Una pista por cuadrícula: abre una casilla y toca Pista para ver un estado que encaja.</li></ul>
       <p class="howto-example"><strong>Ejemplo:</strong> fila <em>Una de las 13 colonias</em>, columna <em>Costa atlántica</em>: Virginia cumple las dos. Pensilvania fue colonia pero no tiene costa oceánica; Florida está en el Atlántico pero nunca fue colonia.</p>
       <button type="button" class="howto-play" id="howto-play">Jugar</button>
     </div>
@@ -222,7 +223,7 @@
 <div id="a11y-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 
-<script src="/config.js?v=16"></script>
+<script src="/config.js?v=17"></script>
 <script src="/js/admin.js?v=5"></script>
 <script src="/js/ads.js?v=1"></script>
 <script src="/js/analytics.js?v=7"></script>
@@ -249,6 +250,6 @@
 })();
 </script>
 <script src="../js/puzzle.js?v=21"></script>
-<script src="../js/game.js?v=29"></script>
+<script src="../js/game.js?v=30"></script>
 </body>
 </html>

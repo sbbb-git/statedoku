@@ -460,6 +460,16 @@ About 390 KB of the homepage's 808 KB on a phone (25 October 2026) is the
 AdSense script and what it pulls in, kept for site verification during the
 review; GA4 is 178 KB more. Our own files are about 190 KB.
 
+**One hint per grid, from 17 November 2026** (owner's choice after the
+16 November audit: 26% of finished grids won, 43% of shown grids got a first
+move). The picker of a cell (empty, or holding a wrong state) shows a Hint
+button: it places a state that fits both clues, is not used elsewhere and,
+when one exists, still lets the grid be completed (`_hintFor`, using
+`_isStillSolvable`); the cell gets a gold ring, the share text a bulb, the
+progress keeps it (`hint`), D1 counts `puzzle_hint` (`/api/stats` daily
+`hints`). The search shows states from 3 letters typed (it was 4). Compare the
+win rate and the first-move rate from that date with the weeks before.
+
 Constraints that do not explain themselves carry a `?` opening a plain-language
 gloss, from `constraint_help` in `translations.json`. Constraints like "Starts
 with M" carry none, so the affordance means something when it appears. A gloss
