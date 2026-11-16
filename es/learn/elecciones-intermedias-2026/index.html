@@ -53,6 +53,7 @@
     .asof { font-size: .85rem; color: var(--text-3); }
     .keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0 6px; padding: 0; list-style: none; }
     .keys li { border: 2px solid var(--border); border-radius: 12px; padding: 12px 14px; background: #fff; font-size: .86rem; color: var(--text-2); line-height: 1.4; }
+    .next-step { margin: 12px 0 4px; } .next-step a { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 800; padding: 10px 18px; border-radius: 999px; text-decoration: none; }
     .keys b { display: block; font-size: 1.6rem; font-weight: 900; color: var(--navy); margin-bottom: 2px; font-variant-numeric: tabular-nums; }
     .mt-tabs { display: flex; gap: 8px; margin: 8px 0 10px; }
     .mt-tab { font: 700 .85rem/1 Inter, system-ui, sans-serif; padding: 9px 14px; border: 1.5px solid var(--navy); border-radius: 999px; background: #fff; color: var(--navy); cursor: pointer; }
@@ -82,8 +83,6 @@
   </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://statedoku.com/es/"}, {"@type": "ListItem", "position": 2, "name": "Aprender", "item": "https://statedoku.com/es/learn/"}, {"@type": "ListItem", "position": 3, "name": "Elecciones intermedias 2026", "item": "https://statedoku.com/es/learn/elecciones-intermedias-2026/"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Quién ganó las elecciones intermedias de 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Los demócratas ganaron el control de la Cámara de Representantes y del Senado en las elecciones intermedias del 3 de noviembre de 2026, según los ganadores declarados por la agencia Associated Press. AP ha declarado ganador en 34 de las 35 contiendas al Senado y en 36 de las 36 a gobernador; el resto sigue sin ganador declarado."}}, {"@type": "Question", "name": "¿Cuándo fueron las elecciones intermedias de 2026?", "acceptedAnswer": {"@type": "Answer", "text": "El martes 3 de noviembre de 2026. Muchos estados abrieron el voto anticipado o por correo semanas antes."}}, {"@type": "Question", "name": "¿Cuántos escaños del Senado estaban en juego en 2026?", "acceptedAnswer": {"@type": "Answer", "text": "35: los 33 escaños de la clase 2 y dos elecciones especiales, en Ohio y Florida, por los escaños que JD Vance y Marco Rubio dejaron en enero de 2025."}}, {"@type": "Question", "name": "¿Cuántos gobernadores se eligieron en 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Treinta y seis, en 36 estados, más los gobernadores de tres territorios: Guam, las Islas Marianas del Norte y las Islas Vírgenes de EE.UU."}}, {"@type": "Question", "name": "¿Qué es una elección intermedia?", "acceptedAnswer": {"@type": "Answer", "text": "La elección federal que se celebra a mitad del mandato de cuatro años del presidente. Se eligen los 435 escaños de la Cámara, alrededor de un tercio del Senado y la mayoría de los gobernadores."}}, {"@type": "Question", "name": "¿Cuándo empieza el nuevo Congreso?", "acceptedAnswer": {"@type": "Answer", "text": "Al mediodía del 3 de enero de 2027, como fija la Enmienda 20 para cada nuevo Congreso."}}]}</script>
-
-  <script type="application/ld+json" data-page-dates>{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://statedoku.com/es/learn/elecciones-intermedias-2026/#webpage", "url": "https://statedoku.com/es/learn/elecciones-intermedias-2026/", "name": "Elecciones intermedias 2026: resultados por estado", "inLanguage": "es", "datePublished": "2026-11-04", "dateModified": "2026-11-15", "author": {"@type": "Person", "name": "Moses Tounby", "url": "https://statedoku.com/about/"}, "publisher": {"@type": "Organization", "name": "Statedoku", "url": "https://statedoku.com/", "logo": {"@type": "ImageObject", "url": "https://statedoku.com/apple-touch-icon.png", "width": 180, "height": 180}}, "isPartOf": {"@type": "WebSite", "name": "Statedoku", "url": "https://statedoku.com/"}, "description": "Elecciones intermedias de EE.UU. del 3 de noviembre de 2026 por estado: Senado, 36 gobernadores y control de la Cámara, en un mapa. Se actualiza."}</script>
 </head>
 <body class="legal-body">
 
@@ -102,6 +101,7 @@
       <p class="asof">Resultados al 15 de noviembre de 2026, a las 09:15 UTC, según los ganadores declarados por la agencia AP.</p>
     </div>
     <ul class="keys"><li><b>34/35</b>Contiendas al Senado con ganador declarado</li><li><b>36/36</b>Gobernaciones con ganador declarado</li><li><b>8</b>Escaños del Senado que cambian de partido</li><li><b>6</b>Gobernaciones que cambian de partido</li></ul>
+    <p class="next-step"><a href="/es/learn/mapas-elecciones-presidenciales/">¿Y en las presidenciales? El voto de cada estado desde 1804 en un mapa</a></p>
 
     <h2>El mapa</h2>
     <div class="mt-tabs" role="group"><button type="button" class="mt-tab" data-m="s" aria-pressed="true">Senado</button><button type="button" class="mt-tab" data-m="g" aria-pressed="false">Gobernadores</button></div>
@@ -151,11 +151,9 @@
     <p>Ganadores declarados por la agencia Associated Press: el estado de cada contienda en las tablas enlaza a su página de resultados de AP. Cada resultado se contrastó con al menos otro medio (NBC News, CNN o CBS News). Los resultados certificados vienen de la oficina electoral de cada estado.</p>
 
     <h2>Guías relacionadas</h2>
-    <div class="related-grid"><a href="/es/learn/colegio-electoral/">El Colegio Electoral</a><a href="/es/learn/estados-bisagra/">Los estados bisagra</a><a href="/es/learn/escanos-camara-por-estado-1910-2020/">Escaños de la Cámara por estado</a><a href="/es/learn/lista-de-los-50-estados/">La lista de los 50 estados</a><a href="/es/learn/territorios-eeuu/">Los territorios de EE.UU.</a></div>
+    <div class="related-grid"><a href="/es/learn/mapas-elecciones-presidenciales/">Las presidenciales estado por estado, 1804 a 2024</a><a href="/es/learn/colegio-electoral/">El Colegio Electoral</a><a href="/es/learn/estados-bisagra/">Los estados bisagra</a><a href="/es/learn/escanos-camara-por-estado-1910-2020/">Escaños de la Cámara por estado</a><a href="/es/learn/lista-de-los-50-estados/">La lista de los 50 estados</a><a href="/es/learn/territorios-eeuu/">Los territorios de EE.UU.</a></div>
   </div>
   <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
-
-  <p class="page-updated">Actualizado el <time datetime="2026-11-15">15 de noviembre de 2026</time></p>
 </main><footer>
   <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="https://x.com/statedoku" rel="me noopener" target="_blank">X</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@statedoku" rel="me noopener" target="_blank">TikTok</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@Statedoku" rel="me noopener" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/states/">Todos los estados</a> &nbsp;·&nbsp; <a href="/quiz/">Quiz</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a></p>
 </footer>

@@ -123,7 +123,8 @@ T = {
         pending_none='Every Senate and governor race has been called.',
         faq_h='Frequently asked questions',
         rel_h='Related guides',
-        related=[('/learn/electoral-college/', 'The Electoral College'), ('/learn/swing-states/', 'Swing states'),
+        next_step='How did each state vote for president? Every election since 1804 on one map',
+        related=[('/learn/presidential-election-maps/', 'Presidential election maps, 1804 to 2024'), ('/learn/electoral-college/', 'The Electoral College'), ('/learn/swing-states/', 'Swing states'),
                  ('/learn/house-seats-by-state-1910-2020/', 'House seats by state'), ('/learn/states-and-capitals/', 'The 50 states and capitals'),
                  ('/learn/us-territories/', 'US territories')],
         cta_h='Know the 50 states?', cta_p='One grid a day, each cell a state that fits two clues.', cta_a='Play today\'s puzzle', cta_url='/',
@@ -158,7 +159,8 @@ T = {
         pending_none='Toutes les élections au Sénat et de gouverneur ont un vainqueur annoncé.',
         faq_h='Questions fréquentes',
         rel_h='Guides associés',
-        related=[('/fr/learn/college-electoral/', 'Le Collège électoral'), ('/fr/learn/systeme-federal-americain/', 'Le système fédéral américain'),
+        next_step="Et à la présidentielle ? Le vote de chaque État depuis 1804 sur une carte",
+        related=[('/fr/learn/cartes-elections-presidentielles/', 'Les présidentielles État par État, 1804 à 2024'), ('/fr/learn/college-electoral/', 'Le Collège électoral'), ('/fr/learn/systeme-federal-americain/', 'Le système fédéral américain'),
                  ('/fr/learn/sieges-chambre-par-etat-1910-2020/', 'Les sièges à la Chambre par État'), ('/fr/learn/liste-des-50-etats/', 'La liste des 50 États'),
                  ('/fr/learn/territoires-americains/', 'Les territoires américains')],
         cta_h='Vous connaissez les 50 États ?', cta_p='Une grille par jour, chaque case un État qui répond à deux indices.', cta_a='Jouer la grille du jour', cta_url='/fr/',
@@ -193,7 +195,8 @@ T = {
         pending_none='Todas las elecciones al Senado y a gobernador ya tienen ganador declarado.',
         faq_h='Preguntas frecuentes',
         rel_h='Guías relacionadas',
-        related=[('/es/learn/colegio-electoral/', 'El Colegio Electoral'), ('/es/learn/estados-bisagra/', 'Los estados bisagra'),
+        next_step='¿Y en las presidenciales? El voto de cada estado desde 1804 en un mapa',
+        related=[('/es/learn/mapas-elecciones-presidenciales/', 'Las presidenciales estado por estado, 1804 a 2024'), ('/es/learn/colegio-electoral/', 'El Colegio Electoral'), ('/es/learn/estados-bisagra/', 'Los estados bisagra'),
                  ('/es/learn/escanos-camara-por-estado-1910-2020/', 'Escaños de la Cámara por estado'), ('/es/learn/lista-de-los-50-estados/', 'La lista de los 50 estados'),
                  ('/es/learn/territorios-eeuu/', 'Los territorios de EE.UU.')],
         cta_h='¿Conoces los 50 estados?', cta_p='Una cuadrícula al día, cada casilla un estado que cumple dos pistas.', cta_a='Jugar el puzzle de hoy', cta_url='/es/',
@@ -289,6 +292,7 @@ CSS = '''
     .asof { font-size: .85rem; color: var(--text-3); }
     .keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0 6px; padding: 0; list-style: none; }
     .keys li { border: 2px solid var(--border); border-radius: 12px; padding: 12px 14px; background: #fff; font-size: .86rem; color: var(--text-2); line-height: 1.4; }
+    .next-step { margin: 12px 0 4px; } .next-step a { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 800; padding: 10px 18px; border-radius: 999px; text-decoration: none; }
     .keys b { display: block; font-size: 1.6rem; font-weight: 900; color: var(--navy); margin-bottom: 2px; font-variant-numeric: tabular-nums; }
     .mt-tabs { display: flex; gap: 8px; margin: 8px 0 10px; }
     .mt-tab { font: 700 .85rem/1 Inter, system-ui, sans-serif; padding: 9px 14px; border: 1.5px solid var(--navy); border-radius: 999px; background: #fff; color: var(--navy); cursor: pointer; }
@@ -510,6 +514,7 @@ def page(lang):
       <p class="asof">{esc(t["asof"].format(t=stamp(lang)))}</p>
     </div>
     <ul class="keys">{keys_html}</ul>
+    <p class="next-step"><a href="{t["related"][0][0]}">{esc(t["next_step"])}</a></p>
 
     <h2>{esc(t["map_h"])}</h2>
     <div class="mt-tabs" role="group"><button type="button" class="mt-tab" data-m="s" aria-pressed="true">{esc(t["tab_s"])}</button><button type="button" class="mt-tab" data-m="g" aria-pressed="false">{esc(t["tab_g"])}</button></div>
