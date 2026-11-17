@@ -106,6 +106,30 @@ export async function onRequestGet({ request, env }) {
     all.by_streak = null;
   }
 
+  // Players' ratings (from 18 November 2026, /api/feedback): counts and
+  // averages only. The comments are visitors' free text and this payload is
+  // committed to the public repo by the audience collector, so no text here;
+  // the key holder reads them through /api/admin/feedback.
+  try {
+    const f = await env.STATS_DB.prepare(
+      `SELECT COUNT(*) AS ratings, ROUND(AVG(rating), 2) AS average,
+              SUM(CASE WHEN comment IS NOT NULL THEN 1 ELSE 0 END) AS comments,
+              SUM(CASE WHEN created_at > ? THEN 1 ELSE 0 END) AS last_7d,
+              SUM(CASE WHEN created_at > ? AND created_at <= ? THEN 1 ELSE 0 END) AS prev_7d
+         FROM feedback`
+    ).bind(week, prevWeek, week).first();
+    const dist = await env.STATS_DB.prepare(
+      `SELECT rating, COUNT(*) AS n FROM feedback GROUP BY rating ORDER BY rating DESC`
+    ).all();
+    const byPage = await env.STATS_DB.prepare(
+      `SELECT page, COUNT(*) AS n, ROUND(AVG(rating), 2) AS average FROM feedback
+        GROUP BY page ORDER BY n DESC LIMIT 80`
+    ).all();
+    all.ratings = { ...f, dist: dist.results, by_page: byPage.results };
+  } catch (e) {
+    all.ratings = { ratings: 0, average: null, comments: 0, dist: [], by_page: [] };
+  }
+
   return new Response(JSON.stringify(all, null, 2), {
     headers: {
       'content-type': 'application/json',

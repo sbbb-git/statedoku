@@ -132,7 +132,12 @@ try { const s = await st.json(); if (!Array.isArray(s) || s.length !== 50) fail(
 catch (e) { fail(`/data/states.json is not JSON (status ${st.status})`); }
 const key = await get(BASE + '/a7844e0c0770e4f1a297158b783450d7.txt');
 if (key.status !== 200) fail(`IndexNow key file answered ${key.status}`);
-console.log('endpoints: 4 checked (/api/events, manifest, states.json, IndexNow key)');
+// Players' ratings: the health check, and a refused body (no row written).
+const fb = await get(BASE + '/api/feedback');
+if (fb.status !== 200) fail(`/api/feedback health answered ${fb.status}`);
+const fbBad = await get(BASE + '/api/feedback', { method: 'POST', headers: { 'user-agent': UA, 'content-type': 'application/json' }, body: '{"rating":9}' });
+if (fbBad.status !== 400) fail(`/api/feedback accepted an invalid rating (status ${fbBad.status})`);
+console.log('endpoints: 6 checked (/api/events, manifest, states.json, IndexNow key, /api/feedback twice)');
 
 if (failures) { console.log(`${failures} failure(s)`); process.exit(1); }
 console.log('production check passed');

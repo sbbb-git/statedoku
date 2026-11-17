@@ -65,6 +65,17 @@
       <div id="server-stats-out" style="font-family:ui-monospace,Menlo,monospace;font-size:.75rem;line-height:1.55;color:var(--text-2);max-height:400px;overflow:auto;background:var(--surface-2);padding:12px;border-radius:8px;white-space:pre-wrap">Click "Load stats" to fetch.</div>
     </div>
 
+    <!-- Players' ratings and comments (/api/admin/feedback, from 18 November 2026) -->
+    <div class="panel" id="reviews-panel">
+      <h2>⭐ Avis des joueurs</h2>
+      <p style="font-size:.88rem;color:var(--text-2);margin-bottom:10px">
+        Notes et commentaires laissés à la fin d'une partie (jeu du jour et 21 jeux). Même clé que ci-dessus. Anonymes : pays et langue seulement.
+      </p>
+      <button id="reviews-load" class="link-btn" style="border:none;margin-bottom:14px">Charger les avis</button>
+      <div id="reviews-summary" style="font-size:.9rem;color:var(--text-2);margin-bottom:10px"></div>
+      <div id="reviews-list" style="max-height:600px;overflow:auto"></div>
+    </div>
+
     <!-- Cloudflare Web Analytics CTA -->
     <div class="panel">
       <h2>🌍 Visitor analytics (Cloudflare)</h2>
@@ -209,6 +220,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ── Players' reviews. Every value is visitor text: textContent only. ──
+  const revBtn = document.getElementById('reviews-load');
+  const revSum = document.getElementById('reviews-summary');
+  const revList = document.getElementById('reviews-list');
+  revBtn.addEventListener('click', async () => {
+    const key = keyInput.value.trim();
+    if (!key) { revSum.textContent = 'Entre la clé dans le champ ci-dessus.'; return; }
+    sessionStorage.setItem(SK_KEY, key);
+    revSum.textContent = 'Chargement…';
+    revList.textContent = '';
+    try {
+      const r = await fetch('/api/admin/feedback', { headers: { 'x-admin-key': key }, cache: 'no-store' });
+      if (!r.ok) { revSum.textContent = `Erreur ${r.status}`; return; }
+      const d = await r.json();
+      const s = d.summary || {};
+      const dist = (d.dist || []).map(x => `${x.rating}★ ${x.n}`).join(' · ');
+      revSum.textContent = `${s.ratings || 0} notes, moyenne ${s.average ?? '-'} / 5, ${s.comments || 0} commentaires. ${dist}`;
+      const byPage = document.createElement('p');
+      byPage.style.cssText = 'font-size:.8rem;color:var(--text-3);margin-bottom:12px';
+      byPage.textContent = 'Par page : ' + (d.by_page || []).map(p => `${p.page} ${p.n} (${p.average})`).join(', ');
+      revList.appendChild(byPage);
+      (d.reviews || []).forEach(v => {
+        const card = document.createElement('div');
+        card.style.cssText = 'border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:#fff';
+        const head = document.createElement('div');
+        head.style.cssText = 'font-size:.78rem;color:var(--text-3);margin-bottom:4px';
+        const when = new Date(v.updated_at || v.created_at).toLocaleString('fr-FR');
+        head.textContent = `${'★'.repeat(v.rating)}${'☆'.repeat(5 - v.rating)}  ${v.page}${v.puzzle_date && v.page.split('/').filter(Boolean).length <= 1 ? ' (grille du ' + v.puzzle_date + ')' : ''}${v.outcome ? ', ' + (v.outcome === 'won' ? 'gagnée' : 'perdue') : ''}  ·  ${v.lang || ''} ${v.country || ''}  ·  ${when}`;
+        card.appendChild(head);
+        if (v.comment) {
+          const c = document.createElement('div');
+          c.style.cssText = 'font-size:.92rem;color:var(--text);white-space:pre-wrap;overflow-wrap:anywhere';
+          c.textContent = v.comment;
+          card.appendChild(c);
+        }
+        revList.appendChild(card);
+      });
+      if (!(d.reviews || []).length) revList.appendChild(document.createTextNode('Aucun avis pour le moment.'));
+    } catch (e) {
+      revSum.textContent = 'Échec du chargement.';
+    }
+  });
+
   function formatStats(s) {
     let lines = [];
     lines.push('═══ TOTALS (all time) ═══');
@@ -232,6 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-<script src="/js/puzzle.js?v=21"></script>
+<script src="/js/puzzle.js?v=22"></script>
 </body>
 </html>

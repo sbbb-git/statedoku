@@ -1067,9 +1067,9 @@ const Puzzle = (() => {
 
   async function loadStates() {
     if (_states) return _states;
-    const base = location.pathname.includes('/fr/') || location.pathname.includes('/es/')
-      ? '../data/states.json' : 'data/states.json';
-    const res = await fetch(`${base}?v=${CONFIG.DATA_VERSION}`);
+    // From the root: the relative path broke on admin/dashboard/, which asked
+    // for /admin/dashboard/data/states.json and got a 404 page instead.
+    const res = await fetch(`/data/states.json?v=${CONFIG.DATA_VERSION}`);
     _states = await res.json();
     return _states;
   }

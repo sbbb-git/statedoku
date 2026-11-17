@@ -505,6 +505,25 @@ progress keeps it (`hint`), D1 counts `puzzle_hint` (`/api/stats` daily
 `hints`). The search shows states from 3 letters typed (it was 4). Compare the
 win rate and the first-move rate from that date with the weeks before.
 
+**Players' ratings, from 18 November 2026** (owner: "ils ont la possibilité de
+noter le jeu et laisser un commentaire ? Si non mets en place"; there was no
+way before). `js/feedback.js`, loaded on the three homepages and the 63 game
+pages, adds five stars and then an optional comment under the result of a
+finished game: the solved and game-over cards of the daily game, the
+`#g-result`, `#pts-result` or `#ab-result` card of a game. It needs no change
+to game.js or the games, and injects its own CSS. One rating per device per
+puzzle date (daily) or per page (games): a random id in localStorage makes a
+second star or a comment update the same row. `/api/feedback` stores it in
+the `feedback` table of `STATS_DB` (created by the first rating): stars, the
+comment (600 characters at most, control and bidi characters stripped), page,
+puzzle date, won or lost, language, country. No IP, no email field, and the
+widget asks for none. Same origin and JSON-only rules as `/api/events`.
+**The comments are visitors' free text and never enter the public repo**:
+the owner reads them on `admin/dashboard/` ("Avis des joueurs", same key as the
+stats, rendered as text only) through `/api/admin/feedback`; `/api/stats`, and
+so `audience-snapshots/`, carries counts and averages only (`ratings`). When
+the AdSense review is over, `/privacy/` should mention the form.
+
 Constraints that do not explain themselves carry a `?` opening a plain-language
 gloss, from `constraint_help` in `translations.json`. Constraints like "Starts
 with M" carry none, so the affordance means something when it appears. A gloss

@@ -82,6 +82,8 @@ async function main() {
     const starts = d.reduce((a, r) => a + (r.starts || 0), 0);
     const solves = d.reduce((a, r) => a + (r.solves || 0), 0);
     console.log(`[audience] gameplay: ${d.length} days, ${starts} starts, ${solves} solves`);
+    const rt = snapshot.gameplay.ratings;
+    if (rt) console.log(`[audience] ratings: ${rt.ratings} (average ${rt.average ?? '-'}), ${rt.comments} with a comment`);
   } else {
     console.warn('[audience] STATS_ADMIN_KEY absent, gameplay not collected');
   }
