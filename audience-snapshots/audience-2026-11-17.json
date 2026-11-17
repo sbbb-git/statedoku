@@ -1,0 +1,719 @@
+{
+  "source": "statedoku-audience",
+  "collected_at": "2026-11-17T22:35:36.139Z",
+  "site": "https://statedoku.com",
+  "gameplay": {
+    "totals": [
+      {
+        "event_type": "puzzle_first_move",
+        "n": 268
+      },
+      {
+        "event_type": "puzzle_hint",
+        "n": 5
+      },
+      {
+        "event_type": "puzzle_lost",
+        "n": 1083
+      },
+      {
+        "event_type": "puzzle_solve",
+        "n": 226
+      },
+      {
+        "event_type": "puzzle_start",
+        "n": 3642
+      }
+    ],
+    "daily": [
+      {
+        "puzzle_date": "2026-11-18",
+        "starts": 2,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 0,
+        "losses": 0,
+        "avg_solve_sec": null
+      },
+      {
+        "puzzle_date": "2026-11-17",
+        "starts": 19,
+        "first_moves": 12,
+        "hints": 3,
+        "solves": 2,
+        "losses": 8,
+        "avg_solve_sec": 1095
+      },
+      {
+        "puzzle_date": "2026-11-16",
+        "starts": 34,
+        "first_moves": 17,
+        "hints": 2,
+        "solves": 6,
+        "losses": 8,
+        "avg_solve_sec": 281
+      },
+      {
+        "puzzle_date": "2026-11-15",
+        "starts": 32,
+        "first_moves": 12,
+        "hints": 0,
+        "solves": 2,
+        "losses": 7,
+        "avg_solve_sec": 503
+      },
+      {
+        "puzzle_date": "2026-11-14",
+        "starts": 32,
+        "first_moves": 15,
+        "hints": 0,
+        "solves": 4,
+        "losses": 6,
+        "avg_solve_sec": 310
+      },
+      {
+        "puzzle_date": "2026-11-13",
+        "starts": 65,
+        "first_moves": 21,
+        "hints": 0,
+        "solves": 2,
+        "losses": 16,
+        "avg_solve_sec": 265
+      },
+      {
+        "puzzle_date": "2026-11-12",
+        "starts": 41,
+        "first_moves": 21,
+        "hints": 0,
+        "solves": 1,
+        "losses": 10,
+        "avg_solve_sec": 487
+      },
+      {
+        "puzzle_date": "2026-11-11",
+        "starts": 31,
+        "first_moves": 10,
+        "hints": 0,
+        "solves": 1,
+        "losses": 6,
+        "avg_solve_sec": 550
+      },
+      {
+        "puzzle_date": "2026-11-10",
+        "starts": 66,
+        "first_moves": 25,
+        "hints": 0,
+        "solves": 8,
+        "losses": 9,
+        "avg_solve_sec": 224
+      },
+      {
+        "puzzle_date": "2026-11-09",
+        "starts": 30,
+        "first_moves": 14,
+        "hints": 0,
+        "solves": 0,
+        "losses": 11,
+        "avg_solve_sec": null
+      },
+      {
+        "puzzle_date": "2026-11-08",
+        "starts": 17,
+        "first_moves": 8,
+        "hints": 0,
+        "solves": 0,
+        "losses": 5,
+        "avg_solve_sec": null
+      },
+      {
+        "puzzle_date": "2026-11-07",
+        "starts": 20,
+        "first_moves": 6,
+        "hints": 0,
+        "solves": 0,
+        "losses": 4,
+        "avg_solve_sec": null
+      },
+      {
+        "puzzle_date": "2026-11-06",
+        "starts": 43,
+        "first_moves": 19,
+        "hints": 0,
+        "solves": 3,
+        "losses": 10,
+        "avg_solve_sec": 198
+      },
+      {
+        "puzzle_date": "2026-11-05",
+        "starts": 32,
+        "first_moves": 18,
+        "hints": 0,
+        "solves": 4,
+        "losses": 9,
+        "avg_solve_sec": 389
+      },
+      {
+        "puzzle_date": "2026-11-04",
+        "starts": 53,
+        "first_moves": 23,
+        "hints": 0,
+        "solves": 6,
+        "losses": 9,
+        "avg_solve_sec": 294
+      },
+      {
+        "puzzle_date": "2026-11-03",
+        "starts": 29,
+        "first_moves": 14,
+        "hints": 0,
+        "solves": 1,
+        "losses": 11,
+        "avg_solve_sec": 2551
+      },
+      {
+        "puzzle_date": "2026-11-02",
+        "starts": 30,
+        "first_moves": 20,
+        "hints": 0,
+        "solves": 7,
+        "losses": 8,
+        "avg_solve_sec": 517
+      },
+      {
+        "puzzle_date": "2026-11-01",
+        "starts": 17,
+        "first_moves": 3,
+        "hints": 0,
+        "solves": 1,
+        "losses": 4,
+        "avg_solve_sec": 750
+      },
+      {
+        "puzzle_date": "2026-10-31",
+        "starts": 15,
+        "first_moves": 6,
+        "hints": 0,
+        "solves": 0,
+        "losses": 2,
+        "avg_solve_sec": null
+      },
+      {
+        "puzzle_date": "2026-10-30",
+        "starts": 21,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 3,
+        "losses": 8,
+        "avg_solve_sec": 479
+      },
+      {
+        "puzzle_date": "2026-10-29",
+        "starts": 29,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 5,
+        "losses": 9,
+        "avg_solve_sec": 262
+      },
+      {
+        "puzzle_date": "2026-10-28",
+        "starts": 38,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 0,
+        "losses": 13,
+        "avg_solve_sec": null
+      },
+      {
+        "puzzle_date": "2026-10-27",
+        "starts": 43,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 2,
+        "losses": 9,
+        "avg_solve_sec": 556
+      },
+      {
+        "puzzle_date": "2026-10-26",
+        "starts": 30,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 6,
+        "losses": 11,
+        "avg_solve_sec": 376
+      },
+      {
+        "puzzle_date": "2026-10-25",
+        "starts": 44,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 1,
+        "losses": 9,
+        "avg_solve_sec": 959
+      },
+      {
+        "puzzle_date": "2026-10-24",
+        "starts": 13,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 1,
+        "losses": 5,
+        "avg_solve_sec": 461
+      },
+      {
+        "puzzle_date": "2026-10-23",
+        "starts": 27,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 1,
+        "losses": 2,
+        "avg_solve_sec": 7649
+      },
+      {
+        "puzzle_date": "2026-10-22",
+        "starts": 53,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 5,
+        "losses": 8,
+        "avg_solve_sec": 499
+      },
+      {
+        "puzzle_date": "2026-10-21",
+        "starts": 29,
+        "first_moves": 1,
+        "hints": 0,
+        "solves": 4,
+        "losses": 10,
+        "avg_solve_sec": 301
+      },
+      {
+        "puzzle_date": "2026-10-20",
+        "starts": 24,
+        "first_moves": 0,
+        "hints": 0,
+        "solves": 0,
+        "losses": 4,
+        "avg_solve_sec": null
+      }
+    ],
+    "countries": [
+      {
+        "country": "US",
+        "n": 1160
+      },
+      {
+        "country": "GB",
+        "n": 63
+      },
+      {
+        "country": "FR",
+        "n": 48
+      },
+      {
+        "country": "DE",
+        "n": 41
+      },
+      {
+        "country": "CA",
+        "n": 37
+      },
+      {
+        "country": "CN",
+        "n": 32
+      },
+      {
+        "country": "LV",
+        "n": 19
+      },
+      {
+        "country": "IT",
+        "n": 19
+      },
+      {
+        "country": "ES",
+        "n": 16
+      },
+      {
+        "country": "NO",
+        "n": 12
+      },
+      {
+        "country": "AU",
+        "n": 12
+      },
+      {
+        "country": "NL",
+        "n": 11
+      },
+      {
+        "country": "DK",
+        "n": 11
+      },
+      {
+        "country": "SE",
+        "n": 10
+      },
+      {
+        "country": "MN",
+        "n": 10
+      },
+      {
+        "country": "BR",
+        "n": 10
+      },
+      {
+        "country": "PL",
+        "n": 7
+      },
+      {
+        "country": "NZ",
+        "n": 7
+      },
+      {
+        "country": "IN",
+        "n": 7
+      },
+      {
+        "country": "IE",
+        "n": 7
+      },
+      {
+        "country": "PT",
+        "n": 6
+      },
+      {
+        "country": "UZ",
+        "n": 5
+      },
+      {
+        "country": "HK",
+        "n": 5
+      },
+      {
+        "country": "AT",
+        "n": 5
+      },
+      {
+        "country": "AR",
+        "n": 5
+      }
+    ],
+    "langs": [
+      {
+        "lang": "en",
+        "n": 1556
+      },
+      {
+        "lang": "fr",
+        "n": 37
+      },
+      {
+        "lang": "es",
+        "n": 22
+      }
+    ],
+    "mistakes_dist": [
+      {
+        "mistakes": 0,
+        "n": 11
+      },
+      {
+        "mistakes": 1,
+        "n": 11
+      },
+      {
+        "mistakes": 2,
+        "n": 22
+      },
+      {
+        "mistakes": 3,
+        "n": 17
+      },
+      {
+        "mistakes": 4,
+        "n": 15
+      }
+    ],
+    "unique_puzzles_30d": 60,
+    "by_source": [
+      {
+        "src": "archive",
+        "event_type": "puzzle_first_move",
+        "last_7d": 7,
+        "prev_7d": 13
+      },
+      {
+        "src": "archive",
+        "event_type": "puzzle_lost",
+        "last_7d": 3,
+        "prev_7d": 9
+      },
+      {
+        "src": "archive",
+        "event_type": "puzzle_solve",
+        "last_7d": 2,
+        "prev_7d": 4
+      },
+      {
+        "src": "archive",
+        "event_type": "puzzle_start",
+        "last_7d": 7,
+        "prev_7d": 24
+      },
+      {
+        "src": "classroom",
+        "event_type": "puzzle_first_move",
+        "last_7d": 4,
+        "prev_7d": 2
+      },
+      {
+        "src": "classroom",
+        "event_type": "puzzle_lost",
+        "last_7d": 1,
+        "prev_7d": 0
+      },
+      {
+        "src": "classroom",
+        "event_type": "puzzle_solve",
+        "last_7d": 1,
+        "prev_7d": 0
+      },
+      {
+        "src": "classroom",
+        "event_type": "puzzle_start",
+        "last_7d": 6,
+        "prev_7d": 3
+      },
+      {
+        "src": "direct",
+        "event_type": "puzzle_first_move",
+        "last_7d": 14,
+        "prev_7d": 19
+      },
+      {
+        "src": "direct",
+        "event_type": "puzzle_hint",
+        "last_7d": 1,
+        "prev_7d": 0
+      },
+      {
+        "src": "direct",
+        "event_type": "puzzle_lost",
+        "last_7d": 7,
+        "prev_7d": 8
+      },
+      {
+        "src": "direct",
+        "event_type": "puzzle_solve",
+        "last_7d": 0,
+        "prev_7d": 4
+      },
+      {
+        "src": "direct",
+        "event_type": "puzzle_start",
+        "last_7d": 85,
+        "prev_7d": 119
+      },
+      {
+        "src": "guide",
+        "event_type": "puzzle_first_move",
+        "last_7d": 13,
+        "prev_7d": 8
+      },
+      {
+        "src": "guide",
+        "event_type": "puzzle_hint",
+        "last_7d": 1,
+        "prev_7d": 0
+      },
+      {
+        "src": "guide",
+        "event_type": "puzzle_lost",
+        "last_7d": 15,
+        "prev_7d": 8
+      },
+      {
+        "src": "guide",
+        "event_type": "puzzle_solve",
+        "last_7d": 1,
+        "prev_7d": 1
+      },
+      {
+        "src": "guide",
+        "event_type": "puzzle_start",
+        "last_7d": 46,
+        "prev_7d": 32
+      },
+      {
+        "src": "other",
+        "event_type": "puzzle_first_move",
+        "last_7d": 71,
+        "prev_7d": 61
+      },
+      {
+        "src": "other",
+        "event_type": "puzzle_hint",
+        "last_7d": 2,
+        "prev_7d": 0
+      },
+      {
+        "src": "other",
+        "event_type": "puzzle_lost",
+        "last_7d": 32,
+        "prev_7d": 32
+      },
+      {
+        "src": "other",
+        "event_type": "puzzle_solve",
+        "last_7d": 14,
+        "prev_7d": 10
+      },
+      {
+        "src": "other",
+        "event_type": "puzzle_start",
+        "last_7d": 99,
+        "prev_7d": 69
+      },
+      {
+        "src": "search",
+        "event_type": "puzzle_first_move",
+        "last_7d": 4,
+        "prev_7d": 9
+      },
+      {
+        "src": "search",
+        "event_type": "puzzle_lost",
+        "last_7d": 2,
+        "prev_7d": 4
+      },
+      {
+        "src": "search",
+        "event_type": "puzzle_solve",
+        "last_7d": 1,
+        "prev_7d": 1
+      },
+      {
+        "src": "search",
+        "event_type": "puzzle_start",
+        "last_7d": 19,
+        "prev_7d": 21
+      },
+      {
+        "src": "site",
+        "event_type": "puzzle_first_move",
+        "last_7d": 2,
+        "prev_7d": 3
+      },
+      {
+        "src": "site",
+        "event_type": "puzzle_lost",
+        "last_7d": 4,
+        "prev_7d": 2
+      },
+      {
+        "src": "site",
+        "event_type": "puzzle_solve",
+        "last_7d": 0,
+        "prev_7d": 1
+      },
+      {
+        "src": "site",
+        "event_type": "puzzle_start",
+        "last_7d": 3,
+        "prev_7d": 5
+      },
+      {
+        "src": "social",
+        "event_type": "puzzle_start",
+        "last_7d": 19,
+        "prev_7d": 0
+      },
+      {
+        "src": "unknown",
+        "event_type": "puzzle_hint",
+        "last_7d": 1,
+        "prev_7d": 0
+      }
+    ],
+    "by_streak": [
+      {
+        "streak": "0",
+        "event_type": "puzzle_lost",
+        "last_7d": 61,
+        "prev_7d": 54
+      },
+      {
+        "streak": "1",
+        "event_type": "puzzle_solve",
+        "last_7d": 14,
+        "prev_7d": 16
+      },
+      {
+        "streak": "2-3",
+        "event_type": "puzzle_solve",
+        "last_7d": 2,
+        "prev_7d": 1
+      },
+      {
+        "streak": "archive",
+        "event_type": "puzzle_lost",
+        "last_7d": 3,
+        "prev_7d": 9
+      },
+      {
+        "streak": "archive",
+        "event_type": "puzzle_solve",
+        "last_7d": 3,
+        "prev_7d": 4
+      }
+    ]
+  },
+  "subscribers": {
+    "ok": true,
+    "summary": {
+      "total": 13,
+      "active": 8,
+      "inactive": 5,
+      "langs": 1,
+      "countries": 4
+    },
+    "breakdowns": {
+      "byLang": [
+        {
+          "lang": "en",
+          "n": 8
+        }
+      ],
+      "byHour": [
+        {
+          "hour_utc": 16,
+          "n": 4
+        },
+        {
+          "hour_utc": 17,
+          "n": 4
+        }
+      ],
+      "byCountry": [
+        {
+          "country": "US",
+          "n": 5
+        },
+        {
+          "country": "SE",
+          "n": 1
+        },
+        {
+          "country": "MN",
+          "n": 1
+        },
+        {
+          "country": "FR",
+          "n": 1
+        }
+      ]
+    },
+    "generated_at": "2026-11-17T22:35:38.743Z"
+  }
+}
