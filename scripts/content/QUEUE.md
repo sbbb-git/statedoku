@@ -66,6 +66,7 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     Senate race is open (ranked-choice tabulation on 18 November if no one
     passes 50%). Then the House count by party.
     16 November: no change (Alaska Senate still uncalled on CNN).
+    17 November: no change.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
@@ -113,7 +114,7 @@ the pages are already shown, the queries already exist, nothing new competes.
 
 ## New pages with demand and no page
 
-4. `running` (EN `done 2026-11-16 0ac320165`: `/learn/mississippi-river-states/`, map `img/maps/mississippi-river-states.svg`, linked from the learn hub and the rivers page; fact-checker 63 claims, 3 wrong fixed before push, then 1 more on re-check; FR and ES next) **Mississippi River states**, new, EN then FR and ES. "Which states
+4. `running` (EN `done 2026-11-16 0ac320165`: `/learn/mississippi-river-states/`, map `img/maps/mississippi-river-states.svg`, linked from the learn hub and the rivers page; fact-checker 63 claims, 3 wrong fixed before push, then 1 more on re-check; FR `done 2026-11-17 83df92fd5` at `/fr/learn/etats-du-mississippi/`; ES next) **Mississippi River states**, new, EN then FR and ES. "Which states
    does the Mississippi River border?" The ten states (Minnesota, Wisconsin,
    Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi,
    Louisiana), which bank each is on, source and mouth, length, the main
@@ -130,6 +131,16 @@ the pages are already shown, the queries already exist, nothing new competes.
    and lower basins, the 1922 compact, Hoover and Glen Canyon dams, the river
    reaching Mexico. Demand: "colorado river" 5,708. Same check against the
    rivers page as item 4.
+
+11. `todo` **Missouri River length, one figure site-wide.** The site says 2,341 mi
+    (3,767 km) and "longest in North America" on `learn/longest-rivers-in-each-state/`,
+    `states/missouri/geography/` and `states/missouri/fun-facts/`; USGS
+    (OFR 87-242) gives 2,540 mi, NPS says about 100 miles longer than the
+    Mississippi; `es/learn/rios-mas-importantes-por-estado/` still says
+    Misisipi ~3,730 km. Choose one source (USGS), state it on every page in the
+    three languages, check "longest in North America" (found 17 Nov 2026 by
+    the fact-check of the French Mississippi page). Also: "named after the
+    Illinois River" is unproven for Illinois.
 
 ## Deepen what already ranks
 
