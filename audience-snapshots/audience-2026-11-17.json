@@ -1,6 +1,6 @@
 {
   "source": "statedoku-audience",
-  "collected_at": "2026-11-17T22:35:36.139Z",
+  "collected_at": "2026-11-17T23:26:14.024Z",
   "site": "https://statedoku.com",
   "gameplay": {
     "totals": [
@@ -14,7 +14,7 @@
       },
       {
         "event_type": "puzzle_lost",
-        "n": 1083
+        "n": 1084
       },
       {
         "event_type": "puzzle_solve",
@@ -22,7 +22,7 @@
       },
       {
         "event_type": "puzzle_start",
-        "n": 3642
+        "n": 3643
       }
     ],
     "daily": [
@@ -37,11 +37,11 @@
       },
       {
         "puzzle_date": "2026-11-17",
-        "starts": 19,
+        "starts": 20,
         "first_moves": 12,
         "hints": 3,
         "solves": 2,
-        "losses": 8,
+        "losses": 9,
         "avg_solve_sec": 1095
       },
       {
@@ -300,7 +300,7 @@
     "countries": [
       {
         "country": "US",
-        "n": 1160
+        "n": 1162
       },
       {
         "country": "GB",
@@ -406,7 +406,7 @@
       },
       {
         "lang": "fr",
-        "n": 37
+        "n": 39
       },
       {
         "lang": "es",
@@ -500,7 +500,7 @@
       {
         "src": "direct",
         "event_type": "puzzle_lost",
-        "last_7d": 7,
+        "last_7d": 8,
         "prev_7d": 8
       },
       {
@@ -512,7 +512,7 @@
       {
         "src": "direct",
         "event_type": "puzzle_start",
-        "last_7d": 85,
+        "last_7d": 86,
         "prev_7d": 119
       },
       {
@@ -543,7 +543,7 @@
         "src": "guide",
         "event_type": "puzzle_start",
         "last_7d": 46,
-        "prev_7d": 32
+        "prev_7d": 30
       },
       {
         "src": "other",
@@ -640,7 +640,7 @@
       {
         "streak": "0",
         "event_type": "puzzle_lost",
-        "last_7d": 61,
+        "last_7d": 62,
         "prev_7d": 54
       },
       {
@@ -667,7 +667,14 @@
         "last_7d": 3,
         "prev_7d": 4
       }
-    ]
+    ],
+    "ratings": {
+      "ratings": 0,
+      "average": null,
+      "comments": 0,
+      "dist": [],
+      "by_page": []
+    }
   },
   "subscribers": {
     "ok": true,
@@ -714,6 +721,6 @@
         }
       ]
     },
-    "generated_at": "2026-11-17T22:35:38.743Z"
+    "generated_at": "2026-11-17T23:26:16.355Z"
   }
 }

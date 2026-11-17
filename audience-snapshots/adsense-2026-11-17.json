@@ -1,6 +1,6 @@
 {
   "source": "adsense-management-v2",
-  "collected_at": "2026-11-17T22:35:44.376Z",
+  "collected_at": "2026-11-17T23:26:20.936Z",
   "site": "statedoku.com",
   "accounts": [
     {
@@ -12,16 +12,11 @@
       "sites": [
         {
           "domain": "statedoku.com",
-          "state": "NEEDS_ATTENTION",
+          "state": "GETTING_READY",
           "auto_ads_enabled": true
         }
       ],
       "alerts": [
-        {
-          "severity": "WARNING",
-          "type": "adsense-onboarding-incomplete",
-          "message": "Pour commencer à générer des revenus avec AdSense, vous devez ajouter vos informations de paiement et connecter votre site"
-        },
         {
           "severity": "WARNING",
           "type": "ua-conflict-policy-update",
