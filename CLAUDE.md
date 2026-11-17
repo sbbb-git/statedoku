@@ -91,6 +91,11 @@ Removing either brings back the dead end.
 **Ads stay off.** `CONFIG.ADS_ENABLED` is `false` and stays false until AdSense
 approves. Do not touch ad code, `/privacy/`, `/about/` or `/terms/` during a
 review.
+A third review was requested on 17 November 2026, after the thin pages were
+consolidated (state GETTING_READY that evening). Auto ads are on at site level
+and 570 pages load `adsbygoogle.js`, so an approval serves ads at once: the
+homepages and `play/` must be excluded in the console, and the legal notice,
+the consent message and `/privacy/` updated (below) before or as it lands.
 
 **Ad code lives only on pages with real content.** AdSense refused the site on
 3 October 2026 (site state `NEEDS_ATTENTION`, no page-level policy issue). At
