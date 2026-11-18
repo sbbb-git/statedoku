@@ -203,3 +203,48 @@ Relance : jamais avant trois semaines, une seule fois.
 - [ ] E-mails : l'agent prépare les brouillons, le propriétaire les envoie
       **à la main**, depuis l'adresse du projet, quelques-uns par jour.
       L'agent n'envoie jamais un e-mail lui-même
+
+---
+
+## 9. Leçons de la vague 7 (nuit du 17 au 18 novembre 2026)
+
+Vague mondiale par formulaires : des agents de recherche trouvent les
+organismes (et Wikidata les bibliothèques), un robot cherche sur chaque site un
+formulaire de contact sans captcha, puis remplissage à blanc, relecture
+automatique, envoi. Ce qui a servi :
+
+- **Rendement réel.** Environ 12 % des sites d'écoles et d'associations ont un
+  formulaire utilisable sans captcha, 6 % des bibliothèques ; un peu plus de la
+  moitié passent le remplissage à blanc (téléphone ou adresse obligatoire, liste
+  sans choix adapté, pas de champ e-mail : sautés). 10 000 contacts en une nuit
+  ne sont pas atteignables sans arroser n'importe qui : la limite est là.
+- **Un message par organisme et par domaine principal** : les chapitres d'un
+  même réseau (sous-domaines d'un même site) ne reçoivent qu'un message. Mais des
+  organismes indépendants hébergés sur un domaine public partagé
+  (`x.lib.in.us`, `x.esc.edu.ar`, `x.michlibrary.org`) restent distincts.
+- **Bibliothèques en Espagne, au Royaume-Uni, en France, en Suisse et en
+  Belgique** : seulement si le formulaire est sur le domaine de la bibliothèque.
+  Sinon c'est le formulaire général de la mairie ou du conseil (cinq messages
+  sont partis ainsi vers des mairies espagnoles avant la règle).
+- **Noms venus de Wikidata** : prendre le libellé dans la langue du message
+  (la BPI était sortie en « Public Information Library » dans un message en français).
+- **« Nombre y apellidos », « Nom et prénom », « Full name »** : c'est le nom
+  complet, il reçoit « Statedoku », pas le nom de famille « Équipe ».
+- **Listes déroulantes** : jamais la première option quand c'est l'intitulé de
+  la liste (« Motivo de contacto ») ; jamais « current family », « admissions »,
+  « complaint », « billing ». Une liste facultative sans choix adapté reste vide.
+- **Bouton d'envoi caché par une bannière** : second clic, forcé, sur le même
+  bouton du formulaire. Boutons non standard (`input type=button`, lien « Send »)
+  reconnus s'il n'y en a qu'un.
+- **Lire la réponse du serveur** : « mail_sent » (Contact Form 7) vaut
+  confirmation, et `"invalid_fields":[]` n'est pas une erreur ; « mail_failed »,
+  « validation_failed », `"success":false` en sont. Sans requête vue et sans
+  changement de page, l'envoi n'est probablement pas parti (contrôle anti-robot
+  invisible du site) : on ne le compte pas, on ne le contourne pas.
+- **Pas d'émoji dans un formulaire** (certains coupent le message au premier).
+- **Message v3** (`messages_v3.py` dans le dossier de travail) : plus de « sans
+  publicité » (revue AdSense en cours), la ligne réseaux sociaux demande de
+  suivre @statedoku et de partager, l'hôte d'un American Corner est prié de
+  transmettre à l'équipe du Corner.
+- **Aucun e-mail** n'est envoyé par l'agent : la boîte contact@statedoku.com
+  n'est pas accessible depuis la session, et la règle de la section 6 tient.
