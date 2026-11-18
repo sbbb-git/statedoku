@@ -67,6 +67,11 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     passes 50%). Then the House count by party.
     16 November: no change (Alaska Senate still uncalled on CNN).
     17 November: no change.
+    18 November, data read 09:15 UTC (69446d98a): Alaska Senate (Peltola, D, a
+    flip) called by AP on 17 November. Every Senate and governor race is
+    called (Democratic caucus 56, Republicans 44). Left: the House count by
+    party (still dated 4 November), then certification in December and the
+    swearing-in on 3 January 2027 (C3).
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
