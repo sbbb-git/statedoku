@@ -359,7 +359,7 @@ def prose(lang):
                    '(American Presidency Project, University of California, Santa Barbara). In every other one it lost seats. In 2026 the president, Donald Trump, '
                    'is a Republican, and Republicans held both the House and the Senate before the vote.</p>')
         faq = [
-            ('Who won the 2026 midterm elections?', re.sub('<[^>]+>', '', ctrl) + f' AP has called {sC} of the 35 Senate races and {gC} of the 36 governor races; the rest have not been called yet.'),
+            ('Who won the 2026 midterm elections?', re.sub('<[^>]+>', '', ctrl) + (f' AP has called {sC} of the 35 Senate races and {gC} of the 36 governor races; the rest have not been called yet.' if (sC, gC) != (35, 36) else ' AP has called all 35 Senate races and all 36 governor races.')),
             ('When were the 2026 midterms?', 'On Tuesday 3 November 2026. Many states opened early or mail voting weeks before.'),
             ('How many Senate seats were up in 2026?', '35: the 33 seats of class 2 and special elections in Ohio and Florida, for the seats JD Vance and Marco Rubio left in January 2025.'),
             ('How many governors were elected in 2026?', 'Thirty-six, in 36 states, plus the governors of three territories: Guam, the Northern Mariana Islands and the US Virgin Islands.'),
@@ -388,7 +388,7 @@ def prose(lang):
                    '(American Presidency Project, université de Californie à Santa Barbara). Il en a perdu à toutes les autres. En 2026, le président, Donald Trump, '
                    'est républicain, et les républicains contrôlaient la Chambre et le Sénat avant le vote.</p>')
         faq = [
-            ('Qui a gagné les élections de mi-mandat 2026 ?', re.sub('<[^>]+>', '', ctrl) + f' AP a désigné le vainqueur de {sC} des 35 élections au Sénat et de {gC} des 36 élections de gouverneur ; les autres n\'ont pas encore de vainqueur annoncé.'),
+            ('Qui a gagné les élections de mi-mandat 2026 ?', re.sub('<[^>]+>', '', ctrl) + (f' AP a désigné le vainqueur de {sC} des 35 élections au Sénat et de {gC} des 36 élections de gouverneur ; les autres n\'ont pas encore de vainqueur annoncé.' if (sC, gC) != (35, 36) else ' AP a désigné le vainqueur des 35 élections au Sénat et des 36 élections de gouverneur.')),
             ('Quand ont eu lieu les midterms 2026 ?', 'Le mardi 3 novembre 2026. Beaucoup d\'États avaient ouvert le vote anticipé ou par correspondance des semaines avant.'),
             ('Combien de sièges du Sénat étaient en jeu en 2026 ?', '35 : les 33 sièges de la classe 2 et deux élections partielles, dans l\'Ohio et en Floride, pour les sièges que JD Vance et Marco Rubio ont quittés en janvier 2025.'),
             ('Combien de gouverneurs ont été élus en 2026 ?', 'Trente-six, dans 36 États, plus les gouverneurs de trois territoires : Guam, les Îles Mariannes du Nord et les Îles Vierges des États-Unis.'),
@@ -417,7 +417,7 @@ def prose(lang):
                    '(American Presidency Project, Universidad de California en Santa Bárbara). En todas las demás perdió escaños. En 2026 el presidente, Donald Trump, '
                    'es republicano, y los republicanos controlaban la Cámara y el Senado antes de la votación.</p>')
         faq = [
-            ('¿Quién ganó las elecciones intermedias de 2026?', re.sub('<[^>]+>', '', ctrl) + f' AP ha declarado ganador en {sC} de las 35 contiendas al Senado y en {gC} de las 36 a gobernador; el resto sigue sin ganador declarado.'),
+            ('¿Quién ganó las elecciones intermedias de 2026?', re.sub('<[^>]+>', '', ctrl) + (f' AP ha declarado ganador en {sC} de las 35 contiendas al Senado y en {gC} de las 36 a gobernador; el resto sigue sin ganador declarado.' if (sC, gC) != (35, 36) else ' AP ha declarado ganador en las 35 contiendas al Senado y en las 36 a gobernador.')),
             ('¿Cuándo fueron las elecciones intermedias de 2026?', 'El martes 3 de noviembre de 2026. Muchos estados abrieron el voto anticipado o por correo semanas antes.'),
             ('¿Cuántos escaños del Senado estaban en juego en 2026?', '35: los 33 escaños de la clase 2 y dos elecciones especiales, en Ohio y Florida, por los escaños que JD Vance y Marco Rubio dejaron en enero de 2025.'),
             ('¿Cuántos gobernadores se eligieron en 2026?', 'Treinta y seis, en 36 estados, más los gobernadores de tres territorios: Guam, las Islas Marianas del Norte y las Islas Vírgenes de EE.UU.'),
