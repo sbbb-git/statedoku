@@ -115,6 +115,18 @@ pageviews; Monumetric WordPress or Blogger only. Never a popunder or redirect
 network (PropellerAds, Adsterra, PopAds, PopCash): the audience includes
 pupils. Any network serving ads in the EEA needs a Google-certified CMP on
 IAB TCF v2.3; the home-made banner does not qualify.
+The owner asked on 19 November 2026 to try NitroPay and the others. NitroPay
+(form at nitropay.com/publishers, pageview tiers from "below 50K", reviewed on
+traffic, countries and content, "a LOT of non-gaming sites") bundles an
+IAB-registered CMP for GDPR regions, pays net 7 through Trolley, and is
+exclusive for programmatic ads: anything needing an ads.txt line or an ad
+script breaches it, 12-month term, 90 days' notice. Signing it means removing
+the AdSense tag; applying commits nothing. Its onboarding sets up Google MCM,
+so Google still reviews the domain. Media.net has no small-publisher
+programme any more. Real traffic for the forms: 8,541 sessions and 14,364
+pageviews in the 28 days to 30 October (GA4 before the banner), about 62% of
+sessions from the countries Journey counts. The forms ask for the owner's
+name and email: he fills them, never this repo or a session.
 
 **Ad code lives only on pages with real content.** AdSense refused the site on
 3 October 2026 (site state `NEEDS_ATTENTION`, no page-level policy issue). At
