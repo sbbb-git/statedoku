@@ -96,6 +96,25 @@ consolidated (state GETTING_READY that evening). Auto ads are on at site level
 and 570 pages load `adsbygoogle.js`, so an approval serves ads at once: the
 homepages and `play/` must be excluded in the console, and the legal notice,
 the consent message and `/privacy/` updated (below) before or as it lands.
+It was refused on 19 November 2026, "Contenu à faible valeur informative"
+again, with the maximum number of reviews reached: no new request before
+26 November 2026. With the thin pages gone, what is left is Google's own view
+of the site: 328 of 650 pages indexed on 16 November (188 "discovered, not
+indexed", 97 "crawled, not indexed", mostly state subpages and play pages that
+are 900 to 1,400 words of real content), and Google clicks almost all on the
+brand. Resubmit only once Search Console shows the consolidation processed and
+indexation up, not on the first allowed day. The About and privacy pages were
+brought up to date the same day (the About page still described unique-solution
+grids; the privacy policy now covers the consent banner, `/api/events` and the
+ratings form, and says no ad is shown today).
+Other networks, checked on 19 November 2026: Ezoic wants 250,000 monthly users
+for new sites (since 19 February 2026); Journey by Mediavine 5,000 sessions a
+month from US, UK, CA, AU, DE, FR or NL, measured through Google Analytics,
+which since the consent banner sees about one visitor in five; Raptive 25,000
+pageviews; Monumetric WordPress or Blogger only. Never a popunder or redirect
+network (PropellerAds, Adsterra, PopAds, PopCash): the audience includes
+pupils. Any network serving ads in the EEA needs a Google-certified CMP on
+IAB TCF v2.3; the home-made banner does not qualify.
 
 **Ad code lives only on pages with real content.** AdSense refused the site on
 3 October 2026 (site state `NEEDS_ATTENTION`, no page-level policy issue). At
@@ -526,8 +545,8 @@ widget asks for none. Same origin and JSON-only rules as `/api/events`.
 **The comments are visitors' free text and never enter the public repo**:
 the owner reads them on `admin/dashboard/` ("Avis des joueurs", same key as the
 stats, rendered as text only) through `/api/admin/feedback`; `/api/stats`, and
-so `audience-snapshots/`, carries counts and averages only (`ratings`). When
-the AdSense review is over, `/privacy/` should mention the form.
+so `audience-snapshots/`, carries counts and averages only (`ratings`). The
+privacy policies describe the form since 19 November 2026 (section 1.5).
 
 Constraints that do not explain themselves carry a `?` opening a plain-language
 gloss, from `constraint_help` in `translations.json`. Constraints like "Starts
@@ -613,8 +632,8 @@ read it on 24 November and build more of what worked. Photos are NASA's only
 (public domain, credits in `scripts/video/photos/CREDITS.md`).
 
 Every footer links the three accounts (X, TikTok, YouTube, `rel="me"`) next to
-the Reddit community, except about, privacy and terms (untouched during the
-AdSense review) and the widget screens; the homepages list them in `sameAs`.
+the Reddit community, except the widget screens (about, privacy and terms
+followed on 19 November 2026, after the third review); the homepages list them in `sameAs`.
 The footer is boilerplate for `reader_text`, so this dated no page.
 
 Every tweet carries one or two hashtags, in a rotation per angle rather than one

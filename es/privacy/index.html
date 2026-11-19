@@ -57,7 +57,7 @@
   <article class="legal-page">
 
     <h1>Política de privacidad</h1>
-    <p class="legal-meta">Última actualización: 19 de junio de 2026</p>
+    <p class="legal-meta">Última actualización: 19 de noviembre de 2026</p>
 
     <p>Esta política de privacidad explica cómo <strong>Statedoku</strong> («nosotros», «el sitio») trata su información cuando visita <a href="https://statedoku.com/">statedoku.com</a>. Statedoku es operado por Sacha Bitoun, desarrollador independiente con sede en París, Francia. El sitio es un puzzle diario gratuito en el navegador para aprender la geografía de los Estados Unidos, no se necesita cuenta para jugar.</p>
 
@@ -66,30 +66,39 @@
     <h3>1.1 Almacenado en su dispositivo (localStorage)</h3>
     <p>El juego utiliza el <strong>localStorage</strong> de su navegador, similar a las cookies pero local al navegador, para recordar:</p>
     <ul>
-      <li>Su progreso en el puzzle actual (celdas rellenadas, errores, tiempo)</li>
+      <li>Su progreso en el puzzle actual (celdas rellenadas, errores, uso de la ayuda, tiempo)</li>
       <li>Sus estadísticas (partidas jugadas, tasa de victoria, racha, mejor tiempo)</li>
       <li>Estadísticas por mini-juego en <code>/play/</code> (racha, mejor puntuación)</li>
       <li>Su idioma preferido (EN, FR, ES)</li>
-      <li>Sus elecciones de interfaz (p. ej. si ha cerrado el banner de suscripción email)</li>
+      <li>Pequeñas elecciones de interfaz, por ejemplo si ya ha visto las reglas</li>
+      <li>Su elección sobre las cookies (aceptadas o rechazadas) y su fecha, guardada seis meses</li>
+      <li>Un identificador aleatorio para cada valoración que deje, para que un cambio de estrellas modifique la misma valoración (ver 1.5)</li>
     </ul>
-    <p>El localStorage <strong>nunca sale de su dispositivo</strong>. Puede borrarlo en cualquier momento eliminando los datos del sitio statedoku.com en la configuración de su navegador.</p>
+    <p>El localStorage se queda en su dispositivo. Lo que llega a nuestro servidor se describe en 1.4 y 1.5: un resultado de partida anónimo con un tramo de racha, y el identificador aleatorio de una valoración. Puede borrarlo en cualquier momento eliminando los datos del sitio statedoku.com en la configuración de su navegador.</p>
 
     <h3>1.2 Cookies y tecnologías similares (depositadas por terceros)</h3>
-    <p>Al cargar una página, los servicios de terceros que utilizamos pueden depositar cookies en su navegador:</p>
+    <p>Google Analytics y Microsoft Clarity usan cookies, así que solo se cargan después de un clic en <strong>Aceptar</strong> en el aviso de cookies. <strong>Rechazar</strong> se ofrece de la misma manera, y el juego funciona exactamente igual en los dos casos. Su elección se guarda seis meses; el enlace <strong>Cookies</strong> al pie de cada página permite cambiarla, y retirar el consentimiento borra sus cookies. Las cookies, su finalidad y su duración:</p>
     <table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem">
       <thead><tr style="background:#F8FAFC"><th style="text-align:left;padding:8px;border-bottom:1px solid #E2E8F0">Proveedor</th><th style="text-align:left;padding:8px;border-bottom:1px solid #E2E8F0">Cookies</th><th style="text-align:left;padding:8px;border-bottom:1px solid #E2E8F0">Finalidad</th></tr></thead>
       <tbody>
         <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Google Analytics 4</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0"><code>_ga</code>, <code>_ga_*</code></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Análisis de audiencia, visitas, rutas, dispositivos, países. 2 años.</td></tr>
         <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Google AdSense</strong> (si los anuncios están activados)</td><td style="padding:8px;border-bottom:1px solid #E2E8F0"><code>NID</code>, <code>IDE</code>, <code>__gads</code>, <code>__gpi</code></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Servir anuncios, limitar frecuencia, medir clics, y (si acepta personalización) segmentación según su navegación previa. 13 meses.</td></tr>
         <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Microsoft Clarity</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0"><code>_clck</code>, <code>_clsk</code></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Mapas de calor de UX agregados y grabaciones de sesión muestreadas para detectar problemas de usabilidad. 1 año / sesión.</td></tr>
-        <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Cloudflare Web Analytics</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Ninguna</td><td style="padding:8px">Conteo de solicitudes del servidor. Sin cookies por diseño.</td></tr>
+        <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Cloudflare Web Analytics</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Ninguna</td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Conteo de solicitudes del servidor. Sin cookies por diseño.</td></tr>
+        <tr><td style="padding:8px;border-bottom:1px solid #E2E8F0"><strong>Ahrefs Web Analytics</strong></td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Ninguna</td><td style="padding:8px;border-bottom:1px solid #E2E8F0">Número de visitas y buscador de origen. Sin cookies.</td></tr>
       </tbody>
     </table>
 
     <h3>1.3 Registros de servidor</h3>
     <p>Nuestro proveedor de alojamiento <strong>Cloudflare</strong> registra información estándar de cada solicitud (dirección IP, user-agent, hora, URL) para enrutamiento, seguridad y protección anti-DDoS. No recibimos estos registros de forma identificable. Lea <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">la política de privacidad de Cloudflare</a>.</p>
 
-    <h3>1.4 Información que decide proporcionar</h3>
+    <h3>1.4 Estadísticas de juego anónimas</h3>
+    <p>Cuando se muestra un puzzle diario, recibe su primer movimiento, se gana o se pierde, o cuando se usa su ayuda, la página envía un breve registro a nuestro propio servidor para contar cómo se juega. Contiene el tipo de evento, la fecha del puzzle, el tiempo y el número de errores, el idioma, el país (dos letras, proporcionado por Cloudflare; la dirección IP no se guarda), el tipo de sitio del que viene la visita (por ejemplo un buscador, un asistente de IA, una red social, un enlace compartido o una clase) y, al terminar la partida, un tramo de racha (0, 1, 2 a 3, 4 a 7, 8 a 30, o 31 días o más). Estos registros no llevan identificador, ni dirección IP, ni cookie, así que no permiten llegar hasta usted.</p>
+
+    <h3>1.5 Valoraciones y comentarios</h3>
+    <p>Al final de una partida puede darle de una a cinco estrellas y, si quiere, un comentario de 600 caracteres como máximo. Guardamos las estrellas, el comentario, la página, la fecha del puzzle, si la partida se ganó o se perdió, el idioma y el país (dos letras, de Cloudflare), con el identificador aleatorio creado en su navegador para que un cambio de valoración modifique la misma entrada. No se guarda ninguna dirección IP, dirección de email ni nombre, y el formulario no pide ninguno: por favor, no escriba datos personales en un comentario. Los comentarios solo los lee el editor y no se publican. Para borrar una valoración, escriba a la dirección de la sección 9 indicando su página y su fecha.</p>
+
+    <h3>1.6 Información que decide proporcionar</h3>
     <p>Los suscriptores email, y solo ellos, nos proporcionan su dirección email para recibir el recordatorio diario del puzzle. Almacenamos la dirección email, su hora de envío preferida (UTC), su idioma y un código país derivado de su IP al suscribirse. La suscripción es <strong>opt-in</strong>. Cada email contiene un enlace para darse de baja.</p>
     <p>Si hace clic en el recordatorio email, podemos almacenar el evento de clic (hora, país, navegador, URL de destino) en nuestra base de análisis para medir el rendimiento de los emails.</p>
     <p>No vendemos, alquilamos ni compartimos direcciones email con terceros. Los emails se envían vía <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a>.</p>
@@ -107,12 +116,12 @@
     </ul>
 
     <h2>3. Divulgación publicitaria (requerida por Google AdSense)</h2>
-    <p>Statedoku muestra publicidad proporcionada por <strong>Google AdSense</strong>.</p>
+    <p>Statedoku no muestra publicidad hoy. Si se activan anuncios, los proporcionará <strong>Google AdSense</strong>, y se aplicará lo siguiente:</p>
     <ul>
       <li>Proveedores externos, incluido Google, usan cookies para servir anuncios basados en sus visitas anteriores a este sitio y a otros sitios de Internet.</li>
       <li>El uso de cookies publicitarias de Google permite a Google y sus socios servirle anuncios basados en sus visitas a este sitio y/o a otros sitios de Internet.</li>
       <li>Puede inhabilitar la publicidad personalizada visitando <a href="https://www.google.com/settings/ads?hl=es" target="_blank" rel="noopener">la configuración de anuncios de Google</a>. Alternativamente, puede inhabilitar el uso de cookies de un proveedor externo visitando <a href="https://optout.aboutads.info/" target="_blank" rel="noopener">aboutads.info</a> (EE.UU.) o <a href="https://youronlinechoices.eu/" target="_blank" rel="noopener">youronlinechoices.eu</a> (UE).</li>
-      <li>Para visitantes del Espacio Económico Europeo, Reino Unido o Suiza, el mensaje de consentimiento europeo de Google aparece en la primera visita y permite conceder o rechazar la personalización. Rechazar la personalización no elimina los anuncios, solo su segmentación.</li>
+      <li>Para visitantes del Espacio Económico Europeo, el Reino Unido o Suiza, un mensaje de consentimiento de una plataforma certificada por Google aparecerá antes de cualquier anuncio y permitirá conceder o rechazar la publicidad personalizada. Rechazar la personalización no elimina los anuncios, solo su segmentación.</li>
     </ul>
 
     <h2>4. Sus derechos</h2>
@@ -120,7 +129,7 @@
     <ul>
       <li><strong>Acceder</strong> a los datos personales que conservamos sobre usted</li>
       <li><strong>Rectificar</strong> datos inexactos</li>
-      <li><strong>Suprimir</strong> los datos que conservamos (suscriptores email: clic en cualquier enlace «cancelar suscripción»; localStorage: borrar los datos del sitio en su navegador)</li>
+      <li><strong>Suprimir</strong> los datos que conservamos (suscriptores email: clic en cualquier enlace «cancelar suscripción»; valoración: escribirnos con su página y su fecha; localStorage: borrar los datos del sitio en su navegador)</li>
       <li><strong>Oponerse</strong> al procesamiento, incluida la personalización publicitaria (ver §3)</li>
       <li><strong>Retirar el consentimiento</strong> en cualquier momento</li>
       <li><strong>Presentar reclamación</strong> ante su autoridad local de protección de datos. En España: <a href="https://www.aepd.es/" target="_blank" rel="noopener">AEPD</a>. En Francia: <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</li>
@@ -135,7 +144,9 @@
       <li><strong>Suscripciones email:</strong> conservadas hasta que se cancele la suscripción.</li>
       <li><strong>Eventos de clic email:</strong> conservados indefinidamente para análisis pero no contienen identificador personal más allá del email mismo.</li>
       <li><strong>Cookies:</strong> ver las duraciones en la tabla anterior.</li>
-      <li><strong>localStorage:</strong> conservado hasta que lo borre.</li>
+      <li><strong>localStorage:</strong> conservado hasta que lo borre; la elección sobre las cookies se vuelve a pedir a los seis meses.</li>
+      <li><strong>Estadísticas de juego anónimas:</strong> conservadas mientras sirvan a las estadísticas del sitio; no contienen datos personales.</li>
+      <li><strong>Valoraciones y comentarios:</strong> conservados mientras el sitio esté en línea, y borrados a petición.</li>
       <li><strong>Registros de acceso Cloudflare:</strong> según la política de Cloudflare (~30 días).</li>
     </ul>
 
@@ -143,19 +154,19 @@
     <p>Algunos de nuestros proveedores externos (Google, Cloudflare, Microsoft, Resend) tienen su sede en Estados Unidos y pueden procesar datos allí. Cada proveedor cuenta con sus propias salvaguardas (Cláusulas Contractuales Tipo, certificación Data Privacy Framework) en las que nos apoyamos para cumplir los requisitos del RGPD.</p>
 
     <h2>8. Cambios a esta política</h2>
-    <p>Podemos actualizar esta política cuando añadamos o eliminemos un servicio, modifiquemos los plazos de conservación o aclaremos la redacción. La fecha de «Última actualización» en la parte superior refleja la revisión más reciente. Los cambios sustanciales se señalarán en la página principal durante al menos 7 días.</p>
+    <p>Podemos actualizar esta política cuando añadamos o eliminemos un servicio, modifiquemos los plazos de conservación o aclaremos la redacción. La fecha de «Última actualización» en la parte superior refleja la revisión más reciente. Los cambios sustanciales se fechan en la parte superior de esta página.</p>
 
     <h2>9. Contacto</h2>
     <p>Para cualquier pregunta sobre esta política o para ejercer cualquiera de los derechos descritos anteriormente, escriba a <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>.</p>
     <p>Responsable del tratamiento: Sacha Bitoun, París, Francia.</p>
 
-    <p class="legal-back"><a href="/es/">← Volver al puzzle</a></p>
+    <p class="legal-back"><a href="/es/">Volver al puzzle</a></p>
 
   </article>
 </main>
 
 <footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a></p>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="https://x.com/statedoku" rel="me noopener" target="_blank">X</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@statedoku" rel="me noopener" target="_blank">TikTok</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@Statedoku" rel="me noopener" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a></p>
 </footer>
 
 <script src="/config.js?v=17"></script>

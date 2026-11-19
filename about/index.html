@@ -70,44 +70,44 @@
 
     <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
 
-    <p>Each row and each column carries a real constraint: "borders Mexico", "no state income tax", "admitted to the Union after 1900", "name of Spanish origin". A state in the top left cell must satisfy the first row clue and the first column clue at once. No state may be used twice in a grid. You get five mistakes, and a solved grid shares as a spoiler-free block of emoji.</p>
+    <p>Each row and each column carries a clue that a map, a list or the state's own name settles: "borders Mexico", "on the Mississippi River", "joined the Union after 1900", "capital starts with S". A state in the top left cell must satisfy the first row clue and the first column clue at once, and no state may be used twice in a grid. Any state that fits both clues is right, so more than one complete grid can win. You get five mistakes and one hint per grid, and a solved grid shares as a spoiler-free block of emoji.</p>
     <p>The double condition is the point. Knowing Arizona borders Mexico is a fact. Knowing it borders Mexico <em>and</em> joined the Union in 1912 is a map.</p>
 
     <h2>Who makes it</h2>
     <p>Statedoku is made by Moses Tounby. That is a pen name: behind it is a solo developer based in France with a long-standing passion for US geography, and I write the code, the articles and the puzzle constraints on this site myself. There is no team, no company and no investor behind it. If a fact here is wrong, it is my mistake, and email is the fastest way to get it fixed.</p>
 
-    <h2>How the daily puzzle is generated</h2>
-    <p>The grid is not hand written and not fetched from a server. The date is converted into a number that seeds a deterministic random generator, which draws one row triple and one column triple from a pool of about 100 constraints covering regions, borders, time zones, statehood dates, name origins, population bands and mountain ranges.</p>
-    <p>A backtracking solver then tests the candidate grid. If more than one arrangement of states satisfies all six clues, the grid is discarded and the next combination is tried. Only grids with exactly one valid solution are published, so every grid is solvable by reasoning, never by guessing. The generator also refuses to repeat the previous day's row theme, and limits how many of California, New York and Texas can appear in a single solution. Because all of this runs in your browser from the date alone, any past puzzle in the archive rebuilds exactly as it was.</p>
+    <h2>How the daily puzzle is made</h2>
+    <p>Since 27 October 2026 the grids come from a schedule planned two years ahead by a program, from a pool of 94 clues grouped in families: regions, time zones, population, coasts, borders, rivers, statehood dates, capitals, the spelling of names, national parks, historic trails and the lands the country acquired. Every grid is checked before it enters the schedule: each cell accepts between two and nine states, the six clues leave room for at least one full grid of nine different states, no more than two clues are about spelling, no clue from the day before comes back, and no set of six clues is ever used twice. Clues that do not explain themselves carry a question mark that opens a plain explanation.</p>
+    <p>The schedule ships with the page, so the grid is built in your browser from the date, and any past puzzle in the <a href="/archive/">archive</a> rebuilds exactly as it was shown. Grids dated before 27 October 2026 were made the earlier way, drawn from the date and kept only when exactly one solution fitted; they still play that way in the archive.</p>
 
     <h2>What else is on the site</h2>
     <ul>
-      <li>Nearly 170 <a href="/learn/">explainer articles</a> across the three languages, on landlocked states, the Electoral College, the highest mountain in each state and the thirteen colonies.</li>
+      <li>About 180 <a href="/learn/">explainer articles</a> across the three languages, on landlocked states, the Electoral College, the highest point of each state, the thirteen colonies and every presidential election since 1804, state by state.</li>
       <li>21 <a href="/play/">mini-games</a>: capital matching, state silhouettes, flags, abbreviations, mottos, time zones, swing states, admission order.</li>
-      <li>A <a href="/states/">reference page for each of the 50 states</a>, with capital, statehood year, largest city, nickname and neighbours.</li>
+      <li>A <a href="/states/">reference page for each of the 50 states</a>, with capital, statehood year, largest city, nickname and neighbours, and five longer pages per state on its history, geography, people, symbols and surprising facts.</li>
       <li>An <a href="/archive/">archive</a> of previous grids and a <a href="/facts/">facts</a> section.</li>
       <li>The game and the main pages in English, French and Spanish.</li>
     </ul>
 
     <h2>Where the data comes from</h2>
-    <p>Population and land area figures come from the US Census Bureau. River lengths, elevations and terrain data come from the US Geological Survey. The two-letter state abbreviations follow the USPS standard. All three are US federal sources in the public domain. I reformat their figures into the game's data file and write the prose myself, so the numbers are theirs and the sentences are mine. Where a figure is disputed, I leave it out rather than guess.</p>
+    <p>Population and land area figures come from the US Census Bureau. River lengths, elevations and terrain data come from the US Geological Survey, and the highest point of each state was checked against the National Geodetic Survey's datasheets. The two-letter abbreviations follow the USPS standard. Election results come from the National Archives and from the MIT Election Data and Science Lab. I reformat their figures into the site's data files and write the prose myself, so the numbers are theirs and the sentences are mine. Since October 2026 every new or corrected fact is checked a second time against a source before it is published. Where a figure is disputed, I leave it out rather than guess.</p>
 
     <h2>How it is funded, and what it does with your data</h2>
-    <p>Statedoku is free. It may carry advertising in the future, but none is shown today. You do not need an account to play: your streak, your statistics and your unfinished grid live in your browser's localStorage and are never sent to me. What I see is aggregated analytics, visit counts, page paths, country and device type. The only identifying detail I ever store is an email address, and only if you opt in to the daily reminder. The <a href="/privacy/">privacy policy</a> lists every third-party service, cookie and retention period.</p>
+    <p>Statedoku is free. It may carry advertising in the future, but none is shown today. You do not need an account to play: your streak, your statistics and your unfinished grid live in your browser's localStorage. When a game starts or ends, the site counts it anonymously, with the puzzle date, the time taken, the number of mistakes, the language, the country, a rough streak band such as "2 to 3 days" and the kind of site you came from; never the grid you played or anything that identifies you. Google Analytics and Microsoft Clarity load only if you accept them in the cookie banner. If you rate a game, the stars and your optional comment are kept with the page and the country, without your IP address. The only identifying detail ever stored is an email address, and only if you sign up for the daily reminder. The <a href="/privacy/">privacy policy</a> lists every third-party service, cookie and retention period.</p>
 
     <h2>Contact</h2>
     <p>Bug reports, a constraint that looks unfair, a factual correction, a translation fix or an idea for a new mini-game: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>. I read every message.</p>
 
-    <p class="legal-back"><a href="/">→ Play today's puzzle</a></p>
+    <p class="legal-back"><a href="/">Play today's puzzle</a></p>
   </article>
 
   <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
 
-<p style="margin:16px 0"><a href="/press/" style="color:var(--navy);font-weight:600">&rarr; Press kit: logos, screenshots and facts</a></p>
+<p style="margin:16px 0"><a href="/press/" style="color:var(--navy);font-weight:600">Press kit: logos, screenshots and facts</a></p>
 </main>
 
 <footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="https://x.com/statedoku" rel="me noopener" target="_blank">X</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@statedoku" rel="me noopener" target="_blank">TikTok</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@Statedoku" rel="me noopener" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="/about/">About</a> &nbsp;·&nbsp; <a href="/how-to-play/">How to play</a> &nbsp;·&nbsp; <a href="/learn/">Learn</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Facts</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/legal/">Legal notice</a></p>
 </footer>
 
 <script src="/config.js?v=17"></script>

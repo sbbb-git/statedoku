@@ -70,42 +70,42 @@
 
     <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
 
-    <p>Cada fila y cada columna lleva una restricción real: «frontera con México», «sin impuesto sobre la renta», «admitido en la Unión después de 1900», «nombre de origen español». Un estado colocado arriba a la izquierda tiene que cumplir la pista de su fila y la de su columna a la vez. Ningún estado puede repetirse. Tienes cinco errores, y una cuadrícula resuelta se comparte como un bloque de emojis, sin spoiler.</p>
+    <p>Cada fila y cada columna lleva una pista que se resuelve con un mapa, una lista o el propio nombre del estado: «Hace frontera con México», «Junto al río Misisipi», «Entró en la Unión después de 1900», «Capital que empieza por S». Un estado colocado arriba a la izquierda tiene que cumplir la pista de su fila y la de su columna a la vez, y ningún estado puede repetirse. Cualquier estado que cumpla las dos pistas es correcto, así que pueden ganar varias cuadrículas completas. Tienes cinco errores y una ayuda por cuadrícula (el juego coloca un estado por ti), y una cuadrícula resuelta se comparte como un bloque de emojis, sin spoiler.</p>
     <p>La doble condición es lo interesante. Saber que Arizona limita con México es un dato. Saber que limita con México <em>y</em> entró en la Unión en 1912 es un mapa.</p>
 
     <h2>Quién lo hace</h2>
     <p>Statedoku lo hace Moses Tounby. Es un seudónimo: detrás hay un desarrollador independiente con base en Francia, apasionado desde hace años por la geografía de EE.UU., y escribo yo mismo el código, los artículos y las restricciones del juego. Detrás de Statedoku no hay equipo, ni empresa, ni inversores. Si un dato de este sitio es falso, el error es mío, y un email basta para corregirlo.</p>
 
-    <h2>Cómo se genera el puzzle diario</h2>
-    <p>La cuadrícula no se escribe a mano ni se descarga de un servidor. La fecha se convierte en un número, ese número inicializa un generador pseudoaleatorio determinista, y el generador saca un trío de filas y un trío de columnas de un conjunto de unas 100 restricciones: regiones, fronteras, husos horarios, fechas de admisión, origen de los nombres, tramos de población, cordilleras.</p>
-    <p>Después, un solucionador con vuelta atrás prueba la cuadrícula candidata. Si más de una disposición de estados cumple las seis pistas, la cuadrícula se descarta y se prueba la siguiente combinación. Solo se publican las de solución única: todo se resuelve razonando, nunca adivinando. El generador también rechaza el tema de filas del día anterior y limita cuántos California, Nueva York y Texas caben en una misma solución. Como todo corre en tu navegador a partir de la fecha, cualquier cuadrícula del archivo se reconstruye igual.</p>
+    <h2>Cómo se hace el puzzle diario</h2>
+    <p>Desde el 27 de octubre de 2026, las cuadrículas salen de un calendario preparado con dos años de antelación por un programa, a partir de 94 pistas agrupadas en familias: regiones, husos horarios, población, costas, fronteras, ríos, fechas de admisión, capitales, la ortografía de los nombres en inglés, parques nacionales, rutas históricas y los territorios que el país adquirió. Cada cuadrícula se comprueba antes de entrar en el calendario: cada casilla admite entre dos y nueve estados, las seis pistas dejan al menos una cuadrícula completa de nueve estados distintos, como mucho dos pistas tratan de ortografía, ninguna pista del día anterior vuelve, y ninguna combinación de seis pistas se usa dos veces. Las pistas que no se explican solas llevan un signo de interrogación que abre una explicación sencilla.</p>
+    <p>El calendario viene con la página, así que la cuadrícula se construye en tu navegador a partir de la fecha, y cualquier cuadrícula del <a href="/es/archive/">archivo</a> se reconstruye tal como se mostró. Las cuadrículas anteriores al 27 de octubre de 2026 se hicieron a la manera antigua, sacadas a partir de la fecha y conservadas solo cuando encajaba una única solución; en el archivo se siguen jugando así.</p>
 
     <h2>Qué más hay en el sitio</h2>
     <ul>
-      <li>Casi 170 <a href="/es/learn/">artículos explicativos</a> en los tres idiomas: estados sin salida al mar, colegio electoral, la montaña más alta de cada estado, las trece colonias.</li>
+      <li>Unos 180 <a href="/es/learn/">artículos explicativos</a> en los tres idiomas: estados sin salida al mar, colegio electoral, la montaña más alta de cada estado, las trece colonias y cada elección presidencial desde 1804, estado por estado.</li>
       <li>21 <a href="/es/play/">minijuegos</a>: capitales, siluetas, banderas, abreviaturas, lemas, husos horarios, swing states, orden de admisión.</li>
-      <li>Una <a href="/es/states/">página de referencia por estado</a>: capital, año de admisión, ciudad más grande, apodo, vecinos.</li>
+      <li>Una <a href="/es/states/">página de referencia por estado</a>: capital, año de admisión, ciudad más grande, apodo, vecinos, y en inglés cinco páginas más largas por estado sobre su historia, geografía, gente, símbolos y curiosidades.</li>
       <li>El <a href="/es/archive/">archivo</a> de cuadrículas pasadas y una sección de <a href="/facts/">datos</a>.</li>
       <li>El juego y las páginas principales en inglés, francés y español.</li>
     </ul>
 
     <h2>De dónde salen los datos</h2>
-    <p>Las cifras de población y superficie vienen de la Oficina del Censo de EE.UU. Las longitudes de ríos, las altitudes y los datos de relieve vienen del Servicio Geológico de EE.UU. Las abreviaturas de dos letras siguen el estándar del USPS. Las tres son fuentes federales estadounidenses de dominio público. Yo paso sus cifras al formato del juego y escribo los textos: los números son suyos, las frases son mías. Cuando una cifra está en disputa, la omito en vez de adivinarla.</p>
+    <p>Las cifras de población y superficie vienen de la Oficina del Censo de EE.UU. Las longitudes de ríos, las altitudes y los datos de relieve vienen del Servicio Geológico de EE.UU., y el punto más alto de cada estado se comprobó con las fichas del National Geodetic Survey. Las abreviaturas de dos letras siguen el estándar del USPS. Los resultados electorales vienen de los Archivos Nacionales de EE.UU. y del MIT Election Data and Science Lab. Yo paso sus cifras al formato del sitio y escribo los textos: los números son suyos, las frases son mías. Desde octubre de 2026, cada dato nuevo o corregido se comprueba una segunda vez con una fuente antes de publicarse. Cuando una cifra está en disputa, la omito en vez de adivinarla.</p>
 
     <h2>Cómo se financia y qué hace con tus datos</h2>
-    <p>Statedoku es gratis. Podría mostrar publicidad en el futuro, pero hoy no se muestra ninguna. No hace falta cuenta para jugar: tu racha, tus estadísticas y tu cuadrícula sin terminar viven en el localStorage de tu navegador y nunca se me envían. Yo solo veo estadísticas agregadas: número de visitas, páginas vistas, país, tipo de dispositivo. El único dato identificable que guardo es una dirección de email, y solo si te apuntas al recordatorio diario. La <a href="/es/privacy/">política de privacidad</a> detalla cada servicio externo, cada cookie y cada plazo de conservación.</p>
+    <p>Statedoku es gratis. Podría mostrar publicidad en el futuro, pero hoy no se muestra ninguna. No hace falta cuenta para jugar: tu racha, tus estadísticas y tu cuadrícula sin terminar viven en el localStorage de tu navegador. Cuando una partida empieza o termina, el sitio la cuenta de forma anónima, con la fecha de la cuadrícula, el tiempo, el número de errores, el idioma, el país, un tramo de racha como «2 a 3 días» y el tipo de sitio del que vienes; nunca la cuadrícula jugada ni nada que te identifique. Google Analytics y Microsoft Clarity solo se cargan si los aceptas en el aviso de cookies. Si valoras una partida, las estrellas y tu comentario opcional se guardan con la página y el país, sin tu dirección IP. El único dato identificable que se guarda es una dirección de email, y solo si te apuntas al recordatorio diario. La <a href="/es/privacy/">política de privacidad</a> detalla cada servicio externo, cada cookie y cada plazo de conservación.</p>
 
     <h2>Escribir</h2>
     <p>Un bug, una restricción que te parezca injusta, una corrección factual, un fallo de traducción o una idea de minijuego: <a href="mailto:contact@statedoku.com">contact@statedoku.com</a>. Leo todos los mensajes.</p>
 
-    <p class="legal-back"><a href="/es/">→ Jugar el puzzle de hoy</a></p>
+    <p class="legal-back"><a href="/es/">Jugar el puzzle de hoy</a></p>
   </article>
 
   <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
 </main>
 
 <footer>
-  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">💬 Reddit</a> &nbsp;·&nbsp; <a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/how-to-play/">Cómo jugar</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Curiosidades (EN)</a> &nbsp;·&nbsp; <a href="/es/archive/">Archivo</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a></p>
+  <p>Statedoku &copy; 2026 &nbsp;·&nbsp; <a href="https://www.reddit.com/r/Statedoku/" rel="noopener" target="_blank">Reddit</a> &nbsp;·&nbsp; <a href="https://x.com/statedoku" rel="me noopener" target="_blank">X</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@statedoku" rel="me noopener" target="_blank">TikTok</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@Statedoku" rel="me noopener" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="/es/about/">Acerca</a> &nbsp;·&nbsp; <a href="/es/how-to-play/">Cómo jugar</a> &nbsp;·&nbsp; <a href="/es/learn/">Aprender</a> &nbsp;·&nbsp; <a href="/es/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/facts/">Curiosidades (EN)</a> &nbsp;·&nbsp; <a href="/es/archive/">Archivo</a> &nbsp;·&nbsp; <a href="/es/privacy/">Privacidad</a> &nbsp;·&nbsp; <a href="/es/terms/">Condiciones</a> &nbsp;·&nbsp; <a href="/es/aviso-legal/">Aviso legal</a></p>
 </footer>
 
 <script src="/config.js?v=17"></script>
