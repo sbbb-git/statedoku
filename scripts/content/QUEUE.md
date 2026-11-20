@@ -138,7 +138,7 @@ the pages are already shown, the queries already exist, nothing new competes.
    reaching Mexico. Demand: "colorado river" 5,708. Same check against the
    rivers page as item 4.
 
-11. `todo` **Missouri River length, one figure site-wide.** The site says 2,341 mi
+11. `done 2026-11-20 ee2e8de60` **Missouri River length, one figure site-wide.** USGS 2,540 mi (4,088 km), measured from Red Rock Creek, on the 6 pages in EN, FR, ES; "longest in North America" confirmed (NPS); fact-check 9 claims, 1 wrong fixed. Left open: "named after the Illinois River" for Illinois, unchecked. The site says 2,341 mi
     (3,767 km) and "longest in North America" on `learn/longest-rivers-in-each-state/`,
     `states/missouri/geography/` and `states/missouri/fun-facts/`; USGS
     (OFR 87-242) gives 2,540 mi, NPS says about 100 miles longer than the
