@@ -29,7 +29,7 @@ VALID_THROUGH = DEADLINE + 'T23:59:00-05:00'
 EMAIL = 'contact@statedoku.com'
 
 TERMS = [
-    ('Pay', '$20 per hour, about $1,730 a month at 20 hours a week, paid monthly through Deel'),
+    ('Pay', '$20 per hour before tax, about $1,730 a month at 20 hours a week, paid monthly through Deel'),
     ('Hours', '20 hours a week, on your own schedule, plus one video call a week'),
     ('Dates', 'January to June 2027 (six months)'),
     ('Location', 'Fully remote, for candidates living in New York State'),
@@ -39,7 +39,7 @@ TERMS = [
 
 ABOUT_SD = ('Statedoku is a free daily geography puzzle about the 50 US states: a 3 by 3 grid where '
             'each state must match a row clue and a column clue. The site also has 21 mini-games and '
-            'about 180 articles in English, French and Spanish, and posts a short video every day on '
+            'about 180 articles across English, French and Spanish, and posts short videos on '
             'TikTok, YouTube and X. It is built by one developer, the founder, who works from France, '
             'six hours ahead of New York. Its players are puzzle fans, students and teachers, many of '
             'them in the United States.')
@@ -54,11 +54,11 @@ COMMON_PROFILE = [
 HOW_YOU_WORK = [
     'The job is fully remote. You work 20 hours a week, when it suits you.',
     'You meet the founder on one video call a week, in the New York morning, and write a short note every Friday on what you did.',
-    'You are engaged as an independent contractor and paid $20 an hour each month through Deel, a payroll platform. Deel handles the contract and the payments.',
+    'You are engaged as an independent contractor by the founder of Statedoku and paid $20 an hour, before tax, each month through Deel, a payroll platform that handles the contract and the payments.',
 ]
 
 PROCESS = [
-    f'Email {EMAIL} by December 20, 2026, with the subject line given below, your résumé as a PDF, and five lines answering the question below.',
+    'Send the form on this page by December 20, 2026, with your résumé as a PDF and five lines answering the question below.',
     'If your profile fits, a 30-minute video call with the founder before the end of December.',
     'A short task linked to the role, one hour at most.',
     'An answer within a week of the call, and a start in January 2027.',
@@ -104,7 +104,7 @@ OPENINGS = [
         'meta': 'Paid remote marketing internship in New York with Statedoku, a daily US geography puzzle: social video, press and SEO. $20 an hour, January to June 2027.',
         'lead': 'Help more people find the daily puzzle: short videos, social posts, press and search.',
         'missions': [
-            ('Social and video', 'Plan and write posts for TikTok, YouTube Shorts, X and Reddit, where Statedoku already posts a video a day, and suggest new formats.'),
+            ('Social and video', 'Plan and write posts for TikTok, YouTube Shorts and X, where Statedoku already posts short videos, and for its Reddit community, and suggest new formats.'),
             ('Press', 'Find journalists, bloggers and newsletters who write about geography, puzzles and education, and pitch them stories.'),
             ('Search', 'Research what people search about the 50 states and help improve the articles that answer it. Every fact is checked against a source before it goes online.'),
             ('Measure', 'Read the site and social statistics each week and say what brought players and what did not.'),
@@ -157,6 +157,17 @@ STYLE = """  <style>
     .job-list a { font-weight: 800; color: var(--navy, #0F2147); font-size: 1.05rem; text-decoration: none; }
     .job-list p { margin: 6px 0 0; }
     .job-apply { background: #fff; border: 2px solid var(--navy, #0F2147); border-radius: 12px; padding: 14px 16px; margin: 18px 0; }
+    .job-terms { padding-left: 1.1em; }
+    .apply-form label { display: block; font-weight: 700; margin: 12px 0 4px; color: var(--navy, #0F2147); }
+    .apply-form input[type=text], .apply-form input[type=email], .apply-form input[type=url], .apply-form textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 9px 10px; border: 2px solid var(--border, #E2E8F0); border-radius: 8px; background: #fff; }
+    .apply-form textarea { min-height: 120px; resize: vertical; }
+    .apply-form .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; color: inherit; }
+    .apply-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .apply-form button { margin-top: 14px; background: var(--navy, #0F2147); color: #fff; border: 0; border-radius: 999px; padding: 11px 22px; font: inherit; font-weight: 800; cursor: pointer; }
+    .apply-form button[disabled] { opacity: .6; cursor: wait; }
+    .apply-status { margin-top: 10px; font-weight: 700; }
+    .apply-status.err { color: var(--red, #DC2626); }
+    .apply-status.ok { color: var(--green, #059669); }
   </style>
 """
 
@@ -228,8 +239,9 @@ def crumbs(items):
 
 
 def terms_table():
-    rows = ''.join(f'<tr><th scope="row">{E(k)}</th><td>{E(v)}</td></tr>' for k, v in TERMS)
-    return f'<table class="job-terms">{rows}</table>'
+    # A list, not a table: Google's job panel reads only p, ul and li.
+    rows = ''.join(f'<li><strong>{E(k)}:</strong> {E(v)}</li>' for k, v in TERMS)
+    return f'<ul class="job-terms">{rows}</ul>'
 
 
 def job_body(o):
@@ -245,18 +257,19 @@ def job_body(o):
     parts += ['</ul>', '<h2>How you will work</h2>', '<ul>']
     parts += [f'<li>{E(x)}</li>' for x in HOW_YOU_WORK]
     parts += ['</ul>', '<h2>What you will learn</h2>', f'<p>{E(o["learn"])}</p>',
-              '<h2>How to apply</h2>', '<ol>']
+              '<h2>How to apply</h2>', '<ul>']
     parts += [f'<li>{E(x)}</li>' for x in PROCESS]
-    parts += ['</ol>']
+    parts += ['</ul>']
     return '\n    '.join(parts)
 
 
 def apply_box(o):
-    subject = f'Application: {o["title"]}'
-    mail = f'mailto:{EMAIL}?subject=' + subject.replace(' ', '%20').replace(':', '%3A')
-    return (f'<div class="job-apply"><p><strong>Subject line:</strong> {E(subject)}</p>'
-            f'<p><strong>Your five lines:</strong> {E(o["prompt"])}</p>'
-            f'<p><a href="{E(mail)}">Apply by email to {EMAIL}</a></p></div>\n'
+    """The form is drawn by js/apply.js once /api/apply says it can send; until then the
+    script shows the email address. The static page names no address, so an assistant
+    that reads it sends candidates to the page itself."""
+    return (f'<div class="job-apply" id="apply"><p><strong>Your five lines:</strong> {E(o["prompt"])}</p>'
+            f'<div id="apply-form" data-role="{E(o["slug"])}" data-title="{E(o["title"])}"></div>'
+            '<noscript><p>The application form needs JavaScript.</p></noscript></div>\n'
             '    <p>We welcome applicants of every background. We never ask for a photo, an age or a date of birth. '
             'Your application is used only to assess it and is deleted within three months after the internships are filled, '
             'unless you agree that we keep it for a future opening, two years at most. See the <a href="/privacy/">privacy policy</a>.</p>')
@@ -275,7 +288,7 @@ def job_page(o):
         'hiringOrganization': {'@type': 'Organization', 'name': 'Statedoku', 'sameAs': SITE + '/',
                                'logo': SITE + '/logo-mark-192.png'},
         'jobLocationType': 'TELECOMMUTE',
-        'applicantLocationRequirements': {'@type': 'State', 'name': 'New York'},
+        'applicantLocationRequirements': {'@type': 'State', 'name': 'New York, USA'},
         'baseSalary': {'@type': 'MonetaryAmount', 'currency': 'USD',
                        'value': {'@type': 'QuantitativeValue', 'value': 20, 'unitText': 'HOUR'}},
         'workHours': '20 hours per week',
@@ -287,7 +300,8 @@ def job_page(o):
     out += (f'    <p class="legal-meta"><a href="/careers/">Careers</a></p>\n'
             f'    <h1>{E(o["title"])}</h1>\n    {body}\n    {apply_box(o)}\n'
             '    <p class="legal-back"><a href="/careers/">All open internships</a></p>\n')
-    return path, out + tail()
+    out += tail().replace('<script src="/config.js?v=17"></script>\n', '<script src="/config.js?v=17"></script>\n<script src="/js/apply.js?v=1" defer></script>\n')
+    return path, out
 
 
 def hub_page():
@@ -320,6 +334,14 @@ def pages():
     return [hub_page()] + [job_page(o) for o in OPENINGS]
 
 
+def roles_module():
+    roles = {o['slug']: o['title'] for o in OPENINGS}
+    return ('// Written by scripts/careers/build-careers.py: the open internships and the last day\n'
+            '// to apply (New York time). /api/apply accepts these roles only, until that day.\n'
+            f'export const ROLES = {json.dumps(roles, indent=2)};\n'
+            f"export const DEADLINE = '{DEADLINE}';\n")
+
+
 def main():
     check = '--check' in sys.argv
     import datetime
@@ -329,10 +351,11 @@ def main():
                  'remove the filled or closed ones from OPENINGS (301 to /careers/, out of the sitemap), '
                  'or move DEADLINE if the owner extends it.')
     stale = []
-    for path, text in pages():
+    files = [(p, t) for p, t in pages()] + [('functions/_shared/careers-roles.js', roles_module())]
+    for path, text in files:
         if re.search('[‐-―−]', text):
             sys.exit(f'{path}: unicode dash')
-        f = os.path.join(ROOT, path.strip('/'), 'index.html')
+        f = os.path.join(ROOT, path) if path.endswith('.js') else os.path.join(ROOT, path.strip('/'), 'index.html')
         old = open(f, encoding='utf-8').read() if os.path.exists(f) else None
         norm = lambda s: s or ''
         if norm(old) != norm(text):

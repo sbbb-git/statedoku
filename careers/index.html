@@ -47,6 +47,17 @@
     .job-list a { font-weight: 800; color: var(--navy, #0F2147); font-size: 1.05rem; text-decoration: none; }
     .job-list p { margin: 6px 0 0; }
     .job-apply { background: #fff; border: 2px solid var(--navy, #0F2147); border-radius: 12px; padding: 14px 16px; margin: 18px 0; }
+    .job-terms { padding-left: 1.1em; }
+    .apply-form label { display: block; font-weight: 700; margin: 12px 0 4px; color: var(--navy, #0F2147); }
+    .apply-form input[type=text], .apply-form input[type=email], .apply-form input[type=url], .apply-form textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 9px 10px; border: 2px solid var(--border, #E2E8F0); border-radius: 8px; background: #fff; }
+    .apply-form textarea { min-height: 120px; resize: vertical; }
+    .apply-form .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; color: inherit; }
+    .apply-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .apply-form button { margin-top: 14px; background: var(--navy, #0F2147); color: #fff; border: 0; border-radius: 999px; padding: 11px 22px; font: inherit; font-weight: 800; cursor: pointer; }
+    .apply-form button[disabled] { opacity: .6; cursor: wait; }
+    .apply-status { margin-top: 10px; font-weight: 700; }
+    .apply-status.err { color: var(--red, #DC2626); }
+    .apply-status.ok { color: var(--green, #059669); }
   </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://statedoku.com/"}, {"@type": "ListItem", "position": 2, "name": "Careers", "item": "https://statedoku.com/careers/"}]}</script>
 </head>
@@ -61,11 +72,11 @@
   <article class="legal-page">
     <h1>Careers at Statedoku</h1>
     <p class="job-lead">We are hiring 4 paid interns for January to June 2027. The internships are fully remote, for students and recent graduates living in New York State.</p>
-    <table class="job-terms"><tr><th scope="row">Pay</th><td>$20 per hour, about $1,730 a month at 20 hours a week, paid monthly through Deel</td></tr><tr><th scope="row">Hours</th><td>20 hours a week, on your own schedule, plus one video call a week</td></tr><tr><th scope="row">Dates</th><td>January to June 2027 (six months)</td></tr><tr><th scope="row">Location</th><td>Fully remote, for candidates living in New York State</td></tr><tr><th scope="row">Status</th><td>Paid internship, as an independent contractor</td></tr><tr><th scope="row">Apply by</th><td>December 20, 2026</td></tr></table>
+    <ul class="job-terms"><li><strong>Pay:</strong> $20 per hour before tax, about $1,730 a month at 20 hours a week, paid monthly through Deel</li><li><strong>Hours:</strong> 20 hours a week, on your own schedule, plus one video call a week</li><li><strong>Dates:</strong> January to June 2027 (six months)</li><li><strong>Location:</strong> Fully remote, for candidates living in New York State</li><li><strong>Status:</strong> Paid internship, as an independent contractor</li><li><strong>Apply by:</strong> December 20, 2026</li></ul>
     <h2>Open internships</h2>
     <ul class="job-list"><li><a href="/careers/business-development-intern/">Business Development Intern</a><p>Find the partners who will put Statedoku in front of new players: education publishers, newsletters, puzzle sites, libraries and museums.</p></li><li><a href="/careers/education-partnerships-intern/">Education Partnerships Intern</a><p>Bring Statedoku to teachers, schools, libraries and homeschool groups as a free way to learn the 50 states.</p></li><li><a href="/careers/marketing-growth-intern/">Marketing and Growth Intern</a><p>Help more people find the daily puzzle: short videos, social posts, press and search.</p></li><li><a href="/careers/web-developer-intern/">Web Developer Intern</a><p>Work on the code of the daily puzzle and the 21 mini-games, played on phones, tablets and school computers.</p></li></ul>
     <h2>About Statedoku</h2>
-    <p>Statedoku is a free daily geography puzzle about the 50 US states: a 3 by 3 grid where each state must match a row clue and a column clue. The site also has 21 mini-games and about 180 articles in English, French and Spanish, and posts a short video every day on TikTok, YouTube and X. It is built by one developer, the founder, who works from France, six hours ahead of New York. Its players are puzzle fans, students and teachers, many of them in the United States.</p>
+    <p>Statedoku is a free daily geography puzzle about the 50 US states: a 3 by 3 grid where each state must match a row clue and a column clue. The site also has 21 mini-games and about 180 articles across English, French and Spanish, and posts short videos on TikTok, YouTube and X. It is built by one developer, the founder, who works from France, six hours ahead of New York. Its players are puzzle fans, students and teachers, many of them in the United States.</p>
     <p><a href="/">Play today's puzzle</a> or read <a href="/about/">how the site is made</a>.</p>
   </article>
 </main>

@@ -236,8 +236,28 @@ law forbids misleading job ads (Code du travail, L5331-3).
 `scripts/careers/build-careers.py` builds `/careers/` and one page per opening
 from `OPENINGS` (English only): $20 an hour, 20 hours a week, January to June
 2027, fully remote for candidates living in New York State, independent
-contractors paid through Deel, applications by email to contact@statedoku.com
-until 20 December 2026. Each job page carries a JobPosting (TELECOMMUTE,
+contractors paid through Deel, applications until 20 December 2026 through
+the form on each page (`js/apply.js`, `functions/api/apply.js`).
+
+The form follows the method the owner set up on his other site on 22 November
+2026: answer engines send candidates who write without ever opening the site,
+so the static pages name no email address (an assistant then gives the page's
+link), and every application sent by the form gets an acknowledgement whose
+links bring the candidate to the site through a Google search for the brand
+(`https://www.google.com/search?q=statedoku`, the site first on "statedoku",
+check the position monthly in Search Console) and to TikTok, YouTube and X.
+A real person searching the brand by name, never a generic query, never an
+automated click. `/api/apply` takes JSON only, the résumé as a base64 PDF
+(4 MB, checked by its first bytes), stores nothing, emails the application to
+`CAREERS_TO` or contact@statedoku.com with the PDF attached, then the
+acknowledgement, whose failure never fails the application. It needs
+`RESEND_API_KEY` on the Pages project: without it, GET `/api/apply` says not
+ready and the script shows the email address instead of the form.
+`verify-production.mjs` prints which. `directApply` stays false until the
+form has worked in production. Roles and deadline reach the endpoint through
+`functions/_shared/careers-roles.js`, written by the build script. Unit test
+idea, used on 22 November: import the function in Node with a fake `fetch`;
+the form was tested in Playwright with `page.route` serving the repo. Each job page carries a JobPosting (TELECOMMUTE,
 `applicantLocationRequirements` New York, `baseSalary`, `validThrough`) whose
 description is the page text; the hub carries none. Pay, hours, dates and
 location are the owner's: never change them without his word. No ad code, no

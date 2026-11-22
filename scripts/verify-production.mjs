@@ -137,7 +137,16 @@ const fb = await get(BASE + '/api/feedback');
 if (fb.status !== 200) fail(`/api/feedback health answered ${fb.status}`);
 const fbBad = await get(BASE + '/api/feedback', { method: 'POST', headers: { 'user-agent': UA, 'content-type': 'application/json' }, body: '{"rating":9}' });
 if (fbBad.status !== 400) fail(`/api/feedback accepted an invalid rating (status ${fbBad.status})`);
-console.log('endpoints: 6 checked (/api/events, manifest, states.json, IndexNow key, /api/feedback twice)');
+// /api/apply (22 November 2026): the health answer says whether the careers form
+// can send; a POST for a role that does not exist is refused either way, and no
+// real application is ever sent from here.
+const ap = await get(BASE + '/api/apply');
+let apReady = null;
+if (ap.status !== 200) fail(`/api/apply health answered ${ap.status}`);
+else { try { apReady = JSON.parse(await ap.text()).ready; } catch { fail('/api/apply health is not JSON'); } }
+const apBad = await get(BASE + '/api/apply', { method: 'POST', headers: { 'user-agent': UA, 'content-type': 'application/json' }, body: '{"role":"nope"}' });
+if (![400, 503].includes(apBad.status)) fail(`/api/apply answered ${apBad.status} to an unknown role`);
+console.log(`endpoints: 8 checked (/api/events, manifest, states.json, IndexNow key, /api/feedback twice, /api/apply twice); careers form ${apReady ? 'ready' : 'not ready (no RESEND_API_KEY on the Pages project, or no opening): the pages show the email address'}`);
 
 if (failures) { console.log(`${failures} failure(s)`); process.exit(1); }
 console.log('production check passed');
