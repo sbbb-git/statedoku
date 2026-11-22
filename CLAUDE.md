@@ -223,6 +223,36 @@ apostrophes all the time in French and Spanish. That class stops at the first
 one. It has already spliced boilerplate into the middle of twelve descriptions
 and truncated others mid-word. Match `content="([^"]*)"` instead.
 
+## Careers, from 22 November 2026
+
+Real, paid internships, at the owner's request ("stages réels !! Et je veux
+engager des américains"), confirmed with their budget (about $42,800 for four
+interns over six months, Deel fees included). The first request was framed as
+traffic for the site; job postings with no real opening behind them are not
+published, whatever the traffic: Google takes away a site's job features for a
+fictitious offer, a false location or CVs collected without hiring, and French
+law forbids misleading job ads (Code du travail, L5331-3).
+
+`scripts/careers/build-careers.py` builds `/careers/` and one page per opening
+from `OPENINGS` (English only): $20 an hour, 20 hours a week, January to June
+2027, fully remote for candidates living in New York State, independent
+contractors paid through Deel, applications by email to contact@statedoku.com
+until 20 December 2026. Each job page carries a JobPosting (TELECOMMUTE,
+`applicantLocationRequirements` New York, `baseSalary`, `validThrough`) whose
+description is the page text; the hub carries none. Pay, hours, dates and
+location are the owner's: never change them without his word. No ad code, no
+date stamp (`stamp-page-dates.py` skips `/careers/`). The deploy runs
+`build-careers.py --check`, which fails once the deadline has passed with
+openings still listed. When an opening is filled, or the deadline passes
+without the owner extending it: remove it from `OPENINGS`, re-run the script,
+delete its page, add a 301 to `/careers/` in `_redirects` (static rules
+first) and drop it from `functions/sitemap.xml.js`. The privacy policies
+(section 1.7, EN, FR, ES) cover applications: used only to assess them,
+deleted three months after the internships are filled, or kept two years at
+most with consent. Paying interns is very likely a professional activity, so
+the LCEN 1-1, I legal notice details asked for on 19 November are needed
+anyway.
+
 ## SEO invariants
 
 Re-check these after any bulk edit, and after every change to the script that
@@ -489,6 +519,7 @@ build their game once it lands. That took them from 243 KB to 25 KB each.
 ## Layout
 
 - `index.html`, `fr/`, `es/` are the three homepages, each running the daily game.
+- `careers/` the hub and one page per open internship (22 November 2026).
 - `states/` 301 pages, `learn/` 88, `play/` 27 (plus 22 each under `fr/play/` and `es/play/`), `cities/` 1 (the hub), `regions/` 14 (17 November 2026, after the consolidation).
 - `js/` game logic: `game.js` loop, `puzzle.js` generation, `i18n.js`,
   `constraints-pending.js` and `constraints-approved.js` for the pop-culture pool,

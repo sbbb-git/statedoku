@@ -57,6 +57,13 @@ export async function onRequestGet({ request }) {
     [`${BASE}/about/`, { priority: 0.7, alternates: [['en', `${BASE}/about/`], ['fr', `${BASE}/fr/about/`], ['es', `${BASE}/es/about/`]] }],
     [`${BASE}/fr/about/`, { priority: 0.6 }],
     [`${BASE}/es/about/`, { priority: 0.6 }],
+    // Paid internships, from 22 November 2026 (scripts/careers/build-careers.py).
+    // A filled or expired opening leaves this list the day its page is removed.
+    [`${BASE}/careers/`, { priority: 0.6, changefreq: 'weekly' }],
+    [`${BASE}/careers/business-development-intern/`, { priority: 0.6, changefreq: 'weekly' }],
+    [`${BASE}/careers/education-partnerships-intern/`, { priority: 0.6, changefreq: 'weekly' }],
+    [`${BASE}/careers/marketing-growth-intern/`, { priority: 0.6, changefreq: 'weekly' }],
+    [`${BASE}/careers/web-developer-intern/`, { priority: 0.6, changefreq: 'weekly' }],
     [`${BASE}/how-to-play/`, { priority: 0.8, alternates: [['en', `${BASE}/how-to-play/`], ['fr', `${BASE}/fr/how-to-play/`], ['es', `${BASE}/es/how-to-play/`]] }],
     [`${BASE}/fr/how-to-play/`, { priority: 0.7 }],
     [`${BASE}/es/how-to-play/`, { priority: 0.7 }],

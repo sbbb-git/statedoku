@@ -19,13 +19,15 @@ nothing. Run it after build-sitemap-lastmod.py, which calls it.
 
 Skipped: the three homepages and archives (game screens, where a date reads as
 the puzzle's date), and the about, privacy, terms and legal pages, which carry
-their own dated notice and are not edited during the AdSense review.
+their own dated notice and are not edited during the AdSense review. Also
+/careers/ and its internships (22 November 2026): a job posting carries its own
+datePosted, and scripts/careers/build-careers.py rewrites those pages whole.
 """
 import html, json, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = 'https://statedoku.com'
-SKIP = re.compile(r'^/((fr|es)/)?((about|privacy|terms|legal|mentions-legales|aviso-legal|archive)/)?$')
+SKIP = re.compile(r'^/((fr|es)/)?((about|privacy|terms|legal|mentions-legales|aviso-legal|archive)/)?$|^/careers/')
 LD = re.compile(r'\s*<script type="application/ld\+json" data-page-dates>.*?</script>', re.S)
 VISIBLE = re.compile(r'\s*<p class="page-updated">.*?</p>', re.S)
 MONTHS = {

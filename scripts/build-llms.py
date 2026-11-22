@@ -257,6 +257,7 @@ def build_short(stamp):
           '', '## About and citation', '',
           link('/about/'),
           link('/press/'),
+          link('/careers/'),
           link('/api/'),
           '- Contact: contact@statedoku.com',
           '- Community: https://www.reddit.com/r/Statedoku/',

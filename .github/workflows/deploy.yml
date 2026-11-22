@@ -50,6 +50,11 @@ jobs:
       - name: Check internal links and the order of _redirects
         run: python3 scripts/check-internal-links.py
 
+      # A job posting past its deadline must leave the site (Google job-posting
+      # rules): the build stops until the opening is removed or extended.
+      - name: Careers pages current and no opening past its deadline
+        run: python3 scripts/careers/build-careers.py --check
+
       - name: Stage the site without the repo-only directories
         run: |
           mkdir -p /tmp/dist
