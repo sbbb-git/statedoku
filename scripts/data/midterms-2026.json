@@ -28,11 +28,13 @@
   "party": "D",
   "called_by": "AP",
   "seats_called": {
-   "D": 219,
-   "R": 135
+   "D": 257,
+   "R": 171
   },
-  "uncalled": 81,
+  "uncalled": 7,
   "sources": [
+   "https://www.aljazeera.com/news/2026/11/18/how-the-us-house-of-representatives-chooses-its-leaders-a-visual-guide",
+   "https://www.wral.com/news/nccapitol/elections-recounts-house-races-north-carolina-minnesota-november-2026/",
    "https://interactives.apelections.org/election-results/data-live/2026-11-03/miniblog.json",
    "https://interactives.apelections.org/election-results/data-live/2026-11-03/results/national/progress.json",
    "https://apnews.com/projects/elections-2026/us-house-results/",
@@ -43,7 +45,7 @@
    "https://pressgallery.house.gov/member-data/party-breakdown",
    "https://clerk.house.gov/xml/lists/MemberData.xml"
   ],
-  "as_of_utc": "2026-11-04T08:27:00Z"
+  "as_of_date": "2026-11-18"
  },
  "senate": [
   {

@@ -73,15 +73,20 @@ def stamp(lang, at=None):
 
 # The House tally can lag the Senate and governor rows: when no AP count can be
 # read at the time of an update, the last one read keeps its own date.
+# A source that dates the count by day only sets as_of_date (YYYY-MM-DD) instead,
+# so the page never shows a time nobody published.
 _h_at = D['house_control'].get('as_of_utc')
-HOUSE_AS_OF = datetime.fromisoformat(_h_at.replace('Z', '+00:00')) if _h_at else None
+_h_day = D['house_control'].get('as_of_date')
+HOUSE_AS_OF = (datetime.fromisoformat(_h_day + 'T00:00:00+00:00') if _h_day else
+               datetime.fromisoformat(_h_at.replace('Z', '+00:00')) if _h_at else None)
 
 
 def house_when(lang):
     if not HOUSE_AS_OF or HOUSE_AS_OF == AS_OF:
         return ''
-    return {'en': f' (count as of {stamp("en", HOUSE_AS_OF)})', 'fr': f' (décompte au {stamp("fr", HOUSE_AS_OF)})',
-            'es': f' (recuento al {stamp("es", HOUSE_AS_OF)})'}[lang]
+    when = (lambda l: day(l, HOUSE_AS_OF)) if _h_day else (lambda l: stamp(l, HOUSE_AS_OF))
+    return {'en': f' (count as of {when("en")})', 'fr': f' (décompte au {when("fr")})',
+            'es': f' (recuento al {when("es")})'}[lang]
 
 
 PARTY = {
