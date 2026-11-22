@@ -73,6 +73,10 @@ C1. `running` **2026 midterm elections**, `/learn/2026-midterm-elections/`,
     party (still dated 4 November), then certification in December and the
     swearing-in on 3 January 2027 (C3).
     19 November: nothing to update (House count by party still not found).
+    22 November (f7b5f4771): House count by party, AP as of 18 November: 257 D,
+    171 R, 7 uncalled (Al Jazeera citing AP; NYT via WRAL). AP's own feeds
+    refuse automated reads. Left: the last House calls (Louisiana 5 and 6 go to
+    a 12 December runoff), certification in December, then C3.
 C2. `todo` (late December 2026) **Census Bureau state population estimates
     (Vintage 2026)**: update the population rankings on
     `/learn/states-by-population/` and its translations
