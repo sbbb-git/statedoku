@@ -127,6 +127,12 @@ programme any more. Real traffic for the forms: 8,541 sessions and 14,364
 pageviews in the 28 days to 30 October (GA4 before the banner), about 62% of
 sessions from the countries Journey counts. The forms ask for the owner's
 name and email: he fills them, never this repo or a session.
+NitroPay refused the site (owner, 22 November 2026). The 21 November index
+reading had indexed pages down from 336 to 315 (old crawls re-judged), so the
+AdSense request allowed from 26 November waits for indexation to rise. About
+14 to 26% of GA4 sessions come from Singapore (and a few % from China), very
+likely automated; networks review traffic location, so read that share before
+the next application.
 
 **Ad code lives only on pages with real content.** AdSense refused the site on
 3 October 2026 (site state `NEEDS_ATTENTION`, no page-level policy issue). At
