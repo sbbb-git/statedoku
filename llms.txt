@@ -2,7 +2,7 @@
 
 > Statedoku is a free daily US geography puzzle: a 3×3 grid where every cell must hold a US state that satisfies both its row clue and its column clue. The site also has 21 free geography games (map clicking, capitals, abbreviations, flags, history) and reference pages on the 50 states, in English, French and Spanish. Free, no signup.
 
-Last updated: 2026-11-16. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
+Last updated: 2026-11-22. Online since May 2026; daily puzzles since 1 June 2026. Statedoku is made by Moses Tounby. That is a pen name for a solo developer based in France. It is an independent project with no company, team or investor behind it, and it is not affiliated with the New York Times, Wordle or any publisher.
 
 ## Answers
 
@@ -143,6 +143,7 @@ Each game exists in English, French and Spanish: replace /play/ with /fr/play/ o
 
 - [About Statedoku, The Daily US States Puzzle Game](https://statedoku.com/about/): The story behind Statedoku: a free daily puzzle that combines Sudoku logic with American geography. Created independently, no signup required, mobile-first.
 - [Press Kit, Statedoku | Daily US Geography Puzzle](https://statedoku.com/press/): Press kit for Statedoku, daily 3×3 US states puzzle. Logos, screenshots (multiple sizes), founder bio, factsheet, blurbs in EN/FR/ES.
+- [Careers at Statedoku: paid remote internships in New York](https://statedoku.com/careers/): Statedoku, a free daily US geography puzzle, is hiring four paid remote interns in New York State for January to June 2027, at $20 an hour.
 - [US States JSON API (Free), Statedoku Developer API](https://statedoku.com/api/): Free public JSON API for US states data: capitals, populations, regions, borders. CORS enabled, no auth required, attribution welcome. Updated 2026.
 - Contact: contact@statedoku.com
 - Community: https://www.reddit.com/r/Statedoku/

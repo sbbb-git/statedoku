@@ -128,6 +128,10 @@ def stamp(url, modified, check):
 
 
 def main():
+    # datePublished comes from the first commit of each page: on a shallow clone
+    # that is the clone's oldest commit, wrong for every page.
+    if subprocess.run(['git', 'rev-parse', '--is-shallow-repository'], cwd=ROOT, capture_output=True, text=True).stdout.strip() == 'true':
+        sys.exit('stamp-page-dates: shallow clone, run `git fetch --unshallow` first')
     check = '--check' in sys.argv
     lm = lastmod()
     todo = [(u, d) for u, d in sorted(lm.items()) if not SKIP.match(u)]

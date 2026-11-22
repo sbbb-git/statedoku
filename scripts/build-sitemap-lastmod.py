@@ -104,6 +104,11 @@ def meaningful_date(rel):
 
 
 def main():
+    # A shallow clone starts history at its oldest fetched commit: every page would
+    # get that date as datePublished and lastmod (631 pages on 22 November 2026,
+    # caught before the commit). Refuse rather than write wrong dates.
+    if git('rev-parse', '--is-shallow-repository').strip() == 'true':
+        sys.exit('build-sitemap-lastmod: shallow clone, run `git fetch --unshallow` first')
     pages = []
     for p in sorted(ROOT.rglob('index.html')):
         if any(s in p.parts for s in SKIP):
