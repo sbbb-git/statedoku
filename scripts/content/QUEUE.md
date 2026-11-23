@@ -132,7 +132,7 @@ the pages are already shown, the queries already exist, nothing new competes.
    It is also a clue of the daily grid (`on_mississippi`): link the game.
    Check `/learn/longest-rivers-in-each-state/` first; it has one section on the
    river and must link to the new page, not compete with it.
-5. `todo` **The US flag**, new, EN then FR and ES. Why 50 stars and 13 stripes,
+5. `running` (EN `done 2026-11-23 829b339e2`: `/learn/us-flag/`, built by `scripts/build-us-flag-page.py`, 27 versions computed from the admission dates; linked from the learn hub and `/learn/state-flags/`; fact-checker 85 claims, 1 wrong and 1 wording fixed; FR and ES next, new pages) **The US flag**, new, EN then FR and ES. Why 50 stars and 13 stripes,
    the 27 versions and the state whose admission added each star, the 1818
    Flag Act, the current flag since 4 July 1960. Demand: "us flag" 9,986,
    "flag of the united states" 6,994. `/learn/state-flags/` covers the 50 state
