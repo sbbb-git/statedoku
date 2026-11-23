@@ -82,7 +82,8 @@ const RETIRED = /world-cup|mondial|soccer|azteca|metlife-stadium|crossword|^capi
 // CONCURRENCY at a time. MAX_SEEDS keeps a weekly run near 400 calls. Seeds are
 // added in priority order (core cluster, the 50 states, then learn topics), so
 // if the cap ever bites it trims learn topics, never a state.
-const MAX_SEEDS = 210;  // 200 until 22 October 2026; +10 for the game intents
+const MAX_SEEDS = 255;  // 200 until 22 October 2026; +10 for the game intents;
+                        // +45 on 23 November 2026 for the competitor seeds
 
 async function isIndexable(file) {
   let html;
@@ -133,6 +134,15 @@ async function seeds() {
     out.add(`capital of ${n}`.toLowerCase());
     out.add(`${n} facts`.toLowerCase());
   }
+
+  // Topics competitors publish and this site has no page for (scripts/seo/competitor-gaps.py,
+  // from their public sitemaps): the only seeds that do not come from the site's own taxonomy,
+  // so the reading can find a subject the site has not thought of. Measured, not written:
+  // one reaches scripts/content/QUEUE.md only if Bing shows the demand.
+  try {
+    const comp = JSON.parse(await fs.readFile(path.join(ROOT, 'scripts', 'seo', 'competitor-seeds.json'), 'utf8'));
+    for (const t of (comp.seeds || []).slice(0, 45)) if (typeof t === 'string' && t.length > 2) out.add(t.toLowerCase());
+  } catch { /* no competitor reading yet: the taxonomy alone */ }
 
   // Indexable learn topics, humanised. The taxonomy speaks for itself.
   for (const d of liveTopics) out.add(d.replace(/-/g, ' '));

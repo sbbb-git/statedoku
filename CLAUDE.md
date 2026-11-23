@@ -898,6 +898,21 @@ purpose: a red cross every week stops being read.
   position and clicks.
 - **The keyword reading**, to decide what to write from measured demand rather
   than intuition.
+- **Competitor gaps** (from 23 November 2026, after a video the owner sent on
+  reading competitors' sitemaps). `python3 scripts/seo/competitor-gaps.py`
+  reads the public sitemaps of worldpopulationreview.com, 50states.com,
+  statesymbolsusa.org and worldatlas.com (about 190,000 URLs, 120,000 about
+  the states), turns each URL into a topic, drops what the site covers and
+  writes `seo-snapshots/competitor-gaps-<date>.md` and
+  `scripts/seo/competitor-seeds.json`: 40 search phrases, topics two sites
+  cover on the site's subject first (coldest, snowiest, driest states, Gulf
+  Coast, Pacific Northwest, contiguous states...), never law, health or
+  religion, never a "<group> population by state" template. The keyword
+  collector adds them to its seeds (cap 255), so each Saturday reading gives
+  their Bing demand; `--volumes` lists them by volume. A gap goes to
+  `scripts/content/QUEUE.md` only when that demand is real, and per-state
+  families stay on the state pages, never one page per state. Re-run monthly;
+  the first run's 9,902 gaps are mostly long tail, read the top of the table.
 - **The visitor-path report** (`audience-snapshots/behavior-*.md`), to decide
   what to change for the people already arriving. See Audience readings.
 
