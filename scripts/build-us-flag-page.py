@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build /learn/us-flag/ (English): the 50-star flag and its 27 versions.
+"""Build /learn/us-flag/ and /fr/learn/drapeau-americain/: the 50-star flag and its 27 versions.
 
 The table of versions is computed, not typed: from the admission date of each
 state and the Flag Act of 1818 (a new star on the 4th of July after a state's
@@ -102,6 +102,7 @@ DESC = ('The US flag has 50 stars, one per state, and 13 stripes for the origina
         'All 27 versions since 1777 and the state behind each new star.')
 assert 70 <= len(DESC) <= 160, len(DESC)
 URL = 'https://statedoku.com/learn/us-flag/'
+URL_FR = 'https://statedoku.com/fr/learn/drapeau-americain/'
 
 FAQ = [
     ('How many stars and stripes are on the US flag?',
@@ -136,6 +137,7 @@ page = f'''{head_top}  <title>{TITLE} | Statedoku</title>
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{URL}">
   <link rel="alternate" hreflang="en" href="{URL}">
+  <link rel="alternate" hreflang="fr" href="{URL_FR}">
   <link rel="alternate" hreflang="x-default" href="{URL}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
   <link rel="stylesheet" href="/css/style.css?v=37">
@@ -191,7 +193,7 @@ page = f'''{head_top}  <title>{TITLE} | Statedoku</title>
 
     <section class="cta-card">
       <h3>Put the stars in order</h3>
-      <p>The admission order game asks you to sort the states by the year their star was added.</p>
+      <p>The admission order game asks you to sort the states by the year they joined the Union.</p>
       <a href="/play/state-admission-order/">Play the admission order game</a>
     </section>
 
@@ -210,18 +212,181 @@ page = f'''{head_top}  <title>{TITLE} | Statedoku</title>
     <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
 
 {footer}'''
-for bad in ('—', '–', '‒'):
-    assert bad not in page.replace(head_top, ''), bad
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
-old = open(OUT, encoding='utf-8').read() if os.path.exists(OUT) else None
-# Keep the date stamps written by stamp-page-dates.py across rebuilds.
-if old and 'data-page-dates' in old:
-    i = old.index('  <script type="application/ld+json" data-page-dates>')
-    ld = old[i:old.index('</script>', i) + len('</script>\n')]
-    page = page.replace('</head>', ld + '</head>', 1)
-    j = old.find('  <p class="page-updated">')
-    if j >= 0:
-        stamp = old[j:old.index('</p>', j) + len('</p>\n')]
-        page = page.replace('</main><footer>', stamp + '</main><footer>', 1)
-open(OUT, 'w', encoding='utf-8').write(page)
-print(f'{OUT}: {len(page):,} bytes, {len(versions)} versions, 50-star flag {years50} years, 48-star {years48}')
+def write_page(out, page, skip):
+    for bad in ('\u2014', '\u2013', '\u2012'):
+        assert bad not in page.replace(skip, ''), bad
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    old = open(out, encoding='utf-8').read() if os.path.exists(out) else None
+    # Keep the date stamps written by stamp-page-dates.py across rebuilds.
+    if old and 'data-page-dates' in old:
+        i = old.index('  <script type="application/ld+json" data-page-dates>')
+        ld = old[i:old.index('</script>', i) + len('</script>\n')]
+        page = page.replace('</head>', ld + '</head>', 1)
+        j = old.find('  <p class="page-updated">')
+        if j >= 0:
+            stamp = old[j:old.index('</p>', j) + len('</p>\n')]
+            page = page.replace('</main>', stamp + '</main>', 1)
+    open(out, 'w', encoding='utf-8').write(page)
+    print(f'{out}: {len(page):,} bytes')
+
+
+write_page(OUT, page, head_top)
+print(f'{len(versions)} versions, 50-star flag {years50} years, 48-star {years48}')
+
+# ---- French: /fr/learn/drapeau-americain/ ----
+OUT_FR = os.path.join(ROOT, 'fr', 'learn', 'drapeau-americain', 'index.html')
+MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août',
+        'septembre', 'octobre', 'novembre', 'décembre']
+
+
+def nb(t):
+    """French typography: a no-break space before : ; ? ! and %."""
+    for p in (' :', ' ;', ' ?', ' !', ' %'):
+        t = t.replace(p, '\u00a0' + p[1])
+    return t.replace('« ', '«\u00a0').replace(' »', '\u00a0»')
+
+
+def fmt_fr(d):
+    return f'{"1er" if d.day == 1 else d.day} {MOIS[d.month - 1]} {d.year}'
+
+
+def joined_fr(items):
+    items = list(items)
+    if len(items) <= 1:
+        return ''.join(items)
+    return ', '.join(items[:-1]) + ' et ' + items[-1]
+
+
+def name_fr(k):
+    return html.escape(BY[k]['names']['fr'])
+
+
+rows_fr = []
+for i, (n, d, new) in enumerate(versions):
+    if n == 13:
+        added = 'Les 13 États fondateurs'
+    elif n == 20:
+        added = joined_fr(name_fr(k) for k in new) + ' (étoiles en attente jusqu’à la loi de 1818)'
+    else:
+        added = joined_fr(name_fr(k) for k in new)
+    end = versions[i + 1][1].year if i + 1 < len(versions) else None
+    span = f'{d.year} à {end}' if end else f'depuis {d.year}'
+    rows_fr.append(f'        <tr><td><strong>{n}</strong></td><td>{fmt_fr(d)}</td><td>{span}</td><td>{added}</td></tr>')
+TABLE_FR = '\n'.join(rows_fr)
+
+TITLE_FR = 'Drapeau américain : 50 étoiles, 13 bandes et 27 versions'
+DESC_FR = nb('Le drapeau des États-Unis compte 50 étoiles, une par État, et 13 bandes pour les colonies d’origine. '
+             'Ses 27 versions depuis 1777 et l’État de chaque étoile.')
+assert 70 <= len(DESC_FR) <= 160, len(DESC_FR)
+
+FAQ_FR = [
+    ('Combien d’étoiles et de bandes compte le drapeau américain ?',
+     'Cinquante étoiles, une par État, et 13 bandes, 7 rouges et 6 blanches, une pour chacune des 13 colonies d’origine.'),
+    ('Depuis quand le drapeau américain a-t-il 50 étoiles ?',
+     'Depuis le 4 juillet 1960, premier 4 juillet après l’admission d’Hawaï comme 50e État, le 21 août 1959.'),
+    ('Combien de versions du drapeau américain y a-t-il eu ?',
+     f'{len(versions)}, du drapeau à 13 étoiles de 1777 à celui à 50 étoiles de 1960. Le nombre d’étoiles a changé à chaque fois ; les 13 bandes sont la règle depuis 1818.'),
+    ('Quand ajoute-t-on une étoile au drapeau ?',
+     'Selon la loi sur le drapeau de 1818, toujours inscrite dans le Code des États-Unis (titre 4, section 2), une nouvelle étoile est ajoutée le 4 juillet qui suit l’admission d’un État.'),
+]
+FAQ_FR = [(nb(q), nb(a)) for q, a in FAQ_FR]
+
+faq_ld_fr = json.dumps({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+    {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in FAQ_FR]}, ensure_ascii=False)
+crumb_ld_fr = json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+    {'@type': 'ListItem', 'position': 1, 'name': 'Accueil', 'item': 'https://statedoku.com/fr/'},
+    {'@type': 'ListItem', 'position': 2, 'name': 'Apprendre', 'item': 'https://statedoku.com/fr/learn/'},
+    {'@type': 'ListItem', 'position': 3, 'name': 'Le drapeau américain', 'item': URL_FR}]}, ensure_ascii=False)
+faq_html_fr = '\n'.join(f'    <details><summary><strong>{html.escape(q)}</strong></summary><p>{html.escape(a)}</p></details>' for q, a in FAQ_FR)
+
+tf = open(os.path.join(ROOT, 'fr', 'learn', 'etats-du-mississippi', 'index.html'), encoding='utf-8').read()
+head_top_fr = tf[:tf.index('  <title>')]
+style_fr = tf[tf.index('  <style>'):tf.index('</style>') + len('</style>\n')]
+header_fr = tf[tf.index('<body'):tf.index('</header>') + len('</header>\n')]
+footer_fr = tf[tf.index('</main>'):]
+
+body_fr = nb(f'''  <section class="lt-hero">
+    <h1>Le drapeau américain : pourquoi 50 étoiles et 13 bandes</h1>
+    <p class="sub">Une étoile par État, une bande par colonie d’origine, {len(versions)} versions depuis 1777.</p>
+  </section>
+
+  <article class="lt-main">
+    <p><strong>Le drapeau des États-Unis porte 50 étoiles blanches sur fond bleu, une pour chaque État, et 13 bandes horizontales, 7 rouges et 6 blanches, une pour chacune des 13 colonies d’origine.</strong> La version à 50 étoiles est le drapeau officiel depuis le 4 juillet 1960, après l’entrée d’Hawaï comme 50e État. C’est la {len(versions)}e version du drapeau : le nombre d’étoiles a augmenté à mesure que de nouveaux États rejoignaient l’Union, et les bandes sont restées au nombre de 13 depuis 1818.</p>
+
+    <figure style="margin:18px 0 8px;">
+      <img src="/flag-us.svg" width="190" height="100" alt="Le drapeau des États-Unis à 50 étoiles : 13 bandes rouges et blanches et un canton bleu de 50 étoiles blanches sur neuf rangées." style="display:block;width:100%;max-width:380px;height:auto;margin:0 auto;border:1px solid var(--border);">
+      <figcaption style="max-width:380px;margin:10px auto 0;font-size:.9rem;color:#475569;text-align:center;">Le drapeau à 50 étoiles, aux proportions fixées en 1959 : 19 unités de large pour 10 de haut.</figcaption>
+    </figure>
+
+    <h2>Pourquoi 13 bandes et 50 étoiles</h2>
+    <p>Le 14 juin 1777, le deuxième Congrès continental décide que le drapeau des États-Unis aura 13 bandes, alternativement rouges et blanches, et que le canton portera 13 étoiles blanches sur fond bleu, « représentant une nouvelle constellation ». C’est pour cela que le 14 juin est le Flag Day, le jour du drapeau.</p>
+    <p>Après l’entrée du Vermont et du Kentucky, la loi sur le drapeau de 1794 lui donne 15 étoiles et 15 bandes à partir du 1er mai 1795. C’est ce drapeau qui flottait sur le fort McHenry en 1814 et qui a inspiré « The Star-Spangled Banner », l’hymne national. Ajouter une bande par État ne pouvait pas durer : la loi du 4 avril 1818 revient définitivement à 13 bandes et fixe la règle toujours inscrite dans le Code des États-Unis : une étoile par État, et une nouvelle étoile ajoutée le 4 juillet qui suit l’admission d’un État.</p>
+
+    <h2>Les {len(versions)} versions du drapeau</h2>
+    <p>Chaque ligne est un drapeau devenu officiel. Les États admis entre deux 4 juillet partagent un même nouveau drapeau ; cinq États admis entre 1796 et 1817 ont attendu la loi de 1818 pour recevoir leur étoile.</p>
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
+    <div style="overflow-x:auto;">
+    <table class="lt">
+      <thead><tr><th>Étoiles</th><th>Officiel le</th><th>En usage</th><th>Nouvelles étoiles</th></tr></thead>
+      <tbody>
+{TABLE_FR}
+      </tbody>
+    </table>
+    </div>
+    <p>Le drapeau à 48 étoiles a flotté {years48} ans, de 1912 à 1959. Le drapeau à 50 étoiles a dépassé cette durée le 4 juillet 2007 et il est depuis la version restée le plus longtemps en usage.</p>
+
+    <h2>Proportions et disposition</h2>
+    <p>Le dessin du drapeau est fixé par le décret présidentiel 10834 (Executive Order 10834), signé par le président Eisenhower le 21 août 1959, le jour de l’admission d’Hawaï. Le drapeau est 1,9 fois plus large que haut, le canton bleu couvre les sept bandes du haut et les 50 étoiles sont disposées sur neuf rangées qui alternent six et cinq étoiles.</p>
+
+    <h2>Ce que signifient les couleurs</h2>
+    <p>Aucune loi ne donne de sens aux couleurs. L’explication la plus souvent citée est celle de Charles Thomson, écrite en 1782 pour les trois mêmes couleurs du grand sceau des États-Unis : le blanc pour la pureté et l’innocence, le rouge pour la robustesse et la vaillance, le bleu pour la vigilance, la persévérance et la justice.</p>
+
+    <section class="cta-card">
+      <h3>Remettez les étoiles dans l’ordre</h3>
+      <p>Le jeu de l’ordre d’admission vous demande de classer les États selon l’année de leur entrée dans l’Union.</p>
+      <a href="/fr/play/state-admission-order/">Jouer à l’ordre d’admission</a>
+    </section>
+
+    <h2>Questions fréquentes</h2>
+''') + faq_html_fr + '''
+
+    <h2>Guides associés</h2>
+    <div class="related-grid">
+      <a href="/fr/learn/drapeaux-des-etats/">Les drapeaux des 50 États</a>
+      <a href="/fr/learn/13-colonies/">Les 13 colonies</a>
+      <a href="/fr/learn/">Apprendre les 50 États</a>
+    </div>
+  </article>
+    <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
+
+'''
+
+page_fr = f'''{head_top_fr}  <title>{nb(TITLE_FR)} | Statedoku</title>
+  <meta name="description" content="{DESC_FR}">
+  <meta name="keywords" content="drapeau américain, drapeau des États-Unis, 50 étoiles, 13 bandes, histoire du drapeau">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="{URL_FR}">
+  <link rel="alternate" hreflang="en" href="{URL}">
+  <link rel="alternate" hreflang="fr" href="{URL_FR}">
+  <link rel="alternate" hreflang="x-default" href="{URL}">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=37">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{nb('Le drapeau américain : 50 étoiles, 13 bandes, 27 versions')}">
+  <meta property="og:description" content="{DESC_FR}">
+  <meta property="og:url" content="{URL_FR}">
+  <meta property="og:image" content="https://statedoku.com/og-image.png?v=2">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{nb('Le drapeau américain : 50 étoiles, 13 bandes, 27 versions')}">
+  <meta name="twitter:description" content="{DESC_FR}">
+  <meta name="twitter:image" content="https://statedoku.com/og-image.png?v=2">
+
+{style_fr}<script type="application/ld+json">{crumb_ld_fr}</script>
+<script type="application/ld+json">{faq_ld_fr}</script>
+</head>
+{header_fr}<main>
+{body_fr}{footer_fr}'''
+write_page(OUT_FR, page_fr, head_top_fr)
