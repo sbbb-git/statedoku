@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build /learn/us-flag/ and /fr/learn/drapeau-americain/: the 50-star flag and its 27 versions.
+"""Build /learn/us-flag/, /fr/learn/drapeau-americain/ and /es/learn/bandera-de-estados-unidos/: the 50-star flag and its 27 versions.
 
 The table of versions is computed, not typed: from the admission date of each
 state and the Flag Act of 1818 (a new star on the 4th of July after a state's
@@ -103,6 +103,7 @@ DESC = ('The US flag has 50 stars, one per state, and 13 stripes for the origina
 assert 70 <= len(DESC) <= 160, len(DESC)
 URL = 'https://statedoku.com/learn/us-flag/'
 URL_FR = 'https://statedoku.com/fr/learn/drapeau-americain/'
+URL_ES = 'https://statedoku.com/es/learn/bandera-de-estados-unidos/'
 
 FAQ = [
     ('How many stars and stripes are on the US flag?',
@@ -138,6 +139,7 @@ page = f'''{head_top}  <title>{TITLE} | Statedoku</title>
   <link rel="canonical" href="{URL}">
   <link rel="alternate" hreflang="en" href="{URL}">
   <link rel="alternate" hreflang="fr" href="{URL_FR}">
+  <link rel="alternate" hreflang="es" href="{URL_ES}">
   <link rel="alternate" hreflang="x-default" href="{URL}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
   <link rel="stylesheet" href="/css/style.css?v=37">
@@ -369,6 +371,7 @@ page_fr = f'''{head_top_fr}  <title>{nb(TITLE_FR)} | Statedoku</title>
   <link rel="canonical" href="{URL_FR}">
   <link rel="alternate" hreflang="en" href="{URL}">
   <link rel="alternate" hreflang="fr" href="{URL_FR}">
+  <link rel="alternate" hreflang="es" href="{URL_ES}">
   <link rel="alternate" hreflang="x-default" href="{URL}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
   <link rel="stylesheet" href="/css/style.css?v=37">
@@ -390,3 +393,154 @@ page_fr = f'''{head_top_fr}  <title>{nb(TITLE_FR)} | Statedoku</title>
 {header_fr}<main>
 {body_fr}{footer_fr}'''
 write_page(OUT_FR, page_fr, head_top_fr)
+
+# ---- Spanish: /es/learn/bandera-de-estados-unidos/ ----
+OUT_ES = os.path.join(ROOT, 'es', 'learn', 'bandera-de-estados-unidos', 'index.html')
+MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
+         'septiembre', 'octubre', 'noviembre', 'diciembre']
+
+
+def fmt_es(d):
+    return f'{d.day} de {MESES[d.month - 1]} de {d.year}'
+
+
+def joined_es(items):
+    items = list(items)
+    if len(items) <= 1:
+        return ''.join(items)
+    return ', '.join(items[:-1]) + ' y ' + items[-1]
+
+
+def link_es(k):
+    return f'<a href="/es/states/{slug(k)}/">{html.escape(BY[k]["names"]["es"])}</a>'
+
+
+rows_es = []
+for i, (n, d, new) in enumerate(versions):
+    if n == 13:
+        added = 'Los 13 estados fundadores'
+    elif n == 20:
+        added = joined_es(link_es(k) for k in new) + ' (estrellas a la espera de la ley de 1818)'
+    else:
+        added = joined_es(link_es(k) for k in new)
+    end = versions[i + 1][1].year if i + 1 < len(versions) else None
+    span = f'{d.year} a {end}' if end else f'desde {d.year}'
+    rows_es.append(f'        <tr><td><strong>{n}</strong></td><td>{fmt_es(d)}</td><td>{span}</td><td>{added}</td></tr>')
+TABLE_ES = '\n'.join(rows_es)
+
+TITLE_ES = 'Bandera de Estados Unidos: 50 estrellas, 13 franjas y 27 versiones'
+DESC_ES = ('La bandera de Estados Unidos tiene 50 estrellas, una por estado, y 13 franjas por las colonias originales. '
+           'Sus 27 versiones desde 1777, estado por estado.')
+assert 70 <= len(DESC_ES) <= 160, len(DESC_ES)
+
+FAQ_ES = [
+    ('¿Cuántas estrellas y franjas tiene la bandera de Estados Unidos?',
+     'Cincuenta estrellas, una por cada estado, y 13 franjas, 7 rojas y 6 blancas, una por cada una de las 13 colonias originales.'),
+    ('¿Desde cuándo tiene 50 estrellas la bandera de Estados Unidos?',
+     'Desde el 4 de julio de 1960, el primer 4 de julio después de la admisión de Hawái como estado número 50, el 21 de agosto de 1959.'),
+    ('¿Cuántas versiones ha tenido la bandera de Estados Unidos?',
+     f'{len(versions)}, desde la bandera de 13 estrellas de 1777 hasta la de 50 estrellas de 1960. El número de estrellas cambió cada vez; las 13 franjas son la regla desde 1818.'),
+    ('¿Cuándo se añade una estrella a la bandera?',
+     'Según la ley de la bandera de 1818, que sigue en el Código de Estados Unidos (título 4, sección 2), la nueva estrella se añade el 4 de julio siguiente a la admisión de un estado.'),
+]
+
+faq_ld_es = json.dumps({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+    {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in FAQ_ES]}, ensure_ascii=False)
+crumb_ld_es = json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+    {'@type': 'ListItem', 'position': 1, 'name': 'Inicio', 'item': 'https://statedoku.com/es/'},
+    {'@type': 'ListItem', 'position': 2, 'name': 'Aprender', 'item': 'https://statedoku.com/es/learn/'},
+    {'@type': 'ListItem', 'position': 3, 'name': 'La bandera de Estados Unidos', 'item': URL_ES}]}, ensure_ascii=False)
+faq_html_es = '\n'.join(f'    <details><summary><strong>{html.escape(q)}</strong></summary><p>{html.escape(a)}</p></details>' for q, a in FAQ_ES)
+
+te = open(os.path.join(ROOT, 'es', 'learn', 'estados-del-misisipi', 'index.html'), encoding='utf-8').read()
+head_top_es = te[:te.index('  <title>')]
+style_es = te[te.index('  <style>'):te.index('</style>') + len('</style>\n')]
+header_es = te[te.index('<body'):te.index('</header>') + len('</header>\n')]
+footer_es = te[te.index('</main>'):]
+
+body_es = f'''  <section class="lt-hero">
+    <h1>La bandera de Estados Unidos: por qué 50 estrellas y 13 franjas</h1>
+    <p class="sub">Una estrella por estado, una franja por colonia original, {len(versions)} versiones desde 1777.</p>
+  </section>
+
+  <article class="lt-main">
+    <p><strong>La bandera de Estados Unidos tiene 50 estrellas blancas sobre fondo azul, una por cada estado, y 13 franjas horizontales, 7 rojas y 6 blancas, una por cada una de las 13 colonias originales.</strong> La versión de 50 estrellas es la bandera oficial desde el 4 de julio de 1960, después de que Hawái se convirtiera en el estado número 50. Es la versión número {len(versions)} de la bandera: el número de estrellas creció a medida que se unían nuevos estados, y las franjas son 13 desde 1818.</p>
+
+    <figure style="margin:18px 0 8px;">
+      <img src="/flag-us.svg" width="190" height="100" alt="La bandera de 50 estrellas de Estados Unidos: 13 franjas rojas y blancas y un cantón azul con 50 estrellas blancas en nueve filas." style="display:block;width:100%;max-width:380px;height:auto;margin:0 auto;border:1px solid var(--border);">
+      <figcaption style="max-width:380px;margin:10px auto 0;font-size:.9rem;color:#475569;text-align:center;">La bandera de 50 estrellas, con las proporciones fijadas en 1959: 19 unidades de ancho por 10 de alto.</figcaption>
+    </figure>
+
+    <h2>Por qué 13 franjas y 50 estrellas</h2>
+    <p>El 14 de junio de 1777, el Segundo Congreso Continental resolvió que la bandera de Estados Unidos tuviera 13 franjas, alternadas rojas y blancas, y que el cantón llevara 13 estrellas blancas sobre fondo azul, "representando una nueva constelación". Por eso el 14 de junio es el Flag Day, el día de la bandera.</p>
+    <p>Tras la entrada de Vermont y Kentucky, la ley de la bandera de 1794 le dio 15 estrellas y 15 franjas a partir del 1 de mayo de 1795. Es la bandera que ondeaba sobre el fuerte McHenry en 1814 y que inspiró "The Star-Spangled Banner", el himno nacional. Añadir una franja por estado no podía durar, así que la ley del 4 de abril de 1818 volvió para siempre a 13 franjas y fijó la regla que sigue en el Código de Estados Unidos: una estrella por estado, y una nueva estrella el 4 de julio siguiente a la admisión de un estado.</p>
+
+    <h2>Las {len(versions)} versiones de la bandera</h2>
+    <p>Cada fila es una bandera que se hizo oficial. Los estados admitidos entre dos 4 de julio comparten una misma bandera nueva; cinco estados admitidos entre 1796 y 1817 esperaron a la ley de 1818 para recibir su estrella.</p>
+    <div class="ad-slot" data-ad-slot="PLACEHOLDER_LEARN_MID" data-ad-format="auto"></div>
+    <div style="overflow-x:auto;">
+    <table class="lt">
+      <thead><tr><th>Estrellas</th><th>Oficial desde</th><th>En uso</th><th>Nuevas estrellas</th></tr></thead>
+      <tbody>
+{TABLE_ES}
+      </tbody>
+    </table>
+    </div>
+    <p>La bandera de 48 estrellas ondeó {years48} años, de 1912 a 1959. La de 50 estrellas superó esa marca el 4 de julio de 2007 y desde entonces es la versión que más tiempo ha estado en uso.</p>
+
+    <h2>Proporciones y disposición</h2>
+    <p>El diseño de la bandera lo fija la Orden Ejecutiva 10834, firmada por el presidente Eisenhower el 21 de agosto de 1959, el día de la admisión de Hawái. La bandera es 1,9 veces más ancha que alta, el cantón azul cubre las siete franjas superiores y las 50 estrellas están dispuestas en nueve filas que alternan seis y cinco estrellas.</p>
+
+    <h2>Qué significan los colores</h2>
+    <p>Ninguna ley da un significado a los colores. La explicación más citada es la de Charles Thomson, escrita en 1782 para los mismos tres colores del Gran Sello de Estados Unidos: el blanco por la pureza y la inocencia, el rojo por la resistencia y el valor, y el azul por la vigilancia, la perseverancia y la justicia.</p>
+
+    <section class="cta-card">
+      <h3>Pon las estrellas en orden</h3>
+      <p>El juego del orden de admisión te pide ordenar los estados por el año en que entraron en la Unión.</p>
+      <a href="/es/play/state-admission-order/">Jugar al orden de admisión</a>
+    </section>
+
+    <h2>Preguntas frecuentes</h2>
+''' + faq_html_es + '''
+
+    <h2>Guías relacionadas</h2>
+    <div class="related-grid">
+      <a href="/es/learn/banderas-de-estados/">Las banderas de los 50 estados</a>
+      <a href="/es/states/">Los 50 estados</a>
+      <a href="/es/learn/">Aprender los 50 estados</a>
+    </div>
+  </article>
+    <div class="ad-slot ad-slot-inline" data-ad-slot="PLACEHOLDER_LEARN_BOTTOM" data-ad-format="auto"></div>
+
+'''
+
+page_es = f'''{head_top_es}  <title>{TITLE_ES} | Statedoku</title>
+  <meta name="description" content="{DESC_ES}">
+  <meta name="keywords" content="bandera de Estados Unidos, bandera estadounidense, 50 estrellas, 13 franjas, historia de la bandera">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="{URL_ES}">
+  <link rel="alternate" hreflang="en" href="{URL}">
+  <link rel="alternate" hreflang="fr" href="{URL_FR}">
+  <link rel="alternate" hreflang="es" href="{URL_ES}">
+  <link rel="alternate" hreflang="x-default" href="{URL}">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+  <link rel="stylesheet" href="/css/style.css?v=37">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="La bandera de Estados Unidos: 50 estrellas, 13 franjas, 27 versiones">
+  <meta property="og:description" content="{DESC_ES}">
+  <meta property="og:url" content="{URL_ES}">
+  <meta property="og:image" content="https://statedoku.com/og/home-es.png">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="La bandera de Estados Unidos: 50 estrellas, 13 franjas, 27 versiones">
+  <meta name="twitter:description" content="{DESC_ES}">
+  <meta name="twitter:image" content="https://statedoku.com/og/home-es.png">
+
+{style_es}<script type="application/ld+json">{crumb_ld_es}</script>
+<script type="application/ld+json">{faq_ld_es}</script>
+</head>
+{header_es}<main>
+{body_es}{footer_es}'''
+write_page(OUT_ES, page_es, head_top_es)

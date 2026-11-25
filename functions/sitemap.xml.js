@@ -325,7 +325,7 @@ export async function onRequestGet({ request }) {
 
   // Shabbat push articles + game guides (June 26)
   const SHABBAT_EN = ['states-by-gdp-ranking','longest-rivers-in-each-state','mississippi-river-states','us-flag','highest-mountain-in-each-state','safest-states-to-live','states-with-most-immigrants','states-most-natural-disasters','states-by-college-attainment','states-by-cost-of-living'];
-  const SHABBAT_ES = ['estados-por-pib','rios-mas-importantes-por-estado','estados-del-misisipi','montana-mas-alta-por-estado','estados-mas-seguros','estados-con-mas-inmigrantes','estados-mas-baratos-vivir','estados-con-mas-desastres-naturales','estados-mas-educados'];
+  const SHABBAT_ES = ['estados-por-pib','rios-mas-importantes-por-estado','estados-del-misisipi','bandera-de-estados-unidos','montana-mas-alta-por-estado','estados-mas-seguros','estados-con-mas-inmigrantes','estados-mas-baratos-vivir','estados-con-mas-desastres-naturales','estados-mas-educados'];
   const SHABBAT_FR = ['etats-par-pib','fleuves-par-etat-americain','etats-du-mississippi','drapeau-americain','montagne-plus-haute-par-etat','etats-les-plus-surs','etats-plus-d-immigrants','etats-moins-chers-vivre','etats-catastrophes-naturelles','etats-niveau-etudes'];
   for (const s of SHABBAT_EN) extras.push([`${BASE}/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
   for (const s of SHABBAT_ES) extras.push([`${BASE}/es/learn/${s}/`, { priority: 0.85, changefreq: 'weekly' }]);
