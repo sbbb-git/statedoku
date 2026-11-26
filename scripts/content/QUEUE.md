@@ -155,7 +155,7 @@ the pages are already shown, the queries already exist, nothing new competes.
 
 ## Deepen what already ranks
 
-7. `todo` **Great Lakes map** on `/learn/states-with-great-lakes/`: the eight
+7. `done 2026-11-26 bc3ed9b42` (`img/maps/great-lakes-states.svg` by `scripts/build-great-lakes-map.py`, lakes from Natural Earth 1:50m projected with the map's Albers; fact-checker 30 claims, 0 wrong; FR and ES Great Lakes pages, if any, not touched) **Great Lakes map** on `/learn/states-with-great-lakes/`: the eight
    states and which lakes each touches, on a map. Demand: "great lakes map" 6,572.
 8. `todo` **National parks map** on `/learn/national-parks-by-state/`: parks per
    state on a map. Demand: "national parks map" 5,336.

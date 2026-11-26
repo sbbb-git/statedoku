@@ -288,7 +288,7 @@ export const LASTMOD = {
   "/learn/states-most-natural-disasters/": "2026-10-22",
   "/learn/states-presidents-born/": "2026-11-04",
   "/learn/states-with-deserts/": "2026-10-07",
-  "/learn/states-with-great-lakes/": "2026-10-07",
+  "/learn/states-with-great-lakes/": "2026-11-26",
   "/learn/states-with-most-immigrants/": "2026-10-22",
   "/learn/states-with-mountains/": "2026-11-04",
   "/learn/states-with-national-parks/": "2026-10-07",
