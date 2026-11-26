@@ -8,7 +8,7 @@ scripts/data/colorado-river/, projected with the same Albers conic as
 scripts/build-great-lakes-map.py, checked against two corners of Colorado.
 Navy: the five states the river itself runs through or along (the daily
 grid's "On the Colorado River": AZ, CA, CO, NV, UT). Gold: the two states in
-its basin through tributaries only (WY, the Green River; NM, the San Juan).
+its basin through tributaries only (WY, the Green River; NM, the San Juan and the Gila).
 Neighbours grey; the legend is HTML on the page.
 """
 import json

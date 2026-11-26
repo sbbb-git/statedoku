@@ -137,7 +137,7 @@ the pages are already shown, the queries already exist, nothing new competes.
    Flag Act, the current flag since 4 July 1960. Demand: "us flag" 9,986,
    "flag of the united states" 6,994. `/learn/state-flags/` covers the 50 state
    flags; link both ways, do not repeat it.
-6. `todo` **Colorado River states**, new, EN. The seven basin states, the upper
+6. `done 2026-11-26 (by hand, the owner's request for more articles; a fourth new page that week)` (EN at `/learn/colorado-river-states/`, built by `scripts/build-colorado-river-page.py`, which asserts the five river states against the grid's `colorado_river` set; map `img/maps/colorado-river-states.svg` by `scripts/build-colorado-river-map.py`, the river from Natural Earth 1:50m; linked from the learn hub and the rivers page; fact-checker 57 claims, 2 wrong fixed: Glen Canyon Dam completed 1963, New Mexico also through the Gila; two older pages corrected on the way: Hoover Dam completed 1936 on the Nevada geography page, Lees Ferry on the Arizona one) **Colorado River states**, new, EN. The seven basin states, the upper
    and lower basins, the 1922 compact, Hoover and Glen Canyon dams, the river
    reaching Mexico. Demand: "colorado river" 5,708. Same check against the
    rivers page as item 4.
@@ -152,6 +152,16 @@ the pages are already shown, the queries already exist, nothing new competes.
     three languages, check "longest in North America" (found 17 Nov 2026 by
     the fact-check of the French Mississippi page). Also: "named after the
     Illinois River" is unproven for Illinois.
+
+6b. `todo` **Colorado River states, FR and ES**, the same script with a French and a Spanish
+    text, hreflang en/fr/es both ways, linked from the French and Spanish learn hubs and rivers
+    pages. Demand to check first in the Saturday reading (rio colorado, fleuve colorado).
+12. `todo` (after the reading of 28 November 2026) **Competitor gaps with demand.** Run
+    `python3 scripts/seo/competitor-gaps.py --volumes` and take the topics with real Bing demand.
+    The likely first one is one page on the climate of the states (coldest, hottest, snowiest,
+    driest, wettest), computed from NOAA data like the House-seats page, never one page per
+    ranking. Then the coast groups (Gulf Coast, West Coast, Pacific Northwest states) if they show
+    demand. A gap with no demand stays out.
 
 ## Deepen what already ranks
 

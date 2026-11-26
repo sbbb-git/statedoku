@@ -38,7 +38,7 @@ ROWS = [
     ('CO', 'Yes, it rises here', 'Rocky Mountain National Park, Glenwood Springs, Grand Junction', 'Upper'),
     ('WY', 'No, through the Green River', 'The Green River rises in the Wind River Range', 'Upper'),
     ('UT', 'Yes, runs through', 'Moab, Canyonlands National Park, the upper part of Lake Powell', 'Upper'),
-    ('NM', 'No, through the San Juan River', 'The San Juan River flows past Farmington', 'Upper'),
+    ('NM', 'No, through the San Juan and the Gila', 'The San Juan flows past Farmington; the Gila rises in the southwest', 'Upper'),
     ('AZ', 'Yes, through, then along its western border', 'Glen Canyon Dam, the Grand Canyon, Hoover Dam, Yuma', 'Lower'),
     ('NV', 'Yes, along its border with Arizona', 'Lake Mead, Hoover Dam, Laughlin', 'Lower'),
     ('CA', 'Yes, along its border with Arizona', 'Needles, Blythe, the All-American Canal', 'Lower'),
@@ -53,7 +53,7 @@ names = lambda codes: ', '.join(states[c]['names']['en'] for c in codes[:-1]) + 
 FAQ = [
     ('How many states does the Colorado River flow through?',
      f'Five states are on the river itself: {names(ON_RIVER)}. Seven are in its basin, with Wyoming and New Mexico, '
-     'which drain into it through the Green River and the San Juan River.'),
+     'which drain into it through tributaries: the Green River from Wyoming, the San Juan and the Gila from New Mexico.'),
     ('What are the seven Colorado River basin states?',
      'Colorado, Utah, Wyoming and New Mexico, the Upper Division states of the 1922 Colorado River Compact, and '
      'Arizona, Nevada and California, the Lower Division states.'),
@@ -108,7 +108,7 @@ page = f'''{head_top}  <title>{TITLE} | Statedoku</title>
     <p class="meta">Five states on the river, seven in its basin, one compact that shares its water.</p>
   </section>
   <div class="hp-main">
-    <p><strong>The Colorado River runs through or along five states: {names(ON_RIVER)}.</strong> Two more, Wyoming and New Mexico, are in its basin through tributaries, the Green River and the San Juan River, which makes seven Colorado River basin states. The river rises in Rocky Mountain National Park in Colorado and flows about 1,450 miles (2,334 km) southwest to Mexico.</p>
+    <p><strong>The Colorado River runs through or along five states: {names(ON_RIVER)}.</strong> Two more, Wyoming and New Mexico, are in its basin through tributaries, the Green River from Wyoming and the San Juan and the Gila from New Mexico, which makes seven Colorado River basin states. The river rises in Rocky Mountain National Park in Colorado and flows about 1,450 miles (2,334 km) southwest to Mexico.</p>
 
     <figure style="margin:18px 0 8px;">
       <img src="/img/maps/colorado-river-states.svg" width="401" height="340" alt="Map of the Colorado River and its seven basin states: Colorado, Utah, Arizona, Nevada and California in navy, on the river itself; Wyoming and New Mexico in gold, in the basin through tributaries. The river runs from northern Colorado through Utah and Arizona, then along the Arizona line with Nevada and California, into Mexico." loading="lazy" style="display:block;width:100%;max-width:420px;height:auto;margin:0 auto;border-radius:10px;">
@@ -128,15 +128,15 @@ page = f'''{head_top}  <title>{TITLE} | Statedoku</title>
       </tbody>
     </table>
     </div>
-    <p class="after-table-cta">"On the Colorado River" is a clue of the <a href="/">daily Statedoku grid</a>: it counts the five states on the river itself, not the two that only share its basin.</p>
+    <p class="after-table-cta" style="margin:4px 0 26px;padding:12px 16px;border-radius:10px;background:#FFFBEB;border:1px solid #F59E0B;font-size:.98rem;"><strong>On the grid.</strong> "On the Colorado River" is a clue of the <a href="/" style="color:#0F2147;font-weight:800;">daily Statedoku puzzle</a>: it counts the five states on the river itself, not the two that only share its basin.</p>
 
     <h2>How the water is shared: the 1922 compact</h2>
     <p>On November 24, 1922, the seven states signed the Colorado River Compact in Santa Fe, New Mexico. It splits the basin at Lee Ferry, in northern Arizona, into an Upper Basin and a Lower Basin, and gives each the use of 7.5 million acre-feet of water a year. Colorado, Utah, Wyoming and New Mexico are the Upper Division states; Arizona, Nevada and California the Lower Division states. Some land of Arizona drains to the Upper Basin, and some of New Mexico and Utah to the Lower Basin, but each state belongs to one division.</p>
-    <p>A treaty signed with Mexico in 1944 promises Mexico 1.5 million acre-feet a year. The shares were set after an unusually wet run of years, and the river has carried less water on average since, which is why the states keep negotiating how to share shortages.</p>
+    <p>A treaty signed with Mexico in 1944 promises Mexico 1.5 million acre-feet a year. The compact's shares were set after an unusually wet run of years, and the river has carried less water on average since, which is why the states keep negotiating how to share shortages.</p>
 
     <h2>The dams and the two great reservoirs</h2>
     <ul>
-      <li><strong>Glen Canyon Dam</strong>, near Page, Arizona, completed in 1966, holds back <strong>Lake Powell</strong>, which reaches far up into Utah.</li>
+      <li><strong>Glen Canyon Dam</strong>, near Page, Arizona, completed in 1963, holds back <strong>Lake Powell</strong>, which reaches far up into Utah.</li>
       <li><strong>Hoover Dam</strong>, in Black Canyon on the Arizona and Nevada line, completed in 1936, holds back <strong>Lake Mead</strong>, the largest reservoir in the United States when full.</li>
       <li>Downstream, Davis Dam forms Lake Mohave, Parker Dam forms Lake Havasu, and Imperial Dam sends water into the All-American Canal toward California's Imperial Valley.</li>
     </ul>
