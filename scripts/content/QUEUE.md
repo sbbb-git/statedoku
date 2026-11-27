@@ -167,7 +167,7 @@ the pages are already shown, the queries already exist, nothing new competes.
 
 7. `done 2026-11-26 bc3ed9b42` (`img/maps/great-lakes-states.svg` by `scripts/build-great-lakes-map.py`, lakes from Natural Earth 1:50m projected with the map's Albers; fact-checker 30 claims, 0 wrong; FR and ES Great Lakes pages, if any, not touched) **Great Lakes map** on `/learn/states-with-great-lakes/`: the eight
    states and which lakes each touches, on a map. Demand: "great lakes map" 6,572.
-8. `todo` **National parks map** on `/learn/national-parks-by-state/`: parks per
+8. `done 2026-11-27 2ce45359b` (`img/maps/national-parks-by-state.svg` by `scripts/build-national-parks-map.py`, 64 parks asserted; the count moved from 63 to 64 on the four parks pages and the hub after Chiricahua, 20 October 2026; fact-checker 24 claims, 0 wrong, 2 stale sentences fixed) **National parks map** on `/learn/national-parks-by-state/`: parks per
    state on a map. Demand: "national parks map" 5,336.
 9. `todo` **French pages Google crawled and refused.** Google indexes 4 of the 33
    indexable `fr/learn/` pages (gsc-index-2026-10-31). Take the French pages
