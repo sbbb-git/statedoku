@@ -359,7 +359,7 @@ export const LASTMOD = {
   "/regions/northeast/": "2026-10-28",
   "/regions/pacific/": "2026-11-26",
   "/regions/south-atlantic/": "2026-10-07",
-  "/regions/south/": "2026-10-22",
+  "/regions/south/": "2026-11-28",
   "/regions/west-north-central/": "2026-11-04",
   "/regions/west-south-central/": "2026-08-19",
   "/regions/west/": "2026-10-22",
